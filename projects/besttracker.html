@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BestTracker — Шавкат</title>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #E8FF2E;
+            --accent-alt: #FF6B35;
+            --dark: #0A0A0F;
+            --dark-card: #13131A;
+            --dark-lighter: #1C1C26;
+            --text: #F0F0F5;
+            --text-muted: #8888A0;
+            --gradient-1: linear-gradient(135deg, #E8FF2E 0%, #2EFF8E 100%);
+            --gradient-2: linear-gradient(135deg, #FF6B35 0%, #FF2E8E 100%);
+            --gradient-3: linear-gradient(135deg, #2E8EFF 0%, #8E2EFF 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 15, 0.7);
+            border-bottom: 1px solid rgba(232, 255, 46, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .nav-left { display: flex; align-items: center; gap: 20px; }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-back:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(232, 255, 46, 0.06);
+        }
+
+        .nav-logo {
+            font-family: 'Unbounded', cursive;
+            font-weight: 900;
+            font-size: 1.4rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .nav-cta:hover { background: transparent; color: var(--accent); }
+
+        .nav-burger {
+            display: none;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            width: 44px; height: 44px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1002;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .nav-burger span {
+            display: block; width: 20px; height: 2px;
+            background: var(--text); transition: all 0.3s; position: relative;
+        }
+
+        .nav-burger span::before, .nav-burger span::after {
+            content: ''; position: absolute; width: 20px; height: 2px;
+            background: var(--text); transition: all 0.3s; left: 0;
+        }
+
+        .nav-burger span::before { top: -6px; }
+        .nav-burger span::after { top: 6px; }
+        .nav-burger.active span { background: transparent; }
+        .nav-burger.active span::before { top: 0; transform: rotate(45deg); background: var(--accent); }
+        .nav-burger.active span::after { top: 0; transform: rotate(-45deg); background: var(--accent); }
+
+        .mobile-menu {
+            display: none; position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 10, 15, 0.97);
+            backdrop-filter: blur(30px); z-index: 1001;
+            flex-direction: column; align-items: center;
+            justify-content: center; gap: 32px;
+        }
+
+        .mobile-menu.active { display: flex; }
+
+        .mobile-menu a {
+            font-family: 'Unbounded', cursive; font-size: 1.4rem;
+            font-weight: 700; color: var(--text);
+            text-decoration: none; transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover { color: var(--accent); }
+
+        .mobile-menu .nav-cta {
+            margin-top: 16px; font-family: 'Manrope', sans-serif;
+            font-size: 1rem; padding: 14px 36px;
+        }
+
+        /* ===== PROJECT HERO ===== */
+        .project-hero {
+            padding: 160px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-hero-orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(120px); opacity: 0.2;
+            animation: orbFloat 8s ease-in-out infinite alternate;
+        }
+
+        .project-hero-orb:nth-child(1) {
+            width: 400px; height: 400px;
+            background: #2C5364; top: -80px; right: -50px;
+        }
+
+        .project-hero-orb:nth-child(2) {
+            width: 300px; height: 300px;
+            background: var(--accent);
+            bottom: -60px; left: -80px;
+            animation-delay: -4s;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, -30px) scale(1.15); }
+        }
+
+        .project-hero-content {
+            position: relative; z-index: 2;
+            max-width: 1200px; margin: 0 auto;
+        }
+
+        .project-hero-top {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 24px;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .project-icon {
+            width: 64px; height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .project-status-badge {
+            padding: 6px 16px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 600;
+            background: rgba(46, 255, 142, 0.12);
+            color: #2EFF8E;
+            border: 1px solid rgba(46, 255, 142, 0.2);
+        }
+
+        .project-hero h1 {
+            font-family: 'Unbounded', cursive;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900; line-height: 1.1;
+            margin-bottom: 20px;
+            animation: fadeUp 0.8s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .project-hero-desc {
+            font-size: 1.1rem; color: var(--text-muted);
+            max-width: 650px; line-height: 1.7;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .project-tech-tags {
+            display: flex; flex-wrap: wrap; gap: 10px;
+            margin-top: 24px;
+            animation: fadeUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .project-tech-tag {
+            padding: 8px 18px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 600;
+            background: rgba(232, 255, 46, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(232, 255, 46, 0.12);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== SCREENSHOTS ===== */
+        section {
+            padding: 80px 40px;
+        }
+
+        section > * {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-label {
+            font-family: 'Unbounded', cursive;
+            font-size: 0.8rem; font-weight: 600;
+            color: var(--accent); text-transform: uppercase;
+            letter-spacing: 3px; margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Unbounded', cursive;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800; margin-bottom: 40px; line-height: 1.15;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .screenshot-placeholder {
+            height: 400px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
+            border: 1px solid rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .screenshot-placeholder:hover {
+            border-color: rgba(232, 255, 46, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+        }
+
+        /* ===== ABOUT PROJECT ===== */
+        .about-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .about-project-text {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .about-project-text p + p { margin-top: 16px; }
+
+        .project-details {
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 36px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .detail-row:last-child { border-bottom: none; }
+
+        .detail-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section { text-align: center; }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-store {
+            display: inline-flex; align-items: center; gap: 12px;
+            padding: 18px 36px; border-radius: 60px;
+            text-decoration: none; font-weight: 700;
+            font-size: 1rem; transition: all 0.3s;
+            border: 2px solid;
+        }
+
+        .btn-playmarket {
+            background: rgba(46, 255, 142, 0.08);
+            border-color: rgba(46, 255, 142, 0.25);
+            color: #2EFF8E;
+        }
+
+        .btn-playmarket:hover {
+            background: #2EFF8E; border-color: #2EFF8E;
+            color: var(--dark); transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(46, 255, 142, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center; padding: 40px;
+            color: var(--text-muted); font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            nav { padding: 16px 20px; }
+            .nav-links { display: none; }
+            .nav-cta.desktop { display: none; }
+            .nav-burger { display: flex; }
+            .about-project { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            nav { padding: 14px 16px; }
+            section { padding: 48px 16px; }
+            .project-hero { padding: 100px 16px 40px; }
+            .project-hero h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+            .project-hero-desc { font-size: 0.95rem; }
+            .project-icon { width: 52px; height: 52px; font-size: 1.5rem; }
+            .section-title { font-size: clamp(1.4rem, 5vw, 2rem); }
+            .screenshots-grid { grid-template-columns: 1fr; }
+            .screenshot-placeholder { height: 300px; }
+            .project-details { padding: 24px; }
+            .btn-store { padding: 14px 28px; font-size: 0.9rem; width: 100%; justify-content: center; }
+            footer { padding: 28px 16px; font-size: 0.8rem; }
+        }
+
+        @media (max-width: 400px) {
+            .project-hero { padding: 90px 12px 32px; }
+            .project-hero h1 { font-size: clamp(1.5rem, 9vw, 2.2rem); }
+            .screenshot-placeholder { height: 240px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <a href="../mobile.html" class="nav-back">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </a>
+            <a href="../index.html" class="nav-logo">ШК.</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../mobile.html">Мобильные</a></li>
+            <li><a href="../web.html">Веб</a></li>
+            <li><a href="../index.html#about">Обо мне</a></li>
+        </ul>
+        <a href="../index.html#contact" class="nav-cta desktop">Написать</a>
+        <button class="nav-burger" onclick="toggleMenu()"><span></span></button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html">Главная</a>
+        <a href="../mobile.html">Мобильные</a>
+        <a href="../web.html">Веб</a>
+        <a href="../index.html#about">Обо мне</a>
+        <a href="../index.html#contact" class="nav-cta" onclick="toggleMenu()">Написать</a>
+    </div>
+
+    <div class="project-hero">
+        <div class="project-hero-orb"></div>
+        <div class="project-hero-orb"></div>
+        <div class="project-hero-content">
+            <div class="project-hero-top">
+                <div class="project-icon">📍</div>
+                <span class="project-status-badge">В проде</span>
+            </div>
+            <h1>BestTracker</h1>
+            <p class="project-hero-desc">
+                Гео-трекинг приложение с отслеживанием маршрутов, картами и аналитикой передвижений в реальном времени. Приложение помогает отслеживать передвижения сотрудников и транспорта.
+            </p>
+            <div class="project-tech-tags">
+                <span class="project-tech-tag">Flutter</span>
+                <span class="project-tech-tag">Google Maps</span>
+                <span class="project-tech-tag">BLoC</span>
+                <span class="project-tech-tag">REST API</span>
+            </div>
+        </div>
+    </div>
+
+    <section id="screenshots">
+        <div class="section-label reveal">Скриншоты</div>
+        <h2 class="section-title reveal">Как это выглядит</h2>
+        <div class="screenshots-grid reveal">
+            <div class="screenshot-placeholder">Скриншот 1</div>
+            <div class="screenshot-placeholder">Скриншот 2</div>
+            <div class="screenshot-placeholder">Скриншот 3</div>
+        </div>
+    </section>
+
+    <section id="about-project">
+        <div class="section-label reveal">О проекте</div>
+        <h2 class="section-title reveal">Подробнее</h2>
+        <div class="about-project reveal">
+            <div class="about-project-text">
+                <p>BestTracker — приложение для отслеживания геолокации в реальном времени. Позволяет видеть маршруты передвижений на карте, анализировать историю поездок и получать уведомления.</p>
+                <p>Разработано на Flutter с использованием чистой архитектуры и BLoC для управления состоянием. Интеграция с Google Maps обеспечивает точное отслеживание и визуализацию маршрутов.</p>
+            </div>
+            <div class="project-details">
+                <div class="detail-row">
+                    <span class="detail-label">Платформа</span>
+                    <span class="detail-value">Android / iOS</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Фреймворк</span>
+                    <span class="detail-value">Flutter</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Архитектура</span>
+                    <span class="detail-value">Clean Architecture</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Статус</span>
+                    <span class="detail-value" style="color: #2EFF8E;">В продакшене</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="section-label reveal">Попробовать</div>
+        <h2 class="section-title reveal">Скачать приложение</h2>
+        <div class="cta-buttons reveal">
+            <a href="#" class="btn-store btn-playmarket" target="_blank">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 0 1-.609-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 0 1 0 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                Google Play
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 Шавкат. Все права защищены.
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => { entry.target.classList.add('visible'); }, index * 80);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.style.background = window.scrollY > 50 ? 'rgba(10, 10, 15, 0.95)' : 'rgba(10, 10, 15, 0.7)';
+        });
+        function toggleMenu() {
+            document.querySelector('.nav-burger').classList.toggle('active');
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
+        }
+    </script>
+</body>
+</html>
