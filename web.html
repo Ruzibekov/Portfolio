@@ -383,6 +383,176 @@
             margin-bottom: 16px;
         }
 
+        /* ===== SHOWCASE CARD ===== */
+        .showcase-card {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .showcase-card:hover {
+            border-color: rgba(124, 58, 237, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .showcase-screenshots {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 40px 32px 0;
+            gap: 0;
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .showcase-screenshots a {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            width: 240px;
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-bottom: none;
+        }
+
+        .showcase-screenshots a:nth-child(1) {
+            left: 8%;
+            transform: rotate(-6deg) translateY(20px);
+            z-index: 1;
+        }
+        .showcase-screenshots a:nth-child(2) {
+            left: 25%;
+            transform: rotate(-2deg) translateY(8px);
+            z-index: 2;
+        }
+        .showcase-screenshots a:nth-child(3) {
+            right: 25%;
+            transform: rotate(2deg) translateY(8px);
+            z-index: 2;
+        }
+        .showcase-screenshots a:nth-child(4) {
+            right: 8%;
+            transform: rotate(6deg) translateY(20px);
+            z-index: 1;
+        }
+
+        .showcase-screenshots a:hover {
+            z-index: 10;
+            transform: rotate(0deg) translateY(-12px) scale(1.05);
+            box-shadow: 0 -8px 40px rgba(124, 58, 237, 0.3);
+        }
+
+        .showcase-screenshots a img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: filter 0.3s;
+            filter: brightness(0.9);
+        }
+
+        .showcase-screenshots a:hover img {
+            filter: brightness(1);
+        }
+
+        .showcase-body {
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .showcase-info h3 {
+            font-family: 'Unbounded', cursive;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .showcase-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-width: 480px;
+        }
+
+        .showcase-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .showcase-tag {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: rgba(124, 58, 237, 0.1);
+            color: #A78BFA;
+            border: 1px solid rgba(124, 58, 237, 0.15);
+        }
+
+        .showcase-author {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .showcase-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            color: #A78BFA;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .showcase-cta:hover {
+            background: #7C3AED;
+            border-color: #7C3AED;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35);
+        }
+
+        @media (max-width: 900px) {
+            .showcase-screenshots { height: 260px; padding: 32px 20px 0; }
+            .showcase-screenshots a { width: 200px; }
+            .showcase-screenshots a:nth-child(1) { left: 2%; }
+            .showcase-screenshots a:nth-child(4) { right: 2%; }
+            .showcase-body { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media (max-width: 600px) {
+            .showcase-screenshots { height: 200px; padding: 24px 10px 0; }
+            .showcase-screenshots a { width: 150px; }
+            .showcase-screenshots a:nth-child(1) { left: 0; }
+            .showcase-screenshots a:nth-child(2) { left: 22%; }
+            .showcase-screenshots a:nth-child(3) { right: 22%; }
+            .showcase-screenshots a:nth-child(4) { right: 0; }
+            .showcase-body { padding: 20px; }
+            .showcase-info h3 { font-size: 1.1rem; }
+            .showcase-cta { width: 100%; justify-content: center; }
+        }
+
         /* ===== CONTACT ===== */
         #contact { text-align: center; }
 
@@ -649,30 +819,54 @@
     <section id="projects">
         <div class="section-label reveal">Проекты</div>
         <h2 class="section-title reveal">Мои работы</h2>
-        <div class="portfolio-grid">
-            <a href="projects/tildon.html" class="project-card reveal">
-                <div class="project-cover">
-                    <div class="project-cover-bg">🇬🇧</div>
-                    <span class="project-status status-live">Активно</span>
-                </div>
-                <div class="project-info">
+        <div class="showcase-card reveal">
+            <div class="showcase-screenshots">
+                <a href="https://tildon.vercel.app" target="_blank"><img src="screenshots/tildon-1.png" alt="Tildon — Главная"></a>
+                <a href="https://tildon.vercel.app/grammar" target="_blank"><img src="screenshots/tildon-2.png" alt="Tildon — Уроки"></a>
+                <a href="https://tildon.vercel.app/grammar/present-simple" target="_blank"><img src="screenshots/tildon-3.png" alt="Tildon — Упражнение"></a>
+                <a href="https://tildon.vercel.app/test" target="_blank"><img src="screenshots/tildon-4.png" alt="Tildon — Тесты"></a>
+            </div>
+            <div class="showcase-body">
+                <div class="showcase-info">
                     <h3>Tildon</h3>
-                    <div class="project-rating">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        4.8 / 5
-                    </div>
-                    <p>Бесплатная платформа для изучения английского языка. Карточки, грамматика, аудирование — всё для эффективного обучения</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Web App</span>
-                        <span class="tech-tag">Образование</span>
-                    </div>
-                    <div class="project-link">
-                        Открыть проект
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                    <p>Бесплатная платформа для изучения английского языка. 65+ уроков грамматики, 1800+ слов, аудирование и тесты. Работает офлайн.</p>
+                    <div class="showcase-meta">
+                        <span class="showcase-tag">Next.js</span>
+                        <span class="showcase-tag">React</span>
+                        <span class="showcase-tag">PWA</span>
+                        <span class="showcase-author">by Ruzibekov</span>
                     </div>
                 </div>
-            </a>
+                <a href="https://tildon.vercel.app" target="_blank" class="showcase-cta">
+                    Открыть сайт
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="showcase-card reveal" style="margin-top: 40px;">
+            <div class="showcase-screenshots">
+                <a href="https://vfx-timecode.vercel.app" target="_blank"><img src="screenshots/vfx-1.png" alt="VFX Timecode — Главная"></a>
+                <a href="https://vfx-timecode.vercel.app" target="_blank"><img src="screenshots/vfx-2.png" alt="VFX Timecode — Таймер"></a>
+                <a href="https://vfx-timecode.vercel.app" target="_blank"><img src="screenshots/vfx-3.png" alt="VFX Timecode — Настройки"></a>
+                <a href="https://vfx-timecode.vercel.app" target="_blank"><img src="screenshots/vfx-4.png" alt="VFX Timecode — Полный экран"></a>
+            </div>
+            <div class="showcase-body">
+                <div class="showcase-info">
+                    <h3>VFX Timecode</h3>
+                    <p>Генератор таймкода для VFX и видеопродакшна. Поддержка разных FPS, кастомные цвета, шрифты, полноэкранный режим и звуковые сигналы.</p>
+                    <div class="showcase-meta">
+                        <span class="showcase-tag">JavaScript</span>
+                        <span class="showcase-tag">Web App</span>
+                        <span class="showcase-tag">VFX</span>
+                        <span class="showcase-author">by Ruzibekov</span>
+                    </div>
+                </div>
+                <a href="https://vfx-timecode.vercel.app" target="_blank" class="showcase-cta" style="background: rgba(46,142,255,0.1); border-color: rgba(46,142,255,0.3); color: #2E8EFF;">
+                    Открыть сайт
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+            </div>
         </div>
     </section>
 

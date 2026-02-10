@@ -353,6 +353,96 @@
             border: 1px solid rgba(232, 255, 46, 0.12);
         }
 
+        /* ===== SHOWCASE CARD ===== */
+        .showcase-card {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+        .showcase-card:hover {
+            border-color: rgba(232, 255, 46, 0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .showcase-screenshots {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 40px 32px 0;
+            position: relative;
+            height: 360px;
+            overflow: hidden;
+        }
+        .showcase-screenshots a {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            width: 160px;
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-bottom: none;
+        }
+        .showcase-screenshots a:nth-child(1) { left: 10%; transform: rotate(-6deg) translateY(20px); z-index: 1; }
+        .showcase-screenshots a:nth-child(2) { left: 28%; transform: rotate(-2deg) translateY(8px); z-index: 2; }
+        .showcase-screenshots a:nth-child(3) { right: 28%; transform: rotate(2deg) translateY(8px); z-index: 2; }
+        .showcase-screenshots a:nth-child(4) { right: 10%; transform: rotate(6deg) translateY(20px); z-index: 1; }
+        .showcase-screenshots a:hover {
+            z-index: 10;
+            transform: rotate(0deg) translateY(-12px) scale(1.08);
+            box-shadow: 0 -8px 40px rgba(232, 255, 46, 0.2);
+        }
+        .showcase-screenshots a img { width: 100%; height: auto; display: block; transition: filter 0.3s; filter: brightness(0.9); }
+        .showcase-screenshots a:hover img { filter: brightness(1); }
+        .showcase-body {
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .showcase-info h3 { font-family: 'Unbounded', cursive; font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+        .showcase-info p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; max-width: 480px; }
+        .showcase-meta { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .showcase-tag {
+            padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;
+            background: rgba(232, 255, 46, 0.08); color: var(--accent); border: 1px solid rgba(232, 255, 46, 0.12);
+        }
+        .showcase-author { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+        .showcase-cta {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 50px;
+            background: rgba(46, 255, 142, 0.08); border: 1px solid rgba(46, 255, 142, 0.25); color: #2EFF8E;
+            text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: all 0.3s; white-space: nowrap; flex-shrink: 0;
+        }
+        .showcase-cta:hover {
+            background: #2EFF8E; border-color: #2EFF8E; color: var(--dark);
+            transform: translateY(-2px); box-shadow: 0 8px 30px rgba(46, 255, 142, 0.3);
+        }
+
+        @media (max-width: 900px) {
+            .showcase-screenshots { height: 300px; padding: 32px 20px 0; }
+            .showcase-screenshots a { width: 130px; }
+            .showcase-screenshots a:nth-child(1) { left: 4%; }
+            .showcase-screenshots a:nth-child(4) { right: 4%; }
+            .showcase-body { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 600px) {
+            .showcase-screenshots { height: 240px; padding: 24px 10px 0; }
+            .showcase-screenshots a { width: 100px; }
+            .showcase-screenshots a:nth-child(1) { left: 2%; }
+            .showcase-screenshots a:nth-child(2) { left: 24%; }
+            .showcase-screenshots a:nth-child(3) { right: 24%; }
+            .showcase-screenshots a:nth-child(4) { right: 2%; }
+            .showcase-body { padding: 20px; }
+            .showcase-info h3 { font-size: 1.1rem; }
+            .showcase-cta { width: 100%; justify-content: center; }
+        }
+
         /* ===== CONTACT ===== */
         #contact { text-align: center; }
 
@@ -619,37 +709,72 @@
     <section id="projects">
         <div class="section-label reveal">Проекты</div>
         <h2 class="section-title reveal">Мои работы</h2>
-        <div class="portfolio-grid">
-            <a href="projects/besttracker.html" class="project-card reveal">
-                <div class="project-cover">
-                    <div class="project-cover-bg">📍</div>
-                    <span class="project-status status-live">В проде</span>
-                </div>
-                <div class="project-info">
-                    <h3>BestTracker</h3>
-                    <p>Гео-трекинг приложение с отслеживанием маршрутов, картами и аналитикой передвижений в реальном времени</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Google Maps</span>
-                        <span class="tech-tag">BLoC</span>
+
+        <div class="showcase-card reveal">
+            <div class="showcase-screenshots">
+                <a href="#"><img src="screenshots/mynails-1.png" alt="My Nail Salon — Главная"></a>
+                <a href="#"><img src="screenshots/mynails-2.png" alt="My Nail Salon — Дизайн"></a>
+                <a href="#"><img src="screenshots/mynails-3.png" alt="My Nail Salon — Генерация"></a>
+                <a href="#"><img src="screenshots/mynails-4.png" alt="My Nail Salon — AI"></a>
+            </div>
+            <div class="showcase-body">
+                <div class="showcase-info">
+                    <h3>My Nail Salon</h3>
+                    <p>AI-ассистент для создания персонализированных дизайнов ногтей. Генерация дизайнов, подбор цветов и форм.</p>
+                    <div class="showcase-meta">
+                        <span class="showcase-tag">Android</span>
+                        <span class="showcase-tag">AI</span>
+                        <span class="showcase-tag">Design</span>
+                        <span class="showcase-author">by Ruzibekov</span>
                     </div>
                 </div>
-            </a>
-            <a href="projects/flutter-course.html" class="project-card reveal">
-                <div class="project-cover">
-                    <div class="project-cover-bg">🎓</div>
-                    <span class="project-status status-live">Активно</span>
-                </div>
-                <div class="project-info">
-                    <h3>Flutter курс на Stepik</h3>
-                    <p>Авторский обучающий курс по мобильной разработке на Flutter — от основ до продвинутых тем</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Dart</span>
-                        <span class="tech-tag">Обучение</span>
+                <a href="https://play.google.com/store/apps/details?id=com.style.mynails&hl=ru" target="_blank" class="showcase-cta">
+                    Google Play
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="showcase-card reveal" style="margin-top: 40px;">
+            <div class="showcase-screenshots">
+                <a href="#"><img src="screenshots/wallpapers-1.png" alt="Wallpapers — Главная"></a>
+                <a href="#"><img src="screenshots/wallpapers-2.png" alt="Wallpapers — Категории"></a>
+                <a href="#"><img src="screenshots/wallpapers-3.png" alt="Wallpapers — Превью"></a>
+                <a href="#"><img src="screenshots/wallpapers-4.png" alt="Wallpapers — Установка"></a>
+            </div>
+            <div class="showcase-body">
+                <div class="showcase-info">
+                    <h3>Wallpapers</h3>
+                    <p>Приложение для загрузки и установки обоев на телефон. Категории, избранное и быстрая установка в один клик.</p>
+                    <div class="showcase-meta">
+                        <span class="showcase-tag">Android</span>
+                        <span class="showcase-tag">Kotlin</span>
+                        <span class="showcase-tag">UI/UX</span>
+                        <span class="showcase-author">by Ruzibekov</span>
                     </div>
                 </div>
-            </a>
+            </div>
+        </div>
+
+        <div class="showcase-card reveal" style="margin-top: 40px;">
+            <div class="showcase-screenshots">
+                <a href="#"><img src="screenshots/stefa-1.png" alt="StefaAI — Главная"></a>
+                <a href="#"><img src="screenshots/stefa-2.png" alt="StefaAI — Генерация"></a>
+                <a href="#"><img src="screenshots/stefa-3.png" alt="StefaAI — Результат"></a>
+                <a href="#"><img src="screenshots/stefa-4.png" alt="StefaAI — Галерея"></a>
+            </div>
+            <div class="showcase-body">
+                <div class="showcase-info">
+                    <h3>StefaAI</h3>
+                    <p>AI-приложение для генерации изображений. Создание уникальных артов и иллюстраций с помощью искусственного интеллекта.</p>
+                    <div class="showcase-meta">
+                        <span class="showcase-tag">Android</span>
+                        <span class="showcase-tag">AI</span>
+                        <span class="showcase-tag">Генерация</span>
+                        <span class="showcase-author">by Ruzibekov</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

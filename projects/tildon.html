@@ -86,65 +86,12 @@
         .section-label { font-family: 'Unbounded', cursive; font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 16px; }
         .section-title { font-family: 'Unbounded', cursive; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 40px; line-height: 1.15; }
 
-        /* ===== SCREENSHOTS AS CSS MOCKUPS ===== */
+        /* ===== SCREENSHOTS ===== */
         .screenshots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .screenshot-mockup { border-radius: 20px; background: #111118; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; transition: all 0.4s; cursor: pointer; }
-        .screenshot-mockup:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15); }
-        .mockup-header { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.04); }
-        .mockup-header-left { display: flex; align-items: center; gap: 10px; }
-        .mockup-logo { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #7C3AED, #5B21B6); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900; color: #fff; }
-        .mockup-title { font-weight: 700; font-size: 0.85rem; color: var(--text); }
-        .mockup-badge { padding: 3px 10px; border-radius: 12px; font-size: 0.65rem; font-weight: 700; background: rgba(124, 58, 237, 0.15); color: #A78BFA; }
-        .mockup-body { padding: 20px; min-height: 320px; }
-
-        /* Mockup 1: Landing */
-        .mockup-landing .mockup-hero-text { font-family: 'Unbounded', cursive; font-size: 1.1rem; font-weight: 800; color: var(--text); line-height: 1.3; margin-bottom: 8px; }
-        .mockup-landing .mockup-hero-text span { color: #7C3AED; }
-        .mockup-landing .mockup-subtitle { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
-        .mockup-landing .mockup-btn { display: inline-block; padding: 8px 20px; border-radius: 20px; background: #7C3AED; color: #fff; font-size: 0.7rem; font-weight: 700; margin-bottom: 20px; }
-        .mockup-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .mockup-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px; text-align: center; }
-        .mockup-stat-icon { width: 28px; height: 28px; border-radius: 8px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
-        .mockup-stat-num { font-family: 'Unbounded', cursive; font-size: 1rem; font-weight: 800; color: var(--text); }
-        .mockup-stat-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
-
-        /* Mockup 2: Lessons */
-        .mockup-lesson-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
-        .mockup-lesson-num { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #7C3AED, #5B21B6); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: #fff; flex-shrink: 0; }
-        .mockup-lesson-info { flex: 1; }
-        .mockup-lesson-name { font-weight: 700; font-size: 0.8rem; color: var(--text); margin-bottom: 3px; }
-        .mockup-lesson-meta { font-size: 0.65rem; color: var(--text-muted); }
-        .mockup-lesson-meta span { margin-right: 8px; }
-        .mockup-lesson-progress { display: flex; gap: 3px; margin-top: 6px; }
-        .mockup-lesson-progress span { height: 3px; border-radius: 2px; flex: 1; }
-        .mockup-lesson-progress .done { background: #7C3AED; }
-        .mockup-lesson-progress .pending { background: rgba(255,255,255,0.08); }
-        .mockup-streak { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-        .mockup-streak-icon { font-size: 1.1rem; }
-        .mockup-streak-text { font-size: 0.75rem; color: var(--text-muted); }
-        .mockup-streak-text strong { color: var(--text); }
-
-        /* Mockup 3: Exercise */
-        .mockup-exercise .mockup-ex-progress { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
-        .mockup-exercise .mockup-ex-bar-bg { flex: 1; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
-        .mockup-exercise .mockup-ex-bar { height: 100%; width: 35%; background: linear-gradient(90deg, #7C3AED, #A78BFA); border-radius: 3px; }
-        .mockup-exercise .mockup-ex-count { font-size: 0.7rem; color: var(--text-muted); }
-        .mockup-exercise .mockup-ex-steps { display: flex; gap: 4px; margin-bottom: 20px; flex-wrap: wrap; }
-        .mockup-exercise .mockup-step { padding: 5px 10px; border-radius: 6px; font-size: 0.6rem; font-weight: 600; }
-        .mockup-exercise .mockup-step.active { background: #7C3AED; color: #fff; }
-        .mockup-exercise .mockup-step.done { background: rgba(46, 255, 142, 0.12); color: #2EFF8E; }
-        .mockup-exercise .mockup-step.next { background: rgba(255,255,255,0.04); color: var(--text-muted); }
-        .mockup-exercise .mockup-ex-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 16px; }
-        .mockup-exercise .mockup-ex-direction { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-        .mockup-exercise .mockup-ex-word { font-size: 1.1rem; font-weight: 700; color: var(--text); }
-        .mockup-exercise .mockup-ex-input { width: 100%; padding: 14px; border-radius: 12px; border: 2px solid rgba(124, 58, 237, 0.3); background: rgba(255,255,255,0.02); color: var(--text-muted); font-size: 0.8rem; text-align: center; }
-        .mockup-exercise .mockup-ex-hint { display: inline-block; margin-top: 12px; padding: 6px 14px; border-radius: 10px; background: rgba(255,255,255,0.04); font-size: 0.7rem; color: var(--text-muted); }
-
-        /* Mockup bottom nav */
-        .mockup-nav { display: flex; border-top: 1px solid rgba(255,255,255,0.04); }
-        .mockup-nav-item { flex: 1; padding: 12px; text-align: center; font-size: 0.6rem; color: var(--text-muted); }
-        .mockup-nav-item.active { color: #A78BFA; }
-        .mockup-nav-item svg { display: block; margin: 0 auto 3px; width: 18px; height: 18px; }
+        .screenshot-item { border-radius: 20px; background: #111118; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; transition: all 0.4s; cursor: pointer; position: relative; }
+        .screenshot-item:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15); }
+        .screenshot-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .screenshot-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); font-weight: 700; font-size: 0.9rem; color: var(--text); }
 
         /* ===== FEATURES SECTION ===== */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
@@ -200,7 +147,7 @@
             .nav-cta.desktop { display: none; }
             .nav-burger { display: flex; }
             .about-project { grid-template-columns: 1fr; }
-            .screenshots-grid { grid-template-columns: 1fr; }
+            .screenshots-grid { grid-template-columns: 1fr 1fr; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); margin-top: -20px; }
             .comparison-table { font-size: 0.8rem; }
             .comparison-table th, .comparison-table td { padding: 12px 10px; }
@@ -218,7 +165,7 @@
             .project-details { padding: 24px; }
             .btn-store { padding: 14px 28px; font-size: 0.9rem; width: 100%; justify-content: center; }
             footer { padding: 28px 16px; font-size: 0.8rem; }
-            .mockup-body { min-height: 280px; }
+            .screenshots-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 400px) {
             .project-hero { padding: 90px 12px 32px; }
@@ -265,7 +212,7 @@
             </div>
             <h1>Tildon</h1>
             <p class="project-hero-desc">
-                Ingliz tilini tizimli o'rganing — A1 dan C1 darajagacha. 65+ grammatika darsi, 1800+ so'z va tinglash mashqlari. Bepul, reklamasiz, offline ishlaydi. O'zbek tili interfeysi.
+                Систематическое изучение английского — от A1 до C1. 65+ уроков грамматики, 1800+ слов и аудирование. Бесплатно, без рекламы, работает офлайн.
             </p>
             <div class="project-tech-tags">
                 <span class="project-tech-tag">JavaScript</span>
@@ -282,19 +229,19 @@
         <div class="stats-bar reveal">
             <div class="stat-item">
                 <div class="stat-number">65+</div>
-                <div class="stat-label">Grammatika darslari</div>
+                <div class="stat-label">Уроков грамматики</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">1838+</div>
-                <div class="stat-label">Darslardagi so'zlar</div>
+                <div class="stat-label">Слов в уроках</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">C1</div>
-                <div class="stat-label">Tugatganda daraja</div>
+                <div class="stat-label">Уровень по итогу</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">100%</div>
-                <div class="stat-label">Bepul & Offline</div>
+                <div class="stat-label">Бесплатно & Офлайн</div>
             </div>
         </div>
     </section>
@@ -304,156 +251,45 @@
         <div class="section-label reveal">Скриншоты</div>
         <h2 class="section-title reveal">Как это выглядит</h2>
         <div class="screenshots-grid reveal">
-
-            <!-- Mockup 1: Landing Page -->
-            <div class="screenshot-mockup mockup-landing" onclick="window.open('https://tildon.vercel.app','_blank')">
-                <div class="mockup-header">
-                    <div class="mockup-header-left">
-                        <div class="mockup-logo">T</div>
-                        <span class="mockup-title">Tildon</span>
-                    </div>
-                    <div class="mockup-badge">Bosh sahifa</div>
-                </div>
-                <div class="mockup-body">
-                    <div class="mockup-hero-text">Ingliz tilini tizimli o'rganing <span>C1</span> darajagacha</div>
-                    <div class="mockup-subtitle">65+ dars | 1800+ so'z | offline</div>
-                    <div class="mockup-btn">Boshlash →</div>
-                    <div class="mockup-stats">
-                        <div class="mockup-stat">
-                            <div class="mockup-stat-icon" style="background: rgba(124,58,237,0.15);">📖</div>
-                            <div class="mockup-stat-num">1838+</div>
-                            <div class="mockup-stat-label">So'zlar</div>
-                        </div>
-                        <div class="mockup-stat">
-                            <div class="mockup-stat-icon" style="background: rgba(46,255,142,0.1);">🎓</div>
-                            <div class="mockup-stat-num">65+</div>
-                            <div class="mockup-stat-label">Darslar</div>
-                        </div>
-                        <div class="mockup-stat">
-                            <div class="mockup-stat-icon" style="background: rgba(46,142,255,0.1);">🎧</div>
-                            <div class="mockup-stat-num">Jonli</div>
-                            <div class="mockup-stat-label">Audio</div>
-                        </div>
-                        <div class="mockup-stat">
-                            <div class="mockup-stat-icon" style="background: rgba(255,184,46,0.1);">📴</div>
-                            <div class="mockup-stat-num">Offline</div>
-                            <div class="mockup-stat-label">Ishlaydi</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mockup 2: Lessons List -->
-            <div class="screenshot-mockup" onclick="window.open('https://tildon.vercel.app/grammar','_blank')">
-                <div class="mockup-header">
-                    <div class="mockup-header-left">
-                        <div class="mockup-logo">T</div>
-                        <span class="mockup-title">Darslar</span>
-                    </div>
-                    <div class="mockup-badge">Lv.1</div>
-                </div>
-                <div class="mockup-body">
-                    <div class="mockup-streak">
-                        <span class="mockup-streak-icon">❄️</span>
-                        <span class="mockup-streak-text"><strong>0 kun</strong> · hali mashq qilinmagan</span>
-                    </div>
-                    <div class="mockup-lesson-card">
-                        <div class="mockup-lesson-num">01</div>
-                        <div class="mockup-lesson-info">
-                            <div class="mockup-lesson-name">Present Simple</div>
-                            <div class="mockup-lesson-meta"><span>Beginner</span><span>📖 66 So'zlar</span></div>
-                            <div class="mockup-lesson-progress"><span class="done"></span><span class="done"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span></div>
-                        </div>
-                    </div>
-                    <div class="mockup-lesson-card">
-                        <div class="mockup-lesson-num" style="background: linear-gradient(135deg, #6D28D9, #4C1D95);">02</div>
-                        <div class="mockup-lesson-info">
-                            <div class="mockup-lesson-name">Past Simple</div>
-                            <div class="mockup-lesson-meta"><span>Beginner</span><span>📖 53 So'zlar</span></div>
-                            <div class="mockup-lesson-progress"><span class="pending"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span></div>
-                        </div>
-                    </div>
-                    <div class="mockup-lesson-card">
-                        <div class="mockup-lesson-num" style="background: linear-gradient(135deg, #5B21B6, #3B0764);">03</div>
-                        <div class="mockup-lesson-info">
-                            <div class="mockup-lesson-name">Future Simple</div>
-                            <div class="mockup-lesson-meta"><span>Beginner</span><span>📖 33 So'zlar</span></div>
-                            <div class="mockup-lesson-progress"><span class="pending"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span><span class="pending"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mockup-nav">
-                    <div class="mockup-nav-item active">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                        Darslar
-                    </div>
-                    <div class="mockup-nav-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/></svg>
-                        Lug'atim
-                    </div>
-                    <div class="mockup-nav-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                        Test
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mockup 3: Exercise -->
-            <div class="screenshot-mockup mockup-exercise" onclick="window.open('https://tildon.vercel.app/grammar/present-simple','_blank')">
-                <div class="mockup-header">
-                    <div class="mockup-header-left">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8888A0" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                        <span class="mockup-title">U (erkak/ayol) - Tarjima</span>
-                    </div>
-                </div>
-                <div class="mockup-body">
-                    <div class="mockup-ex-steps">
-                        <span class="mockup-step done">✓ I/You/We</span>
-                        <span class="mockup-step active">U (erkak/ayol)</span>
-                        <span class="mockup-step next">Inkor shakli</span>
-                        <span class="mockup-step next">So'roq</span>
-                    </div>
-                    <div class="mockup-ex-progress">
-                        <div class="mockup-ex-bar-bg"><div class="mockup-ex-bar"></div></div>
-                        <span class="mockup-ex-count">5 / 24</span>
-                    </div>
-                    <div class="mockup-ex-card">
-                        <div class="mockup-ex-direction">O'zbek → English</div>
-                        <div class="mockup-ex-word">U (erkak) yeydi</div>
-                    </div>
-                    <div class="mockup-ex-input">Tarjimasini yozing...</div>
-                    <div style="text-align: center;">
-                        <span class="mockup-ex-hint">💡 Yordam</span>
-                    </div>
-                </div>
-            </div>
+            <a class="screenshot-item" href="https://tildon.vercel.app" target="_blank">
+                <img src="screenshots/tildon-1.png" alt="Tildon — Главная" loading="lazy">
+                <div class="screenshot-label">Главная</div>
+            </a>
+            <a class="screenshot-item" href="https://tildon.vercel.app/grammar" target="_blank">
+                <img src="screenshots/tildon-2.png" alt="Tildon — Уроки" loading="lazy">
+                <div class="screenshot-label">Уроки</div>
+            </a>
+            <a class="screenshot-item" href="https://tildon.vercel.app/grammar/present-simple" target="_blank">
+                <img src="screenshots/tildon-3.png" alt="Tildon — Упражнение" loading="lazy">
+                <div class="screenshot-label">Упражнение</div>
+            </a>
         </div>
     </section>
 
     <!-- FEATURES -->
     <section id="features">
-        <div class="section-label reveal">Xususiyatlar</div>
-        <h2 class="section-title reveal">Asosiy imkoniyatlar</h2>
+        <div class="section-label reveal">Возможности</div>
+        <h2 class="section-title reveal">Основные функции</h2>
         <div class="features-grid reveal">
             <div class="feature-card">
                 <div class="feature-icon" style="background: rgba(124, 58, 237, 0.12);">📖</div>
-                <h3>So'z yodlash</h3>
-                <p>1800+ so'z — har bir darsda kontekst bilan. Yangi so'zlar, tarjima, yodlash va takrorlash bosqichlari.</p>
+                <h3>Запоминание слов</h3>
+                <p>1800+ слов — в контексте каждого урока. Новые слова, перевод, запоминание и этапы повторения.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon" style="background: rgba(46, 142, 255, 0.12);">🎧</div>
-                <h3>Tinglash</h3>
-                <p>Real talaffuz bilan eshitish va tushunish. Jonli audio mashqlari har bir darsda mavjud.</p>
+                <h3>Аудирование</h3>
+                <p>Восприятие на слух с реальным произношением. Живые аудио-упражнения в каждом уроке.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon" style="background: rgba(46, 255, 142, 0.1);">🎓</div>
-                <h3>Grammatika</h3>
-                <p>A1–C1 uchun tizimli grammatika. Har bir mavzu nazariya + amaliyot bilan mustahkamlanadi.</p>
+                <h3>Грамматика</h3>
+                <p>Систематическая грамматика от A1 до C1. Каждая тема закрепляется теорией и практикой.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon" style="background: rgba(255, 184, 46, 0.1);">🔄</div>
-                <h3>Takrorlash tizimi</h3>
-                <p>Unutmaslik uchun interval takrorlash. Mini-testlar natijani mustahkamlaydi.</p>
+                <h3>Система повторения</h3>
+                <p>Интервальное повторение для запоминания. Мини-тесты закрепляют результат.</p>
             </div>
         </div>
     </section>
