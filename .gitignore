@@ -1,1 +1,29 @@
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+
+# Editors / IDE
+.idea/
+.vscode/
+
+# Vercel
 .vercel
+
+# Test & automation artifacts
+test-results/
+.playwright-mcp/
+pf-*.png
+
+# Tooling state (local only)
+.claude/
+.claude-state/
+.serena/
+
+# Secrets
+.env
+.env.*
+!.env.template
+*.pem
+*.key

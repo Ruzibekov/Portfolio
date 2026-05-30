@@ -1,800 +1,765 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>window.location.replace('mobile.html');</script>
-    <title>Профиль — Шавкат Рузибеков</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #f3f6fb;
-            --surface: #ffffff;
-            --surface-soft: #f8fafe;
-            --line: #dce4ef;
-            --text: #0f172a;
-            --muted: #5b6472;
-            --accent: #111827;
-            --accent-soft: #1f2937;
-            --success: #0f766e;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Manrope', sans-serif;
-            background: radial-gradient(circle at right top, #eaf0f9 0%, #f3f6fb 48%, #eef3fb 100%);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: 76px;
-            padding: 0 28px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .nav-logo {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-decoration: none;
-            letter-spacing: -0.6px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--muted);
-            font-weight: 700;
-            font-size: 0.92rem;
-            transition: color 0.25s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.25s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-burger {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            background: #ffffff;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--accent);
-        }
-
-        .nav-burger span,
-        .nav-burger span::before,
-        .nav-burger span::after {
-            content: '';
-            display: block;
-            width: 18px;
-            height: 2px;
-            background: currentColor;
-            border-radius: 2px;
-            position: relative;
-            transition: 0.25s ease;
-        }
-
-        .nav-burger span::before {
-            position: absolute;
-            top: -6px;
-        }
-
-        .nav-burger span::after {
-            position: absolute;
-            top: 6px;
-        }
-
-        .nav-burger.active span {
-            background: transparent;
-        }
-
-        .nav-burger.active span::before {
-            transform: translateY(6px) rotate(45deg);
-        }
-
-        .nav-burger.active span::after {
-            transform: translateY(-6px) rotate(-45deg);
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 76px;
-            left: 0;
-            right: 0;
-            background: #ffffff;
-            border-bottom: 1px solid var(--line);
-            padding: 12px 20px 20px;
-            display: none;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 999;
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: var(--muted);
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 10px 0;
-        }
-
-        .mobile-menu a.active,
-        .mobile-menu a:hover {
-            color: var(--accent);
-        }
-
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        main {
-            width: min(1120px, calc(100% - 40px));
-            margin: 0 auto;
-            padding: 110px 0 44px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .hero {
-            border: 1px solid var(--line);
-            border-radius: 30px;
-            background: linear-gradient(170deg, #ffffff 0%, #f7faff 100%);
-            padding: 28px;
-            display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-            gap: 24px;
-            align-items: stretch;
-            min-width: 0;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            min-width: 0;
-        }
-
-        .hero-badge {
-            width: fit-content;
-            border: 1px solid #cad5e3;
-            border-radius: 999px;
-            padding: 7px 12px;
-            font-size: 0.78rem;
-            font-weight: 800;
-            color: var(--accent-soft);
-            background: #ffffff;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(2rem, 3.5vw, 2.9rem);
-            letter-spacing: -0.8px;
-            line-height: 1.08;
-        }
-
-        .hero-role {
-            font-size: clamp(0.98rem, 1.9vw, 1.12rem);
-            color: #111d34;
-            font-weight: 700;
-            line-height: 1.45;
-        }
-
-        .hero-description {
-            color: var(--muted);
-            font-size: 1rem;
-            line-height: 1.78;
-            max-width: 58ch;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .action {
-            text-decoration: none;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            padding: 11px 16px;
-            font-size: 0.88rem;
-            font-weight: 700;
-            transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
-            white-space: nowrap;
-        }
-
-        .action.primary {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #ffffff;
-        }
-
-        .action.secondary {
-            background: #ffffff;
-            color: var(--accent);
-        }
-
-        .action:hover {
-            transform: translateY(-2px);
-        }
-
-        .hero-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-        }
-
-        .metric {
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            background: #ffffff;
-            padding: 14px;
-            min-width: 0;
-        }
-
-        .metric-value {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.33rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 7px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .metric-label {
-            color: var(--muted);
-            font-size: 0.8rem;
-            line-height: 1.4;
-            word-break: break-word;
-        }
-
-        .hero-photo {
-            border-radius: 24px;
-            border: 1px solid var(--line);
-            overflow: hidden;
-            background: #dde5f3;
-            min-height: 500px;
-        }
-
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-
-        section {
-            border: 1px solid var(--line);
-            border-radius: 30px;
-            background: var(--surface);
-            padding: 28px;
-        }
-
-        .section-head {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .section-head h2 {
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(1.4rem, 2.4vw, 2rem);
-            letter-spacing: -0.4px;
-            line-height: 1.15;
-        }
-
-        .section-head p {
-            font-size: 0.95rem;
-            color: var(--muted);
-            line-height: 1.45;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .project-card {
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            background: var(--surface-soft);
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            min-width: 0;
-        }
-
-        .project-meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            min-width: 0;
-            flex-wrap: wrap;
-        }
-
-        .project-type {
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            background: #ffffff;
-            padding: 5px 9px;
-            font-size: 0.74rem;
-            color: var(--accent-soft);
-            font-weight: 700;
-            letter-spacing: 0.2px;
-            white-space: nowrap;
-        }
-
-        .project-status {
-            font-size: 0.74rem;
-            color: var(--success);
-            font-weight: 700;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-        }
-
-        .project-card h3 {
-            font-size: 1.05rem;
-            line-height: 1.35;
-            letter-spacing: -0.2px;
-            min-width: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .project-card p {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.65;
-        }
-
-        .project-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .project-stack span {
-            border-radius: 999px;
-            border: 1px solid #ccd6e3;
-            padding: 4px 8px;
-            font-size: 0.75rem;
-            color: #314154;
-            background: #ffffff;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-        }
-
-        .project-link {
-            width: fit-content;
-            text-decoration: none;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            background: #ffffff;
-            color: var(--accent);
-            font-size: 0.84rem;
-            font-weight: 700;
-            padding: 9px 13px;
-            transition: transform 0.22s ease, border-color 0.22s ease;
-        }
-
-        .project-link:hover {
-            border-color: #9aa7b8;
-            transform: translateY(-2px);
-        }
-
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .expertise-card {
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            background: var(--surface-soft);
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 0;
-        }
-
-        .expertise-card h3 {
-            font-size: 1rem;
-            line-height: 1.35;
-            word-break: break-word;
-        }
-
-        .expertise-card p {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.62;
-        }
-
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 12px;
-        }
-
-        .contact-link {
-            text-decoration: none;
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            background: var(--surface-soft);
-            padding: 14px;
-            color: var(--accent);
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            min-width: 0;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .contact-link:hover {
-            transform: translateY(-2px);
-            border-color: #9aa7b8;
-        }
-
-        .contact-link strong {
-            font-size: 0.9rem;
-            line-height: 1.35;
-        }
-
-        .contact-link span {
-            font-size: 0.8rem;
-            color: var(--muted);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-        }
-
-        footer {
-            width: min(1120px, calc(100% - 40px));
-            margin: 0 auto;
-            padding: 0 0 34px;
-            color: #6b7280;
-            font-size: 0.84rem;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 1060px) {
-            .hero {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .hero-photo {
-                min-height: 640px;
-            }
-
-            .projects-grid,
-            .contacts-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .expertise-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 860px) {
-            nav {
-                padding: 0 16px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .nav-burger {
-                display: inline-flex;
-            }
-
-            main,
-            footer {
-                width: min(1120px, calc(100% - 24px));
-            }
-
-            main {
-                padding-top: 94px;
-            }
-
-            section,
-            .hero {
-                padding: 22px;
-                border-radius: 22px;
-            }
-
-            .hero-photo {
-                min-height: 500px;
-                border-radius: 20px;
-            }
-
-            .hero-metrics,
-            .expertise-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-        }
-
-        @media (max-width: 560px) {
-            .action {
-                width: 100%;
-                text-align: center;
-            }
-
-            .hero-photo {
-                min-height: 420px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="index.html" class="nav-logo">ШК.</a>
-        <ul class="nav-links">
-            <li><a href="mobile.html">Мобильные</a></li>
-            <li><a href="web.html">Веб</a></li>
-            <li><a href="index.html" class="active">Профиль</a></li>
-        </ul>
-        <button class="nav-burger" onclick="toggleMenu()" aria-label="Открыть меню"><span></span></button>
-    </nav>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="mobile.html">Мобильные</a>
-        <a href="web.html">Веб</a>
-        <a href="index.html" class="active">Профиль</a>
-    </div>
-
-    <main>
-        <section class="hero reveal" id="profile">
-            <div class="hero-content">
-                <div class="hero-badge">Открыт для продуктовых проектов</div>
-                <h1>Шавкат Рузибеков</h1>
-                <p class="hero-role">Инженер-программист: Flutter, Kotlin, Swift и веб-стек. Сильный фокус на качестве продакшена и бизнес-результате.</p>
-                <p class="hero-description">Разрабатываю мобильные и веб-продукты под реальные задачи бизнеса: от архитектуры и API-интеграций до релиза и поддержки. Цель в каждом проекте одна: предсказуемый результат, стабильная работа и удобный пользовательский опыт.</p>
-                <div class="hero-actions">
-                    <a href="#projects" class="action primary">Смотреть проекты</a>
-                    <a href="mobile.html" class="action secondary">Мобильные проекты</a>
-                    <a href="web.html" class="action secondary">Веб-портфолио</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Шавкат Рузибеков — Full-stack разработчик | Мобильные, веб, backend
+    </title>
+    <meta
+      name="description"
+      content="Full-stack разработчик: мобильные приложения (Flutter, Kotlin), веб-продукты (React, Next.js), backend и автоматизация. 37+ выполненных проектов, рейтинг 5.0, 20+ отзывов."
+    />
+    <meta name="author" content="Шавкат Рузибеков" />
+    <meta name="theme-color" content="#0b0f14" />
+    <link rel="canonical" href="https://portfolio-ruzibekov.vercel.app/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta
+      property="og:title"
+      content="Шавкат Рузибеков — Full-stack разработчик"
+    />
+    <meta
+      property="og:description"
+      content="Мобильные приложения, веб-продукты, backend и автоматизация под ключ. 37+ проектов, рейтинг 5.0."
+    />
+    <meta
+      property="og:image"
+      content="https://portfolio-ruzibekov.vercel.app/og-image.svg"
+    />
+    <meta property="og:url" content="https://portfolio-ruzibekov.vercel.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Шавкат Рузибеков — Full-stack разработчик"
+    />
+    <meta
+      name="twitter:description"
+      content="Мобильные приложения, веб-продукты, backend и автоматизация под ключ."
+    />
+    <meta
+      name="twitter:image"
+      content="https://portfolio-ruzibekov.vercel.app/og-image.svg"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/home.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Шавкат Рузибеков",
+        "jobTitle": "Full-stack разработчик",
+        "url": "https://portfolio-ruzibekov.vercel.app/",
+        "knowsAbout": [
+          "Flutter",
+          "Kotlin",
+          "React",
+          "Next.js",
+          "Node.js",
+          "Python",
+          "REST API"
+        ],
+        "sameAs": [
+          "https://kwork.ru/user/ruzibekov",
+          "https://t.me/ruzibekov_sh"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#work">Перейти к проектам</a>
+    <canvas class="field" id="field" aria-hidden="true"></canvas>
+    <header class="site-header">
+      <a
+        class="brand magnetic"
+        href="#top"
+        aria-label="Шавкат Рузибеков — на главную"
+        >ШР</a
+      >
+      <nav class="nav" aria-label="Основная навигация">
+        <a class="magnetic" href="#work">Кейсы</a>
+        <a class="magnetic" href="#systems">Стек</a>
+        <a class="magnetic" href="#process">Процесс</a>
+        <a class="magnetic" href="#contact">Контакты</a>
+      </nav>
+      <a class="header-action magnetic" href="#contact">Связаться</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Full-stack разработчик</p>
+          <h1>Разработка приложений, сайтов и backend под ключ</h1>
+          <p class="lead">
+            Архитектура, интерфейс, интеграции, автоматизация и запуск. Работаю
+            аккуратно, в срок и с понятным результатом — от идеи до публикации в
+            сторе.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary magnetic" href="#contact"
+              >Обсудить проект</a
+            >
+            <a class="button ghost magnetic" href="#work">Смотреть кейсы</a>
+          </div>
+          <p class="availability" role="status">
+            <span class="availability-dot" aria-hidden="true"></span>
+            Доступен для новых заказов
+          </p>
+        </div>
+
+        <div class="hero-stage reveal" data-tilt>
+          <div class="stage-shell">
+            <div class="stage-toolbar">
+              <span></span>
+              <span></span>
+              <span></span>
+              <b>Профиль Kwork</b>
+            </div>
+            <div class="proof-grid">
+              <article class="profile-card">
+                <div class="avatar-frame">
+                  <img
+                    src="assets/kwork-avatar.jpg"
+                    alt="Фото профиля Шавката Рузибекова"
+                    width="148"
+                    height="148"
+                    loading="eager"
+                  />
                 </div>
-                <div class="hero-metrics">
-                    <article class="metric">
-                        <div class="metric-value">4+ года</div>
-                        <div class="metric-label">Коммерческой разработки</div>
-                    </article>
-                    <article class="metric">
-                        <div class="metric-value">40+ проектов</div>
-                        <div class="metric-label">Запущено и поддерживается</div>
-                    </article>
-                    <article class="metric">
-                        <div class="metric-value">100%</div>
-                        <div class="metric-label">Фокус на качестве релиза</div>
-                    </article>
+                <div>
+                  <span class="profile-status">Восходящая звезда</span>
+                  <h2>Шавкат</h2>
+                  <p>Mobile · Web · Backend · Automation</p>
                 </div>
+              </article>
+              <article class="rating-card magnetic">
+                <span>Рейтинг</span>
+                <strong>5.0</strong>
+              </article>
+              <article class="proof-card magnetic">
+                <strong>37</strong>
+                <span>заказов выполнено</span>
+              </article>
+              <article class="proof-card accent magnetic">
+                <strong>20+</strong>
+                <span>отзывов получено</span>
+              </article>
+              <article class="proof-card magnetic">
+                <strong>0</strong>
+                <span>отрицательных отзывов</span>
+              </article>
+              <article class="proof-badges">
+                <span>Личность подтверждена</span>
+                <span>Телефон подтверждён</span>
+                <span>100% заказов сдано</span>
+              </article>
+              <a
+                class="kwork-link magnetic"
+                href="https://kwork.ru/user/ruzibekov"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Открыть профиль на Kwork</a
+              >
             </div>
-            <div class="hero-photo">
-                <img src="screenshots/profile-photo.png" alt="Шавкат Рузибеков">
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="reveal" id="projects">
-            <div class="section-head">
-                <h2>Избранные проекты</h2>
-                <p>Ключевые работы, где важны стабильность, архитектура и продуктовый результат</p>
-            </div>
-            <div class="projects-grid">
-                <article class="project-card">
-                    <div class="project-meta">
-                        <span class="project-type">Мобильный / Продукт</span>
-                        <span class="project-status">В продакшене</span>
-                    </div>
-                    <h3>Best Tracker</h3>
-                    <p>Трекер с геоданными и аналитикой: надежная работа с геолокацией, четкая архитектура и продуманные пользовательские сценарии.</p>
-                    <div class="project-stack">
-                        <span>Flutter</span>
-                        <span>BLoC</span>
-                        <span>REST API</span>
-                    </div>
-                    <a href="mobile.html#more" class="project-link">Смотреть мобильные проекты</a>
-                </article>
+      <div class="ticker" aria-hidden="true">
+        <div>
+          <span>Flutter</span><span>Kotlin</span><span>React</span
+          ><span>Next.js</span><span>Node.js</span><span>NestJS</span
+          ><span>Python</span><span>REST API</span><span>WebSocket</span
+          ><span>Automation</span><span>Flutter</span><span>Kotlin</span
+          ><span>React</span><span>Next.js</span><span>Node.js</span
+          ><span>NestJS</span><span>Python</span><span>REST API</span
+          ><span>WebSocket</span><span>Automation</span>
+        </div>
+      </div>
 
-                <article class="project-card">
-                    <div class="project-meta">
-                        <span class="project-type">Мобильный / Мессенджер</span>
-                        <span class="project-status">В продакшене</span>
-                    </div>
-                    <h3>altn.chat</h3>
-                    <p>Мессенджер-проект с акцентом на стабильную синхронизацию, быструю загрузку экранов и масштабируемость под рост аудитории.</p>
-                    <div class="project-stack">
-                        <span>Flutter</span>
-                        <span>Firebase</span>
-                        <span>Реалтайм</span>
-                    </div>
-                    <a href="mobile.html#more" class="project-link">Смотреть мобильный кейс</a>
-                </article>
+      <section class="section systems reveal" id="systems">
+        <div class="section-head">
+          <p class="eyebrow">Стек и задачи</p>
+          <h2>Разработка, интеграции, запуск</h2>
+        </div>
+        <div class="systems-grid">
+          <article class="system-card magnetic">
+            <span>01</span>
+            <h3>Мобильные приложения</h3>
+            <p>
+              Flutter и Kotlin: API, push, карты, фоновые задачи, публикация в
+              сторы.
+            </p>
+          </article>
+          <article class="system-card magnetic">
+            <span>02</span>
+            <h3>Веб-продукты</h3>
+            <p>
+              React, Next.js: лендинги, платформы, админки и личные кабинеты.
+            </p>
+          </article>
+          <article class="system-card magnetic">
+            <span>03</span>
+            <h3>Backend и автоматизация</h3>
+            <p>
+              NestJS, Node, Python: API, WebSocket, Telegram-боты, парсеры,
+              интеграции.
+            </p>
+          </article>
+        </div>
+      </section>
 
-                <article class="project-card">
-                    <div class="project-meta">
-                        <span class="project-type">Веб / Образование</span>
-                        <span class="project-status">В продакшене</span>
-                    </div>
-                    <h3>Tildon</h3>
-                    <p>Веб-платформа для изучения английского: чистый интерфейс, удобные сценарии обучения и высокая отзывчивость интерфейса.</p>
-                    <div class="project-stack">
-                        <span>React</span>
-                        <span>TypeScript</span>
-                        <span>Vercel</span>
-                    </div>
-                    <a href="https://tildon.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Открыть проект</a>
-                </article>
+      <section class="section work reveal" id="work">
+        <div class="section-head">
+          <p class="eyebrow">Кейсы</p>
+          <h2>Запущенные проекты</h2>
+          <p class="section-sub">
+            Реальные приложения и платформы. Каждый кейс — задача, решение и
+            результат.
+          </p>
+        </div>
 
-                <article class="project-card">
-                    <div class="project-meta">
-                        <span class="project-type">Мобильный / Путешествия</span>
-                        <span class="project-status">Клиентский проект</span>
-                    </div>
-                    <h3>WeGoTrip</h3>
-                    <p>Клиентское решение для туристического сегмента с продуманной архитектурой, интеграциями сервисов и приоритетом на стабильную работу в продакшене.</p>
-                    <div class="project-stack">
-                        <span>Kotlin</span>
-                        <span>Android</span>
-                        <span>CI/CD</span>
-                    </div>
-                    <a href="mobile.html" class="project-link">Больше мобильных проектов</a>
-                </article>
-            </div>
-        </section>
+        <div class="work-filter" role="tablist" aria-label="Фильтр проектов">
+          <button
+            class="filter-chip is-active"
+            type="button"
+            data-filter="all"
+            role="tab"
+            aria-selected="true"
+          >
+            Все
+          </button>
+          <button
+            class="filter-chip"
+            type="button"
+            data-filter="mobile"
+            role="tab"
+            aria-selected="false"
+          >
+            Мобильные
+          </button>
+          <button
+            class="filter-chip"
+            type="button"
+            data-filter="web"
+            role="tab"
+            aria-selected="false"
+          >
+            Веб
+          </button>
+          <button
+            class="filter-chip"
+            type="button"
+            data-filter="backend"
+            role="tab"
+            aria-selected="false"
+          >
+            Backend
+          </button>
+        </div>
 
-        <section class="reveal" id="expertise">
-            <div class="section-head">
-                <h2>Экспертиза</h2>
-                <p>Подход к работе, который снижает риски и ускоряет выход в релиз</p>
+        <div class="work-grid" id="workGrid">
+          <!-- SAQ -->
+          <article class="work-card" data-tilt data-category="mobile backend">
+            <div class="work-media">
+              <img
+                src="screenshots/saqchi-1.png"
+                alt="Приложение SAQ — экран сервиса безопасности"
+                loading="lazy"
+              />
+              <span class="work-tag">Mobile · Backend</span>
             </div>
-            <div class="expertise-grid">
-                <article class="expertise-card">
-                    <h3>Архитектура и масштаб</h3>
-                    <p>Чистая архитектура, SOLID, модульность и предсказуемое развитие продукта без технического долга.</p>
-                </article>
-                <article class="expertise-card">
-                    <h3>Доставка и качество</h3>
-                    <p>Точные оценки, аккуратная интеграция API, контроль регрессий и стабильный релизный процесс.</p>
-                </article>
-                <article class="expertise-card">
-                    <h3>Продуктовый фокус</h3>
-                    <p>Фокус на метриках и UX: не просто код, а решение бизнес-задачи с измеримым эффектом.</p>
-                </article>
+            <div class="work-body">
+              <h3>SAQ</h3>
+              <p class="work-desc">
+                Платформа охранных услуг по запросу с трекингом групп в реальном
+                времени.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Заказ охраны и live-трекинг групп через приложение.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>
+                    Flutter (iOS, Android) + NestJS + WebSocket, приглашения по
+                    QR.
+                  </dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Опубликовано в Google Play.</dd>
+                </div>
+              </dl>
+              <a
+                class="work-link magnetic"
+                href="https://play.google.com/store/apps/details?id=kz.saq.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Play <span aria-hidden="true">→</span>
+              </a>
             </div>
-        </section>
+          </article>
 
-        <section class="reveal" id="contacts">
-            <div class="section-head">
-                <h2>Контакты</h2>
-                <p>Оперативная связь для старта проекта</p>
+          <!-- Best Tracker -->
+          <article class="work-card" data-tilt data-category="mobile backend">
+            <div class="work-media">
+              <img
+                src="screenshots/besttracker-emu-1.png"
+                alt="Приложение Best Tracker — трекинг и геолокация"
+                loading="lazy"
+              />
+              <span class="work-tag">Mobile · Backend</span>
             </div>
-            <div class="contacts-grid">
-                <a href="https://kwork.ru/user/ruzibekov" class="contact-link" target="_blank" rel="noopener noreferrer">
-                    <strong>Kwork</strong>
-                    <span>kwork.ru/user/ruzibekov</span>
-                </a>
-                <a href="https://t.me/ruzibekov_sh" class="contact-link" target="_blank" rel="noopener noreferrer">
-                    <strong>Telegram</strong>
-                    <span>@ruzibekov_sh</span>
-                </a>
-                <a href="mailto:ruzibekov01@gmail.com" class="contact-link">
-                    <strong>Эл. почта</strong>
-                    <span>ruzibekov01@gmail.com</span>
-                </a>
+            <div class="work-body">
+              <h3>Best Tracker</h3>
+              <p class="work-desc">
+                Сервис безопасности с live-локацией и приглашениями в группы по
+                QR-коду.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Реалтайм-трекинг группы и обмен геопозицией.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>
+                    Flutter (iOS, Android) + NestJS, deep links, фоновая
+                    геолокация.
+                  </dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Кросс-платформенный релиз iOS и Android.</dd>
+                </div>
+              </dl>
+              <span class="work-badge">Приватный проект</span>
             </div>
-        </section>
+          </article>
+
+          <!-- StefaAI -->
+          <article class="work-card" data-tilt data-category="mobile">
+            <div class="work-media">
+              <img
+                src="screenshots/stefa-1.png"
+                alt="Приложение Stefa AI Art — генерация изображений"
+                loading="lazy"
+              />
+              <span class="work-tag">Mobile · AI</span>
+            </div>
+            <div class="work-body">
+              <h3>Stefa AI Art</h3>
+              <p class="work-desc">
+                Генерация изображений по текстовому запросу с быстрым
+                результатом.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Простой и быстрый AI-генератор картинок.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>Flutter + облачный image-API, понятный сценарий.</dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Опубликовано в Google Play.</dd>
+                </div>
+              </dl>
+              <a
+                class="work-link magnetic"
+                href="https://play.google.com/store/apps/details?id=com.aistefa.ai.art.generator.picture.maker.avatar.photo.artwork"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Play <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- My Nail Salon -->
+          <article class="work-card" data-tilt data-category="mobile">
+            <div class="work-media">
+              <img
+                src="screenshots/mynails-1.png"
+                alt="Приложение My Nail Salon — AI-дизайн ногтей"
+                loading="lazy"
+              />
+              <span class="work-tag">Mobile · AI</span>
+            </div>
+            <div class="work-body">
+              <h3>My Nail Salon</h3>
+              <p class="work-desc">
+                Создание nail-дизайнов с помощью ИИ и предпросмотром результата.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Подбор дизайна ногтей через ИИ.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>
+                    Flutter + генерация изображений, быстрый предпросмотр.
+                  </dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Готовое приложение с предсказуемым UX.</dd>
+                </div>
+              </dl>
+              <span class="work-badge">Приватный проект</span>
+            </div>
+          </article>
+
+          <!-- ALTN Chat -->
+          <article class="work-card" data-tilt data-category="mobile">
+            <div class="work-media">
+              <img
+                src="screenshots/altn-emu-1.png"
+                alt="Приложение ALTN Chat — реалтайм-чат"
+                loading="lazy"
+              />
+              <span class="work-tag">Mobile · Realtime</span>
+            </div>
+            <div class="work-body">
+              <h3>ALTN Chat</h3>
+              <p class="work-desc">
+                Мессенджер с реалтайм-чатом и ИИ-сценариями, плавный UX.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Быстрый чат с ИИ-функциями.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>Flutter + реалтайм-канал, отзывчивый интерфейс.</dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Опубликовано в Google Play.</dd>
+                </div>
+              </dl>
+              <a
+                class="work-link magnetic"
+                href="https://play.google.com/store/apps/details?id=chat.altn.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Play <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- WeGoTrip -->
+          <article class="work-card" data-tilt data-category="mobile">
+            <div class="work-media">
+              <img
+                src="screenshots/wegotrip-emu-1.png"
+                alt="Приложение WeGoTrip — аудиогиды и туры"
+                loading="lazy"
+              />
+              <span class="work-tag">Android</span>
+            </div>
+            <div class="work-body">
+              <h3>WeGoTrip</h3>
+              <p class="work-desc">
+                Аудиогиды и туры: нативное Android-приложение для путешествий.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Стабильный релиз и поддерживаемость.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>Нативный Kotlin, чистая архитектура.</dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Опубликовано в Google Play.</dd>
+                </div>
+              </dl>
+              <a
+                class="work-link magnetic"
+                href="https://play.google.com/store/apps/details?id=com.wegotrip.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Play <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- JetRuns -->
+          <article class="work-card" data-tilt data-category="mobile">
+            <div class="work-media">
+              <img
+                src="screenshots/weather-1.png"
+                alt="Приложение JetRuns — трекинг марафонских тренировок"
+                loading="lazy"
+              />
+              <span class="work-tag">Android · Wear OS</span>
+            </div>
+            <div class="work-body">
+              <h3>JetRuns</h3>
+              <p class="work-desc">
+                Спутник марафонских тренировок: трекинг активности, пульс,
+                восстановление.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Трекинг тренировок с поддержкой часов.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>Нативный Kotlin + Wear OS, датчики и GPS.</dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Рабочее приложение с компаньоном для часов.</dd>
+                </div>
+              </dl>
+              <span class="work-badge">Приватный проект</span>
+            </div>
+          </article>
+
+          <!-- GeoBlinker25 -->
+          <article class="work-card" data-tilt data-category="mobile">
+            <div class="work-media">
+              <img
+                src="screenshots/geoblinker-emu-1.png"
+                alt="Приложение GeoBlinker25 — геосигналы и мониторинг"
+                loading="lazy"
+              />
+              <span class="work-tag">Android · Geo</span>
+            </div>
+            <div class="work-body">
+              <h3>GeoBlinker25</h3>
+              <p class="work-desc">
+                Мониторинг на основе геосигналов и фоновой геолокации.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Отслеживание событий по геопозиции в фоне.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>Android, фоновые задачи и датчики.</dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Рабочий прототип с фоновым трекингом.</dd>
+                </div>
+              </dl>
+              <span class="work-badge">Прототип</span>
+            </div>
+          </article>
+
+          <!-- Wallpapers -->
+          <article class="work-card" data-tilt data-category="mobile">
+            <div class="work-media">
+              <img
+                src="screenshots/wallpapers-1.png"
+                alt="Приложение Wallpapers — каталог обоев"
+                loading="lazy"
+              />
+              <span class="work-tag">Android</span>
+            </div>
+            <div class="work-body">
+              <h3>Wallpapers</h3>
+              <p class="work-desc">
+                Каталог обоев с категориями, предпросмотром и быстрой
+                установкой.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Лёгкий и быстрый каталог обоев.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>Kotlin, Material UI, кэширование.</dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Плавный интерфейс с упором на скорость.</dd>
+                </div>
+              </dl>
+              <span class="work-badge">Приватный проект</span>
+            </div>
+          </article>
+
+          <!-- Tildon -->
+          <article class="work-card" data-tilt data-category="web">
+            <div class="work-media">
+              <img
+                src="projects/screenshots/tildon-1.png"
+                alt="Платформа Tildon — изучение английского"
+                loading="lazy"
+              />
+              <span class="work-tag">Web · Next.js</span>
+            </div>
+            <div class="work-body">
+              <h3>Tildon</h3>
+              <p class="work-desc">
+                Веб-платформа для изучения английского: грамматика, словарь,
+                тесты, listening.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Удобная обучающая платформа с прогрессом.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>React, Next.js, TypeScript, PWA, адаптив.</dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Запущена и доступна онлайн.</dd>
+                </div>
+              </dl>
+              <a
+                class="work-link magnetic"
+                href="https://tildon.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Открыть сайт <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- VFX Timecode -->
+          <article class="work-card" data-tilt data-category="web">
+            <div class="work-media">
+              <img
+                src="screenshots/vfx-1.png"
+                alt="Инструмент VFX Timecode — генератор таймкода"
+                loading="lazy"
+              />
+              <span class="work-tag">Web · Tool</span>
+            </div>
+            <div class="work-body">
+              <h3>VFX Timecode</h3>
+              <p class="work-desc">
+                Генератор таймкода для VFX и видеопродакшна: контроль FPS,
+                fullscreen.
+              </p>
+              <dl class="work-case">
+                <div>
+                  <dt>Задача</dt>
+                  <dd>Точный таймкод-инструмент для production-flow.</dd>
+                </div>
+                <div>
+                  <dt>Решение</dt>
+                  <dd>Vite, React, Tailwind, shadcn-ui, PWA.</dd>
+                </div>
+                <div>
+                  <dt>Результат</dt>
+                  <dd>Запущен и доступен онлайн.</dd>
+                </div>
+              </dl>
+              <a
+                class="work-link magnetic"
+                href="https://vfx-timecode.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Открыть сайт <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+        <p class="work-empty" id="workEmpty" hidden>
+          В этой категории пока нет проектов.
+        </p>
+      </section>
+
+      <section class="section process reveal" id="process">
+        <div class="section-head">
+          <p class="eyebrow">Процесс</p>
+          <h2>Без хаоса и сюрпризов</h2>
+        </div>
+        <div class="process-line">
+          <article class="process-item">
+            <strong>01</strong>
+            <h3>Разбор</h3>
+            <p>
+              Цель, ограничения, данные и риски. Согласуем результат до старта.
+            </p>
+          </article>
+          <article class="process-item">
+            <strong>02</strong>
+            <h3>Сборка</h3>
+            <p>
+              Интерфейс, логика, API и интеграции. Аккуратный код и понятная
+              структура.
+            </p>
+          </article>
+          <article class="process-item">
+            <strong>03</strong>
+            <h3>Проверка и запуск</h3>
+            <p>
+              Сценарии, адаптив, обработка ошибок и публикация. Поддержка после
+              сдачи.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact section reveal" id="contact">
+        <div>
+          <p class="eyebrow">Связь</p>
+          <h2>Опишите задачу — вернусь с планом и оценкой</h2>
+        </div>
+        <div class="contact-panel">
+          <a
+            class="button primary magnetic"
+            href="https://t.me/ruzibekov_sh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Telegram
+          </a>
+          <a class="button ghost magnetic" href="mailto:ruzibekov01@gmail.com"
+            >Email</a
+          >
+          <a
+            class="button ghost magnetic"
+            href="https://kwork.ru/user/ruzibekov"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Kwork
+          </a>
+        </div>
+      </section>
     </main>
 
-    <footer>© 2026 Шавкат Рузибеков. Все права защищены.</footer>
+    <footer class="site-footer">
+      <span>© 2026 Шавкат Рузибеков</span>
+      <span>Full-stack разработчик</span>
+    </footer>
 
-    <script>
-        function toggleMenu() {
-            const burger = document.querySelector('.nav-burger');
-            const menu = document.getElementById('mobileMenu');
-            burger.classList.toggle('active');
-            menu.classList.toggle('active');
-            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 860) {
-                document.querySelector('.nav-burger').classList.remove('active');
-                document.getElementById('mobileMenu').classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    </script>
-</body>
+    <script src="assets/home.js"></script>
+  </body>
 </html>

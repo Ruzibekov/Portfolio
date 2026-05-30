@@ -5,6 +5,11 @@
   "description": "Static portfolio website",
   "scripts": {
     "dev": "python3 -m http.server 4173",
-    "start": "python3 -m http.server 4173"
+    "start": "python3 -m http.server 4173",
+    "format": "prettier --check .",
+    "format:write": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
   }
 }
