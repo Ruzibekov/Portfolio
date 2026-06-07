@@ -533,9 +533,15 @@ h3 {
   color: #fff;
   box-shadow: 0 10px 32px rgba(139, 92, 246, 0.42);
 }
+.button.primary {
+  /* new stacking context so the gradient ::after sits behind the label text,
+     not above it — text nodes can't take z-index, so the layer must go below */
+  isolation: isolate;
+}
 .button.primary::after {
   position: absolute;
   inset: 0;
+  z-index: -1;
   content: '';
   background: linear-gradient(135deg, var(--cyan), var(--violet));
   opacity: 0;
@@ -546,14 +552,6 @@ h3 {
 }
 .button.primary:hover::after {
   opacity: 1;
-}
-.button.primary span,
-.button.primary {
-  position: relative;
-}
-.button.primary > * {
-  position: relative;
-  z-index: 1;
 }
 .button.ghost {
   border-color: var(--glass-line-bright);
