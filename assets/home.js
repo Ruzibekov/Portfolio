@@ -108,7 +108,7 @@ class PhysicsField {
         const dist = Math.hypot(current.x - next.x, current.y - next.y)
         if (dist < 130) {
           const alpha = (1 - dist / 130) * 0.2
-          ctx.strokeStyle = `rgba(143, 183, 232, ${alpha * 0.56})`
+          ctx.strokeStyle = `rgba(167, 139, 250, ${alpha * 0.62})`
           ctx.beginPath()
           ctx.moveTo(current.x, current.y)
           ctx.lineTo(next.x, next.y)
@@ -119,11 +119,11 @@ class PhysicsField {
     for (const node of this.nodes) {
       const color =
         node.hue === 0
-          ? '143, 183, 232'
+          ? '167, 139, 250'
           : node.hue === 1
-            ? '199, 169, 109'
-            : '185, 120, 102'
-      ctx.fillStyle = `rgba(${color}, 0.46)`
+            ? '34, 211, 238'
+            : '251, 191, 36'
+      ctx.fillStyle = `rgba(${color}, 0.5)`
       ctx.beginPath()
       ctx.arc(node.x, node.y, 2.2, 0, Math.PI * 2)
       ctx.fill()
@@ -208,8 +208,74 @@ const setupFilter = () => {
   })
 }
 
+// Smooth lerp scroll via Lenis (premium feel). Disabled for reduced-motion.
+const setupSmoothScroll = () => {
+  if (reducedMotion || typeof Lenis === 'undefined') return null
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  })
+  const raf = (time) => {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
+  requestAnimationFrame(raf)
+
+  const header = document.querySelector('.site-header')
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const id = link.getAttribute('href')
+      if (id.length < 2) return
+      const target = document.querySelector(id)
+      if (!target) return
+      event.preventDefault()
+      const offset = header ? header.offsetHeight + 12 : 0
+      lenis.scrollTo(target, { offset: -offset, duration: 1.2 })
+    })
+  })
+  return lenis
+}
+
+// Count-up animation for proof numbers when the card scrolls into view.
+const setupCounters = () => {
+  const nums = document.querySelectorAll('[data-count]')
+  if (!nums.length) return
+  if (reducedMotion) {
+    nums.forEach((el) => {
+      el.textContent = el.dataset.count + (el.dataset.suffix || '')
+    })
+    return
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        const el = entry.target
+        const end = parseFloat(el.dataset.count)
+        const decimals = el.dataset.count.includes('.') ? 1 : 0
+        const suffix = el.dataset.suffix || ''
+        const start = performance.now()
+        const duration = 1200
+        const step = (now) => {
+          const p = Math.min(1, (now - start) / duration)
+          const eased = 1 - Math.pow(1 - p, 3)
+          el.textContent = (end * eased).toFixed(decimals) + suffix
+          if (p < 1) requestAnimationFrame(step)
+        }
+        requestAnimationFrame(step)
+        observer.unobserve(el)
+      })
+    },
+    { threshold: 0.4 },
+  )
+  nums.forEach((el) => observer.observe(el))
+}
+
 setupReveal()
 setupFilter()
+setupCounters()
+setupSmoothScroll()
 
 if (!reducedMotion) {
   const field = document.querySelector('#field')
