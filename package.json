@@ -4,6 +4,7 @@
   "private": true,
   "description": "Static portfolio website",
   "scripts": {
+    "build": "node scripts/cache-bust.mjs",
     "dev": "python3 -m http.server 4173",
     "start": "python3 -m http.server 4173",
     "format": "prettier --check .",
