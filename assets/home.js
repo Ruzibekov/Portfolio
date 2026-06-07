@@ -208,6 +208,84 @@ const setupFilter = () => {
   })
 }
 
+// Mobile navigation: hamburger toggle with overlay panel, scrim/Esc close,
+// body scroll-lock, focus management and a11y (aria-expanded).
+const setupMobileNav = () => {
+  const toggle = document.querySelector('.nav-toggle')
+  const menu = document.querySelector('.mobile-nav')
+  if (!toggle || !menu) return
+  const panel = menu.querySelector('.mobile-nav-panel')
+  const firstLink = menu.querySelector('a')
+  let lastFocused = null
+
+  const open = () => {
+    lastFocused = document.activeElement
+    menu.hidden = false
+    // next frame so the transition runs from the hidden state
+    requestAnimationFrame(() => {
+      menu.classList.add('is-open')
+      document.body.classList.add('nav-open')
+      toggle.setAttribute('aria-expanded', 'true')
+      toggle.setAttribute('aria-label', 'Закрыть меню')
+      if (firstLink) firstLink.focus({ preventScroll: true })
+    })
+  }
+
+  const close = () => {
+    menu.classList.remove('is-open')
+    document.body.classList.remove('nav-open')
+    toggle.setAttribute('aria-expanded', 'false')
+    toggle.setAttribute('aria-label', 'Открыть меню')
+    const finish = () => {
+      menu.hidden = true
+      panel.removeEventListener('transitionend', finish)
+    }
+    // hide after slide-out so it can't be focused while closed
+    panel.addEventListener('transitionend', finish)
+    // fallback if transitionend doesn't fire (reduced-motion etc.)
+    setTimeout(() => {
+      if (!menu.classList.contains('is-open')) menu.hidden = true
+    }, 500)
+    if (lastFocused) lastFocused.focus({ preventScroll: true })
+  }
+
+  toggle.addEventListener('click', () => {
+    if (menu.classList.contains('is-open')) close()
+    else open()
+  })
+
+  menu.querySelectorAll('[data-nav-close]').forEach((el) => {
+    el.addEventListener('click', close)
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu.classList.contains('is-open')) close()
+  })
+
+  // simple focus trap inside the open panel
+  menu.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab' || !menu.classList.contains('is-open')) return
+    const focusable = panel.querySelectorAll('a, button')
+    if (!focusable.length) return
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault()
+      last.focus()
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault()
+      first.focus()
+    }
+  })
+
+  // close if viewport grows back to desktop while the menu is open
+  window
+    .matchMedia('(min-width: 1081px)')
+    .addEventListener('change', (event) => {
+      if (event.matches && menu.classList.contains('is-open')) close()
+    })
+}
+
 // Smooth lerp scroll via Lenis (premium feel). Disabled for reduced-motion.
 const setupSmoothScroll = () => {
   if (reducedMotion || typeof Lenis === 'undefined') return null
@@ -275,6 +353,7 @@ const setupCounters = () => {
 setupReveal()
 setupFilter()
 setupCounters()
+setupMobileNav()
 setupSmoothScroll()
 
 if (!reducedMotion) {

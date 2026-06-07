@@ -94,7 +94,29 @@
         <a class="magnetic" href="#contact">Контакты</a>
       </nav>
       <a class="header-action magnetic" href="#contact">Связаться</a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="mobileNav"
+      >
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
     </header>
+
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <div class="mobile-nav-scrim" data-nav-close></div>
+      <nav class="mobile-nav-panel" aria-label="Мобильная навигация">
+        <a href="#work" data-nav-close>Кейсы</a>
+        <a href="#systems" data-nav-close>Стек</a>
+        <a href="#process" data-nav-close>Процесс</a>
+        <a href="#contact" data-nav-close>Контакты</a>
+        <a class="mobile-nav-cta" href="#contact" data-nav-close>Связаться</a>
+      </nav>
+    </div>
 
     <main id="top">
       <section class="hero section">
