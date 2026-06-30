@@ -108,7 +108,7 @@ const setupMobileNav = () => {
     toggle.setAttribute('aria-expanded', 'false')
     toggle.setAttribute('aria-label', 'Открыть меню')
     const finish = () => {
-      menu.hidden = true
+      if (!menu.classList.contains('is-open')) menu.hidden = true
       panel.removeEventListener('transitionend', finish)
     }
     panel.addEventListener('transitionend', finish)
