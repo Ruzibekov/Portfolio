@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="SAQ — охрана по запросу и live-трекинг групп">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0a18"/>
+      <stop offset="0.55" stop-color="#120e26"/>
+      <stop offset="1" stop-color="#07060e"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ping" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <rect width="900" height="600" fill="url(#glow)"/>
+  <g stroke="#a78bfa" stroke-opacity="0.06" stroke-width="1">
+    <path d="M0 150 H900 M0 300 H900 M0 450 H900"/>
+    <path d="M180 0 V600 M360 0 V600 M540 0 V600 M720 0 V600"/>
+  </g>
+
+  <!-- radar field -->
+  <g transform="translate(648 286)">
+    <circle r="190" fill="url(#ping)" opacity="0.7"/>
+    <circle r="60" fill="none" stroke="#a78bfa" stroke-opacity="0.18" stroke-width="1.5"/>
+    <circle r="110" fill="none" stroke="#a78bfa" stroke-opacity="0.13" stroke-width="1.5"/>
+    <circle r="160" fill="none" stroke="#a78bfa" stroke-opacity="0.09" stroke-width="1.5"/>
+    <path d="M0 0 L150 -52 A160 160 0 0 1 158 26 Z" fill="url(#stroke)" opacity="0.14"/>
+    <!-- member pins -->
+    <g fill="#22d3ee">
+      <circle cx="-92" cy="-58" r="5.5"/><circle cx="-92" cy="-58" r="12" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+      <circle cx="118" cy="64" r="5.5"/><circle cx="118" cy="64" r="12" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1.5"/>
+    </g>
+    <circle cx="44" cy="-120" r="5" fill="#fbbf24"/>
+  </g>
+
+  <!-- shield -->
+  <g transform="translate(610 200)">
+    <path d="M38 0 L76 16 V46 C76 78 58 100 38 112 C18 100 0 78 0 46 V16 Z"
+          fill="rgba(34,211,238,0.07)" stroke="url(#stroke)" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M22 56 l11 12 l22 -26" fill="none" stroke="#22d3ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="56" y="92" font-family="'Segoe UI',system-ui,sans-serif" font-size="58" font-weight="700" fill="#f4f3fb" letter-spacing="-1">SAQ</text>
+  <text x="58" y="130" font-family="ui-monospace,'IBM Plex Mono',monospace" font-size="18" font-weight="600" fill="#a78bfa" letter-spacing="3">ON-DEMAND SECURITY · LIVE GPS</text>
+
+  <g font-family="ui-monospace,'IBM Plex Mono',monospace" fill="#f4f3fb">
+    <g transform="translate(56 466)">
+      <rect width="168" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">RESPONSE</text>
+      <text x="20" y="63" font-size="26" font-weight="700">04 min</text>
+    </g>
+    <g transform="translate(244 466)">
+      <rect width="146" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">TRACKING</text>
+      <text x="20" y="63" font-size="26" font-weight="700">Live</text>
+    </g>
+    <g transform="translate(410 466)">
+      <rect width="200" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">PLATFORM</text>
+      <text x="20" y="63" font-size="24" font-weight="700">iOS · Android</text>
+    </g>
+  </g>
+</svg>

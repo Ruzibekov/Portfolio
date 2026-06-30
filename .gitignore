@@ -27,3 +27,5 @@ pf-*.png
 !.env.template
 *.pem
 *.key
+
+.figma-diff-ok

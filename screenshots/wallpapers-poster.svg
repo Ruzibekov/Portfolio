@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Wallpapers — каталог обоев">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0a18"/><stop offset="0.55" stop-color="#120e26"/><stop offset="1" stop-color="#07060e"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.32" cy="0.34" r="0.78">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="w1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <linearGradient id="w2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f472b6"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+    <linearGradient id="w3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a3e635"/></linearGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <rect width="900" height="600" fill="url(#glow)"/>
+  <g stroke="#a78bfa" stroke-opacity="0.06" stroke-width="1">
+    <path d="M0 150 H900 M0 300 H900 M0 450 H900"/>
+    <path d="M180 0 V600 M360 0 V600 M540 0 V600 M720 0 V600"/>
+  </g>
+
+  <!-- fanned phone-frame wallpapers -->
+  <g transform="translate(640 290)">
+    <g transform="rotate(-14) translate(-150 -20)" opacity="0.85">
+      <rect x="-66" y="-110" width="132" height="220" rx="22" fill="url(#w1)" stroke="rgba(167,139,250,0.4)" stroke-width="2"/>
+    </g>
+    <g transform="rotate(0)">
+      <rect x="-72" y="-122" width="144" height="244" rx="24" fill="url(#w2)" stroke="rgba(167,139,250,0.55)" stroke-width="2.5"/>
+      <circle cx="0" cy="-100" r="6" fill="#0c0a18" fill-opacity="0.4"/>
+      <path d="M-46 80 L-6 24 L26 56 L52 30" fill="none" stroke="#0c0a18" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="rotate(14) translate(150 -20)" opacity="0.85">
+      <rect x="-66" y="-110" width="132" height="220" rx="22" fill="url(#w3)" stroke="rgba(167,139,250,0.4)" stroke-width="2"/>
+    </g>
+  </g>
+  <!-- category dots -->
+  <g fill="#a5a2c2">
+    <circle cx="470" cy="430" r="5"/><circle cx="492" cy="430" r="5" fill="#22d3ee"/><circle cx="514" cy="430" r="5"/>
+  </g>
+
+  <text x="56" y="92" font-family="'Segoe UI',system-ui,sans-serif" font-size="56" font-weight="700" fill="#f4f3fb" letter-spacing="-1">Wallpapers</text>
+  <text x="58" y="130" font-family="ui-monospace,'IBM Plex Mono',monospace" font-size="18" font-weight="600" fill="#a78bfa" letter-spacing="3">CATALOG · CATEGORIES · FAST</text>
+
+  <g font-family="ui-monospace,'IBM Plex Mono',monospace" fill="#f4f3fb">
+    <g transform="translate(56 466)">
+      <rect width="146" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">UI</text>
+      <text x="20" y="63" font-size="25" font-weight="700">Material</text>
+    </g>
+    <g transform="translate(222 466)">
+      <rect width="140" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">LOAD</text>
+      <text x="20" y="63" font-size="25" font-weight="700">Cached</text>
+    </g>
+    <g transform="translate(382 466)">
+      <rect width="160" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">STATUS</text>
+      <text x="20" y="63" font-size="24" font-weight="700">Private</text>
+    </g>
+  </g>
+</svg>

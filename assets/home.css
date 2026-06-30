@@ -24,10 +24,11 @@
   --line: rgba(140, 130, 200, 0.12);
 
   /* Layered shadows + neon glow */
-  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.3), 0 16px 40px rgba(0, 0, 0, 0.4),
+  --shadow-card:
+    0 2px 6px rgba(0, 0, 0, 0.3), 0 16px 40px rgba(0, 0, 0, 0.4),
     0 32px 80px rgba(0, 0, 0, 0.32);
-  --glow-violet: 0 0 0 1px rgba(139, 92, 246, 0.4),
-    0 12px 48px rgba(139, 92, 246, 0.4);
+  --glow-violet:
+    0 0 0 1px rgba(139, 92, 246, 0.4), 0 12px 48px rgba(139, 92, 246, 0.4);
   --glow-cyan: 0 0 40px rgba(34, 211, 238, 0.35);
 
   --radius-sm: 12px;
@@ -188,7 +189,9 @@ img {
   font-size: 0.98rem;
   font-weight: 700;
   box-shadow: 0 8px 28px rgba(139, 92, 246, 0.5);
-  transition: transform 320ms var(--spring), box-shadow 320ms ease;
+  transition:
+    transform 320ms var(--spring),
+    box-shadow 320ms ease;
 }
 .brand:hover {
   box-shadow: 0 10px 36px rgba(139, 92, 246, 0.7);
@@ -209,7 +212,9 @@ img {
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
-  transition: color 220ms ease, background 220ms ease;
+  transition:
+    color 220ms ease,
+    background 220ms ease;
 }
 .nav a::after {
   position: absolute;
@@ -241,7 +246,9 @@ img {
   font-weight: 700;
   white-space: nowrap;
   box-shadow: 0 8px 26px rgba(139, 92, 246, 0.4);
-  transition: transform 320ms var(--spring), box-shadow 320ms ease;
+  transition:
+    transform 320ms var(--spring),
+    box-shadow 320ms ease;
 }
 .header-action:hover {
   box-shadow: 0 12px 36px rgba(139, 92, 246, 0.6);
@@ -260,7 +267,9 @@ img {
   -webkit-backdrop-filter: blur(10px);
   color: var(--text);
   cursor: pointer;
-  transition: transform 320ms var(--spring), border-color 220ms ease,
+  transition:
+    transform 320ms var(--spring),
+    border-color 220ms ease,
     box-shadow 220ms ease;
 }
 .nav-toggle:hover {
@@ -283,7 +292,10 @@ img {
   height: 2px;
   border-radius: 2px;
   background: currentColor;
-  transition: transform 300ms var(--spring), opacity 200ms ease, top 300ms var(--spring);
+  transition:
+    transform 300ms var(--spring),
+    opacity 200ms ease,
+    top 300ms var(--spring);
 }
 .nav-toggle-bars span:nth-child(1) {
   top: 0;
@@ -357,7 +369,9 @@ img {
   color: var(--text);
   font-size: 1.05rem;
   font-weight: 600;
-  transition: background 220ms ease, transform 220ms var(--spring);
+  transition:
+    background 220ms ease,
+    transform 220ms var(--spring);
 }
 .mobile-nav-panel a:hover,
 .mobile-nav-panel a:active {
@@ -379,7 +393,9 @@ img {
 .mobile-nav.is-open .mobile-nav-panel a {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 360ms var(--ease-out), transform 360ms var(--spring),
+  transition:
+    opacity 360ms var(--ease-out),
+    transform 360ms var(--spring),
     background 220ms ease;
 }
 .mobile-nav.is-open .mobile-nav-panel a:nth-child(1) {
@@ -525,7 +541,9 @@ h3 {
   font-weight: 700;
   font-size: 0.98rem;
   overflow: hidden;
-  transition: transform 320ms var(--spring), box-shadow 320ms ease,
+  transition:
+    transform 320ms var(--spring),
+    box-shadow 320ms ease,
     border-color 220ms ease;
 }
 .button.primary {
@@ -621,7 +639,9 @@ h3 {
   border: 1px solid var(--glass-line);
   border-radius: var(--radius);
   background: rgba(16, 14, 32, 0.6);
-  transition: transform 320ms var(--spring), border-color 220ms ease,
+  transition:
+    transform 320ms var(--spring),
+    border-color 220ms ease,
     box-shadow 220ms ease;
 }
 .rating-card:hover,
@@ -642,14 +662,19 @@ h3 {
   overflow: hidden;
   border-radius: var(--radius);
   background: #0a0814;
-  box-shadow: 0 0 0 1px var(--glass-line-bright),
+  box-shadow:
+    0 0 0 1px var(--glass-line-bright),
     0 16px 36px rgba(0, 0, 0, 0.4);
 }
 .avatar-frame::after {
   position: absolute;
   inset: 0;
   content: '';
-  background: linear-gradient(160deg, rgba(139, 92, 246, 0.22), transparent 55%);
+  background: linear-gradient(
+    160deg,
+    rgba(139, 92, 246, 0.22),
+    transparent 55%
+  );
   pointer-events: none;
 }
 .avatar-frame img {
@@ -750,7 +775,9 @@ h3 {
   color: #fff;
   font-weight: 700;
   box-shadow: 0 10px 30px rgba(139, 92, 246, 0.42);
-  transition: transform 320ms var(--spring), box-shadow 320ms ease;
+  transition:
+    transform 320ms var(--spring),
+    box-shadow 320ms ease;
 }
 .kwork-link:hover {
   box-shadow: 0 14px 40px rgba(139, 92, 246, 0.62);
@@ -822,7 +849,9 @@ h3 {
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--shadow-card);
-  transition: transform 360ms var(--spring), border-color 260ms ease,
+  transition:
+    transform 360ms var(--spring),
+    border-color 260ms ease,
     box-shadow 260ms ease;
 }
 .system-card::before,
@@ -834,11 +863,7 @@ h3 {
   height: 200px;
   content: '';
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(139, 92, 246, 0.2),
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent 70%);
   opacity: 0;
   transition: opacity 360ms ease;
   pointer-events: none;
@@ -847,7 +872,9 @@ h3 {
 .process-item:hover {
   transform: translateY(-6px);
   border-color: var(--glass-line-bright);
-  box-shadow: var(--shadow-card), 0 0 40px rgba(139, 92, 246, 0.2);
+  box-shadow:
+    var(--shadow-card),
+    0 0 40px rgba(139, 92, 246, 0.2);
 }
 .system-card:hover::before,
 .process-item:hover::before {
@@ -935,7 +962,8 @@ h3 {
 .js .reveal {
   transform: translateY(34px);
   opacity: 0;
-  transition: opacity 800ms var(--ease-out),
+  transition:
+    opacity 800ms var(--ease-out),
     transform 800ms var(--spring);
 }
 .js .hero .reveal {
@@ -948,15 +976,14 @@ h3 {
 }
 /* stagger children inside grids */
 .js .systems-grid .system-card,
-.js .work-grid .work-card,
 .js .process-line .process-item {
   transform: translateY(28px);
   opacity: 0;
-  transition: opacity 700ms var(--ease-out),
+  transition:
+    opacity 700ms var(--ease-out),
     transform 700ms var(--spring);
 }
 .js .reveal.is-visible .system-card,
-.js .reveal.is-visible .work-card,
 .js .reveal.is-visible .process-item {
   transform: translateY(0);
   opacity: 1;
@@ -969,11 +996,25 @@ h3 {
 .js .reveal.is-visible .process-item:nth-child(3) {
   transition-delay: 180ms;
 }
-.js .reveal.is-visible .work-card:nth-child(2) {
-  transition-delay: 70ms;
+
+/* Work cards reveal individually as they scroll into view (per-card observer),
+   with a left-to-right cascade across each grid row. */
+.js .work-grid .work-card {
+  transform: translateY(32px) scale(0.985);
+  opacity: 0;
+  transition:
+    opacity 720ms var(--ease-out),
+    transform 720ms var(--spring);
 }
-.js .reveal.is-visible .work-card:nth-child(3) {
-  transition-delay: 140ms;
+.js .work-grid .work-card.is-shown {
+  transform: none;
+  opacity: 1;
+}
+.js .work-grid .work-card:nth-child(3n + 2).is-shown {
+  transition-delay: 80ms;
+}
+.js .work-grid .work-card:nth-child(3n + 3).is-shown {
+  transition-delay: 160ms;
 }
 
 /* ===== Responsive ===== */
@@ -1079,9 +1120,9 @@ h3 {
   .process-item {
     padding: 24px;
   }
-  /* single-column cards are full-width — show more of each app screenshot */
+  /* posters are authored at 3:2 — keep that ratio so titles/chips never crop */
   .work-media img {
-    aspect-ratio: 1.35;
+    aspect-ratio: 1.5;
   }
   .contact {
     padding: 26px;
@@ -1103,6 +1144,11 @@ h3 {
   .js .process-line .process-item {
     animation: none;
     transition: none;
+  }
+  /* never leave cards stuck in their pre-reveal hidden state */
+  .js .work-grid .work-card {
+    transform: none;
+    opacity: 1;
   }
 }
 
@@ -1189,8 +1235,11 @@ h3 {
   font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
-  transition: border-color 240ms ease, color 240ms ease,
-    background 240ms ease, transform 240ms var(--spring);
+  transition:
+    border-color 240ms ease,
+    color 240ms ease,
+    background 240ms ease,
+    transform 240ms var(--spring);
 }
 .filter-chip:hover {
   border-color: var(--glass-line-bright);
@@ -1218,12 +1267,16 @@ h3 {
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--shadow-card);
-  transition: border-color 260ms ease, box-shadow 260ms ease,
+  transition:
+    border-color 260ms ease,
+    box-shadow 260ms ease,
     transform 360ms var(--spring);
 }
 .work-card:hover {
   border-color: var(--glass-line-bright);
-  box-shadow: var(--shadow-card), 0 0 48px rgba(139, 92, 246, 0.24);
+  box-shadow:
+    var(--shadow-card),
+    0 0 48px rgba(139, 92, 246, 0.24);
   transform: translateY(-6px);
 }
 .work-card.is-hidden {
@@ -1239,13 +1292,15 @@ h3 {
   content: '';
   background: linear-gradient(
     180deg,
-    transparent 55%,
-    rgba(7, 6, 14, 0.55) 100%
+    transparent 78%,
+    rgba(7, 6, 14, 0.5) 100%
   );
   pointer-events: none;
 }
 .work-media img {
+  display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 1.5;
   object-fit: cover;
   transition: transform 560ms var(--ease-out);
@@ -1256,7 +1311,7 @@ h3 {
 .work-tag {
   position: absolute;
   top: 14px;
-  left: 14px;
+  right: 14px;
   z-index: 1;
   padding: 7px 13px;
   border: 1px solid var(--glass-line-bright);
@@ -1324,7 +1379,9 @@ h3 {
   margin-top: auto;
   color: var(--violet-bright);
   font-weight: 600;
-  transition: gap 220ms ease, color 220ms ease;
+  transition:
+    gap 220ms ease,
+    color 220ms ease;
 }
 .work-links .work-link {
   margin-top: 0;

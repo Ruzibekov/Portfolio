@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Best Tracker — live-локация и группы по QR">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0a18"/><stop offset="0.55" stop-color="#120e26"/><stop offset="1" stop-color="#07060e"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.32"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ping" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.5"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <rect width="900" height="600" fill="url(#glow)"/>
+  <g stroke="#a78bfa" stroke-opacity="0.06" stroke-width="1">
+    <path d="M0 150 H900 M0 300 H900 M0 450 H900"/>
+    <path d="M180 0 V600 M360 0 V600 M540 0 V600 M720 0 V600"/>
+  </g>
+
+  <!-- connection mesh -->
+  <g stroke="url(#stroke)" stroke-width="1.6" stroke-opacity="0.4" fill="none">
+    <path d="M650 270 L520 200 M650 270 L548 372 M650 270 L788 214 M650 270 L778 360"/>
+  </g>
+  <g transform="translate(650 270)">
+    <circle r="180" fill="url(#ping)"/>
+    <circle r="70" fill="none" stroke="#a78bfa" stroke-opacity="0.16" stroke-width="1.5"/>
+    <circle r="130" fill="none" stroke="#a78bfa" stroke-opacity="0.1" stroke-width="1.5"/>
+  </g>
+  <!-- member dots -->
+  <g>
+    <circle cx="520" cy="200" r="14" fill="#161430" stroke="url(#stroke)" stroke-width="2.5"/>
+    <circle cx="788" cy="214" r="14" fill="#161430" stroke="url(#stroke)" stroke-width="2.5"/>
+    <circle cx="548" cy="372" r="14" fill="#161430" stroke="url(#stroke)" stroke-width="2.5"/>
+    <circle cx="778" cy="360" r="14" fill="#161430" stroke="#fbbf24" stroke-width="2.5"/>
+  </g>
+
+  <!-- central location pin -->
+  <g transform="translate(650 200)">
+    <path d="M0 0 C34 0 56 22 56 54 C56 92 0 130 0 130 C0 130 -56 92 -56 54 C-56 22 -34 0 0 0 Z"
+          fill="rgba(34,211,238,0.08)" stroke="url(#stroke)" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="0" cy="50" r="18" fill="none" stroke="#22d3ee" stroke-width="4"/>
+  </g>
+
+  <text x="56" y="92" font-family="'Segoe UI',system-ui,sans-serif" font-size="56" font-weight="700" fill="#f4f3fb" letter-spacing="-1">Best Tracker</text>
+  <text x="58" y="130" font-family="ui-monospace,'IBM Plex Mono',monospace" font-size="18" font-weight="600" fill="#a78bfa" letter-spacing="3">LIVE LOCATION · GROUPS · QR</text>
+
+  <g font-family="ui-monospace,'IBM Plex Mono',monospace" fill="#f4f3fb">
+    <g transform="translate(56 466)">
+      <rect width="158" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">REALTIME</text>
+      <text x="20" y="63" font-size="26" font-weight="700">Live</text>
+    </g>
+    <g transform="translate(234 466)">
+      <rect width="128" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">INVITE</text>
+      <text x="20" y="63" font-size="26" font-weight="700">QR</text>
+    </g>
+    <g transform="translate(382 466)">
+      <rect width="200" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">STORES</text>
+      <text x="20" y="63" font-size="24" font-weight="700">iOS · Android</text>
+    </g>
+  </g>
+</svg>

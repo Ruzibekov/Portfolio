@@ -5,6 +5,11 @@ const reducedMotion = window.matchMedia(
   '(prefers-reduced-motion: reduce)',
 ).matches
 
+// Pointer-driven flourishes (canvas field, magnetic, tilt) only make sense with
+// a precise hovering pointer — skip them on touch to save battery and avoid
+// elements jumping under a dragging finger.
+const pointerFine = window.matchMedia('(pointer: fine)').matches
+
 class PhysicsField {
   constructor(canvas) {
     this.canvas = canvas
@@ -150,6 +155,29 @@ const setupReveal = () => {
   targets.forEach((target) => observer.observe(target))
 }
 
+// Each work card reveals as it scrolls into view, with a left-to-right cascade
+// across its grid row (CSS nth-child delay). Replaces the old all-at-once
+// section reveal so cards below the fold animate when they are actually seen.
+const setupCardReveal = () => {
+  const cards = document.querySelectorAll('.work-grid .work-card')
+  if (!cards.length) return
+  if (reducedMotion) {
+    cards.forEach((card) => card.classList.add('is-shown'))
+    return
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        entry.target.classList.add('is-shown')
+        observer.unobserve(entry.target)
+      })
+    },
+    { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+  )
+  cards.forEach((card) => observer.observe(card))
+}
+
 const setupMagnetic = () => {
   document.querySelectorAll('.magnetic').forEach((element) => {
     element.addEventListener('pointermove', (event) => {
@@ -200,7 +228,12 @@ const setupFilter = () => {
         const categories = (card.dataset.category || '').split(' ')
         const show = filter === 'all' || categories.includes(filter)
         card.classList.toggle('is-hidden', !show)
-        if (show) visible += 1
+        // a filtered-in card may sit below where the reveal observer has fired —
+        // ensure it isn't left stuck in the pre-reveal hidden state.
+        if (show) {
+          card.classList.add('is-shown')
+          visible += 1
+        }
       })
 
       if (empty) empty.hidden = visible > 0
@@ -351,18 +384,21 @@ const setupCounters = () => {
 }
 
 setupReveal()
+setupCardReveal()
 setupFilter()
 setupCounters()
 setupMobileNav()
 setupSmoothScroll()
 
 if (!reducedMotion) {
-  const field = document.querySelector('#field')
-  if (field) {
-    new PhysicsField(field)
+  if (pointerFine) {
+    const field = document.querySelector('#field')
+    if (field) {
+      new PhysicsField(field)
+    }
+    setupMagnetic()
+    setupTilt()
   }
-  setupMagnetic()
-  setupTilt()
 } else {
   document
     .querySelectorAll('.reveal')

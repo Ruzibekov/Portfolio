@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-label="Tildon — платформа для изучения английского">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0a18"/><stop offset="0.55" stop-color="#120e26"/><stop offset="1" stop-color="#07060e"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.32" cy="0.34" r="0.78">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <rect width="900" height="600" fill="url(#glow)"/>
+  <g stroke="#a78bfa" stroke-opacity="0.06" stroke-width="1">
+    <path d="M0 150 H900 M0 300 H900 M0 450 H900"/>
+    <path d="M180 0 V600 M360 0 V600 M540 0 V600 M720 0 V600"/>
+  </g>
+
+  <!-- letter tiles A → Б -->
+  <g font-family="'Segoe UI',system-ui,sans-serif" font-weight="700">
+    <g transform="translate(486 196)">
+      <rect width="92" height="92" rx="20" fill="rgba(34,211,238,0.1)" stroke="url(#stroke)" stroke-width="2.5"/>
+      <text x="46" y="64" font-size="48" fill="#22d3ee" text-anchor="middle">Aa</text>
+    </g>
+    <path d="M596 242 L646 242" stroke="url(#stroke)" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M636 234 L648 242 L636 250" fill="none" stroke="url(#stroke)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(664 196)">
+      <rect width="92" height="92" rx="20" fill="rgba(167,139,250,0.1)" stroke="url(#stroke)" stroke-width="2.5"/>
+      <text x="46" y="64" font-size="48" fill="#a78bfa" text-anchor="middle">Бб</text>
+    </g>
+  </g>
+
+  <!-- listening waveform -->
+  <g stroke="#22d3ee" stroke-width="4" stroke-linecap="round" opacity="0.8">
+    <path d="M488 360 V388"/><path d="M508 348 V400"/><path d="M528 332 V416"/><path d="M548 352 V396"/><path d="M568 364 V384"/><path d="M588 344 V404"/><path d="M608 356 V392"/>
+  </g>
+  <!-- progress bar -->
+  <g transform="translate(640 364)">
+    <rect width="116" height="14" rx="7" fill="rgba(167,139,250,0.14)"/>
+    <rect width="78" height="14" rx="7" fill="url(#stroke)"/>
+  </g>
+
+  <text x="56" y="92" font-family="'Segoe UI',system-ui,sans-serif" font-size="56" font-weight="700" fill="#f4f3fb" letter-spacing="-1">Tildon</text>
+  <text x="58" y="130" font-family="ui-monospace,'IBM Plex Mono',monospace" font-size="18" font-weight="600" fill="#a78bfa" letter-spacing="3">ENGLISH LEARNING PLATFORM</text>
+
+  <g font-family="ui-monospace,'IBM Plex Mono',monospace" fill="#f4f3fb">
+    <g transform="translate(56 466)">
+      <rect width="146" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">STACK</text>
+      <text x="20" y="63" font-size="25" font-weight="700">Next.js</text>
+    </g>
+    <g transform="translate(222 466)">
+      <rect width="128" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">TYPE</text>
+      <text x="20" y="63" font-size="26" font-weight="700">PWA</text>
+    </g>
+    <g transform="translate(370 466)">
+      <rect width="138" height="80" rx="18" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.22)"/>
+      <text x="20" y="34" font-size="14" fill="#22d3ee">STATUS</text>
+      <text x="20" y="63" font-size="26" font-weight="700">Live</text>
+    </g>
+  </g>
+</svg>
