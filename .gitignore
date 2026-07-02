@@ -29,3 +29,6 @@ pf-*.png
 *.key
 
 .figma-diff-ok
+
+# Local QA screenshots
+.screenshots/

@@ -1,17 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#121923"/>
-      <stop offset="1" stop-color="#0a0e11"/>
-    </linearGradient>
-    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8fb7e8"/>
-      <stop offset="1" stop-color="#c7a96d"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="#8fb7e8" stroke-opacity="0.34" stroke-width="1.5"/>
+  <rect width="64" height="64" rx="8" fill="#0f1d14"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="6.5" fill="none" stroke="#3fdd82" stroke-opacity="0.4" stroke-width="1.5"/>
   <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
-        font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="26" font-weight="700"
-        fill="url(#mark)" letter-spacing="-1">ШР</text>
+        font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="600"
+        fill="#3fdd82" letter-spacing="-1">ШР</text>
 </svg>
