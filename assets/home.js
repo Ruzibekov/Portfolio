@@ -741,7 +741,7 @@ const applyTheme = (theme) => {
   const next = theme === 'light' ? 'light' : 'dark'
   document.documentElement.setAttribute('data-theme', next)
   const meta = document.getElementById('themeColorMeta')
-  if (meta) meta.content = next === 'light' ? '#e9e6e1' : '#0a0b0e'
+  if (meta) meta.content = next === 'light' ? '#e3e1dc' : '#17191e'
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
     const pressed = next === 'light'
     btn.setAttribute('aria-pressed', pressed ? 'true' : 'false')
