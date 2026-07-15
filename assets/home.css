@@ -687,7 +687,7 @@ body.nav-open .site-header {
   border-radius: 50%;
   content: '';
   background: var(--accent);
-  box-shadow: 0 0 10px var(--accent-glow);
+  box-shadow: none;
   animation: pulse-dot 2s var(--ease) infinite;
 }
 @keyframes pulse-dot {
@@ -1211,7 +1211,7 @@ h3 {
   content: '';
   background: var(--accent);
   border-radius: 2px;
-  box-shadow: 0 0 12px var(--accent-glow);
+  box-shadow: none;
 }
 .system-card h3 {
   margin-bottom: 12px;
@@ -1372,7 +1372,7 @@ h3 {
 }
 .work-row details summary:hover .row-thumb img {
   transform: scale(1.06);
-  filter: saturate(1.12) brightness(1.04);
+  filter: saturate(1.04) brightness(1.01);
 }
 .row-main {
   grid-area: main;
