@@ -4,26 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="freelancehunt" content="7bde97cba8a9928" />
-    <title>
-      Шавкат Рузибеков — Full-stack разработчик | Мобильные, веб, backend
+    <title data-i18n="meta.title">
+      Шавкат Рузибеков — приложения и сайты под ключ
     </title>
     <meta
       name="description"
-      content="Full-stack разработчик: мобильные приложения (Flutter, Kotlin), веб-продукты (React, Next.js), backend и автоматизация. 61 выполненный заказ на Kwork, рейтинг 4.6, 34 отзыва."
+      content="Делаю приложения для телефона и сайты. 61 заказ на Kwork, рейтинг 4.6. Понятный результат в срок."
+      data-i18n-attr="content:meta.description"
     />
     <meta name="author" content="Шавкат Рузибеков" />
-    <meta name="theme-color" content="#070c09" />
+    <meta name="theme-color" content="#0a0b0e" id="themeColorMeta" />
+    <script>
+      ;(function () {
+        try {
+          var key = 'portfolio-theme'
+          var t = localStorage.getItem(key)
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark'
+          }
+          document.documentElement.setAttribute('data-theme', t)
+          var meta = document.getElementById('themeColorMeta')
+          if (meta) meta.content = t === 'light' ? '#e9e6e1' : '#0a0b0e'
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        }
+      })()
+    </script>
     <link rel="canonical" href="https://portfolio-ruzibekov.vercel.app/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ru_RU" />
+    <meta
+      property="og:locale"
+      content="ru_RU"
+      data-i18n-attr="content:meta.ogLocale"
+    />
     <meta
       property="og:title"
-      content="Шавкат Рузибеков — Full-stack разработчик"
+      content="Шавкат Рузибеков — приложения и сайты под ключ"
+      data-i18n-attr="content:meta.ogTitle"
     />
     <meta
       property="og:description"
-      content="Мобильные приложения, веб-продукты, backend и автоматизация под ключ. 61 заказ на Kwork, рейтинг 4.6."
+      content="Делаю приложения для телефона и сайты. 61 заказ на Kwork, рейтинг 4.6."
+      data-i18n-attr="content:meta.ogDescription"
     />
     <meta
       property="og:image"
@@ -33,11 +58,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Шавкат Рузибеков — Full-stack разработчик"
+      content="Шавкат Рузибеков — приложения и сайты под ключ"
+      data-i18n-attr="content:meta.ogTitle"
     />
     <meta
       name="twitter:description"
-      content="Мобильные приложения, веб-продукты, backend и автоматизация под ключ."
+      content="Приложения, сайты и автоматизация под ключ — от идеи до запуска."
+      data-i18n-attr="content:meta.twitterDescription"
     />
     <meta
       name="twitter:image"
@@ -49,26 +76,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Onest:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/home.css?v=186419b26e" />
+    <link rel="stylesheet" href="assets/home.css?v=1f23a10015" />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Шавкат Рузибеков",
-        "jobTitle": "Full-stack разработчик",
+        "jobTitle": "Разработчик приложений и сайтов",
         "url": "https://portfolio-ruzibekov.vercel.app/",
         "knowsAbout": [
-          "Flutter",
-          "Kotlin",
-          "React",
-          "Next.js",
-          "Node.js",
-          "Python",
-          "REST API"
+          "Мобильные приложения",
+          "Сайты",
+          "Веб-сервисы",
+          "Автоматизация",
+          "Telegram-боты"
         ],
         "sameAs": [
           "https://kwork.ru/user/ruzibekov",
@@ -79,31 +104,119 @@
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#work">Перейти к проектам</a>
+    <a class="skip-link" href="#work" data-i18n="skip">Перейти к проектам</a>
+
+    <div class="ambient" aria-hidden="true">
+      <span class="ambient-orb ambient-orb--a"></span>
+      <span class="ambient-orb ambient-orb--b"></span>
+      <span class="ambient-orb ambient-orb--c"></span>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><i></i></div>
 
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Шавкат Рузибеков — на главную">
-        <span class="brand-mark" aria-hidden="true">ШР</span>
-        <span class="brand-word">Рузибеков</span>
-      </a>
-      <nav class="nav" aria-label="Основная навигация">
-        <a href="#systems"><i aria-hidden="true">01</i>Стек</a>
-        <a href="#work"><i aria-hidden="true">02</i>Кейсы</a>
-        <a href="#process"><i aria-hidden="true">03</i>Процесс</a>
-        <a href="#contact"><i aria-hidden="true">04</i>Связь</a>
-      </nav>
-      <a class="header-action" href="#contact">Обсудить проект</a>
-      <button
-        class="nav-toggle"
-        type="button"
-        aria-label="Открыть меню"
-        aria-expanded="false"
-        aria-controls="mobileNav"
+      <a
+        class="brand"
+        href="#top"
+        aria-label="Шавкат Рузибеков — на главную"
+        data-i18n-attr="aria-label:brand.homeLabel"
       >
-        <span class="nav-toggle-bars" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
-      </button>
+        <span class="brand-mark" aria-hidden="true" data-i18n="brand.mark"
+          >ШР</span
+        >
+        <span class="brand-word" data-i18n="brand.word">Рузибеков</span>
+      </a>
+      <nav
+        class="nav"
+        aria-label="Основная навигация"
+        data-i18n-attr="aria-label:nav.label"
+      >
+        <a href="#systems"
+          ><i aria-hidden="true">01</i
+          ><span data-i18n="nav.stack">Услуги</span></a
+        >
+        <a href="#work"
+          ><i aria-hidden="true">02</i
+          ><span data-i18n="nav.cases">Работы</span></a
+        >
+        <a href="#process"
+          ><i aria-hidden="true">03</i
+          ><span data-i18n="nav.process">Как работаю</span></a
+        >
+        <a href="#contact"
+          ><i aria-hidden="true">04</i
+          ><span data-i18n="nav.contact">Написать</span></a
+        >
+        <div
+          class="lang-switch"
+          role="group"
+          aria-label="Язык"
+          data-i18n-attr="aria-label:lang.label"
+        >
+          <button
+            class="is-active"
+            type="button"
+            data-lang="ru"
+            aria-pressed="true"
+          >
+            RU
+          </button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="uz" aria-pressed="false">UZ</button>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button
+          class="theme-toggle"
+          type="button"
+          data-theme-toggle
+          aria-label="Переключить тему"
+          data-i18n-attr="aria-label:theme.toggleLabel"
+        >
+          <svg
+            class="icon-sun"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+            />
+          </svg>
+          <svg
+            class="icon-moon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
+          </svg>
+          <span class="theme-toggle-label" data-i18n="theme.toggleText"
+            >Тема</span
+          >
+        </button>
+        <a class="header-action" href="#contact" data-i18n="cta.discuss"
+          >Написать в Telegram</a
+        >
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+        >
+          <span class="nav-toggle-bars" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
     </header>
 
     <div
@@ -112,122 +225,226 @@
       role="dialog"
       aria-modal="true"
       aria-label="Меню"
+      data-i18n-attr="aria-label:mobileNav.label"
       hidden
     >
       <div class="mobile-nav-scrim" data-nav-close></div>
-      <nav class="mobile-nav-panel" aria-label="Мобильная навигация">
-        <a href="#systems" data-nav-close><i aria-hidden="true">01</i>Стек</a>
-        <a href="#work" data-nav-close><i aria-hidden="true">02</i>Кейсы</a>
+      <nav
+        class="mobile-nav-panel"
+        aria-label="Мобильная навигация"
+        data-i18n-attr="aria-label:mobileNav.panelLabel"
+      >
+        <a href="#systems" data-nav-close
+          ><i aria-hidden="true">01</i
+          ><span data-i18n="nav.stack">Услуги</span></a
+        >
+        <a href="#work" data-nav-close
+          ><i aria-hidden="true">02</i
+          ><span data-i18n="nav.cases">Работы</span></a
+        >
         <a href="#process" data-nav-close
-          ><i aria-hidden="true">03</i>Процесс</a
+          ><i aria-hidden="true">03</i
+          ><span data-i18n="nav.process">Как работаю</span></a
         >
-        <a href="#contact" data-nav-close><i aria-hidden="true">04</i>Связь</a>
-        <a class="mobile-nav-cta" href="#contact" data-nav-close
-          >Обсудить проект</a
+        <a href="#contact" data-nav-close
+          ><i aria-hidden="true">04</i
+          ><span data-i18n="nav.contact">Написать</span></a
         >
+        <a
+          class="mobile-nav-cta"
+          href="#contact"
+          data-nav-close
+          data-i18n="cta.discuss"
+          >Написать в Telegram</a
+        >
+        <div
+          class="lang-switch"
+          role="group"
+          aria-label="Язык"
+          data-i18n-attr="aria-label:lang.label"
+        >
+          <button
+            class="is-active"
+            type="button"
+            data-lang="ru"
+            aria-pressed="true"
+          >
+            RU
+          </button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="uz" aria-pressed="false">UZ</button>
+        </div>
+        <button
+          class="theme-toggle"
+          type="button"
+          data-theme-toggle
+          aria-label="Переключить тему"
+          data-i18n-attr="aria-label:theme.toggleLabel"
+        >
+          <svg
+            class="icon-sun"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+            />
+          </svg>
+          <svg
+            class="icon-moon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
+          </svg>
+          <span class="theme-toggle-label" data-i18n="theme.toggleText"
+            >Светлая / тёмная</span
+          >
+        </button>
       </nav>
     </div>
 
-    <nav class="rail" aria-label="Навигация по разделам">
+    <nav
+      class="rail"
+      aria-label="Навигация по разделам"
+      data-i18n-attr="aria-label:rail.label"
+    >
       <a href="#top" data-rail="top" class="is-active"
-        ><i>00</i><span>Интро</span></a
+        ><i>00</i><span data-i18n="rail.intro">Интро</span></a
       >
-      <a href="#systems" data-rail="systems"><i>01</i><span>Стек</span></a>
-      <a href="#work" data-rail="work"><i>02</i><span>Кейсы</span></a>
-      <a href="#process" data-rail="process"><i>03</i><span>Процесс</span></a>
-      <a href="#contact" data-rail="contact"><i>04</i><span>Связь</span></a>
+      <a href="#systems" data-rail="systems"
+        ><i>01</i><span data-i18n="nav.stack">Услуги</span></a
+      >
+      <a href="#work" data-rail="work"
+        ><i>02</i><span data-i18n="nav.cases">Работы</span></a
+      >
+      <a href="#process" data-rail="process"
+        ><i>03</i><span data-i18n="nav.process">Как работаю</span></a
+      >
+      <a href="#contact" data-rail="contact"
+        ><i>04</i><span data-i18n="nav.contact">Написать</span></a
+      >
     </nav>
 
     <main id="top">
       <section class="hero section" data-section="top">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Full-stack разработчик · Ташкент</p>
-          <h1>
-            Разработка приложений, сайтов и backend
+          <p class="eyebrow" data-i18n="hero.eyebrow">
+            Приложения и сайты · Ташкент
+          </p>
+          <h1 data-i18n-html="hero.title">
+            Сделаю ваш проект
             <em class="accent-em">под ключ</em>
           </h1>
-          <p class="lead">
-            Архитектура, интерфейс, интеграции, автоматизация и запуск. Работаю
-            аккуратно, в срок и с понятным результатом — от идеи до публикации в
-            сторе.
+          <p class="lead" data-i18n="hero.lead">
+            Приложение для телефона, сайт или личный кабинет — от идеи до
+            запуска. Сроки и результат понятны заранее.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#contact">Обсудить проект</a>
-            <a class="button ghost" href="#work">Смотреть кейсы</a>
+            <a
+              class="button primary"
+              href="#contact"
+              data-magnetic
+              data-i18n="cta.discuss"
+              >Написать в Telegram</a
+            >
+            <a
+              class="button ghost"
+              href="#work"
+              data-magnetic
+              data-i18n="hero.viewCases"
+              >Смотреть работы</a
+            >
           </div>
           <p class="availability" role="status">
             <span class="availability-dot" aria-hidden="true"></span>
-            Доступен для новых заказов
+            <span data-i18n="hero.availability"
+              >Сейчас принимаю новые заказы</span
+            >
           </p>
         </div>
 
         <div class="hero-stage reveal">
-          <aside class="receipt" aria-label="Профиль на фриланс-биржах">
+          <aside
+            class="receipt"
+            data-tilt
+            aria-label="Профиль на фриланс-биржах"
+            data-i18n-attr="aria-label:receipt.label"
+          >
             <header class="receipt-head">
-              <span>Профиль // биржи</span>
-              <span>№ 2026-061</span>
+              <span data-i18n="receipt.head">Профиль</span>
+              <span data-i18n="receipt.number">Kwork</span>
             </header>
             <div class="receipt-profile">
               <img
                 class="receipt-avatar"
                 src="assets/kwork-avatar.jpg"
                 alt="Фото профиля Шавката Рузибекова"
+                data-i18n-attr="alt:receipt.avatarAlt"
                 width="148"
                 height="148"
                 loading="eager"
               />
               <div>
-                <strong>Шавкат Рузибеков</strong>
-                <span>Mobile · Web · Backend · Automation</span>
-                <b>Восходящая звезда · Kwork</b>
+                <strong data-i18n="receipt.name">Шавкат Рузибеков</strong>
+                <span data-i18n="receipt.stack">Приложения · Сайты · Боты</span>
+                <b data-i18n="receipt.badge">Рейтинг 4.6</b>
               </div>
             </div>
             <ul class="receipt-lines">
               <li>
-                <span>Рейтинг Kwork</span><i aria-hidden="true"></i><b>4.6</b>
+                <span data-i18n="receipt.orders">Заказов</span
+                ><i aria-hidden="true"></i><b data-count="61">61</b>
               </li>
               <li>
-                <span>Заказов выполнено</span><i aria-hidden="true"></i
-                ><b>61</b>
-              </li>
-              <li><span>Отзывов</span><i aria-hidden="true"></i><b>34</b></li>
-              <li>
-                <span>Заказов сдано успешно</span><i aria-hidden="true"></i
-                ><b>97%</b>
+                <span data-i18n="receipt.reviews">Отзывов</span
+                ><i aria-hidden="true"></i><b data-count="34">34</b>
               </li>
             </ul>
-            <div class="receipt-badges">
-              <span>Личность подтверждена</span>
-              <span>Телефон подтверждён</span>
-              <span>Freelancehunt Plus</span>
-            </div>
             <div class="receipt-links">
               <a
                 href="https://kwork.ru/user/ruzibekov"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Профиль на Kwork ↗</a
+                data-i18n="receipt.kworkLink"
+                >Kwork ↗</a
               >
               <a
                 href="https://freelancehunt.com/freelancer/ruzibekov.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Профиль на Freelancehunt ↗</a
+                data-i18n="receipt.fhLink"
+                >Freelancehunt ↗</a
               >
             </div>
-            <footer class="receipt-foot" aria-hidden="true">
-              · · · спасибо за доверие · · ·
-            </footer>
           </aside>
         </div>
       </section>
 
-      <div class="ticker">
-        <div>
-          <span>Flutter</span><span>Kotlin</span><span>React</span
-          ><span>Next.js</span><span>Node.js</span><span>NestJS</span
-          ><span>Python</span><span>REST API</span><span>WebSocket</span
-          ><span>Automation</span>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-group">
+            <span>Приложения</span><span>Сайты</span><span>Кабинеты</span
+            ><span>Боты</span><span>Оплата</span><span>Уведомления</span
+            ><span>Карты</span><span>Магазины приложений</span
+            ><span>Автоматизация</span><span>Поддержка</span>
+          </div>
+          <div class="ticker-group">
+            <span>Приложения</span><span>Сайты</span><span>Кабинеты</span
+            ><span>Боты</span><span>Оплата</span><span>Уведомления</span
+            ><span>Карты</span><span>Магазины приложений</span
+            ><span>Автоматизация</span><span>Поддержка</span>
+          </div>
         </div>
       </div>
 
@@ -237,54 +454,78 @@
         data-section="systems"
       >
         <div class="section-head">
-          <p class="eyebrow">01 — Стек и задачи</p>
-          <h2>Разработка, интеграции, запуск</h2>
+          <p class="eyebrow" data-i18n="systems.eyebrow">Чем могу помочь</p>
+          <h2 data-i18n="systems.title">Три понятных направления</h2>
         </div>
         <div class="systems-grid">
-          <article class="system-card">
+          <a
+            class="system-card"
+            href="#work"
+            data-work-filter="mobile"
+            data-tilt
+          >
             <span>01</span>
-            <h3>Мобильные приложения</h3>
-            <p>
-              Flutter и Kotlin: API, push, карты, фоновые задачи, публикация в
-              сторы.
+            <h3 data-i18n="systems.card1Title">Приложения для телефона</h3>
+            <p data-i18n="systems.card1Body">
+              iPhone и Android: уведомления, карты, оплата, публикация в App
+              Store и Google Play.
             </p>
-          </article>
-          <article class="system-card">
+            <em class="system-card-cta" data-i18n="systems.cardCta"
+              >Смотреть работы →</em
+            >
+          </a>
+          <a class="system-card" href="#work" data-work-filter="web" data-tilt>
             <span>02</span>
-            <h3>Веб-продукты</h3>
-            <p>
-              React, Next.js: лендинги, платформы, админки и личные кабинеты.
+            <h3 data-i18n="systems.card2Title">Сайты и кабинеты</h3>
+            <p data-i18n="systems.card2Body">
+              Лендинги, интернет-магазины, личные кабинеты и панели управления —
+              удобно с телефона.
             </p>
-          </article>
-          <article class="system-card">
+            <em class="system-card-cta" data-i18n="systems.cardCta"
+              >Смотреть работы →</em
+            >
+          </a>
+          <a
+            class="system-card"
+            href="#work"
+            data-work-filter="backend"
+            data-tilt
+          >
             <span>03</span>
-            <h3>Backend и автоматизация</h3>
-            <p>
-              NestJS, Node, Python: API, WebSocket, Telegram-боты, парсеры,
-              интеграции.
+            <h3 data-i18n="systems.card3Title">Боты и автоматизация</h3>
+            <p data-i18n="systems.card3Body">
+              Telegram-боты, заявки, уведомления и связка с CRM или таблицами —
+              без лишней ручной работы.
             </p>
-          </article>
+            <em class="system-card-cta" data-i18n="systems.cardCta"
+              >Смотреть работы →</em
+            >
+          </a>
         </div>
       </section>
 
       <section class="section work reveal" id="work" data-section="work">
         <div class="section-head">
-          <p class="eyebrow">02 — Кейсы</p>
-          <h2>Реестр запущенных проектов</h2>
-          <p class="section-sub">
-            Реальные приложения и платформы. Откройте строку — внутри задача,
-            решение и результат.
+          <p class="eyebrow" data-i18n="work.eyebrow">Примеры работ</p>
+          <h2 data-i18n="work.title">Что уже сделано</h2>
+          <p class="section-sub" data-i18n="work.sub">
+            Нажмите на проект — кратко: задача, что сделал, какой результат.
           </p>
         </div>
 
-        <div class="work-filter" role="group" aria-label="Фильтр проектов">
+        <div
+          class="work-filter"
+          role="group"
+          aria-label="Фильтр проектов"
+          data-i18n-attr="aria-label:work.filterLabel"
+        >
           <button
             class="filter-chip is-active"
             type="button"
             data-filter="all"
             aria-pressed="true"
           >
-            Все <b>15</b>
+            <span data-i18n="filter.all">Все</span> <b>16</b>
           </button>
           <button
             class="filter-chip"
@@ -292,7 +533,7 @@
             data-filter="mobile"
             aria-pressed="false"
           >
-            Мобильные <b>11</b>
+            <span data-i18n="filter.mobile">Телефон</span> <b>11</b>
           </button>
           <button
             class="filter-chip"
@@ -300,7 +541,7 @@
             data-filter="web"
             aria-pressed="false"
           >
-            Веб <b>4</b>
+            <span data-i18n="filter.web">Сайты</span> <b>5</b>
           </button>
           <button
             class="filter-chip"
@@ -308,7 +549,7 @@
             data-filter="backend"
             aria-pressed="false"
           >
-            Backend <b>1</b>
+            <span data-i18n="filter.backend">Боты</span> <b>1</b>
           </button>
         </div>
 
@@ -322,6 +563,7 @@
                   <img
                     src="screenshots/besttracker-shot.webp"
                     alt="Best Tracker — live-локация и приглашения в группы по QR"
+                    data-i18n-attr="alt:work.besttracker.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -331,7 +573,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >Best Tracker</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.besttracker.desc">
                     Сервис безопасности с live-локацией и приглашениями в группы
                     по QR-коду.
                   </span>
@@ -347,19 +589,23 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Реалтайм-трекинг группы и обмен геопозицией.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.besttracker.task">
+                        Реалтайм-трекинг группы и обмен геопозицией.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.besttracker.solution">
                         Flutter (iOS, Android) + NestJS, deep links, фоновая
                         геолокация.
                       </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Опубликовано в App Store и Google Play.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.besttracker.result">
+                        Опубликовано в App Store и Google Play.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -394,6 +640,7 @@
                   <img
                     src="screenshots/stefa-shot.webp"
                     alt="Stefa AI Art — генерация изображений по тексту"
+                    data-i18n-attr="alt:work.stefa.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -403,7 +650,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >Stefa AI Art</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.stefa.desc">
                     Генерация изображений по текстовому запросу с быстрым
                     результатом.
                   </span>
@@ -419,16 +666,22 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Простой и быстрый AI-генератор картинок.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.stefa.task">
+                        Простой и быстрый AI-генератор картинок.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>Flutter + облачный image-API, понятный сценарий.</dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.stefa.solution">
+                        Flutter + облачный image-API, понятный сценарий.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Опубликовано в Google Play.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.stefa.result">
+                        Опубликовано в Google Play.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -455,6 +708,7 @@
                   <img
                     src="screenshots/mynails-shot.webp"
                     alt="My Nail Salon — AI-дизайн ногтей с предпросмотром"
+                    data-i18n-attr="alt:work.mynails.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -464,7 +718,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >My Nail Salon</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.mynails.desc">
                     Создание nail-дизайнов с помощью ИИ и предпросмотром
                     результата.
                   </span>
@@ -480,21 +734,27 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Подбор дизайна ногтей через ИИ.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.mynails.task">
+                        Подбор дизайна ногтей через ИИ.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.mynails.solution">
                         Flutter + генерация изображений, быстрый предпросмотр.
                       </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Готовое приложение с предсказуемым UX.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.mynails.result">
+                        Готовое приложение с предсказуемым UX.
+                      </dd>
                     </div>
                   </dl>
-                  <span class="work-badge">Приватный проект</span>
+                  <span class="work-badge" data-i18n="work.badgePrivate"
+                    >Приватный проект</span
+                  >
                 </div>
               </div>
             </details>
@@ -509,6 +769,7 @@
                   <img
                     src="screenshots/altn-shot.webp"
                     alt="ALTN Chat — реалтайм-мессенджер с ИИ-сценариями"
+                    data-i18n-attr="alt:work.altn.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -518,7 +779,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >ALTN Chat</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.altn.desc">
                     Мессенджер с реалтайм-чатом и ИИ-сценариями, плавный UX.
                   </span>
                 </span>
@@ -533,16 +794,22 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Быстрый чат с ИИ-функциями.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.altn.task">
+                        Быстрый чат с ИИ-функциями.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>Flutter + реалтайм-канал, отзывчивый интерфейс.</dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.altn.solution">
+                        Flutter + реалтайм-канал, отзывчивый интерфейс.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Опубликовано в Google Play.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.altn.result">
+                        Опубликовано в Google Play.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -569,6 +836,7 @@
                   <img
                     src="screenshots/wegotrip-shot.webp"
                     alt="WeGoTrip — аудиогиды и туры для путешествий"
+                    data-i18n-attr="alt:work.wegotrip.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -578,7 +846,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >WeGoTrip</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.wegotrip.desc">
                     Аудиогиды и туры: нативное Android-приложение для
                     путешествий.
                   </span>
@@ -594,16 +862,22 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Стабильный релиз и поддерживаемость.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.wegotrip.task">
+                        Стабильный релиз и поддерживаемость.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>Нативный Kotlin, чистая архитектура.</dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.wegotrip.solution">
+                        Нативный Kotlin, чистая архитектура.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Опубликовано в Google Play.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.wegotrip.result">
+                        Опубликовано в Google Play.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -630,6 +904,7 @@
                   <img
                     src="screenshots/yolo-shot.webp"
                     alt="Yolo — беговое приложение Couch to 5K: план, пробежка, статистика"
+                    data-i18n-attr="alt:work.yolo.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -639,7 +914,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >Yolo</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.yolo.desc">
                     Беговое приложение «Couch to 5K»: от нуля до первых 5 км по
                     адаптивному плану.
                   </span>
@@ -655,24 +930,28 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Привести новичка к первым 5 км без выгорания.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.yolo.task">
+                        Привести новичка к первым 5 км без выгорания.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.yolo.solution">
                         Kotlin Multiplatform (iOS, Android), адаптивный план,
                         интервалы бег/ходьба, статистика.
                       </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.yolo.result">
                         Готовое приложение с трекингом пробежек и прогрессом.
                       </dd>
                     </div>
                   </dl>
-                  <span class="work-badge">Приватный проект</span>
+                  <span class="work-badge" data-i18n="work.badgePrivate"
+                    >Приватный проект</span
+                  >
                 </div>
               </div>
             </details>
@@ -687,6 +966,7 @@
                   <img
                     src="screenshots/geoblinker-shot.webp"
                     alt="GeoBlinker25 — геосигналы и фоновая геолокация"
+                    data-i18n-attr="alt:work.geoblinker.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -696,7 +976,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >GeoBlinker25</span
                   >
-                  <span class="row-desc"
+                  <span class="row-desc" data-i18n="work.geoblinker.desc"
                     >Мониторинг на основе геосигналов и фоновой
                     геолокации.</span
                   >
@@ -712,19 +992,27 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Отслеживание событий по геопозиции в фоне.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.geoblinker.task">
+                        Отслеживание событий по геопозиции в фоне.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>Android, фоновые задачи и датчики.</dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.geoblinker.solution">
+                        Android, фоновые задачи и датчики.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Рабочий прототип с фоновым трекингом.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.geoblinker.result">
+                        Рабочий прототип с фоновым трекингом.
+                      </dd>
                     </div>
                   </dl>
-                  <span class="work-badge">Прототип</span>
+                  <span class="work-badge" data-i18n="work.badgePrototype"
+                    >Прототип</span
+                  >
                 </div>
               </div>
             </details>
@@ -739,6 +1027,7 @@
                   <img
                     src="screenshots/wallpapers-shot.webp"
                     alt="Wallpapers — каталог обоев с категориями"
+                    data-i18n-attr="alt:work.wallpapers.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -748,7 +1037,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >Wallpapers</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.wallpapers.desc">
                     Каталог обоев с категориями, предпросмотром и быстрой
                     установкой.
                   </span>
@@ -764,19 +1053,27 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Лёгкий и быстрый каталог обоев.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.wallpapers.task">
+                        Лёгкий и быстрый каталог обоев.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>Kotlin, Material UI, кэширование.</dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.wallpapers.solution">
+                        Kotlin, Material UI, кэширование.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Плавный интерфейс с упором на скорость.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.wallpapers.result">
+                        Плавный интерфейс с упором на скорость.
+                      </dd>
                     </div>
                   </dl>
-                  <span class="work-badge">Приватный проект</span>
+                  <span class="work-badge" data-i18n="work.badgePrivate"
+                    >Приватный проект</span
+                  >
                 </div>
               </div>
             </details>
@@ -791,16 +1088,21 @@
                   <img
                     src="screenshots/psixologiya-shot.webp"
                     alt="Психология влияния — техники, челленджи силы воли, статистика"
+                    data-i18n-attr="alt:work.influence.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
                 </span>
                 <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                  <span
+                    class="row-title"
+                    role="heading"
+                    aria-level="3"
+                    data-i18n="work.influence.title"
                     >Психология влияния</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.influence.desc">
                     Самопрактика: библиотека техник влияния, челленджи силы воли
                     и статистика прогресса.
                   </span>
@@ -816,24 +1118,28 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.influence.task">
                         Развивать навыки влияния и силу воли через практику.
                       </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.influence.solution">
                         Compose Multiplatform (iOS, Android), библиотека техник,
                         челленджи, статистика, офлайн.
                       </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Готовое кросс-платформенное приложение.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.influence.result">
+                        Готовое кросс-платформенное приложение.
+                      </dd>
                     </div>
                   </dl>
-                  <span class="work-badge">Приватный проект</span>
+                  <span class="work-badge" data-i18n="work.badgePrivate"
+                    >Приватный проект</span
+                  >
                 </div>
               </div>
             </details>
@@ -848,6 +1154,7 @@
                   <img
                     src="screenshots/avtopark-shot.webp"
                     alt="Avtopark — управление автопарком, медосмотр и техосмотр водителей"
+                    data-i18n-attr="alt:work.avtopark.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -857,7 +1164,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >Avtopark</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.avtopark.desc">
                     Управление автопарком: медосмотр и техосмотр водителей,
                     отчёты и ролевой доступ.
                   </span>
@@ -873,21 +1180,23 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.avtopark.task">
                         Контроль автопарка и допусков водителей в одном месте.
                       </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.avtopark.solution">
                         Flutter (iOS, Android), дашборды, роли, медицинский и
                         технический осмотр.
                       </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Опубликовано в App Store и Google Play.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.avtopark.result">
+                        Опубликовано в App Store и Google Play.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -922,6 +1231,7 @@
                   <img
                     src="screenshots/tildonmobile-shot.webp"
                     alt="Tildon Mobile — приложение для изучения английского: грамматика, словарь, статистика"
+                    data-i18n-attr="alt:work.tildonmobile.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -931,7 +1241,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >Tildon Mobile</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.tildonmobile.desc">
                     Мобильное приложение для изучения английского: грамматика,
                     словарь, тесты, статистика.
                   </span>
@@ -947,27 +1257,29 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.tildonmobile.task">
                         Учить английский в телефоне с прогрессом и
                         геймификацией.
                       </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.tildonmobile.solution">
                         Compose Multiplatform (iOS, Android), словарь,
                         грамматика, квизы, placement-тест, статистика.
                       </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.tildonmobile.result">
                         Кросс-платформенный компаньон веб-платформы Tildon.
                       </dd>
                     </div>
                   </dl>
-                  <span class="work-badge">Приватный проект</span>
+                  <span class="work-badge" data-i18n="work.badgePrivate"
+                    >Приватный проект</span
+                  >
                 </div>
               </div>
             </details>
@@ -982,6 +1294,7 @@
                   <img
                     src="screenshots/tildon-shot.webp"
                     alt="Tildon — веб-платформа для изучения английского"
+                    data-i18n-attr="alt:work.tildon.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -991,7 +1304,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >Tildon</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.tildon.desc">
                     Веб-платформа для изучения английского: грамматика, словарь,
                     тесты, listening.
                   </span>
@@ -1007,16 +1320,22 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Удобная обучающая платформа с прогрессом.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.tildon.task">
+                        Удобная обучающая платформа с прогрессом.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>React, Next.js, TypeScript, PWA, адаптив.</dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.tildon.solution">
+                        React, Next.js, TypeScript, PWA, адаптив.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Запущена и доступна онлайн.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.tildon.result">
+                        Запущена и доступна онлайн.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -1025,6 +1344,7 @@
                       href="https://tildon.vercel.app"
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-i18n-html="work.openSite"
                     >
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
@@ -1043,6 +1363,7 @@
                   <img
                     src="screenshots/vfx-shot.webp"
                     alt="VFX Timecode — генератор таймкода для видеопродакшна"
+                    data-i18n-attr="alt:work.vfx.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -1052,7 +1373,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >VFX Timecode</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.vfx.desc">
                     Генератор таймкода для VFX и видеопродакшна: контроль FPS,
                     fullscreen.
                   </span>
@@ -1068,16 +1389,22 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Точный таймкод-инструмент для production-flow.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.vfx.task">
+                        Точный таймкод-инструмент для production-flow.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>Vite, React, Tailwind, shadcn-ui, PWA.</dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.vfx.solution">
+                        Vite, React, Tailwind, shadcn-ui, PWA.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Запущен и доступен онлайн.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.vfx.result">
+                        Запущен и доступен онлайн.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -1086,6 +1413,7 @@
                       href="https://vfx-timecode.vercel.app"
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-i18n-html="work.openSite"
                     >
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
@@ -1104,6 +1432,7 @@
                   <img
                     src="screenshots/ailogoedit-shot.webp"
                     alt="AiLogoEdit — AI-генерация логотипов, иконок и визуалов"
+                    data-i18n-attr="alt:work.ailogoedit.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -1113,7 +1442,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >AiLogoEdit</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.ailogoedit.desc">
                     AI-генерация логотипов, иконок и визуалов: выбор стиля →
                     описание → готовый результат.
                   </span>
@@ -1129,19 +1458,23 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Быстро создавать брендовые визуалы по тексту.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.ailogoedit.task">
+                        Быстро создавать брендовые визуалы по тексту.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.ailogoedit.solution">
                         Next.js, Supabase, AI-генерация (Replicate), история,
                         оплата.
                       </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Запущена и доступна онлайн.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.ailogoedit.result">
+                        Запущена и доступна онлайн.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -1150,6 +1483,7 @@
                       href="https://ailogoedit.com"
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-i18n-html="work.openSite"
                     >
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
@@ -1168,6 +1502,7 @@
                   <img
                     src="screenshots/pixelvault-shot.webp"
                     alt="PixelVault — онлайн-галерея для художников и фотографов"
+                    data-i18n-attr="alt:work.pixelvault.alt"
                     width="900"
                     height="600"
                     loading="lazy"
@@ -1177,7 +1512,7 @@
                   <span class="row-title" role="heading" aria-level="3"
                     >PixelVault</span
                   >
-                  <span class="row-desc">
+                  <span class="row-desc" data-i18n="work.pixelvault.desc">
                     Онлайн-галерея для художников и фотографов: альбомы,
                     публикация работ, приватность.
                   </span>
@@ -1193,19 +1528,23 @@
                 <div class="row-expand-inner">
                   <dl class="work-case">
                     <div>
-                      <dt>Задача</dt>
-                      <dd>Публикация и хранение работ с контролем доступа.</dd>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.pixelvault.task">
+                        Публикация и хранение работ с контролем доступа.
+                      </dd>
                     </div>
                     <div>
-                      <dt>Решение</dt>
-                      <dd>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.pixelvault.solution">
                         Next.js (App Router), Supabase, галерея, альбомы,
                         приватные коллекции.
                       </dd>
                     </div>
                     <div>
-                      <dt>Результат</dt>
-                      <dd>Запущена и доступна онлайн.</dd>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.pixelvault.result">
+                        Запущена и доступна онлайн.
+                      </dd>
                     </div>
                   </dl>
                   <div class="work-links">
@@ -1214,6 +1553,78 @@
                       href="https://pixelvault.vercel.app"
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-i18n-html="work.openSite"
+                    >
+                      Открыть сайт <span aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- Monro -->
+          <article class="work-row" data-category="web">
+            <details>
+              <summary>
+                <span class="row-num" aria-hidden="true">16</span>
+                <span class="row-thumb">
+                  <img
+                    src="screenshots/monro-shot.webp"
+                    alt="Monro — лендинг body-массажа в Алматы"
+                    data-i18n-attr="alt:work.monro.alt"
+                    width="900"
+                    height="600"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="row-main">
+                  <span class="row-title" role="heading" aria-level="3"
+                    >Monro</span
+                  >
+                  <span class="row-desc" data-i18n="work.monro.desc">
+                    Лендинг body-массажа в Алматы: запись 24/7, услуги, отзывы,
+                    WhatsApp и звонок.
+                  </span>
+                </span>
+                <span class="row-side">
+                  <span class="row-tag">Web · Landing</span>
+                  <span class="row-toggle" aria-hidden="true"
+                    ><i></i><i></i
+                  ></span>
+                </span>
+              </summary>
+              <div class="row-expand">
+                <div class="row-expand-inner">
+                  <dl class="work-case">
+                    <div>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.monro.task">
+                        Спокойный премиум-лендинг, который ведёт на запись без
+                        лишних шагов.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.monro.solution">
+                        Одностраничный HTML/CSS/JS: hero, услуги, мастера, FAQ,
+                        dual CTA WhatsApp + звонок, mobile-first.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.monro.result">
+                        Запущен и доступен онлайн; клиент принял сдачу.
+                      </dd>
+                    </div>
+                  </dl>
+                  <div class="work-links">
+                    <a
+                      class="work-link"
+                      href="https://monro-landing.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-i18n-html="work.openSite"
                     >
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
@@ -1223,7 +1634,7 @@
             </details>
           </article>
         </div>
-        <p class="work-empty" id="workEmpty" hidden>
+        <p class="work-empty" id="workEmpty" data-i18n="work.empty" hidden>
           В этой категории пока нет проектов.
         </p>
       </section>
@@ -1234,31 +1645,32 @@
         data-section="process"
       >
         <div class="section-head">
-          <p class="eyebrow">03 — Процесс</p>
-          <h2>Без хаоса и сюрпризов</h2>
+          <p class="eyebrow" data-i18n="process.eyebrow">Как всё проходит</p>
+          <h2 data-i18n="process.title">Три простых шага</h2>
         </div>
         <ol class="process-line">
-          <li class="process-item">
+          <li class="process-item" data-tilt>
             <strong aria-hidden="true">01</strong>
-            <h3>Разбор</h3>
-            <p>
-              Цель, ограничения, данные и риски. Согласуем результат до старта.
+            <h3 data-i18n="process.step1Title">Обсуждаем</h3>
+            <p data-i18n="process.step1Body">
+              Вы рассказываете задачу и сроки. Я называю объём и стоимость до
+              старта.
             </p>
           </li>
-          <li class="process-item">
+          <li class="process-item" data-tilt>
             <strong aria-hidden="true">02</strong>
-            <h3>Сборка</h3>
-            <p>
-              Интерфейс, логика, API и интеграции. Аккуратный код и понятная
-              структура.
+            <h3 data-i18n="process.step2Title">Делаю</h3>
+            <p data-i18n="process.step2Body">
+              Собираю проект и показываю промежуточные версии — вы видите
+              прогресс.
             </p>
           </li>
-          <li class="process-item">
+          <li class="process-item" data-tilt>
             <strong aria-hidden="true">03</strong>
-            <h3>Проверка и запуск</h3>
-            <p>
-              Сценарии, адаптив, обработка ошибок и публикация. Поддержка после
-              сдачи.
+            <h3 data-i18n="process.step3Title">Запускаем</h3>
+            <p data-i18n="process.step3Body">
+              Проверяю, публикую и передаю вам. После сдачи помогаю при
+              вопросах.
             </p>
           </li>
         </ol>
@@ -1270,43 +1682,131 @@
         data-section="contact"
       >
         <div class="contact-inner">
-          <p class="eyebrow">04 — Связь</p>
-          <h2>
-            Опишите задачу — вернусь с планом и
+          <p class="eyebrow" data-i18n="contact.eyebrow">Связаться</p>
+          <h2 data-i18n-html="contact.title">
+            Напишите, что нужно — отвечу с
             <em class="accent-em">оценкой</em>
           </h2>
-          <div class="contact-panel">
+          <p class="contact-lead" data-i18n="contact.lead">
+            Коротко опишите задачу. Кнопка откроет Telegram уже с вашим текстом
+            — останется только отправить.
+          </p>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="contact-field">
+              <label for="contactName" data-i18n="contact.nameLabel">Имя</label>
+              <input
+                id="contactName"
+                name="name"
+                type="text"
+                autocomplete="name"
+                maxlength="80"
+                data-i18n-attr="placeholder:contact.namePlaceholder"
+                placeholder="Как к вам обращаться"
+              />
+            </div>
+            <div class="contact-field">
+              <label for="contactMessage" data-i18n="contact.messageLabel"
+                >Что нужно сделать</label
+              >
+              <textarea
+                id="contactMessage"
+                name="message"
+                rows="5"
+                required
+                maxlength="2000"
+                data-i18n-attr="placeholder:contact.messagePlaceholder"
+                placeholder="Например: приложение для записи клиентов, срок 3 недели…"
+              ></textarea>
+              <p
+                class="contact-error"
+                id="contactError"
+                role="alert"
+                hidden
+                data-i18n="contact.errorRequired"
+              >
+                Напишите в двух словах, что нужно сделать.
+              </p>
+            </div>
+            <div class="contact-form-actions">
+              <button
+                class="button primary"
+                type="submit"
+                data-channel="telegram"
+                data-magnetic
+                data-i18n="contact.sendTelegram"
+              >
+                Открыть Telegram с текстом
+              </button>
+              <button
+                class="button ghost"
+                type="submit"
+                data-channel="email"
+                data-magnetic
+                data-i18n="contact.sendEmail"
+              >
+                Написать на почту
+              </button>
+            </div>
+          </form>
+
+          <p class="contact-or" data-i18n="contact.or">
+            Или сразу по готовой ссылке
+          </p>
+          <div class="contact-panel contact-quick">
             <a
-              class="button primary"
+              class="button ghost contact-quick-link"
               href="https://t.me/ruzibekov_sh"
               target="_blank"
               rel="noopener noreferrer"
+              data-magnetic
+              data-i18n="contact.openTelegram"
             >
               Telegram
             </a>
-            <a class="button ghost" href="mailto:ruzibekov01@gmail.com"
-              >Email</a
+            <a
+              class="button ghost contact-quick-link"
+              href="mailto:ruzibekov01@gmail.com?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%81%20%D0%BF%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE"
+              data-magnetic
+              data-i18n="contact.openEmail"
+              >Почта</a
             >
             <a
-              class="button ghost"
+              class="button ghost contact-quick-link"
               href="https://kwork.ru/user/ruzibekov"
               target="_blank"
               rel="noopener noreferrer"
+              data-magnetic
             >
               Kwork
             </a>
+            <a
+              class="button ghost contact-quick-link"
+              href="https://freelancehunt.com/freelancer/ruzibekov.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-magnetic
+            >
+              Freelancehunt
+            </a>
           </div>
-          <p class="contact-note">Обычно отвечаю в течение рабочего дня.</p>
+          <p class="contact-note" data-i18n="contact.note">
+            Обычно отвечаю в тот же день.
+          </p>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>© 2026 Шавкат Рузибеков</span>
-      <span class="footer-time" data-clock hidden>Ташкент · <b>--:--</b></span>
-      <span>Full-stack разработчик</span>
+      <span data-i18n="footer.copyright">© 2026 Шавкат Рузибеков</span>
+      <span class="footer-time" data-clock hidden
+        ><span data-i18n="footer.city">Ташкент</span> · <b>--:--</b></span
+      >
+      <span data-i18n="footer.role">Приложения и сайты под ключ</span>
     </footer>
 
-    <script src="assets/home.js?v=7c4ee09860" defer></script>
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+    <script defer src="assets/i18n.js?v=c53621aa73"></script>
+    <script src="assets/home.js?v=0ef60292f7" defer></script>
   </body>
 </html>
