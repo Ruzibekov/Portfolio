@@ -227,6 +227,25 @@ window.I18N = {
       'Single-page HTML/CSS/JS: hero, services, masters, FAQ, dual CTA WhatsApp + call, mobile-first.',
     'work.monro.result': 'Launched and live online; client accepted delivery.',
 
+    'work.olympic.alt': 'OLYMPIC — premium body massage landing in Almaty',
+    'work.olympic.desc':
+      'Premium body massage landing in Almaty: private suite, masters, 24/7 WhatsApp booking.',
+    'work.olympic.task':
+      'A cinematic premium landing that leads to WhatsApp booking without extra forms.',
+    'work.olympic.solution':
+      'Single-page HTML/CSS/JS: hero video, masters, sessions, FAQ, dual CTA, motion, mobile-first.',
+    'work.olympic.result': 'Launched and live online; client accepted delivery.',
+
+    'work.supertour.alt':
+      'Super Tour — tours from Tashkent: Egypt, UAE, Thailand, Vietnam',
+    'work.supertour.desc':
+      'Travel operator landing from Tashkent: destinations, hot deals, request form and WhatsApp.',
+    'work.supertour.task':
+      'A vivid travel landing that quickly leads to a tour-selection request.',
+    'work.supertour.solution':
+      'HTML/CSS/JS: hero, destinations, hot tours, FAQ, form and dual CTA, motion, SEO, mobile-first.',
+    'work.supertour.result': 'Live online: supertour.uz.',
+
     'process.eyebrow': 'How it goes',
     'process.title': 'Three simple steps',
     'process.step1Title': 'We discuss',
@@ -278,7 +297,7 @@ window.I18N = {
 
     skip: 'Loyihalarga oʻtish',
 
-    'brand.mark': 'SHR',
+    'brand.mark': 'SR',
     'brand.word': 'Ruzibekov',
     'brand.homeLabel': 'Shavkat Ruzibekov — bosh sahifa',
 
@@ -502,6 +521,26 @@ window.I18N = {
       'Bir sahifali HTML/CSS/JS: hero, xizmatlar, ustalari, FAQ, dual CTA WhatsApp + qoʻngʻiroq, mobile-first.',
     'work.monro.result':
       'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
+
+    'work.olympic.alt': 'OLYMPIC — Almatidagi premium body-massaj landingi',
+    'work.olympic.desc':
+      'Almatidagi premium body-massaj landingi: xususiy kabinet, ustalari, 24/7 WhatsApp yozilish.',
+    'work.olympic.task':
+      'Ortiqcha formasiz WhatsApp yozilishga olib boradigan kinematografik premium landing.',
+    'work.olympic.solution':
+      'Bir sahifali HTML/CSS/JS: hero-video, ustalari, seanslar, FAQ, dual CTA, motion, mobile-first.',
+    'work.olympic.result':
+      'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
+
+    'work.supertour.alt':
+      'Super Tour — Toshkentdan turlar: Misr, BAA, Tailand, Vetnam',
+    'work.supertour.desc':
+      'Toshkentdagi turoperator landingi: yoʻnalishlar, qaynoq turlar, ariza va WhatsApp.',
+    'work.supertour.task':
+      'Tur tanlash arizasiga tez olib boradigan yorqin sayyohlik landingi.',
+    'work.supertour.solution':
+      'HTML/CSS/JS: hero, yoʻnalishlar, qaynoq turlar, FAQ, forma va dual CTA, motion, SEO, mobile-first.',
+    'work.supertour.result': 'Onlayn ishga tushgan: supertour.uz.',
 
     'process.eyebrow': 'Qanday ketadi',
     'process.title': 'Uch oddiy qadam',

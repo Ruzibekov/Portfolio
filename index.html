@@ -13,12 +13,12 @@
       data-i18n-attr="content:meta.description"
     />
     <meta name="author" content="Шавкат Рузибеков" />
-    <meta name="theme-color" content="#0f1217" id="themeColorMeta" />
+    <meta name="theme-color" content="#05070d" id="themeColorMeta" />
     <script>
       ;(function () {
         try {
-          var key = 'portfolio-theme'
-          var t = localStorage.getItem(key)
+          var themeKey = 'portfolio-theme'
+          var t = localStorage.getItem(themeKey)
           if (t !== 'light' && t !== 'dark') {
             t = window.matchMedia('(prefers-color-scheme: light)').matches
               ? 'light'
@@ -26,10 +26,44 @@
           }
           document.documentElement.setAttribute('data-theme', t)
           var meta = document.getElementById('themeColorMeta')
-          if (meta) meta.content = t === 'light' ? '#f2f0eb' : '#0f1217'
+          if (meta) meta.content = t === 'light' ? '#eef1f6' : '#05070d'
         } catch (e) {
           document.documentElement.setAttribute('data-theme', 'dark')
         }
+        try {
+          var langKey = 'portfolio-lang'
+          var langs = ['ru', 'en', 'uz']
+          var lang = localStorage.getItem(langKey)
+          if (!lang || langs.indexOf(lang) === -1) {
+            var prefs =
+              navigator.languages && navigator.languages.length
+                ? navigator.languages
+                : [navigator.language || 'en']
+            lang = 'en'
+            for (var i = 0; i < prefs.length; i++) {
+              var p = String(prefs[i]).split('-')[0].toLowerCase()
+              if (p === 'uz') {
+                lang = 'uz'
+                break
+              }
+              if (
+                p === 'ru' ||
+                p === 'be' ||
+                p === 'kk' ||
+                p === 'kg' ||
+                p === 'ky'
+              ) {
+                lang = 'ru'
+                break
+              }
+              if (p === 'en') {
+                lang = 'en'
+                break
+              }
+            }
+          }
+          document.documentElement.lang = lang
+        } catch (e2) {}
       })()
     </script>
     <link rel="canonical" href="https://portfolio-ruzibekov.vercel.app/" />
@@ -76,10 +110,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Onest:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/home.css?v=160d361f9a" />
+    <link rel="stylesheet" href="assets/home.css?v=6884f8ca0a" />
 
     <script type="application/ld+json">
       {
@@ -103,13 +137,15 @@
       }
     </script>
   </head>
-  <body>
+  <body class="orbit-site">
     <a class="skip-link" href="#work" data-i18n="skip">Перейти к проектам</a>
 
     <div class="ambient" aria-hidden="true">
+      <canvas class="starfield" id="starfield" width="1" height="1"></canvas>
       <span class="ambient-orb ambient-orb--a"></span>
       <span class="ambient-orb ambient-orb--b"></span>
       <span class="ambient-orb ambient-orb--c"></span>
+      <span class="orbit-grid"></span>
     </div>
     <div class="scroll-progress" aria-hidden="true"><i></i></div>
 
@@ -375,59 +411,157 @@
         </div>
 
         <div class="hero-stage reveal">
-          <aside
-            class="receipt"
-            data-tilt
-            aria-label="Профиль на фриланс-биржах"
-            data-i18n-attr="aria-label:receipt.label"
+          <div
+            class="orbit-scene"
+            data-orbit
+            aria-label="3D orbit — проекты вокруг профиля"
           >
-            <header class="receipt-head">
-              <span data-i18n="receipt.head">Профиль</span>
-              <span data-i18n="receipt.number">Kwork</span>
-            </header>
-            <div class="receipt-profile">
-              <img
-                class="receipt-avatar"
-                src="assets/kwork-avatar.jpg"
-                alt="Фото профиля Шавката Рузибекова"
-                data-i18n-attr="alt:receipt.avatarAlt"
-                width="148"
-                height="148"
-                loading="eager"
-              />
-              <div>
-                <strong data-i18n="receipt.name">Шавкат Рузибеков</strong>
-                <span data-i18n="receipt.stack">Приложения · Сайты · Боты</span>
-                <b data-i18n="receipt.badge">Рейтинг 4.6</b>
+            <div class="orbit-glow" aria-hidden="true"></div>
+            <div class="orbit-floor" aria-hidden="true"></div>
+
+            <div class="orbit-stage" data-orbit-stage>
+              <div class="orbit-rig" data-orbit-rig>
+                <div class="orbit-spin" data-orbit-spin>
+                  <span class="orbit-ring orbit-ring--a" aria-hidden="true"></span>
+                  <span class="orbit-ring orbit-ring--b" aria-hidden="true"></span>
+                  <span class="orbit-ring orbit-ring--c" aria-hidden="true"></span>
+
+                  <a class="orbit-sat" href="#work" data-i="0" tabindex="-1">
+                    <span class="orbit-sat-face">
+                      <img
+                        src="screenshots/besttracker-shot.webp"
+                        alt=""
+                        width="200"
+                        height="134"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </span>
+                  </a>
+                  <a class="orbit-sat" href="#work" data-i="1" tabindex="-1">
+                    <span class="orbit-sat-face">
+                      <img
+                        src="screenshots/stefa-shot.webp"
+                        alt=""
+                        width="200"
+                        height="134"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </span>
+                  </a>
+                  <a class="orbit-sat" href="#work" data-i="2" tabindex="-1">
+                    <span class="orbit-sat-face">
+                      <img
+                        src="screenshots/tildon-shot.webp"
+                        alt=""
+                        width="200"
+                        height="134"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </span>
+                  </a>
+                  <a class="orbit-sat" href="#work" data-i="3" tabindex="-1">
+                    <span class="orbit-sat-face">
+                      <img
+                        src="screenshots/avtopark-shot.webp"
+                        alt=""
+                        width="200"
+                        height="134"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </span>
+                  </a>
+                  <a class="orbit-sat" href="#work" data-i="4" tabindex="-1">
+                    <span class="orbit-sat-face">
+                      <img
+                        src="screenshots/mynails-shot.webp"
+                        alt=""
+                        width="200"
+                        height="134"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </span>
+                  </a>
+                  <a class="orbit-sat" href="#work" data-i="5" tabindex="-1">
+                    <span class="orbit-sat-face">
+                      <img
+                        src="screenshots/yolo-shot.webp"
+                        alt=""
+                        width="200"
+                        height="134"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </span>
+                  </a>
+                </div>
               </div>
+
             </div>
-            <ul class="receipt-lines">
-              <li>
-                <span data-i18n="receipt.orders">Заказов</span
-                ><i aria-hidden="true"></i><b data-count="61">61</b>
-              </li>
-              <li>
-                <span data-i18n="receipt.reviews">Отзывов</span
-                ><i aria-hidden="true"></i><b data-count="34">34</b>
-              </li>
-            </ul>
-            <div class="receipt-links">
-              <a
-                href="https://kwork.ru/user/ruzibekov"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-i18n="receipt.kworkLink"
-                >Kwork ↗</a
-              >
-              <a
-                href="https://freelancehunt.com/freelancer/ruzibekov.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-i18n="receipt.fhLink"
-                >Freelancehunt ↗</a
-              >
-            </div>
-          </aside>
+
+            <aside
+              class="receipt orbit-core"
+              aria-label="Профиль на фриланс-биржах"
+              data-i18n-attr="aria-label:receipt.label"
+            >
+              <header class="receipt-head">
+                <span data-i18n="receipt.head">Профиль</span>
+                <span data-i18n="receipt.number">Kwork</span>
+              </header>
+              <div class="receipt-profile">
+                <img
+                  class="receipt-avatar"
+                  src="assets/kwork-avatar.jpg"
+                  alt="Фото профиля Шавката Рузибекова"
+                  data-i18n-attr="alt:receipt.avatarAlt"
+                  width="148"
+                  height="148"
+                  loading="eager"
+                />
+                <div>
+                  <strong data-i18n="receipt.name">Шавкат Рузибеков</strong>
+                  <span data-i18n="receipt.stack"
+                    >Приложения · Сайты · Боты</span
+                  >
+                  <b data-i18n="receipt.badge">Рейтинг 4.6</b>
+                </div>
+              </div>
+              <ul class="receipt-lines">
+                <li>
+                  <span data-i18n="receipt.orders">Заказов</span
+                  ><i aria-hidden="true"></i><b data-count="61">61</b>
+                </li>
+                <li>
+                  <span data-i18n="receipt.reviews">Отзывов</span
+                  ><i aria-hidden="true"></i><b data-count="34">34</b>
+                </li>
+              </ul>
+              <div class="receipt-links">
+                <a
+                  href="https://kwork.ru/user/ruzibekov"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="receipt.kworkLink"
+                  >Kwork ↗</a
+                >
+                <a
+                  href="https://freelancehunt.com/freelancer/ruzibekov.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="receipt.fhLink"
+                  >Freelancehunt ↗</a
+                >
+              </div>
+            </aside>
+
+            <p class="orbit-hint" aria-hidden="true">
+              <span>drag · orbit</span>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -525,7 +659,7 @@
             data-filter="all"
             aria-pressed="true"
           >
-            <span data-i18n="filter.all">Все</span> <b>16</b>
+            <span data-i18n="filter.all">Все</span> <b>17</b>
           </button>
           <button
             class="filter-chip"
@@ -541,7 +675,7 @@
             data-filter="web"
             aria-pressed="false"
           >
-            <span data-i18n="filter.web">Сайты</span> <b>5</b>
+            <span data-i18n="filter.web">Сайты</span> <b>6</b>
           </button>
           <button
             class="filter-chip"
@@ -553,14 +687,13 @@
           </button>
         </div>
 
-        <div class="work-ledger" id="workGrid">
+        <div class="work-ledger work-constellation" id="workGrid">
           <!-- Best Tracker -->
-          <article class="work-row" data-category="mobile backend">
+          <article class="work-row work-sat" data-category="mobile backend">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">01</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/besttracker-shot.webp"
                     alt="Best Tracker — live-локация и приглашения в группы по QR"
                     data-i18n-attr="alt:work.besttracker.alt"
@@ -568,26 +701,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">01</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >Best Tracker</span
                   >
-                  <span class="row-desc" data-i18n="work.besttracker.desc">
-                    Сервис безопасности с live-локацией и приглашениями в группы
-                    по QR-коду.
+                  <span class="work-sat-desc" data-i18n="work.besttracker.desc">Сервис безопасности с live-локацией и приглашениями в группы
+                    по QR-коду.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Mobile · Backend</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Mobile · Backend</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/besttracker-shot.webp"
+                    alt="Best Tracker — live-локация и приглашения в группы по QR"
+                    data-i18n-attr="alt:work.besttracker.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.besttracker.task">
@@ -626,18 +765,18 @@
                       Google Play <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- StefaAI -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">02</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/stefa-shot.webp"
                     alt="Stefa AI Art — генерация изображений по тексту"
                     data-i18n-attr="alt:work.stefa.alt"
@@ -645,26 +784,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">02</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >Stefa AI Art</span
                   >
-                  <span class="row-desc" data-i18n="work.stefa.desc">
-                    Генерация изображений по текстовому запросу с быстрым
-                    результатом.
+                  <span class="work-sat-desc" data-i18n="work.stefa.desc">Генерация изображений по текстовому запросу с быстрым
+                    результатом.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Mobile · AI</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Mobile · AI</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/stefa-shot.webp"
+                    alt="Stefa AI Art — генерация изображений по тексту"
+                    data-i18n-attr="alt:work.stefa.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.stefa.task">
@@ -694,18 +839,18 @@
                       Google Play <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- My Nail Salon -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">03</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/mynails-shot.webp"
                     alt="My Nail Salon — AI-дизайн ногтей с предпросмотром"
                     data-i18n-attr="alt:work.mynails.alt"
@@ -713,26 +858,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">03</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >My Nail Salon</span
                   >
-                  <span class="row-desc" data-i18n="work.mynails.desc">
-                    Создание nail-дизайнов с помощью ИИ и предпросмотром
-                    результата.
+                  <span class="work-sat-desc" data-i18n="work.mynails.desc">Создание nail-дизайнов с помощью ИИ и предпросмотром
+                    результата.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Mobile · AI</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Mobile · AI</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/mynails-shot.webp"
+                    alt="My Nail Salon — AI-дизайн ногтей с предпросмотром"
+                    data-i18n-attr="alt:work.mynails.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.mynails.task">
@@ -755,18 +906,18 @@
                   <span class="work-badge" data-i18n="work.badgePrivate"
                     >Приватный проект</span
                   >
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- ALTN Chat -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">04</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/altn-shot.webp"
                     alt="ALTN Chat — реалтайм-мессенджер с ИИ-сценариями"
                     data-i18n-attr="alt:work.altn.alt"
@@ -774,25 +925,31 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">04</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >ALTN Chat</span
                   >
-                  <span class="row-desc" data-i18n="work.altn.desc">
-                    Мессенджер с реалтайм-чатом и ИИ-сценариями, плавный UX.
+                  <span class="work-sat-desc" data-i18n="work.altn.desc">Мессенджер с реалтайм-чатом и ИИ-сценариями, плавный UX.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Mobile · Realtime</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Mobile · Realtime</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/altn-shot.webp"
+                    alt="ALTN Chat — реалтайм-мессенджер с ИИ-сценариями"
+                    data-i18n-attr="alt:work.altn.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.altn.task">
@@ -822,18 +979,18 @@
                       Google Play <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- WeGoTrip -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">05</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/wegotrip-shot.webp"
                     alt="WeGoTrip — аудиогиды и туры для путешествий"
                     data-i18n-attr="alt:work.wegotrip.alt"
@@ -841,26 +998,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">05</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >WeGoTrip</span
                   >
-                  <span class="row-desc" data-i18n="work.wegotrip.desc">
-                    Аудиогиды и туры: нативное Android-приложение для
-                    путешествий.
+                  <span class="work-sat-desc" data-i18n="work.wegotrip.desc">Аудиогиды и туры: нативное Android-приложение для
+                    путешествий.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Android</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Android</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/wegotrip-shot.webp"
+                    alt="WeGoTrip — аудиогиды и туры для путешествий"
+                    data-i18n-attr="alt:work.wegotrip.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.wegotrip.task">
@@ -890,18 +1053,18 @@
                       Google Play <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- Yolo -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">06</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/yolo-shot.webp"
                     alt="Yolo — беговое приложение Couch to 5K: план, пробежка, статистика"
                     data-i18n-attr="alt:work.yolo.alt"
@@ -909,26 +1072,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">06</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >Yolo</span
                   >
-                  <span class="row-desc" data-i18n="work.yolo.desc">
-                    Беговое приложение «Couch to 5K»: от нуля до первых 5 км по
-                    адаптивному плану.
+                  <span class="work-sat-desc" data-i18n="work.yolo.desc">Беговое приложение «Couch to 5K»: от нуля до первых 5 км по
+                    адаптивному плану.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">iOS · Android</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">iOS · Android</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/yolo-shot.webp"
+                    alt="Yolo — беговое приложение Couch to 5K: план, пробежка, статистика"
+                    data-i18n-attr="alt:work.yolo.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.yolo.task">
@@ -952,18 +1121,18 @@
                   <span class="work-badge" data-i18n="work.badgePrivate"
                     >Приватный проект</span
                   >
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- GeoBlinker25 -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">07</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/geoblinker-shot.webp"
                     alt="GeoBlinker25 — геосигналы и фоновая геолокация"
                     data-i18n-attr="alt:work.geoblinker.alt"
@@ -971,26 +1140,31 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">07</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >GeoBlinker25</span
                   >
-                  <span class="row-desc" data-i18n="work.geoblinker.desc"
-                    >Мониторинг на основе геосигналов и фоновой
-                    геолокации.</span
-                  >
-                </span>
-                <span class="row-side">
-                  <span class="row-tag">Android · Geo</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
+                  <span class="work-sat-desc" data-i18n="work.geoblinker.desc">Мониторинг на основе геосигналов и фоновой геолокации.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Android · Geo</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
+                  </span>
                 </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/geoblinker-shot.webp"
+                    alt="GeoBlinker25 — геосигналы и фоновая геолокация"
+                    data-i18n-attr="alt:work.geoblinker.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.geoblinker.task">
@@ -1013,18 +1187,18 @@
                   <span class="work-badge" data-i18n="work.badgePrototype"
                     >Прототип</span
                   >
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- Wallpapers -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">08</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/wallpapers-shot.webp"
                     alt="Wallpapers — каталог обоев с категориями"
                     data-i18n-attr="alt:work.wallpapers.alt"
@@ -1032,26 +1206,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">08</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >Wallpapers</span
                   >
-                  <span class="row-desc" data-i18n="work.wallpapers.desc">
-                    Каталог обоев с категориями, предпросмотром и быстрой
-                    установкой.
+                  <span class="work-sat-desc" data-i18n="work.wallpapers.desc">Каталог обоев с категориями, предпросмотром и быстрой
+                    установкой.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Android</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Android</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/wallpapers-shot.webp"
+                    alt="Wallpapers — каталог обоев с категориями"
+                    data-i18n-attr="alt:work.wallpapers.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.wallpapers.task">
@@ -1074,18 +1254,18 @@
                   <span class="work-badge" data-i18n="work.badgePrivate"
                     >Приватный проект</span
                   >
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- Психология влияния -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">09</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/psixologiya-shot.webp"
                     alt="Психология влияния — техники, челленджи силы воли, статистика"
                     data-i18n-attr="alt:work.influence.alt"
@@ -1093,30 +1273,31 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">09</span>
                 </span>
-                <span class="row-main">
-                  <span
-                    class="row-title"
-                    role="heading"
-                    aria-level="3"
-                    data-i18n="work.influence.title"
-                    >Психология влияния</span
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3" data-i18n="work.influence.title">Психология влияния</span
                   >
-                  <span class="row-desc" data-i18n="work.influence.desc">
-                    Самопрактика: библиотека техник влияния, челленджи силы воли
-                    и статистика прогресса.
+                  <span class="work-sat-desc" data-i18n="work.influence.desc">Самопрактика: библиотека техник влияния, челленджи силы воли
+                    и статистика прогресса.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">iOS · Android</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">iOS · Android</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/psixologiya-shot.webp"
+                    alt="Психология влияния — техники, челленджи силы воли, статистика"
+                    data-i18n-attr="alt:work.influence.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.influence.task">
@@ -1140,18 +1321,18 @@
                   <span class="work-badge" data-i18n="work.badgePrivate"
                     >Приватный проект</span
                   >
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- Avtopark -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">10</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/avtopark-shot.webp"
                     alt="Avtopark — управление автопарком, медосмотр и техосмотр водителей"
                     data-i18n-attr="alt:work.avtopark.alt"
@@ -1159,26 +1340,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">10</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >Avtopark</span
                   >
-                  <span class="row-desc" data-i18n="work.avtopark.desc">
-                    Управление автопарком: медосмотр и техосмотр водителей,
-                    отчёты и ролевой доступ.
+                  <span class="work-sat-desc" data-i18n="work.avtopark.desc">Управление автопарком: медосмотр и техосмотр водителей,
+                    отчёты и ролевой доступ.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">iOS · Android</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">iOS · Android</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/avtopark-shot.webp"
+                    alt="Avtopark — управление автопарком, медосмотр и техосмотр водителей"
+                    data-i18n-attr="alt:work.avtopark.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.avtopark.task">
@@ -1217,18 +1404,18 @@
                       Google Play <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- Tildon Mobile -->
-          <article class="work-row" data-category="mobile">
+          <article class="work-row work-sat" data-category="mobile">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">11</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/tildonmobile-shot.webp"
                     alt="Tildon Mobile — приложение для изучения английского: грамматика, словарь, статистика"
                     data-i18n-attr="alt:work.tildonmobile.alt"
@@ -1236,26 +1423,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">11</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >Tildon Mobile</span
                   >
-                  <span class="row-desc" data-i18n="work.tildonmobile.desc">
-                    Мобильное приложение для изучения английского: грамматика,
-                    словарь, тесты, статистика.
+                  <span class="work-sat-desc" data-i18n="work.tildonmobile.desc">Мобильное приложение для изучения английского: грамматика,
+                    словарь, тесты, статистика.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">iOS · Android</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">iOS · Android</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/tildonmobile-shot.webp"
+                    alt="Tildon Mobile — приложение для изучения английского: грамматика, словарь, статистика"
+                    data-i18n-attr="alt:work.tildonmobile.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.tildonmobile.task">
@@ -1280,18 +1473,18 @@
                   <span class="work-badge" data-i18n="work.badgePrivate"
                     >Приватный проект</span
                   >
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- Tildon -->
-          <article class="work-row" data-category="web">
+          <article class="work-row work-sat" data-category="web">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">12</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/tildon-shot.webp"
                     alt="Tildon — веб-платформа для изучения английского"
                     data-i18n-attr="alt:work.tildon.alt"
@@ -1299,26 +1492,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">12</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >Tildon</span
                   >
-                  <span class="row-desc" data-i18n="work.tildon.desc">
-                    Веб-платформа для изучения английского: грамматика, словарь,
-                    тесты, listening.
+                  <span class="work-sat-desc" data-i18n="work.tildon.desc">Веб-платформа для изучения английского: грамматика, словарь,
+                    тесты, listening.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · Next.js</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Web · Next.js</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/tildon-shot.webp"
+                    alt="Tildon — веб-платформа для изучения английского"
+                    data-i18n-attr="alt:work.tildon.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.tildon.task">
@@ -1349,18 +1548,18 @@
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- VFX Timecode -->
-          <article class="work-row" data-category="web">
+          <article class="work-row work-sat" data-category="web">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">13</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/vfx-shot.webp"
                     alt="VFX Timecode — генератор таймкода для видеопродакшна"
                     data-i18n-attr="alt:work.vfx.alt"
@@ -1368,26 +1567,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">13</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >VFX Timecode</span
                   >
-                  <span class="row-desc" data-i18n="work.vfx.desc">
-                    Генератор таймкода для VFX и видеопродакшна: контроль FPS,
-                    fullscreen.
+                  <span class="work-sat-desc" data-i18n="work.vfx.desc">Генератор таймкода для VFX и видеопродакшна: контроль FPS,
+                    fullscreen.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · Tool</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Web · Tool</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/vfx-shot.webp"
+                    alt="VFX Timecode — генератор таймкода для видеопродакшна"
+                    data-i18n-attr="alt:work.vfx.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.vfx.task">
@@ -1418,18 +1623,18 @@
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- AiLogoEdit -->
-          <article class="work-row" data-category="web">
+          <article class="work-row work-sat" data-category="web">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">14</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/ailogoedit-shot.webp"
                     alt="AiLogoEdit — AI-генерация логотипов, иконок и визуалов"
                     data-i18n-attr="alt:work.ailogoedit.alt"
@@ -1437,26 +1642,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">14</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >AiLogoEdit</span
                   >
-                  <span class="row-desc" data-i18n="work.ailogoedit.desc">
-                    AI-генерация логотипов, иконок и визуалов: выбор стиля →
-                    описание → готовый результат.
+                  <span class="work-sat-desc" data-i18n="work.ailogoedit.desc">AI-генерация логотипов, иконок и визуалов: выбор стиля →
+                    описание → готовый результат.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · Next.js · AI</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Web · Next.js · AI</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/ailogoedit-shot.webp"
+                    alt="AiLogoEdit — AI-генерация логотипов, иконок и визуалов"
+                    data-i18n-attr="alt:work.ailogoedit.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.ailogoedit.task">
@@ -1488,18 +1699,18 @@
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- PixelVault -->
-          <article class="work-row" data-category="web">
+          <article class="work-row work-sat" data-category="web">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">15</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/pixelvault-shot.webp"
                     alt="PixelVault — онлайн-галерея для художников и фотографов"
                     data-i18n-attr="alt:work.pixelvault.alt"
@@ -1507,26 +1718,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">15</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >PixelVault</span
                   >
-                  <span class="row-desc" data-i18n="work.pixelvault.desc">
-                    Онлайн-галерея для художников и фотографов: альбомы,
-                    публикация работ, приватность.
+                  <span class="work-sat-desc" data-i18n="work.pixelvault.desc">Онлайн-галерея для художников и фотографов: альбомы,
+                    публикация работ, приватность.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · Next.js</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Web · Next.js</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/pixelvault-shot.webp"
+                    alt="PixelVault — онлайн-галерея для художников и фотографов"
+                    data-i18n-attr="alt:work.pixelvault.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.pixelvault.task">
@@ -1558,18 +1775,18 @@
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
                   </div>
+                  </div>
                 </div>
               </div>
             </details>
           </article>
 
           <!-- Monro -->
-          <article class="work-row" data-category="web">
+          <article class="work-row work-sat" data-category="web">
             <details>
-              <summary>
-                <span class="row-num" aria-hidden="true">16</span>
-                <span class="row-thumb">
-                  <img
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
                     src="screenshots/monro-shot.webp"
                     alt="Monro — лендинг body-массажа в Алматы"
                     data-i18n-attr="alt:work.monro.alt"
@@ -1577,26 +1794,32 @@
                     height="600"
                     loading="lazy"
                   />
+                  <span class="work-sat-ring" aria-hidden="true">16</span>
                 </span>
-                <span class="row-main">
-                  <span class="row-title" role="heading" aria-level="3"
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
                     >Monro</span
                   >
-                  <span class="row-desc" data-i18n="work.monro.desc">
-                    Лендинг body-массажа в Алматы: запись 24/7, услуги, отзывы,
-                    WhatsApp и звонок.
+                  <span class="work-sat-desc" data-i18n="work.monro.desc">Лендинг body-массажа в Алматы: запись 24/7, услуги, отзывы,
+                    WhatsApp и звонок.</span>
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · Landing</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
-                <span class="row-side">
-                  <span class="row-tag">Web · Landing</span>
-                  <span class="row-toggle" aria-hidden="true"
-                    ><i></i><i></i
-                  ></span>
-                </span>
               </summary>
-              <div class="row-expand">
-                <div class="row-expand-inner">
-                  <dl class="work-case">
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/monro-shot.webp"
+                    alt="Monro — лендинг body-массажа в Алматы"
+                    data-i18n-attr="alt:work.monro.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
                     <div>
                       <dt data-i18n="case.task">Задача</dt>
                       <dd data-i18n="work.monro.task">
@@ -1628,6 +1851,165 @@
                     >
                       Открыть сайт <span aria-hidden="true">↗</span>
                     </a>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- Super Tour (landing_test) -->
+          <article class="work-row work-sat" data-category="web">
+            <details>
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
+                    src="screenshots/supertour-shot.webp"
+                    alt="Super Tour — туры из Ташкента: Египет, ОАЭ, Таиланд, Вьетнам"
+                    data-i18n-attr="alt:work.supertour.alt"
+                    width="900"
+                    height="600"
+                    loading="lazy"
+                  />
+                  <span class="work-sat-ring" aria-hidden="true">17</span>
+                </span>
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
+                    >Super Tour</span
+                  >
+                  <span class="work-sat-desc" data-i18n="work.supertour.desc"
+                    >Лендинг туроператора из Ташкента: направления, горящие туры,
+                    заявка и WhatsApp.</span
+                  >
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · Landing</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </summary>
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/supertour-shot.webp"
+                    alt="Super Tour — туры из Ташкента: Египет, ОАЭ, Таиланд, Вьетнам"
+                    data-i18n-attr="alt:work.supertour.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
+                    <div>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.supertour.task">
+                        Яркий туристический лендинг, который быстро ведёт к заявке
+                        на подбор тура.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.supertour.solution">
+                        HTML/CSS/JS: hero, направления, горящие туры, FAQ, форма и
+                        dual CTA, motion, SEO, mobile-first.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.supertour.result">
+                        Запущен онлайн: supertour.uz.
+                      </dd>
+                    </div>
+                  </dl>
+                  <div class="work-links">
+                    <a
+                      class="work-link"
+                      href="https://supertour.uz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-i18n-html="work.openSite"
+                    >
+                      Открыть сайт <span aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- Olympic Almaty -->
+          <article class="work-row work-sat" data-category="web">
+            <details>
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img class="work-sat-img"
+                    src="screenshots/olympic-shot.webp"
+                    alt="OLYMPIC — премиум-лендинг body-массажа в Алматы"
+                    data-i18n-attr="alt:work.olympic.alt"
+                    width="900"
+                    height="600"
+                    loading="lazy"
+                  />
+                  <span class="work-sat-ring" aria-hidden="true">18</span>
+                </span>
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
+                    >OLYMPIC</span
+                  >
+                  <span class="work-sat-desc" data-i18n="work.olympic.desc"
+                    >Премиум-лендинг body-массажа в Алматы: приватный кабинет,
+                    мастера, WhatsApp-запись 24/7.</span
+                  >
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · Landing</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </summary>
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-shot" aria-hidden="true">
+                    <img class="work-sat-dock-img"
+                    src="screenshots/olympic-shot.webp"
+                    alt="OLYMPIC — премиум-лендинг body-массажа в Алматы"
+                    data-i18n-attr="alt:work.olympic.alt"
+                    loading="lazy"
+                  />
+                  </div>
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
+                    <div>
+                      <dt data-i18n="case.task">Задача</dt>
+                      <dd data-i18n="work.olympic.task">
+                        Кинематографичный премиум-лендинг, который ведёт в
+                        WhatsApp-запись без лишних форм.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="case.solution">Что сделал</dt>
+                      <dd data-i18n="work.olympic.solution">
+                        Одностраничный HTML/CSS/JS: hero-видео, мастера, сеансы,
+                        FAQ, dual CTA, motion, mobile-first.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="case.result">Результат</dt>
+                      <dd data-i18n="work.olympic.result">
+                        Запущен и доступен онлайн; клиент принял сдачу.
+                      </dd>
+                    </div>
+                  </dl>
+                  <div class="work-links">
+                    <a
+                      class="work-link"
+                      href="https://olympic-almaty.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-i18n-html="work.openSite"
+                    >
+                      Открыть сайт <span aria-hidden="true">↗</span>
+                    </a>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -1806,7 +2188,7 @@
     </footer>
 
     <div class="spotlight" id="spotlight" aria-hidden="true"></div>
-    <script defer src="assets/i18n.js?v=c53621aa73"></script>
-    <script src="assets/home.js?v=2e1e4cf4d5" defer></script>
+    <script defer src="assets/i18n.js?v=799bca0341"></script>
+    <script src="assets/home.js?v=fc2b15d4d0" defer></script>
   </body>
 </html>
