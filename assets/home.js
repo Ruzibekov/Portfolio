@@ -1,13 +1,7 @@
-// Mark JS active so CSS reveal applies (no-JS keeps everything visible).
 document.documentElement.classList.add('js')
 
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
-// ===== i18n =====
-// Russian markup in index.html is the source of truth. We snapshot it once
-// at load time, then swap textContent/innerHTML/attrs against that snapshot
-// (for 'ru') or against window.I18N[lang] (for 'en'/'uz'). Only leaf nodes
-// are ever touched — containers holding interactive children are untouched.
 const LANGS = ['ru', 'en', 'uz']
 const STORAGE_KEY = 'portfolio-lang'
 
@@ -15,9 +9,7 @@ const detectLang = () => {
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY)
     if (stored && LANGS.includes(stored)) return stored
-  } catch (err) {
-    // localStorage unavailable (private mode, disabled) — fall through.
-  }
+  } catch (err) {}
   const prefs =
     navigator.languages && navigator.languages.length
       ? navigator.languages
@@ -164,7 +156,6 @@ const setupI18n = () => {
   setLang(currentLang, false)
 }
 
-// Section reveal on scroll — cheap, transform/opacity only, native scroll.
 const setupReveal = () => {
   const targets = document.querySelectorAll('.reveal')
   if (reducedMotionQuery.matches) {
@@ -176,18 +167,26 @@ const setupReveal = () => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return
         entry.target.classList.add('is-visible')
+        const kids = entry.target.querySelectorAll(
+          ':scope > .reveal-item, .reveal-stagger > *',
+        )
+        kids.forEach((kid, i) => {
+          kid.style.setProperty('--d', String(i))
+        })
         observer.unobserve(entry.target)
       })
     },
-    { threshold: 0, rootMargin: '0px 0px -12% 0px' },
+    { threshold: 0.08, rootMargin: '0px 0px -10% 0px' },
   )
   targets.forEach((t) => observer.observe(t))
 }
 
-// Each ledger row reveals as it enters the viewport.
 const setupRowReveal = () => {
-  const rows = document.querySelectorAll('.work-ledger .work-row')
+  const rows = [...document.querySelectorAll('.work-ledger .work-row')]
   if (!rows.length) return
+  rows.forEach((row, i) => {
+    row.style.setProperty('--d', String(i % 6))
+  })
   if (reducedMotionQuery.matches) {
     rows.forEach((r) => r.classList.add('is-shown'))
     return
@@ -200,16 +199,29 @@ const setupRowReveal = () => {
         observer.unobserve(entry.target)
       })
     },
-    { threshold: 0, rootMargin: '0px 0px -8% 0px' },
+    { threshold: 0.08, rootMargin: '0px 0px -6% 0px' },
   )
   rows.forEach((r) => observer.observe(r))
 }
 
-// Ledger rows: animated expand/collapse for <details> via grid-template-rows.
-// The `toggle` listener also covers programmatic opens (find-in-page,
-// text fragments) that set the open attribute without a click.
 const setupLedger = () => {
-  document.querySelectorAll('.work-row details').forEach((details) => {
+  const grid = document.querySelector('#workGrid')
+  const items = [...document.querySelectorAll('.work-row details')]
+  if (!items.length) return
+
+  const syncFocus = () => {
+    if (!grid) return
+    let any = false
+    document.querySelectorAll('.work-sat').forEach((sat) => {
+      const open = sat.querySelector('details.is-open, details[open].is-open')
+      const on = !!open
+      sat.classList.toggle('is-focus', on)
+      if (on) any = true
+    })
+    grid.classList.toggle('is-focusing', any)
+  }
+
+  items.forEach((details) => {
     const summary = details.querySelector('summary')
     const expand = details.querySelector('.row-expand')
     if (!summary || !expand) return
@@ -224,13 +236,29 @@ const setupLedger = () => {
     }
 
     const openRow = () => {
+      items.forEach((other) => {
+        if (other === details) return
+        if (other.open || other.classList.contains('is-open')) {
+          other.classList.remove('is-open')
+          other.open = false
+        }
+      })
       cancelPendingClose()
       details.open = true
-      requestAnimationFrame(() => details.classList.add('is-open'))
+      requestAnimationFrame(() => {
+        details.classList.add('is-open')
+        syncFocus()
+        const sat = details.closest('.work-sat')
+        if (sat && !reducedMotionQuery.matches) {
+          const top = sat.getBoundingClientRect().top + window.scrollY - 96
+          window.scrollTo({ top, behavior: 'smooth' })
+        }
+      })
     }
 
     const closeRow = () => {
       details.classList.remove('is-open')
+      syncFocus()
       const finish = (event) => {
         if (
           event &&
@@ -241,6 +269,7 @@ const setupLedger = () => {
         if (details.classList.contains('is-open')) return
         cancelPendingClose()
         details.open = false
+        syncFocus()
       }
       onCloseEnd = finish
       expand.addEventListener('transitionend', finish)
@@ -248,7 +277,20 @@ const setupLedger = () => {
     }
 
     summary.addEventListener('click', (event) => {
-      if (reducedMotionQuery.matches) return
+      if (reducedMotionQuery.matches) {
+        requestAnimationFrame(() => {
+          if (details.open) {
+            items.forEach((other) => {
+              if (other !== details) {
+                other.open = false
+                other.classList.remove('is-open')
+              }
+            })
+          }
+          syncFocus()
+        })
+        return
+      }
       event.preventDefault()
       if (details.classList.contains('is-open')) closeRow()
       else openRow()
@@ -257,13 +299,28 @@ const setupLedger = () => {
     details.addEventListener('toggle', () => {
       if (details.open) {
         if (!details.classList.contains('is-open')) {
-          requestAnimationFrame(() => details.classList.add('is-open'))
+          requestAnimationFrame(() => {
+            details.classList.add('is-open')
+            syncFocus()
+          })
+        } else {
+          syncFocus()
         }
       } else {
         details.classList.remove('is-open')
         cancelPendingClose()
+        syncFocus()
       }
     })
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return
+    const open = document.querySelector('.work-row details.is-open')
+    if (!open) return
+    open.classList.remove('is-open')
+    open.open = false
+    syncFocus()
   })
 }
 
@@ -281,15 +338,25 @@ const setupFilter = () => {
       chip.setAttribute('aria-pressed', active ? 'true' : 'false')
     })
     let visible = 0
+    const grid = document.querySelector('#workGrid')
     rows.forEach((row) => {
       const categories = (row.dataset.category || '').split(' ')
       const show = next === 'all' || categories.includes(next)
       row.classList.toggle('is-hidden', !show)
+      if (!show) {
+        const details = row.querySelector('details')
+        if (details) {
+          details.open = false
+          details.classList.remove('is-open')
+        }
+        row.classList.remove('is-focus')
+      }
       if (show) {
         row.classList.add('is-shown')
         visible += 1
       }
     })
+    if (grid) grid.classList.remove('is-focusing')
     if (empty) empty.hidden = visible > 0
   }
 
@@ -306,7 +373,6 @@ const setupFilter = () => {
   })
 }
 
-// Rail: highlight the section currently in view.
 const setupRail = () => {
   const links = document.querySelectorAll('.rail a[data-rail]')
   const sections = document.querySelectorAll('[data-section]')
@@ -327,7 +393,6 @@ const setupRail = () => {
   sections.forEach((s) => observer.observe(s))
 }
 
-// Footer clock — Tashkent local time, updated every 30s.
 const setupClock = () => {
   const el = document.querySelector('[data-clock]')
   if (!el) return
@@ -345,8 +410,6 @@ const setupClock = () => {
   setInterval(tick, 30000)
 }
 
-// Mobile navigation: hamburger toggle with overlay panel, scrim/Esc close,
-// scroll-lock, focus trap (toggle stays reachable above the overlay), a11y.
 const setupMobileNav = () => {
   const toggle = document.querySelector('.nav-toggle')
   const menu = document.querySelector('.mobile-nav')
@@ -355,6 +418,22 @@ const setupMobileNav = () => {
   const firstLink = menu.querySelector('a')
   let lastFocused = null
 
+  const navLabel = (key, ruFallback) => {
+    const lang = document.documentElement.lang || 'ru'
+    if (lang === 'ru') return ruFallback
+    const dict = (window.I18N && window.I18N[lang]) || {}
+    return dict[key] || ruFallback
+  }
+
+  const syncToggleLabel = (isOpen) => {
+    toggle.setAttribute(
+      'aria-label',
+      isOpen
+        ? navLabel('mobileNav.closeLabel', 'Закрыть меню')
+        : navLabel('mobileNav.openLabel', 'Открыть меню'),
+    )
+  }
+
   const open = () => {
     lastFocused = document.activeElement
     menu.hidden = false
@@ -362,7 +441,7 @@ const setupMobileNav = () => {
       menu.classList.add('is-open')
       document.body.classList.add('nav-open')
       toggle.setAttribute('aria-expanded', 'true')
-      toggle.setAttribute('aria-label', 'Закрыть меню')
+      syncToggleLabel(true)
       if (firstLink) firstLink.focus({ preventScroll: true })
     })
   }
@@ -371,7 +450,7 @@ const setupMobileNav = () => {
     menu.classList.remove('is-open')
     document.body.classList.remove('nav-open')
     toggle.setAttribute('aria-expanded', 'false')
-    toggle.setAttribute('aria-label', 'Открыть меню')
+    syncToggleLabel(false)
     const finish = (event) => {
       if (event && event.target !== panel) return
       if (!menu.classList.contains('is-open')) menu.hidden = true
@@ -389,6 +468,9 @@ const setupMobileNav = () => {
   menu
     .querySelectorAll('[data-nav-close]')
     .forEach((el) => el.addEventListener('click', close))
+  window.addEventListener('portfolio:lang', () => {
+    syncToggleLabel(menu.classList.contains('is-open'))
+  })
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && menu.classList.contains('is-open')) close()
   })
@@ -459,7 +541,7 @@ const setupMagnetic = () => {
   if (reducedMotionQuery.matches) return
   if (window.matchMedia('(pointer: coarse)').matches) return
   document.querySelectorAll('[data-magnetic]').forEach((el) => {
-    const strength = 14
+    const strength = 8
     el.addEventListener('pointermove', (event) => {
       const rect = el.getBoundingClientRect()
       const x = event.clientX - rect.left - rect.width / 2
@@ -569,15 +651,20 @@ const setupFilterMotion = () => {
     chip.addEventListener('click', () => {
       chip.animate(
         [
-          { transform: 'scale(0.94)' },
-          { transform: 'scale(1.04)' },
-          { transform: 'scale(1)' },
+          { transform: 'scale(0.9)', offset: 0 },
+          { transform: 'scale(1.08)', offset: 0.45 },
+          { transform: 'scale(0.98)', offset: 0.75 },
+          { transform: 'scale(1)', offset: 1 },
         ],
-        { duration: 320, easing: 'cubic-bezier(0.22, 1.2, 0.36, 1)' },
+        { duration: 420, easing: 'cubic-bezier(0.22, 1.35, 0.36, 1)' },
       )
     })
   })
 }
+
+const setupCardMotion = () => {}
+
+const setupCountPulse = () => {}
 
 const setupScrollProgress = () => {
   const bar = document.querySelector('.scroll-progress > i')
@@ -600,7 +687,7 @@ const setupCounters = () => {
   const animate = (el) => {
     const target = Number(el.dataset.count)
     if (!Number.isFinite(target)) return
-    const duration = 1100
+    const duration = 1200
     const start = performance.now()
     const from = 0
     const step = (now) => {
@@ -628,11 +715,79 @@ const setupCounters = () => {
 
 const setupReceiptFloat = () => {
   if (reducedMotionQuery.matches) return
-  const receipt = document.querySelector('.receipt')
-  if (!receipt) return
+  const core = document.querySelector('.orbit-core')
+  if (!core) return
   window.setTimeout(() => {
-    receipt.classList.add('is-floating')
-  }, 1400)
+    core.classList.add('is-floating')
+  }, 900)
+}
+
+const setupStarfield = () => {
+  const canvas = document.getElementById('starfield')
+  if (!canvas || reducedMotionQuery.matches) return
+  const ctx = canvas.getContext('2d')
+  if (!ctx) return
+
+  let stars = []
+  let raf = 0
+  let w = 0
+  let h = 0
+  let dpr = 1
+  let frame = 0
+
+  const rebuild = () => {
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5)
+    w = window.innerWidth
+    h = window.innerHeight
+    canvas.width = Math.floor(w * dpr)
+    canvas.height = Math.floor(h * dpr)
+    canvas.style.width = `${w}px`
+    canvas.style.height = `${h}px`
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    const count = Math.min(70, Math.floor((w * h) / 28000))
+    stars = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.2 + 0.25,
+      a: Math.random() * 0.45 + 0.18,
+      s: Math.random() * 0.2 + 0.04,
+      p: Math.random() * Math.PI * 2,
+    }))
+  }
+
+  const draw = (t) => {
+    frame += 1
+    if (frame % 2 === 0) {
+      ctx.clearRect(0, 0, w, h)
+      const time = t * 0.001
+      for (const star of stars) {
+        const twinkle = 0.6 + 0.4 * Math.sin(time * star.s * 5 + star.p)
+        ctx.fillStyle = `rgba(180, 210, 255, ${star.a * twinkle})`
+        ctx.fillRect(star.x, star.y, star.r, star.r)
+      }
+    }
+    raf = requestAnimationFrame(draw)
+  }
+
+  rebuild()
+  raf = requestAnimationFrame(draw)
+  let resizeTimer = 0
+  window.addEventListener(
+    'resize',
+    () => {
+      window.clearTimeout(resizeTimer)
+      resizeTimer = window.setTimeout(rebuild, 120)
+    },
+    { passive: true },
+  )
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(raf)
+      raf = 0
+    } else if (!raf) {
+      raf = requestAnimationFrame(draw)
+    }
+  })
 }
 
 const CONTACT = {
@@ -741,7 +896,7 @@ const applyTheme = (theme) => {
   const next = theme === 'light' ? 'light' : 'dark'
   document.documentElement.setAttribute('data-theme', next)
   const meta = document.getElementById('themeColorMeta')
-  if (meta) meta.content = next === 'light' ? '#f2f0eb' : '#0f1217'
+  if (meta) meta.content = next === 'light' ? '#eef1f6' : '#05070d'
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
     const pressed = next === 'light'
     btn.setAttribute('aria-pressed', pressed ? 'true' : 'false')
@@ -791,9 +946,13 @@ setupRowReveal()
 setupLedger()
 setupFilter()
 setupFilterMotion()
+setupCardMotion()
 setupScrollProgress()
 setupCounters()
+setupCountPulse()
 setupReceiptFloat()
+setupStarfield()
+
 setupContactForm()
 setupRail()
 setupClock()

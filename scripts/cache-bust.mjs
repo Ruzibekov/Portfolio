@@ -1,9 +1,3 @@
-#!/usr/bin/env node
-// Cache-bust local CSS/JS assets in index.html by appending a content hash
-// query (?v=<hash>) to each reference. Same file content -> same hash (browser
-// keeps cache); changed content -> new hash (browser refetches). Runs at build
-// time, so the version is never stale and never forgotten.
-
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { dirname, resolve } from 'node:path'
@@ -12,7 +6,6 @@ import { fileURLToPath } from 'node:url'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const htmlPath = resolve(root, 'index.html')
 
-// Assets to version: local CSS/JS only (skip external URLs).
 const assetPattern = /(href|src)="(assets\/[^"?#]+\.(?:css|js))(?:\?v=[^"]*)?"/g
 
 const hashOf = (relPath) => {
