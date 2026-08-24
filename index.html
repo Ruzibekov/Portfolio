@@ -112,7 +112,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/home.css?v=575e5427bb" />
+    <link rel="stylesheet" href="assets/home.css?v=c22e30c433" />
 
     <script type="application/ld+json">
       {
@@ -135,13 +135,6 @@
   <body class="orbit-site">
     <a class="skip-link" href="#work" data-i18n="skip">Перейти к проектам</a>
 
-    <div class="ambient" aria-hidden="true">
-      <canvas class="starfield" id="starfield" width="1" height="1"></canvas>
-      <span class="ambient-orb ambient-orb--a"></span>
-      <span class="ambient-orb ambient-orb--b"></span>
-      <span class="ambient-orb ambient-orb--c"></span>
-      <span class="orbit-grid"></span>
-    </div>
     <div class="scroll-progress" aria-hidden="true"><i></i></div>
 
     <header class="site-header">
@@ -161,22 +154,10 @@
         aria-label="Основная навигация"
         data-i18n-attr="aria-label:nav.label"
       >
-        <a href="#systems"
-          ><i aria-hidden="true">01</i
-          ><span data-i18n="nav.stack">Услуги</span></a
-        >
-        <a href="#work"
-          ><i aria-hidden="true">02</i
-          ><span data-i18n="nav.cases">Работы</span></a
-        >
-        <a href="#process"
-          ><i aria-hidden="true">03</i
-          ><span data-i18n="nav.process">Как работаю</span></a
-        >
-        <a href="#contact"
-          ><i aria-hidden="true">04</i
-          ><span data-i18n="nav.contact">Написать</span></a
-        >
+        <a href="#systems"> <span data-i18n="nav.stack">Услуги</span></a>
+        <a href="#work"> <span data-i18n="nav.cases">Работы</span></a>
+        <a href="#process"> <span data-i18n="nav.process">Как работаю</span></a>
+        <a href="#contact"> <span data-i18n="nav.contact">Написать</span></a>
         <div
           class="lang-switch"
           role="group"
@@ -265,21 +246,17 @@
         aria-label="Мобильная навигация"
         data-i18n-attr="aria-label:mobileNav.panelLabel"
       >
-        <a href="#systems" data-nav-close
-          ><i aria-hidden="true">01</i
-          ><span data-i18n="nav.stack">Услуги</span></a
+        <a href="#systems" data-nav-close>
+          <span data-i18n="nav.stack">Услуги</span></a
         >
-        <a href="#work" data-nav-close
-          ><i aria-hidden="true">02</i
-          ><span data-i18n="nav.cases">Работы</span></a
+        <a href="#work" data-nav-close>
+          <span data-i18n="nav.cases">Работы</span></a
         >
-        <a href="#process" data-nav-close
-          ><i aria-hidden="true">03</i
-          ><span data-i18n="nav.process">Как работаю</span></a
+        <a href="#process" data-nav-close>
+          <span data-i18n="nav.process">Как работаю</span></a
         >
-        <a href="#contact" data-nav-close
-          ><i aria-hidden="true">04</i
-          ><span data-i18n="nav.contact">Написать</span></a
+        <a href="#contact" data-nav-close>
+          <span data-i18n="nav.contact">Написать</span></a
         >
         <a
           class="mobile-nav-cta"
@@ -351,19 +328,19 @@
       data-i18n-attr="aria-label:rail.label"
     >
       <a href="#top" data-rail="top" class="is-active"
-        ><i>00</i><span data-i18n="rail.intro">Интро</span></a
+        ><span data-i18n="rail.intro">Интро</span></a
       >
       <a href="#systems" data-rail="systems"
-        ><i>01</i><span data-i18n="nav.stack">Услуги</span></a
+        ><span data-i18n="nav.stack">Услуги</span></a
       >
       <a href="#work" data-rail="work"
-        ><i>02</i><span data-i18n="nav.cases">Работы</span></a
+        ><span data-i18n="nav.cases">Работы</span></a
       >
       <a href="#process" data-rail="process"
-        ><i>03</i><span data-i18n="nav.process">Как работаю</span></a
+        ><span data-i18n="nav.process">Как работаю</span></a
       >
       <a href="#contact" data-rail="contact"
-        ><i>04</i><span data-i18n="nav.contact">Написать</span></a
+        ><span data-i18n="nav.contact">Написать</span></a
       >
     </nav>
 
@@ -518,23 +495,6 @@
           </div>
         </div>
       </section>
-
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <div class="ticker-group">
-            <span>Приложения</span><span>Сайты</span><span>Кабинеты</span
-            ><span>Боты</span><span>Оплата</span><span>Уведомления</span
-            ><span>Карты</span><span>Магазины приложений</span
-            ><span>Автоматизация</span><span>Поддержка</span>
-          </div>
-          <div class="ticker-group">
-            <span>Приложения</span><span>Сайты</span><span>Кабинеты</span
-            ><span>Боты</span><span>Оплата</span><span>Уведомления</span
-            ><span>Карты</span><span>Магазины приложений</span
-            ><span>Автоматизация</span><span>Поддержка</span>
-          </div>
-        </div>
-      </div>
 
       <section
         class="section systems reveal"
@@ -2072,15 +2032,43 @@
         data-section="contact"
       >
         <div class="contact-inner">
-          <p class="eyebrow" data-i18n="contact.eyebrow">Связаться</p>
-          <h2 data-i18n-html="contact.title">
-            Напишите, что нужно — отвечу с
-            <em class="accent-em">оценкой</em>
-          </h2>
-          <p class="contact-lead" data-i18n="contact.lead">
-            Коротко опишите задачу. Кнопка откроет Telegram уже с вашим текстом
-            — останется только отправить.
-          </p>
+          <div class="contact-intro">
+            <p class="eyebrow" data-i18n="contact.eyebrow">Связаться</p>
+            <h2 data-i18n-html="contact.title">
+              Напишите, что нужно — отвечу с
+              <em class="accent-em">оценкой</em>
+            </h2>
+            <p class="contact-lead" data-i18n="contact.lead">
+              Коротко опишите задачу. Кнопка откроет Telegram уже с вашим
+              текстом — останется только отправить.
+            </p>
+            <ul class="contact-direct">
+              <li>
+                <span
+                  class="contact-direct-label"
+                  data-i18n="contact.directTelegram"
+                  >Telegram</span
+                >
+                <a
+                  href="https://t.me/ruzibekov_sh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >@ruzibekov_sh</a
+                >
+              </li>
+              <li>
+                <span
+                  class="contact-direct-label"
+                  data-i18n="contact.directEmail"
+                  >Почта</span
+                >
+                <a href="mailto:ruzibekov01@gmail.com">ruzibekov01@gmail.com</a>
+              </li>
+            </ul>
+            <p class="contact-note" data-i18n="contact.note">
+              Обычно отвечаю в тот же день.
+            </p>
+          </div>
 
           <form class="contact-form" id="contactForm" novalidate>
             <div class="contact-field">
@@ -2139,32 +2127,6 @@
               </button>
             </div>
           </form>
-
-          <p class="contact-or" data-i18n="contact.or">
-            Или сразу по готовой ссылке
-          </p>
-          <div class="contact-panel contact-quick">
-            <a
-              class="button ghost contact-quick-link"
-              href="https://t.me/ruzibekov_sh"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-magnetic
-              data-i18n="contact.openTelegram"
-            >
-              Telegram
-            </a>
-            <a
-              class="button ghost contact-quick-link"
-              href="mailto:ruzibekov01@gmail.com?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%81%20%D0%BF%D0%BE%D1%80%D1%82%D1%84%D0%BE%D0%BB%D0%B8%D0%BE"
-              data-magnetic
-              data-i18n="contact.openEmail"
-              >Почта</a
-            >
-          </div>
-          <p class="contact-note" data-i18n="contact.note">
-            Обычно отвечаю в тот же день.
-          </p>
         </div>
       </section>
     </main>
@@ -2178,9 +2140,9 @@
     </footer>
 
     <div class="spotlight" id="spotlight" aria-hidden="true"></div>
-    <script defer src="assets/i18n-en.js?v=766f2d2b95"></script>
-    <script defer src="assets/i18n-uz.js?v=a8543a6954"></script>
+    <script defer src="assets/i18n-en.js?v=d5031ceee9"></script>
+    <script defer src="assets/i18n-uz.js?v=769d7b3dc5"></script>
     <script defer src="assets/i18n.js?v=17b40b8af5"></script>
-    <script src="assets/home.js?v=d4091385b9" defer></script>
+    <script src="assets/home.js?v=ce1f38f96b" defer></script>
   </body>
 </html>

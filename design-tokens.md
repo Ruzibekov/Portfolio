@@ -1,8 +1,10 @@
-# Portfolio — 3D Orbit art direction
+# Portfolio — design tokens
 
 ## Positioning
 
-Shavkat Ruzibekov — product engineer portfolio. Vibe: **deep-space orbital desk** — shipped apps as satellites around a builder core. Not SaaS Linear, not generic indigo.
+Shavkat Ruzibekov — product engineer portfolio. Tone: quiet engineering, not a
+template landing. No decorative orbs, no marquee, no neon glow: hierarchy,
+typography and real project screenshots carry the page.
 
 ## Palette
 
@@ -12,11 +14,14 @@ Shavkat Ruzibekov — product engineer portfolio. Vibe: **deep-space orbital des
 | surface | `#0c1018` | `#f7f8fb` | cards         |
 | ink     | `#e8edf5` | `#10141c` | text          |
 | muted   | `#8b95a8` | `#5c6578` | secondary     |
-| accent  | `#1ecf9a` | `#0f9f74` | CTA / live    |
-| orbit   | `#4fd1ff` | `#1a8fb8` | rings / focus |
-| warm    | `#f0a73a` | `#c48420` | highlight     |
+| faint   | `#7c869a` | `#646d80` | tertiary      |
+| accent  | `#26b088` | `#0a7a58` | CTA / live    |
+| orbit   | `#6fc0dd` | `#0b5f7a` | lines / focus |
+| warm    | `#f0a73a` | `#96620f` | badges        |
 
-Accent ≠ indigo. Orbit cyan is secondary semantic (lines, focus), not CTA fill.
+Every text token clears WCAG AA (4.5:1) on its own surface in both themes;
+`faint` and light-theme `warm` are set from that requirement, not by eye.
+Accent is a muted green — saturated neon mint reads as an AI template.
 
 ## Type
 
@@ -28,19 +33,24 @@ Scale: 12 / 14 / 16 / 18 / 24 / 32 / 48 / 64 / clamp(hero)
 
 ## Radius
 
-4 / 10 / 16 / 24 / pill — nested: outer = inner + pad
+6 / 14 / 22 / pill — nested: outer = inner + pad
 
 ## Motion
 
 - micro 120ms, standard 260ms, large 480ms
 - ease: `cubic-bezier(0.22, 1, 0.36, 1)`
-- orbit spin 48s linear; counter-rotate satellites
-- reduced-motion: freeze orbits, static scene
+- hero title rises line by line above 640px; below that the headline is balanced
+  and shown without splitting
+- reduced-motion: every reveal resolves to its final state
 
-## Hero subject
+## Interaction
 
-3D CSS orbit scene: core = avatar receipt card; 2 elliptical rings; 6 project satellites with real screenshots. Pointer tilt + auto-rotate.
+- Touch targets ≥ 44px on every link, button, chip and summary
+- Focus ring on all tabbable elements; the section rail is markers only, its
+  labels stay in the accessibility tree
+- Contact: one form, one primary action, direct links as plain text
 
 ## Depth
 
-Starfield noise, layered radial glows, glass surfaces (`backdrop-filter`), multi-ring shadows with accent tint.
+Neutral shadows only. Surfaces separate with borders and elevation, never with
+accent-tinted halos.

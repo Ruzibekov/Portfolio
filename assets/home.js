@@ -576,7 +576,7 @@ const setupTilt = () => {
 }
 
 const splitHeroTitle = (h1) => {
-  if (!h1) return
+  if (!h1 || window.innerWidth < 640) return
   const html = h1.innerHTML.trim()
   const tokens = []
   const re = /(<[^>]+>)|([^<\s]+)|(\s+)/g
@@ -612,7 +612,7 @@ const splitHeroTitle = (h1) => {
       (line) =>
         `<span class="line"><span class="line-inner">${line.join(' ')}</span></span>`,
     )
-    .join('')
+    .join(' ')
 }
 
 const setupHeroMotion = () => {
@@ -720,74 +720,6 @@ const setupReceiptFloat = () => {
   window.setTimeout(() => {
     core.classList.add('is-floating')
   }, 900)
-}
-
-const setupStarfield = () => {
-  const canvas = document.getElementById('starfield')
-  if (!canvas || reducedMotionQuery.matches) return
-  const ctx = canvas.getContext('2d')
-  if (!ctx) return
-
-  let stars = []
-  let raf = 0
-  let w = 0
-  let h = 0
-  let dpr = 1
-  let frame = 0
-
-  const rebuild = () => {
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5)
-    w = window.innerWidth
-    h = window.innerHeight
-    canvas.width = Math.floor(w * dpr)
-    canvas.height = Math.floor(h * dpr)
-    canvas.style.width = `${w}px`
-    canvas.style.height = `${h}px`
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    const count = Math.min(70, Math.floor((w * h) / 28000))
-    stars = Array.from({ length: count }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 1.2 + 0.25,
-      a: Math.random() * 0.45 + 0.18,
-      s: Math.random() * 0.2 + 0.04,
-      p: Math.random() * Math.PI * 2,
-    }))
-  }
-
-  const draw = (t) => {
-    frame += 1
-    if (frame % 2 === 0) {
-      ctx.clearRect(0, 0, w, h)
-      const time = t * 0.001
-      for (const star of stars) {
-        const twinkle = 0.6 + 0.4 * Math.sin(time * star.s * 5 + star.p)
-        ctx.fillStyle = `rgba(180, 210, 255, ${star.a * twinkle})`
-        ctx.fillRect(star.x, star.y, star.r, star.r)
-      }
-    }
-    raf = requestAnimationFrame(draw)
-  }
-
-  rebuild()
-  raf = requestAnimationFrame(draw)
-  let resizeTimer = 0
-  window.addEventListener(
-    'resize',
-    () => {
-      window.clearTimeout(resizeTimer)
-      resizeTimer = window.setTimeout(rebuild, 120)
-    },
-    { passive: true },
-  )
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      cancelAnimationFrame(raf)
-      raf = 0
-    } else if (!raf) {
-      raf = requestAnimationFrame(draw)
-    }
-  })
 }
 
 const CONTACT = {
@@ -951,7 +883,6 @@ setupScrollProgress()
 setupCounters()
 setupCountPulse()
 setupReceiptFloat()
-setupStarfield()
 
 setupContactForm()
 setupRail()
