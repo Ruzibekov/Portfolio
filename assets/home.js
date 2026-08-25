@@ -1,15 +1,23 @@
+// Mark JS active so CSS reveal applies (no-JS keeps everything visible).
 document.documentElement.classList.add('js')
 
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
+// ===== i18n =====
+// Russian markup in index.html is the source of truth. We snapshot it once
+// at load time, then swap textContent/innerHTML/attrs against that snapshot
+// (for 'ru') or against window.I18N[lang] (for 'en'/'uz'). Only leaf nodes
+// are ever touched — containers holding interactive children are untouched.
 const LANGS = ['ru', 'en', 'uz']
-const STORAGE_KEY = 'portfolio-lang'
+const STORAGE_KEY = 'portfolio-anna-lang'
 
 const detectLang = () => {
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY)
     if (stored && LANGS.includes(stored)) return stored
-  } catch (err) {}
+  } catch (err) {
+    // localStorage unavailable (private mode, disabled) — fall through.
+  }
   const prefs =
     navigator.languages && navigator.languages.length
       ? navigator.languages
@@ -156,6 +164,7 @@ const setupI18n = () => {
   setLang(currentLang, false)
 }
 
+// Section reveal on scroll — cheap, transform/opacity only, native scroll.
 const setupReveal = () => {
   const targets = document.querySelectorAll('.reveal')
   if (reducedMotionQuery.matches) {
@@ -176,7 +185,7 @@ const setupReveal = () => {
         observer.unobserve(entry.target)
       })
     },
-    { threshold: 0.08, rootMargin: '0px 0px -10% 0px' },
+    { threshold: 0, rootMargin: '0px 0px -10% 0px' },
   )
   targets.forEach((t) => observer.observe(t))
 }
@@ -199,7 +208,7 @@ const setupRowReveal = () => {
         observer.unobserve(entry.target)
       })
     },
-    { threshold: 0.08, rootMargin: '0px 0px -6% 0px' },
+    { threshold: 0, rootMargin: '0px 0px -6% 0px' },
   )
   rows.forEach((r) => observer.observe(r))
 }
@@ -251,7 +260,7 @@ const setupLedger = () => {
         const sat = details.closest('.work-sat')
         if (sat && !reducedMotionQuery.matches) {
           const top = sat.getBoundingClientRect().top + window.scrollY - 96
-          window.scrollTo({ top, behavior: 'smooth' })
+          window.scrollTo({ top, behavior: 'auto' })
         }
       })
     }
@@ -330,6 +339,18 @@ const setupFilter = () => {
   const empty = document.querySelector('#workEmpty')
   if (!chips.length || !rows.length) return
 
+  const matches = (row, filter) =>
+    filter === 'all' || (row.dataset.category || '').split(' ').includes(filter)
+
+  chips.forEach((chip) => {
+    const badge = chip.querySelector('b')
+    if (!badge) return
+    const filter = chip.dataset.filter || 'all'
+    badge.textContent = String(
+      [...rows].filter((row) => matches(row, filter)).length,
+    )
+  })
+
   const applyFilter = (filter) => {
     const next = filter || 'all'
     chips.forEach((chip) => {
@@ -340,8 +361,7 @@ const setupFilter = () => {
     let visible = 0
     const grid = document.querySelector('#workGrid')
     rows.forEach((row) => {
-      const categories = (row.dataset.category || '').split(' ')
-      const show = next === 'all' || categories.includes(next)
+      const show = matches(row, next)
       row.classList.toggle('is-hidden', !show)
       if (!show) {
         const details = row.querySelector('details')
@@ -373,26 +393,6 @@ const setupFilter = () => {
   })
 }
 
-const setupRail = () => {
-  const links = document.querySelectorAll('.rail a[data-rail]')
-  const sections = document.querySelectorAll('[data-section]')
-  if (!links.length || !sections.length) return
-  const byName = new Map()
-  links.forEach((link) => byName.set(link.dataset.rail, link))
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        const link = byName.get(entry.target.dataset.section)
-        if (!link) return
-        links.forEach((l) => l.classList.toggle('is-active', l === link))
-      })
-    },
-    { rootMargin: '-45% 0px -45% 0px' },
-  )
-  sections.forEach((s) => observer.observe(s))
-}
-
 const setupClock = () => {
   const el = document.querySelector('[data-clock]')
   if (!el) return
@@ -410,6 +410,8 @@ const setupClock = () => {
   setInterval(tick, 30000)
 }
 
+// Mobile navigation: hamburger toggle with overlay panel, scrim/Esc close,
+// scroll-lock, focus trap (toggle stays reachable above the overlay), a11y.
 const setupMobileNav = () => {
   const toggle = document.querySelector('.nav-toggle')
   const menu = document.querySelector('.mobile-nav')
@@ -511,172 +513,10 @@ const setupAnchorScroll = () => {
     const top = target.getBoundingClientRect().top + window.scrollY - 88
     window.scrollTo({
       top,
-      behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
+      behavior: 'auto',
     })
     history.pushState(null, '', href)
   })
-}
-
-const setupSpotlight = () => {
-  const el = document.getElementById('spotlight')
-  if (!el || reducedMotionQuery.matches) return
-  if (window.matchMedia('(pointer: coarse)').matches) return
-  let on = false
-  const move = (event) => {
-    el.style.setProperty('--sx', `${event.clientX}px`)
-    el.style.setProperty('--sy', `${event.clientY}px`)
-    if (!on) {
-      el.classList.add('is-on')
-      on = true
-    }
-  }
-  window.addEventListener('pointermove', move, { passive: true })
-  document.addEventListener('pointerleave', () => {
-    el.classList.remove('is-on')
-    on = false
-  })
-}
-
-const setupMagnetic = () => {
-  if (reducedMotionQuery.matches) return
-  if (window.matchMedia('(pointer: coarse)').matches) return
-  document.querySelectorAll('[data-magnetic]').forEach((el) => {
-    const strength = 8
-    el.addEventListener('pointermove', (event) => {
-      const rect = el.getBoundingClientRect()
-      const x = event.clientX - rect.left - rect.width / 2
-      const y = event.clientY - rect.top - rect.height / 2
-      el.style.setProperty('--mx', `${(x / rect.width) * strength}px`)
-      el.style.setProperty('--my', `${(y / rect.height) * strength}px`)
-    })
-    el.addEventListener('pointerleave', () => {
-      el.style.setProperty('--mx', '0px')
-      el.style.setProperty('--my', '0px')
-    })
-  })
-}
-
-const setupTilt = () => {
-  if (reducedMotionQuery.matches) return
-  if (window.matchMedia('(pointer: coarse)').matches) return
-  document.querySelectorAll('[data-tilt]').forEach((el) => {
-    const max = el.classList.contains('receipt') ? 7 : 9
-    el.addEventListener('pointermove', (event) => {
-      const rect = el.getBoundingClientRect()
-      const px = (event.clientX - rect.left) / rect.width - 0.5
-      const py = (event.clientY - rect.top) / rect.height - 0.5
-      const rx = (-py * max).toFixed(2)
-      const ry = (px * max).toFixed(2)
-      el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translate3d(0,0,0)`
-    })
-    el.addEventListener('pointerleave', () => {
-      el.style.transform = ''
-    })
-  })
-}
-
-const splitHeroTitle = (h1) => {
-  if (!h1 || window.innerWidth < 640) return
-  const html = h1.innerHTML.trim()
-  const tokens = []
-  const re = /(<[^>]+>)|([^<\s]+)|(\s+)/g
-  let match
-  let open = ''
-  while ((match = re.exec(html))) {
-    if (match[1]) {
-      if (/^<\//.test(match[1])) {
-        open += match[1]
-        tokens.push(open)
-        open = ''
-      } else {
-        open = match[1]
-      }
-      continue
-    }
-    if (match[3]) {
-      if (open) open += match[3]
-      else if (tokens.length) tokens.push(' ')
-      continue
-    }
-    if (match[2]) {
-      if (open) open += match[2]
-      else tokens.push(match[2])
-    }
-  }
-  if (open) tokens.push(open)
-  const words = tokens.filter((t) => t && t !== ' ')
-  const mid = Math.max(1, Math.ceil(words.length / 2))
-  const lines = [words.slice(0, mid), words.slice(mid)].filter((l) => l.length)
-  h1.innerHTML = lines
-    .map(
-      (line) =>
-        `<span class="line"><span class="line-inner">${line.join(' ')}</span></span>`,
-    )
-    .join(' ')
-}
-
-const setupHeroMotion = () => {
-  const copy = document.querySelector('.hero-copy')
-  const stage = document.querySelector('.hero-stage')
-  const h1 = document.querySelector('.hero-copy h1')
-  if (!copy || !h1) return
-
-  const run = () => {
-    copy.classList.remove('is-ready')
-    if (stage) stage.classList.remove('is-ready')
-    if (!reducedMotionQuery.matches) {
-      splitHeroTitle(h1)
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          copy.classList.add('is-ready')
-          if (stage) stage.classList.add('is-ready')
-        })
-      })
-    } else {
-      copy.classList.add('is-ready')
-      if (stage) stage.classList.add('is-ready')
-    }
-  }
-
-  run()
-  window.addEventListener('portfolio:lang', () => {
-    window.setTimeout(run, 30)
-  })
-}
-
-const setupFilterMotion = () => {
-  if (reducedMotionQuery.matches) return
-  const chips = document.querySelectorAll('.filter-chip')
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      chip.animate(
-        [
-          { transform: 'scale(0.9)', offset: 0 },
-          { transform: 'scale(1.08)', offset: 0.45 },
-          { transform: 'scale(0.98)', offset: 0.75 },
-          { transform: 'scale(1)', offset: 1 },
-        ],
-        { duration: 420, easing: 'cubic-bezier(0.22, 1.35, 0.36, 1)' },
-      )
-    })
-  })
-}
-
-const setupCardMotion = () => {}
-
-const setupCountPulse = () => {}
-
-const setupScrollProgress = () => {
-  const bar = document.querySelector('.scroll-progress > i')
-  if (!bar) return
-  const update = () => {
-    const max = document.documentElement.scrollHeight - window.innerHeight
-    const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
-    bar.style.setProperty('--p', String(p))
-  }
-  update()
-  window.addEventListener('scroll', update, { passive: true })
-  window.addEventListener('resize', update, { passive: true })
 }
 
 const setupCounters = () => {
@@ -685,17 +525,21 @@ const setupCounters = () => {
   if (reducedMotionQuery.matches) return
 
   const animate = (el) => {
-    const target = Number(el.dataset.count)
+    const raw = el.dataset.count
+    const target = Number(raw)
     if (!Number.isFinite(target)) return
+    const dot = raw.indexOf('.')
+    const decimals = dot === -1 ? 0 : raw.length - dot - 1
+    const format = (value) => value.toFixed(decimals)
     const duration = 1200
     const start = performance.now()
     const from = 0
     const step = (now) => {
       const t = Math.min(1, (now - start) / duration)
       const eased = 1 - Math.pow(1 - t, 3)
-      el.textContent = String(Math.round(from + (target - from) * eased))
+      el.textContent = format(from + (target - from) * eased)
       if (t < 1) requestAnimationFrame(step)
-      else el.textContent = String(target)
+      else el.textContent = format(target)
     }
     requestAnimationFrame(step)
   }
@@ -713,23 +557,12 @@ const setupCounters = () => {
   nodes.forEach((n) => observer.observe(n))
 }
 
-const setupReceiptFloat = () => {
-  if (reducedMotionQuery.matches) return
-  const core = document.querySelector('.orbit-core')
-  if (!core) return
-  window.setTimeout(() => {
-    core.classList.add('is-floating')
-  }, 900)
-}
-
 const CONTACT = {
-  telegramUser: 'ruzibekov_sh',
-  email: 'ruzibekov01@gmail.com',
+  kworkUrl: 'https://kwork.ru/user/tashlanova',
 }
 
 const contactCopy = (key, lang) => {
   const ru = {
-    'contact.mailSubject': 'Заказ с портфолио',
     'contact.greeting': 'Здравствуйте! Меня зовут {name}.',
     'contact.greetingAnon': 'Здравствуйте!',
     'contact.errorRequired': 'Напишите кратко, что нужно сделать.',
@@ -766,13 +599,7 @@ const setupContactForm = () => {
   const messageField = messageInput
     ? messageInput.closest('.contact-field')
     : null
-  let lastChannel = 'telegram'
-
-  form.querySelectorAll('[data-channel]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      lastChannel = btn.dataset.channel || 'telegram'
-    })
-  })
+  const copyBtn = form.querySelector('[data-copy-brief]')
 
   const showError = (show) => {
     if (errorEl) errorEl.hidden = !show
@@ -780,30 +607,59 @@ const setupContactForm = () => {
     if (show && messageInput) messageInput.focus()
   }
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const channel =
-      (event.submitter && event.submitter.dataset.channel) || lastChannel
+  const getBody = () => {
     const name = nameInput ? nameInput.value : ''
+    const message = messageInput ? messageInput.value : ''
+    return buildContactMessage(name, message, currentLang())
+  }
+
+  const copyBody = async (body) => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(body)
+        return true
+      }
+    } catch (err) {}
+    return false
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
     const message = messageInput ? messageInput.value : ''
     if (!message.trim()) {
       showError(true)
       return
     }
     showError(false)
-    const lang = currentLang()
-    const body = buildContactMessage(name, message, lang)
-    if (channel === 'email') {
-      const subject = encodeURIComponent(
-        contactCopy('contact.mailSubject', lang),
-      )
-      const mailBody = encodeURIComponent(body)
-      window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${mailBody}`
-      return
-    }
-    const url = `https://t.me/${CONTACT.telegramUser}?text=${encodeURIComponent(body)}`
-    openExternal(url)
+    const body = getBody()
+    await copyBody(body)
+    openExternal(CONTACT.kworkUrl)
   })
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const message = messageInput ? messageInput.value : ''
+      if (!message.trim()) {
+        showError(true)
+        return
+      }
+      showError(false)
+      const body = getBody()
+      const ok = await copyBody(body)
+      if (ok) {
+        const prev = copyBtn.textContent
+        copyBtn.textContent =
+          currentLang() === 'uz'
+            ? 'Nusxalandi'
+            : currentLang() === 'en'
+              ? 'Copied'
+              : 'Скопировано'
+        window.setTimeout(() => {
+          copyBtn.textContent = prev
+        }, 1600)
+      }
+    })
+  }
 
   if (messageInput) {
     messageInput.addEventListener('input', () => {
@@ -812,7 +668,7 @@ const setupContactForm = () => {
   }
 }
 
-const THEME_KEY = 'portfolio-theme'
+const THEME_KEY = 'portfolio-anna-theme'
 
 const getPreferredTheme = () => {
   try {
@@ -828,7 +684,7 @@ const applyTheme = (theme) => {
   const next = theme === 'light' ? 'light' : 'dark'
   document.documentElement.setAttribute('data-theme', next)
   const meta = document.getElementById('themeColorMeta')
-  if (meta) meta.content = next === 'light' ? '#eef1f6' : '#05070d'
+  if (meta) meta.content = next === 'light' ? '#f6f7f8' : '#0f1112'
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
     const pressed = next === 'light'
     btn.setAttribute('aria-pressed', pressed ? 'true' : 'false')
@@ -859,32 +715,17 @@ const setupTheme = () => {
     }
     applyTheme(event.matches ? 'light' : 'dark')
   }
-  if (typeof mq.addEventListener === 'function') {
-    mq.addEventListener('change', onSystem)
-  } else if (typeof mq.addListener === 'function') {
-    mq.addListener(onSystem)
-  }
+  mq.addEventListener('change', onSystem)
 }
 
 setupTheme()
 setupI18n()
 setupAnchorScroll()
-setupSpotlight()
-setupMagnetic()
-setupTilt()
-setupHeroMotion()
 setupReveal()
 setupRowReveal()
 setupLedger()
 setupFilter()
-setupFilterMotion()
-setupCardMotion()
-setupScrollProgress()
 setupCounters()
-setupCountPulse()
-setupReceiptFloat()
-
 setupContactForm()
-setupRail()
 setupClock()
 setupMobileNav()

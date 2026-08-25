@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#0f1d14"/>
-  <rect x="1.5" y="1.5" width="61" height="61" rx="6.5" fill="none" stroke="#3fdd82" stroke-opacity="0.4" stroke-width="1.5"/>
-  <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
-        font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="600"
-        fill="#3fdd82" letter-spacing="-1">ШР</text>
+  <rect width="64" height="64" rx="12" fill="#1a121f"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="10.5" fill="none" stroke="#e878a8" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="32" y="34" text-anchor="middle" dominant-baseline="central"
+        font-family="Syne, 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="700"
+        fill="#e878a8" letter-spacing="-0.5">AT</text>
 </svg>

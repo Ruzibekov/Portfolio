@@ -1,56 +1,38 @@
-# Portfolio — design tokens
+# Portfolio Anna — soft eye-comfort rose
 
 ## Positioning
 
-Shavkat Ruzibekov — product engineer portfolio. Tone: quiet engineering, not a
-template landing. No decorative orbs, no marquee, no neon glow: hierarchy,
-typography and real project screenshots carry the page.
+Anna Tashlanova — turnkey developer. Calm editorial hire page. Palette: muted rose, low glare.
 
-## Palette
+## JTBD
 
-| Token   | Dark      | Light     | Role          |
-| ------- | --------- | --------- | ------------- |
-| bg      | `#05070d` | `#eef1f6` | page          |
-| surface | `#0c1018` | `#f7f8fb` | cards         |
-| ink     | `#e8edf5` | `#10141c` | text          |
-| muted   | `#8b95a8` | `#5c6578` | secondary     |
-| faint   | `#7c869a` | `#646d80` | tertiary      |
-| accent  | `#26b088` | `#0a7a58` | CTA / live    |
-| orbit   | `#6fc0dd` | `#0b5f7a` | lines / focus |
-| warm    | `#f0a73a` | `#96620f` | badges        |
+Kwork buyer → trust + cases in ~30s → message on Kwork.
 
-Every text token clears WCAG AA (4.5:1) on its own surface in both themes;
-`faint` and light-theme `warm` are set from that requirement, not by eye.
-Accent is a muted green — saturated neon mint reads as an AI template.
+## Palette (eye-comfort)
+
+| Token  | Dark      | Light     |
+| ------ | --------- | --------- |
+| accent | `#c4829e` | `#a86078` |
+| orbit  | `#9c8cbc` | `#766494` |
+| warm   | `#c49c80` | `#a87c60` |
+| bg     | `#17141a` | `#f4f0ed` |
+| ink    | `#e4dce2` | `#2e282c` |
 
 ## Type
 
-- Display: **Space Grotesk** 500–700, tracking tight on large sizes
-- Body: **Manrope** 400–600
-- Mono: **IBM Plex Mono** labels / rail
+Syne display · Outfit body · IBM Plex Mono labels
 
-Scale: 12 / 14 / 16 / 18 / 24 / 32 / 48 / 64 / clamp(hero)
+## UX v2 layout
 
-## Radius
-
-6 / 14 / 22 / pill — nested: outer = inner + pad
+- Pill header, no side rail
+- Hero: copy + profile stage
+- Trust strip: 5.0 / 19 / 15 + CTA
+- Services 3-up cards
+- Work 2-col scannable cards, sticky filters
+- Process 3 steps
+- Contact split form
+- Mobile sticky dock CTA
 
 ## Motion
 
-- micro 120ms, standard 260ms, large 480ms
-- ease: `cubic-bezier(0.22, 1, 0.36, 1)`
-- hero title rises line by line above 640px; below that the headline is balanced
-  and shown without splitting
-- reduced-motion: every reveal resolves to its final state
-
-## Interaction
-
-- Touch targets ≥ 44px on every link, button, chip and summary
-- Focus ring on all tabbable elements; the section rail is markers only, its
-  labels stay in the accessibility tree
-- Contact: one form, one primary action, direct links as plain text
-
-## Depth
-
-Neutral shadows only. Surfaces separate with borders and elevation, never with
-accent-tinted halos.
+Static mesh (no hue-shift), soft orbs only, reduced-motion safe

@@ -32,3 +32,6 @@ pf-*.png
 
 # Local QA screenshots
 .screenshots/
+
+# Python tooling cache
+.ruff_cache/
