@@ -284,6 +284,28 @@ window.I18N.en = {
   'contact.greeting': 'Hello! My name is {name}.',
   'contact.greetingAnon': 'Hello!',
 
+  'work.earth3d.alt':
+    'Earth 3D — photoreal Earth, the Sun and space in the browser',
+  'work.earth3d.desc':
+    'A maximally realistic 3D Earth in the browser: NASA textures, city lights, atmosphere and the Sun.',
+  'work.earth3d.task':
+    'A cinematic, real-time Earth rendered live in the browser — no video, no editing.',
+  'work.earth3d.solution':
+    'Three.js and GLSL shaders: day/night cycle, city lights, ocean sun glint with waves, atmospheric scattering, ESO Milky Way.',
+  'work.earth3d.result':
+    'Live on Vercel — fully interactive, with an orbit camera.',
+
+  'work.vertolyot.alt':
+    'Zarbdor vertolyot — browser 3D combat flight game',
+  'work.vertolyot.desc':
+    'A browser 3D game: an attack helicopter with real controls, HUD and air combat — no install.',
+  'work.vertolyot.task':
+    'A 3D game that runs in the browser: controls, enemies and steady FPS with no backend.',
+  'work.vertolyot.solution':
+    'Three.js/WebGL: procedural helicopter model, flight physics, enemy AI, terrain and audio — one static deploy.',
+  'work.vertolyot.result':
+    'Live on Vercel — vertolyot.vercel.app.',
+
   'footer.copyright': '© 2026 Shavkat Ruzibekov',
   'footer.city': 'Tashkent',
   'footer.role': 'Apps and websites, end to end',

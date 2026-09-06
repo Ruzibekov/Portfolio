@@ -296,6 +296,27 @@ window.I18N.uz = {
   'contact.greeting': 'Salom! Mening ismim {name}.',
   'contact.greetingAnon': 'Salom!',
 
+  'work.earth3d.alt': 'Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda',
+  'work.earth3d.desc':
+    'Brauzerda maksimal realistik 3D Yer: NASA teksturalari, shahar chiroqlari, atmosfera va Quyosh.',
+  'work.earth3d.task':
+    'Video va montajsiz, brauzerda real vaqtda kinematografik Yer sahnasi.',
+  'work.earth3d.solution':
+    'Three.js va GLSL shaderlar: kunduz/tun, shahar chiroqlari, toʻlqinli okean yaltirashi, atmosfera tarqalishi, ESO Milky Way.',
+  'work.earth3d.result':
+    'Vercelʼda jonli — orbita kamerasi bilan toʻliq interaktiv.',
+
+  'work.vertolyot.alt':
+    'Zarbdor vertolyot — brauzer 3D jangovar parvoz oʻyini',
+  'work.vertolyot.desc':
+    'Brauzer 3D oʻyin: hujum vertolyoti, real boshqaruv, HUD va havo jangi — oʻrnatmasdan.',
+  'work.vertolyot.task':
+    'Brauzerda ishlaydigan 3D oʻyin: boshqaruv, dushmanlar va barqaror FPS, bekendsiz.',
+  'work.vertolyot.solution':
+    'Three.js/WebGL: procedural vertolyot modeli, parvoz fizikasi, dushman AI, relyef va ovoz — bitta statik deploy.',
+  'work.vertolyot.result':
+    'Vercelʼda jonli — vertolyot.vercel.app.',
+
   'footer.copyright': '© 2026 Shavkat Ruzibekov',
   'footer.city': 'Toshkent',
   'footer.role': 'Ilova va saytlar boshidan oxirigacha',
