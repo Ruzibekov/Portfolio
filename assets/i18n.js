@@ -496,6 +496,26 @@ const DICT = {
     en: 'Live online: supertour.uz.',
     uz: 'Onlayn ishga tushgan: supertour.uz.',
   },
+  'work.vertolyot.alt': {
+    en: 'Zarbdor vertolyot — browser 3D combat flight game',
+    uz: 'Zarbdor vertolyot — brauzer 3D jangovar parvoz oʻyini',
+  },
+  'work.vertolyot.desc': {
+    en: 'A browser 3D game: an attack helicopter with real controls, HUD and air combat — no install.',
+    uz: 'Brauzer 3D oʻyin: hujum vertolyoti, real boshqaruv, HUD va havo jangi — oʻrnatmasdan.',
+  },
+  'work.vertolyot.task': {
+    en: 'A 3D game that runs in the browser: controls, enemies and steady FPS with no backend.',
+    uz: 'Brauzerda ishlaydigan 3D oʻyin: boshqaruv, dushmanlar va barqaror FPS, bekendsiz.',
+  },
+  'work.vertolyot.solution': {
+    en: 'Three.js/WebGL: procedural helicopter model, flight physics, enemy AI, terrain and audio — one static deploy.',
+    uz: 'Three.js/WebGL: procedural vertolyot modeli, parvoz fizikasi, dushman AI, relyef va ovoz — bitta statik deploy.',
+  },
+  'work.vertolyot.result': {
+    en: 'Live on Vercel — vertolyot.vercel.app.',
+    uz: 'Vercelʼda jonli — vertolyot.vercel.app.',
+  },
   'process.eyebrow': { en: 'How it goes', uz: 'Qanday ketadi' },
   'process.title': { en: 'Three simple steps', uz: 'Uch oddiy qadam' },
   'process.step1Title': { en: 'We discuss', uz: 'Muhokama' },
@@ -553,6 +573,26 @@ const DICT = {
   },
   'footer.city': { en: 'Tashkent', uz: 'Toshkent' },
   'footer.role': {
+    'work.earth3d.alt': {
+      en: 'Earth 3D — photoreal Earth, the Sun and space in the browser',
+      uz: 'Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda',
+    },
+    'work.earth3d.desc': {
+      en: 'A maximally realistic 3D Earth in the browser: NASA textures, city lights, atmosphere and the Sun.',
+      uz: 'Brauzerda maksimal realistik 3D Yer: NASA teksturalari, shahar chiroqlari, atmosfera va Quyosh.',
+    },
+    'work.earth3d.task': {
+      en: 'A cinematic, real-time Earth rendered live in the browser — no video, no editing.',
+      uz: 'Video va montajsiz, brauzerda real vaqtda kinematografik Yer sahnasi.',
+    },
+    'work.earth3d.solution': {
+      en: 'Three.js and GLSL shaders: day/night cycle, city lights, ocean sun glint with waves, atmospheric scattering, ESO Milky Way.',
+      uz: 'Three.js va GLSL shaderlar: kunduz/tun, shahar chiroqlari, toʻlqinli okean yaltirashi, atmosfera tarqalishi, ESO Milky Way.',
+    },
+    'work.earth3d.result': {
+      en: 'Live on Vercel — fully interactive, with an orbit camera.',
+      uz: 'Vercelʼda jonli — orbita kamerasi bilan toʻliq interaktiv.',
+    },
     en: 'Apps and websites, end to end',
     uz: 'Ilova va saytlar boshidan oxirigacha',
   },

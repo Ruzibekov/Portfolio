@@ -113,7 +113,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/app.css?v=1de84fb70d" />
+    <link rel="stylesheet" href="assets/app.css" />
 
     <script type="application/ld+json">
       {
@@ -484,7 +484,7 @@
             data-filter="all"
             aria-pressed="true"
           >
-            <span data-i18n="filter.all">Все</span> <b>18</b>
+            <span data-i18n="filter.all">Все</span> <b>20</b>
           </button>
           <button
             class="filter-chip"
@@ -500,7 +500,7 @@
             data-filter="web"
             aria-pressed="false"
           >
-            <span data-i18n="filter.web">Сайты</span> <b>7</b>
+            <span data-i18n="filter.web">Сайты</span> <b>9</b>
           </button>
           <button
             class="filter-chip"
@@ -1699,6 +1699,144 @@
               </div>
             </details>
           </article>
+
+          <article class="work-row work-sat" data-category="web">
+            <details>
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img
+                    class="work-sat-img"
+                    src="screenshots/earth-shot.webp"
+                    alt="Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda"
+                    data-i18n-attr="alt:work.earth3d.alt"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
+                    >Yer 3D — Earth Cosmos</span
+                  >
+                  <span class="work-sat-desc" data-i18n="work.earth3d.desc"
+                    >Максимально реалистичная 3D-Земля в браузере:
+                    NASA-текстуры, огни городов, атмосфера и Солнце.</span
+                  >
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · 3D</span>
+                  </span>
+                </span>
+              </summary>
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
+                      <div>
+                        <dt data-i18n="case.task">Задача</dt>
+                        <dd data-i18n="work.earth3d.task">
+                          Кинематографичная Земля в реальном времени прямо в
+                          браузере — без видео и монтажа.
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="case.solution">Что сделано</dt>
+                        <dd data-i18n="work.earth3d.solution">
+                          Three.js и GLSL-шейдеры: день/ночь, огни городов,
+                          блики океана с волнами, рассеяние атмосферы, Млечный
+                          Путь ESO.
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="case.result">Результат</dt>
+                        <dd data-i18n="work.earth3d.result">
+                          Живой сайт на Vercel — полностью интерактивный, с
+                          орбитальной камерой.
+                        </dd>
+                      </div>
+                    </dl>
+                    <div class="work-links">
+                      <a
+                        class="work-link"
+                        href="https://earth-cosmos.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live <span aria-hidden="true">↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <article class="work-row work-sat" data-category="web">
+            <details>
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img
+                    class="work-sat-img"
+                    src="screenshots/vertolyot-shot.webp"
+                    alt="Zarbdor vertolyot — браузерная 3D-игра"
+                    data-i18n-attr="alt:work.vertolyot.alt"
+                    width="900"
+                    height="600"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
+                    >Zarbdor vertolyot</span
+                  >
+                  <span class="work-sat-desc" data-i18n="work.vertolyot.desc"
+                    >Браузерная 3D-игра: боевой вертолёт, реальное управление,
+                    HUD и воздушный бой — без установки.</span
+                  >
+                  <span class="work-sat-meta">
+                    <span class="work-sat-tag">Web · 3D</span>
+                    <span class="work-sat-open" aria-hidden="true">↗</span>
+                  </span>
+                </span>
+              </summary>
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
+                      <div>
+                        <dt data-i18n="case.task">Задача</dt>
+                        <dd data-i18n="work.vertolyot.task">
+                          Запускаемая в браузере 3D-игра: управление,
+                          противники и стабильный FPS без бэкенда.
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="case.solution">Что сделано</dt>
+                        <dd data-i18n="work.vertolyot.solution">
+                          Three.js/WebGL: процедурная модель вертолёта, физика
+                          полёта, ИИ противников, ландшафт и звук — один
+                          статический деплой.
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="case.result">Результат</dt>
+                        <dd data-i18n="work.vertolyot.result">
+                          Живой сайт на Vercel — vertolyot.vercel.app.
+                        </dd>
+                      </div>
+                    </dl>
+                    <div class="work-links">
+                      <a
+                        class="work-link"
+                        href="https://vertolyot.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live <span aria-hidden="true">↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </article>
         </div>
         <p class="work-empty" id="workEmpty" data-i18n="work.empty" hidden>
           В этой категории пока нет проектов.
@@ -1843,7 +1981,7 @@
       >
     </div>
 
-    <script defer src="assets/i18n.js?v=58d167e80c"></script>
-    <script src="assets/home.js?v=85dfcd1907" defer></script>
+    <script defer src="assets/i18n.js"></script>
+    <script src="assets/home.js" defer></script>
   </body>
 </html>
