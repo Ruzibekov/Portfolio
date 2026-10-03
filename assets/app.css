@@ -262,8 +262,8 @@ button {
 }
 
 .lang-switch button {
-  min-width: 40px;
-  min-height: 38px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 0 8px;
   border: 0;
   border-radius: 5px;
@@ -604,6 +604,15 @@ html[data-theme='light'] .icon-moon {
   align-items: start;
 }
 
+.work-row:has(summary:focus-visible) {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
+
+.work-row summary:focus-visible {
+  outline: none;
+}
+
 .work-row {
   border: 1px solid var(--line);
   border-radius: var(--r-l);
@@ -829,7 +838,7 @@ html[data-theme='light'] .icon-moon {
 
 .contact-field input::placeholder,
 .contact-field textarea::placeholder {
-  color: color-mix(in srgb, var(--muted) 78%, var(--surface));
+  color: var(--muted);
 }
 
 .contact-field input:focus,
@@ -928,35 +937,6 @@ html[data-theme='light'] .icon-moon {
 .mobile-dock-btn.primary {
   background: var(--accent);
   color: var(--accent-ink);
-}
-
-html.js .reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 320ms var(--ease),
-    transform 320ms var(--ease);
-}
-
-html.js .reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-html.js .work-row {
-  opacity: 0;
-  transform: translateY(10px);
-  transition:
-    opacity 260ms var(--ease),
-    transform 260ms var(--ease),
-    border-color var(--t) var(--ease),
-    box-shadow var(--t) var(--ease);
-  transition-delay: calc(var(--d, 0) * 45ms);
-}
-
-html.js .work-row.is-shown {
-  opacity: 1;
-  transform: none;
 }
 
 @media (max-width: 1080px) {

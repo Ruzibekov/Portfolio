@@ -1,6 +1,3 @@
-// Mark JS active so CSS reveal applies (no-JS keeps everything visible).
-document.documentElement.classList.add('js')
-
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 // ===== i18n =====
@@ -164,55 +161,6 @@ const setupI18n = () => {
   setLang(currentLang, false)
 }
 
-// Section reveal on scroll — cheap, transform/opacity only, native scroll.
-const setupReveal = () => {
-  const targets = document.querySelectorAll('.reveal')
-  if (reducedMotionQuery.matches) {
-    targets.forEach((t) => t.classList.add('is-visible'))
-    return
-  }
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        entry.target.classList.add('is-visible')
-        const kids = entry.target.querySelectorAll(
-          ':scope > .reveal-item, .reveal-stagger > *',
-        )
-        kids.forEach((kid, i) => {
-          kid.style.setProperty('--d', String(i))
-        })
-        observer.unobserve(entry.target)
-      })
-    },
-    { threshold: 0, rootMargin: '0px 0px -10% 0px' },
-  )
-  targets.forEach((t) => observer.observe(t))
-}
-
-const setupRowReveal = () => {
-  const rows = [...document.querySelectorAll('.work-ledger .work-row')]
-  if (!rows.length) return
-  rows.forEach((row, i) => {
-    row.style.setProperty('--d', String(i % 6))
-  })
-  if (reducedMotionQuery.matches) {
-    rows.forEach((r) => r.classList.add('is-shown'))
-    return
-  }
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        entry.target.classList.add('is-shown')
-        observer.unobserve(entry.target)
-      })
-    },
-    { threshold: 0, rootMargin: '0px 0px -6% 0px' },
-  )
-  rows.forEach((r) => observer.observe(r))
-}
-
 const setupLedger = () => {
   const grid = document.querySelector('#workGrid')
   const items = [...document.querySelectorAll('.work-row details')]
@@ -371,10 +319,7 @@ const setupFilter = () => {
         }
         row.classList.remove('is-focus')
       }
-      if (show) {
-        row.classList.add('is-shown')
-        visible += 1
-      }
+      if (show) visible += 1
     })
     if (grid) grid.classList.remove('is-focusing')
     if (empty) empty.hidden = visible > 0
@@ -543,6 +488,7 @@ const setupContactForm = () => {
   const showError = (show) => {
     if (errorEl) errorEl.hidden = !show
     if (messageField) messageField.classList.toggle('is-invalid', show)
+    if (messageInput) messageInput.setAttribute('aria-invalid', String(show))
     if (show && messageInput) messageInput.focus()
   }
 
@@ -660,8 +606,6 @@ const setupTheme = () => {
 setupTheme()
 setupI18n()
 setupAnchorScroll()
-setupReveal()
-setupRowReveal()
 setupLedger()
 setupFilter()
 setupContactForm()

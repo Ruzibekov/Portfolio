@@ -260,7 +260,8 @@
             stroke-linecap="round"
             aria-hidden="true"
           >
-            <path d="M6 6l12 12M18 6L6 18" />
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
           </svg>
         </button>
         <a href="#work" data-nav-close
@@ -340,7 +341,7 @@
 
     <main id="top">
       <section class="hero section" data-section="top">
-        <div class="hero-copy reveal">
+        <div class="hero-copy">
           <h1 data-i18n-html="hero.title">
             Делаю приложения, сайты и Telegram-ботов
           </h1>
@@ -359,7 +360,7 @@
           </div>
         </div>
 
-        <div class="hero-stage reveal">
+        <div class="hero-stage">
           <aside
             class="profile"
             aria-label="Профиль на фриланс-биржах"
@@ -406,7 +407,7 @@
         </div>
       </section>
 
-      <section class="section work reveal" id="work" data-section="work">
+      <section class="section work" id="work" data-section="work">
         <div class="section-head">
           <h2 data-i18n="work.title">Работы</h2>
           <p class="section-sub" data-i18n="work.sub">
@@ -443,14 +444,6 @@
             aria-pressed="false"
           >
             <span data-i18n="filter.web">Сайты</span> <b>9</b>
-          </button>
-          <button
-            class="filter-chip"
-            type="button"
-            data-filter="backend"
-            aria-pressed="false"
-          >
-            <span data-i18n="filter.backend">Боты</span> <b>1</b>
           </button>
         </div>
 
@@ -642,7 +635,8 @@
                       <div>
                         <dt data-i18n="case.result">Результат</dt>
                         <dd data-i18n="work.mynails.result">
-                          Готовое приложение с предсказуемым UX.
+                          Приложение готово: генерация дизайна и предпросмотр
+                          результата.
                         </dd>
                       </div>
                     </dl>
@@ -674,8 +668,7 @@
                     >ALTN Chat</span
                   >
                   <span class="work-sat-desc" data-i18n="work.altn.desc"
-                    >Мессенджер с реалтайм-чатом и ИИ-сценариями, плавный
-                    UX.</span
+                    >Мессенджер с реалтайм-чатом и ИИ-сценариями.</span
                   >
                   <span class="work-sat-meta">
                     <span class="work-sat-tag">Mobile · Realtime</span>
@@ -755,7 +748,8 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.wegotrip.task">
-                          Стабильный релиз и поддерживаемость.
+                          Выпустить стабильную версию, чтобы код было легко
+                          дорабатывать.
                         </dd>
                       </div>
                       <div>
@@ -952,7 +946,7 @@
                       <div>
                         <dt data-i18n="case.result">Результат</dt>
                         <dd data-i18n="work.wallpapers.result">
-                          Плавный интерфейс с упором на скорость.
+                          Категории и превью открываются быстро.
                         </dd>
                       </div>
                     </dl>
@@ -1318,8 +1312,8 @@
                     >AiLogoEdit</span
                   >
                   <span class="work-sat-desc" data-i18n="work.ailogoedit.desc"
-                    >AI-генерация логотипов, иконок и визуалов: выбор стиля →
-                    описание → готовый результат.</span
+                    >AI-генерация логотипов, иконок и визуалов: выбираете стиль,
+                    описываете идею, получаете результат.</span
                   >
                   <span class="work-sat-meta">
                     <span class="work-sat-tag">Web · Next.js · AI</span>
@@ -1469,8 +1463,8 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.monro.task">
-                          Спокойный премиум-лендинг, который ведёт на запись без
-                          лишних шагов.
+                          Лендинг, с которого клиент записывается без лишних
+                          шагов.
                         </dd>
                       </div>
                       <div>
@@ -1538,8 +1532,8 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.supertour.task">
-                          Яркий туристический лендинг, который быстро ведёт к
-                          заявке на подбор тура.
+                          Лендинг, с которого быстро оставляют заявку на подбор
+                          тура.
                         </dd>
                       </div>
                       <div>
@@ -1580,7 +1574,7 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/olympic-shot.webp"
-                    alt="OLYMPIC — премиум-лендинг body-массажа в Алматы"
+                    alt="OLYMPIC, лендинг body-массажа в Алматы"
                     data-i18n-attr="alt:work.olympic.alt"
                     width="900"
                     height="600"
@@ -1592,8 +1586,8 @@
                     >OLYMPIC</span
                   >
                   <span class="work-sat-desc" data-i18n="work.olympic.desc"
-                    >Премиум-лендинг body-массажа в Алматы: приватный кабинет,
-                    мастера, WhatsApp-запись 24/7.</span
+                    >Лендинг body-массажа в Алматы: приватный кабинет, мастера,
+                    WhatsApp-запись 24/7.</span
                   >
                   <span class="work-sat-meta">
                     <span class="work-sat-tag">Web · Landing</span>
@@ -1607,8 +1601,8 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.olympic.task">
-                          Кинематографичный премиум-лендинг, который ведёт в
-                          WhatsApp-запись без лишних форм.
+                          Лендинг, который ведёт в WhatsApp-запись без лишних
+                          форм.
                         </dd>
                       </div>
                       <div>
@@ -1649,7 +1643,7 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/earth-shot.webp"
-                    alt="Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda"
+                    alt="Earth Cosmos: Земля, Солнце и космос в браузере"
                     data-i18n-attr="alt:work.earth3d.alt"
                     loading="lazy"
                   />
@@ -1784,16 +1778,13 @@
         </p>
       </section>
 
-      <section
-        class="contact section reveal"
-        id="contact"
-        data-section="contact"
-      >
+      <section class="contact section" id="contact" data-section="contact">
         <div class="contact-inner">
           <h2 data-i18n-html="contact.title">Расскажите о задаче</h2>
           <p class="contact-lead" data-i18n="contact.lead">
             До старта назову срок и стоимость, а по ходу работы показываю
-            промежуточные версии. Кнопка откроет Kwork с вашим текстом.
+            промежуточные версии. Кнопка скопирует текст и откроет мой профиль
+            на Kwork.
           </p>
 
           <form class="contact-form" id="contactForm" novalidate>

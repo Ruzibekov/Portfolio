@@ -68,7 +68,7 @@ describe('work filter', () => {
   test('selecting a chip shows exactly the promised projects', async () => {
     await withPage({}, async (page) => {
       await scrollThrough(page)
-      for (const filter of ['mobile', 'web', 'backend', 'all']) {
+      for (const filter of ['mobile', 'web', 'all']) {
         await page.click(`.filter-chip[data-filter="${filter}"]`)
         await page.waitForTimeout(250)
         const result = await page.evaluate((current) => {
@@ -95,43 +95,39 @@ describe('work filter', () => {
   })
 })
 
-describe('reveal', () => {
-  test('every revealed section becomes visible while scrolling', async () => {
+describe('visibility', () => {
+  test('every section and project is visible without scrolling', async () => {
     for (const [width, height] of [
       [1440, 900],
       [390, 844],
     ]) {
       await withPage({ width, height }, async (page) => {
-        await scrollThrough(page)
         const hidden = await page.evaluate(() =>
-          [...document.querySelectorAll('.reveal')]
-            .filter((el) => !el.classList.contains('is-visible'))
+          [
+            ...document.querySelectorAll(
+              'main > section, main > section > div, #workGrid .work-row',
+            ),
+          ]
+            .filter((el) => Number(getComputedStyle(el).opacity) < 1)
             .map((el) => el.id || el.className),
         )
-        assert.deepEqual(hidden, [], `hidden sections at ${width}px`)
+        assert.deepEqual(hidden, [], `hidden content at ${width}px`)
       })
     }
   })
 
-  test('reduced motion shows every project row immediately', async () => {
-    await withPage({ reducedMotion: 'reduce' }, async (page) => {
-      const state = await page.evaluate(() => ({
-        rows: document.querySelectorAll('#workGrid .work-row').length,
-        shown: document.querySelectorAll('#workGrid .work-row.is-shown').length,
-        lingering: document
-          .getAnimations()
-          .filter((animation) => {
-            if (animation.playState !== 'running') return false
-            const timing = animation.effect && animation.effect.getTiming()
-            if (!timing) return false
-            return (
-              timing.iterations === Infinity || Number(timing.duration) > 100
-            )
-          })
-          .map((animation) => animation.animationName || 'transition'),
-      }))
-      assert.equal(state.shown, state.rows)
-      assert.deepEqual(state.lingering, [], 'motion still runs when reduced')
+  test('a focused project card shows a visible focus ring', async () => {
+    await withPage({}, async (page) => {
+      await page.focus('#workGrid .work-row summary')
+      await page.keyboard.press('Shift+Tab')
+      await page.keyboard.press('Tab')
+      const ring = await page.evaluate(() => {
+        const row = document.activeElement.closest('.work-row')
+        const style = getComputedStyle(row)
+        return { style: style.outlineStyle, width: style.outlineWidth }
+      })
+      assert.equal(ring.style, 'solid')
+      assert.equal(ring.width, '2px')
     })
   })
 })

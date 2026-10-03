@@ -90,7 +90,6 @@ const DICT = {
   'filter.all': { en: 'All', uz: 'Barchasi' },
   'filter.mobile': { en: 'Phone', uz: 'Telefon' },
   'filter.web': { en: 'Websites', uz: 'Saytlar' },
-  'filter.backend': { en: 'Bots', uz: 'Botlar' },
   'work.besttracker.alt': {
     en: 'Best Tracker — live location and QR group invites',
     uz: 'Best Tracker — jonli joylashuv va QR orqali guruhga taklif',
@@ -148,16 +147,16 @@ const DICT = {
     uz: 'Flutter + rasm generatsiyasi, tezkor oldindan koʻrish.',
   },
   'work.mynails.result': {
-    en: 'A finished app with an intuitive user flow.',
-    uz: 'Qulay va tushunarli UX bilan tayyor ilova.',
+    en: 'The app is finished: design generation with a result preview.',
+    uz: "Ilova tayyor: dizayn generatsiyasi va natijani oldindan ko'rish.",
   },
   'work.altn.alt': {
     en: 'ALTN Chat — real-time messenger with AI scenarios',
     uz: 'ALTN Chat — AI ssenariyli real vaqtdagi messenjer',
   },
   'work.altn.desc': {
-    en: 'Messenger with real-time chat and AI scenarios, smooth UX.',
-    uz: 'Real vaqtdagi chat va AI ssenariylariga ega messenjer, silliq UX.',
+    en: 'Messenger with real-time chat and AI scenarios.',
+    uz: 'Real vaqtdagi chat va AI ssenariylariga ega messenjer.',
   },
   'work.altn.task': {
     en: 'A fast chat with AI features.',
@@ -180,8 +179,8 @@ const DICT = {
     uz: 'Audiogidlar va turlar: sayohatlar uchun native Android ilova.',
   },
   'work.wegotrip.task': {
-    en: 'A stable release with long-term maintainability.',
-    uz: 'Barqaror reliz va oson qoʻllab-quvvatlanadigan kod.',
+    en: 'Ship a stable version with code that is easy to extend.',
+    uz: 'Barqaror versiya chiqarish, kodni oson davom ettirish.',
   },
   'work.wegotrip.solution': {
     en: 'Native Kotlin, clean architecture.',
@@ -248,8 +247,8 @@ const DICT = {
     uz: 'Kotlin, Material UI, keshlash.',
   },
   'work.wallpapers.result': {
-    en: 'A smooth interface focused on speed.',
-    uz: 'Tezlikka qaratilgan silliq interfeys.',
+    en: 'Categories and previews open quickly.',
+    uz: "Toifalar va preview'lar tez ochiladi.",
   },
   'work.influence.title': {
     en: 'Psychology of Influence',
@@ -360,8 +359,8 @@ const DICT = {
     uz: 'AiLogoEdit — AI orqali logotip, ikonka va vizuallar yaratish',
   },
   'work.ailogoedit.desc': {
-    en: 'AI generation of logos, icons and visuals: pick a style → describe it → get the result.',
-    uz: 'AI orqali logotip, ikonka va vizuallar yaratish: stil tanlash → tavsif → tayyor natija.',
+    en: 'AI generation of logos, icons and visuals: pick a style, describe the idea, get the result.',
+    uz: "AI orqali logotip, ikonka va vizuallar: stil tanlaysiz, g'oyani yozasiz, natijani olasiz.",
   },
   'work.ailogoedit.task': {
     en: 'Create brand visuals from text, fast.',
@@ -404,8 +403,8 @@ const DICT = {
     uz: 'Almatidagi body-massaj landingi: 24/7 yozilish, xizmatlar, sharhlar, WhatsApp va qoʻngʻiroq.',
   },
   'work.monro.task': {
-    en: 'A calm premium landing that leads to booking without extra steps.',
-    uz: 'Ortiqcha qadamlarsiz yozilishga olib boradigan sokin premium landing.',
+    en: 'A landing page where clients book without extra steps.',
+    uz: 'Mijoz ortiqcha qadamlarsiz yoziladigan landing.',
   },
   'work.monro.solution': {
     en: 'Single-page HTML/CSS/JS: hero, services, masters, FAQ, dual CTA WhatsApp + call, mobile-first.',
@@ -416,16 +415,16 @@ const DICT = {
     uz: 'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
   },
   'work.olympic.alt': {
-    en: 'OLYMPIC — premium body massage landing in Almaty',
-    uz: 'OLYMPIC — Almatidagi premium body-massaj landingi',
+    en: 'OLYMPIC, body massage landing in Almaty',
+    uz: 'OLYMPIC, Almatidagi body-massaj landingi',
   },
   'work.olympic.desc': {
-    en: 'Premium body massage landing in Almaty: private suite, masters, 24/7 WhatsApp booking.',
-    uz: 'Almatidagi premium body-massaj landingi: xususiy kabinet, ustalari, 24/7 WhatsApp yozilish.',
+    en: 'Body massage landing in Almaty: private suite, masters, 24/7 WhatsApp booking.',
+    uz: 'Almatidagi body-massaj landingi: xususiy kabinet, ustalari, 24/7 WhatsApp yozilish.',
   },
   'work.olympic.task': {
-    en: 'A cinematic premium landing that leads to WhatsApp booking without extra forms.',
-    uz: 'Ortiqcha formasiz WhatsApp yozilishga olib boradigan kinematografik premium landing.',
+    en: 'A landing that leads to WhatsApp booking without extra forms.',
+    uz: 'Ortiqcha formasiz WhatsApp yozilishga olib boradigan landing.',
   },
   'work.olympic.solution': {
     en: 'Single-page HTML/CSS/JS: hero video, masters, sessions, FAQ, dual CTA, motion, mobile-first.',
@@ -444,8 +443,8 @@ const DICT = {
     uz: 'Toshkentdagi turoperator landingi: yoʻnalishlar, qaynoq turlar, ariza va WhatsApp.',
   },
   'work.supertour.task': {
-    en: 'A vivid travel landing that quickly leads to a tour-selection request.',
-    uz: 'Tur tanlash arizasiga tez olib boradigan yorqin sayyohlik landingi.',
+    en: 'A landing page where visitors quickly request a tour selection.',
+    uz: 'Tur tanlashga tez ariza qoldiriladigan landing.',
   },
   'work.supertour.solution': {
     en: 'HTML/CSS/JS: hero, destinations, hot tours, FAQ, form and dual CTA, motion, SEO, mobile-first.',
@@ -480,8 +479,8 @@ const DICT = {
     uz: 'Loyihangiz haqida yozing',
   },
   'contact.lead': {
-    en: 'Before we start I give you the timeline and the price, and while I work I share in-progress builds. The button opens Kwork with your text.',
-    uz: "Boshlashdan oldin muddat va narxni aytaman, ish davomida oraliq versiyalarni ko'rsataman. Tugma Kwork'ni matningiz bilan ochadi.",
+    en: 'Before we start I give you the timeline and the price, and while I work I share in-progress builds. The button copies your text and opens my Kwork profile.',
+    uz: "Boshlashdan oldin muddat va narxni aytaman, ish davomida oraliq versiyalarni ko'rsataman. Tugma matnni nusxalab, Kwork'dagi profilimni ochadi.",
   },
   'contact.nameLabel': { en: 'Name', uz: 'Ism' },
   'contact.namePlaceholder': {
@@ -513,8 +512,8 @@ const DICT = {
     uz: '© 2026 Anna Tashlanova',
   },
   'work.earth3d.alt': {
-    en: 'Earth 3D — photoreal Earth, the Sun and space in the browser',
-    uz: 'Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda',
+    en: 'Earth Cosmos: the Earth, the Sun and space in the browser',
+    uz: 'Earth Cosmos: Yer, Quyosh va koinot brauzerda',
   },
   'work.earth3d.desc': {
     en: 'A 3D Earth in the browser: NASA textures, city lights, atmosphere and the Sun.',
