@@ -1031,52 +1031,6 @@ html[data-theme='light'] .bento-card {
   font-weight: 500;
 }
 
-.bento-rating-chip {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  margin-top: 0.15rem;
-  padding: 0.18rem 0.5rem;
-  border-radius: var(--radius-pill);
-  background: rgba(var(--accent-rgb), 0.12);
-  color: var(--accent-2);
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.bento-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  padding: 0.85rem 0;
-  border-top: 1px dashed var(--line);
-  border-bottom: 1px dashed var(--line);
-  margin-bottom: 1rem;
-}
-
-.bento-metric-cell {
-  display: grid;
-  gap: 0.15rem;
-  text-align: center;
-}
-
-.bento-metric-num {
-  font-family: var(--display);
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-}
-
-.bento-metric-lbl {
-  color: var(--muted);
-  font-size: 0.74rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-family: var(--mono);
-}
-
 .bento-links {
   display: flex;
   gap: 0.6rem;
