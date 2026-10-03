@@ -573,28 +573,28 @@ const DICT = {
   },
   'footer.city': { en: 'Tashkent', uz: 'Toshkent' },
   'footer.role': {
-    'work.earth3d.alt': {
-      en: 'Earth 3D — photoreal Earth, the Sun and space in the browser',
-      uz: 'Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda',
-    },
-    'work.earth3d.desc': {
-      en: 'A maximally realistic 3D Earth in the browser: NASA textures, city lights, atmosphere and the Sun.',
-      uz: 'Brauzerda maksimal realistik 3D Yer: NASA teksturalari, shahar chiroqlari, atmosfera va Quyosh.',
-    },
-    'work.earth3d.task': {
-      en: 'A cinematic, real-time Earth rendered live in the browser — no video, no editing.',
-      uz: 'Video va montajsiz, brauzerda real vaqtda kinematografik Yer sahnasi.',
-    },
-    'work.earth3d.solution': {
-      en: 'Three.js and GLSL shaders: day/night cycle, city lights, ocean sun glint with waves, atmospheric scattering, ESO Milky Way.',
-      uz: 'Three.js va GLSL shaderlar: kunduz/tun, shahar chiroqlari, toʻlqinli okean yaltirashi, atmosfera tarqalishi, ESO Milky Way.',
-    },
-    'work.earth3d.result': {
-      en: 'Live on Vercel — fully interactive, with an orbit camera.',
-      uz: 'Vercelʼda jonli — orbita kamerasi bilan toʻliq interaktiv.',
-    },
     en: 'Apps and websites, end to end',
     uz: 'Ilova va saytlar boshidan oxirigacha',
+  },
+  'work.earth3d.alt': {
+    en: 'Earth 3D — photoreal Earth, the Sun and space in the browser',
+    uz: 'Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda',
+  },
+  'work.earth3d.desc': {
+    en: 'A maximally realistic 3D Earth in the browser: NASA textures, city lights, atmosphere and the Sun.',
+    uz: 'Brauzerda maksimal realistik 3D Yer: NASA teksturalari, shahar chiroqlari, atmosfera va Quyosh.',
+  },
+  'work.earth3d.task': {
+    en: 'A cinematic, real-time Earth rendered live in the browser — no video, no editing.',
+    uz: 'Video va montajsiz, brauzerda real vaqtda kinematografik Yer sahnasi.',
+  },
+  'work.earth3d.solution': {
+    en: 'Three.js and GLSL shaders: day/night cycle, city lights, ocean sun glint with waves, atmospheric scattering, ESO Milky Way.',
+    uz: 'Three.js va GLSL shaderlar: kunduz/tun, shahar chiroqlari, toʻlqinli okean yaltirashi, atmosfera tarqalishi, ESO Milky Way.',
+  },
+  'work.earth3d.result': {
+    en: 'Live on Vercel — fully interactive, with an orbit camera.',
+    uz: 'Vercelʼda jonli — orbita kamerasi bilan toʻliq interaktiv.',
   },
 }
 
