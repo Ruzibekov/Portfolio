@@ -1,4 +1,5 @@
-scripts
+scripts/poster-sources
+scripts/*.cjs
 tests
 node_modules
 AGENTS.md
