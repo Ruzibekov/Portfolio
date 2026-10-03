@@ -1,0 +1,91 @@
+const shot = (name) => `screenshots/${name}`
+const source = (name) => `scripts/poster-sources/${name}.webp`
+
+const MOBILE = [
+  {
+    name: 'altn',
+    screens: [shot('altn-emu-1.png'), shot('altn-emu-2.png')],
+  },
+  {
+    name: 'avtopark',
+    screens: [source('avtopark-1'), source('avtopark-2'), source('avtopark-3')],
+    radius: 0.13,
+  },
+  {
+    name: 'besttracker',
+    screens: [
+      source('besttracker-1'),
+      source('besttracker-2'),
+      source('besttracker-3'),
+    ],
+    radius: 0.1,
+  },
+  {
+    name: 'geoblinker',
+    screens: [shot('geoblinker-emu-2.png'), shot('geoblinker-emu-1.png')],
+  },
+  {
+    name: 'mynails',
+    screens: [
+      shot('mynails-1.png'),
+      shot('mynails-2.png'),
+      shot('mynails-3.png'),
+    ],
+  },
+  {
+    name: 'psixologiya',
+    screens: [source('psixologiya-1')],
+    radius: 0.13,
+  },
+  {
+    name: 'stefa',
+    screens: [shot('stefa-1.png'), shot('stefa-3.png'), shot('stefa-4.png')],
+  },
+  {
+    name: 'tildonmobile',
+    screens: [
+      source('tildonmobile-1'),
+      source('tildonmobile-2'),
+      source('tildonmobile-3'),
+    ],
+  },
+  {
+    name: 'wallpapers',
+    screens: [
+      shot('wallpapers-1.png'),
+      shot('wallpapers-3.png'),
+      shot('wallpapers-4.png'),
+    ],
+  },
+  {
+    name: 'wegotrip',
+    screens: [source('wegotrip-1'), source('wegotrip-2'), source('wegotrip-3')],
+    radius: 0.12,
+  },
+  {
+    name: 'yolo',
+    screens: [source('yolo-1')],
+    radius: 0.13,
+  },
+]
+
+const WEB = [
+  { name: 'ailogoedit', url: 'https://ailogoedit.com', accept: true },
+  { name: 'monro', url: 'https://monro-landing.vercel.app' },
+  { name: 'olympic', url: 'https://olympic-almaty.vercel.app' },
+  { name: 'pixelvault', url: 'https://pixelvault.vercel.app' },
+  {
+    name: 'supertour',
+    url: 'https://supertour.uz',
+    fallback: source('supertour-1'),
+  },
+  { name: 'tildon', url: 'https://tildon.vercel.app' },
+  { name: 'vfx', url: 'https://vfx-timecode.vercel.app' },
+]
+
+const SCENE = [
+  { name: 'earth', url: 'https://earth-cosmos.vercel.app', wait: 8000 },
+  { name: 'vertolyot', url: 'https://vertolyot.vercel.app', wait: 18000 },
+]
+
+module.exports = { MOBILE, WEB, SCENE }

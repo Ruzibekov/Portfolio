@@ -1,0 +1,6 @@
+scripts
+tests
+node_modules
+AGENTS.md
+Justfile
+design-tokens.md
