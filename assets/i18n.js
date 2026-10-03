@@ -1,68 +1,57 @@
 const DICT = {
   'meta.title': {
-    en: 'Anna Tashlanova — apps and websites, end to end',
-    uz: 'Anna Tashlanova — ilova va saytlar boshidan oxirigacha',
+    en: 'Anna Tashlanova, app and website developer',
+    uz: 'Anna Tashlanova, ilova va sayt dasturchisi',
   },
   'meta.description': {
-    en: 'Phone apps and websites. 19 orders on Kwork, 5.0 rating. Clear result on time.',
-    uz: "Telefon ilovalari va saytlar. Kwork'da 19 buyurtma, reyting 5.0. Aniq natija muddatida.",
+    en: 'I build mobile apps, websites and Telegram bots. 19 orders on Kwork, 5.0 rating.',
+    uz: "Mobil ilovalar, saytlar va Telegram-botlar qilaman. Kwork'da 19 buyurtma, reyting 5.0.",
   },
   'meta.ogLocale': { en: 'en_US', uz: 'uz_UZ' },
   'meta.ogTitle': {
-    en: 'Anna Tashlanova — apps and websites, end to end',
-    uz: 'Anna Tashlanova — ilova va saytlar boshidan oxirigacha',
+    en: 'Anna Tashlanova, app and website developer',
+    uz: 'Anna Tashlanova, ilova va sayt dasturchisi',
   },
   'meta.ogDescription': {
     en: 'Phone apps and websites. 19 orders on Kwork, 5.0 rating.',
     uz: "Telefon ilovalari va saytlar. Kwork'da 19 buyurtma, reyting 5.0.",
   },
   'meta.twitterDescription': {
-    en: 'Apps, websites and automation — from idea to launch.',
-    uz: 'Ilovalar, saytlar va avtomatlashtirish — gʻoyadan ishga tushirishgacha.',
+    en: 'Mobile apps, websites and Telegram bots. Case studies with the task and the result.',
+    uz: 'Mobil ilovalar, saytlar va Telegram-botlar. Har loyihada vazifa va natija.',
   },
   skip: { en: 'Skip to projects', uz: 'Loyihalarga oʻtish' },
-  'brand.mark': { en: 'AT', uz: 'AT' },
-  'brand.word': { en: 'Tashlanova', uz: 'Tashlanova' },
+  'brand.word': {
+    en: 'Anna Tashlanova',
+    uz: 'Anna Tashlanova',
+  },
   'brand.homeLabel': {
     en: 'Anna Tashlanova — home',
     uz: 'Anna Tashlanova — bosh sahifa',
   },
   'nav.label': { en: 'Main navigation', uz: 'Asosiy navigatsiya' },
-  'nav.stack': { en: 'Services', uz: 'Xizmatlar' },
   'nav.cases': { en: 'Work', uz: 'Ishlar' },
-  'nav.process': { en: 'How I work', uz: 'Qanday ishlayman' },
   'nav.contact': { en: 'Contact', uz: 'Yozish' },
   'lang.label': { en: 'Language', uz: 'Til' },
   'theme.toggleLabel': { en: 'Toggle color theme', uz: 'Mavzuni almashtirish' },
-  'theme.toggleText': { en: 'Light / dark', uz: 'Yorugʻ / qorongʻu' },
   'cta.discuss': { en: 'Message on Kwork', uz: "Kwork'da yozish" },
   'mobileNav.label': { en: 'Menu', uz: 'Menyu' },
   'mobileNav.panelLabel': { en: 'Mobile navigation', uz: 'Mobil navigatsiya' },
   'mobileNav.openLabel': { en: 'Open menu', uz: 'Menyuni ochish' },
   'mobileNav.closeLabel': { en: 'Close menu', uz: 'Menyuni yopish' },
-  'hero.eyebrow': {
-    en: 'Apps and websites · Tashkent',
-    uz: 'Ilova va saytlar · Toshkent',
-  },
   'hero.title': {
-    en: 'I will build your project <em class="accent-em">end to end</em>',
-    uz: 'Loyihangizni <em class="accent-em">boshidan oxirigacha</em> qilaman',
+    en: 'I build apps, websites and Telegram bots',
+    uz: 'Ilova, sayt va Telegram-botlar qilaman',
   },
   'hero.lead': {
-    en: 'A phone app, a website or a client portal — from idea to launch. Scope and result are clear up front.',
-    uz: 'Telefon ilovasi, sayt yoki shaxsiy kabinet — gʻoyadan ishga tushirishgacha. Muddat va natija oldindan aniq.',
+    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 20 projects with the task and the result.',
+    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 20 ta loyiha: vazifa va natija bilan.",
   },
   'hero.viewCases': { en: 'See my work', uz: 'Ishlarni koʻrish' },
-  'hero.availability': {
-    en: 'Open for new orders now',
-    uz: 'Hozir yangi buyurtma qabul qilaman',
-  },
   'receipt.label': {
     en: 'Profile on freelance platforms',
     uz: 'Frilans platformalardagi profil',
   },
-  'receipt.head': { en: 'Profile', uz: 'Profil' },
-  'receipt.number': { en: 'Kwork', uz: 'Kwork' },
   'receipt.name': { en: 'Anna Tashlanova', uz: 'Anna Tashlanova' },
   'receipt.avatarAlt': {
     en: 'Photo of Anna Tashlanova',
@@ -76,43 +65,13 @@ const DICT = {
   'receipt.orders': { en: 'Orders', uz: 'Buyurtmalar' },
   'receipt.reviews': { en: 'Reviews', uz: 'Sharhlar' },
   'receipt.kworkLink': { en: 'Kwork ↗', uz: 'Kwork ↗' },
-  'systems.eyebrow': { en: 'How I can help', uz: 'Nima yordam bera olaman' },
-  'systems.title': {
-    en: 'Apps, websites, bots',
-    uz: 'Ilovalar, saytlar, botlar',
+  'work.title': {
+    en: 'Work',
+    uz: 'Ishlar',
   },
-  'systems.card1Title': { en: 'Phone apps', uz: 'Telefon ilovalari' },
-  'systems.card1Body': {
-    en: 'iPhone and Android: notifications, maps, payments, App Store and Google Play release.',
-    uz: 'iPhone va Android: bildirishnomalar, xarita, toʻlov, App Store va Google Play ga chiqarish.',
-  },
-  'systems.card2Title': {
-    en: 'Websites and portals',
-    uz: 'Saytlar va kabinetlar',
-  },
-  'systems.card2Body': {
-    en: 'Landing pages, online shops, client portals and admin panels. Easy on mobile.',
-    uz: 'Landing, onlayn-doʻkon, shaxsiy kabinet va boshqaruv paneli. Telefonda qulay.',
-  },
-  'systems.card3Title': {
-    en: 'Bots and automation',
-    uz: 'Botlar va avtomatlashtirish',
-  },
-  'systems.card3Body': {
-    en: 'Telegram bots, leads, notifications and CRM or spreadsheet links. Less manual work.',
-    uz: 'Telegram-botlar, arizalar, bildirishnomalar va CRM yoki jadvallar bogʻlanishi. Qoʻlda ish kamayadi.',
-  },
-  'systems.card1Cta': { en: 'Apps in my work →', uz: 'Ishlardagi ilovalar →' },
-  'systems.card2Cta': {
-    en: 'Websites in my work →',
-    uz: 'Ishlardagi saytlar →',
-  },
-  'systems.card3Cta': { en: 'Bots in my work →', uz: 'Ishlardagi botlar →' },
-  'work.eyebrow': { en: 'Examples', uz: 'Namunalar' },
-  'work.title': { en: 'What is already done', uz: 'Nima qilingan' },
   'work.sub': {
-    en: 'Tap a project: the task, what was done, the result.',
-    uz: 'Loyihani bosing: vazifa, nima qilindi, natija.',
+    en: 'Open a project to see the task, the solution and the links.',
+    uz: 'Loyihani oching: vazifa, yechim va linklar.',
   },
   'work.filterLabel': { en: 'Project filter', uz: 'Loyihalar filtri' },
   'work.empty': {
@@ -501,46 +460,28 @@ const DICT = {
     uz: 'Zarbdor vertolyot — brauzer 3D jangovar parvoz oʻyini',
   },
   'work.vertolyot.desc': {
-    en: 'A browser 3D game: an attack helicopter with real controls, HUD and air combat — no install.',
-    uz: 'Brauzer 3D oʻyin: hujum vertolyoti, real boshqaruv, HUD va havo jangi — oʻrnatmasdan.',
+    en: 'A browser 3D game: an attack helicopter, controls, HUD and air combat.',
+    uz: "Brauzer 3D o'yin: hujum vertolyoti, boshqaruv, HUD va havo jangi.",
   },
   'work.vertolyot.task': {
     en: 'A 3D game that runs in the browser: controls, enemies and steady FPS with no backend.',
     uz: 'Brauzerda ishlaydigan 3D oʻyin: boshqaruv, dushmanlar va barqaror FPS, bekendsiz.',
   },
   'work.vertolyot.solution': {
-    en: 'Three.js/WebGL: procedural helicopter model, flight physics, enemy AI, terrain and audio — one static deploy.',
-    uz: 'Three.js/WebGL: procedural vertolyot modeli, parvoz fizikasi, dushman AI, relyef va ovoz — bitta statik deploy.',
+    en: 'Three.js/WebGL: procedural helicopter model, flight physics, enemy AI, terrain and audio, all in one static site.',
+    uz: 'Three.js/WebGL: procedural vertolyot modeli, parvoz fizikasi, dushman AI, relyef va ovoz, hammasi bitta statik saytda.',
   },
   'work.vertolyot.result': {
-    en: 'Live on Vercel — vertolyot.vercel.app.',
-    uz: 'Vercelʼda jonli — vertolyot.vercel.app.',
+    en: 'Runs on Vercel: vertolyot.vercel.app.',
+    uz: "Vercel'da ishlaydi: vertolyot.vercel.app.",
   },
-  'process.eyebrow': { en: 'How it goes', uz: 'Qanday ketadi' },
-  'process.title': { en: 'Three simple steps', uz: 'Uch oddiy qadam' },
-  'process.step1Title': { en: 'We discuss', uz: 'Muhokama' },
-  'process.step1Body': {
-    en: 'You describe the task and deadline. I give scope and price before we start.',
-    uz: 'Siz vazifa va muddatni aytasiz. Men ish hajmi va narxni start oldidan aytaman.',
-  },
-  'process.step2Title': { en: 'I build', uz: 'Qilaman' },
-  'process.step2Body': {
-    en: 'I build the project and share work-in-progress so you always see progress.',
-    uz: 'Loyihani yigʻaman va oraliq versiyalarni koʻrsataman, progress doim koʻrinadi.',
-  },
-  'process.step3Title': { en: 'We launch', uz: 'Ishga tushiramiz' },
-  'process.step3Body': {
-    en: 'I test, publish and hand over. After delivery I help with questions.',
-    uz: 'Tekshiraman, nashr qilaman, topshiraman. Keyin savollar boʻlsa yordam beraman.',
-  },
-  'contact.eyebrow': { en: 'Get in touch', uz: 'Bogʻlanish' },
   'contact.title': {
-    en: 'Tell me what you need — I reply with an <em class="accent-em">estimate</em>',
-    uz: 'Nima kerakligini yozing — <em class="accent-em">baho</em> bilan javob beraman',
+    en: 'Tell me about your project',
+    uz: 'Loyihangiz haqida yozing',
   },
   'contact.lead': {
-    en: 'Briefly describe the task. The button opens Kwork, then just send the message on my profile.',
-    uz: "Vazifani qisqa yozing. Tugma Kwork'ni ochadi, profilimda yuborasiz.",
+    en: 'Before we start I give you the timeline and the price, and while I work I share in-progress builds. The button opens Kwork with your text.',
+    uz: "Boshlashdan oldin muddat va narxni aytaman, ish davomida oraliq versiyalarni ko'rsataman. Tugma Kwork'ni matningiz bilan ochadi.",
   },
   'contact.nameLabel': { en: 'Name', uz: 'Ism' },
   'contact.namePlaceholder': {
@@ -571,30 +512,25 @@ const DICT = {
     en: '© 2026 Anna Tashlanova',
     uz: '© 2026 Anna Tashlanova',
   },
-  'footer.city': { en: 'Tashkent', uz: 'Toshkent' },
-  'footer.role': {
-    en: 'Apps and websites, end to end',
-    uz: 'Ilova va saytlar boshidan oxirigacha',
-  },
   'work.earth3d.alt': {
     en: 'Earth 3D — photoreal Earth, the Sun and space in the browser',
     uz: 'Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda',
   },
   'work.earth3d.desc': {
-    en: 'A maximally realistic 3D Earth in the browser: NASA textures, city lights, atmosphere and the Sun.',
-    uz: 'Brauzerda maksimal realistik 3D Yer: NASA teksturalari, shahar chiroqlari, atmosfera va Quyosh.',
+    en: 'A 3D Earth in the browser: NASA textures, city lights, atmosphere and the Sun.',
+    uz: 'Brauzerda 3D Yer: NASA teksturalari, shahar chiroqlari, atmosfera va Quyosh.',
   },
   'work.earth3d.task': {
-    en: 'A cinematic, real-time Earth rendered live in the browser — no video, no editing.',
-    uz: 'Video va montajsiz, brauzerda real vaqtda kinematografik Yer sahnasi.',
+    en: 'A real-time Earth scene right in the browser, with no video or editing.',
+    uz: 'Video va montajsiz, brauzerda real vaqtda Yer sahnasi.',
   },
   'work.earth3d.solution': {
     en: 'Three.js and GLSL shaders: day/night cycle, city lights, ocean sun glint with waves, atmospheric scattering, ESO Milky Way.',
     uz: 'Three.js va GLSL shaderlar: kunduz/tun, shahar chiroqlari, toʻlqinli okean yaltirashi, atmosfera tarqalishi, ESO Milky Way.',
   },
   'work.earth3d.result': {
-    en: 'Live on Vercel — fully interactive, with an orbit camera.',
-    uz: 'Vercelʼda jonli — orbita kamerasi bilan toʻliq interaktiv.',
+    en: 'Runs on Vercel; you can orbit the camera around the planet.',
+    uz: "Vercel'da ishlaydi, kamerani sayyora atrofida aylantirish mumkin.",
   },
 }
 

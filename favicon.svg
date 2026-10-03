@@ -1,7 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#1a121f"/>
-  <rect x="1.5" y="1.5" width="61" height="61" rx="10.5" fill="none" stroke="#e878a8" stroke-opacity="0.45" stroke-width="1.5"/>
-  <text x="32" y="34" text-anchor="middle" dominant-baseline="central"
-        font-family="Syne, 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="700"
-        fill="#e878a8" letter-spacing="-0.5">AT</text>
+  <rect width="64" height="64" rx="14" fill="#963a37"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="34" font-weight="700" fill="#fffafa">А</text>
 </svg>

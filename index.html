@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="kwork" content="tashlanova" />
     <title data-i18n="meta.title">
-      Анна Ташланова — приложения и сайты под ключ
+      Анна Ташланова, разработчик приложений и сайтов
     </title>
     <meta
       name="description"
-      content="Делаю приложения для телефона и сайты. 19 заказов на Kwork, рейтинг 5.0. Понятный результат в срок."
+      content="Делаю мобильные приложения, сайты и Telegram-ботов. 19 заказов на Kwork, рейтинг 5.0."
       data-i18n-attr="content:meta.description"
     />
     <meta name="author" content="Анна Ташланова" />
@@ -76,7 +76,7 @@
     />
     <meta
       property="og:title"
-      content="Анна Ташланова — приложения и сайты под ключ"
+      content="Анна Ташланова, разработчик приложений и сайтов"
       data-i18n-attr="content:meta.ogTitle"
     />
     <meta
@@ -86,23 +86,23 @@
     />
     <meta
       property="og:image"
-      content="https://tashlanova.vercel.app/og-image.svg"
+      content="https://tashlanova.vercel.app/og-image.png"
     />
     <meta property="og:url" content="https://tashlanova.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Анна Ташланова — приложения и сайты под ключ"
+      content="Анна Ташланова, разработчик приложений и сайтов"
       data-i18n-attr="content:meta.ogTitle"
     />
     <meta
       name="twitter:description"
-      content="Приложения, сайты и автоматизация под ключ — от идеи до запуска."
+      content="Мобильные приложения, сайты и Telegram-боты. Примеры работ с задачей и результатом."
       data-i18n-attr="content:meta.twitterDescription"
     />
     <meta
       name="twitter:image"
-      content="https://tashlanova.vercel.app/og-image.svg"
+      content="https://tashlanova.vercel.app/og-image.png"
     />
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -110,7 +110,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/app.css" />
@@ -143,19 +143,14 @@
         aria-label="Анна Ташланова — на главную"
         data-i18n-attr="aria-label:brand.homeLabel"
       >
-        <span class="brand-mark" aria-hidden="true" data-i18n="brand.mark"
-          >АТ</span
-        >
-        <span class="brand-word" data-i18n="brand.word">Ташланова</span>
+        <span class="brand-word" data-i18n="brand.word">Анна Ташланова</span>
       </a>
       <nav
         class="nav"
         aria-label="Основная навигация"
         data-i18n-attr="aria-label:nav.label"
       >
-        <a href="#systems"><span data-i18n="nav.stack">Услуги</span></a>
         <a href="#work"><span data-i18n="nav.cases">Работы</span></a>
-        <a href="#process"><span data-i18n="nav.process">Как работаю</span></a>
         <a href="#contact"><span data-i18n="nav.contact">Написать</span></a>
         <div
           class="lang-switch"
@@ -190,12 +185,18 @@
             stroke="currentColor"
             stroke-width="1.8"
             stroke-linecap="round"
+            stroke-linejoin="round"
             aria-hidden="true"
           >
             <circle cx="12" cy="12" r="4" />
-            <path
-              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-            />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
           </svg>
           <svg
             class="icon-moon"
@@ -207,11 +208,10 @@
             stroke-linejoin="round"
             aria-hidden="true"
           >
-            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
+            <path
+              d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+            />
           </svg>
-          <span class="theme-toggle-label" data-i18n="theme.toggleText"
-            >Тема</span
-          >
         </button>
         <a class="header-action" href="#contact" data-i18n="cta.discuss"
           >Написать на Kwork</a
@@ -263,14 +263,8 @@
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>
         </button>
-        <a href="#systems" data-nav-close
-          ><span data-i18n="nav.stack">Услуги</span></a
-        >
         <a href="#work" data-nav-close
           ><span data-i18n="nav.cases">Работы</span></a
-        >
-        <a href="#process" data-nav-close
-          ><span data-i18n="nav.process">Как работаю</span></a
         >
         <a href="#contact" data-nav-close
           ><span data-i18n="nav.contact">Написать</span></a
@@ -313,12 +307,18 @@
             stroke="currentColor"
             stroke-width="1.8"
             stroke-linecap="round"
+            stroke-linejoin="round"
             aria-hidden="true"
           >
             <circle cx="12" cy="12" r="4" />
-            <path
-              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-            />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
           </svg>
           <svg
             class="icon-moon"
@@ -330,11 +330,10 @@
             stroke-linejoin="round"
             aria-hidden="true"
           >
-            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
+            <path
+              d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+            />
           </svg>
-          <span class="theme-toggle-label" data-i18n="theme.toggleText"
-            >Светлая / тёмная</span
-          >
         </button>
       </nav>
     </div>
@@ -342,16 +341,13 @@
     <main id="top">
       <section class="hero section" data-section="top">
         <div class="hero-copy reveal">
-          <p class="eyebrow" data-i18n="hero.eyebrow">
-            Приложения и сайты · Ташкент
-          </p>
           <h1 data-i18n-html="hero.title">
-            Сделаю ваш проект
-            <em class="accent-em">под ключ</em>
+            Делаю приложения, сайты и Telegram-ботов
           </h1>
           <p class="lead" data-i18n="hero.lead">
-            Приложение для телефона, сайт или личный кабинет — от идеи до
-            запуска. Сроки и результат понятны заранее.
+            Flutter, Kotlin, Swift, Next.js. Публикую в App Store и Google Play,
+            подключаю оплату, карты и уведомления. Ниже 20 проектов с задачей и
+            результатом.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#contact" data-i18n="cta.discuss"
@@ -361,12 +357,6 @@
               >Смотреть работы</a
             >
           </div>
-          <p class="availability" role="status">
-            <span class="availability-dot" aria-hidden="true"></span>
-            <span data-i18n="hero.availability"
-              >Сейчас принимаю новые заказы</span
-            >
-          </p>
         </div>
 
         <div class="hero-stage reveal">
@@ -375,10 +365,6 @@
             aria-label="Профиль на фриланс-биржах"
             data-i18n-attr="aria-label:receipt.label"
           >
-            <header class="profile-head">
-              <span data-i18n="receipt.head">Профиль</span>
-              <span data-i18n="receipt.number">Kwork</span>
-            </header>
             <div class="profile-identity">
               <img
                 class="profile-avatar"
@@ -397,15 +383,15 @@
             <dl class="profile-lines">
               <div>
                 <dt data-i18n="receipt.rating">Рейтинг Kwork</dt>
-                <dd><b data-count="5.0">5.0</b></dd>
+                <dd><b>5.0</b></dd>
               </div>
               <div>
                 <dt data-i18n="receipt.orders">Заказов</dt>
-                <dd><b data-count="19">19</b></dd>
+                <dd><b>19</b></dd>
               </div>
               <div>
                 <dt data-i18n="receipt.reviews">Отзывов</dt>
-                <dd><b data-count="15">15</b></dd>
+                <dd><b>15</b></dd>
               </div>
             </dl>
             <a
@@ -420,55 +406,11 @@
         </div>
       </section>
 
-      <section
-        class="section systems reveal"
-        id="systems"
-        data-section="systems"
-      >
-        <div class="section-head">
-          <p class="eyebrow" data-i18n="systems.eyebrow">Чем могу помочь</p>
-          <h2 data-i18n="systems.title">Приложения, сайты, боты</h2>
-        </div>
-        <div class="systems-grid">
-          <a class="system-card" href="#work" data-work-filter="mobile">
-            <h3 data-i18n="systems.card1Title">Приложения для телефона</h3>
-            <p data-i18n="systems.card1Body">
-              iPhone и Android: уведомления, карты, оплата, публикация в App
-              Store и Google Play.
-            </p>
-            <em class="system-card-cta" data-i18n="systems.card1Cta"
-              >Приложения в работах →</em
-            >
-          </a>
-          <a class="system-card" href="#work" data-work-filter="web">
-            <h3 data-i18n="systems.card2Title">Сайты и кабинеты</h3>
-            <p data-i18n="systems.card2Body">
-              Лендинги, интернет-магазины, личные кабинеты и панели управления.
-              Удобно с телефона.
-            </p>
-            <em class="system-card-cta" data-i18n="systems.card2Cta"
-              >Сайты в работах →</em
-            >
-          </a>
-          <a class="system-card" href="#work" data-work-filter="backend">
-            <h3 data-i18n="systems.card3Title">Боты и автоматизация</h3>
-            <p data-i18n="systems.card3Body">
-              Telegram-боты, заявки, уведомления и связка с CRM или таблицами.
-              Без лишней ручной работы.
-            </p>
-            <em class="system-card-cta" data-i18n="systems.card3Cta"
-              >Боты в работах →</em
-            >
-          </a>
-        </div>
-      </section>
-
       <section class="section work reveal" id="work" data-section="work">
         <div class="section-head">
-          <p class="eyebrow" data-i18n="work.eyebrow">Примеры работ</p>
-          <h2 data-i18n="work.title">Что уже сделано</h2>
+          <h2 data-i18n="work.title">Работы</h2>
           <p class="section-sub" data-i18n="work.sub">
-            Нажмите на проект: задача, что сделано, результат.
+            Нажмите на проект, чтобы увидеть задачу, решение и ссылки.
           </p>
         </div>
 
@@ -1714,11 +1656,11 @@
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
-                    >Yer 3D — Earth Cosmos</span
+                    >Earth Cosmos</span
                   >
                   <span class="work-sat-desc" data-i18n="work.earth3d.desc"
-                    >Максимально реалистичная 3D-Земля в браузере:
-                    NASA-текстуры, огни городов, атмосфера и Солнце.</span
+                    >3D-Земля в браузере: текстуры NASA, огни городов, атмосфера
+                    и Солнце.</span
                   >
                   <span class="work-sat-meta">
                     <span class="work-sat-tag">Web · 3D</span>
@@ -1732,8 +1674,8 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.earth3d.task">
-                          Кинематографичная Земля в реальном времени прямо в
-                          браузере — без видео и монтажа.
+                          Сцена Земли в реальном времени прямо в браузере, без
+                          видео и монтажа.
                         </dd>
                       </div>
                       <div>
@@ -1747,8 +1689,8 @@
                       <div>
                         <dt data-i18n="case.result">Результат</dt>
                         <dd data-i18n="work.earth3d.result">
-                          Живой сайт на Vercel — полностью интерактивный, с
-                          орбитальной камерой.
+                          Работает на Vercel, камеру можно вращать вокруг
+                          планеты.
                         </dd>
                       </div>
                     </dl>
@@ -1787,12 +1729,11 @@
                     >Zarbdor vertolyot</span
                   >
                   <span class="work-sat-desc" data-i18n="work.vertolyot.desc"
-                    >Браузерная 3D-игра: боевой вертолёт, реальное управление,
-                    HUD и воздушный бой — без установки.</span
+                    >Браузерная 3D-игра: боевой вертолёт, управление, HUD и
+                    воздушный бой.</span
                   >
                   <span class="work-sat-meta">
                     <span class="work-sat-tag">Web · 3D</span>
-                    <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
               </summary>
@@ -1811,14 +1752,14 @@
                         <dt data-i18n="case.solution">Что сделано</dt>
                         <dd data-i18n="work.vertolyot.solution">
                           Three.js/WebGL: процедурная модель вертолёта, физика
-                          полёта, ИИ противников, ландшафт и звук — один
-                          статический деплой.
+                          полёта, ИИ противников, ландшафт и звук. Всё собрано в
+                          один статический сайт.
                         </dd>
                       </div>
                       <div>
                         <dt data-i18n="case.result">Результат</dt>
                         <dd data-i18n="work.vertolyot.result">
-                          Живой сайт на Vercel — vertolyot.vercel.app.
+                          Работает на Vercel: vertolyot.vercel.app.
                         </dd>
                       </div>
                     </dl>
@@ -1844,56 +1785,15 @@
       </section>
 
       <section
-        class="section process reveal"
-        id="process"
-        data-section="process"
-      >
-        <div class="section-head">
-          <p class="eyebrow" data-i18n="process.eyebrow">Как всё проходит</p>
-          <h2 data-i18n="process.title">Три простых шага</h2>
-        </div>
-        <ol class="process-line">
-          <li class="process-item">
-            <strong aria-hidden="true">1</strong>
-            <h3 data-i18n="process.step1Title">Обсуждаем</h3>
-            <p data-i18n="process.step1Body">
-              Вы рассказываете задачу и сроки. Я называю объём и стоимость до
-              старта.
-            </p>
-          </li>
-          <li class="process-item">
-            <strong aria-hidden="true">2</strong>
-            <h3 data-i18n="process.step2Title">Делаю</h3>
-            <p data-i18n="process.step2Body">
-              Собираю проект и показываю промежуточные версии, чтобы вы видели
-              прогресс.
-            </p>
-          </li>
-          <li class="process-item">
-            <strong aria-hidden="true">3</strong>
-            <h3 data-i18n="process.step3Title">Запускаем</h3>
-            <p data-i18n="process.step3Body">
-              Проверяю, публикую и передаю вам. После сдачи помогаю при
-              вопросах.
-            </p>
-          </li>
-        </ol>
-      </section>
-
-      <section
         class="contact section reveal"
         id="contact"
         data-section="contact"
       >
         <div class="contact-inner">
-          <p class="eyebrow" data-i18n="contact.eyebrow">Связаться</p>
-          <h2 data-i18n-html="contact.title">
-            Напишите, что нужно — отвечу с
-            <em class="accent-em">оценкой</em>
-          </h2>
+          <h2 data-i18n-html="contact.title">Расскажите о задаче</h2>
           <p class="contact-lead" data-i18n="contact.lead">
-            Коротко опишите задачу. Кнопка откроет Kwork, останется только
-            отправить сообщение в профиле.
+            До старта назову срок и стоимость, а по ходу работы показываю
+            промежуточные версии. Кнопка откроет Kwork с вашим текстом.
           </p>
 
           <form class="contact-form" id="contactForm" novalidate>
@@ -1969,10 +1869,13 @@
 
     <footer class="site-footer">
       <span data-i18n="footer.copyright">© 2026 Анна Ташланова</span>
-      <span class="footer-time" data-clock hidden
-        ><span data-i18n="footer.city">Ташкент</span> · <b>--:--</b></span
+      <a
+        class="footer-link"
+        href="https://kwork.ru/user/tashlanova"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Kwork</a
       >
-      <span data-i18n="footer.role">Приложения и сайты под ключ</span>
     </footer>
 
     <div class="mobile-dock" role="navigation" aria-label="Быстрые действия">

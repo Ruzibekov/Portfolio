@@ -385,29 +385,6 @@ const setupFilter = () => {
       applyFilter(chip.dataset.filter)
     })
   })
-
-  document.querySelectorAll('[data-work-filter]').forEach((card) => {
-    card.addEventListener('click', () => {
-      applyFilter(card.dataset.workFilter)
-    })
-  })
-}
-
-const setupClock = () => {
-  const el = document.querySelector('[data-clock]')
-  if (!el) return
-  const target = el.querySelector('b') || el
-  const format = new Intl.DateTimeFormat('ru-RU', {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'Asia/Tashkent',
-  })
-  const tick = () => {
-    target.textContent = format.format(new Date())
-  }
-  tick()
-  el.hidden = false
-  setInterval(tick, 30000)
 }
 
 // Mobile navigation: hamburger toggle with overlay panel, scrim/Esc close,
@@ -517,44 +494,6 @@ const setupAnchorScroll = () => {
     })
     history.pushState(null, '', href)
   })
-}
-
-const setupCounters = () => {
-  const nodes = document.querySelectorAll('[data-count]')
-  if (!nodes.length) return
-  if (reducedMotionQuery.matches) return
-
-  const animate = (el) => {
-    const raw = el.dataset.count
-    const target = Number(raw)
-    if (!Number.isFinite(target)) return
-    const dot = raw.indexOf('.')
-    const decimals = dot === -1 ? 0 : raw.length - dot - 1
-    const format = (value) => value.toFixed(decimals)
-    const duration = 1200
-    const start = performance.now()
-    const from = 0
-    const step = (now) => {
-      const t = Math.min(1, (now - start) / duration)
-      const eased = 1 - Math.pow(1 - t, 3)
-      el.textContent = format(from + (target - from) * eased)
-      if (t < 1) requestAnimationFrame(step)
-      else el.textContent = format(target)
-    }
-    requestAnimationFrame(step)
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        animate(entry.target)
-        observer.unobserve(entry.target)
-      })
-    },
-    { threshold: 0.4 },
-  )
-  nodes.forEach((n) => observer.observe(n))
 }
 
 const CONTACT = {
@@ -725,7 +664,5 @@ setupReveal()
 setupRowReveal()
 setupLedger()
 setupFilter()
-setupCounters()
 setupContactForm()
-setupClock()
 setupMobileNav()

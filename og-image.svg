@@ -1,39 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0f0a12"/>
-      <stop offset="100%" stop-color="#1a121f"/>
-    </linearGradient>
-    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M48 0H0V48" fill="none" stroke="#e878a8" stroke-opacity="0.06" stroke-width="1"/>
-    </pattern>
-  </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-  <circle cx="1000" cy="100" r="340" fill="#e878a8" opacity="0.08"/>
-  <circle cx="180" cy="580" r="280" fill="#ba96ff" opacity="0.07"/>
-  <circle cx="620" cy="320" r="200" fill="#ffb08c" opacity="0.04"/>
-
-  <g transform="translate(80, 90)">
-    <rect width="84" height="84" rx="16" fill="#1a121f" stroke="#e878a8" stroke-opacity="0.45" stroke-width="2"/>
-    <text x="42" y="48" text-anchor="middle" dominant-baseline="central"
-          font-family="Syne, 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="700"
-          fill="#e878a8" letter-spacing="-1">AT</text>
-  </g>
-
-  <text x="80" y="290" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="22" font-weight="600"
-        fill="#e878a8" letter-spacing="2">// APPS · SITES · BOTS · BACKEND</text>
-
-  <text x="78" y="382" font-family="Syne, 'Segoe UI', system-ui, sans-serif" font-size="68" font-weight="700" fill="#f7eef4">Анна Ташланова</text>
-
-  <text x="80" y="450" font-family="Outfit, system-ui, sans-serif" font-size="28" font-weight="400" fill="#b09aaa">Мобильные приложения · Веб · Backend · Автоматизация</text>
-
-  <g transform="translate(80, 506)" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="22" font-weight="500">
-    <rect width="230" height="56" rx="12" fill="rgba(232,120,168,0.1)" stroke="#e878a8" stroke-opacity="0.3"/>
-    <text x="24" y="35" fill="#f7eef4">19 заказов · Kwork</text>
-    <rect x="250" width="200" height="56" rx="12" fill="rgba(186,150,255,0.1)" stroke="#ba96ff" stroke-opacity="0.3"/>
-    <text x="274" y="35" fill="#f7eef4">Рейтинг 5.0</text>
-    <rect x="470" width="190" height="56" rx="12" fill="rgba(255,176,140,0.1)" stroke="#ffb08c" stroke-opacity="0.3"/>
-    <text x="494" y="35" fill="#f7eef4">15 отзывов</text>
-  </g>
+  <rect width="1200" height="630" fill="#f6f7f8"/>
+  <text x="80" y="250" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="76" font-weight="700" letter-spacing="-2" fill="#1b1e22">Анна Ташланова</text>
+  <text x="80" y="330" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="36" font-weight="400" fill="#60656b">Мобильные приложения, сайты и Telegram-боты</text>
+  <line x1="80" y1="410" x2="1120" y2="410" stroke="#dadcdf" stroke-width="2"/>
+  <text x="80" y="480" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="30" font-weight="500" fill="#1b1e22">Kwork: рейтинг 5.0, 19 заказов, 15 отзывов</text>
+  <text x="80" y="530" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="30" font-weight="500" fill="#963a37">tashlanova.vercel.app</text>
 </svg>

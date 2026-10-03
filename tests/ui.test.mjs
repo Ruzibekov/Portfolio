@@ -29,28 +29,14 @@ const withPage = async (options, run) => {
   }
 }
 
-describe('counters', () => {
-  test('rating keeps the decimal declared in data-count', async () => {
+describe('profile figures', () => {
+  test('rating, orders and reviews render as static text', async () => {
     await withPage({}, async (page) => {
-      await scrollThrough(page)
-      const values = await page.$$eval('.profile-lines b', (nodes) =>
-        nodes.map((node) => ({
-          declared: node.dataset.count,
-          rendered: node.textContent.trim(),
-        })),
+      const figures = await page.$$eval('.profile-lines b', (nodes) =>
+        nodes.map((node) => node.textContent.trim()),
       )
-      for (const value of values)
-        assert.equal(
-          value.rendered,
-          value.declared,
-          `counter drifted from ${value.declared}`,
-        )
-    })
-  })
-
-  test('rating stays correct with reduced motion', async () => {
-    await withPage({ reducedMotion: 'reduce' }, async (page) => {
-      assert.equal(await page.textContent('.profile-lines b'), '5.0')
+      assert.deepEqual(figures, ['5.0', '19', '15'])
+      assert.equal(await page.locator('[data-count]').count(), 0)
     })
   })
 })
@@ -287,28 +273,6 @@ describe('layout', () => {
     }
   })
 
-  test('process step numbers are centred inside their badge', async () => {
-    await withPage({}, async (page) => {
-      const badges = await page.$$eval('.process-item strong', (nodes) =>
-        nodes.map((node) => {
-          const style = getComputedStyle(node)
-          return {
-            display: style.display,
-            placeItems: style.placeItems,
-            width: node.getBoundingClientRect().width,
-            height: node.getBoundingClientRect().height,
-          }
-        }),
-      )
-      assert.ok(badges.length >= 3)
-      for (const badge of badges) {
-        assert.equal(badge.display, 'grid')
-        assert.match(badge.placeItems, /center/)
-        assert.ok(Math.abs(badge.width - badge.height) < 1)
-      }
-    })
-  })
-
   test('the mobile hero leads with the headline, not the profile card', async () => {
     await withPage({ width: 390, height: 844 }, async (page) => {
       const order = await page.evaluate(() => ({
@@ -478,22 +442,12 @@ describe('accessibility', () => {
 })
 
 describe('content', () => {
-  test('each service card names its own destination', async () => {
-    await withPage({}, async (page) => {
-      const labels = await page.$$eval('.system-card-cta', (nodes) =>
-        nodes.map((node) => node.textContent.trim()),
-      )
-      assert.ok(labels.length >= 3)
-      assert.equal(new Set(labels).size, labels.length, 'repeated card CTA')
-    })
-  })
-
   test('each proof number is stated once', async () => {
     await withPage({}, async (page) => {
       const repeated = await page.evaluate(() => {
         const seen = new Map()
-        for (const node of document.querySelectorAll('[data-count]')) {
-          const key = node.dataset.count
+        for (const node of document.querySelectorAll('.profile-lines b')) {
+          const key = node.textContent.trim()
           seen.set(key, (seen.get(key) || 0) + 1)
         }
         return [...seen].filter(([, count]) => count > 1).map(([key]) => key)
@@ -535,6 +489,58 @@ describe('content', () => {
         1,
       )
     })
+  })
+
+  test('no template tells: kickers, accent words, dashes, clock, status dot', async () => {
+    for (const lang of ['ru', 'en', 'uz']) {
+      await withPage({}, async (page) => {
+        await page.click(`.site-header [data-lang="${lang}"]`)
+        const report = await page.evaluate(() => {
+          const visible = (node) => node.getClientRects().length > 0
+          const headings = [
+            ...document.querySelectorAll('h1, h2, h3, [role="heading"]'),
+          ]
+            .filter(visible)
+            .map((node) => node.textContent.trim())
+          const mono = [...document.querySelectorAll('body *')]
+            .filter(visible)
+            .filter(
+              (node) =>
+                node.childNodes.length &&
+                /mono/i.test(getComputedStyle(node).fontFamily),
+            )
+            .map((node) => node.className || node.tagName)
+          const upper = [...document.querySelectorAll('body *')]
+            .filter(visible)
+            .filter(
+              (node) => getComputedStyle(node).textTransform === 'uppercase',
+            )
+            .map((node) => node.className || node.tagName)
+          return {
+            dashed: headings.filter((text) => text.includes('—')),
+            accent: document.querySelectorAll('h1 em, h2 em').length,
+            kickers: document.querySelectorAll('.eyebrow').length,
+            clock: document.querySelectorAll('[data-clock]').length,
+            dot: document.querySelectorAll('.availability-dot').length,
+            mono,
+            upper,
+          }
+        })
+        assert.deepEqual(
+          report,
+          {
+            dashed: [],
+            accent: 0,
+            kickers: 0,
+            clock: 0,
+            dot: 0,
+            mono: [],
+            upper: [],
+          },
+          lang,
+        )
+      })
+    }
   })
 
   test('every language renders without missing keys', async () => {
