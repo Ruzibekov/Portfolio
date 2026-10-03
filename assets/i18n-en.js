@@ -63,8 +63,8 @@ window.I18N.en = {
 
   'work.stefa.alt': 'Stefa AI Art: text-to-image generation',
   'work.stefa.desc': 'Text-to-image generation app.',
-  'work.stefa.task': 'A fast and lightweight image generation mobile app.',
-  'work.stefa.solution': 'Flutter + cloud image API, streamlined user flow.',
+  'work.stefa.task': 'A simple text-to-image app.',
+  'work.stefa.solution': 'Flutter + cloud image API.',
   'work.stefa.result': 'Published on Google Play.',
 
   'work.mynails.alt': 'My Nail Salon: nail design selection with live preview',
@@ -83,7 +83,8 @@ window.I18N.en = {
   'work.wegotrip.alt': 'WeGoTrip: audio guides and tours for travelers',
   'work.wegotrip.desc':
     'Audio guides and tours: a native Android app for travelers.',
-  'work.wegotrip.task': 'A stable release with long-term maintainability.',
+  'work.wegotrip.task':
+    'Ship the Android app to Google Play and keep the code easy to extend.',
   'work.wegotrip.solution': 'Native Kotlin, clean architecture.',
   'work.wegotrip.result': 'Published on Google Play.',
 
@@ -105,7 +106,7 @@ window.I18N.en = {
   'work.wallpapers.alt': 'Wallpapers: wallpaper catalog with categories',
   'work.wallpapers.desc':
     'A wallpaper catalog with categories, previews and quick install.',
-  'work.wallpapers.task': 'A light, fast wallpaper catalog.',
+  'work.wallpapers.task': 'A lightweight wallpaper catalog with categories.',
   'work.wallpapers.solution': 'Kotlin, Material UI, caching.',
   'work.wallpapers.result': 'A finished Android app.',
 
@@ -143,9 +144,9 @@ window.I18N.en = {
   'work.tildon.alt': 'Tildon: web platform for learning English',
   'work.tildon.desc':
     'A web platform for learning English: grammar, vocabulary, tests, listening.',
-  'work.tildon.task': 'A convenient learning platform with progress tracking.',
+  'work.tildon.task': 'An English learning platform that tracks progress.',
   'work.tildon.solution': 'React, Next.js, TypeScript, PWA, responsive design.',
-  'work.tildon.result': 'Launched and live online.',
+  'work.tildon.result': 'Live at tildon.vercel.app.',
 
   'work.vfx.alt': 'VFX Timecode: timecode generator for video production',
   'work.vfx.desc':
@@ -153,16 +154,15 @@ window.I18N.en = {
   'work.vfx.task':
     'A precise fullscreen timecode generator for film and VFX production.',
   'work.vfx.solution': 'Vite, React, Tailwind, shadcn-ui, PWA.',
-  'work.vfx.result': 'Launched and live online.',
+  'work.vfx.result': 'Live at vfx-timecode.vercel.app.',
 
   'work.ailogoedit.alt': 'AiLogoEdit: logo, icon and brand visual generation',
   'work.ailogoedit.desc':
-    'Logo, icon and visual generation: select style → enter prompt → get final assets.',
-  'work.ailogoedit.task':
-    'Generate brand visuals from prompt descriptions quickly.',
+    'Logo, icon and visual generation: pick a style, write a prompt, download the files.',
+  'work.ailogoedit.task': 'Brand visuals generated from a text prompt.',
   'work.ailogoedit.solution':
     'Next.js, Supabase, AI generation API, history, payments.',
-  'work.ailogoedit.result': 'Launched and live online.',
+  'work.ailogoedit.result': 'Live at ailogoedit.com.',
 
   'work.pixelvault.alt':
     'PixelVault: online gallery for artists and photographers',
@@ -171,31 +171,33 @@ window.I18N.en = {
   'work.pixelvault.task': 'Publishing and storing work with access control.',
   'work.pixelvault.solution':
     'Next.js (App Router), Supabase, gallery, albums, private collections.',
-  'work.pixelvault.result': 'Launched and live online.',
+  'work.pixelvault.result': 'Live at pixelvault.vercel.app.',
 
   'work.monro.alt': 'Monro: body massage landing page in Almaty',
   'work.monro.desc':
     'A body massage salon landing in Almaty: 24/7 booking, services, reviews, WhatsApp and call.',
   'work.monro.task': 'A salon landing page where visitors book right away.',
   'work.monro.solution':
-    'Single-page HTML/CSS/JS: hero, services, masters, FAQ, direct WhatsApp booking and call, mobile-first.',
-  'work.monro.result': 'Launched and live online; client accepted delivery.',
+    'Single-page HTML/CSS/JS: hero, services, masters, FAQ, WhatsApp booking and call, mobile-first.',
+  'work.monro.result':
+    'The client accepted the work. Live at monro-landing.vercel.app.',
 
-  'work.olympic.alt': 'OLYMPIC: premium body massage landing in Almaty',
+  'work.olympic.alt': 'OLYMPIC: body massage salon landing page in Almaty',
   'work.olympic.desc':
-    'Premium body massage landing in Almaty: private suite, masters, 24/7 WhatsApp booking.',
+    'Body massage salon landing page in Almaty: private room, masters, 24/7 WhatsApp booking.',
   'work.olympic.task':
     'A landing page with booking through WhatsApp, no separate form.',
   'work.olympic.solution':
     'Single-page HTML/CSS/JS: hero video, masters, sessions, FAQ, direct WhatsApp booking, motion, mobile-first.',
-  'work.olympic.result': 'Launched and live online; client accepted delivery.',
+  'work.olympic.result':
+    'The client accepted the work. Live at olympic-almaty.vercel.app.',
 
   'work.supertour.alt':
     'Super Tour: tours from Tashkent: Egypt, UAE, Thailand, Vietnam',
   'work.supertour.desc':
     'Travel operator landing from Tashkent: destinations, hot deals, request form and WhatsApp.',
   'work.supertour.task':
-    'A modern travel agency landing with an easy tour selection inquiry.',
+    'A tour operator landing page with a tour request form and WhatsApp.',
   'work.supertour.solution':
     'HTML/CSS/JS: hero, destinations, hot tours, FAQ, inquiry form and WhatsApp, motion, SEO, mobile-first.',
   'work.supertour.result': 'Live online: supertour.uz.',

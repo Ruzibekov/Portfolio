@@ -65,9 +65,8 @@ window.I18N.uz = {
 
   'work.stefa.alt': 'Stefa AI Art: matndan rasm generatsiyasi',
   'work.stefa.desc': 'Matnli tavsif boʻyicha rasm generatsiyasi.',
-  'work.stefa.task': 'Oddiy rasm yaratish ilovasi.',
-  'work.stefa.solution':
-    'Flutter + bulutli image-API, qulay foydalanish ssenariysi.',
+  'work.stefa.task': 'Matndan rasm yaratadigan oddiy ilova.',
+  'work.stefa.solution': 'Flutter + bulutli image-API.',
   'work.stefa.result': "Google Play'da chop etilgan.",
 
   'work.mynails.alt':
@@ -75,7 +74,7 @@ window.I18N.uz = {
   'work.mynails.desc': 'Tirnoq dizaynini tanlash va natijani oldindan koʻrish.',
   'work.mynails.task': 'Tirnoq dizaynini tanlash va vizuallashtirish.',
   'work.mynails.solution':
-    'Flutter + rasm generatsiyasi, qulay interaktiv interfeys.',
+    'Flutter + rasm generatsiyasi, interaktiv oldindan koʻrish.',
   'work.mynails.result': 'Tayyor mobil ilova.',
 
   'work.altn.alt': 'ALTN Chat: aqlli ssenariyli real vaqtdagi messenjer',
@@ -87,7 +86,8 @@ window.I18N.uz = {
   'work.wegotrip.alt': 'WeGoTrip: sayohatlar uchun audiogidlar va turlar',
   'work.wegotrip.desc':
     'Audiogidlar va turlar: sayohatlar uchun native Android ilova.',
-  'work.wegotrip.task': 'Barqaror reliz va oson qoʻllab-quvvatlanadigan kod.',
+  'work.wegotrip.task':
+    "Android ilovani Google Play'ga chiqarish va kodni keyingi oʻzgarishlarga tayyorlash.",
   'work.wegotrip.solution': 'Native Kotlin, toza arxitektura.',
   'work.wegotrip.result': "Google Play'da chop etilgan.",
 
@@ -114,7 +114,7 @@ window.I18N.uz = {
   'work.wallpapers.alt': 'Wallpapers: kategoriyali oboylar katalogi',
   'work.wallpapers.desc':
     'Kategoriyalar, oldindan koʻrish va tezkor oʻrnatishga ega oboylar katalogi.',
-  'work.wallpapers.task': 'Yengil va tezkor oboylar katalogi.',
+  'work.wallpapers.task': 'Kategoriyali yengil oboylar katalogi.',
   'work.wallpapers.solution': 'Kotlin, Material UI, keshlash.',
   'work.wallpapers.result': 'Tayyor Android ilova.',
 
@@ -153,10 +153,10 @@ window.I18N.uz = {
   'work.tildon.alt': 'Tildon: ingliz tilini oʻrganish veb-platformasi',
   'work.tildon.desc':
     'Ingliz tilini oʻrganish uchun veb-platforma: grammatika, lugʻat, testlar, tinglab tushunish.',
-  'work.tildon.task': 'Progressni kuzatuvchi qulay oʻquv platformasi.',
+  'work.tildon.task': 'Progressni kuzatadigan ingliz tili platformasi.',
   'work.tildon.solution':
     'React, Next.js, TypeScript, PWA, moslashuvchan dizayn.',
-  'work.tildon.result': 'Ishga tushirilgan va onlayn mavjud.',
+  'work.tildon.result': 'tildon.vercel.app manzilida ishlaydi.',
 
   'work.vfx.alt': 'VFX Timecode: video prodakshn uchun taymkod generatori',
   'work.vfx.desc':
@@ -164,16 +164,16 @@ window.I18N.uz = {
   'work.vfx.task':
     'Prodakshn jarayoni uchun aniq toʻliq ekranli taymkod vositasi.',
   'work.vfx.solution': 'Vite, React, Tailwind, shadcn-ui, PWA.',
-  'work.vfx.result': 'Ishga tushirilgan va onlayn mavjud.',
+  'work.vfx.result': 'vfx-timecode.vercel.app manzilida ishlaydi.',
 
   'work.ailogoedit.alt':
     'AiLogoEdit: logotip, ikonka va brend grafikalarini yaratish',
   'work.ailogoedit.desc':
-    'Logotip, ikonka va vizuallar yaratish: stil tanlash → tavsif kiritish → tayyor natija.',
-  'work.ailogoedit.task': 'Tavsif asosida brend grafikalarini tezkor yaratish.',
+    'Logotip, ikonka va vizuallar yaratish: stil tanlanadi, tavsif yoziladi, tayyor fayl yuklab olinadi.',
+  'work.ailogoedit.task': 'Matnli tavsif asosida brend grafikasi.',
   'work.ailogoedit.solution':
     'Next.js, Supabase, generatsiya servisi, buyurtmalar tarixi, toʻlov tizimi.',
-  'work.ailogoedit.result': 'Ishga tushirilgan va onlayn mavjud.',
+  'work.ailogoedit.result': 'ailogoedit.com manzilida ishlaydi.',
 
   'work.pixelvault.alt':
     'PixelVault: rassom va fotograflar uchun onlayn galereya',
@@ -183,32 +183,32 @@ window.I18N.uz = {
     'Kirishni nazorat qilgan holda ishlarni nashr qilish va saqlash.',
   'work.pixelvault.solution':
     'Next.js (App Router), Supabase, galereya, albomlar, xususiy toʻplamlar.',
-  'work.pixelvault.result': 'Ishga tushirilgan va onlayn mavjud.',
+  'work.pixelvault.result': 'pixelvault.vercel.app manzilida ishlaydi.',
 
   'work.monro.alt': 'Monro: Almatidagi bodi-massaj saloni landing sahifasi',
   'work.monro.desc':
     'Almatidagi bodi-massaj saloni landingi: 24/7 yozilish, xizmatlar, sharhlar, WhatsApp va qoʻngʻiroq.',
   'work.monro.task': 'Mijoz darhol yozilishi mumkin boʻlgan salon landingi.',
   'work.monro.solution':
-    'Bir sahifali HTML/CSS/JS: hero, xizmatlar, ustalar, FAQ, WhatsApp va qoʻngʻiroq orqali tezkor aloqa, mobile-first.',
+    'Bir sahifali HTML/CSS/JS: hero, xizmatlar, ustalar, FAQ, WhatsApp va qoʻngʻiroq orqali aloqa, mobile-first.',
   'work.monro.result':
-    'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
+    'Mijoz ishni qabul qildi. Sayt: monro-landing.vercel.app.',
 
-  'work.olympic.alt': 'OLYMPIC: Almatidagi premium massaj saloni landingi',
+  'work.olympic.alt': 'OLYMPIC: Almatidagi massaj saloni landingi',
   'work.olympic.desc':
-    'Almatidagi premium massaj saloni landingi: VIP kabinet, mutaxassislar, 24/7 WhatsApp yozilish.',
+    'Almatidagi massaj saloni landingi: alohida kabinet, ustalar, 24/7 WhatsApp orqali yozilish.',
   'work.olympic.task': 'Alohida formasiz, WhatsApp orqali yozilishli landing.',
   'work.olympic.solution':
     'Bir sahifali HTML/CSS/JS: hero-video, ustalar, seanslar, FAQ, WhatsApp orqali toʻgʻridan-toʻgʻri yozilish, motion, mobile-first.',
   'work.olympic.result':
-    'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
+    'Mijoz ishni qabul qildi. Sayt: olympic-almaty.vercel.app.',
 
   'work.supertour.alt':
     'Super Tour: Toshkentdan turlar: Misr, BAA, Tailand, Vetnam',
   'work.supertour.desc':
     'Toshkentdagi turoperator landingi: yoʻnalishlar, qaynoq turlar, ariza va WhatsApp.',
   'work.supertour.task':
-    'Tur tanlash arizasiga tez olib boradigan zamonaviy sayyohlik landingi.',
+    "Tur tanlash formasi va WhatsApp'li turoperator landingi.",
   'work.supertour.solution':
     'HTML/CSS/JS: hero, yoʻnalishlar, qaynoq turlar, FAQ, ariza shakli va WhatsApp, motion, SEO, mobile-first.',
   'work.supertour.result': 'Onlayn ishga tushgan: supertour.uz.',

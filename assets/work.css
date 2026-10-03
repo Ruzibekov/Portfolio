@@ -53,18 +53,18 @@
   background: var(--surface);
   transition: border-color 160ms var(--ease);
 }
-html.js .work-row.work-sat {
-  opacity: 0;
-  transform: translate3d(0, 16px, 0);
-  transition:
-    opacity 420ms var(--ease),
-    transform 420ms var(--ease),
-    border-color 160ms var(--ease);
-  transition-delay: calc(var(--d, 0) * 40ms), calc(var(--d, 0) * 40ms), 0ms;
+.work-sat-face:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
 }
-html.js .work-row.is-shown {
-  opacity: 1;
-  transform: none;
+@supports selector(:has(*)) {
+  .work-sat-face:focus-visible {
+    outline: none;
+  }
+  .work-row.work-sat:has(.work-sat-face:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
 }
 .work-row.is-hidden {
   display: none;
@@ -106,7 +106,7 @@ html.js .work-row.is-shown {
   padding: 0.95rem 1rem 1rem;
 }
 .work-sat-title {
-  font-family: var(--display);
+  font-family: var(--sans);
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -138,12 +138,14 @@ html.js .work-row.is-shown {
   font-weight: 600;
 }
 .work-sat-open {
+  flex: none;
+  width: 18px;
+  height: 18px;
   color: var(--muted);
-  font-size: 0.95rem;
   transition: transform 200ms var(--ease);
 }
 .work-sat.is-focus .work-sat-open {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }
 
 .work-sat.is-focus {
@@ -316,12 +318,5 @@ html.js .work-row.is-shown {
 @media (min-width: 980px) {
   .work-ledger {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html.js .work-row.work-sat {
-    opacity: 1;
-    transform: none;
   }
 }

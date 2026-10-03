@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#eef1f6"/>
-  <text x="80" y="250" font-family="'Space Grotesk', 'Segoe UI', system-ui, sans-serif" font-size="76" font-weight="700" letter-spacing="-2" fill="#10141c">Шавкат Рузибеков</text>
+  <text x="80" y="250" font-family="Manrope, 'Segoe UI', system-ui, sans-serif" font-size="76" font-weight="700" letter-spacing="-2" fill="#10141c">Шавкат Рузибеков</text>
   <text x="80" y="330" font-family="Manrope, 'Segoe UI', system-ui, sans-serif" font-size="36" font-weight="500" fill="#5c6578">Мобильные приложения и сайты</text>
   <line x1="80" y1="410" x2="1120" y2="410" stroke="#d3d8e0" stroke-width="2"/>
   <text x="80" y="480" font-family="Manrope, 'Segoe UI', system-ui, sans-serif" font-size="30" font-weight="600" fill="#10141c">Flutter, Kotlin, Next.js · Ташкент</text>

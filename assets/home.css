@@ -47,7 +47,6 @@ html[data-theme='light'] {
   --radius-sm: 8px;
   --radius: 12px;
   --radius-pill: 999px;
-  --display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
   --sans: 'Manrope', 'Segoe UI', system-ui, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
@@ -132,23 +131,11 @@ main {
   margin-bottom: 1.5rem;
 }
 .section h2 {
-  font-family: var(--display);
+  font-family: var(--sans);
   font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.03em;
-}
-
-html.js .reveal {
-  opacity: 0;
-  transform: translate3d(0, 16px, 0);
-  transition:
-    opacity 480ms var(--ease),
-    transform 480ms var(--ease);
-}
-html.js .reveal.is-visible {
-  opacity: 1;
-  transform: none;
 }
 
 .hero {
@@ -164,7 +151,7 @@ html.js .reveal.is-visible {
 .hero h1 {
   max-width: 16ch;
   margin-bottom: 1rem;
-  font-family: var(--display);
+  font-family: var(--sans);
   font-size: clamp(2.2rem, 5.4vw, 3.6rem);
   font-weight: 700;
   line-height: 1.06;
@@ -241,7 +228,7 @@ html.js .reveal.is-visible {
   min-width: 0;
 }
 .profile-name {
-  font-family: var(--display);
+  font-family: var(--sans);
   font-size: 1.12rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -303,9 +290,5 @@ html.js .reveal.is-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-  html.js .reveal {
-    opacity: 1;
-    transform: none;
   }
 }

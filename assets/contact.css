@@ -83,7 +83,7 @@
 }
 .contact-field input::placeholder,
 .contact-field textarea::placeholder {
-  color: var(--faint);
+  color: var(--muted);
 }
 .contact-field textarea {
   min-height: 120px;
