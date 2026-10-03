@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="meta.title">
-      Шавкат Рузибеков — приложения и сайты под ключ
+      Шавкат Рузибеков, разработчик приложений и сайтов
     </title>
     <meta
       name="description"
-      content="Делаю приложения для телефона и сайты под ключ — от идеи до запуска. Понятный результат в срок."
+      content="Делаю мобильные приложения и сайты на Flutter, Kotlin и Next.js. Здесь 20 проектов с задачей и результатом."
       data-i18n-attr="content:meta.description"
     />
     <meta name="author" content="Шавкат Рузибеков" />
@@ -75,33 +75,33 @@
     />
     <meta
       property="og:title"
-      content="Шавкат Рузибеков — приложения и сайты под ключ"
+      content="Шавкат Рузибеков, разработчик приложений и сайтов"
       data-i18n-attr="content:meta.ogTitle"
     />
     <meta
       property="og:description"
-      content="Делаю приложения для телефона и сайты под ключ — от идеи до запуска."
+      content="Делаю мобильные приложения и сайты на Flutter, Kotlin и Next.js."
       data-i18n-attr="content:meta.ogDescription"
     />
     <meta
       property="og:image"
-      content="https://portfolio-ruzibekov.vercel.app/og-image.svg"
+      content="https://portfolio-ruzibekov.vercel.app/og-image.png"
     />
     <meta property="og:url" content="https://portfolio-ruzibekov.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Шавкат Рузибеков — приложения и сайты под ключ"
+      content="Шавкат Рузибеков, разработчик приложений и сайтов"
       data-i18n-attr="content:meta.ogTitle"
     />
     <meta
       name="twitter:description"
-      content="Приложения, сайты и автоматизация под ключ — от идеи до запуска."
+      content="Мобильные приложения и сайты. 20 проектов с задачей и результатом."
       data-i18n-attr="content:meta.twitterDescription"
     />
     <meta
       name="twitter:image"
-      content="https://portfolio-ruzibekov.vercel.app/og-image.svg"
+      content="https://portfolio-ruzibekov.vercel.app/og-image.png"
     />
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -109,10 +109,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/home.css" />
+    <link rel="stylesheet" href="assets/header.css" />
+    <link rel="stylesheet" href="assets/work.css" />
+    <link rel="stylesheet" href="assets/contact.css" />
 
     <script type="application/ld+json">
       {
@@ -132,32 +135,18 @@
       }
     </script>
   </head>
-  <body class="orbit-site">
+  <body>
     <a class="skip-link" href="#work" data-i18n="skip">Перейти к проектам</a>
 
-    <div class="scroll-progress" aria-hidden="true"><i></i></div>
-
     <header class="site-header">
-      <a
-        class="brand"
-        href="#top"
-        aria-label="Шавкат Рузибеков — на главную"
-        data-i18n-attr="aria-label:brand.homeLabel"
-      >
-        <span class="brand-mark" aria-hidden="true" data-i18n="brand.mark"
-          >ШР</span
-        >
-        <span class="brand-word" data-i18n="brand.word">Рузибеков</span>
-      </a>
+      <a class="brand" href="#top" data-i18n="brand.word">Шавкат Рузибеков</a>
       <nav
         class="nav"
         aria-label="Основная навигация"
         data-i18n-attr="aria-label:nav.label"
       >
-        <a href="#systems"> <span data-i18n="nav.stack">Услуги</span></a>
-        <a href="#work"> <span data-i18n="nav.cases">Работы</span></a>
-        <a href="#process"> <span data-i18n="nav.process">Как работаю</span></a>
-        <a href="#contact"> <span data-i18n="nav.contact">Написать</span></a>
+        <a href="#work" data-i18n="nav.cases">Работы</a>
+        <a href="#contact" data-i18n="nav.contact">Написать</a>
         <div
           class="lang-switch"
           role="group"
@@ -187,32 +176,43 @@
           <svg
             class="icon-sun"
             viewBox="0 0 24 24"
+            width="20"
+            height="20"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.8"
+            stroke-width="2"
             stroke-linecap="round"
+            stroke-linejoin="round"
             aria-hidden="true"
+            focusable="false"
           >
             <circle cx="12" cy="12" r="4" />
-            <path
-              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-            />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
           </svg>
           <svg
             class="icon-moon"
             viewBox="0 0 24 24"
+            width="20"
+            height="20"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.8"
+            stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
             aria-hidden="true"
+            focusable="false"
           >
-            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
+            <path
+              d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+            />
           </svg>
-          <span class="theme-toggle-label" data-i18n="theme.toggleText"
-            >Тема</span
-          >
         </button>
         <a class="header-action" href="#contact" data-i18n="cta.discuss"
           >Написать в Telegram</a
@@ -246,18 +246,8 @@
         aria-label="Мобильная навигация"
         data-i18n-attr="aria-label:mobileNav.panelLabel"
       >
-        <a href="#systems" data-nav-close>
-          <span data-i18n="nav.stack">Услуги</span></a
-        >
-        <a href="#work" data-nav-close>
-          <span data-i18n="nav.cases">Работы</span></a
-        >
-        <a href="#process" data-nav-close>
-          <span data-i18n="nav.process">Как работаю</span></a
-        >
-        <a href="#contact" data-nav-close>
-          <span data-i18n="nav.contact">Написать</span></a
-        >
+        <a href="#work" data-nav-close data-i18n="nav.cases">Работы</a>
+        <a href="#contact" data-nav-close data-i18n="nav.contact">Написать</a>
         <a
           class="mobile-nav-cta"
           href="#contact"
@@ -282,255 +272,62 @@
           <button type="button" data-lang="en" aria-pressed="false">EN</button>
           <button type="button" data-lang="uz" aria-pressed="false">UZ</button>
         </div>
-        <button
-          class="theme-toggle"
-          type="button"
-          data-theme-toggle
-          aria-label="Переключить тему"
-          data-i18n-attr="aria-label:theme.toggleLabel"
-        >
-          <svg
-            class="icon-sun"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="4" />
-            <path
-              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-            />
-          </svg>
-          <svg
-            class="icon-moon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
-          </svg>
-          <span class="theme-toggle-label" data-i18n="theme.toggleText"
-            >Светлая / тёмная</span
-          >
-        </button>
       </nav>
     </div>
-
-    <nav
-      class="rail"
-      aria-label="Навигация по разделам"
-      data-i18n-attr="aria-label:rail.label"
-    >
-      <a href="#top" data-rail="top" class="is-active"
-        ><span data-i18n="rail.intro">Интро</span></a
-      >
-      <a href="#systems" data-rail="systems"
-        ><span data-i18n="nav.stack">Услуги</span></a
-      >
-      <a href="#work" data-rail="work"
-        ><span data-i18n="nav.cases">Работы</span></a
-      >
-      <a href="#process" data-rail="process"
-        ><span data-i18n="nav.process">Как работаю</span></a
-      >
-      <a href="#contact" data-rail="contact"
-        ><span data-i18n="nav.contact">Написать</span></a
-      >
-    </nav>
 
     <main id="top">
       <section class="hero section" data-section="top">
         <div class="hero-copy reveal">
-          <p class="eyebrow" data-i18n="hero.eyebrow">
-            Приложения и сайты · Ташкент
-          </p>
-          <h1 data-i18n-html="hero.title">
-            Сделаю ваш проект
-            <em class="accent-em">под ключ</em>
-          </h1>
+          <h1 data-i18n="hero.title">Делаю мобильные приложения и сайты</h1>
           <p class="lead" data-i18n="hero.lead">
-            Приложение для телефона, сайт или личный кабинет — от идеи до
-            запуска. Сроки и результат понятны заранее.
+            Пишу на Flutter, Kotlin и Next.js. Публикую приложения в App Store и
+            Google Play, сайты запускаю на вашем домене.
           </p>
           <div class="hero-actions">
-            <a
-              class="button primary"
-              href="#contact"
-              data-magnetic
-              data-i18n="cta.discuss"
+            <a class="button primary" href="#contact" data-i18n="cta.discuss"
               >Написать в Telegram</a
             >
-            <a
-              class="button ghost"
-              href="#work"
-              data-magnetic
-              data-i18n="hero.viewCases"
+            <a class="button ghost" href="#work" data-i18n="hero.viewCases"
               >Смотреть работы</a
             >
           </div>
-          <p class="availability" role="status">
-            <span class="availability-dot" aria-hidden="true"></span>
-            <span data-i18n="hero.availability"
-              >Сейчас принимаю новые заказы</span
-            >
-          </p>
         </div>
 
-        <div class="hero-stage reveal">
-          <div class="hero-bento">
-            <article class="bento-card bento-featured">
-              <div class="bento-featured-top">
-                <span class="bento-badge" data-i18n="receipt.featuredBadge"
-                  >Избранный кейс</span
-                >
-                <span class="bento-status">
-                  <i class="bento-dot" aria-hidden="true"></i>
-                  <span>iOS · Android · Production</span>
-                </span>
-              </div>
-              <div class="bento-mockup">
-                <img
-                  class="bento-mockup-img"
-                  src="screenshots/stefa-shot.webp"
-                  alt="Stefa AI Art — генерация изображений"
-                  width="900"
-                  height="600"
-                  loading="eager"
-                />
-              </div>
-              <div class="bento-featured-bottom">
-                <div class="bento-featured-meta">
-                  <h3
-                    class="bento-project-title"
-                    data-i18n="receipt.featuredTitle"
-                  >
-                    Stefa AI Art
-                  </h3>
-                  <p
-                    class="bento-project-desc"
-                    data-i18n="receipt.featuredDesc"
-                  >
-                    Генерация изображений со встроенными покупками и быстрым UX.
-                  </p>
-                </div>
-                <a
-                  class="bento-project-link"
-                  href="#work"
-                  data-i18n="receipt.viewDetails"
-                  >Смотреть кейс ↗</a
-                >
-              </div>
-            </article>
-
-            <div class="bento-side">
-              <article class="bento-card bento-profile">
-                <div class="bento-profile-head">
-                  <img
-                    class="bento-avatar"
-                    src="assets/avatar.jpg"
-                    alt="Фото профиля Шавката Рузибекова"
-                    data-i18n-attr="alt:receipt.avatarAlt"
-                    width="56"
-                    height="56"
-                    loading="eager"
-                  />
-                  <div class="bento-profile-info">
-                    <strong data-i18n="receipt.name">Шавкат Рузибеков</strong>
-                    <span class="bento-profile-role" data-i18n="receipt.stack"
-                      >Приложения · Сайты · Системы</span
-                    >
-                  </div>
-                </div>
-
-                <div class="bento-links">
-                  <a
-                    class="bento-link-btn"
-                    href="#contact"
-                    data-i18n="receipt.discussLink"
-                    >Telegram ↗</a
-                  >
-                  <a
-                    class="bento-link-btn"
-                    href="#work"
-                    data-i18n="receipt.projectsLink"
-                    >Все проекты ↗</a
-                  >
-                </div>
-              </article>
-            </div>
+        <aside
+          class="profile-card reveal"
+          aria-label="Контакты"
+          data-i18n-attr="aria-label:profile.label"
+        >
+          <img
+            class="profile-avatar"
+            src="assets/avatar.jpg"
+            alt="Фото профиля Шавката Рузибекова"
+            data-i18n-attr="alt:profile.avatarAlt"
+            width="96"
+            height="96"
+            loading="eager"
+          />
+          <div class="profile-info">
+            <p class="profile-name" data-i18n="profile.name">
+              Шавкат Рузибеков
+            </p>
+            <p class="profile-role" data-i18n="profile.role">
+              Разработчик приложений и сайтов, Ташкент
+            </p>
           </div>
-        </div>
+          <a
+            class="profile-link"
+            href="https://t.me/ruzibekov_sh"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Telegram: @ruzibekov_sh</a
+          >
+        </aside>
       </section>
 
-      <section
-        class="section systems reveal"
-        id="systems"
-        data-section="systems"
-      >
+      <section class="section work" id="work" data-section="work">
         <div class="section-head">
-          <p class="eyebrow" data-i18n="systems.eyebrow">Чем могу помочь</p>
-          <h2 data-i18n="systems.title">Три понятных направления</h2>
-        </div>
-        <div class="systems-grid">
-          <a
-            class="system-card"
-            href="#work"
-            data-work-filter="mobile"
-            data-tilt
-          >
-            <span>01</span>
-            <h3 data-i18n="systems.card1Title">Приложения для телефона</h3>
-            <p data-i18n="systems.card1Body">
-              iPhone и Android: уведомления, карты, оплата, публикация в App
-              Store и Google Play.
-            </p>
-            <em class="system-card-cta" data-i18n="systems.cardCta"
-              >Смотреть работы →</em
-            >
-          </a>
-          <a class="system-card" href="#work" data-work-filter="web" data-tilt>
-            <span>02</span>
-            <h3 data-i18n="systems.card2Title">Сайты и кабинеты</h3>
-            <p data-i18n="systems.card2Body">
-              Лендинги, интернет-магазины, личные кабинеты и панели управления —
-              удобно с телефона.
-            </p>
-            <em class="system-card-cta" data-i18n="systems.cardCta"
-              >Смотреть работы →</em
-            >
-          </a>
-          <a
-            class="system-card"
-            href="#work"
-            data-work-filter="backend"
-            data-tilt
-          >
-            <span>03</span>
-            <h3 data-i18n="systems.card3Title">Боты и автоматизация</h3>
-            <p data-i18n="systems.card3Body">
-              Telegram-боты, заявки, уведомления и связка с CRM или таблицами —
-              без лишней ручной работы.
-            </p>
-            <em class="system-card-cta" data-i18n="systems.cardCta"
-              >Смотреть работы →</em
-            >
-          </a>
-        </div>
-      </section>
-
-      <section class="section work reveal" id="work" data-section="work">
-        <div class="section-head">
-          <p class="eyebrow" data-i18n="work.eyebrow">Примеры работ</p>
-          <h2 data-i18n="work.title">Что уже сделано</h2>
-          <p class="section-sub" data-i18n="work.sub">
-            Нажмите на проект — кратко: задача, что сделал, какой результат.
-          </p>
+          <h2 data-i18n="work.title">Проекты</h2>
         </div>
 
         <div
@@ -565,7 +362,7 @@
           </button>
         </div>
 
-        <div class="work-ledger work-constellation" id="workGrid">
+        <div class="work-ledger" id="workGrid">
           <article class="work-row work-sat" data-category="mobile">
             <details>
               <summary class="work-sat-face">
@@ -573,13 +370,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/besttracker-shot.webp"
-                    alt="Best Tracker — live-локация и приглашения в группы по QR"
+                    alt="Best Tracker: live-локация и приглашения в группы по QR"
                     data-i18n-attr="alt:work.besttracker.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">01</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -590,7 +386,7 @@
                     группы по QR-коду.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Mobile · Backend</span>
+                    <span class="work-sat-tag">Flutter, NestJS</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -601,7 +397,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/besttracker-shot.webp"
-                      alt="Best Tracker — live-локация и приглашения в группы по QR"
+                      alt="Best Tracker: live-локация и приглашения в группы по QR"
                       data-i18n-attr="alt:work.besttracker.alt"
                       loading="lazy"
                     />
@@ -659,24 +455,22 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/stefa-shot.webp"
-                    alt="Stefa AI Art — генерация изображений по тексту"
+                    alt="Stefa AI Art: генерация изображений по тексту"
                     data-i18n-attr="alt:work.stefa.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">02</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
                     >Stefa AI Art</span
                   >
                   <span class="work-sat-desc" data-i18n="work.stefa.desc"
-                    >Генерация изображений по текстовому описанию с мгновенным
-                    результатом.</span
+                    >Генерация изображений по текстовому описанию.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Mobile · AI</span>
+                    <span class="work-sat-tag">Flutter, Android</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -687,7 +481,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/stefa-shot.webp"
-                      alt="Stefa AI Art — генерация изображений по тексту"
+                      alt="Stefa AI Art: генерация изображений по тексту"
                       data-i18n-attr="alt:work.stefa.alt"
                       loading="lazy"
                     />
@@ -736,24 +530,23 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/mynails-shot.webp"
-                    alt="My Nail Salon — подбор и визуализация дизайна ногтей"
+                    alt="My Nail Salon: подбор и визуализация дизайна ногтей"
                     data-i18n-attr="alt:work.mynails.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">03</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
                     >My Nail Salon</span
                   >
                   <span class="work-sat-desc" data-i18n="work.mynails.desc"
-                    >Подбор и генерация вариантов дизайна ногтей с быстрым
+                    >Подбор и генерация вариантов дизайна ногтей с
                     предпросмотром.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Mobile · AI</span>
+                    <span class="work-sat-tag">Flutter</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -764,7 +557,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/mynails-shot.webp"
-                      alt="My Nail Salon — подбор и визуализация дизайна ногтей"
+                      alt="My Nail Salon: подбор и визуализация дизайна ногтей"
                       data-i18n-attr="alt:work.mynails.alt"
                       loading="lazy"
                     />
@@ -787,8 +580,7 @@
                       <div>
                         <dt data-i18n="case.result">Результат</dt>
                         <dd data-i18n="work.mynails.result">
-                          Готовое мобильное приложение с понятным и удобным
-                          интерфейсом.
+                          Готовое мобильное приложение.
                         </dd>
                       </div>
                     </dl>
@@ -808,24 +600,23 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/altn-shot.webp"
-                    alt="ALTN Chat — мессенджер реального времени с умными сценариями"
+                    alt="ALTN Chat: мессенджер реального времени с умными сценариями"
                     data-i18n-attr="alt:work.altn.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">04</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
                     >ALTN Chat</span
                   >
                   <span class="work-sat-desc" data-i18n="work.altn.desc"
-                    >Мессенджер с быстрым чатом в реальном времени и умными
-                    сценариями.</span
+                    >Мессенджер с чатом в реальном времени и встроенным
+                    ассистентом.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Mobile · Realtime</span>
+                    <span class="work-sat-tag">Flutter, Android</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -836,7 +627,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/altn-shot.webp"
-                      alt="ALTN Chat — мессенджер реального времени с умными сценариями"
+                      alt="ALTN Chat: мессенджер реального времени с умными сценариями"
                       data-i18n-attr="alt:work.altn.alt"
                       loading="lazy"
                     />
@@ -852,7 +643,7 @@
                       <div>
                         <dt data-i18n="case.solution">Что сделал</dt>
                         <dd data-i18n="work.altn.solution">
-                          Flutter + реалтайм-канал, плавный интерфейс.
+                          Flutter + реалтайм-канал.
                         </dd>
                       </div>
                       <div>
@@ -885,13 +676,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/wegotrip-shot.webp"
-                    alt="WeGoTrip — аудиогиды и туры для путешествий"
+                    alt="WeGoTrip: аудиогиды и туры для путешествий"
                     data-i18n-attr="alt:work.wegotrip.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">05</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -902,7 +692,7 @@
                     путешествий.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Android</span>
+                    <span class="work-sat-tag">Kotlin, Android</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -913,7 +703,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/wegotrip-shot.webp"
-                      alt="WeGoTrip — аудиогиды и туры для путешествий"
+                      alt="WeGoTrip: аудиогиды и туры для путешествий"
                       data-i18n-attr="alt:work.wegotrip.alt"
                       loading="lazy"
                     />
@@ -962,13 +752,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/yolo-shot.webp"
-                    alt="Yolo — беговое приложение Couch to 5K: план, пробежка, статистика"
+                    alt="Yolo: беговое приложение Couch to 5K: план, пробежка, статистика"
                     data-i18n-attr="alt:work.yolo.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">06</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -979,7 +768,7 @@
                     адаптивному плану.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">iOS · Android</span>
+                    <span class="work-sat-tag">Kotlin Multiplatform</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -990,7 +779,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/yolo-shot.webp"
-                      alt="Yolo — беговое приложение Couch to 5K: план, пробежка, статистика"
+                      alt="Yolo: беговое приложение Couch to 5K: план, пробежка, статистика"
                       data-i18n-attr="alt:work.yolo.alt"
                       loading="lazy"
                     />
@@ -1033,13 +822,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/geoblinker-shot.webp"
-                    alt="GeoBlinker25 — геосигналы и фоновая геолокация"
+                    alt="GeoBlinker25: геосигналы и фоновая геолокация"
                     data-i18n-attr="alt:work.geoblinker.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">07</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1050,7 +838,7 @@
                     геолокации.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Android · Geo</span>
+                    <span class="work-sat-tag">Android</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1061,7 +849,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/geoblinker-shot.webp"
-                      alt="GeoBlinker25 — геосигналы и фоновая геолокация"
+                      alt="GeoBlinker25: геосигналы и фоновая геолокация"
                       data-i18n-attr="alt:work.geoblinker.alt"
                       loading="lazy"
                     />
@@ -1103,13 +891,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/wallpapers-shot.webp"
-                    alt="Wallpapers — каталог обоев с категориями"
+                    alt="Wallpapers: каталог обоев с категориями"
                     data-i18n-attr="alt:work.wallpapers.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">08</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1120,7 +907,7 @@
                     установкой.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Android</span>
+                    <span class="work-sat-tag">Kotlin, Android</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1131,7 +918,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/wallpapers-shot.webp"
-                      alt="Wallpapers — каталог обоев с категориями"
+                      alt="Wallpapers: каталог обоев с категориями"
                       data-i18n-attr="alt:work.wallpapers.alt"
                       loading="lazy"
                     />
@@ -1153,7 +940,7 @@
                       <div>
                         <dt data-i18n="case.result">Результат</dt>
                         <dd data-i18n="work.wallpapers.result">
-                          Плавный интерфейс с упором на скорость.
+                          Готовое приложение для Android.
                         </dd>
                       </div>
                     </dl>
@@ -1173,13 +960,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/psixologiya-shot.webp"
-                    alt="Психология влияния — техники, челленджи силы воли, статистика"
+                    alt="Психология влияния: техники, челленджи силы воли, статистика"
                     data-i18n-attr="alt:work.influence.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">09</span>
                 </span>
                 <span class="work-sat-body">
                   <span
@@ -1194,7 +980,7 @@
                     воли и статистика прогресса.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">iOS · Android</span>
+                    <span class="work-sat-tag">Compose Multiplatform</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1205,7 +991,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/psixologiya-shot.webp"
-                      alt="Психология влияния — техники, челленджи силы воли, статистика"
+                      alt="Психология влияния: техники, челленджи силы воли, статистика"
                       data-i18n-attr="alt:work.influence.alt"
                       loading="lazy"
                     />
@@ -1248,13 +1034,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/avtopark-shot.webp"
-                    alt="Avtopark — управление автопарком, медосмотр и техосмотр водителей"
+                    alt="Avtopark: управление автопарком, медосмотр и техосмотр водителей"
                     data-i18n-attr="alt:work.avtopark.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">10</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1265,7 +1050,7 @@
                     отчёты и ролевой доступ.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">iOS · Android</span>
+                    <span class="work-sat-tag">Flutter, iOS, Android</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1276,7 +1061,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/avtopark-shot.webp"
-                      alt="Avtopark — управление автопарком, медосмотр и техосмотр водителей"
+                      alt="Avtopark: управление автопарком, медосмотр и техосмотр водителей"
                       data-i18n-attr="alt:work.avtopark.alt"
                       loading="lazy"
                     />
@@ -1334,13 +1119,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/tildonmobile-shot.webp"
-                    alt="Tildon Mobile — приложение для изучения английского: грамматика, словарь, статистика"
+                    alt="Tildon Mobile: приложение для изучения английского: грамматика, словарь, статистика"
                     data-i18n-attr="alt:work.tildonmobile.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">11</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1351,7 +1135,7 @@
                     словарь, тесты, статистика.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">iOS · Android</span>
+                    <span class="work-sat-tag">Compose Multiplatform</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1362,7 +1146,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/tildonmobile-shot.webp"
-                      alt="Tildon Mobile — приложение для изучения английского: грамматика, словарь, статистика"
+                      alt="Tildon Mobile: приложение для изучения английского: грамматика, словарь, статистика"
                       data-i18n-attr="alt:work.tildonmobile.alt"
                       loading="lazy"
                     />
@@ -1406,13 +1190,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/tildon-shot.webp"
-                    alt="Tildon — веб-платформа для изучения английского"
+                    alt="Tildon: веб-платформа для изучения английского"
                     data-i18n-attr="alt:work.tildon.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">12</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1423,7 +1206,7 @@
                     словарь, тесты, listening.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · Next.js</span>
+                    <span class="work-sat-tag">Next.js, PWA</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1434,7 +1217,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/tildon-shot.webp"
-                      alt="Tildon — веб-платформа для изучения английского"
+                      alt="Tildon: веб-платформа для изучения английского"
                       data-i18n-attr="alt:work.tildon.alt"
                       loading="lazy"
                     />
@@ -1484,13 +1267,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/vfx-shot.webp"
-                    alt="VFX Timecode — генератор таймкода для видеопродакшна"
+                    alt="VFX Timecode: генератор таймкода для видеопродакшна"
                     data-i18n-attr="alt:work.vfx.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">13</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1501,7 +1283,7 @@
                     fullscreen.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · Tool</span>
+                    <span class="work-sat-tag">React, PWA</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1512,7 +1294,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/vfx-shot.webp"
-                      alt="VFX Timecode — генератор таймкода для видеопродакшна"
+                      alt="VFX Timecode: генератор таймкода для видеопродакшна"
                       data-i18n-attr="alt:work.vfx.alt"
                       loading="lazy"
                     />
@@ -1563,13 +1345,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/ailogoedit-shot.webp"
-                    alt="AiLogoEdit — генерация логотипов, иконок и брендовых визуалов"
+                    alt="AiLogoEdit: генерация логотипов, иконок и брендовых визуалов"
                     data-i18n-attr="alt:work.ailogoedit.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">14</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1580,7 +1361,7 @@
                     описание → готовый результат.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · Next.js · AI</span>
+                    <span class="work-sat-tag">Next.js, Supabase</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1591,7 +1372,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/ailogoedit-shot.webp"
-                      alt="AiLogoEdit — генерация логотипов, иконок и брендовых визуалов"
+                      alt="AiLogoEdit: генерация логотипов, иконок и брендовых визуалов"
                       data-i18n-attr="alt:work.ailogoedit.alt"
                       loading="lazy"
                     />
@@ -1642,13 +1423,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/pixelvault-shot.webp"
-                    alt="PixelVault — онлайн-галерея для художников и фотографов"
+                    alt="PixelVault: онлайн-галерея для художников и фотографов"
                     data-i18n-attr="alt:work.pixelvault.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">15</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1659,7 +1439,7 @@
                     публикация работ, приватность.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · Next.js</span>
+                    <span class="work-sat-tag">Next.js, Supabase</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1670,7 +1450,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/pixelvault-shot.webp"
-                      alt="PixelVault — онлайн-галерея для художников и фотографов"
+                      alt="PixelVault: онлайн-галерея для художников и фотографов"
                       data-i18n-attr="alt:work.pixelvault.alt"
                       loading="lazy"
                     />
@@ -1721,13 +1501,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/monro-shot.webp"
-                    alt="Monro — лендинг body-массажа в Алматы"
+                    alt="Monro: лендинг body-массажа в Алматы"
                     data-i18n-attr="alt:work.monro.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">16</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1738,7 +1517,7 @@
                     WhatsApp и звонок.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · Landing</span>
+                    <span class="work-sat-tag">HTML, CSS, JS</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1749,7 +1528,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/monro-shot.webp"
-                      alt="Monro — лендинг body-массажа в Алматы"
+                      alt="Monro: лендинг body-массажа в Алматы"
                       data-i18n-attr="alt:work.monro.alt"
                       loading="lazy"
                     />
@@ -1759,8 +1538,7 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.monro.task">
-                          Спокойный премиум-лендинг, который ведёт на запись без
-                          лишних шагов.
+                          Лендинг салона, с которого клиент сразу записывается.
                         </dd>
                       </div>
                       <div>
@@ -1802,13 +1580,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/supertour-shot.webp"
-                    alt="Super Tour — туры из Ташкента: Египет, ОАЭ, Таиланд, Вьетнам"
+                    alt="Super Tour: туры из Ташкента: Египет, ОАЭ, Таиланд, Вьетнам"
                     data-i18n-attr="alt:work.supertour.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">17</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1819,7 +1596,7 @@
                     туры, заявка и WhatsApp.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · Landing</span>
+                    <span class="work-sat-tag">HTML, CSS, JS</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1830,7 +1607,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/supertour-shot.webp"
-                      alt="Super Tour — туры из Ташкента: Египет, ОАЭ, Таиланд, Вьетнам"
+                      alt="Super Tour: туры из Ташкента: Египет, ОАЭ, Таиланд, Вьетнам"
                       data-i18n-attr="alt:work.supertour.alt"
                       loading="lazy"
                     />
@@ -1882,13 +1659,12 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/olympic-shot.webp"
-                    alt="OLYMPIC — премиум-лендинг body-массажа в Алматы"
+                    alt="OLYMPIC: премиум-лендинг body-массажа в Алматы"
                     data-i18n-attr="alt:work.olympic.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">18</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
@@ -1899,7 +1675,7 @@
                     мастера, WhatsApp-запись 24/7.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · Landing</span>
+                    <span class="work-sat-tag">HTML, CSS, JS</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1910,7 +1686,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/olympic-shot.webp"
-                      alt="OLYMPIC — премиум-лендинг body-массажа в Алматы"
+                      alt="OLYMPIC: премиум-лендинг body-массажа в Алматы"
                       data-i18n-attr="alt:work.olympic.alt"
                       loading="lazy"
                     />
@@ -1920,8 +1696,7 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.olympic.task">
-                          Кинематографичный премиум-лендинг, который ведёт в
-                          WhatsApp-запись без лишних форм.
+                          Лендинг с записью через WhatsApp, без отдельной формы.
                         </dd>
                       </div>
                       <div>
@@ -1963,24 +1738,23 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/earth-shot.webp"
-                    alt="Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda"
+                    alt="Earth Cosmos: фотореалистичная Земля, Солнце и космос в браузере"
                     data-i18n-attr="alt:work.earth3d.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">19</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
-                    >Yer 3D — Earth Cosmos</span
+                    >Earth Cosmos</span
                   >
                   <span class="work-sat-desc" data-i18n="work.earth3d.desc"
-                    >Максимально реалистичная 3D-Земля в браузере:
-                    NASA-текстуры, огни городов, атмосфера и Солнце.</span
+                    >3D-Земля в браузере: NASA-текстуры, огни городов, атмосфера
+                    и Солнце.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · 3D</span>
+                    <span class="work-sat-tag">Three.js, GLSL</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -1991,7 +1765,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/earth-shot.webp"
-                      alt="Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda"
+                      alt="Earth Cosmos: фотореалистичная Земля, Солнце и космос в браузере"
                       data-i18n-attr="alt:work.earth3d.alt"
                       loading="lazy"
                     />
@@ -2001,8 +1775,8 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.earth3d.task">
-                          Кинематографичная Земля в реальном времени прямо в
-                          браузере — без видео и монтажа.
+                          Земля в реальном времени прямо в браузере, без видео и
+                          монтажа.
                         </dd>
                       </div>
                       <div>
@@ -2016,8 +1790,8 @@
                       <div>
                         <dt data-i18n="case.result">Результат</dt>
                         <dd data-i18n="work.earth3d.result">
-                          Живой сайт на Vercel — полностью интерактивный, с
-                          орбитальной камерой.
+                          Сайт работает на Vercel, камера вращается вокруг
+                          планеты.
                         </dd>
                       </div>
                     </dl>
@@ -2044,24 +1818,23 @@
                   <img
                     class="work-sat-img"
                     src="screenshots/vertolyot-shot.webp"
-                    alt="Zarbdor vertolyot — браузерная 3D-игра"
+                    alt="Zarbdor vertolyot: браузерная 3D-игра"
                     data-i18n-attr="alt:work.vertolyot.alt"
                     width="900"
                     height="600"
                     loading="lazy"
                   />
-                  <span class="work-sat-ring" aria-hidden="true">20</span>
                 </span>
                 <span class="work-sat-body">
                   <span class="work-sat-title" role="heading" aria-level="3"
                     >Zarbdor vertolyot</span
                   >
                   <span class="work-sat-desc" data-i18n="work.vertolyot.desc"
-                    >Браузерная 3D-игра: боевой вертолёт, реальное управление,
-                    HUD и воздушный бой — без установки.</span
+                    >Браузерная 3D-игра: боевой вертолёт, управление, HUD и
+                    воздушный бой.</span
                   >
                   <span class="work-sat-meta">
-                    <span class="work-sat-tag">Web · 3D</span>
+                    <span class="work-sat-tag">Three.js, WebGL</span>
                     <span class="work-sat-open" aria-hidden="true">↗</span>
                   </span>
                 </span>
@@ -2072,7 +1845,7 @@
                     <img
                       class="work-sat-dock-img"
                       src="screenshots/vertolyot-shot.webp"
-                      alt="Zarbdor vertolyot — браузерная 3D-игра"
+                      alt="Zarbdor vertolyot: браузерная 3D-игра"
                       data-i18n-attr="alt:work.vertolyot.alt"
                       loading="lazy"
                     />
@@ -2082,22 +1855,22 @@
                       <div>
                         <dt data-i18n="case.task">Задача</dt>
                         <dd data-i18n="work.vertolyot.task">
-                          Запускаемая в браузере 3D-игра: управление,
-                          противники и стабильный FPS без бэкенда.
+                          Запускаемая в браузере 3D-игра: управление, противники
+                          и стабильный FPS без бэкенда.
                         </dd>
                       </div>
                       <div>
                         <dt data-i18n="case.solution">Что сделал</dt>
                         <dd data-i18n="work.vertolyot.solution">
                           Three.js/WebGL: процедурная модель вертолёта, физика
-                          полёта, ИИ противников, ландшафт и звук — один
+                          полёта, ИИ противников, ландшафт и звук. Один
                           статический деплой.
                         </dd>
                       </div>
                       <div>
                         <dt data-i18n="case.result">Результат</dt>
                         <dd data-i18n="work.vertolyot.result">
-                          Живой сайт на Vercel — vertolyot.vercel.app.
+                          Сайт работает на Vercel: vertolyot.vercel.app.
                         </dd>
                       </div>
                     </dl>
@@ -2123,57 +1896,16 @@
       </section>
 
       <section
-        class="section process reveal"
-        id="process"
-        data-section="process"
-      >
-        <div class="section-head">
-          <p class="eyebrow" data-i18n="process.eyebrow">Как всё проходит</p>
-          <h2 data-i18n="process.title">Три простых шага</h2>
-        </div>
-        <ol class="process-line">
-          <li class="process-item" data-tilt>
-            <strong aria-hidden="true">01</strong>
-            <h3 data-i18n="process.step1Title">Обсуждаем</h3>
-            <p data-i18n="process.step1Body">
-              Вы рассказываете задачу и сроки. Я называю объём и стоимость до
-              старта.
-            </p>
-          </li>
-          <li class="process-item" data-tilt>
-            <strong aria-hidden="true">02</strong>
-            <h3 data-i18n="process.step2Title">Делаю</h3>
-            <p data-i18n="process.step2Body">
-              Собираю проект и показываю промежуточные версии — вы видите
-              прогресс.
-            </p>
-          </li>
-          <li class="process-item" data-tilt>
-            <strong aria-hidden="true">03</strong>
-            <h3 data-i18n="process.step3Title">Запускаем</h3>
-            <p data-i18n="process.step3Body">
-              Проверяю, публикую и передаю вам. После сдачи помогаю при
-              вопросах.
-            </p>
-          </li>
-        </ol>
-      </section>
-
-      <section
         class="contact section reveal"
         id="contact"
         data-section="contact"
       >
         <div class="contact-inner">
           <div class="contact-intro">
-            <p class="eyebrow" data-i18n="contact.eyebrow">Связаться</p>
-            <h2 data-i18n-html="contact.title">
-              Напишите, что нужно — отвечу с
-              <em class="accent-em">оценкой</em>
-            </h2>
+            <h2 data-i18n="contact.title">Напишите, что нужно сделать</h2>
             <p class="contact-lead" data-i18n="contact.lead">
-              Коротко опишите задачу. Кнопка откроет Telegram уже с вашим
-              текстом — останется только отправить.
+              До начала работы называю объём и цену, по ходу показываю
+              промежуточные версии. Кнопка откроет Telegram с вашим текстом.
             </p>
             <ul class="contact-direct">
               <li>
@@ -2244,7 +1976,6 @@
                 class="button primary"
                 type="submit"
                 data-channel="telegram"
-                data-magnetic
                 data-i18n="contact.sendTelegram"
               >
                 Открыть Telegram с текстом
@@ -2253,7 +1984,6 @@
                 class="button ghost"
                 type="submit"
                 data-channel="email"
-                data-magnetic
                 data-i18n="contact.sendEmail"
               >
                 Написать на почту
@@ -2266,13 +1996,14 @@
 
     <footer class="site-footer">
       <span data-i18n="footer.copyright">© 2026 Шавкат Рузибеков</span>
-      <span class="footer-time" data-clock hidden
-        ><span data-i18n="footer.city">Ташкент</span> · <b>--:--</b></span
+      <a
+        href="https://t.me/ruzibekov_sh"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Telegram: @ruzibekov_sh</a
       >
-      <span data-i18n="footer.role">Приложения и сайты под ключ</span>
     </footer>
 
-    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
     <script defer src="assets/i18n-en.js"></script>
     <script defer src="assets/i18n-uz.js"></script>
     <script defer src="assets/i18n.js"></script>

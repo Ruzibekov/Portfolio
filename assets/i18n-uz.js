@@ -1,31 +1,26 @@
 window.I18N = window.I18N || {}
 window.I18N.uz = {
-  'meta.title': 'Shavkat Ruzibekov — ilova va saytlar boshidan oxirigacha',
+  'meta.title': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.description':
-    'Mobil ilovalar va zamonaviy saytlar. Gʻoyadan toʻliq ishga tushirishgacha. Aniq natija muddatida.',
+    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 20 ta loyiha: vazifa va natija bilan.',
   'meta.ogLocale': 'uz_UZ',
-  'meta.ogTitle': 'Shavkat Ruzibekov — ilova va saytlar boshidan oxirigacha',
+  'meta.ogTitle': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.ogDescription':
-    'Mobil ilovalar va zamonaviy saytlar boshidan oxirigacha.',
+    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman.',
   'meta.twitterDescription':
-    'Ilovalar, saytlar va avtomatlashtirish — gʻoyadan ishga tushirishgacha.',
+    'Mobil ilova va saytlar. 20 ta loyiha: vazifa va natija bilan.',
 
   skip: 'Loyihalarga oʻtish',
 
-  'brand.mark': 'SR',
-  'brand.word': 'Ruzibekov',
-  'brand.homeLabel': 'Shavkat Ruzibekov — bosh sahifa',
+  'brand.word': 'Shavkat Ruzibekov',
 
   'nav.label': 'Asosiy navigatsiya',
-  'nav.stack': 'Xizmatlar',
   'nav.cases': 'Ishlar',
-  'nav.process': 'Qanday ishlayman',
   'nav.contact': 'Yozish',
 
   'lang.label': 'Til',
 
   'theme.toggleLabel': 'Mavzuni almashtirish',
-  'theme.toggleText': 'Yorugʻ / qorongʻu',
 
   'cta.discuss': 'Telegramda yozish',
 
@@ -34,44 +29,16 @@ window.I18N.uz = {
   'mobileNav.openLabel': 'Menyuni ochish',
   'mobileNav.closeLabel': 'Menyuni yopish',
 
-  'rail.label': 'Boʻlimlar navigatsiyasi',
-  'rail.intro': 'Kirish',
-
-  'hero.eyebrow': 'Ilova va saytlar · Toshkent',
-  'hero.title':
-    'Loyihangizni <em class="accent-em">boshidan oxirigacha</em> qilaman',
+  'hero.title': 'Mobil ilova va saytlar qilaman',
   'hero.lead':
-    'Mobil ilova, zamonaviy sayt yoki shaxsiy kabinet — gʻoyadan toʻliq ishga tushirishgacha. Muddat va natija oldindan aniq.',
+    "Flutter, Kotlin va Next.js bilan ishlayman. Ilovalarni App Store va Google Play'ga chiqaraman, saytni domeningizga joylayman.",
   'hero.viewCases': 'Ishlarni koʻrish',
-  'hero.availability': 'Hozir yangi buyurtma qabul qilaman',
+  'profile.label': 'Kontaktlar',
+  'profile.name': 'Shavkat Ruzibekov',
+  'profile.avatarAlt': 'Shavkat Ruzibekovning profil surati',
+  'profile.role': 'Ilova va sayt dasturchisi, Toshkent',
 
-  'receipt.name': 'Shavkat Ruzibekov',
-  'receipt.avatarAlt': 'Shavkat Ruzibekovning profil surati',
-  'receipt.stack': 'Ilovalar · Saytlar · Tizimlar',
-  'receipt.discussLink': 'Telegram ↗',
-  'receipt.projectsLink': 'Barcha loyihalar ↗',
-  'receipt.featuredBadge': 'Saralangan loyiha',
-  'receipt.featuredTitle': 'Stefa AI Art',
-  'receipt.featuredDesc':
-    'AI generatsiya va tahrirlash, obunalar va qulay interfeys.',
-  'receipt.viewDetails': 'Loyihani koʻrish ↗',
-
-  'systems.eyebrow': 'Nima yordam bera olaman',
-  'systems.title': 'Uch tushunarli yoʻnalish',
-  'systems.card1Title': 'Mobil ilovalar',
-  'systems.card1Body':
-    'iOS va Android: bildirishnomalar, xarita, toʻlov va App Store hamda Google Play ga chiqarish.',
-  'systems.card2Title': 'Saytlar va kabinetlar',
-  'systems.card2Body':
-    'Landing, onlayn-doʻkon, shaxsiy kabinet va boshqaruv paneli — telefonda qulay va tezkor.',
-  'systems.card3Title': 'Botlar va avtomatlashtirish',
-  'systems.card3Body':
-    'Telegram-botlar, arizalar qabuli, bildirishnomalar va CRM yoki jadvallar integratsiyasi.',
-  'systems.cardCta': 'Ishlarni koʻrish →',
-
-  'work.eyebrow': 'Namunalar',
-  'work.title': 'Nima qilingan',
-  'work.sub': 'Loyihani bosing — qisqa: vazifa, nima qildim, natija.',
+  'work.title': 'Loyihalar',
   'work.filterLabel': 'Loyihalar filtri',
   'work.empty': 'Bu toifada hozircha loyihalar yoʻq.',
   'work.openSite': 'Saytni ochish <span aria-hidden="true">↗</span>',
@@ -85,10 +52,9 @@ window.I18N.uz = {
   'filter.all': 'Barchasi',
   'filter.mobile': 'Mobil',
   'filter.web': 'Saytlar',
-  'filter.backend': 'Botlar',
 
   'work.besttracker.alt':
-    'Best Tracker — jonli joylashuv va QR orqali guruhga taklif',
+    'Best Tracker: jonli joylashuv va QR orqali guruhga taklif',
   'work.besttracker.desc':
     'Jonli joylashuv va QR-kod orqali guruhga taklif qiluvchi xavfsizlik xizmati.',
   'work.besttracker.task':
@@ -97,31 +63,28 @@ window.I18N.uz = {
     "Flutter (iOS, Android) + NestJS, deep link'lar, fon rejimidagi geolokatsiya.",
   'work.besttracker.result': "App Store va Google Play'da chop etilgan.",
 
-  'work.stefa.alt': 'Stefa AI Art — matndan rasm generatsiyasi',
-  'work.stefa.desc': 'Matnli tavsif boʻyicha tezkor rasm generatsiyasi.',
-  'work.stefa.task': 'Oddiy va tezkor rasm yaratish ilovasi.',
+  'work.stefa.alt': 'Stefa AI Art: matndan rasm generatsiyasi',
+  'work.stefa.desc': 'Matnli tavsif boʻyicha rasm generatsiyasi.',
+  'work.stefa.task': 'Oddiy rasm yaratish ilovasi.',
   'work.stefa.solution':
     'Flutter + bulutli image-API, qulay foydalanish ssenariysi.',
   'work.stefa.result': "Google Play'da chop etilgan.",
 
   'work.mynails.alt':
-    'My Nail Salon — tirnoq dizaynini tanlash va oldindan koʻrish',
-  'work.mynails.desc':
-    'Neyrotarmoq yordamida tirnoq dizaynini tanlash va natijani real vaqtda koʻrish.',
-  'work.mynails.task': 'Tirnoq dizaynini tezkor tanlash va vizuallashtirish.',
+    'My Nail Salon: tirnoq dizaynini tanlash va oldindan koʻrish',
+  'work.mynails.desc': 'Tirnoq dizaynini tanlash va natijani oldindan koʻrish.',
+  'work.mynails.task': 'Tirnoq dizaynini tanlash va vizuallashtirish.',
   'work.mynails.solution':
     'Flutter + rasm generatsiyasi, qulay interaktiv interfeys.',
-  'work.mynails.result':
-    'Foydalanish oson va qulay boʻlgan tayyor mobil ilova.',
+  'work.mynails.result': 'Tayyor mobil ilova.',
 
-  'work.altn.alt': 'ALTN Chat — aqlli ssenariyli real vaqtdagi messenjer',
-  'work.altn.desc':
-    'Real vaqtdagi tezkor chat va aqlli yordamchi ssenariylari, silliq interfeys.',
-  'work.altn.task': 'Aqlli funksiyalarga ega tezkor messenjer yaratish.',
-  'work.altn.solution': 'Flutter + real vaqt kanali, chaqqon interfeys.',
+  'work.altn.alt': 'ALTN Chat: aqlli ssenariyli real vaqtdagi messenjer',
+  'work.altn.desc': 'Real vaqtdagi chat va ichki yordamchiga ega messenjer.',
+  'work.altn.task': 'Yordamchi funksiyalariga ega real vaqtdagi chat.',
+  'work.altn.solution': 'Flutter + real vaqt kanali.',
   'work.altn.result': "Google Play'da chop etilgan.",
 
-  'work.wegotrip.alt': 'WeGoTrip — sayohatlar uchun audiogidlar va turlar',
+  'work.wegotrip.alt': 'WeGoTrip: sayohatlar uchun audiogidlar va turlar',
   'work.wegotrip.desc':
     'Audiogidlar va turlar: sayohatlar uchun native Android ilova.',
   'work.wegotrip.task': 'Barqaror reliz va oson qoʻllab-quvvatlanadigan kod.',
@@ -129,7 +92,7 @@ window.I18N.uz = {
   'work.wegotrip.result': "Google Play'da chop etilgan.",
 
   'work.yolo.alt':
-    'Yolo — Couch to 5K yugurish ilovasi: reja, yugurish, statistika',
+    'Yolo: Couch to 5K yugurish ilovasi: reja, yugurish, statistika',
   'work.yolo.desc':
     "«Couch to 5K» yugurish ilovasi: noldan moslashuvchan reja boʻyicha birinchi 5 km'gacha.",
   'work.yolo.task':
@@ -140,7 +103,7 @@ window.I18N.uz = {
     'Yugurishlarni kuzatish va progress statistikasiga ega tayyor ilova.',
 
   'work.geoblinker.alt':
-    'GeoBlinker25 — geosignallar va fon rejimidagi geolokatsiya',
+    'GeoBlinker25: geosignallar va fon rejimidagi geolokatsiya',
   'work.geoblinker.desc':
     'Geosignallar va fon rejimidagi geolokatsiyaga asoslangan monitoring.',
   'work.geoblinker.task':
@@ -148,16 +111,16 @@ window.I18N.uz = {
   'work.geoblinker.solution': 'Android, fon vazifalari va sensorlar.',
   'work.geoblinker.result': 'Fon rejimida kuzatuvga ega ishlaydigan prototip.',
 
-  'work.wallpapers.alt': 'Wallpapers — kategoriyali oboylar katalogi',
+  'work.wallpapers.alt': 'Wallpapers: kategoriyali oboylar katalogi',
   'work.wallpapers.desc':
     'Kategoriyalar, oldindan koʻrish va tezkor oʻrnatishga ega oboylar katalogi.',
   'work.wallpapers.task': 'Yengil va tezkor oboylar katalogi.',
   'work.wallpapers.solution': 'Kotlin, Material UI, keshlash.',
-  'work.wallpapers.result': 'Tezlikka qaratilgan silliq interfeys.',
+  'work.wallpapers.result': 'Tayyor Android ilova.',
 
   'work.influence.title': 'Taʼsir psixologiyasi',
   'work.influence.alt':
-    'Taʼsir psixologiyasi — texnikalar, iroda mashqlari, statistika',
+    'Taʼsir psixologiyasi: texnikalar, iroda mashqlari, statistika',
   'work.influence.desc':
     'Shaxsiy rivojlanish: taʼsir oʻtkazish texnikalari, iroda mashqlari va progress statistikasi.',
   'work.influence.task':
@@ -167,7 +130,7 @@ window.I18N.uz = {
   'work.influence.result': 'Tayyor kross-platforma ilovasi.',
 
   'work.avtopark.alt':
-    'Avtopark — avtoparkni boshqarish, haydovchilarning tibbiy va texnik koʻrigi',
+    'Avtopark: avtoparkni boshqarish, haydovchilarning tibbiy va texnik koʻrigi',
   'work.avtopark.desc':
     'Avtoparkni boshqarish: haydovchilarning tibbiy va texnik koʻrigi, hisobotlar va rolga asoslangan kirish.',
   'work.avtopark.task':
@@ -177,7 +140,7 @@ window.I18N.uz = {
   'work.avtopark.result': "App Store va Google Play'da chop etilgan.",
 
   'work.tildonmobile.alt':
-    'Tildon Mobile — ingliz tilini oʻrganish ilovasi: grammatika, lugʻat, statistika',
+    'Tildon Mobile: ingliz tilini oʻrganish ilovasi: grammatika, lugʻat, statistika',
   'work.tildonmobile.desc':
     'Ingliz tilini oʻrganish uchun mobil ilova: grammatika, lugʻat, testlar, statistika.',
   'work.tildonmobile.task':
@@ -187,7 +150,7 @@ window.I18N.uz = {
   'work.tildonmobile.result':
     'Tildon veb-platformasining kross-platforma hamrohi.',
 
-  'work.tildon.alt': 'Tildon — ingliz tilini oʻrganish veb-platformasi',
+  'work.tildon.alt': 'Tildon: ingliz tilini oʻrganish veb-platformasi',
   'work.tildon.desc':
     'Ingliz tilini oʻrganish uchun veb-platforma: grammatika, lugʻat, testlar, tinglab tushunish.',
   'work.tildon.task': 'Progressni kuzatuvchi qulay oʻquv platformasi.',
@@ -195,7 +158,7 @@ window.I18N.uz = {
     'React, Next.js, TypeScript, PWA, moslashuvchan dizayn.',
   'work.tildon.result': 'Ishga tushirilgan va onlayn mavjud.',
 
-  'work.vfx.alt': 'VFX Timecode — video prodakshn uchun taymkod generatori',
+  'work.vfx.alt': 'VFX Timecode: video prodakshn uchun taymkod generatori',
   'work.vfx.desc':
     'VFX va video prodakshn uchun taymkod generatori: FPS nazorati, toʻliq ekran.',
   'work.vfx.task':
@@ -204,7 +167,7 @@ window.I18N.uz = {
   'work.vfx.result': 'Ishga tushirilgan va onlayn mavjud.',
 
   'work.ailogoedit.alt':
-    'AiLogoEdit — logotip, ikonka va brend grafikalarini yaratish',
+    'AiLogoEdit: logotip, ikonka va brend grafikalarini yaratish',
   'work.ailogoedit.desc':
     'Logotip, ikonka va vizuallar yaratish: stil tanlash → tavsif kiritish → tayyor natija.',
   'work.ailogoedit.task': 'Tavsif asosida brend grafikalarini tezkor yaratish.',
@@ -213,7 +176,7 @@ window.I18N.uz = {
   'work.ailogoedit.result': 'Ishga tushirilgan va onlayn mavjud.',
 
   'work.pixelvault.alt':
-    'PixelVault — rassom va fotograflar uchun onlayn galereya',
+    'PixelVault: rassom va fotograflar uchun onlayn galereya',
   'work.pixelvault.desc':
     'Rassom va fotograflar uchun onlayn galereya: albomlar, ishlarni nashr qilish, maxfiylik.',
   'work.pixelvault.task':
@@ -222,28 +185,26 @@ window.I18N.uz = {
     'Next.js (App Router), Supabase, galereya, albomlar, xususiy toʻplamlar.',
   'work.pixelvault.result': 'Ishga tushirilgan va onlayn mavjud.',
 
-  'work.monro.alt': 'Monro — Almatidagi bodi-massaj saloni landing sahifasi',
+  'work.monro.alt': 'Monro: Almatidagi bodi-massaj saloni landing sahifasi',
   'work.monro.desc':
     'Almatidagi bodi-massaj saloni landingi: 24/7 yozilish, xizmatlar, sharhlar, WhatsApp va qoʻngʻiroq.',
-  'work.monro.task':
-    'Ortiqcha qadamlarsiz yozilishga olib boradigan sokin premium landing.',
+  'work.monro.task': 'Mijoz darhol yozilishi mumkin boʻlgan salon landingi.',
   'work.monro.solution':
     'Bir sahifali HTML/CSS/JS: hero, xizmatlar, ustalar, FAQ, WhatsApp va qoʻngʻiroq orqali tezkor aloqa, mobile-first.',
   'work.monro.result':
     'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
 
-  'work.olympic.alt': 'OLYMPIC — Almatidagi premium massaj saloni landingi',
+  'work.olympic.alt': 'OLYMPIC: Almatidagi premium massaj saloni landingi',
   'work.olympic.desc':
     'Almatidagi premium massaj saloni landingi: VIP kabinet, mutaxassislar, 24/7 WhatsApp yozilish.',
-  'work.olympic.task':
-    'Ortiqcha formasiz WhatsApp yozilishga olib boradigan kinematografik premium landing.',
+  'work.olympic.task': 'Alohida formasiz, WhatsApp orqali yozilishli landing.',
   'work.olympic.solution':
     'Bir sahifali HTML/CSS/JS: hero-video, ustalar, seanslar, FAQ, WhatsApp orqali toʻgʻridan-toʻgʻri yozilish, motion, mobile-first.',
   'work.olympic.result':
     'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
 
   'work.supertour.alt':
-    'Super Tour — Toshkentdan turlar: Misr, BAA, Tailand, Vetnam',
+    'Super Tour: Toshkentdan turlar: Misr, BAA, Tailand, Vetnam',
   'work.supertour.desc':
     'Toshkentdagi turoperator landingi: yoʻnalishlar, qaynoq turlar, ariza va WhatsApp.',
   'work.supertour.task':
@@ -252,23 +213,9 @@ window.I18N.uz = {
     'HTML/CSS/JS: hero, yoʻnalishlar, qaynoq turlar, FAQ, ariza shakli va WhatsApp, motion, SEO, mobile-first.',
   'work.supertour.result': 'Onlayn ishga tushgan: supertour.uz.',
 
-  'process.eyebrow': 'Qanday ketadi',
-  'process.title': 'Uch oddiy qadam',
-  'process.step1Title': 'Muhokama',
-  'process.step1Body':
-    'Siz vazifa va muddatni aytasiz. Men ish hajmi va aniq narxni start oldidan aytaman.',
-  'process.step2Title': 'Qilaman',
-  'process.step2Body':
-    'Loyihani yigʻaman va oraliq versiyalarni koʻrsataman — progress doim koʻrinadi.',
-  'process.step3Title': 'Ishga tushiramiz',
-  'process.step3Body':
-    'Tekshiraman, platformalarga nashr qilaman, topshiraman va relizdan keyin ham yordam beraman.',
-
-  'contact.eyebrow': 'Bogʻlanish',
-  'contact.title':
-    'Nima kerakligini yozing — <em class="accent-em">baho</em> bilan javob beraman',
+  'contact.title': 'Nima kerakligini yozing',
   'contact.lead':
-    'Vazifani qisqa yozing. Tugma Telegramni sizning matningiz bilan ochadi — yuborish qoladi.',
+    'Ishni boshlashdan oldin hajm va narxni aytaman, jarayonda oraliq versiyalarni koʻrsataman. Tugma Telegramni matningiz bilan ochadi.',
   'contact.nameLabel': 'Ism',
   'contact.namePlaceholder': 'Qanday murojaat qilay',
   'contact.messageLabel': 'Nima kerak',
@@ -284,28 +231,23 @@ window.I18N.uz = {
   'contact.greeting': 'Salom! Mening ismim {name}.',
   'contact.greetingAnon': 'Salom!',
 
-  'work.earth3d.alt': 'Yer 3D — fotoreal Yer, Quyosh va koinot brauzerda',
+  'work.earth3d.alt': 'Earth Cosmos: brauzerda fotoreal Yer, Quyosh va koinot',
   'work.earth3d.desc':
-    'Brauzerda maksimal realistik 3D Yer: NASA teksturalari, shahar chiroqlari, atmosfera va Quyosh.',
-  'work.earth3d.task':
-    'Video va montajsiz, brauzerda real vaqtda kinematografik Yer sahnasi.',
+    'Brauzerdagi 3D Yer: NASA teksturalari, shahar chiroqlari, atmosfera va Quyosh.',
+  'work.earth3d.task': 'Video va montajsiz, brauzerda real vaqtda Yer sahnasi.',
   'work.earth3d.solution':
     'Three.js va GLSL shaderlar: kunduz/tun, shahar chiroqlari, toʻlqinli okean yaltirashi, atmosfera tarqalishi, ESO Milky Way.',
   'work.earth3d.result':
-    'Vercelʼda jonli — orbita kamerasi bilan toʻliq interaktiv.',
+    'Vercelʼda ishlaydi, kamera sayyora atrofida aylanadi.',
 
-  'work.vertolyot.alt':
-    'Zarbdor vertolyot — brauzer 3D jangovar parvoz oʻyini',
+  'work.vertolyot.alt': 'Zarbdor vertolyot: brauzer 3D jangovar parvoz oʻyini',
   'work.vertolyot.desc':
-    'Brauzer 3D oʻyin: hujum vertolyoti, real boshqaruv, HUD va havo jangi — oʻrnatmasdan.',
+    'Brauzer 3D oʻyin: hujum vertolyoti, boshqaruv, HUD va havo jangi.',
   'work.vertolyot.task':
     'Brauzerda ishlaydigan 3D oʻyin: boshqaruv, dushmanlar va barqaror FPS, bekendsiz.',
   'work.vertolyot.solution':
-    'Three.js/WebGL: procedural vertolyot modeli, parvoz fizikasi, dushman AI, relyef va ovoz — bitta statik deploy.',
-  'work.vertolyot.result':
-    'Vercelʼda jonli — vertolyot.vercel.app.',
+    'Three.js/WebGL: procedural vertolyot modeli, parvoz fizikasi, dushman AI, relyef va ovoz. Bitta statik deploy.',
+  'work.vertolyot.result': 'Vercelʼda ishlaydi: vertolyot.vercel.app.',
 
   'footer.copyright': '© 2026 Shavkat Ruzibekov',
-  'footer.city': 'Toshkent',
-  'footer.role': 'Ilova va saytlar boshidan oxirigacha',
 }

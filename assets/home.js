@@ -167,16 +167,10 @@ const setupReveal = () => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return
         entry.target.classList.add('is-visible')
-        const kids = entry.target.querySelectorAll(
-          ':scope > .reveal-item, .reveal-stagger > *',
-        )
-        kids.forEach((kid, i) => {
-          kid.style.setProperty('--d', String(i))
-        })
         observer.unobserve(entry.target)
       })
     },
-    { threshold: 0.08, rootMargin: '0px 0px -10% 0px' },
+    { threshold: 0, rootMargin: '0px 0px -8% 0px' },
   )
   targets.forEach((t) => observer.observe(t))
 }
@@ -205,20 +199,14 @@ const setupRowReveal = () => {
 }
 
 const setupLedger = () => {
-  const grid = document.querySelector('#workGrid')
   const items = [...document.querySelectorAll('.work-row details')]
   if (!items.length) return
 
   const syncFocus = () => {
-    if (!grid) return
-    let any = false
     document.querySelectorAll('.work-sat').forEach((sat) => {
       const open = sat.querySelector('details.is-open, details[open].is-open')
-      const on = !!open
-      sat.classList.toggle('is-focus', on)
-      if (on) any = true
+      sat.classList.toggle('is-focus', !!open)
     })
-    grid.classList.toggle('is-focusing', any)
   }
 
   items.forEach((details) => {
@@ -338,7 +326,6 @@ const setupFilter = () => {
       chip.setAttribute('aria-pressed', active ? 'true' : 'false')
     })
     let visible = 0
-    const grid = document.querySelector('#workGrid')
     rows.forEach((row) => {
       const categories = (row.dataset.category || '').split(' ')
       const show = next === 'all' || categories.includes(next)
@@ -356,7 +343,6 @@ const setupFilter = () => {
         visible += 1
       }
     })
-    if (grid) grid.classList.remove('is-focusing')
     if (empty) empty.hidden = visible > 0
   }
 
@@ -365,49 +351,6 @@ const setupFilter = () => {
       applyFilter(chip.dataset.filter)
     })
   })
-
-  document.querySelectorAll('[data-work-filter]').forEach((card) => {
-    card.addEventListener('click', () => {
-      applyFilter(card.dataset.workFilter)
-    })
-  })
-}
-
-const setupRail = () => {
-  const links = document.querySelectorAll('.rail a[data-rail]')
-  const sections = document.querySelectorAll('[data-section]')
-  if (!links.length || !sections.length) return
-  const byName = new Map()
-  links.forEach((link) => byName.set(link.dataset.rail, link))
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        const link = byName.get(entry.target.dataset.section)
-        if (!link) return
-        links.forEach((l) => l.classList.toggle('is-active', l === link))
-      })
-    },
-    { rootMargin: '-45% 0px -45% 0px' },
-  )
-  sections.forEach((s) => observer.observe(s))
-}
-
-const setupClock = () => {
-  const el = document.querySelector('[data-clock]')
-  if (!el) return
-  const target = el.querySelector('b') || el
-  const format = new Intl.DateTimeFormat('ru-RU', {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'Asia/Tashkent',
-  })
-  const tick = () => {
-    target.textContent = format.format(new Date())
-  }
-  tick()
-  el.hidden = false
-  setInterval(tick, 30000)
 }
 
 const setupMobileNav = () => {
@@ -517,211 +460,6 @@ const setupAnchorScroll = () => {
   })
 }
 
-const setupSpotlight = () => {
-  const el = document.getElementById('spotlight')
-  if (!el || reducedMotionQuery.matches) return
-  if (window.matchMedia('(pointer: coarse)').matches) return
-  let on = false
-  const move = (event) => {
-    el.style.setProperty('--sx', `${event.clientX}px`)
-    el.style.setProperty('--sy', `${event.clientY}px`)
-    if (!on) {
-      el.classList.add('is-on')
-      on = true
-    }
-  }
-  window.addEventListener('pointermove', move, { passive: true })
-  document.addEventListener('pointerleave', () => {
-    el.classList.remove('is-on')
-    on = false
-  })
-}
-
-const setupMagnetic = () => {
-  if (reducedMotionQuery.matches) return
-  if (window.matchMedia('(pointer: coarse)').matches) return
-  document.querySelectorAll('[data-magnetic]').forEach((el) => {
-    const strength = 8
-    el.addEventListener('pointermove', (event) => {
-      const rect = el.getBoundingClientRect()
-      const x = event.clientX - rect.left - rect.width / 2
-      const y = event.clientY - rect.top - rect.height / 2
-      el.style.setProperty('--mx', `${(x / rect.width) * strength}px`)
-      el.style.setProperty('--my', `${(y / rect.height) * strength}px`)
-    })
-    el.addEventListener('pointerleave', () => {
-      el.style.setProperty('--mx', '0px')
-      el.style.setProperty('--my', '0px')
-    })
-  })
-}
-
-const setupTilt = () => {
-  if (reducedMotionQuery.matches) return
-  if (window.matchMedia('(pointer: coarse)').matches) return
-  document.querySelectorAll('[data-tilt]').forEach((el) => {
-    const max = el.classList.contains('receipt') ? 7 : 9
-    el.addEventListener('pointermove', (event) => {
-      const rect = el.getBoundingClientRect()
-      const px = (event.clientX - rect.left) / rect.width - 0.5
-      const py = (event.clientY - rect.top) / rect.height - 0.5
-      const rx = (-py * max).toFixed(2)
-      const ry = (px * max).toFixed(2)
-      el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translate3d(0,0,0)`
-    })
-    el.addEventListener('pointerleave', () => {
-      el.style.transform = ''
-    })
-  })
-}
-
-const splitHeroTitle = (h1) => {
-  if (!h1 || window.innerWidth < 640) return
-  const html = h1.innerHTML.trim()
-  const tokens = []
-  const re = /(<[^>]+>)|([^<\s]+)|(\s+)/g
-  let match
-  let open = ''
-  while ((match = re.exec(html))) {
-    if (match[1]) {
-      if (/^<\//.test(match[1])) {
-        open += match[1]
-        tokens.push(open)
-        open = ''
-      } else {
-        open = match[1]
-      }
-      continue
-    }
-    if (match[3]) {
-      if (open) open += match[3]
-      else if (tokens.length) tokens.push(' ')
-      continue
-    }
-    if (match[2]) {
-      if (open) open += match[2]
-      else tokens.push(match[2])
-    }
-  }
-  if (open) tokens.push(open)
-  const words = tokens.filter((t) => t && t !== ' ')
-  const mid = Math.max(1, Math.ceil(words.length / 2))
-  const lines = [words.slice(0, mid), words.slice(mid)].filter((l) => l.length)
-  h1.innerHTML = lines
-    .map(
-      (line) =>
-        `<span class="line"><span class="line-inner">${line.join(' ')}</span></span>`,
-    )
-    .join(' ')
-}
-
-const setupHeroMotion = () => {
-  const copy = document.querySelector('.hero-copy')
-  const stage = document.querySelector('.hero-stage')
-  const h1 = document.querySelector('.hero-copy h1')
-  if (!copy || !h1) return
-
-  const run = () => {
-    copy.classList.remove('is-ready')
-    if (stage) stage.classList.remove('is-ready')
-    if (!reducedMotionQuery.matches) {
-      splitHeroTitle(h1)
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          copy.classList.add('is-ready')
-          if (stage) stage.classList.add('is-ready')
-        })
-      })
-    } else {
-      copy.classList.add('is-ready')
-      if (stage) stage.classList.add('is-ready')
-    }
-  }
-
-  run()
-  window.addEventListener('portfolio:lang', () => {
-    window.setTimeout(run, 30)
-  })
-}
-
-const setupFilterMotion = () => {
-  if (reducedMotionQuery.matches) return
-  const chips = document.querySelectorAll('.filter-chip')
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      chip.animate(
-        [
-          { transform: 'scale(0.9)', offset: 0 },
-          { transform: 'scale(1.08)', offset: 0.45 },
-          { transform: 'scale(0.98)', offset: 0.75 },
-          { transform: 'scale(1)', offset: 1 },
-        ],
-        { duration: 420, easing: 'cubic-bezier(0.22, 1.35, 0.36, 1)' },
-      )
-    })
-  })
-}
-
-const setupCardMotion = () => {}
-
-const setupCountPulse = () => {}
-
-const setupScrollProgress = () => {
-  const bar = document.querySelector('.scroll-progress > i')
-  if (!bar) return
-  const update = () => {
-    const max = document.documentElement.scrollHeight - window.innerHeight
-    const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
-    bar.style.setProperty('--p', String(p))
-  }
-  update()
-  window.addEventListener('scroll', update, { passive: true })
-  window.addEventListener('resize', update, { passive: true })
-}
-
-const setupCounters = () => {
-  const nodes = document.querySelectorAll('[data-count]')
-  if (!nodes.length) return
-  if (reducedMotionQuery.matches) return
-
-  const animate = (el) => {
-    const target = Number(el.dataset.count)
-    if (!Number.isFinite(target)) return
-    const duration = 1200
-    const start = performance.now()
-    const from = 0
-    const step = (now) => {
-      const t = Math.min(1, (now - start) / duration)
-      const eased = 1 - Math.pow(1 - t, 3)
-      el.textContent = String(Math.round(from + (target - from) * eased))
-      if (t < 1) requestAnimationFrame(step)
-      else el.textContent = String(target)
-    }
-    requestAnimationFrame(step)
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        animate(entry.target)
-        observer.unobserve(entry.target)
-      })
-    },
-    { threshold: 0.4 },
-  )
-  nodes.forEach((n) => observer.observe(n))
-}
-
-const setupReceiptFloat = () => {
-  if (reducedMotionQuery.matches) return
-  const core = document.querySelector('.orbit-core')
-  if (!core) return
-  window.setTimeout(() => {
-    core.classList.add('is-floating')
-  }, 900)
-}
-
 const CONTACT = {
   telegramUser: 'ruzibekov_sh',
   email: 'ruzibekov01@gmail.com',
@@ -751,10 +489,12 @@ const buildContactMessage = (name, message, lang) => {
 }
 
 const openExternal = (url) => {
-  const win = window.open(url, '_blank', 'noopener,noreferrer')
-  if (!win) {
-    window.location.href = url
+  const win = window.open(url, '_blank')
+  if (win) {
+    win.opener = null
+    return
   }
+  window.location.href = url
 }
 
 const setupContactForm = () => {
@@ -869,22 +609,9 @@ const setupTheme = () => {
 setupTheme()
 setupI18n()
 setupAnchorScroll()
-setupSpotlight()
-setupMagnetic()
-setupTilt()
-setupHeroMotion()
 setupReveal()
 setupRowReveal()
 setupLedger()
 setupFilter()
-setupFilterMotion()
-setupCardMotion()
-setupScrollProgress()
-setupCounters()
-setupCountPulse()
-setupReceiptFloat()
-
 setupContactForm()
-setupRail()
-setupClock()
 setupMobileNav()
