@@ -158,8 +158,7 @@ window.I18N.en = {
 
   'work.tildonmobile.alt':
     'Tildon Mobile: English learning app: grammar, vocabulary, statistics',
-  'work.tildonmobile.desc':
-    'English learning app: grammar, vocabulary, tests, stats.',
+  'work.tildonmobile.desc': 'English learning app: grammar, vocabulary, tests.',
   'work.tildonmobile.task':
     'Learn English on your phone with progress and gamification.',
   'work.tildonmobile.solution':

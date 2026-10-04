@@ -75,7 +75,8 @@ window.I18N.uz = {
   'work.okh.title': 'Umummoskva xoch yurishi',
   'work.okh.alt':
     'Umummoskva xoch yurishi: boshlanishgacha hisoblagich, marshrut xaritasi, maqolalar',
-  'work.okh.desc': 'Hisoblagich, marshrut xaritasi va koʻngillilarga signal.',
+  'work.okh.desc':
+    'Startgacha sanoq, xarita, maqolalar va koʻngillilarga signal.',
   'work.okh.task':
     'Ishtirokchilarga sana, marshrut va koʻngillilar bilan aloqani bitta ilovada berish.',
   'work.okh.solution':
@@ -94,7 +95,7 @@ window.I18N.uz = {
   'work.besttracker.alt':
     'Best Tracker: jonli joylashuv va QR orqali guruhga taklif',
   'work.besttracker.desc':
-    'Xavfsizlik ilovasi: jonli joylashuv va QR-kod bilan guruhlar.',
+    'Xavfsizlik: jonli joylashuv va QR-kod orqali guruhga taklif.',
   'work.besttracker.task':
     'Guruhni real vaqtda kuzatish va joylashuv almashish.',
   'work.besttracker.solution':
@@ -166,8 +167,7 @@ window.I18N.uz = {
 
   'work.tildonmobile.alt':
     'Tildon Mobile: ingliz tilini oʻrganish ilovasi: grammatika, lugʻat, statistika',
-  'work.tildonmobile.desc':
-    'Ingliz tili ilovasi: grammatika, lugʻat, testlar, statistika.',
+  'work.tildonmobile.desc': 'Ingliz tili ilovasi: grammatika, lugʻat, testlar.',
   'work.tildonmobile.task':
     'Progress va geymifikatsiya bilan telefonda ingliz tilini oʻrganish.',
   'work.tildonmobile.solution':
