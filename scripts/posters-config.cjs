@@ -3,6 +3,14 @@ const source = (name) => `scripts/poster-sources/${name}.webp`
 
 const MOBILE = [
   {
+    name: 'mahalla',
+    screens: [source('mahalla-1'), source('mahalla-2'), source('mahalla-3')],
+  },
+  {
+    name: 'okh',
+    screens: [source('okh-1'), source('okh-2'), source('okh-3')],
+  },
+  {
     name: 'altn',
     screens: [shot('altn-emu-1.png'), shot('altn-emu-2.png')],
   },
@@ -31,11 +39,6 @@ const MOBILE = [
       shot('mynails-2.png'),
       shot('mynails-3.png'),
     ],
-  },
-  {
-    name: 'psixologiya',
-    screens: [source('psixologiya-1')],
-    radius: 0.13,
   },
   {
     name: 'stefa',
@@ -70,6 +73,16 @@ const MOBILE = [
 ]
 
 const WEB = [
+  {
+    name: 'agentmama',
+    url: 'https://agentmama.ru',
+    raw: source('agentmama-1'),
+  },
+  {
+    name: 'matik',
+    url: 'https://matematik-uz.vercel.app',
+    raw: source('matik-1'),
+  },
   { name: 'ailogoedit', url: 'https://ailogoedit.com', accept: true },
   { name: 'monro', url: 'https://monro-landing.vercel.app' },
   { name: 'olympic', url: 'https://olympic-almaty.vercel.app' },

@@ -125,6 +125,7 @@ const capture = async (browser, item, viewport, file) => {
 }
 
 const webSource = async (browser, item) => {
+  if (item.raw) return path.resolve(ROOT, item.raw)
   const raw = path.join(TMP, `${item.name}-raw.png`)
   try {
     await capture(browser, item, { width: 1280, height: 800 }, raw)

@@ -44,8 +44,8 @@ const DICT = {
     uz: 'Ilova, sayt va Telegram-botlar qilaman',
   },
   'hero.lead': {
-    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 20 projects with the task and the result.',
-    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 20 ta loyiha: vazifa va natija bilan.",
+    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 23 projects with the task and the result.',
+    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 23 ta loyiha: vazifa va natija bilan.",
   },
   'hero.viewCases': { en: 'See my work', uz: 'Ishlarni koʻrish' },
   'receipt.label': {
@@ -90,6 +90,90 @@ const DICT = {
   'filter.all': { en: 'All', uz: 'Barchasi' },
   'filter.mobile': { en: 'Phone', uz: 'Telefon' },
   'filter.web': { en: 'Websites', uz: 'Saytlar' },
+  'work.mahalla.alt': {
+    en: 'Online Mahalla 2.0: module dashboard, visits and education vouchers',
+    uz: 'Online Mahalla 2.0: modullar paneli, tashriflar va taʼlim vaucherlari',
+  },
+  'work.mahalla.desc': {
+    en: '21 modules for mahalla staff and entrepreneurs in one Android app.',
+    uz: 'Mahalla xodimlari va tadbirkorlar uchun 21 modulli Android ilova.',
+  },
+  'work.mahalla.task': {
+    en: 'Bring loan monitoring, education vouchers, the social registry, visits, landscaping and legalization into one app.',
+    uz: 'Ssuda monitoringi, taʼlim vaucherlari, ijtimoiy reestr, tashriflar, obodonlashtirish va legallashtirishni bitta ilovaga jamlash.',
+  },
+  'work.mahalla.solution': {
+    en: 'Kotlin, Jetpack Compose, multi-module clean architecture, One ID sign-in, Firebase Crashlytics, releases with fastlane.',
+    uz: 'Kotlin, Jetpack Compose, koʻp modulli clean architecture, One ID orqali kirish, Firebase Crashlytics, fastlane orqali relizlar.',
+  },
+  'work.mahalla.result': {
+    en: 'Published on Google Play.',
+    uz: "Google Play'da chop etilgan.",
+  },
+  'work.agentmama.alt': {
+    en: 'Agentmama: AI agent platform home',
+    uz: 'Agentmama: AI-agentlar platformasining bosh sahifasi',
+  },
+  'work.agentmama.desc': {
+    en: 'An AI agent platform with a Yandex Direct campaign generator.',
+    uz: 'Yandex Direct uchun kampaniya generatoriga ega AI-agentlar platformasi.',
+  },
+  'work.agentmama.task': {
+    en: 'Build a Yandex Direct campaign from a site address instead of by hand in Excel.',
+    uz: "Yandex Direct kampaniyasini Excel'da qoʻlda emas, sayt manzili boʻyicha yigʻish.",
+  },
+  'work.agentmama.solution': {
+    en: 'FastAPI with background workers, React, TypeScript, Next.js, Docker. Keyword collection, negative keywords, AI site analysis, export to Excel and Direct.',
+    uz: "FastAPI va fon workerlari, React, TypeScript, Next.js, Docker. Semantika yigʻish, minus-soʻzlar, saytni AI tahlili, Excel va Direct'ga eksport.",
+  },
+  'work.agentmama.result': {
+    en: 'Live at agentmama.ru.',
+    uz: 'agentmama.ru manzilida ishlaydi.',
+  },
+  'work.okh.title': {
+    en: 'All-Moscow Cross Procession',
+    uz: 'Umummoskva xoch yurishi',
+  },
+  'work.okh.alt': {
+    en: 'All-Moscow Cross Procession: countdown, route map, articles',
+    uz: 'Umummoskva xoch yurishi: boshlanishgacha hisoblagich, marshrut xaritasi, maqolalar',
+  },
+  'work.okh.desc': {
+    en: 'Countdown to the start, route map, articles and alerts to volunteers.',
+    uz: 'Boshlanishgacha hisoblagich, xaritada marshrut, maqolalar va koʻngillilarga signal.',
+  },
+  'work.okh.task': {
+    en: 'Give participants the date, the route and a line to volunteers in one app.',
+    uz: 'Ishtirokchilarga sana, marshrut va koʻngillilar bilan aloqani bitta ilovada berish.',
+  },
+  'work.okh.solution': {
+    en: 'Flutter (iOS, Android) + FastAPI, Yandex Maps, FCM push, phone number sign-in, an admin section.',
+    uz: 'Flutter (iOS, Android) + FastAPI, Yandex Maps, FCM orqali push, telefon raqami bilan kirish, administrator boʻlimi.',
+  },
+  'work.okh.result': {
+    en: 'Published on the App Store and Google Play.',
+    uz: "App Store va Google Play'da chop etilgan.",
+  },
+  'work.matik.alt': {
+    en: 'Matik: school maths trainer, home page',
+    uz: 'Matik: maktab matematikasi trenajyori, bosh sahifa',
+  },
+  'work.matik.desc': {
+    en: 'A school maths trainer in Uzbek and Russian for grades 1 to 11.',
+    uz: 'Oʻzbek va rus tilida maktab matematikasi trenajyori, 1–11-sinf.',
+  },
+  'work.matik.task': {
+    en: 'Daily school maths practice with hints and explained mistakes.',
+    uz: 'Maslahat va xatolar tahlili bilan maktab matematikasidan har kungi mashq.',
+  },
+  'work.matik.solution': {
+    en: 'Next.js, TypeScript, Drizzle, Vitest, a PWA on Vercel. 16 topics, 54 skills, DTM exam mode, progress report.',
+    uz: "Next.js, TypeScript, Drizzle, Vitest, Vercel'da PWA. 16 soha, 54 koʻnikma, DTM imtihon rejimi, progress hisoboti.",
+  },
+  'work.matik.result': {
+    en: 'Live at matematik-uz.vercel.app.',
+    uz: 'matematik-uz.vercel.app manzilida ishlaydi.',
+  },
   'work.besttracker.alt': {
     en: 'Best Tracker — live location and QR group invites',
     uz: 'Best Tracker — jonli joylashuv va QR orqali guruhga taklif',
@@ -249,30 +333,6 @@ const DICT = {
   'work.wallpapers.result': {
     en: 'Categories and previews open quickly.',
     uz: "Toifalar va preview'lar tez ochiladi.",
-  },
-  'work.influence.title': {
-    en: 'Psychology of Influence',
-    uz: "Ta'sir psixologiyasi",
-  },
-  'work.influence.alt': {
-    en: 'Psychology of Influence — techniques, willpower challenges, statistics',
-    uz: "Ta'sir psixologiyasi — texnikalar, iroda sinovlari, statistika",
-  },
-  'work.influence.desc': {
-    en: 'Self-practice: a library of influence techniques, willpower challenges and progress statistics.',
-    uz: "Oʻz-oʻzini rivojlantirish: ta'sir texnikalari kutubxonasi, iroda mashqlari va progress statistikasi.",
-  },
-  'work.influence.task': {
-    en: 'Build influence skills and willpower through practice.',
-    uz: "Amaliyot orqali ta'sir koʻnikmalari va irodani rivojlantirish.",
-  },
-  'work.influence.solution': {
-    en: 'Compose Multiplatform (iOS, Android), a technique library, challenges, statistics, offline support.',
-    uz: 'Compose Multiplatform (iOS, Android), texnikalar kutubxonasi, challenjlar, statistika, oflayn rejim.',
-  },
-  'work.influence.result': {
-    en: 'A finished cross-platform app.',
-    uz: 'Tayyor kross-platforma ilovasi.',
   },
   'work.avtopark.alt': {
     en: 'Avtopark — fleet management, driver medical and technical checks',
