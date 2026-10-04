@@ -127,8 +127,7 @@ window.I18N.en = {
   'work.wegotrip.result': 'Published on Google Play.',
 
   'work.yolo.alt': 'Yolo: Couch to 5K running app: plan, run, statistics',
-  'work.yolo.desc':
-    'A "Couch to 5K" running app: from zero to your first 5K on an adaptive plan.',
+  'work.yolo.desc': 'A Couch to 5K running app: from zero to 5K.',
   'work.yolo.task': 'Get a beginner to their first 5K without burnout.',
   'work.yolo.solution':
     'Kotlin Multiplatform (iOS, Android), an adaptive plan, run/walk intervals, statistics.',
@@ -151,7 +150,7 @@ window.I18N.en = {
   'work.avtopark.alt':
     'Avtopark: fleet management, driver medical and technical checks',
   'work.avtopark.desc':
-    'Fleet management: driver medical and technical checks, reports and role-based access.',
+    'Fleet management: driver and vehicle checks, reports, roles.',
   'work.avtopark.task': 'Fleet control and driver clearance in a single place.',
   'work.avtopark.solution':
     'Flutter (iOS, Android), dashboards, roles, medical and technical inspection.',
@@ -160,7 +159,7 @@ window.I18N.en = {
   'work.tildonmobile.alt':
     'Tildon Mobile: English learning app: grammar, vocabulary, statistics',
   'work.tildonmobile.desc':
-    'A mobile app for learning English: grammar, vocabulary, tests, statistics.',
+    'English learning app: grammar, vocabulary, tests, stats.',
   'work.tildonmobile.task':
     'Learn English on your phone with progress and gamification.',
   'work.tildonmobile.solution':
@@ -169,23 +168,20 @@ window.I18N.en = {
     'A cross-platform companion to the Tildon web platform.',
 
   'work.tildon.alt': 'Tildon: web platform for learning English',
-  'work.tildon.desc':
-    'A web platform for learning English: grammar, vocabulary, tests, listening.',
+  'work.tildon.desc': 'English learning website: grammar, vocabulary, tests.',
   'work.tildon.task': 'An English learning platform that tracks progress.',
   'work.tildon.solution': 'React, Next.js, TypeScript, PWA, responsive design.',
   'work.tildon.result': 'Live at tildon.vercel.app.',
 
   'work.vfx.alt': 'VFX Timecode: timecode generator for video production',
-  'work.vfx.desc':
-    'A timecode generator for VFX and video production: FPS control, fullscreen.',
+  'work.vfx.desc': 'Timecode generator for VFX: FPS control and fullscreen.',
   'work.vfx.task':
     'A precise fullscreen timecode generator for film and VFX production.',
   'work.vfx.solution': 'Vite, React, Tailwind, shadcn-ui, PWA.',
   'work.vfx.result': 'Live at vfx-timecode.vercel.app.',
 
   'work.ailogoedit.alt': 'AiLogoEdit: logo, icon and brand visual generation',
-  'work.ailogoedit.desc':
-    'Logo, icon and visual generation: pick a style, write a prompt, download the files.',
+  'work.ailogoedit.desc': 'Logo and icon generation from a style and a prompt.',
   'work.ailogoedit.task': 'Brand visuals generated from a text prompt.',
   'work.ailogoedit.solution':
     'Next.js, Supabase, AI generation API, history, payments.',
@@ -194,15 +190,14 @@ window.I18N.en = {
   'work.pixelvault.alt':
     'PixelVault: online gallery for artists and photographers',
   'work.pixelvault.desc':
-    'An online gallery for artists and photographers: albums, publishing, privacy controls.',
+    'Gallery for artists and photographers: albums, privacy.',
   'work.pixelvault.task': 'Publishing and storing work with access control.',
   'work.pixelvault.solution':
     'Next.js (App Router), Supabase, gallery, albums, private collections.',
   'work.pixelvault.result': 'Live at pixelvault.vercel.app.',
 
   'work.monro.alt': 'Monro: body massage landing page in Almaty',
-  'work.monro.desc':
-    'A body massage salon landing in Almaty: 24/7 booking, services, reviews, WhatsApp and call.',
+  'work.monro.desc': 'Massage salon landing in Almaty: 24/7 booking, reviews.',
   'work.monro.task': 'A salon landing page where visitors book right away.',
   'work.monro.solution':
     'Single-page HTML/CSS/JS: hero, services, masters, FAQ, WhatsApp booking and call, mobile-first.',
@@ -211,7 +206,7 @@ window.I18N.en = {
 
   'work.olympic.alt': 'OLYMPIC: body massage salon landing page in Almaty',
   'work.olympic.desc':
-    'Body massage salon landing page in Almaty: private room, masters, 24/7 WhatsApp booking.',
+    'Almaty massage salon landing: masters, WhatsApp booking.',
   'work.olympic.task':
     'A landing page with booking through WhatsApp, no separate form.',
   'work.olympic.solution':
@@ -222,7 +217,7 @@ window.I18N.en = {
   'work.supertour.alt':
     'Super Tour: tours from Tashkent: Egypt, UAE, Thailand, Vietnam',
   'work.supertour.desc':
-    'Travel operator landing from Tashkent: destinations, hot deals, request form and WhatsApp.',
+    'Tashkent tour operator landing: destinations, hot deals.',
   'work.supertour.task':
     'A tour operator landing page with a tour request form and WhatsApp.',
   'work.supertour.solution':
@@ -250,7 +245,7 @@ window.I18N.en = {
   'work.earth3d.alt':
     'Earth Cosmos: photoreal Earth, the Sun and space in the browser',
   'work.earth3d.desc':
-    'A 3D Earth in the browser: NASA textures, city lights, atmosphere and the Sun.',
+    '3D Earth in the browser: NASA textures, city lights, the Sun.',
   'work.earth3d.task':
     'A real-time Earth in the browser, with no video or editing.',
   'work.earth3d.solution':
