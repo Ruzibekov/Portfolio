@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.en = {
   'meta.title': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.description':
-    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 22 projects with the task and the result.',
+    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 26 projects with the task and the result.',
   'meta.ogLocale': 'en_US',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.ogDescription':
     'I build mobile apps and websites with Flutter, Kotlin and Next.js.',
   'meta.twitterDescription':
-    'Mobile apps and websites. 22 projects with the task and the result.',
+    'Mobile apps and websites. 26 projects with the task and the result.',
 
   skip: 'Skip to projects',
 
@@ -87,6 +87,39 @@ window.I18N.en = {
   'work.majiidtv.solution':
     'HTML, CSS and JavaScript with no framework, a Python build, Vercel. RU and UZ, light and dark themes, 8 shoot types, 3 plans, ordering via Telegram.',
   'work.majiidtv.result': 'Live at majiid-tv.vercel.app.',
+
+  'work.wottank.alt': 'WOT·TANK: account catalog with tank search',
+  'work.wottank.desc': 'A Mir Tankov account showcase and a webmail client.',
+  'work.wottank.task':
+    'A player finds an account by tank, tier, class and nation and buys it on FunPay.',
+  'work.wottank.solution':
+    'React 19, TypeScript, Vite and a Node.js lots API. Search by photo and tank name, a lot admin panel, titles, tanks and prices pulled from FunPay. The wot-mail.ru client runs on Mail.tm.',
+  'work.wottank.result':
+    'The mail client is live at wot-mail.ru. The showcase is open at wot-tank.ru and still in development.',
+  'work.spr54.alt': 'Sibpromresurs: factory equipment catalog, hero screen',
+  'work.spr54.desc': 'A Novosibirsk plant catalog with a quote request.',
+  'work.spr54.task':
+    'A buyer finds gate valves, control cabinets or food equipment and sends a drawing for a quote.',
+  'work.spr54.solution':
+    'Eleventy and PHP, 12 pages. Form requests are saved in the admin panel and sent by email. The admin panel edits texts, 4 articles and requests. Yandex Metrica is connected.',
+  'work.spr54.result':
+    'Live at spr54.ru. After launch the client came back with two more rounds of changes.',
+  'work.les44.alt': 'les44.com: timber house and sauna catalog',
+  'work.les44.desc': 'A timber house and sauna catalog with a calculator.',
+  'work.les44.task':
+    'Move the site from Joomla 3 to Joomla 5 and PHP 8.2, keeping the URLs, catalog, filter, calculator and requests.',
+  'work.les44.solution':
+    'Joomla 5.3, VirtueMart, PHP 8.2. Content and template moved over, the catalog filter, gallery and request form fixed, a malicious file removed from the site root.',
+  'work.les44.result':
+    'Live at les44.com. 297 addresses checked after the move, no new errors.',
+  'work.space444.alt': 'Space444: Miami transfers, hero screen',
+  'work.space444.desc': 'Florida airport transfers with online payment.',
+  'work.space444.task':
+    'A customer books a transfer from MIA or FLL airport, sees the price and pays online.',
+  'work.space444.solution':
+    'WordPress with a custom theme and booking plugin in PHP. A 5-step booking with a Google Maps route and Stripe payment, EN and RU, pages for airports and cities. Google Ads management.',
+  'work.space444.result':
+    'Live at space444.com. Google Ads ad strength went from Average to Excellent.',
 
   'work.besttracker.alt': 'Best Tracker: live location and QR group invites',
   'work.besttracker.desc':

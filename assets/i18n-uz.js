@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.uz = {
   'meta.title': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.description':
-    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 22 ta loyiha: vazifa va natija bilan.',
+    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 26 ta loyiha: vazifa va natija bilan.',
   'meta.ogLocale': 'uz_UZ',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.ogDescription':
     'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman.',
   'meta.twitterDescription':
-    'Mobil ilova va saytlar. 22 ta loyiha: vazifa va natija bilan.',
+    'Mobil ilova va saytlar. 26 ta loyiha: vazifa va natija bilan.',
 
   skip: 'Loyihalarga oʻtish',
 
@@ -88,6 +88,39 @@ window.I18N.uz = {
   'work.majiidtv.solution':
     'Frameworksiz HTML, CSS, JavaScript, Python bilan yigʻish, Vercel. RU va UZ, yorugʻ va qorongʻi tema, 8 xil syomka, 3 ta tarif, Telegram orqali buyurtma.',
   'work.majiidtv.result': 'majiid-tv.vercel.app manzilida ishlaydi.',
+
+  'work.wottank.alt': 'WOT·TANK: tank boʻyicha qidiruvli akkauntlar katalogi',
+  'work.wottank.desc': '«Mir Tankov» akkauntlari vitrinasi va veb-pochta.',
+  'work.wottank.task':
+    'Oʻyinchi akkauntni tank, daraja, sinf va millat boʻyicha topadi va FunPay orqali sotib oladi.',
+  'work.wottank.solution':
+    'React 19, TypeScript, Vite, Node.js asosidagi lotlar API. Rasm va tank nomi boʻyicha qidiruv, lotlar admin paneli, nom, tanklar va narx FunPay saytidan olinadi. wot-mail.ru pochtasi Mail.tm orqali ishlaydi.',
+  'work.wottank.result':
+    'Pochta wot-mail.ru manzilida ishlaydi. Vitrina wot-tank.ru manzilida ochiq, ustida ish davom etmoqda.',
+  'work.spr54.alt': 'Sibpromresurs: zavod uskunalari katalogi, bosh ekran',
+  'work.spr54.desc': 'Novosibirsk zavodi katalogi va hisob-kitob arizasi.',
+  'work.spr54.task':
+    'Xaridor zadvijka, boshqaruv shkafi yoki oziq-ovqat uskunasini topadi va hisob-kitob uchun chizma yuboradi.',
+  'work.spr54.solution':
+    'Eleventy va PHP, 12 sahifa. Formadagi ariza admin panelda saqlanadi va pochtaga yuboriladi. Admin panelda matnlar, 4 ta maqola va arizalar. Yandex Metrika ulangan.',
+  'work.spr54.result':
+    'spr54.ru manzilida ishlaydi. Ishga tushgach buyurtmachi yana ikki marta qoʻshimcha ish bilan qaytdi.',
+  'work.les44.alt': 'les44.com: brus uylar va hammomlar katalogi',
+  'work.les44.desc': 'Kalkulyatorli brus uylar va hammomlar katalogi.',
+  'work.les44.task':
+    'Saytni Joomla 3 dan Joomla 5 va PHP 8.2 ga koʻchirish: manzillar, katalog, filtr, kalkulyator va arizalar saqlanadi.',
+  'work.les44.solution':
+    'Joomla 5.3, VirtueMart, PHP 8.2. Kontent va shablon koʻchirildi, katalog filtri, galereya va ariza formasi tuzatildi, sayt ildizidan zararli fayl oʻchirildi.',
+  'work.les44.result':
+    'les44.com manzilida ishlaydi. Koʻchirishdan keyin 297 ta manzil tekshirildi, yangi xato yoʻq.',
+  'work.space444.alt': 'Space444: Mayamidagi transferlar, bosh ekran',
+  'work.space444.desc': 'Florida aeroportlaridan transfer va onlayn toʻlov.',
+  'work.space444.task':
+    'Mijoz MIA yoki FLL aeroportidan transferni bron qiladi, narxni koʻradi va onlayn toʻlaydi.',
+  'work.space444.solution':
+    'WordPress, PHP asosida oʻz temasi va bron plagini. 5 qadamli bron: Google Maps xaritasida yoʻnalish va Stripe orqali toʻlov, EN va RU, aeroport va shaharlar sahifalari. Google Ads yuritiladi.',
+  'work.space444.result':
+    'space444.com manzilida ishlaydi. Google Ads reklamalari bahosi «Average» darajasidan «Excellent» darajasiga koʻtarildi.',
 
   'work.besttracker.alt':
     'Best Tracker: jonli joylashuv va QR orqali guruhga taklif',
