@@ -3,10 +3,6 @@ const source = (name) => `scripts/poster-sources/${name}.webp`
 
 const MOBILE = [
   {
-    name: 'mahalla',
-    screens: [source('mahalla-1'), source('mahalla-2'), source('mahalla-3')],
-  },
-  {
     name: 'okh',
     screens: [source('okh-1'), source('okh-2'), source('okh-3')],
   },
@@ -86,7 +82,6 @@ const WEB = [
   { name: 'ailogoedit', url: 'https://ailogoedit.com', accept: true },
   { name: 'monro', url: 'https://monro-landing.vercel.app' },
   { name: 'olympic', url: 'https://olympic-almaty.vercel.app' },
-  { name: 'pixelvault', url: 'https://pixelvault.vercel.app' },
   {
     name: 'supertour',
     url: 'https://supertour.uz',

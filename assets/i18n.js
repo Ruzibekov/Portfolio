@@ -44,8 +44,8 @@ const DICT = {
     uz: 'Ilova, sayt va Telegram-botlar qilaman',
   },
   'hero.lead': {
-    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 23 projects with the task and the result.',
-    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 23 ta loyiha: vazifa va natija bilan.",
+    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 21 projects with the task and the result.',
+    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 21 ta loyiha: vazifa va natija bilan.",
   },
   'hero.viewCases': { en: 'See my work', uz: 'Ishlarni koʻrish' },
   'receipt.label': {
@@ -90,26 +90,6 @@ const DICT = {
   'filter.all': { en: 'All', uz: 'Barchasi' },
   'filter.mobile': { en: 'Phone', uz: 'Telefon' },
   'filter.web': { en: 'Websites', uz: 'Saytlar' },
-  'work.mahalla.alt': {
-    en: 'Online Mahalla 2.0: module dashboard, visits and education vouchers',
-    uz: 'Online Mahalla 2.0: modullar paneli, tashriflar va taʼlim vaucherlari',
-  },
-  'work.mahalla.desc': {
-    en: '21 modules for mahalla staff and entrepreneurs in one Android app.',
-    uz: 'Mahalla xodimlari va tadbirkorlar uchun 21 modulli Android ilova.',
-  },
-  'work.mahalla.task': {
-    en: 'Bring loan monitoring, education vouchers, the social registry, visits, landscaping and legalization into one app.',
-    uz: 'Ssuda monitoringi, taʼlim vaucherlari, ijtimoiy reestr, tashriflar, obodonlashtirish va legallashtirishni bitta ilovaga jamlash.',
-  },
-  'work.mahalla.solution': {
-    en: 'Kotlin, Jetpack Compose, multi-module clean architecture, One ID sign-in, Firebase Crashlytics, releases with fastlane.',
-    uz: 'Kotlin, Jetpack Compose, koʻp modulli clean architecture, One ID orqali kirish, Firebase Crashlytics, fastlane orqali relizlar.',
-  },
-  'work.mahalla.result': {
-    en: 'Published on Google Play.',
-    uz: "Google Play'da chop etilgan.",
-  },
   'work.agentmama.alt': {
     en: 'Agentmama: AI agent platform home',
     uz: 'Agentmama: AI-agentlar platformasining bosh sahifasi',
@@ -431,26 +411,6 @@ const DICT = {
     uz: 'Next.js, Supabase, AI-generatsiya (Replicate), tarix, toʻlov.',
   },
   'work.ailogoedit.result': {
-    en: 'Launched and live online.',
-    uz: 'Ishga tushirilgan va onlayn mavjud.',
-  },
-  'work.pixelvault.alt': {
-    en: 'PixelVault: online gallery for artists and photographers',
-    uz: 'PixelVault: rassom va fotograflar uchun onlayn galereya',
-  },
-  'work.pixelvault.desc': {
-    en: 'An online gallery for artists and photographers: albums, publishing, privacy controls.',
-    uz: 'Rassom va fotograflar uchun onlayn galereya: albomlar, ishlarni nashr qilish, maxfiylik.',
-  },
-  'work.pixelvault.task': {
-    en: 'Publishing and storing work with access control.',
-    uz: 'Kirishni nazorat qilgan holda ishlarni nashr qilish va saqlash.',
-  },
-  'work.pixelvault.solution': {
-    en: 'Next.js (App Router), Supabase, gallery, albums, private collections.',
-    uz: 'Next.js (App Router), Supabase, galereya, albomlar, xususiy toʻplamlar.',
-  },
-  'work.pixelvault.result': {
     en: 'Launched and live online.',
     uz: 'Ishga tushirilgan va onlayn mavjud.',
   },
