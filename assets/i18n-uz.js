@@ -64,8 +64,7 @@ window.I18N.uz = {
   'work.mahalla.result': "Google Play'da chop etilgan.",
 
   'work.agentmama.alt': 'Agentmama: AI-agentlar platformasining bosh sahifasi',
-  'work.agentmama.desc':
-    'Yandex Direct uchun kampaniya generatoriga ega AI-agentlar platformasi.',
+  'work.agentmama.desc': 'AI-agentlar va Yandex Direct kampaniya generatori.',
   'work.agentmama.task':
     "Yandex Direct kampaniyasini Excel'da qoʻlda emas, sayt manzili boʻyicha yigʻish.",
   'work.agentmama.solution':
@@ -266,7 +265,7 @@ window.I18N.uz = {
 
   'work.vertolyot.alt': 'Zarbdor vertolyot: brauzer 3D jangovar parvoz oʻyini',
   'work.vertolyot.desc':
-    'Brauzer 3D oʻyin: hujum vertolyoti, boshqaruv, HUD va havo jangi.',
+    'Brauzer 3D oʻyini: hujum vertolyoti, HUD va havo jangi.',
   'work.vertolyot.task':
     'Brauzerda ishlaydigan 3D oʻyin: boshqaruv, dushmanlar va barqaror FPS, bekendsiz.',
   'work.vertolyot.solution':

@@ -64,8 +64,7 @@ window.I18N.en = {
   'work.mahalla.result': 'Published on Google Play.',
 
   'work.agentmama.alt': 'Agentmama: AI agent platform home',
-  'work.agentmama.desc':
-    'An AI agent platform with a Yandex Direct campaign generator.',
+  'work.agentmama.desc': 'AI agents and a Yandex Direct campaign generator.',
   'work.agentmama.task':
     'Build a Yandex Direct campaign from a site address instead of by hand in Excel.',
   'work.agentmama.solution':
@@ -254,7 +253,7 @@ window.I18N.en = {
 
   'work.vertolyot.alt': 'Zarbdor vertolyot: browser 3D combat flight game',
   'work.vertolyot.desc':
-    'A browser 3D game: an attack helicopter, controls, HUD and air combat.',
+    'Browser 3D game: attack helicopter, HUD and air combat.',
   'work.vertolyot.task':
     'A 3D game that runs in the browser: controls, enemies and steady FPS with no backend.',
   'work.vertolyot.solution':
