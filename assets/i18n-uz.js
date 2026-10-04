@@ -94,7 +94,7 @@ window.I18N.uz = {
   'work.wottank.task':
     'Oʻyinchi akkauntni tank, daraja, sinf va millat boʻyicha topadi va FunPay orqali sotib oladi.',
   'work.wottank.solution':
-    'React 19, TypeScript, Vite, Node.js asosidagi lotlar API. Rasm va tank nomi boʻyicha qidiruv, lotlar admin paneli, nom, tanklar va narx FunPay saytidan olinadi. wot-mail.ru pochtasi Mail.tm orqali ishlaydi.',
+    'React 19, TypeScript, Vite, Node.js asosidagi lotlar API. Tankni rasmidan tanlash va nomi boʻyicha qidiruv, lotlar admin paneli, nom, tanklar va narx FunPay saytidan olinadi. wot-mail.ru pochtasi Mail.tm orqali ishlaydi.',
   'work.wottank.result':
     'Pochta wot-mail.ru manzilida ishlaydi. Vitrina wot-tank.ru manzilida ochiq, ustida ish davom etmoqda.',
   'work.spr54.alt': 'Sibpromresurs: zavod uskunalari katalogi, bosh ekran',

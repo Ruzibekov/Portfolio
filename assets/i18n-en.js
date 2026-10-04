@@ -93,7 +93,7 @@ window.I18N.en = {
   'work.wottank.task':
     'A player finds an account by tank, tier, class and nation and buys it on FunPay.',
   'work.wottank.solution':
-    'React 19, TypeScript, Vite and a Node.js lots API. Search by photo and tank name, a lot admin panel, titles, tanks and prices pulled from FunPay. The wot-mail.ru client runs on Mail.tm.',
+    'React 19, TypeScript, Vite and a Node.js lots API. Tank picker with images and search by name, a lot admin panel, titles, tanks and prices pulled from FunPay. The wot-mail.ru client runs on Mail.tm.',
   'work.wottank.result':
     'The mail client is live at wot-mail.ru. The showcase is open at wot-tank.ru and still in development.',
   'work.spr54.alt': 'Sibpromresurs: factory equipment catalog, hero screen',
