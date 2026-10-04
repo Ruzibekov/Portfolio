@@ -150,7 +150,7 @@ window.I18N.en = {
   'work.avtopark.alt':
     'Avtopark: fleet management, driver medical and technical checks',
   'work.avtopark.desc':
-    'Fleet management: driver and vehicle checks, reports, roles.',
+    'Fleet checks for drivers and vehicles, reports and roles.',
   'work.avtopark.task': 'Fleet control and driver clearance in a single place.',
   'work.avtopark.solution':
     'Flutter (iOS, Android), dashboards, roles, medical and technical inspection.',

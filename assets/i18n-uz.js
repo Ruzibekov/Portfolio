@@ -157,8 +157,7 @@ window.I18N.uz = {
 
   'work.avtopark.alt':
     'Avtopark: avtoparkni boshqarish, haydovchilarning tibbiy va texnik koʻrigi',
-  'work.avtopark.desc':
-    'Avtopark: haydovchi va texnika koʻrigi, hisobotlar, rollar.',
+  'work.avtopark.desc': 'Haydovchi va texnika koʻrigi, hisobotlar va rollar.',
   'work.avtopark.task':
     'Avtopark nazorati va haydovchilar ruxsatini bitta joyda birlashtirish.',
   'work.avtopark.solution':
