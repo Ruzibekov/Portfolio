@@ -475,8 +475,8 @@ const DICT = {
     uz: 'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
   },
   'work.olympic.alt': {
-    en: 'OLYMPIC, body massage landing in Almaty',
-    uz: 'OLYMPIC, Almatidagi body-massaj landingi',
+    en: 'OLYMPIC: body massage landing in Almaty',
+    uz: 'OLYMPIC: Almatidagi body-massaj landingi',
   },
   'work.olympic.desc': {
     en: 'Body massage landing in Almaty: private suite, masters, 24/7 WhatsApp booking.',
@@ -495,8 +495,8 @@ const DICT = {
     uz: 'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
   },
   'work.supertour.alt': {
-    en: 'Super Tour: tours from Tashkent, Egypt, UAE, Thailand, Vietnam',
-    uz: 'Super Tour: Toshkentdan turlar, Misr, BAA, Tailand, Vetnam',
+    en: 'Super Tour: tours from Tashkent to Egypt, UAE, Thailand, Vietnam',
+    uz: 'Super Tour: Toshkentdan Misr, BAA, Tailand, Vetnamga turlar',
   },
   'work.supertour.desc': {
     en: 'Travel operator landing from Tashkent: destinations, hot deals, request form and WhatsApp.',

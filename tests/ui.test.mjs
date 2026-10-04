@@ -514,6 +514,12 @@ describe('content', () => {
             .map((node) => node.className || node.tagName)
           return {
             dashed: headings.filter((text) => text.includes('—')),
+            labelDashes: [...document.querySelectorAll('[alt], [aria-label]')]
+              .map(
+                (node) =>
+                  node.getAttribute('alt') || node.getAttribute('aria-label'),
+              )
+              .filter((text) => /—| · /.test(text)),
             accent: document.querySelectorAll('h1 em, h2 em').length,
             kickers: document.querySelectorAll('.eyebrow').length,
             clock: document.querySelectorAll('[data-clock]').length,
@@ -526,6 +532,7 @@ describe('content', () => {
           report,
           {
             dashed: [],
+            labelDashes: [],
             accent: 0,
             kickers: 0,
             clock: 0,
