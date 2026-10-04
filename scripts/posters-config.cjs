@@ -84,6 +84,26 @@ const WEB = [
     url: 'https://majiid-tv.vercel.app',
     raw: source('majiidtv-1'),
   },
+  {
+    name: 'wottank',
+    url: 'https://wot-tank.ru',
+    raw: source('wottank-1'),
+  },
+  {
+    name: 'spr54',
+    url: 'https://spr54.ru',
+    raw: source('spr54-1'),
+  },
+  {
+    name: 'les44',
+    url: 'https://les44.com',
+    raw: source('les44-1'),
+  },
+  {
+    name: 'space444',
+    url: 'https://www.space444.com',
+    raw: source('space444-1'),
+  },
   { name: 'ailogoedit', url: 'https://ailogoedit.com', accept: true },
   { name: 'monro', url: 'https://monro-landing.vercel.app' },
   { name: 'olympic', url: 'https://olympic-almaty.vercel.app' },

@@ -44,8 +44,8 @@ const DICT = {
     uz: 'Ilova, sayt va Telegram-botlar qilaman',
   },
   'hero.lead': {
-    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 22 projects with the task and the result.',
-    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 22 ta loyiha: vazifa va natija bilan.",
+    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 26 projects with the task and the result.',
+    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 26 ta loyiha: vazifa va natija bilan.",
   },
   'hero.viewCases': { en: 'See my work', uz: 'Ishlarni koʻrish' },
   'receipt.label': {
@@ -173,6 +173,86 @@ const DICT = {
   'work.majiidtv.result': {
     en: 'Live at majiid-tv.vercel.app.',
     uz: 'majiid-tv.vercel.app manzilida ishlaydi.',
+  },
+  'work.wottank.alt': {
+    en: 'WOT·TANK: account catalog with tank search',
+    uz: 'WOT·TANK: tank boʻyicha qidiruvli akkauntlar katalogi',
+  },
+  'work.wottank.desc': {
+    en: 'A Mir Tankov account showcase and a webmail client.',
+    uz: '«Mir Tankov» akkauntlari vitrinasi va veb-pochta.',
+  },
+  'work.wottank.task': {
+    en: 'A player finds an account by tank, tier, class and nation and buys it on FunPay.',
+    uz: 'Oʻyinchi akkauntni tank, daraja, sinf va millat boʻyicha topadi va FunPay orqali sotib oladi.',
+  },
+  'work.wottank.solution': {
+    en: 'React 19, TypeScript, Vite and a Node.js lots API. Search by photo and tank name, a lot admin panel, titles, tanks and prices pulled from FunPay. The wot-mail.ru client runs on Mail.tm.',
+    uz: 'React 19, TypeScript, Vite, Node.js asosidagi lotlar API. Rasm va tank nomi boʻyicha qidiruv, lotlar admin paneli, nom, tanklar va narx FunPay saytidan olinadi. wot-mail.ru pochtasi Mail.tm orqali ishlaydi.',
+  },
+  'work.wottank.result': {
+    en: 'The mail client is live at wot-mail.ru. The showcase is open at wot-tank.ru and still in development.',
+    uz: 'Pochta wot-mail.ru manzilida ishlaydi. Vitrina wot-tank.ru manzilida ochiq, ustida ish davom etmoqda.',
+  },
+  'work.spr54.alt': {
+    en: 'Sibpromresurs: factory equipment catalog, hero screen',
+    uz: 'Sibpromresurs: zavod uskunalari katalogi, bosh ekran',
+  },
+  'work.spr54.desc': {
+    en: 'A Novosibirsk plant catalog with a quote request.',
+    uz: 'Novosibirsk zavodi katalogi va hisob-kitob arizasi.',
+  },
+  'work.spr54.task': {
+    en: 'A buyer finds gate valves, control cabinets or food equipment and sends a drawing for a quote.',
+    uz: 'Xaridor zadvijka, boshqaruv shkafi yoki oziq-ovqat uskunasini topadi va hisob-kitob uchun chizma yuboradi.',
+  },
+  'work.spr54.solution': {
+    en: 'Eleventy and PHP, 12 pages. Form requests are saved in the admin panel and sent by email. The admin panel edits texts, 4 articles and requests. Yandex Metrica is connected.',
+    uz: 'Eleventy va PHP, 12 sahifa. Formadagi ariza admin panelda saqlanadi va pochtaga yuboriladi. Admin panelda matnlar, 4 ta maqola va arizalar. Yandex Metrika ulangan.',
+  },
+  'work.spr54.result': {
+    en: 'Live at spr54.ru. After launch the client came back with two more rounds of changes.',
+    uz: 'spr54.ru manzilida ishlaydi. Ishga tushgach buyurtmachi yana ikki marta qoʻshimcha ish bilan qaytdi.',
+  },
+  'work.les44.alt': {
+    en: 'les44.com: timber house and sauna catalog',
+    uz: 'les44.com: brus uylar va hammomlar katalogi',
+  },
+  'work.les44.desc': {
+    en: 'A timber house and sauna catalog with a calculator.',
+    uz: 'Kalkulyatorli brus uylar va hammomlar katalogi.',
+  },
+  'work.les44.task': {
+    en: 'Move the site from Joomla 3 to Joomla 5 and PHP 8.2, keeping the URLs, catalog, filter, calculator and requests.',
+    uz: 'Saytni Joomla 3 dan Joomla 5 va PHP 8.2 ga koʻchirish: manzillar, katalog, filtr, kalkulyator va arizalar saqlanadi.',
+  },
+  'work.les44.solution': {
+    en: 'Joomla 5.3, VirtueMart, PHP 8.2. Content and template moved over, the catalog filter, gallery and request form fixed, a malicious file removed from the site root.',
+    uz: 'Joomla 5.3, VirtueMart, PHP 8.2. Kontent va shablon koʻchirildi, katalog filtri, galereya va ariza formasi tuzatildi, sayt ildizidan zararli fayl oʻchirildi.',
+  },
+  'work.les44.result': {
+    en: 'Live at les44.com. 297 addresses checked after the move, no new errors.',
+    uz: 'les44.com manzilida ishlaydi. Koʻchirishdan keyin 297 ta manzil tekshirildi, yangi xato yoʻq.',
+  },
+  'work.space444.alt': {
+    en: 'Space444: Miami transfers, hero screen',
+    uz: 'Space444: Mayamidagi transferlar, bosh ekran',
+  },
+  'work.space444.desc': {
+    en: 'Florida airport transfers with online payment.',
+    uz: 'Florida aeroportlaridan transfer va onlayn toʻlov.',
+  },
+  'work.space444.task': {
+    en: 'A customer books a transfer from MIA or FLL airport, sees the price and pays online.',
+    uz: 'Mijoz MIA yoki FLL aeroportidan transferni bron qiladi, narxni koʻradi va onlayn toʻlaydi.',
+  },
+  'work.space444.solution': {
+    en: 'WordPress with a custom theme and booking plugin in PHP. A 5-step booking with a Google Maps route and Stripe payment, EN and RU, pages for airports and cities. Google Ads management.',
+    uz: 'WordPress, PHP asosida oʻz temasi va bron plagini. 5 qadamli bron: Google Maps xaritasida yoʻnalish va Stripe orqali toʻlov, EN va RU, aeroport va shaharlar sahifalari. Google Ads yuritiladi.',
+  },
+  'work.space444.result': {
+    en: 'Live at space444.com. Google Ads ad strength went from Average to Excellent.',
+    uz: 'space444.com manzilida ishlaydi. Google Ads reklamalari bahosi «Average» darajasidan «Excellent» darajasiga koʻtarildi.',
   },
   'work.besttracker.alt': {
     en: 'Best Tracker: live location and QR group invites',
