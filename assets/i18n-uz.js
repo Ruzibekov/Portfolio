@@ -131,9 +131,9 @@ window.I18N.uz = {
 
   'work.yolo.alt':
     'Yolo: Couch to 5K yugurish ilovasi: reja, yugurish, statistika',
-  'work.yolo.desc': "«Couch to 5K» yugurish ilovasi: noldan 5 km'gacha.",
+  'work.yolo.desc': "«Couch to 5K» yugurish ilovasi: noldan 5\u00a0km'gacha.",
   'work.yolo.task':
-    "Yangi boshlovchini charchamasdan birinchi 5 km'ga olib chiqish.",
+    "Yangi boshlovchini charchamasdan birinchi 5\u00a0km'ga olib chiqish.",
   'work.yolo.solution':
     'Kotlin Multiplatform (iOS, Android), moslashuvchan reja, yugurish/yurish intervallari, statistika.',
   'work.yolo.result':
