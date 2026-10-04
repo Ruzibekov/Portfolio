@@ -187,8 +187,8 @@ const DICT = {
     uz: 'Oʻyinchi akkauntni tank, daraja, sinf va millat boʻyicha topadi va FunPay orqali sotib oladi.',
   },
   'work.wottank.solution': {
-    en: 'React 19, TypeScript, Vite and a Node.js lots API. Search by photo and tank name, a lot admin panel, titles, tanks and prices pulled from FunPay. The wot-mail.ru client runs on Mail.tm.',
-    uz: 'React 19, TypeScript, Vite, Node.js asosidagi lotlar API. Rasm va tank nomi boʻyicha qidiruv, lotlar admin paneli, nom, tanklar va narx FunPay saytidan olinadi. wot-mail.ru pochtasi Mail.tm orqali ishlaydi.',
+    en: 'React 19, TypeScript, Vite and a Node.js lots API. Tank picker with images and search by name, a lot admin panel, titles, tanks and prices pulled from FunPay. The wot-mail.ru client runs on Mail.tm.',
+    uz: 'React 19, TypeScript, Vite, Node.js asosidagi lotlar API. Tankni rasmidan tanlash va nomi boʻyicha qidiruv, lotlar admin paneli, nom, tanklar va narx FunPay saytidan olinadi. wot-mail.ru pochtasi Mail.tm orqali ishlaydi.',
   },
   'work.wottank.result': {
     en: 'The mail client is live at wot-mail.ru. The showcase is open at wot-tank.ru and still in development.',
