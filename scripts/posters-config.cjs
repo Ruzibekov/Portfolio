@@ -79,6 +79,11 @@ const WEB = [
     url: 'https://matematik-uz.vercel.app',
     raw: source('matik-1'),
   },
+  {
+    name: 'majiidtv',
+    url: 'https://majiid-tv.vercel.app',
+    raw: source('majiidtv-1'),
+  },
   { name: 'ailogoedit', url: 'https://ailogoedit.com', accept: true },
   { name: 'monro', url: 'https://monro-landing.vercel.app' },
   { name: 'olympic', url: 'https://olympic-almaty.vercel.app' },

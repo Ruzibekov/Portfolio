@@ -44,8 +44,8 @@ const DICT = {
     uz: 'Ilova, sayt va Telegram-botlar qilaman',
   },
   'hero.lead': {
-    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 21 projects with the task and the result.',
-    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 21 ta loyiha: vazifa va natija bilan.",
+    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 22 projects with the task and the result.',
+    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 22 ta loyiha: vazifa va natija bilan.",
   },
   'hero.viewCases': { en: 'See my work', uz: 'Ishlarni koʻrish' },
   'receipt.label': {
@@ -153,6 +153,26 @@ const DICT = {
   'work.matik.result': {
     en: 'Live at matematik-uz.vercel.app.',
     uz: 'matematik-uz.vercel.app manzilida ishlaydi.',
+  },
+  'work.majiidtv.alt': {
+    en: 'Majiid.tv: blogger site, hero screen',
+    uz: 'Majiid.tv: bloger sayti, bosh ekran',
+  },
+  'work.majiidtv.desc': {
+    en: 'A Bukhara blogger site with advertising prices.',
+    uz: 'Buxorolik blogerning reklama narxlari bilan sayti.',
+  },
+  'work.majiidtv.task': {
+    en: 'Advertisers see formats, prices and sample videos on one page.',
+    uz: 'Reklama beruvchi formatlar, narxlar va video namunalarini bitta sahifada koʻradi.',
+  },
+  'work.majiidtv.solution': {
+    en: 'HTML, CSS and JavaScript with no framework, a Python build, Vercel. RU and UZ, light and dark themes, 8 shoot types, 3 plans, ordering via Telegram.',
+    uz: 'Frameworksiz HTML, CSS, JavaScript, Python bilan yigʻish, Vercel. RU va UZ, yorugʻ va qorongʻi tema, 8 xil syomka, 3 ta tarif, Telegram orqali buyurtma.',
+  },
+  'work.majiidtv.result': {
+    en: 'Live at majiid-tv.vercel.app.',
+    uz: 'majiid-tv.vercel.app manzilida ishlaydi.',
   },
   'work.besttracker.alt': {
     en: 'Best Tracker: live location and QR group invites',
