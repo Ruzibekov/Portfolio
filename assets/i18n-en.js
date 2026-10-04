@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.en = {
   'meta.title': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.description':
-    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 23 projects with the task and the result.',
+    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 21 projects with the task and the result.',
   'meta.ogLocale': 'en_US',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.ogDescription':
     'I build mobile apps and websites with Flutter, Kotlin and Next.js.',
   'meta.twitterDescription':
-    'Mobile apps and websites. 23 projects with the task and the result.',
+    'Mobile apps and websites. 21 projects with the task and the result.',
 
   skip: 'Skip to projects',
 
@@ -52,16 +52,6 @@ window.I18N.en = {
   'filter.all': 'All',
   'filter.mobile': 'Mobile',
   'filter.web': 'Websites',
-
-  'work.mahalla.alt':
-    'Online Mahalla 2.0: module dashboard, visits and education vouchers',
-  'work.mahalla.desc':
-    '21 modules for mahalla staff and entrepreneurs in one Android app.',
-  'work.mahalla.task':
-    'Bring loan monitoring, education vouchers, the social registry, visits, landscaping and legalization into one app.',
-  'work.mahalla.solution':
-    'Kotlin, Jetpack Compose, multi-module clean architecture, One ID sign-in, Firebase Crashlytics, releases with fastlane.',
-  'work.mahalla.result': 'Published on Google Play.',
 
   'work.agentmama.alt': 'Agentmama: AI agent platform home',
   'work.agentmama.desc': 'AI agents and a Yandex Direct campaign generator.',
@@ -184,15 +174,6 @@ window.I18N.en = {
   'work.ailogoedit.solution':
     'Next.js, Supabase, AI generation API, history, payments.',
   'work.ailogoedit.result': 'Live at ailogoedit.com.',
-
-  'work.pixelvault.alt':
-    'PixelVault: online gallery for artists and photographers',
-  'work.pixelvault.desc':
-    'Gallery for artists and photographers: albums, privacy.',
-  'work.pixelvault.task': 'Publishing and storing work with access control.',
-  'work.pixelvault.solution':
-    'Next.js (App Router), Supabase, gallery, albums, private collections.',
-  'work.pixelvault.result': 'Live at pixelvault.vercel.app.',
 
   'work.monro.alt': 'Monro: body massage landing page in Almaty',
   'work.monro.desc': 'Massage salon landing in Almaty: 24/7 booking, reviews.',

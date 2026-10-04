@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.uz = {
   'meta.title': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.description':
-    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 23 ta loyiha: vazifa va natija bilan.',
+    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 21 ta loyiha: vazifa va natija bilan.',
   'meta.ogLocale': 'uz_UZ',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.ogDescription':
     'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman.',
   'meta.twitterDescription':
-    'Mobil ilova va saytlar. 23 ta loyiha: vazifa va natija bilan.',
+    'Mobil ilova va saytlar. 21 ta loyiha: vazifa va natija bilan.',
 
   skip: 'Loyihalarga oʻtish',
 
@@ -52,16 +52,6 @@ window.I18N.uz = {
   'filter.all': 'Barchasi',
   'filter.mobile': 'Mobil',
   'filter.web': 'Saytlar',
-
-  'work.mahalla.alt':
-    'Online Mahalla 2.0: modullar paneli, tashriflar va taʼlim vaucherlari',
-  'work.mahalla.desc':
-    'Mahalla xodimlari va tadbirkorlar uchun 21 modulli Android ilova.',
-  'work.mahalla.task':
-    'Ssuda monitoringi, taʼlim vaucherlari, ijtimoiy reestr, tashriflar, obodonlashtirish va legallashtirishni bitta ilovaga jamlash.',
-  'work.mahalla.solution':
-    'Kotlin, Jetpack Compose, koʻp modulli clean architecture, One ID orqali kirish, Firebase Crashlytics, fastlane orqali relizlar.',
-  'work.mahalla.result': "Google Play'da chop etilgan.",
 
   'work.agentmama.alt': 'Agentmama: AI-agentlar platformasining bosh sahifasi',
   'work.agentmama.desc': 'AI-agentlar va Yandex Direct kampaniya generatori.',
@@ -197,16 +187,6 @@ window.I18N.uz = {
   'work.ailogoedit.solution':
     'Next.js, Supabase, generatsiya servisi, buyurtmalar tarixi, toʻlov tizimi.',
   'work.ailogoedit.result': 'ailogoedit.com manzilida ishlaydi.',
-
-  'work.pixelvault.alt':
-    'PixelVault: rassom va fotograflar uchun onlayn galereya',
-  'work.pixelvault.desc':
-    'Rassom va fotograflar uchun galereya: albomlar, maxfiylik.',
-  'work.pixelvault.task':
-    'Kirishni nazorat qilgan holda ishlarni nashr qilish va saqlash.',
-  'work.pixelvault.solution':
-    'Next.js (App Router), Supabase, galereya, albomlar, xususiy toʻplamlar.',
-  'work.pixelvault.result': 'pixelvault.vercel.app manzilida ishlaydi.',
 
   'work.monro.alt': 'Monro: Almatidagi bodi-massaj saloni landing sahifasi',
   'work.monro.desc':
