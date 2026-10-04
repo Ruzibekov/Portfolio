@@ -26,8 +26,8 @@ const DICT = {
     uz: 'Anna Tashlanova',
   },
   'brand.homeLabel': {
-    en: 'Anna Tashlanova — home',
-    uz: 'Anna Tashlanova — bosh sahifa',
+    en: 'Anna Tashlanova, home',
+    uz: 'Anna Tashlanova, bosh sahifa',
   },
   'nav.label': { en: 'Main navigation', uz: 'Asosiy navigatsiya' },
   'nav.cases': { en: 'Work', uz: 'Ishlar' },
@@ -58,8 +58,8 @@ const DICT = {
     uz: 'Anna Tashlanovaning profil surati',
   },
   'receipt.stack': {
-    en: 'Apps · Websites · Bots',
-    uz: 'Ilovalar · Saytlar · Botlar',
+    en: 'Mobile apps and websites',
+    uz: 'Mobil ilovalar va saytlar',
   },
   'receipt.rating': { en: 'Kwork rating', uz: 'Kwork reytingi' },
   'receipt.orders': { en: 'Orders', uz: 'Buyurtmalar' },
@@ -175,8 +175,8 @@ const DICT = {
     uz: 'matematik-uz.vercel.app manzilida ishlaydi.',
   },
   'work.besttracker.alt': {
-    en: 'Best Tracker — live location and QR group invites',
-    uz: 'Best Tracker — jonli joylashuv va QR orqali guruhga taklif',
+    en: 'Best Tracker: live location and QR group invites',
+    uz: 'Best Tracker: jonli joylashuv va QR orqali guruhga taklif',
   },
   'work.besttracker.desc': {
     en: 'Safety service with live location and QR-code group invites.',
@@ -195,8 +195,8 @@ const DICT = {
     uz: "App Store va Google Play'da chop etilgan.",
   },
   'work.stefa.alt': {
-    en: 'Stefa AI Art — text-to-image generation',
-    uz: 'Stefa AI Art — matndan rasm generatsiyasi',
+    en: 'Stefa AI Art: text-to-image generation',
+    uz: 'Stefa AI Art: matndan rasm generatsiyasi',
   },
   'work.stefa.desc': {
     en: 'Text-to-image generation with a fast turnaround.',
@@ -215,8 +215,8 @@ const DICT = {
     uz: "Google Play'da chop etilgan.",
   },
   'work.mynails.alt': {
-    en: 'My Nail Salon — AI nail design with preview',
-    uz: 'My Nail Salon — oldindan koʻrish bilan AI tirnoq dizayni',
+    en: 'My Nail Salon: AI nail design with preview',
+    uz: 'My Nail Salon: oldindan koʻrish bilan AI tirnoq dizayni',
   },
   'work.mynails.desc': {
     en: 'AI-powered nail design with a live result preview.',
@@ -235,8 +235,8 @@ const DICT = {
     uz: "Ilova tayyor: dizayn generatsiyasi va natijani oldindan ko'rish.",
   },
   'work.altn.alt': {
-    en: 'ALTN Chat — real-time messenger with AI scenarios',
-    uz: 'ALTN Chat — AI ssenariyli real vaqtdagi messenjer',
+    en: 'ALTN Chat: real-time messenger with AI scenarios',
+    uz: 'ALTN Chat: AI ssenariyli real vaqtdagi messenjer',
   },
   'work.altn.desc': {
     en: 'Messenger with real-time chat and AI scenarios.',
@@ -255,8 +255,8 @@ const DICT = {
     uz: "Google Play'da chop etilgan.",
   },
   'work.wegotrip.alt': {
-    en: 'WeGoTrip — audio guides and tours for travelers',
-    uz: 'WeGoTrip — sayohatlar uchun audiogidlar va turlar',
+    en: 'WeGoTrip: audio guides and tours for travelers',
+    uz: 'WeGoTrip: sayohatlar uchun audiogidlar va turlar',
   },
   'work.wegotrip.desc': {
     en: 'Audio guides and tours: a native Android app for travelers.',
@@ -275,8 +275,8 @@ const DICT = {
     uz: "Google Play'da chop etilgan.",
   },
   'work.yolo.alt': {
-    en: 'Yolo — Couch to 5K running app: plan, run, statistics',
-    uz: 'Yolo — Couch to 5K yugurish ilovasi: reja, yugurish, statistika',
+    en: 'Yolo: Couch to 5K running app, plan, run, statistics',
+    uz: 'Yolo: Couch to 5K yugurish ilovasi, reja, yugurish, statistika',
   },
   'work.yolo.desc': {
     en: 'A "Couch to 5K" running app: from zero to your first 5K on an adaptive plan.',
@@ -295,8 +295,8 @@ const DICT = {
     uz: 'Yugurishlarni kuzatish va progress statistikasiga ega tayyor ilova.',
   },
   'work.geoblinker.alt': {
-    en: 'GeoBlinker25 — geo-signals and background location',
-    uz: 'GeoBlinker25 — geosignallar va fon rejimidagi geolokatsiya',
+    en: 'GeoBlinker25: geo-signals and background location',
+    uz: 'GeoBlinker25: geosignallar va fon rejimidagi geolokatsiya',
   },
   'work.geoblinker.desc': {
     en: 'Monitoring based on geo-signals and background geolocation.',
@@ -315,8 +315,8 @@ const DICT = {
     uz: 'Fon rejimida kuzatuvga ega ishlaydigan prototip.',
   },
   'work.wallpapers.alt': {
-    en: 'Wallpapers — wallpaper catalog with categories',
-    uz: 'Wallpapers — toifalarga ega fon rasmlari katalogi',
+    en: 'Wallpapers: wallpaper catalog with categories',
+    uz: 'Wallpapers: toifalarga ega fon rasmlari katalogi',
   },
   'work.wallpapers.desc': {
     en: 'A wallpaper catalog with categories, previews and quick install.',
@@ -335,8 +335,8 @@ const DICT = {
     uz: "Toifalar va preview'lar tez ochiladi.",
   },
   'work.avtopark.alt': {
-    en: 'Avtopark — fleet management, driver medical and technical checks',
-    uz: 'Avtopark — avtoparkni boshqarish, haydovchilarning tibbiy va texnik koʻrigi',
+    en: 'Avtopark: fleet management, driver medical and technical checks',
+    uz: 'Avtopark: avtoparkni boshqarish, haydovchilarning tibbiy va texnik koʻrigi',
   },
   'work.avtopark.desc': {
     en: 'Fleet management: driver medical and technical checks, reports and role-based access.',
@@ -355,8 +355,8 @@ const DICT = {
     uz: "App Store va Google Play'da chop etilgan.",
   },
   'work.tildonmobile.alt': {
-    en: 'Tildon Mobile — English learning app: grammar, vocabulary, statistics',
-    uz: 'Tildon Mobile — ingliz tilini oʻrganish ilovasi: grammatika, lugʻat, statistika',
+    en: 'Tildon Mobile: English learning app, grammar, vocabulary, statistics',
+    uz: 'Tildon Mobile: ingliz tilini oʻrganish ilovasi, grammatika, lugʻat, statistika',
   },
   'work.tildonmobile.desc': {
     en: 'A mobile app for learning English: grammar, vocabulary, tests, statistics.',
@@ -375,8 +375,8 @@ const DICT = {
     uz: 'Tildon veb-platformasining kross-platforma hamrohi.',
   },
   'work.tildon.alt': {
-    en: 'Tildon — web platform for learning English',
-    uz: 'Tildon — ingliz tilini oʻrganish veb-platformasi',
+    en: 'Tildon: web platform for learning English',
+    uz: 'Tildon: ingliz tilini oʻrganish veb-platformasi',
   },
   'work.tildon.desc': {
     en: 'A web platform for learning English: grammar, vocabulary, tests, listening.',
@@ -395,8 +395,8 @@ const DICT = {
     uz: 'Ishga tushirilgan va onlayn mavjud.',
   },
   'work.vfx.alt': {
-    en: 'VFX Timecode — timecode generator for video production',
-    uz: 'VFX Timecode — video prodakshn uchun taymkod generatori',
+    en: 'VFX Timecode: timecode generator for video production',
+    uz: 'VFX Timecode: video prodakshn uchun taymkod generatori',
   },
   'work.vfx.desc': {
     en: 'A timecode generator for VFX and video production: FPS control, fullscreen.',
@@ -415,8 +415,8 @@ const DICT = {
     uz: 'Ishga tushirilgan va onlayn mavjud.',
   },
   'work.ailogoedit.alt': {
-    en: 'AiLogoEdit — AI logo, icon and visual generation',
-    uz: 'AiLogoEdit — AI orqali logotip, ikonka va vizuallar yaratish',
+    en: 'AiLogoEdit: AI logo, icon and visual generation',
+    uz: 'AiLogoEdit: AI orqali logotip, ikonka va vizuallar yaratish',
   },
   'work.ailogoedit.desc': {
     en: 'AI generation of logos, icons and visuals: pick a style, describe the idea, get the result.',
@@ -435,8 +435,8 @@ const DICT = {
     uz: 'Ishga tushirilgan va onlayn mavjud.',
   },
   'work.pixelvault.alt': {
-    en: 'PixelVault — online gallery for artists and photographers',
-    uz: 'PixelVault — rassom va fotograflar uchun onlayn galereya',
+    en: 'PixelVault: online gallery for artists and photographers',
+    uz: 'PixelVault: rassom va fotograflar uchun onlayn galereya',
   },
   'work.pixelvault.desc': {
     en: 'An online gallery for artists and photographers: albums, publishing, privacy controls.',
@@ -455,8 +455,8 @@ const DICT = {
     uz: 'Ishga tushirilgan va onlayn mavjud.',
   },
   'work.monro.alt': {
-    en: 'Monro — body massage landing page in Almaty',
-    uz: 'Monro — Almatidagi body-massaj landing sahifasi',
+    en: 'Monro: body massage landing page in Almaty',
+    uz: 'Monro: Almatidagi body-massaj landing sahifasi',
   },
   'work.monro.desc': {
     en: 'A body massage landing in Almaty: 24/7 booking, services, reviews, WhatsApp and call.',
@@ -495,8 +495,8 @@ const DICT = {
     uz: 'Ishga tushirilgan va onlayn mavjud; mijoz topshirishni qabul qildi.',
   },
   'work.supertour.alt': {
-    en: 'Super Tour — tours from Tashkent: Egypt, UAE, Thailand, Vietnam',
-    uz: 'Super Tour — Toshkentdan turlar: Misr, BAA, Tailand, Vetnam',
+    en: 'Super Tour: tours from Tashkent, Egypt, UAE, Thailand, Vietnam',
+    uz: 'Super Tour: Toshkentdan turlar, Misr, BAA, Tailand, Vetnam',
   },
   'work.supertour.desc': {
     en: 'Travel operator landing from Tashkent: destinations, hot deals, request form and WhatsApp.',
@@ -515,8 +515,8 @@ const DICT = {
     uz: 'Onlayn ishga tushgan: supertour.uz.',
   },
   'work.vertolyot.alt': {
-    en: 'Zarbdor vertolyot — browser 3D combat flight game',
-    uz: 'Zarbdor vertolyot — brauzer 3D jangovar parvoz oʻyini',
+    en: 'Zarbdor vertolyot: browser 3D combat flight game',
+    uz: 'Zarbdor vertolyot: brauzer 3D jangovar parvoz oʻyini',
   },
   'work.vertolyot.desc': {
     en: 'A browser 3D game: an attack helicopter, controls, HUD and air combat.',
