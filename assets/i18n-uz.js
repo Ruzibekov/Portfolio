@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.uz = {
   'meta.title': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.description':
-    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 20 ta loyiha: vazifa va natija bilan.',
+    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 23 ta loyiha: vazifa va natija bilan.',
   'meta.ogLocale': 'uz_UZ',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.ogDescription':
     'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman.',
   'meta.twitterDescription':
-    'Mobil ilova va saytlar. 20 ta loyiha: vazifa va natija bilan.',
+    'Mobil ilova va saytlar. 23 ta loyiha: vazifa va natija bilan.',
 
   skip: 'Loyihalarga oʻtish',
 
@@ -52,6 +52,45 @@ window.I18N.uz = {
   'filter.all': 'Barchasi',
   'filter.mobile': 'Mobil',
   'filter.web': 'Saytlar',
+
+  'work.mahalla.alt':
+    'Online Mahalla 2.0: modullar paneli, tashriflar va taʼlim vaucherlari',
+  'work.mahalla.desc':
+    'Mahalla xodimlari va tadbirkorlar uchun 21 modulli Android ilova.',
+  'work.mahalla.task':
+    'Ssuda monitoringi, taʼlim vaucherlari, ijtimoiy reestr, tashriflar, obodonlashtirish va legallashtirishni bitta ilovaga jamlash.',
+  'work.mahalla.solution':
+    'Kotlin, Jetpack Compose, koʻp modulli clean architecture, One ID orqali kirish, Firebase Crashlytics, fastlane orqali relizlar.',
+  'work.mahalla.result': "Google Play'da chop etilgan.",
+
+  'work.agentmama.alt': 'Agentmama: AI-agentlar platformasining bosh sahifasi',
+  'work.agentmama.desc':
+    'Yandex Direct uchun kampaniya generatoriga ega AI-agentlar platformasi.',
+  'work.agentmama.task':
+    "Yandex Direct kampaniyasini Excel'da qoʻlda emas, sayt manzili boʻyicha yigʻish.",
+  'work.agentmama.solution':
+    "FastAPI va fon workerlari, React, TypeScript, Next.js, Docker. Semantika yigʻish, minus-soʻzlar, saytni AI tahlili, Excel va Direct'ga eksport.",
+  'work.agentmama.result': 'agentmama.ru manzilida ishlaydi.',
+
+  'work.okh.title': 'Umummoskva xoch yurishi',
+  'work.okh.alt':
+    'Umummoskva xoch yurishi: boshlanishgacha hisoblagich, marshrut xaritasi, maqolalar',
+  'work.okh.desc':
+    'Boshlanishgacha hisoblagich, xaritada marshrut, maqolalar va koʻngillilarga signal.',
+  'work.okh.task':
+    'Ishtirokchilarga sana, marshrut va koʻngillilar bilan aloqani bitta ilovada berish.',
+  'work.okh.solution':
+    'Flutter (iOS, Android) + FastAPI, Yandex Maps, FCM orqali push, telefon raqami bilan kirish, administrator boʻlimi.',
+  'work.okh.result': "App Store va Google Play'da chop etilgan.",
+
+  'work.matik.alt': 'Matik: maktab matematikasi trenajyori, bosh sahifa',
+  'work.matik.desc':
+    'Oʻzbek va rus tilida maktab matematikasi trenajyori, 1–11-sinf.',
+  'work.matik.task':
+    'Maslahat va xatolar tahlili bilan maktab matematikasidan har kungi mashq.',
+  'work.matik.solution':
+    "Next.js, TypeScript, Drizzle, Vitest, Vercel'da PWA. 16 soha, 54 koʻnikma, DTM imtihon rejimi, progress hisoboti.",
+  'work.matik.result': 'matematik-uz.vercel.app manzilida ishlaydi.',
 
   'work.besttracker.alt':
     'Best Tracker: jonli joylashuv va QR orqali guruhga taklif',
@@ -117,17 +156,6 @@ window.I18N.uz = {
   'work.wallpapers.task': 'Kategoriyali yengil oboylar katalogi.',
   'work.wallpapers.solution': 'Kotlin, Material UI, keshlash.',
   'work.wallpapers.result': 'Tayyor Android ilova.',
-
-  'work.influence.title': 'Taʼsir psixologiyasi',
-  'work.influence.alt':
-    'Taʼsir psixologiyasi: texnikalar, iroda mashqlari, statistika',
-  'work.influence.desc':
-    'Shaxsiy rivojlanish: taʼsir oʻtkazish texnikalari, iroda mashqlari va progress statistikasi.',
-  'work.influence.task':
-    'Amaliyot orqali taʼsir koʻnikmalari va irodani mustahkamlash.',
-  'work.influence.solution':
-    'Compose Multiplatform (iOS, Android), texnikalar kutubxonasi, challenjlar, statistika, oflayn rejim.',
-  'work.influence.result': 'Tayyor kross-platforma ilovasi.',
 
   'work.avtopark.alt':
     'Avtopark: avtoparkni boshqarish, haydovchilarning tibbiy va texnik koʻrigi',

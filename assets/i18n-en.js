@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.en = {
   'meta.title': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.description':
-    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 20 projects with the task and the result.',
+    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 23 projects with the task and the result.',
   'meta.ogLocale': 'en_US',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.ogDescription':
     'I build mobile apps and websites with Flutter, Kotlin and Next.js.',
   'meta.twitterDescription':
-    'Mobile apps and websites. 20 projects with the task and the result.',
+    'Mobile apps and websites. 23 projects with the task and the result.',
 
   skip: 'Skip to projects',
 
@@ -52,6 +52,44 @@ window.I18N.en = {
   'filter.all': 'All',
   'filter.mobile': 'Mobile',
   'filter.web': 'Websites',
+
+  'work.mahalla.alt':
+    'Online Mahalla 2.0: module dashboard, visits and education vouchers',
+  'work.mahalla.desc':
+    '21 modules for mahalla staff and entrepreneurs in one Android app.',
+  'work.mahalla.task':
+    'Bring loan monitoring, education vouchers, the social registry, visits, landscaping and legalization into one app.',
+  'work.mahalla.solution':
+    'Kotlin, Jetpack Compose, multi-module clean architecture, One ID sign-in, Firebase Crashlytics, releases with fastlane.',
+  'work.mahalla.result': 'Published on Google Play.',
+
+  'work.agentmama.alt': 'Agentmama: AI agent platform home',
+  'work.agentmama.desc':
+    'An AI agent platform with a Yandex Direct campaign generator.',
+  'work.agentmama.task':
+    'Build a Yandex Direct campaign from a site address instead of by hand in Excel.',
+  'work.agentmama.solution':
+    'FastAPI with background workers, React, TypeScript, Next.js, Docker. Keyword collection, negative keywords, AI site analysis, export to Excel and Direct.',
+  'work.agentmama.result': 'Live at agentmama.ru.',
+
+  'work.okh.title': 'All-Moscow Cross Procession',
+  'work.okh.alt': 'All-Moscow Cross Procession: countdown, route map, articles',
+  'work.okh.desc':
+    'Countdown to the start, route map, articles and alerts to volunteers.',
+  'work.okh.task':
+    'Give participants the date, the route and a line to volunteers in one app.',
+  'work.okh.solution':
+    'Flutter (iOS, Android) + FastAPI, Yandex Maps, FCM push, phone number sign-in, an admin section.',
+  'work.okh.result': 'Published on the App Store and Google Play.',
+
+  'work.matik.alt': 'Matik: school maths trainer, home page',
+  'work.matik.desc':
+    'A school maths trainer in Uzbek and Russian for grades 1 to 11.',
+  'work.matik.task':
+    'Daily school maths practice with hints and explained mistakes.',
+  'work.matik.solution':
+    'Next.js, TypeScript, Drizzle, Vitest, a PWA on Vercel. 16 topics, 54 skills, DTM exam mode, progress report.',
+  'work.matik.result': 'Live at matematik-uz.vercel.app.',
 
   'work.besttracker.alt': 'Best Tracker: live location and QR group invites',
   'work.besttracker.desc':
@@ -109,17 +147,6 @@ window.I18N.en = {
   'work.wallpapers.task': 'A lightweight wallpaper catalog with categories.',
   'work.wallpapers.solution': 'Kotlin, Material UI, caching.',
   'work.wallpapers.result': 'A finished Android app.',
-
-  'work.influence.title': 'Psychology of Influence',
-  'work.influence.alt':
-    'Psychology of Influence: techniques, willpower challenges, statistics',
-  'work.influence.desc':
-    'Self-practice: a library of influence techniques, willpower challenges and progress statistics.',
-  'work.influence.task':
-    'Build influence skills and willpower through practical exercises.',
-  'work.influence.solution':
-    'Compose Multiplatform (iOS, Android), a technique library, challenges, statistics, offline support.',
-  'work.influence.result': 'A finished cross-platform app.',
 
   'work.avtopark.alt':
     'Avtopark: fleet management, driver medical and technical checks',

@@ -417,7 +417,7 @@ const setupAnchorScroll = () => {
 
 const CONTACT = {
   telegramUser: 'ruzibekov_sh',
-  email: 'ruzibekov01@gmail.com',
+  email: 'ruzibekov44@gmail.com',
 }
 
 const contactCopy = (key, lang) => {
