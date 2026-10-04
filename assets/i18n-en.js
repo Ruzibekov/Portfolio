@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.en = {
   'meta.title': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.description':
-    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 21 projects with the task and the result.',
+    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 22 projects with the task and the result.',
   'meta.ogLocale': 'en_US',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.ogDescription':
     'I build mobile apps and websites with Flutter, Kotlin and Next.js.',
   'meta.twitterDescription':
-    'Mobile apps and websites. 21 projects with the task and the result.',
+    'Mobile apps and websites. 22 projects with the task and the result.',
 
   skip: 'Skip to projects',
 
@@ -79,6 +79,14 @@ window.I18N.en = {
   'work.matik.solution':
     'Next.js, TypeScript, Drizzle, Vitest, a PWA on Vercel. 16 topics, 54 skills, DTM exam mode, progress report.',
   'work.matik.result': 'Live at matematik-uz.vercel.app.',
+
+  'work.majiidtv.alt': 'Majiid.tv: blogger site, hero screen',
+  'work.majiidtv.desc': 'A Bukhara blogger site with advertising prices.',
+  'work.majiidtv.task':
+    'Advertisers see formats, prices and sample videos on one page.',
+  'work.majiidtv.solution':
+    'HTML, CSS and JavaScript with no framework, a Python build, Vercel. RU and UZ, light and dark themes, 8 shoot types, 3 plans, ordering via Telegram.',
+  'work.majiidtv.result': 'Live at majiid-tv.vercel.app.',
 
   'work.besttracker.alt': 'Best Tracker: live location and QR group invites',
   'work.besttracker.desc':

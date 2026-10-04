@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.uz = {
   'meta.title': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.description':
-    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 21 ta loyiha: vazifa va natija bilan.',
+    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 22 ta loyiha: vazifa va natija bilan.',
   'meta.ogLocale': 'uz_UZ',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.ogDescription':
     'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman.',
   'meta.twitterDescription':
-    'Mobil ilova va saytlar. 21 ta loyiha: vazifa va natija bilan.',
+    'Mobil ilova va saytlar. 22 ta loyiha: vazifa va natija bilan.',
 
   skip: 'Loyihalarga oʻtish',
 
@@ -80,6 +80,14 @@ window.I18N.uz = {
   'work.matik.solution':
     "Next.js, TypeScript, Drizzle, Vitest, Vercel'da PWA. 16 soha, 54 koʻnikma, DTM imtihon rejimi, progress hisoboti.",
   'work.matik.result': 'matematik-uz.vercel.app manzilida ishlaydi.',
+
+  'work.majiidtv.alt': 'Majiid.tv: bloger sayti, bosh ekran',
+  'work.majiidtv.desc': 'Buxorolik blogerning reklama narxlari bilan sayti.',
+  'work.majiidtv.task':
+    'Reklama beruvchi formatlar, narxlar va video namunalarini bitta sahifada koʻradi.',
+  'work.majiidtv.solution':
+    'Frameworksiz HTML, CSS, JavaScript, Python bilan yigʻish, Vercel. RU va UZ, yorugʻ va qorongʻi tema, 8 xil syomka, 3 ta tarif, Telegram orqali buyurtma.',
+  'work.majiidtv.result': 'majiid-tv.vercel.app manzilida ishlaydi.',
 
   'work.besttracker.alt':
     'Best Tracker: jonli joylashuv va QR orqali guruhga taklif',
