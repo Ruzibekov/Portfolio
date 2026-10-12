@@ -49,7 +49,7 @@ let shared = null
 
 export const getBrowser = async () => {
   if (shared && shared.isConnected()) return shared
-  shared = await chromium.launch()
+  shared = await chromium.launch({ channel: 'msedge' })
   return shared
 }
 

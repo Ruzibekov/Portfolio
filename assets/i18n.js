@@ -111,8 +111,28 @@ const DICT = {
     uz: 'agentmama.ru manzilida ishlaydi.',
   },
   'work.okh.title': {
-    en: 'All-Moscow Cross Procession',
-    uz: 'Umummoskva xoch yurishi',
+    en: 'OKH',
+    uz: 'OKH',
+  },
+  'work.payqr.alt': {
+    en: 'PAYQR: code scanning and the app menu',
+    uz: 'PAYQR: kod skaneri va ilova menyusi',
+  },
+  'work.payqr.desc': {
+    en: 'Scan codes with the camera or from the gallery, open bank links and view operation history.',
+    uz: 'Kamera va galereyadan QR-kodlarni o‘qish, bank havolalari va amallar tarixi.',
+  },
+  'work.payqr.task': {
+    en: 'Read payment and other QR codes and open the appropriate banking flow.',
+    uz: 'To‘lov va boshqa QR-kodlarni o‘qib, mos bank amalini ochish.',
+  },
+  'work.payqr.solution': {
+    en: 'Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix reading, photo import, phone sign-in and operation history.',
+    uz: 'Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix o‘qish, rasmdan import, telefon orqali kirish va amallar tarixi.',
+  },
+  'work.payqr.result': {
+    en: 'The app and API are implemented; the Android build was tested on a device.',
+    uz: 'Ilova va API ishlab chiqilgan; Android versiyasi qurilmada tekshirilgan.',
   },
   'work.okh.alt': {
     en: 'All-Moscow Cross Procession: countdown, route map, articles',

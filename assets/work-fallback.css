@@ -1,0 +1,18 @@
+@media (scripting: none) {
+  .work-row details[open] .row-expand {
+    grid-template-rows: 1fr;
+  }
+
+  .work-row details[open] .row-expand-inner {
+    opacity: 1;
+  }
+
+  .work-row details[open] .work-sat-dock-inner {
+    padding: 1rem;
+  }
+
+  .work-row details[open] .work-sat-dock-inner,
+  .work-row details[open] .work-case {
+    grid-template-columns: 1fr;
+  }
+}
