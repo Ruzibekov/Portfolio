@@ -44,8 +44,8 @@ const DICT = {
     uz: 'Ilova, sayt va Telegram-botlar qilaman',
   },
   'hero.lead': {
-    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 26 projects with the task and the result.',
-    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 26 ta loyiha: vazifa va natija bilan.",
+    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 27 projects with the task and the result.',
+    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 27 ta loyiha: vazifa va natija bilan.",
   },
   'hero.viewCases': { en: 'See my work', uz: 'Ishlarni koʻrish' },
   'receipt.label': {
@@ -173,6 +173,26 @@ const DICT = {
   'work.matik.result': {
     en: 'Live at matematik-uz.vercel.app.',
     uz: 'matematik-uz.vercel.app manzilida ishlaydi.',
+  },
+  'work.monarh.alt': {
+    en: 'MonarhMarket: home page on desktop and phone',
+    uz: 'MonarhMarket: kompyuter va telefonda bosh sahifa',
+  },
+  'work.monarh.desc': {
+    en: 'A redesign of a Bitrix porcelain tile store for three cities.',
+    uz: 'Uch shahar uchun Bitrix\'dagi keramogranit doʻkoni redizayni.',
+  },
+  'work.monarh.task': {
+    en: 'Refresh the design of a live tile store without stopping sales: home, catalog, collections, product page and cart.',
+    uz: 'Ishlab turgan plitka doʻkoni dizaynini savdoni toʻxtatmasdan yangilash: bosh sahifa, katalog, kolleksiyalar, mahsulot sahifasi va savat.',
+  },
+  'work.monarh.solution': {
+    en: 'Bitrix template with custom CSS and JavaScript on top of the theme. New header and mobile menu, interior photos in collections, a sheet filter, favorites and compare, smooth motion. Three sites: Samara, Kazan and Nizhny Novgorod.',
+    uz: 'Bitrix shabloni, mavzu ustidan oʻz CSS va JavaScript. Yangi shapka va mobil menyu, kolleksiyalarda interyer fotolari, pastdan chiquvchi filtr, sevimlilar va solishtirish, silliq animatsiyalar. Uch sayt: Samara, Qozon va Nijniy Novgorod.',
+  },
+  'work.monarh.result': {
+    en: 'Live at monarhmarket.ru and the city sites.',
+    uz: 'monarhmarket.ru va shahar saytlarida ishlamoqda.',
   },
   'work.majiidtv.alt': {
     en: 'Majiid.tv: blogger site, hero screen',
