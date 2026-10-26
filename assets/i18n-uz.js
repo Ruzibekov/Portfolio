@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.uz = {
   'meta.title': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.description':
-    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 26 ta loyiha: vazifa va natija bilan.',
+    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 27 ta loyiha: vazifa va natija bilan.',
   'meta.ogLocale': 'uz_UZ',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.ogDescription':
     'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman.',
   'meta.twitterDescription':
-    'Mobil ilova va saytlar. 26 ta loyiha: vazifa va natija bilan.',
+    'Mobil ilova va saytlar. 27 ta loyiha: vazifa va natija bilan.',
 
   skip: 'Loyihalarga oʻtish',
 
@@ -90,6 +90,11 @@ window.I18N.uz = {
     "Next.js, TypeScript, Drizzle, Vitest, Vercel'da PWA. 16 soha, 54 koʻnikma, DTM imtihon rejimi, progress hisoboti.",
   'work.matik.result': 'matematik-uz.vercel.app manzilida ishlaydi.',
 
+  'work.monarh.alt': 'MonarhMarket: kompyuter va telefonda bosh sahifa',
+  'work.monarh.desc': 'Uch shahar uchun Bitrix\'dagi keramogranit doʻkoni redizayni.',
+  'work.monarh.task': 'Ishlab turgan plitka doʻkoni dizaynini savdoni toʻxtatmasdan yangilash: bosh sahifa, katalog, kolleksiyalar, mahsulot sahifasi va savat.',
+  'work.monarh.solution': 'Bitrix shabloni, mavzu ustidan oʻz CSS va JavaScript. Yangi shapka va mobil menyu, kolleksiyalarda interyer fotolari, pastdan chiquvchi filtr, sevimlilar va solishtirish, silliq animatsiyalar. Uch sayt: Samara, Qozon va Nijniy Novgorod.',
+  'work.monarh.result': 'monarhmarket.ru va shahar saytlarida ishlamoqda.',
   'work.majiidtv.alt': 'Majiid.tv: bloger sayti, bosh ekran',
   'work.majiidtv.desc': 'Buxorolik blogerning reklama narxlari bilan sayti.',
   'work.majiidtv.task':
