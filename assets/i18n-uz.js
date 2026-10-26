@@ -61,7 +61,16 @@ window.I18N.uz = {
     "FastAPI va fon workerlari, React, TypeScript, Next.js, Docker. Semantika yigʻish, minus-soʻzlar, saytni AI tahlili, Excel va Direct'ga eksport.",
   'work.agentmama.result': 'agentmama.ru manzilida ishlaydi.',
 
-  'work.okh.title': 'Umummoskva xoch yurishi',
+  'work.okh.title': 'OKH',
+  'work.payqr.alt': 'PAYQR: kod skaneri va ilova menyusi',
+  'work.payqr.desc':
+    'Kamera va galereyadan QR-kodlarni o‘qish, bank havolalari va amallar tarixi.',
+  'work.payqr.task':
+    'To‘lov va boshqa QR-kodlarni o‘qib, mos bank amalini ochish.',
+  'work.payqr.solution':
+    'Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix o‘qish, rasmdan import, telefon orqali kirish va amallar tarixi.',
+  'work.payqr.result':
+    'Ilova va API ishlab chiqilgan; Android versiyasi qurilmada tekshirilgan.',
   'work.okh.alt':
     'Umummoskva xoch yurishi: boshlanishgacha hisoblagich, marshrut xaritasi, maqolalar',
   'work.okh.desc':

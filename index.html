@@ -134,6 +134,7 @@
         "sameAs": ["https://t.me/ruzibekov_sh"]
       }
     </script>
+    <link rel="stylesheet" href="assets/work-fallback.css?v=7bb97fa320" />
   </head>
   <body>
     <a class="skip-link" href="#work" data-i18n="skip">Перейти к проектам</a>
@@ -342,7 +343,7 @@
             data-filter="all"
             aria-pressed="true"
           >
-            <span data-i18n="filter.all">Все</span> <b>26</b>
+            <span data-i18n="filter.all">Все</span> <b>27</b>
           </button>
           <button
             class="filter-chip"
@@ -350,7 +351,7 @@
             data-filter="mobile"
             aria-pressed="false"
           >
-            <span data-i18n="filter.mobile">Телефон</span> <b>11</b>
+            <span data-i18n="filter.mobile">Телефон</span> <b>12</b>
           </button>
           <button
             class="filter-chip"
@@ -478,7 +479,7 @@
                     role="heading"
                     aria-level="3"
                     data-i18n="work.okh.title"
-                    >Общемосковский крестный ход</span
+                    >ОКХ</span
                   >
                   <span class="work-sat-desc" data-i18n="work.okh.desc"
                     >Отсчёт до начала, маршрут на карте, статьи и сигналы
@@ -559,6 +560,66 @@
                         Google Play <span aria-hidden="true">↗</span>
                       </a>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <article class="work-row work-sat" data-category="mobile backend">
+            <details>
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img
+                    class="work-sat-img"
+                    src="screenshots/payqr-shot.webp"
+                    alt="PAYQR: сканирование кода и меню приложения"
+                    data-i18n-attr="alt:work.payqr.alt"
+                    width="900"
+                    height="600"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
+                    >PAYQR</span
+                  >
+                  <span class="work-sat-desc" data-i18n="work.payqr.desc"
+                    >QR-коды с камеры и из галереи, банковские ссылки и история
+                    операций.</span
+                  >
+                  <span class="work-sat-meta"
+                    ><span class="work-sat-tag">Flutter, FastAPI</span></span
+                  >
+                </span>
+              </summary>
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
+                      <div>
+                        <dt data-i18n="case.task">Задача</dt>
+                        <dd data-i18n="work.payqr.task">
+                          Считывать платёжные и другие QR-коды и открывать
+                          подходящий банковский сценарий.
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="case.solution">Что сделано</dt>
+                        <dd data-i18n="work.payqr.solution">
+                          Flutter (iOS, Android) + FastAPI, ML Kit, чтение
+                          QR/Aztec/DataMatrix, импорт фото, вход по телефону и
+                          история операций.
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="case.result">Результат</dt>
+                        <dd data-i18n="work.payqr.result">
+                          Разработаны приложение и API; Android-сборка проверена
+                          на устройстве.
+                        </dd>
+                      </div>
+                    </dl>
                   </div>
                 </div>
               </div>
@@ -2914,8 +2975,8 @@
       >
     </footer>
 
-    <script defer src="assets/i18n-en.js?v=d94241c7dd"></script>
-    <script defer src="assets/i18n-uz.js?v=ceff0d18c0"></script>
+    <script defer src="assets/i18n-en.js?v=a9e3cd4c10"></script>
+    <script defer src="assets/i18n-uz.js?v=d602071220"></script>
     <script defer src="assets/i18n.js?v=17b40b8af5"></script>
     <script src="assets/home.js?v=877b37e6dc" defer></script>
   </body>

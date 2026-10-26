@@ -61,7 +61,16 @@ window.I18N.en = {
     'FastAPI with background workers, React, TypeScript, Next.js, Docker. Keyword collection, negative keywords, AI site analysis, export to Excel and Direct.',
   'work.agentmama.result': 'Live at agentmama.ru.',
 
-  'work.okh.title': 'All-Moscow Cross Procession',
+  'work.okh.title': 'OKH',
+  'work.payqr.alt': 'PAYQR: code scanning and the app menu',
+  'work.payqr.desc':
+    'Scan codes with the camera or from the gallery, open bank links and view operation history.',
+  'work.payqr.task':
+    'Read payment and other QR codes and open the appropriate banking flow.',
+  'work.payqr.solution':
+    'Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix reading, photo import, phone sign-in and operation history.',
+  'work.payqr.result':
+    'The app and API are implemented; the Android build was tested on a device.',
   'work.okh.alt': 'All-Moscow Cross Procession: countdown, route map, articles',
   'work.okh.desc':
     'Countdown to the start, route map, articles and alerts to volunteers.',
