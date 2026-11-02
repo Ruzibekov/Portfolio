@@ -44,8 +44,8 @@ const DICT = {
     uz: 'Ilova, sayt va Telegram-botlar qilaman',
   },
   'hero.lead': {
-    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 27 projects with the task and the result.',
-    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 27 ta loyiha: vazifa va natija bilan.",
+    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 29 projects with the task and the result.',
+    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 29 ta loyiha: vazifa va natija bilan.",
   },
   'hero.viewCases': { en: 'See my work', uz: 'Ishlarni koʻrish' },
   'receipt.label': {
@@ -81,6 +81,26 @@ const DICT = {
   'work.openSite': {
     en: 'Open site <span aria-hidden="true">↗</span>',
     uz: 'Saytni ochish <span aria-hidden="true">↗</span>',
+  },
+  'work.miyolo.alt': {
+    en: 'Miyolo / YOLO: online store home page',
+    uz: 'Miyolo / YOLO: internet-doʻkon bosh sahifasi',
+  },
+  'work.miyolo.desc': {
+    en: 'An online store and marketplace with products from multiple sellers.',
+    uz: 'Turli sotuvchilarning mahsulotlari jamlangan internet-doʻkon va marketpleys.',
+  },
+  'work.miyolo.task': {
+    en: 'Develop the online store and connect its catalog and orders to the mobile app.',
+    uz: 'Internet-doʻkonni rivojlantirish, katalog va buyurtmalarini mobil ilovaga ulash.',
+  },
+  'work.miyolo.solution': {
+    en: 'CS-Cart and a PHP API: catalog, search and filters, product pages, separate orders for each seller and status notifications. Integration with a Flutter app.',
+    uz: 'CS-Cart va PHP API: katalog, qidiruv va filtrlar, mahsulot sahifalari, har bir sotuvchi uchun alohida buyurtmalar va holat bildirishnomalari. Flutter ilovasi bilan integratsiya.',
+  },
+  'work.miyolo.result': {
+    en: 'The online store is live at miyolo.ru; its catalog and orders are connected to the mobile app.',
+    uz: 'Internet-doʻkon miyolo.ru manzilida ishlaydi; katalog va buyurtmalar mobil ilovaga ulangan.',
   },
   'work.badgePrivate': { en: 'Private project', uz: 'Xususiy loyiha' },
   'work.badgePrototype': { en: 'Prototype', uz: 'Prototip' },

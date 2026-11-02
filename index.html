@@ -113,7 +113,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/app.css?v=cb3d6af012" />
+    <link rel="stylesheet" href="assets/app.css?v=441e3861a4" />
 
     <script type="application/ld+json">
       {
@@ -348,7 +348,7 @@
           </h1>
           <p class="lead" data-i18n="hero.lead">
             Flutter, Kotlin, Swift, Next.js. Публикую в App Store и Google Play,
-            подключаю оплату, карты и уведомления. Ниже 27 проектов с задачей и
+            подключаю оплату, карты и уведомления. Ниже 29 проектов с задачей и
             результатом.
           </p>
           <div class="hero-actions">
@@ -430,7 +430,7 @@
             data-filter="all"
             aria-pressed="true"
           >
-            <span data-i18n="filter.all">Все</span> <b>27</b>
+            <span data-i18n="filter.all">Все</span> <b>29</b>
           </button>
           <button
             class="filter-chip"
@@ -446,11 +446,82 @@
             data-filter="web"
             aria-pressed="false"
           >
-            <span data-i18n="filter.web">Сайты</span> <b>15</b>
+            <span data-i18n="filter.web">Сайты</span> <b>17</b>
           </button>
         </div>
 
         <div class="work-ledger work-constellation" id="workGrid">
+          <article class="work-row work-sat" data-category="web" id="miyolo">
+            <details>
+              <summary class="work-sat-face">
+                <span class="work-sat-media">
+                  <img
+                    class="work-sat-img"
+                    src="screenshots/miyolo-shot.webp"
+                    alt="Miyolo / YOLO: главная страница интернет-магазина"
+                    data-i18n-attr="alt:work.miyolo.alt"
+                    width="900"
+                    height="600"
+                    loading="lazy"
+                  />
+                </span>
+                <span class="work-sat-body">
+                  <span class="work-sat-title" role="heading" aria-level="3"
+                    >Miyolo / YOLO</span
+                  >
+                  <span class="work-sat-desc" data-i18n="work.miyolo.desc"
+                    >Интернет-магазин и маркетплейс с каталогом товаров от
+                    разных продавцов.</span
+                  >
+                  <span class="work-sat-meta"
+                    ><span class="work-sat-tag">CS-Cart, PHP</span></span
+                  >
+                </span>
+              </summary>
+              <div class="row-expand work-sat-dock">
+                <div class="row-expand-inner work-sat-dock-inner">
+                  <div class="work-sat-dock-copy">
+                    <dl class="work-case">
+                      <div>
+                        <dt data-i18n="case.task">Задача</dt>
+                        <dd data-i18n="work.miyolo.task">
+                          Развивать интернет-магазин и связать его каталог и
+                          заказы с мобильным приложением.
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="case.solution">Что сделано</dt>
+                        <dd data-i18n="work.miyolo.solution">
+                          CS-Cart и PHP API: каталог, поиск и фильтры, карточки
+                          товаров, оформление отдельных заказов по продавцам и
+                          уведомления о статусах. Интеграция с приложением на
+                          Flutter.
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="case.result">Результат</dt>
+                        <dd data-i18n="work.miyolo.result">
+                          Интернет-магазин работает на miyolo.ru; каталог и
+                          заказы связаны с мобильным приложением.
+                        </dd>
+                      </div>
+                    </dl>
+                    <div class="work-links">
+                      <a
+                        class="work-link"
+                        href="https://miyolo.ru"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-i18n-html="work.openSite"
+                        >Открыть сайт <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </article>
+
           <article class="work-row work-sat" data-category="web">
             <details>
               <summary class="work-sat-face">
@@ -2445,7 +2516,7 @@
       >
     </div>
 
-    <script defer src="assets/i18n.js?v=41ee919da3"></script>
+    <script defer src="assets/i18n.js?v=a86fe3b2f1"></script>
     <script src="assets/home.js?v=fc728b460d" defer></script>
   </body>
 </html>

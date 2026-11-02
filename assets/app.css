@@ -610,7 +610,14 @@ html[data-theme='light'] .icon-moon {
 }
 
 .work-row summary:focus-visible {
-  outline: none;
+  outline: 2px solid var(--accent-2);
+  outline-offset: -3px;
+}
+
+button:active,
+a:active,
+summary:active {
+  opacity: 0.72;
 }
 
 .work-row {
