@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.en = {
   'meta.title': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.description':
-    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 27 projects with the task and the result.',
+    'I build mobile apps and websites with Flutter, Kotlin and Next.js. 29 projects with the task and the result.',
   'meta.ogLocale': 'en_US',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobile and web developer',
   'meta.ogDescription':
     'I build mobile apps and websites with Flutter, Kotlin and Next.js.',
   'meta.twitterDescription':
-    'Mobile apps and websites. 27 projects with the task and the result.',
+    'Mobile apps and websites. 29 projects with the task and the result.',
 
   skip: 'Skip to projects',
 
@@ -42,6 +42,15 @@ window.I18N.en = {
   'work.filterLabel': 'Project filter',
   'work.empty': 'No projects in this category yet.',
   'work.openSite': 'Open site <span aria-hidden="true">↗</span>',
+  'work.miyolo.alt': 'Miyolo / YOLO: online store home page',
+  'work.miyolo.desc':
+    'An online store and marketplace with products from multiple sellers.',
+  'work.miyolo.task':
+    'Develop the online store and connect its catalog and orders to the mobile app.',
+  'work.miyolo.solution':
+    'CS-Cart and a PHP API: catalog, search and filters, product pages, separate orders for each seller and status notifications. Integration with a Flutter app.',
+  'work.miyolo.result':
+    'The online store is live at miyolo.ru; its catalog and orders are connected to the mobile app.',
   'work.badgePrivate': 'Private project',
   'work.badgePrototype': 'Prototype',
 

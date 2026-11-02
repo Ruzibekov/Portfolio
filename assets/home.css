@@ -282,6 +282,12 @@ main {
   }
 }
 
+button:active,
+a:active,
+summary:active {
+  opacity: 0.72;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

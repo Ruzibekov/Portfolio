@@ -2,13 +2,13 @@ window.I18N = window.I18N || {}
 window.I18N.uz = {
   'meta.title': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.description':
-    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 27 ta loyiha: vazifa va natija bilan.',
+    'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman. 29 ta loyiha: vazifa va natija bilan.',
   'meta.ogLocale': 'uz_UZ',
   'meta.ogTitle': 'Shavkat Ruzibekov, mobil ilova va sayt dasturchisi',
   'meta.ogDescription':
     'Flutter, Kotlin va Next.js bilan mobil ilova va saytlar qilaman.',
   'meta.twitterDescription':
-    'Mobil ilova va saytlar. 27 ta loyiha: vazifa va natija bilan.',
+    'Mobil ilova va saytlar. 29 ta loyiha: vazifa va natija bilan.',
 
   skip: 'Loyihalarga oʻtish',
 
@@ -42,6 +42,15 @@ window.I18N.uz = {
   'work.filterLabel': 'Loyihalar filtri',
   'work.empty': 'Bu toifada hozircha loyihalar yoʻq.',
   'work.openSite': 'Saytni ochish <span aria-hidden="true">↗</span>',
+  'work.miyolo.alt': 'Miyolo / YOLO: internet-doʻkon bosh sahifasi',
+  'work.miyolo.desc':
+    'Turli sotuvchilarning mahsulotlari jamlangan internet-doʻkon va marketpleys.',
+  'work.miyolo.task':
+    'Internet-doʻkonni rivojlantirish, katalog va buyurtmalarini mobil ilovaga ulash.',
+  'work.miyolo.solution':
+    'CS-Cart va PHP API: katalog, qidiruv va filtrlar, mahsulot sahifalari, har bir sotuvchi uchun alohida buyurtmalar va holat bildirishnomalari. Flutter ilovasi bilan integratsiya.',
+  'work.miyolo.result':
+    'Internet-doʻkon miyolo.ru manzilida ishlaydi; katalog va buyurtmalar mobil ilovaga ulangan.',
   'work.badgePrivate': 'Xususiy loyiha',
   'work.badgePrototype': 'Prototip',
 

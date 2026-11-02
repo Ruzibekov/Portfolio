@@ -59,7 +59,8 @@
 }
 @supports selector(:has(*)) {
   .work-sat-face:focus-visible {
-    outline: none;
+    outline: 2px solid var(--focus);
+    outline-offset: -2px;
   }
   .work-row.work-sat:has(.work-sat-face:focus-visible) {
     outline: 2px solid var(--focus);
@@ -229,6 +230,12 @@
   max-height: 220px;
   object-fit: cover;
   object-position: 50% 18%;
+}
+#miyolo .work-sat-img,
+#miyolo .work-sat-dock-img {
+  object-fit: contain;
+  object-position: center;
+  background: var(--bg);
 }
 @media (max-width: 759.98px) {
   .work-sat-dock-shot {
