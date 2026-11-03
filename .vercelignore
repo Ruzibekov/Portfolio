@@ -12,5 +12,7 @@ test-results/
 .env.*
 *.pem
 *.key
-/screenshots/*
-!/screenshots/web/
+/screenshots/*.png
+/screenshots/*.webp
+/screenshots/*.jpg
+/screenshots/*.jpeg
