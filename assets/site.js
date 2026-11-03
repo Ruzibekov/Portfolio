@@ -7,17 +7,9 @@
   const filters = [...document.querySelectorAll('[data-filter]')]
   const workGrid = document.querySelector('[data-work-grid]')
   const filterStatus = document.querySelector('[data-filter-status]')
-  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
   const animations = new Set()
   const storageKey = 'sr-product-intelligence-theme'
-  let explicitTheme = false
-
-  try {
-    explicitTheme = ['dark', 'light'].includes(localStorage.getItem(storageKey))
-  } catch {
-    root.dataset.storage = 'unavailable'
-  }
 
   const syncTheme = () => {
     if (!(themeButton instanceof HTMLButtonElement)) return
@@ -27,9 +19,6 @@
       'aria-label',
       dark ? themeButton.dataset.lightAction : themeButton.dataset.darkAction,
     )
-    themeButton.textContent = dark
-      ? themeButton.dataset.lightLabel
-      : themeButton.dataset.darkLabel
     const themeColor = document.querySelector('meta[name="theme-color"]')
     if (themeColor)
       themeColor.setAttribute(
@@ -64,18 +53,11 @@
 
   themeButton?.addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark'
-    explicitTheme = true
     try {
       localStorage.setItem(storageKey, root.dataset.theme)
     } catch {
       root.dataset.storage = 'unavailable'
     }
-    syncTheme()
-  })
-
-  systemTheme.addEventListener('change', (event) => {
-    if (explicitTheme) return
-    root.dataset.theme = event.matches ? 'dark' : 'light'
     syncTheme()
   })
 

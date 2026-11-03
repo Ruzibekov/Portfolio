@@ -1,6 +1,6 @@
 ;(() => {
   const root = document.documentElement
-  let theme = 'light'
+  let theme = 'dark'
   try {
     const saved = localStorage.getItem('sr-product-intelligence-theme')
     if (saved === 'dark' || saved === 'light') theme = saved

@@ -1,18 +1,18 @@
 :root {
-  --canvas: #eceef1;
+  --canvas: #f1f1f4;
   --surface: #ffffff;
-  --raised: #e2e5ea;
-  --ink: #0e1116;
-  --muted: #535b69;
-  --line: #d5d9e0;
-  --accent: #0a5cff;
+  --raised: #e8e8ee;
+  --ink: #111116;
+  --muted: #565663;
+  --line: #dcdce3;
+  --accent: #5b47e0;
   --on-accent: #ffffff;
-  --acid: #12803f;
-  --scene-line: #9aa3b2;
-  --scene-point: #0e1116;
-  --scene-active: #0a5cff;
-  --scene-soft: #e2e5ea;
-  --media: #e6e9ee;
+  --acid: #5b47e0;
+  --scene-line: #a3a3b0;
+  --scene-point: #111116;
+  --scene-active: #5b47e0;
+  --scene-soft: #e8e8ee;
+  --media: #e9e9ee;
   --display: 'Onest', 'Segoe UI', system-ui, sans-serif;
   --body: 'Onest', 'Segoe UI', system-ui, sans-serif;
   --mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
@@ -34,20 +34,20 @@
   color-scheme: light;
 }
 :root[data-theme='dark'] {
-  --canvas: #0b0d11;
-  --surface: #15181e;
-  --raised: #1e222a;
-  --ink: #f2f4f7;
-  --muted: #a3abb8;
-  --line: #2b303a;
-  --accent: #5c93ff;
-  --on-accent: #0b0d11;
-  --acid: #5fd38d;
-  --scene-line: #4a5260;
-  --scene-point: #f2f4f7;
-  --scene-active: #5c93ff;
-  --scene-soft: #1e222a;
-  --media: #1a1d23;
+  --canvas: #060607;
+  --surface: #101013;
+  --raised: #1b1b21;
+  --ink: #f3f3f6;
+  --muted: #9d9daa;
+  --line: #232329;
+  --accent: #9585ff;
+  --on-accent: #0b0a18;
+  --acid: #9585ff;
+  --scene-line: #3a3a44;
+  --scene-point: #f3f3f6;
+  --scene-active: #9585ff;
+  --scene-soft: #1b1b21;
+  --media: #16161b;
   color-scheme: dark;
 }
 * {
@@ -152,21 +152,25 @@ figure {
   align-items: center;
   gap: var(--s6);
   min-height: 96px;
-  border-bottom: 1px solid var(--line);
 }
 .wordmark {
   min-height: 44px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: var(--s3);
   font-family: var(--display);
-  font-size: 19px;
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
-.wordmark span {
-  display: block;
+.wordmark-avatar {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .nav {
   margin-left: auto;
@@ -187,7 +191,6 @@ figure {
   align-items: center;
   gap: var(--s4);
 }
-.theme-toggle,
 .menu-toggle {
   border: 0;
   background: transparent;
@@ -197,6 +200,38 @@ figure {
   min-width: 64px;
   min-height: 44px;
   padding: var(--s2);
+}
+.theme-toggle {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+}
+.theme-toggle svg {
+  display: block;
+}
+@media (max-width: 640px) {
+  .wordmark {
+    min-width: 44px;
+  }
+  .wordmark-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+  }
 }
 .header-link {
   border: 1px solid var(--line);
@@ -872,12 +907,6 @@ figure {
     min-height: 80px;
     gap: var(--s2);
   }
-  .wordmark {
-    font-size: 16px;
-    max-width: 154px;
-    line-height: 1.2;
-  }
-  .theme-toggle,
   .menu-toggle {
     font-size: 12px;
     min-width: 62px;
@@ -1067,11 +1096,6 @@ figure {
   :root {
     --gutter: 16px;
   }
-  .wordmark {
-    font-size: 14px;
-    max-width: 132px;
-  }
-  .theme-toggle,
   .menu-toggle {
     min-width: 59px;
   }

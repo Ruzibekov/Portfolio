@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { existsSync, readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { validateCaseCopy } from './site/work.mjs'
@@ -15,6 +15,15 @@ import {
   serviceSlugs,
 } from './site/shared.mjs'
 import { caseServices, caseStack } from './site/case.mjs'
+import {
+  darkCanvas,
+  fontPreloads,
+  imageEntry,
+  imageSrc,
+  script,
+  stylesheet,
+  versioned,
+} from './site/assets.mjs'
 import { galleryLabels } from './site/work.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -148,6 +157,42 @@ function inspectPage(html, locale, slug) {
       `Wrong alternate route at ${route}`,
     )
   }
+  const htmlTag = html.match(/<html\b[^>]*>/i)?.[0] ?? ''
+  assert.equal(
+    attribute(htmlTag, 'data-theme'),
+    'dark',
+    `Default theme is not dark at ${route}`,
+  )
+  assert.ok(
+    html.includes(
+      `<meta name="theme-color" content="${darkCanvas}" id="themeColorMeta">`,
+    ),
+    `Theme colour does not match the dark canvas at ${route}`,
+  )
+  const stylesheets = links(html).filter(
+    (tag) => attribute(tag, 'rel') === 'stylesheet',
+  )
+  assert.deepEqual(
+    stylesheets.map((tag) => attribute(tag, 'href')),
+    [stylesheet.path],
+    `Expected exactly one stylesheet bundle at ${route}`,
+  )
+  assert.deepEqual(
+    links(html)
+      .filter((tag) => attribute(tag, 'rel') === 'preload')
+      .map((tag) => attribute(tag, 'href')),
+    fontPreloads(locale),
+    `Wrong font preloads at ${route}`,
+  )
+  assert.ok(
+    html.includes(`<script src="${script.path}" defer></script>`),
+    `Missing fingerprinted script at ${route}`,
+  )
+  assert.equal(
+    (html.match(/<script\b[^>]*\bsrc=/gi) ?? []).length,
+    1,
+    `Unexpected external script at ${route}`,
+  )
   const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1].trim()
   assert.ok(title?.length > 15, `Missing useful title at ${route}`)
   const description = (html.match(/<meta\b[^>]*>/gi) ?? []).find(
@@ -192,7 +237,7 @@ function inspectPage(html, locale, slug) {
   const person = schema['@graph'].find((node) => node['@type'] === 'Person')
   assert.equal(person?.name, 'Shavkatbek Ruzibekov')
   assert.equal(person?.jobTitle, copy.identity.role)
-  assert.equal(person?.image, `${origin}/assets/avatar.jpg`)
+  assert.equal(person?.image, `${origin}${versioned('/assets/avatar.jpg')}`)
   assert.equal(person?.email, 'ruzibekov44@gmail.com')
   assert.deepEqual(person?.sameAs, ['https://t.me/ruzibekov_sh'])
   assert.ok(
@@ -365,7 +410,7 @@ for (const locale of locales) {
     assert.ok(article, `Missing ${locale}/${item.key}`)
     assert.ok(article.includes(`data-source-status="${item.statusType}"`))
     assert.ok(article.includes(`data-category="${item.categories.join(' ')}"`))
-    assert.ok(article.includes(`src="${item.image.src}"`))
+    assert.ok(article.includes(`src="${imageSrc(item.image)}"`))
     assert.ok(article.includes(`alt="${escapeHtml(words.alt)}"`))
     assert.ok(article.includes(`<h2>${escapeHtml(words.title)}</h2>`))
     assert.ok(article.includes(escapeHtml(words.summary)))
@@ -449,9 +494,14 @@ for (const locale of locales) {
       `Wrong case heading at ${route}`,
     )
     assert.ok(html.includes(escapeHtml(words.summary)))
+    const hero =
+      html.match(/<figure class="wrap case-shot">(<img\b[^>]*>)/)?.[1] ?? ''
     assert.ok(
-      html.includes(`src="${item.image.src}" alt="${escapeHtml(words.alt)}"`),
-      `Missing localized hero image at ${route}`,
+      attribute(hero, 'src') === imageSrc(item.image) &&
+        hero.includes(`alt="${escapeHtml(words.alt)}"`) &&
+        attribute(hero, 'fetchpriority') === 'high' &&
+        !attribute(hero, 'loading'),
+      `Missing eager localized hero image at ${route}`,
     )
     for (const field of ['task', 'solution', 'result']) {
       assert.ok(
@@ -504,7 +554,7 @@ for (const locale of locales) {
     assert.equal(work.name, words.title)
     assert.equal(work.description, words.summary)
     assert.equal(work.url, url)
-    assert.equal(work.image, `${origin}${item.image.src}`)
+    assert.equal(work.image, `${origin}${imageSrc(item.image)}`)
     assert.equal(work.inLanguage, locale)
     assert.equal(work.creator['@id'], `${origin}/#person`)
     assert.deepEqual(work.keywords, caseStack(item))
@@ -599,6 +649,87 @@ assert.ok(
         path.slice(destination.length),
       ),
   ),
+)
+const htmlFiles = files.filter((path) => path.endsWith('.html'))
+const htmlText = htmlFiles.map((path) => readFileSync(path, 'utf8'))
+const imageExtensions = /\.(?:png|jpe?g|webp|avif|gif|svg)$/i
+const publicPath = (url) => url.split(/[?#]/)[0]
+const imageUrls = htmlText.flatMap((html) =>
+  (html.match(/<img\b[^>]*>/gi) ?? []).flatMap((tag) => {
+    const sources = [attribute(tag, 'src')]
+    const srcset = attribute(tag, 'srcset')
+    if (srcset)
+      sources.push(
+        ...srcset.split(',').map((part) => part.trim().split(/\s+/)[0]),
+      )
+    assert.ok(
+      attribute(tag, 'width') && attribute(tag, 'height'),
+      `Image without intrinsic size: ${tag}`,
+    )
+    if (srcset)
+      assert.ok(attribute(tag, 'sizes'), `srcset without sizes: ${tag}`)
+    return sources
+  }),
+)
+assert.ok(imageUrls.length > 100, 'Expected rendered images across the site')
+for (const url of imageUrls) {
+  assert.ok(url?.startsWith('/'), `Image source must be absolute: ${url}`)
+  assert.ok(
+    existsSync(join(destination, publicPath(url))),
+    `Image does not resolve to a shipped file: ${url}`,
+  )
+}
+for (const path of files.filter((file) => imageExtensions.test(file)))
+  assert.ok(
+    statSync(path).size <= 250 * 1024,
+    `Shipped image is over 250 KB: ${path.slice(destination.length)}`,
+  )
+const referencedText = [...htmlText, stylesheet.content].join('\n')
+for (const path of files.filter((file) =>
+  ['/screenshots/', '/assets/'].some((prefix) =>
+    file.slice(destination.length).startsWith(prefix),
+  ),
+)) {
+  const url = path.slice(destination.length)
+  if (url === '/assets/fonts/onest-LICENSE') continue
+  assert.ok(referencedText.includes(url), `Unreferenced shipped file: ${url}`)
+}
+for (const match of referencedText.matchAll(/\/assets\/[^"'()\s,]+/g)) {
+  const url = match[0]
+  if (url === stylesheet.path || url === script.path) continue
+  assert.match(
+    url,
+    /\?v=[0-9a-f]{10}$/,
+    `Long-cached asset without a content version: ${url}`,
+  )
+  assert.equal(url, versioned(publicPath(url)), `Stale asset version: ${url}`)
+}
+for (const bundle of [stylesheet, script]) {
+  assert.match(bundle.path, /^\/assets\/site\.[0-9a-f]{10}\.(?:css|js)$/)
+  assert.equal(
+    readFileSync(join(destination, bundle.path), 'utf8'),
+    bundle.content,
+  )
+}
+assert.equal(imageEntry('altn-emu-1').width, 540)
+assert.equal(imageEntry('monarh-shot').variants.length, 2)
+const home = read('uz/index.html')
+const lcp = home.match(/<span class="mock-browser">[\s\S]*?(<img\b[^>]*>)/)?.[1]
+assert.ok(
+  attribute(lcp ?? '', 'fetchpriority') === 'high' &&
+    !attribute(lcp ?? '', 'loading'),
+  'Home LCP image must stay eager with high fetch priority',
+)
+const vercel = readJson('vercel.json')
+const cacheFor = (source) =>
+  vercel.headers
+    .find((rule) => rule.source === source)
+    ?.headers.find((header) => header.key === 'Cache-Control')?.value
+assert.equal(cacheFor('/assets/(.*)'), 'public, max-age=31536000, immutable')
+assert.match(cacheFor('/screenshots/(.*)') ?? '', /max-age=2592000/)
+assert.match(
+  readFileSync(join(root, 'assets/theme-init.js'), 'utf8'),
+  /let theme = 'dark'/,
 )
 assert.equal(escapeHtml('<script>"&\''), '&lt;script&gt;&quot;&amp;&#39;')
 assert.equal(lineBreaks('A\\n<B>\nC'), 'A<br>&lt;B&gt;<br>C')

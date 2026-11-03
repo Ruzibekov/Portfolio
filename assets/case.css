@@ -74,6 +74,7 @@
   padding: clamp(10px, 1.6vw, 20px);
   border-radius: var(--tile-radius);
   background: var(--surface);
+  box-shadow: var(--card-edge);
 }
 .case-shot img {
   display: block;
@@ -100,6 +101,7 @@
   padding: clamp(22px, 3vw, 36px);
   border-radius: var(--tile-radius);
   background: var(--surface);
+  box-shadow: var(--card-edge);
 }
 .case-block h2,
 .case-aside-group h2 {
@@ -142,10 +144,6 @@
 .case-service:active {
   transform: translateY(1px);
 }
-.case-cta {
-  background: var(--ink);
-  color: var(--canvas);
-}
 .case-cta h2 {
   font-size: clamp(24px, 2.2vw, 30px);
   line-height: 1.2;
@@ -155,13 +153,7 @@
   width: 100%;
   margin-top: var(--s5);
   background: var(--accent);
-  color: #ffffff;
-}
-:root[data-theme='dark'] .case-cta .button {
-  color: #0b0d11;
-}
-.case-cta .button:focus-visible {
-  outline-color: var(--canvas);
+  color: var(--on-accent);
 }
 .case-pager {
   display: grid;
@@ -178,6 +170,7 @@
   padding: clamp(22px, 3vw, 32px);
   border-radius: var(--tile-radius);
   background: var(--surface);
+  box-shadow: var(--card-edge);
   transition:
     transform var(--ui) var(--ease),
     box-shadow var(--ui) var(--ease);
@@ -198,7 +191,7 @@
 }
 .case-pager-link:hover {
   transform: translateY(-3px);
-  box-shadow: var(--lift);
+  box-shadow: var(--card-edge), var(--lift);
 }
 .case-pager-link:active {
   transform: translateY(-1px) scale(0.995);
@@ -206,13 +199,6 @@
 @media (max-width: 960px) {
   .case-layout {
     grid-template-columns: 1fr;
-  }
-  .case-cta {
-    background: var(--surface);
-    color: var(--ink);
-  }
-  .case-cta .button:focus-visible {
-    outline-color: var(--accent);
   }
 }
 @media (max-width: 560px) {

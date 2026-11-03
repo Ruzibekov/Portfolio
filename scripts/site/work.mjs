@@ -6,6 +6,9 @@ import {
   pagePath,
   renderDocument,
 } from './shared.mjs'
+import { imageTag } from './assets.mjs'
+
+const gallerySizes = '(min-width: 900px) 580px, calc(100vw - 42px)'
 
 export const galleryLabels = {
   uz: {
@@ -138,7 +141,7 @@ export function renderWork({ locale, copy, ui, cases, caseCopy }) {
     )
     .join('')
   const cards = cases
-    .map((item) => {
+    .map((item, index) => {
       const words = caseCopy[item.key]
       const actions = item.links
         .map(
@@ -152,7 +155,7 @@ export function renderWork({ locale, copy, ui, cases, caseCopy }) {
       const availability =
         words.status || (!item.links.length ? labels.noPublicLink : '')
       return `<article class="gallery-case" id="${escapeHtml(item.id)}" data-case-key="${escapeHtml(item.key)}" data-category="${escapeHtml(item.categories.join(' '))}" data-source-status="${item.statusType}">
-<img class="gallery-image" src="${escapeHtml(item.image.src)}" alt="${escapeHtml(words.alt)}" width="${item.image.width}" height="${item.image.height}" loading="lazy">
+${imageTag({ key: item.image, alt: escapeHtml(words.alt), sizes: gallerySizes, className: 'gallery-image', lazy: index > 1 })}
 <div class="gallery-case-copy"><h2>${escapeHtml(words.title)}</h2><p class="gallery-summary">${escapeHtml(words.summary)}</p><p class="gallery-stack">${escapeHtml(item.stack)}</p>
 <details class="gallery-details"><summary><span>${escapeHtml(labels.details)}</span><span aria-hidden="true">+</span></summary><dl>${['task', 'solution', 'result'].map((field) => `<div><dt>${escapeHtml(labels[field])}</dt><dd data-case-field="${field}">${escapeHtml(words[field])}</dd></div>`).join('')}</dl></details>
 <div class="gallery-actions">${caseLink}${actions}${availability ? `<span class="gallery-availability">${escapeHtml(availability)}</span>` : ''}</div></div></article>`

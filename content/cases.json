@@ -8,11 +8,7 @@
       "title": "Miyolo / YOLO",
       "categories": ["web"],
       "stack": "CS-Cart, PHP",
-      "image": {
-        "src": "/screenshots/miyolo-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "miyolo-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -59,11 +55,7 @@
       "title": "МонархМаркет",
       "categories": ["web"],
       "stack": "Bitrix, JS, CSS",
-      "image": {
-        "src": "/screenshots/monarh-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "monarh-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -110,11 +102,7 @@
       "title": "Agentmama",
       "categories": ["web"],
       "stack": "FastAPI, React",
-      "image": {
-        "src": "/screenshots/agentmama-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "agentmama-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -161,11 +149,7 @@
       "title": "ОКХ",
       "categories": ["mobile"],
       "stack": "Flutter, FastAPI",
-      "image": {
-        "src": "/screenshots/okh-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "okh-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -215,11 +199,7 @@
       "title": "PAYQR",
       "categories": ["mobile", "backend"],
       "stack": "Flutter, FastAPI",
-      "image": {
-        "src": "/screenshots/payqr-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "payqr-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [],
@@ -262,11 +242,7 @@
       "title": "Matik",
       "categories": ["web"],
       "stack": "Next.js, PWA",
-      "image": {
-        "src": "/screenshots/matik-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "matik-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -313,11 +289,7 @@
       "title": "Majiid.tv",
       "categories": ["web"],
       "stack": "HTML, CSS, JS",
-      "image": {
-        "src": "/screenshots/majiidtv-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "majiidtv-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -364,11 +336,7 @@
       "title": "WOT·TANK",
       "categories": ["web"],
       "stack": "React, TypeScript, Vite",
-      "image": {
-        "src": "/screenshots/wottank-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "wottank-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -415,11 +383,7 @@
       "title": "Sibpromresurs",
       "categories": ["web"],
       "stack": "Eleventy, PHP",
-      "image": {
-        "src": "/screenshots/spr54-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "spr54-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -466,11 +430,7 @@
       "title": "les44.com",
       "categories": ["web"],
       "stack": "Joomla 5, PHP 8.2",
-      "image": {
-        "src": "/screenshots/les44-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "les44-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -517,11 +477,7 @@
       "title": "Space444",
       "categories": ["web"],
       "stack": "WordPress, Stripe",
-      "image": {
-        "src": "/screenshots/space444-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "space444-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -568,11 +524,7 @@
       "title": "Best Tracker",
       "categories": ["mobile"],
       "stack": "Flutter, NestJS",
-      "image": {
-        "src": "/screenshots/besttracker-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "besttracker-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -622,11 +574,7 @@
       "title": "Stefa AI Art",
       "categories": ["mobile"],
       "stack": "Flutter, Android",
-      "image": {
-        "src": "/screenshots/stefa-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "stefa-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -673,11 +621,7 @@
       "title": "My Nail Salon",
       "categories": ["mobile"],
       "stack": "Flutter",
-      "image": {
-        "src": "/screenshots/mynails-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "mynails-shot",
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -720,11 +664,7 @@
       "title": "ALTN Chat",
       "categories": ["mobile"],
       "stack": "Flutter, Android",
-      "image": {
-        "src": "/screenshots/altn-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "altn-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -771,11 +711,7 @@
       "title": "WeGoTrip",
       "categories": ["mobile"],
       "stack": "Kotlin, Android",
-      "image": {
-        "src": "/screenshots/wegotrip-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "wegotrip-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -822,11 +758,7 @@
       "title": "Yolo",
       "categories": ["mobile"],
       "stack": "Kotlin Multiplatform",
-      "image": {
-        "src": "/screenshots/yolo-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "yolo-shot",
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -869,11 +801,7 @@
       "title": "GeoBlinker25",
       "categories": ["mobile"],
       "stack": "Android",
-      "image": {
-        "src": "/screenshots/geoblinker-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "geoblinker-shot",
       "statusType": "prototype",
       "statusKey": "work.badgePrototype",
       "links": [],
@@ -916,11 +844,7 @@
       "title": "Wallpapers",
       "categories": ["mobile"],
       "stack": "Kotlin, Android",
-      "image": {
-        "src": "/screenshots/wallpapers-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "wallpapers-shot",
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -963,11 +887,7 @@
       "title": "Avtopark",
       "categories": ["mobile"],
       "stack": "Flutter, iOS, Android",
-      "image": {
-        "src": "/screenshots/avtopark-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "avtopark-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1017,11 +937,7 @@
       "title": "Tildon Mobile",
       "categories": ["mobile"],
       "stack": "Compose Multiplatform",
-      "image": {
-        "src": "/screenshots/tildonmobile-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "tildonmobile-shot",
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -1064,11 +980,7 @@
       "title": "Tildon",
       "categories": ["web"],
       "stack": "Next.js, PWA",
-      "image": {
-        "src": "/screenshots/tildon-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "tildon-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1115,11 +1027,7 @@
       "title": "VFX Timecode",
       "categories": ["web"],
       "stack": "React, PWA",
-      "image": {
-        "src": "/screenshots/vfx-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "vfx-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1166,11 +1074,7 @@
       "title": "AiLogoEdit",
       "categories": ["web"],
       "stack": "Next.js, Supabase",
-      "image": {
-        "src": "/screenshots/ailogoedit-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "ailogoedit-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1217,11 +1121,7 @@
       "title": "Monro",
       "categories": ["web"],
       "stack": "HTML, CSS, JS",
-      "image": {
-        "src": "/screenshots/monro-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "monro-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1268,11 +1168,7 @@
       "title": "Super Tour",
       "categories": ["web"],
       "stack": "HTML, CSS, JS",
-      "image": {
-        "src": "/screenshots/supertour-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "supertour-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1319,11 +1215,7 @@
       "title": "OLYMPIC",
       "categories": ["web"],
       "stack": "HTML, CSS, JS",
-      "image": {
-        "src": "/screenshots/olympic-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "olympic-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1370,11 +1262,7 @@
       "title": "Earth Cosmos",
       "categories": ["web"],
       "stack": "Three.js, GLSL",
-      "image": {
-        "src": "/screenshots/earth-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "earth-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1421,11 +1309,7 @@
       "title": "Zarbdor vertolyot",
       "categories": ["web"],
       "stack": "Three.js, WebGL",
-      "image": {
-        "src": "/screenshots/vertolyot-shot.webp",
-        "width": 900,
-        "height": 600
-      },
+      "image": "vertolyot-shot",
       "statusType": "public",
       "statusKey": null,
       "links": [

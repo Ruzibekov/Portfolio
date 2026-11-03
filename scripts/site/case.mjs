@@ -10,11 +10,13 @@ import {
   renderDocument,
 } from './shared.mjs'
 import { galleryLabels } from './work.mjs'
+import { imageSrc, imageTag } from './assets.mjs'
 
 const storyFields = ['task', 'solution', 'result']
 const serviceByCategory = { web: 'web-development', mobile: 'mobile-apps' }
 const extraServices = { agentmama: ['ai-integrations'] }
 const descriptionLimit = 160
+const shotSizes = '(min-width: 1460px) 1400px, calc(100vw - 48px)'
 const arrow = '<span aria-hidden="true">↗</span>'
 
 export function caseServices(item) {
@@ -86,7 +88,7 @@ function creativeWorkNode({ item, words, locale, path }) {
     '@id': `${url}#case`,
     name: words.title,
     description: words.summary,
-    image: absoluteUrl(item.image.src),
+    image: absoluteUrl(imageSrc(item.image)),
     url,
     inLanguage: locale,
     creator: { '@id': personId },
@@ -142,7 +144,7 @@ export function renderCase({ locale, copy, ui, cases, caseCopy, key }) {
   const pagerLink = (target, relation, label) =>
     `<a class="case-pager-link case-pager-${relation}" href="${casePath(locale, target)}" rel="${relation}"><span>${escapeHtml(label)}</span><strong>${escapeHtml(caseCopy[target].title)}</strong></a>`
   const body = `<section class="wrap case-hero" aria-labelledby="case-title">${breadcrumb}<h1 id="case-title">${escapeHtml(words.title)}</h1><p class="case-lead">${escapeHtml(words.summary)}</p><ul class="case-chips" aria-label="${escapeHtml(strings.stack)}">${chips}</ul></section>
-<figure class="wrap case-shot"><img src="${escapeHtml(item.image.src)}" alt="${escapeHtml(words.alt)}" width="${item.image.width}" height="${item.image.height}" fetchpriority="high"></figure>
+<figure class="wrap case-shot">${imageTag({ key: item.image, alt: escapeHtml(words.alt), sizes: shotSizes, priority: true })}</figure>
 <div class="wrap case-layout"><div class="case-story">${story}</div><aside class="case-aside">${externalLinks}<section class="case-aside-group" aria-labelledby="case-services-title"><h2 id="case-services-title">${escapeHtml(strings.services)}</h2><ul class="case-link-list">${services}</ul></section><section class="case-cta" aria-labelledby="case-cta-title"><h2 id="case-cta-title">${escapeHtml(strings.ctaTitle)}</h2><a class="button" href="${escapeHtml(copy.identity.contact.telegram)}" target="_blank" rel="noopener noreferrer"><span class="button-content">${escapeHtml(copy.hero.primaryCta)} ${arrow}</span></a></section></aside></div>
 <nav class="wrap case-pager" aria-label="${escapeHtml(strings.pager)}">${pagerLink(previous, 'prev', strings.previous)}${pagerLink(next, 'next', strings.next)}</nav>`
   return renderDocument({

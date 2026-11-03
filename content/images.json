@@ -1,0 +1,130 @@
+{
+  "quality": 78,
+  "output": "screenshots/web",
+  "images": [
+    {
+      "source": "screenshots/agentmama-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/ailogoedit-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/altn-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/avtopark-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/besttracker-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/earth-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/geoblinker-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/les44-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/majiidtv-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/matik-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/miyolo-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/monarh-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/monro-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/mynails-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/okh-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/olympic-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/payqr-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/space444-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/spr54-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/stefa-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/supertour-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/tildon-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/tildonmobile-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/vertolyot-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/vfx-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/wallpapers-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/wegotrip-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/wottank-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/yolo-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/altn-emu-1.png",
+      "widths": [540]
+    },
+    {
+      "source": "screenshots/besttracker-emu-1.png",
+      "widths": [540]
+    }
+  ]
+}

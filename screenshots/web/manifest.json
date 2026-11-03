@@ -1,0 +1,548 @@
+{
+  "agentmama-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/agentmama-shot-700.ca222fc6c9.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 13914
+      },
+      {
+        "src": "/screenshots/web/agentmama-shot-1400.a8cb6dd5a5.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 35098
+      }
+    ]
+  },
+  "ailogoedit-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/ailogoedit-shot-700.fe087dd906.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 8460
+      },
+      {
+        "src": "/screenshots/web/ailogoedit-shot-1400.a580c9c46b.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 19880
+      }
+    ]
+  },
+  "altn-emu-1": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/altn-emu-1-540.0f049fcc17.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 27170
+      }
+    ]
+  },
+  "altn-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/altn-shot-700.0856ece897.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 10678
+      },
+      {
+        "src": "/screenshots/web/altn-shot-1400.adaaae0072.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 29504
+      }
+    ]
+  },
+  "avtopark-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/avtopark-shot-700.f60c41d7f9.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 21704
+      },
+      {
+        "src": "/screenshots/web/avtopark-shot-1400.6b9b006205.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 56006
+      }
+    ]
+  },
+  "besttracker-emu-1": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/besttracker-emu-1-540.29ee410416.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 33970
+      }
+    ]
+  },
+  "besttracker-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/besttracker-shot-700.bada609542.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 22704
+      },
+      {
+        "src": "/screenshots/web/besttracker-shot-1400.d202dc3217.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 67766
+      }
+    ]
+  },
+  "earth-shot": {
+    "width": 900,
+    "height": 600,
+    "variants": [
+      {
+        "src": "/screenshots/web/earth-shot-700.30c01b9c5e.webp",
+        "width": 700,
+        "height": 467,
+        "bytes": 34246
+      },
+      {
+        "src": "/screenshots/web/earth-shot-900.8480553d43.webp",
+        "width": 900,
+        "height": 600,
+        "bytes": 54720
+      }
+    ]
+  },
+  "geoblinker-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/geoblinker-shot-700.1eabee3c8e.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 16044
+      },
+      {
+        "src": "/screenshots/web/geoblinker-shot-1400.40a94ae5d8.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 55366
+      }
+    ]
+  },
+  "les44-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/les44-shot-700.0bdcf8c8e9.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 25772
+      },
+      {
+        "src": "/screenshots/web/les44-shot-1400.84f7d13e2a.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 75076
+      }
+    ]
+  },
+  "majiidtv-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/majiidtv-shot-700.dc836fc918.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 15202
+      },
+      {
+        "src": "/screenshots/web/majiidtv-shot-1400.d493524b62.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 39428
+      }
+    ]
+  },
+  "matik-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/matik-shot-700.03ee1ee287.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 11530
+      },
+      {
+        "src": "/screenshots/web/matik-shot-1400.804da790aa.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 27472
+      }
+    ]
+  },
+  "miyolo-shot": {
+    "width": 900,
+    "height": 600,
+    "variants": [
+      {
+        "src": "/screenshots/web/miyolo-shot-700.ca2c9dba48.webp",
+        "width": 700,
+        "height": 467,
+        "bytes": 23142
+      },
+      {
+        "src": "/screenshots/web/miyolo-shot-900.c657bd9b6e.webp",
+        "width": 900,
+        "height": 600,
+        "bytes": 31770
+      }
+    ]
+  },
+  "monarh-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/monarh-shot-700.8fe76af462.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 22588
+      },
+      {
+        "src": "/screenshots/web/monarh-shot-1400.dde0b9f1ca.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 63056
+      }
+    ]
+  },
+  "monro-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/monro-shot-700.99017caec6.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 15470
+      },
+      {
+        "src": "/screenshots/web/monro-shot-1400.af8ff52b4e.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 39490
+      }
+    ]
+  },
+  "mynails-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/mynails-shot-700.3b9800de86.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 18360
+      },
+      {
+        "src": "/screenshots/web/mynails-shot-1400.632b799cb4.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 43862
+      }
+    ]
+  },
+  "okh-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/okh-shot-700.1079b19afe.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 20558
+      },
+      {
+        "src": "/screenshots/web/okh-shot-1400.6685d97a7d.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 61218
+      }
+    ]
+  },
+  "olympic-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/olympic-shot-700.d2d6a0c296.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 14888
+      },
+      {
+        "src": "/screenshots/web/olympic-shot-1400.1e97623f58.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 37316
+      }
+    ]
+  },
+  "payqr-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/payqr-shot-700.32b8bb4bb6.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 13002
+      },
+      {
+        "src": "/screenshots/web/payqr-shot-1400.8cfaff0b77.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 35486
+      }
+    ]
+  },
+  "space444-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/space444-shot-700.5b86c47c91.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 26528
+      },
+      {
+        "src": "/screenshots/web/space444-shot-1400.bd51e9986b.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 63762
+      }
+    ]
+  },
+  "spr54-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/spr54-shot-700.ed6300a38c.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 14288
+      },
+      {
+        "src": "/screenshots/web/spr54-shot-1400.215e377396.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 35328
+      }
+    ]
+  },
+  "stefa-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/stefa-shot-700.6a2185b5ee.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 31416
+      },
+      {
+        "src": "/screenshots/web/stefa-shot-1400.2a1e2fdf5f.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 79774
+      }
+    ]
+  },
+  "supertour-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/supertour-shot-700.63ff7b014e.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 14536
+      },
+      {
+        "src": "/screenshots/web/supertour-shot-1400.5303131246.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 31964
+      }
+    ]
+  },
+  "tildon-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/tildon-shot-700.9d1194f7a9.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 10344
+      },
+      {
+        "src": "/screenshots/web/tildon-shot-1400.3e718fe2d9.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 25826
+      }
+    ]
+  },
+  "tildonmobile-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/tildonmobile-shot-700.9cc42bd4cd.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 12452
+      },
+      {
+        "src": "/screenshots/web/tildonmobile-shot-1400.e5f7fd8330.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 34308
+      }
+    ]
+  },
+  "vertolyot-shot": {
+    "width": 900,
+    "height": 600,
+    "variants": [
+      {
+        "src": "/screenshots/web/vertolyot-shot-700.270ac6e140.webp",
+        "width": 700,
+        "height": 467,
+        "bytes": 16386
+      },
+      {
+        "src": "/screenshots/web/vertolyot-shot-900.b61cb32aa0.webp",
+        "width": 900,
+        "height": 600,
+        "bytes": 23500
+      }
+    ]
+  },
+  "vfx-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/vfx-shot-700.8e6d4609dd.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 7314
+      },
+      {
+        "src": "/screenshots/web/vfx-shot-1400.a43af4858d.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 16638
+      }
+    ]
+  },
+  "wallpapers-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/wallpapers-shot-700.fc5d168d12.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 30046
+      },
+      {
+        "src": "/screenshots/web/wallpapers-shot-1400.41a15e398c.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 101720
+      }
+    ]
+  },
+  "wegotrip-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/wegotrip-shot-700.5e2cf405d5.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 36358
+      },
+      {
+        "src": "/screenshots/web/wegotrip-shot-1400.c87acdda6b.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 110284
+      }
+    ]
+  },
+  "wottank-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/wottank-shot-700.6805081c8a.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 13316
+      },
+      {
+        "src": "/screenshots/web/wottank-shot-1400.7fba269ea4.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 35986
+      }
+    ]
+  },
+  "yolo-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/yolo-shot-700.7131554357.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 4042
+      },
+      {
+        "src": "/screenshots/web/yolo-shot-1400.89aa01a449.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 9776
+      }
+    ]
+  }
+}

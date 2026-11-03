@@ -7,13 +7,21 @@ import {
   rmSync,
   writeFileSync,
 } from 'node:fs'
-import { dirname, extname, join, resolve } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as shared from './site/shared.mjs'
 import { renderService } from './site/service.mjs'
 import { renderWork, validateCaseCopy } from './site/work.mjs'
 import { renderCase } from './site/case.mjs'
+import {
+  bundledSources,
+  imageSrc,
+  script,
+  stylesheet,
+  versioned,
+} from './site/assets.mjs'
 
+const legacyImageWidth = 700
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const destination = join(root, 'dist')
 const homeModule = join(root, 'scripts/site/home.mjs')
@@ -78,77 +86,46 @@ const content = Object.fromEntries(
   }),
 )
 
-const publicAssets = [
-  'assets/fonts.css',
+const sourceAssets = [
+  ...bundledSources,
   'assets/og-products.png',
-  'assets/site.css',
-  'assets/site.js',
-  'assets/theme-init.js',
-  'assets/bento.css',
-  'assets/services.css',
-  'assets/work-gallery.css',
-  'assets/case.css',
+  'assets/avatar.jpg',
+  'assets/fonts/onest-LICENSE',
   'favicon.svg',
   'og-image.png',
 ]
-for (const path of publicAssets)
+for (const path of sourceAssets)
   if (!existsSync(join(root, path)))
     throw new Error(`Required public asset is missing: ${path}`)
 if (!existsSync(join(root, 'content/legacy-portfolio.html')))
   throw new Error(
     'The original portfolio archive is missing: content/legacy-portfolio.html',
   )
-const allowedExtensions = new Set([
-  '.css',
-  '.js',
-  '.svg',
-  '.png',
-  '.jpg',
-  '.jpeg',
-  '.webp',
-  '.avif',
-  '.gif',
-  '.ico',
-  '.woff',
-  '.woff2',
-  '.ttf',
-  '.otf',
-  '.mp4',
-  '.webm',
-])
-const isPublicAsset = (path) => {
-  const entry = path.split('/').at(-1)
-  if (entry.startsWith('.')) return false
-  return (
-    existsSync(path) &&
-    (!extname(path) || allowedExtensions.has(extname(path).toLowerCase()))
-  )
-}
 
 rmSync(destination, { recursive: true, force: true })
 mkdirSync(destination, { recursive: true })
-for (const directory of ['assets', 'screenshots', 'projects/screenshots']) {
-  const source = join(root, directory)
-  if (existsSync(source))
-    cpSync(source, join(destination, directory), {
-      recursive: true,
-      dereference: false,
-      filter: isPublicAsset,
-    })
-}
 for (const file of readdirSync(root).filter(
   (name) =>
     name === 'favicon.svg' ||
     /^og-image\.(?:png|jpg|jpeg|webp|avif)$/.test(name),
 ))
   cpSync(join(root, file), join(destination, file))
+const writeAsset = (publicPath, content) => {
+  const target = join(destination, publicPath)
+  mkdirSync(dirname(target), { recursive: true })
+  writeFileSync(target, content)
+}
+writeAsset(stylesheet.path, stylesheet.content)
+writeAsset(script.path, script.content)
 
+const pages = []
 const writePage = (path, html) => {
   if (typeof html !== 'string' || !html.includes('<!doctype html>'))
     throw new Error(`Renderer returned invalid HTML for ${path}`)
   const target = join(destination, path, 'index.html')
   mkdirSync(dirname(target), { recursive: true })
   writeFileSync(target, html)
+  pages.push(html)
 }
 const canonicalPaths = []
 for (const locale of shared.locales) {
@@ -195,8 +172,33 @@ const archive = legacy
     /<link\b(?=[^>]*rel=["']canonical["'])[^>]*>/gi,
     `<link rel="canonical" href="${shared.origin}/portfolio">`,
   )
+  .replace(
+    /(["'])(\/assets\/[^"'?#\s]+)(?:\?v=[^"'#\s]*)?\1/g,
+    (_, quote, path) => `${quote}${versioned(path)}${quote}`,
+  )
+  .replace(
+    /(["'])\/screenshots\/([a-z0-9-]+)\.webp\1/g,
+    (_, quote, key) => `${quote}${imageSrc(key, legacyImageWidth)}${quote}`,
+  )
   .replace('</head>', '<meta name="robots" content="noindex, follow">\n</head>')
 writePage('portfolio', archive)
+const referenced = new Set(
+  [stylesheet.content, ...pages].flatMap((text) =>
+    [
+      ...text.matchAll(
+        /\/(?:assets|screenshots|projects\/screenshots)\/[^"'()\s?#,]+/g,
+      ),
+    ].map((match) => match[0]),
+  ),
+)
+referenced.add('/assets/fonts/onest-LICENSE')
+for (const publicPath of referenced) {
+  if (existsSync(join(destination, publicPath))) continue
+  const source = join(root, publicPath)
+  if (!existsSync(source))
+    throw new Error(`Referenced public file is missing: ${publicPath}`)
+  writeAsset(publicPath, readFileSync(source))
+}
 writeFileSync(
   join(destination, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${canonicalPaths.map((path) => `  <url><loc>${shared.absoluteUrl(path)}</loc></url>`).join('\n')}\n</urlset>\n`,

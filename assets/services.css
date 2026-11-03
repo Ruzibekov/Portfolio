@@ -7,11 +7,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  min-height: 44px;
-  padding: 8px;
+  min-height: 40px;
+  padding: 0 14px;
   cursor: pointer;
   list-style: none;
-  border: 1px solid transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
 }
 .language-picker summary::-webkit-details-marker {
   display: none;
@@ -317,21 +319,14 @@
   }
   .header-actions {
     margin-left: auto;
-    gap: 0;
+    gap: 6px;
   }
   .language-picker {
     font-size: 12px;
   }
   .language-picker summary {
-    padding-inline: 6px;
-  }
-  .theme-toggle {
-    min-width: 44px;
-    padding-inline: 4px;
-    font-size: 11px;
-  }
-  .wordmark {
-    font-size: 15px;
+    min-height: 44px;
+    padding-inline: 12px;
   }
   .service-projects {
     grid-template-columns: minmax(0, 1fr);

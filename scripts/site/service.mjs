@@ -8,26 +8,30 @@ import {
   renderDocument,
   serviceNode,
 } from './shared.mjs'
+import { imageTag } from './assets.mjs'
+
+const projectSizes =
+  '(min-width: 1460px) 700px, (min-width: 900px) 45vw, calc(100vw - 40px)'
 
 const projects = {
   monarh: {
     name: 'Monarh Market',
-    image: 'monarh-shot.webp',
+    image: 'monarh-shot',
     href: 'https://monarhmarket.ru',
   },
   okh: {
     name: 'OKH',
-    image: 'okh-shot.webp',
+    image: 'okh-shot',
     href: 'https://apps.apple.com/app/id6794669727',
   },
   agentmama: {
     name: 'Agentmama',
-    image: 'agentmama-shot.webp',
+    image: 'agentmama-shot',
     href: 'https://agentmama.ru',
   },
   miyolo: {
     name: 'Miyolo / Yolo',
-    image: 'miyolo-shot.webp',
+    image: 'miyolo-shot',
     href: 'https://miyolo.ru',
   },
 }
@@ -47,7 +51,7 @@ export function renderService({ locale, copy, ui, slug }) {
     .map((key) => {
       const project = projects[key]
       const words = ui.caseStudies[key]
-      return `<article class="service-project"><img src="/screenshots/${project.image}" alt="${escapeHtml(words.alt)}" width="1440" height="1000" loading="lazy"><div><h3>${escapeHtml(project.name)}</h3><p>${escapeHtml(words.summary)}</p><a class="service-text-link" href="${project.href}" target="_blank" rel="noopener noreferrer">${escapeHtml(words.linkLabel)} <span aria-hidden="true">↗</span></a></div></article>`
+      return `<article class="service-project">${imageTag({ key: project.image, alt: escapeHtml(words.alt), sizes: projectSizes })}<div><h3>${escapeHtml(project.name)}</h3><p>${escapeHtml(words.summary)}</p><a class="service-text-link" href="${project.href}" target="_blank" rel="noopener noreferrer">${escapeHtml(words.linkLabel)} <span aria-hidden="true">↗</span></a></div></article>`
     })
     .join('')
   const related = Object.entries(copy.services)
