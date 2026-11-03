@@ -1,4 +1,5 @@
 export const origin = 'https://portfolio-ruzibekov.vercel.app'
+export const indexNowKey = 'b7f99f917abf2960b601e7f62050f299'
 export const locales = ['uz', 'ru', 'en', 'ky', 'kk', 'tg', 'uk', 'be']
 export const serviceSlugs = [
   'web-development',

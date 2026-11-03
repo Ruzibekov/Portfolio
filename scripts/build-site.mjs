@@ -188,6 +188,10 @@ writeFileSync(
   join(destination, 'robots.txt'),
   `User-agent: *\nAllow: /\n\nSitemap: ${shared.origin}/sitemap.xml\n`,
 )
+writeFileSync(
+  join(destination, `${shared.indexNowKey}.txt`),
+  shared.indexNowKey,
+)
 console.log(
   `Built ${canonicalPaths.length} canonical pages, Uzbek root fallback and preserved portfolio archive in dist/.`,
 )
