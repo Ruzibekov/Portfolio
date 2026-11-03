@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "locale": "en",
+  "contentStatus": "draft",
+  "identity": {
+    "fullName": "Shavkatbek Ruzibekov",
+    "role": "Independent full-stack developer",
+    "contact": {
+      "email": "ruzibekov44@gmail.com",
+      "telegram": "https://t.me/ruzibekov_sh"
+    }
+  },
+  "navigation": {
+    "services": "Services",
+    "work": "Selected work",
+    "about": "About me",
+    "faq": "Questions",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "Shavkatbek Ruzibekov · Product development",
+    "title": "I build websites, bots, and mobile apps for your business.",
+    "description": "I turn business requirements into digital products: the interface your customers use, the backend behind it, and the integrations that connect your tools. I can build a new product or continue work on an existing one.",
+    "primaryCta": "Discuss your project",
+    "secondaryCta": "Explore my work"
+  },
+  "seo": {
+    "title": "Websites, Bots & Mobile App Development | Shavkatbek Ruzibekov",
+    "description": "Independent full-stack developer for websites, Telegram bots, mobile apps, CRM integrations, and business automation. Discuss your project with Shavkatbek Ruzibekov."
+  },
+  "services": {
+    "web-development": {
+      "name": "Websites and web apps",
+      "description": "I build landing pages, business websites, online stores, and web apps. I connect the interface to the backend, forms, payments, and other services your project needs.",
+      "useCases": [
+        "A landing page that explains your offer and collects inquiries",
+        "An online store with a catalog and an order flow",
+        "A customer account or an internal business tool"
+      ],
+      "seo": {
+        "title": "Website and Web App Development | Shavkatbek Ruzibekov",
+        "description": "Custom landing pages, business websites, online stores, and web apps. Shavkatbek Ruzibekov develops the interface, backend, and integrations around your requirements."
+      }
+    },
+    "telegram-bots": {
+      "name": "Telegram bots and Mini Apps",
+      "description": "I develop Telegram bots and Mini Apps for orders, customer support, notifications, and business workflows. I connect them to your database, CRM, and payment services as needed.",
+      "useCases": [
+        "A bot for orders, bookings, or service requests",
+        "A Mini App with a catalog and a customer account",
+        "Notifications and data exchange with your CRM"
+      ],
+      "seo": {
+        "title": "Telegram Bot and Mini App Development | Shavkatbek Ruzibekov",
+        "description": "Telegram bots and Mini Apps for orders, bookings, support, and business workflows. Connect your bot to a CRM, database, or payment service."
+      }
+    },
+    "mobile-apps": {
+      "name": "Mobile apps",
+      "description": "I build Android and iOS apps, from an initial product version to new features for an existing app. I work on the interface, business logic, backend connections, and release preparation.",
+      "useCases": [
+        "A first app version to test your product idea",
+        "An app for customers, bookings, or service delivery",
+        "New features and fixes for an existing mobile app"
+      ],
+      "seo": {
+        "title": "Android and iOS App Development | Shavkatbek Ruzibekov",
+        "description": "Custom Android and iOS apps, MVP development, and improvements to existing products. Discuss your mobile app requirements with Shavkatbek Ruzibekov."
+      }
+    },
+    "business-automation": {
+      "name": "CRM and business automation",
+      "description": "I connect websites, bots, apps, and CRM systems so information can move between them. I develop backend services, APIs, and workflows around the way your business operates.",
+      "useCases": [
+        "Website and bot inquiries sent to your CRM",
+        "Data exchange between services through APIs",
+        "An internal tool for orders, status updates, or reports"
+      ],
+      "seo": {
+        "title": "CRM Integration and Business Automation | Shavkatbek Ruzibekov",
+        "description": "Connect websites, Telegram bots, mobile apps, and CRM systems. Backend services, API integrations, and workflow automation tailored to your business."
+      }
+    },
+    "ai-integrations": {
+      "name": "AI integrations",
+      "description": "I add AI features where they serve a clear business purpose: working with documents, answering from your knowledge base, or sorting incoming requests. I define data access and review needs with you before implementation.",
+      "useCases": [
+        "An assistant that uses your business knowledge base",
+        "Sorting and summarizing incoming customer requests",
+        "Extracting information from documents for further review"
+      ],
+      "seo": {
+        "title": "AI Integration for Websites, Bots and Apps | Shavkatbek Ruzibekov",
+        "description": "AI assistants, document processing, and request classification for your website, bot, or app. Scope, data access, and review requirements agreed before development."
+      }
+    }
+  },
+  "faq": [
+    {
+      "id": "pricing-timeline",
+      "question": "How much will my project cost, and how long will it take?",
+      "answer": "The price and timeline depend on the features, integrations, design, and current state of the project. Send me a brief description or specification. I will clarify the details and agree the scope, price, and stages with you before development."
+    },
+    {
+      "id": "existing-project",
+      "question": "Can you continue work on an existing project?",
+      "answer": "Yes. I can review the code and current behavior, fix issues, add features, or connect other services. I first need to understand the technology, available access, and the changes you want, then I can propose the next steps."
+    },
+    {
+      "id": "getting-started",
+      "question": "What do you need to get started?",
+      "answer": "Describe who the product is for, what it needs to do, and what you already have. A short message, examples, design, or specification can be enough for the first discussion. Contact me on Telegram or by email, and I will clarify any missing details."
+    },
+    {
+      "id": "multilingual-sites",
+      "question": "Can you build a website in several languages?",
+      "answer": "Yes. I can provide separate pages for each language, a language switcher, and the technical foundation for search indexing. We agree the languages, translations, and review process separately. Multilingual pages do not guarantee search positions."
+    }
+  ]
+}

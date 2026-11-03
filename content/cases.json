@@ -1,0 +1,1470 @@
+{
+  "schemaVersion": 1,
+  "source": "content/legacy-portfolio.html + assets/i18n-en.js + assets/i18n-uz.js",
+  "cases": [
+    {
+      "key": "miyolo",
+      "id": "miyolo",
+      "title": "Miyolo / YOLO",
+      "categories": ["web"],
+      "stack": "CS-Cart, PHP",
+      "image": {
+        "src": "/screenshots/miyolo-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://miyolo.ru"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Miyolo / YOLO",
+          "summary": "Интернет-магазин и маркетплейс с каталогом товаров от разных продавцов.",
+          "task": "Развивать интернет-магазин и связать его каталог и заказы с мобильным приложением.",
+          "solution": "CS-Cart и PHP API: каталог, поиск и фильтры, карточки товаров, оформление отдельных заказов по продавцам и уведомления о статусах. Интеграция с приложением на Flutter.",
+          "result": "Интернет-магазин работает на miyolo.ru; каталог и заказы связаны с мобильным приложением.",
+          "alt": "Miyolo / YOLO: главная страница интернет-магазина",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Miyolo / YOLO",
+          "summary": "An online store and marketplace with products from multiple sellers.",
+          "task": "Develop the online store and connect its catalog and orders to the mobile app.",
+          "solution": "CS-Cart and a PHP API: catalog, search and filters, product pages, separate orders for each seller and status notifications. Integration with a Flutter app.",
+          "result": "The online store is live at miyolo.ru; its catalog and orders are connected to the mobile app.",
+          "alt": "Miyolo / YOLO: online store home page",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Miyolo / YOLO",
+          "summary": "Turli sotuvchilarning mahsulotlari jamlangan internet-doʻkon va marketpleys.",
+          "task": "Internet-doʻkonni rivojlantirish, katalog va buyurtmalarini mobil ilovaga ulash.",
+          "solution": "CS-Cart va PHP API: katalog, qidiruv va filtrlar, mahsulot sahifalari, har bir sotuvchi uchun alohida buyurtmalar va holat bildirishnomalari. Flutter ilovasi bilan integratsiya.",
+          "result": "Internet-doʻkon miyolo.ru manzilida ishlaydi; katalog va buyurtmalar mobil ilovaga ulangan.",
+          "alt": "Miyolo / YOLO: internet-doʻkon bosh sahifasi",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "monarh",
+      "id": "monarh",
+      "title": "МонархМаркет",
+      "categories": ["web"],
+      "stack": "Bitrix, JS, CSS",
+      "image": {
+        "src": "/screenshots/monarh-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://monarhmarket.ru"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "МонархМаркет",
+          "summary": "Редизайн магазина керамогранита на Bitrix для трёх городов.",
+          "task": "Обновить дизайн работающего магазина плитки без остановки продаж: главная, каталог, коллекции, карточка товара и корзина.",
+          "solution": "Шаблон Bitrix, свой CSS и JavaScript поверх темы. Новая шапка и мобильное меню, фото интерьеров в коллекциях, фильтр в шторке, избранное и сравнение, плавные анимации. Три сайта: Самара, Казань и Нижний Новгород.",
+          "result": "Работает на monarhmarket.ru и сайтах городов.",
+          "alt": "МонархМаркет: главная страница на компьютере и телефоне",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "МонархМаркет",
+          "summary": "A redesign of a Bitrix porcelain tile store for three cities.",
+          "task": "Refresh the design of a live tile store without stopping sales: home, catalog, collections, product page and cart.",
+          "solution": "Bitrix template with custom CSS and JavaScript on top of the theme. New header and mobile menu, interior photos in collections, a sheet filter, favorites and compare, smooth motion. Three sites: Samara, Kazan and Nizhny Novgorod.",
+          "result": "Live at monarhmarket.ru and the city sites.",
+          "alt": "MonarhMarket: home page on desktop and phone",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "МонархМаркет",
+          "summary": "Uch shahar uchun Bitrix'dagi keramogranit doʻkoni redizayni.",
+          "task": "Ishlab turgan plitka doʻkoni dizaynini savdoni toʻxtatmasdan yangilash: bosh sahifa, katalog, kolleksiyalar, mahsulot sahifasi va savat.",
+          "solution": "Bitrix shabloni, mavzu ustidan oʻz CSS va JavaScript. Yangi shapka va mobil menyu, kolleksiyalarda interyer fotolari, pastdan chiquvchi filtr, sevimlilar va solishtirish, silliq animatsiyalar. Uch sayt: Samara, Qozon va Nijniy Novgorod.",
+          "result": "monarhmarket.ru va shahar saytlarida ishlamoqda.",
+          "alt": "MonarhMarket: kompyuter va telefonda bosh sahifa",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "agentmama",
+      "id": "agentmama",
+      "title": "Agentmama",
+      "categories": ["web"],
+      "stack": "FastAPI, React",
+      "image": {
+        "src": "/screenshots/agentmama-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://agentmama.ru"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Agentmama",
+          "summary": "AI-агенты и генератор кампаний для Яндекс Директа.",
+          "task": "Собирать кампанию для Яндекс Директа по адресу сайта, без ручной работы в Excel.",
+          "solution": "FastAPI и фоновые воркеры, React, TypeScript, Next.js, Docker. Сбор семантики, минус-слова, AI-анализ сайта, выгрузка в Excel и Директ.",
+          "result": "Работает на agentmama.ru.",
+          "alt": "Agentmama: главная платформы AI-агентов",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Agentmama",
+          "summary": "AI agents and a Yandex Direct campaign generator.",
+          "task": "Build a Yandex Direct campaign from a site address instead of by hand in Excel.",
+          "solution": "FastAPI with background workers, React, TypeScript, Next.js, Docker. Keyword collection, negative keywords, AI site analysis, export to Excel and Direct.",
+          "result": "Live at agentmama.ru.",
+          "alt": "Agentmama: AI agent platform home",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Agentmama",
+          "summary": "AI-agentlar va Yandex Direct kampaniya generatori.",
+          "task": "Yandex Direct kampaniyasini Excel'da qoʻlda emas, sayt manzili boʻyicha yigʻish.",
+          "solution": "FastAPI va fon workerlari, React, TypeScript, Next.js, Docker. Semantika yigʻish, minus-soʻzlar, saytni AI tahlili, Excel va Direct'ga eksport.",
+          "result": "agentmama.ru manzilida ishlaydi.",
+          "alt": "Agentmama: AI-agentlar platformasining bosh sahifasi",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "okh",
+      "id": "okh",
+      "title": "ОКХ",
+      "categories": ["mobile"],
+      "stack": "Flutter, FastAPI",
+      "image": {
+        "src": "/screenshots/okh-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://apps.apple.com/app/id6794669727"
+        },
+        {
+          "href": "https://play.google.com/store/apps/details?id=ru.okh.android"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "ОКХ",
+          "summary": "Отсчёт до начала, маршрут на карте, статьи и сигналы волонтёрам.",
+          "task": "Дать участникам дату, маршрут и связь с волонтёрами в одном приложении.",
+          "solution": "Flutter (iOS, Android) + FastAPI, Яндекс Карты, push через FCM, вход по номеру телефона, раздел администратора.",
+          "result": "Опубликовано в App Store и Google Play.",
+          "alt": "Общемосковский крестный ход: отсчёт до начала, карта маршрута, статьи",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        },
+        "en": {
+          "title": "OKH",
+          "summary": "Countdown to the start, route map, articles and alerts to volunteers.",
+          "task": "Give participants the date, the route and a line to volunteers in one app.",
+          "solution": "Flutter (iOS, Android) + FastAPI, Yandex Maps, FCM push, phone number sign-in, an admin section.",
+          "result": "Published on the App Store and Google Play.",
+          "alt": "All-Moscow Cross Procession: countdown, route map, articles",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        },
+        "uz": {
+          "title": "OKH",
+          "summary": "Startgacha sanoq, xarita, maqolalar va koʻngillilarga signal.",
+          "task": "Ishtirokchilarga sana, marshrut va koʻngillilar bilan aloqani bitta ilovada berish.",
+          "solution": "Flutter (iOS, Android) + FastAPI, Yandex Maps, FCM orqali push, telefon raqami bilan kirish, administrator boʻlimi.",
+          "result": "App Store va Google Play'da chop etilgan.",
+          "alt": "Umummoskva xoch yurishi: boshlanishgacha hisoblagich, marshrut xaritasi, maqolalar",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        }
+      }
+    },
+    {
+      "key": "payqr",
+      "id": "payqr",
+      "title": "PAYQR",
+      "categories": ["mobile", "backend"],
+      "stack": "Flutter, FastAPI",
+      "image": {
+        "src": "/screenshots/payqr-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [],
+      "translations": {
+        "ru": {
+          "title": "PAYQR",
+          "summary": "QR-коды с камеры и из галереи, банковские ссылки и история операций.",
+          "task": "Считывать платёжные и другие QR-коды и открывать подходящий банковский сценарий.",
+          "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, чтение QR/Aztec/DataMatrix, импорт фото, вход по телефону и история операций.",
+          "result": "Разработаны приложение и API; Android-сборка проверена на устройстве.",
+          "alt": "PAYQR: сканирование кода и меню приложения",
+          "status": "",
+          "actions": []
+        },
+        "en": {
+          "title": "PAYQR",
+          "summary": "Scan codes with the camera or from the gallery, open bank links and view operation history.",
+          "task": "Read payment and other QR codes and open the appropriate banking flow.",
+          "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix reading, photo import, phone sign-in and operation history.",
+          "result": "The app and API are implemented; the Android build was tested on a device.",
+          "alt": "PAYQR: code scanning and the app menu",
+          "status": "",
+          "actions": []
+        },
+        "uz": {
+          "title": "PAYQR",
+          "summary": "Kamera va galereyadan QR-kodlarni o‘qish, bank havolalari va amallar tarixi.",
+          "task": "To‘lov va boshqa QR-kodlarni o‘qib, mos bank amalini ochish.",
+          "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix o‘qish, rasmdan import, telefon orqali kirish va amallar tarixi.",
+          "result": "Ilova va API ishlab chiqilgan; Android versiyasi qurilmada tekshirilgan.",
+          "alt": "PAYQR: kod skaneri va ilova menyusi",
+          "status": "",
+          "actions": []
+        }
+      }
+    },
+    {
+      "key": "matik",
+      "id": "matik",
+      "title": "Matik",
+      "categories": ["web"],
+      "stack": "Next.js, PWA",
+      "image": {
+        "src": "/screenshots/matik-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://matematik-uz.vercel.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Matik",
+          "summary": "Тренажёр школьной математики на узбекском и русском, 1–11 класс.",
+          "task": "Ежедневная практика по школьной математике с подсказками и разбором ошибок.",
+          "solution": "Next.js, TypeScript, Drizzle, Vitest, PWA на Vercel. 16 тем, 54 навыка, режим экзамена ДТМ, отчёт о прогрессе.",
+          "result": "Работает на matematik-uz.vercel.app.",
+          "alt": "Matik: тренажёр школьной математики, главная страница",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Matik",
+          "summary": "A school maths trainer in Uzbek and Russian for grades 1 to 11.",
+          "task": "Daily school maths practice with hints and explained mistakes.",
+          "solution": "Next.js, TypeScript, Drizzle, Vitest, a PWA on Vercel. 16 topics, 54 skills, DTM exam mode, progress report.",
+          "result": "Live at matematik-uz.vercel.app.",
+          "alt": "Matik: school maths trainer, home page",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Matik",
+          "summary": "Oʻzbek va rus tilida maktab matematikasi trenajyori, 1–11-sinf.",
+          "task": "Maslahat va xatolar tahlili bilan maktab matematikasidan har kungi mashq.",
+          "solution": "Next.js, TypeScript, Drizzle, Vitest, Vercel'da PWA. 16 soha, 54 koʻnikma, DTM imtihon rejimi, progress hisoboti.",
+          "result": "matematik-uz.vercel.app manzilida ishlaydi.",
+          "alt": "Matik: maktab matematikasi trenajyori, bosh sahifa",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "majiidtv",
+      "id": "majiidtv",
+      "title": "Majiid.tv",
+      "categories": ["web"],
+      "stack": "HTML, CSS, JS",
+      "image": {
+        "src": "/screenshots/majiidtv-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://majiid-tv.vercel.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Majiid.tv",
+          "summary": "Сайт блогера из Бухары с ценами на рекламу.",
+          "task": "Рекламодатель видит форматы, цены и примеры роликов на одной странице.",
+          "solution": "HTML, CSS, JavaScript без фреймворков, сборка на Python, Vercel. RU и UZ, светлая и тёмная тема, 8 видов съёмки, 3 тарифа, заказ в Telegram.",
+          "result": "Работает на majiid-tv.vercel.app.",
+          "alt": "Majiid.tv: сайт блогера, главный экран",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Majiid.tv",
+          "summary": "A Bukhara blogger site with advertising prices.",
+          "task": "Advertisers see formats, prices and sample videos on one page.",
+          "solution": "HTML, CSS and JavaScript with no framework, a Python build, Vercel. RU and UZ, light and dark themes, 8 shoot types, 3 plans, ordering via Telegram.",
+          "result": "Live at majiid-tv.vercel.app.",
+          "alt": "Majiid.tv: blogger site, hero screen",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Majiid.tv",
+          "summary": "Buxorolik blogerning reklama narxlari bilan sayti.",
+          "task": "Reklama beruvchi formatlar, narxlar va video namunalarini bitta sahifada koʻradi.",
+          "solution": "Frameworksiz HTML, CSS, JavaScript, Python bilan yigʻish, Vercel. RU va UZ, yorugʻ va qorongʻi tema, 8 xil syomka, 3 ta tarif, Telegram orqali buyurtma.",
+          "result": "majiid-tv.vercel.app manzilida ishlaydi.",
+          "alt": "Majiid.tv: bloger sayti, bosh ekran",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "wottank",
+      "id": "wottank",
+      "title": "WOT·TANK",
+      "categories": ["web"],
+      "stack": "React, TypeScript, Vite",
+      "image": {
+        "src": "/screenshots/wottank-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://wot-tank.ru"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "WOT·TANK",
+          "summary": "Витрина аккаунтов «Мир танков» и веб-почта.",
+          "task": "Игрок находит аккаунт по танку, уровню, классу и нации, а покупает его на FunPay.",
+          "solution": "React 19, TypeScript, Vite, API лотов на Node.js. Выбор танка по картинке и поиск по названию, админка лотов, название, танки и цена подтягиваются с FunPay. Почта wot-mail.ru работает через Mail.tm.",
+          "result": "Почта работает на wot-mail.ru. Витрина открыта на wot-tank.ru, её доработка продолжается.",
+          "alt": "WOT·TANK: каталог аккаунтов с поиском по танку",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "WOT·TANK",
+          "summary": "A Mir Tankov account showcase and a webmail client.",
+          "task": "A player finds an account by tank, tier, class and nation and buys it on FunPay.",
+          "solution": "React 19, TypeScript, Vite and a Node.js lots API. Tank picker with images and search by name, a lot admin panel, titles, tanks and prices pulled from FunPay. The wot-mail.ru client runs on Mail.tm.",
+          "result": "The mail client is live at wot-mail.ru. The showcase is open at wot-tank.ru and still in development.",
+          "alt": "WOT·TANK: account catalog with tank search",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "WOT·TANK",
+          "summary": "«Mir Tankov» akkauntlari vitrinasi va veb-pochta.",
+          "task": "Oʻyinchi akkauntni tank, daraja, sinf va millat boʻyicha topadi va FunPay orqali sotib oladi.",
+          "solution": "React 19, TypeScript, Vite, Node.js asosidagi lotlar API. Tankni rasmidan tanlash va nomi boʻyicha qidiruv, lotlar admin paneli, nom, tanklar va narx FunPay saytidan olinadi. wot-mail.ru pochtasi Mail.tm orqali ishlaydi.",
+          "result": "Pochta wot-mail.ru manzilida ishlaydi. Vitrina wot-tank.ru manzilida ochiq, ustida ish davom etmoqda.",
+          "alt": "WOT·TANK: tank boʻyicha qidiruvli akkauntlar katalogi",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "spr54",
+      "id": "spr54",
+      "title": "Sibpromresurs",
+      "categories": ["web"],
+      "stack": "Eleventy, PHP",
+      "image": {
+        "src": "/screenshots/spr54-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://spr54.ru"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Sibpromresurs",
+          "summary": "Каталог новосибирского завода с заявкой на расчёт.",
+          "task": "Покупатель находит задвижки, шкафы управления или пищевое оборудование и отправляет чертёж на расчёт.",
+          "solution": "Eleventy и PHP, 12 страниц. Заявка с формы сохраняется в админке и уходит на почту. В админке тексты, 4 статьи и заявки. Подключена Яндекс Метрика.",
+          "result": "Работает на spr54.ru. После запуска заказчик вернулся ещё с двумя доработками.",
+          "alt": "Sibpromresurs: каталог оборудования завода, главный экран",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Sibpromresurs",
+          "summary": "A Novosibirsk plant catalog with a quote request.",
+          "task": "A buyer finds gate valves, control cabinets or food equipment and sends a drawing for a quote.",
+          "solution": "Eleventy and PHP, 12 pages. Form requests are saved in the admin panel and sent by email. The admin panel edits texts, 4 articles and requests. Yandex Metrica is connected.",
+          "result": "Live at spr54.ru. After launch the client came back with two more rounds of changes.",
+          "alt": "Sibpromresurs: factory equipment catalog, hero screen",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Sibpromresurs",
+          "summary": "Novosibirsk zavodi katalogi va hisob-kitob arizasi.",
+          "task": "Xaridor zadvijka, boshqaruv shkafi yoki oziq-ovqat uskunasini topadi va hisob-kitob uchun chizma yuboradi.",
+          "solution": "Eleventy va PHP, 12 sahifa. Formadagi ariza admin panelda saqlanadi va pochtaga yuboriladi. Admin panelda matnlar, 4 ta maqola va arizalar. Yandex Metrika ulangan.",
+          "result": "spr54.ru manzilida ishlaydi. Ishga tushgach buyurtmachi yana ikki marta qoʻshimcha ish bilan qaytdi.",
+          "alt": "Sibpromresurs: zavod uskunalari katalogi, bosh ekran",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "les44",
+      "id": "les44",
+      "title": "les44.com",
+      "categories": ["web"],
+      "stack": "Joomla 5, PHP 8.2",
+      "image": {
+        "src": "/screenshots/les44-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://les44.com"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "les44.com",
+          "summary": "Каталог домов и бань из бруса с калькулятором.",
+          "task": "Перенести сайт с Joomla 3 на Joomla 5 и PHP 8.2, сохранив адреса, каталог, фильтр, калькулятор и заявки.",
+          "solution": "Joomla 5.3, VirtueMart, PHP 8.2. Перенесены контент и шаблон, исправлены фильтр каталога, галерея и форма заявки, из корня сайта удалён вредоносный файл.",
+          "result": "Работает на les44.com. После переноса проверены 297 адресов, новых ошибок нет.",
+          "alt": "les44.com: каталог домов и бань из бруса",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "les44.com",
+          "summary": "A timber house and sauna catalog with a calculator.",
+          "task": "Move the site from Joomla 3 to Joomla 5 and PHP 8.2, keeping the URLs, catalog, filter, calculator and requests.",
+          "solution": "Joomla 5.3, VirtueMart, PHP 8.2. Content and template moved over, the catalog filter, gallery and request form fixed, a malicious file removed from the site root.",
+          "result": "Live at les44.com. 297 addresses checked after the move, no new errors.",
+          "alt": "les44.com: timber house and sauna catalog",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "les44.com",
+          "summary": "Kalkulyatorli brus uylar va hammomlar katalogi.",
+          "task": "Saytni Joomla 3 dan Joomla 5 va PHP 8.2 ga koʻchirish: manzillar, katalog, filtr, kalkulyator va arizalar saqlanadi.",
+          "solution": "Joomla 5.3, VirtueMart, PHP 8.2. Kontent va shablon koʻchirildi, katalog filtri, galereya va ariza formasi tuzatildi, sayt ildizidan zararli fayl oʻchirildi.",
+          "result": "les44.com manzilida ishlaydi. Koʻchirishdan keyin 297 ta manzil tekshirildi, yangi xato yoʻq.",
+          "alt": "les44.com: brus uylar va hammomlar katalogi",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "space444",
+      "id": "space444",
+      "title": "Space444",
+      "categories": ["web"],
+      "stack": "WordPress, Stripe",
+      "image": {
+        "src": "/screenshots/space444-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://www.space444.com"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Space444",
+          "summary": "Трансферы из аэропортов Флориды с онлайн-оплатой.",
+          "task": "Клиент бронирует трансфер из аэропорта MIA или FLL, видит цену и платит онлайн.",
+          "solution": "WordPress, своя тема и плагин брони на PHP. Бронь в 5 шагов с маршрутом на Google Maps и оплатой Stripe, EN и RU, страницы под аэропорты и города. Ведение Google Ads.",
+          "result": "Работает на space444.com. Эффективность объявлений в Google Ads выросла со «Средней» до «Отличной».",
+          "alt": "Space444: трансферы в Майами, главный экран",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Space444",
+          "summary": "Florida airport transfers with online payment.",
+          "task": "A customer books a transfer from MIA or FLL airport, sees the price and pays online.",
+          "solution": "WordPress with a custom theme and booking plugin in PHP. A 5-step booking with a Google Maps route and Stripe payment, EN and RU, pages for airports and cities. Google Ads management.",
+          "result": "Live at space444.com. Google Ads ad strength went from Average to Excellent.",
+          "alt": "Space444: Miami transfers, hero screen",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Space444",
+          "summary": "Florida aeroportlaridan transfer va onlayn toʻlov.",
+          "task": "Mijoz MIA yoki FLL aeroportidan transferni bron qiladi, narxni koʻradi va onlayn toʻlaydi.",
+          "solution": "WordPress, PHP asosida oʻz temasi va bron plagini. 5 qadamli bron: Google Maps xaritasida yoʻnalish va Stripe orqali toʻlov, EN va RU, aeroport va shaharlar sahifalari. Google Ads yuritiladi.",
+          "result": "space444.com manzilida ishlaydi. Google Ads reklamalari bahosi «Average» darajasidan «Excellent» darajasiga koʻtarildi.",
+          "alt": "Space444: Mayamidagi transferlar, bosh ekran",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "besttracker",
+      "id": "besttracker",
+      "title": "Best Tracker",
+      "categories": ["mobile"],
+      "stack": "Flutter, NestJS",
+      "image": {
+        "src": "/screenshots/besttracker-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://apps.apple.com/us/app/besttracker/id6756657156"
+        },
+        {
+          "href": "https://play.google.com/store/apps/details?id=com.realsoft.bukhara.best_tracker"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Best Tracker",
+          "summary": "Сервис безопасности: live-локация, приглашения в группы по QR.",
+          "task": "Реалтайм-трекинг группы и обмен геопозицией.",
+          "solution": "Flutter (iOS, Android) + NestJS, deep links, фоновая геолокация.",
+          "result": "Опубликовано в App Store и Google Play.",
+          "alt": "Best Tracker: live-локация и приглашения в группы по QR",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        },
+        "en": {
+          "title": "Best Tracker",
+          "summary": "Safety service with live location and QR-code group invites.",
+          "task": "Real-time group tracking and location sharing.",
+          "solution": "Flutter (iOS, Android) + NestJS, deep links, background geolocation.",
+          "result": "Published on the App Store and Google Play.",
+          "alt": "Best Tracker: live location and QR group invites",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        },
+        "uz": {
+          "title": "Best Tracker",
+          "summary": "Xavfsizlik: jonli joylashuv va QR-kod orqali guruhga taklif.",
+          "task": "Guruhni real vaqtda kuzatish va joylashuv almashish.",
+          "solution": "Flutter (iOS, Android) + NestJS, deep link'lar, fon rejimidagi geolokatsiya.",
+          "result": "App Store va Google Play'da chop etilgan.",
+          "alt": "Best Tracker: jonli joylashuv va QR orqali guruhga taklif",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        }
+      }
+    },
+    {
+      "key": "stefa",
+      "id": "stefa",
+      "title": "Stefa AI Art",
+      "categories": ["mobile"],
+      "stack": "Flutter, Android",
+      "image": {
+        "src": "/screenshots/stefa-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://play.google.com/store/apps/details?id=com.aistefa.ai.art.generator.picture.maker.avatar.photo.artwork"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Stefa AI Art",
+          "summary": "Генерация изображений по текстовому описанию.",
+          "task": "Простой генератор изображений по тексту.",
+          "solution": "Flutter + облачный image-API.",
+          "result": "Опубликовано в Google Play.",
+          "alt": "Stefa AI Art: генерация изображений по тексту",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        },
+        "en": {
+          "title": "Stefa AI Art",
+          "summary": "Text-to-image generation app.",
+          "task": "A simple text-to-image app.",
+          "solution": "Flutter + cloud image API.",
+          "result": "Published on Google Play.",
+          "alt": "Stefa AI Art: text-to-image generation",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        },
+        "uz": {
+          "title": "Stefa AI Art",
+          "summary": "Matnli tavsif boʻyicha rasm generatsiyasi.",
+          "task": "Matndan rasm yaratadigan oddiy ilova.",
+          "solution": "Flutter + bulutli image-API.",
+          "result": "Google Play'da chop etilgan.",
+          "alt": "Stefa AI Art: matndan rasm generatsiyasi",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        }
+      }
+    },
+    {
+      "key": "mynails",
+      "id": "mynails",
+      "title": "My Nail Salon",
+      "categories": ["mobile"],
+      "stack": "Flutter",
+      "image": {
+        "src": "/screenshots/mynails-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "private",
+      "statusKey": "work.badgePrivate",
+      "links": [],
+      "translations": {
+        "ru": {
+          "title": "My Nail Salon",
+          "summary": "Подбор и генерация вариантов дизайна ногтей с предпросмотром.",
+          "task": "Подбор и визуализация дизайна ногтей.",
+          "solution": "Flutter + генерация изображений, интерактивный предпросмотр.",
+          "result": "Готовое мобильное приложение.",
+          "alt": "My Nail Salon: подбор и визуализация дизайна ногтей",
+          "status": "Приватный проект",
+          "actions": []
+        },
+        "en": {
+          "title": "My Nail Salon",
+          "summary": "Nail design generator with a live preview.",
+          "task": "Nail design selection with a preview.",
+          "solution": "Flutter + cloud image generation API, interactive preview.",
+          "result": "A finished mobile app.",
+          "alt": "My Nail Salon: nail design selection with live preview",
+          "status": "Private project",
+          "actions": []
+        },
+        "uz": {
+          "title": "My Nail Salon",
+          "summary": "Tirnoq dizaynini tanlash va natijani oldindan koʻrish.",
+          "task": "Tirnoq dizaynini tanlash va vizuallashtirish.",
+          "solution": "Flutter + rasm generatsiyasi, interaktiv oldindan koʻrish.",
+          "result": "Tayyor mobil ilova.",
+          "alt": "My Nail Salon: tirnoq dizaynini tanlash va oldindan koʻrish",
+          "status": "Xususiy loyiha",
+          "actions": []
+        }
+      }
+    },
+    {
+      "key": "altn",
+      "id": "altn",
+      "title": "ALTN Chat",
+      "categories": ["mobile"],
+      "stack": "Flutter, Android",
+      "image": {
+        "src": "/screenshots/altn-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://play.google.com/store/apps/details?id=chat.altn.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "ALTN Chat",
+          "summary": "Мессенджер с чатом в реальном времени и встроенным ассистентом.",
+          "task": "Чат в реальном времени с функциями ассистента.",
+          "solution": "Flutter + реалтайм-канал.",
+          "result": "Опубликовано в Google Play.",
+          "alt": "ALTN Chat: мессенджер реального времени с умными сценариями",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        },
+        "en": {
+          "title": "ALTN Chat",
+          "summary": "Messenger with real-time chat and a built-in assistant.",
+          "task": "A real-time chat with assistant features.",
+          "solution": "Flutter + real-time channel.",
+          "result": "Published on Google Play.",
+          "alt": "ALTN Chat: real-time messenger with smart assistant",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        },
+        "uz": {
+          "title": "ALTN Chat",
+          "summary": "Real vaqtdagi chat va ichki yordamchiga ega messenjer.",
+          "task": "Yordamchi funksiyalariga ega real vaqtdagi chat.",
+          "solution": "Flutter + real vaqt kanali.",
+          "result": "Google Play'da chop etilgan.",
+          "alt": "ALTN Chat: aqlli ssenariyli real vaqtdagi messenjer",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        }
+      }
+    },
+    {
+      "key": "wegotrip",
+      "id": "wegotrip",
+      "title": "WeGoTrip",
+      "categories": ["mobile"],
+      "stack": "Kotlin, Android",
+      "image": {
+        "src": "/screenshots/wegotrip-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://play.google.com/store/apps/details?id=com.wegotrip.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "WeGoTrip",
+          "summary": "Аудиогиды и туры: нативное Android-приложение для путешествий.",
+          "task": "Выпустить Android-приложение в Google Play и упростить его доработку.",
+          "solution": "Нативный Kotlin, чистая архитектура.",
+          "result": "Опубликовано в Google Play.",
+          "alt": "WeGoTrip: аудиогиды и туры для путешествий",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        },
+        "en": {
+          "title": "WeGoTrip",
+          "summary": "Audio guides and tours: a native Android app for travelers.",
+          "task": "Ship the Android app to Google Play and keep the code easy to extend.",
+          "solution": "Native Kotlin, clean architecture.",
+          "result": "Published on Google Play.",
+          "alt": "WeGoTrip: audio guides and tours for travelers",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        },
+        "uz": {
+          "title": "WeGoTrip",
+          "summary": "Audiogidlar va turlar: sayohatlar uchun native Android ilova.",
+          "task": "Android ilovani Google Play'ga chiqarish va kodni keyingi oʻzgarishlarga tayyorlash.",
+          "solution": "Native Kotlin, toza arxitektura.",
+          "result": "Google Play'da chop etilgan.",
+          "alt": "WeGoTrip: sayohatlar uchun audiogidlar va turlar",
+          "status": "",
+          "actions": ["Google Play ↗"]
+        }
+      }
+    },
+    {
+      "key": "yolo",
+      "id": "yolo",
+      "title": "Yolo",
+      "categories": ["mobile"],
+      "stack": "Kotlin Multiplatform",
+      "image": {
+        "src": "/screenshots/yolo-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "private",
+      "statusKey": "work.badgePrivate",
+      "links": [],
+      "translations": {
+        "ru": {
+          "title": "Yolo",
+          "summary": "Бег по программе «Couch to 5K»: от нуля до 5 км.",
+          "task": "Привести новичка к первым 5 км без выгорания.",
+          "solution": "Kotlin Multiplatform (iOS, Android), адаптивный план, интервалы бег/ходьба, статистика.",
+          "result": "Готовое приложение с трекингом пробежек и прогрессом.",
+          "alt": "Yolo: беговое приложение Couch to 5K: план, пробежка, статистика",
+          "status": "Приватный проект",
+          "actions": []
+        },
+        "en": {
+          "title": "Yolo",
+          "summary": "A Couch to 5K running app: from zero to 5K.",
+          "task": "Get a beginner to their first 5K without burnout.",
+          "solution": "Kotlin Multiplatform (iOS, Android), an adaptive plan, run/walk intervals, statistics.",
+          "result": "A finished app with run tracking and progress stats.",
+          "alt": "Yolo: Couch to 5K running app: plan, run, statistics",
+          "status": "Private project",
+          "actions": []
+        },
+        "uz": {
+          "title": "Yolo",
+          "summary": "«Couch to 5K» yugurish ilovasi: noldan 5 km'gacha.",
+          "task": "Yangi boshlovchini charchamasdan birinchi 5 km'ga olib chiqish.",
+          "solution": "Kotlin Multiplatform (iOS, Android), moslashuvchan reja, yugurish/yurish intervallari, statistika.",
+          "result": "Yugurishlarni kuzatish va progress statistikasiga ega tayyor ilova.",
+          "alt": "Yolo: Couch to 5K yugurish ilovasi: reja, yugurish, statistika",
+          "status": "Xususiy loyiha",
+          "actions": []
+        }
+      }
+    },
+    {
+      "key": "geoblinker",
+      "id": "geoblinker",
+      "title": "GeoBlinker25",
+      "categories": ["mobile"],
+      "stack": "Android",
+      "image": {
+        "src": "/screenshots/geoblinker-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "prototype",
+      "statusKey": "work.badgePrototype",
+      "links": [],
+      "translations": {
+        "ru": {
+          "title": "GeoBlinker25",
+          "summary": "Мониторинг на основе геосигналов и фоновой геолокации.",
+          "task": "Отслеживание событий по геопозиции в фоне.",
+          "solution": "Android, фоновые задачи и датчики.",
+          "result": "Рабочий прототип с фоновым трекингом.",
+          "alt": "GeoBlinker25: геосигналы и фоновая геолокация",
+          "status": "Прототип",
+          "actions": []
+        },
+        "en": {
+          "title": "GeoBlinker25",
+          "summary": "Monitoring based on geo-signals and background geolocation.",
+          "task": "Tracking location-based events in the background.",
+          "solution": "Android, background tasks and sensors.",
+          "result": "A working prototype with background tracking.",
+          "alt": "GeoBlinker25: geo-signals and background location",
+          "status": "Prototype",
+          "actions": []
+        },
+        "uz": {
+          "title": "GeoBlinker25",
+          "summary": "Geosignallar va fon geolokatsiyasi asosida monitoring.",
+          "task": "Fon rejimida joylashuv boʻyicha hodisalarni kuzatish.",
+          "solution": "Android, fon vazifalari va sensorlar.",
+          "result": "Fon rejimida kuzatuvga ega ishlaydigan prototip.",
+          "alt": "GeoBlinker25: geosignallar va fon rejimidagi geolokatsiya",
+          "status": "Prototip",
+          "actions": []
+        }
+      }
+    },
+    {
+      "key": "wallpapers",
+      "id": "wallpapers",
+      "title": "Wallpapers",
+      "categories": ["mobile"],
+      "stack": "Kotlin, Android",
+      "image": {
+        "src": "/screenshots/wallpapers-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "private",
+      "statusKey": "work.badgePrivate",
+      "links": [],
+      "translations": {
+        "ru": {
+          "title": "Wallpapers",
+          "summary": "Каталог обоев: категории, предпросмотр, быстрая установка.",
+          "task": "Лёгкий каталог обоев с категориями.",
+          "solution": "Kotlin, Material UI, кэширование.",
+          "result": "Готовое приложение для Android.",
+          "alt": "Wallpapers: каталог обоев с категориями",
+          "status": "Приватный проект",
+          "actions": []
+        },
+        "en": {
+          "title": "Wallpapers",
+          "summary": "A wallpaper catalog with categories, previews and quick install.",
+          "task": "A lightweight wallpaper catalog with categories.",
+          "solution": "Kotlin, Material UI, caching.",
+          "result": "A finished Android app.",
+          "alt": "Wallpapers: wallpaper catalog with categories",
+          "status": "Private project",
+          "actions": []
+        },
+        "uz": {
+          "title": "Wallpapers",
+          "summary": "Oboylar katalogi: kategoriyalar, oldindan koʻrish, tez oʻrnatish.",
+          "task": "Kategoriyali yengil oboylar katalogi.",
+          "solution": "Kotlin, Material UI, keshlash.",
+          "result": "Tayyor Android ilova.",
+          "alt": "Wallpapers: kategoriyali oboylar katalogi",
+          "status": "Xususiy loyiha",
+          "actions": []
+        }
+      }
+    },
+    {
+      "key": "avtopark",
+      "id": "avtopark",
+      "title": "Avtopark",
+      "categories": ["mobile"],
+      "stack": "Flutter, iOS, Android",
+      "image": {
+        "src": "/screenshots/avtopark-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://apps.apple.com/uz/app/avto-park/id6780384748"
+        },
+        {
+          "href": "https://play.google.com/store/apps/details?id=uz.realsoft.bukhara.avtopark"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Avtopark",
+          "summary": "Медосмотр и техосмотр водителей, отчёты и роли доступа.",
+          "task": "Контроль автопарка и допусков водителей в одном месте.",
+          "solution": "Flutter (iOS, Android), дашборды, роли, медицинский и технический осмотр.",
+          "result": "Опубликовано в App Store и Google Play.",
+          "alt": "Avtopark: управление автопарком, медосмотр и техосмотр водителей",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        },
+        "en": {
+          "title": "Avtopark",
+          "summary": "Fleet checks for drivers and vehicles, reports and roles.",
+          "task": "Fleet control and driver clearance in a single place.",
+          "solution": "Flutter (iOS, Android), dashboards, roles, medical and technical inspection.",
+          "result": "Published on the App Store and Google Play.",
+          "alt": "Avtopark: fleet management, driver medical and technical checks",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        },
+        "uz": {
+          "title": "Avtopark",
+          "summary": "Haydovchi va texnika koʻrigi, hisobotlar va rollar.",
+          "task": "Avtopark nazorati va haydovchilar ruxsatini bitta joyda birlashtirish.",
+          "solution": "Flutter (iOS, Android), dashboardlar, rollar, tibbiy va texnik koʻrik.",
+          "result": "App Store va Google Play'da chop etilgan.",
+          "alt": "Avtopark: avtoparkni boshqarish, haydovchilarning tibbiy va texnik koʻrigi",
+          "status": "",
+          "actions": ["App Store ↗", "Google Play ↗"]
+        }
+      }
+    },
+    {
+      "key": "tildonmobile",
+      "id": "tildonmobile",
+      "title": "Tildon Mobile",
+      "categories": ["mobile"],
+      "stack": "Compose Multiplatform",
+      "image": {
+        "src": "/screenshots/tildonmobile-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "private",
+      "statusKey": "work.badgePrivate",
+      "links": [],
+      "translations": {
+        "ru": {
+          "title": "Tildon Mobile",
+          "summary": "Приложение для английского: грамматика, словарь, тесты.",
+          "task": "Учить английский в телефоне с прогрессом и геймификацией.",
+          "solution": "Compose Multiplatform (iOS, Android), словарь, грамматика, квизы, placement-тест, статистика.",
+          "result": "Кросс-платформенный компаньон веб-платформы Tildon.",
+          "alt": "Tildon Mobile: приложение для изучения английского: грамматика, словарь, статистика",
+          "status": "Приватный проект",
+          "actions": []
+        },
+        "en": {
+          "title": "Tildon Mobile",
+          "summary": "English learning app: grammar, vocabulary, tests.",
+          "task": "Learn English on your phone with progress and gamification.",
+          "solution": "Compose Multiplatform (iOS, Android), vocabulary, grammar, quizzes, a placement test, statistics.",
+          "result": "A cross-platform companion to the Tildon web platform.",
+          "alt": "Tildon Mobile: English learning app: grammar, vocabulary, statistics",
+          "status": "Private project",
+          "actions": []
+        },
+        "uz": {
+          "title": "Tildon Mobile",
+          "summary": "Ingliz tili ilovasi: grammatika, lugʻat, testlar.",
+          "task": "Progress va geymifikatsiya bilan telefonda ingliz tilini oʻrganish.",
+          "solution": "Compose Multiplatform (iOS, Android), lugʻat, grammatika, viktorinalar, darajani aniqlash testi, statistika.",
+          "result": "Tildon veb-platformasining kross-platforma hamrohi.",
+          "alt": "Tildon Mobile: ingliz tilini oʻrganish ilovasi: grammatika, lugʻat, statistika",
+          "status": "Xususiy loyiha",
+          "actions": []
+        }
+      }
+    },
+    {
+      "key": "tildon",
+      "id": "tildon",
+      "title": "Tildon",
+      "categories": ["web"],
+      "stack": "Next.js, PWA",
+      "image": {
+        "src": "/screenshots/tildon-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://tildon.vercel.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Tildon",
+          "summary": "Сайт для изучения английского: грамматика, словарь, тесты.",
+          "task": "Платформа для изучения английского с учётом прогресса.",
+          "solution": "React, Next.js, TypeScript, PWA, адаптив.",
+          "result": "Работает на tildon.vercel.app.",
+          "alt": "Tildon: веб-платформа для изучения английского",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Tildon",
+          "summary": "English learning website: grammar, vocabulary, tests.",
+          "task": "An English learning platform that tracks progress.",
+          "solution": "React, Next.js, TypeScript, PWA, responsive design.",
+          "result": "Live at tildon.vercel.app.",
+          "alt": "Tildon: web platform for learning English",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Tildon",
+          "summary": "Ingliz tili veb-platformasi: grammatika, lugʻat, testlar.",
+          "task": "Progressni kuzatadigan ingliz tili platformasi.",
+          "solution": "React, Next.js, TypeScript, PWA, moslashuvchan dizayn.",
+          "result": "tildon.vercel.app manzilida ishlaydi.",
+          "alt": "Tildon: ingliz tilini oʻrganish veb-platformasi",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "vfx",
+      "id": "vfx",
+      "title": "VFX Timecode",
+      "categories": ["web"],
+      "stack": "React, PWA",
+      "image": {
+        "src": "/screenshots/vfx-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://vfx-timecode.vercel.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "VFX Timecode",
+          "summary": "Генератор таймкода для VFX: контроль FPS и полный экран.",
+          "task": "Точный полноэкранный таймкод-инструмент для видеопродакшна.",
+          "solution": "Vite, React, Tailwind, shadcn-ui, PWA.",
+          "result": "Работает на vfx-timecode.vercel.app.",
+          "alt": "VFX Timecode: генератор таймкода для видеопродакшна",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "VFX Timecode",
+          "summary": "Timecode generator for VFX: FPS control and fullscreen.",
+          "task": "A precise fullscreen timecode generator for film and VFX production.",
+          "solution": "Vite, React, Tailwind, shadcn-ui, PWA.",
+          "result": "Live at vfx-timecode.vercel.app.",
+          "alt": "VFX Timecode: timecode generator for video production",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "VFX Timecode",
+          "summary": "VFX uchun taymkod generatori: FPS nazorati, toʻliq ekran.",
+          "task": "Prodakshn jarayoni uchun aniq toʻliq ekranli taymkod vositasi.",
+          "solution": "Vite, React, Tailwind, shadcn-ui, PWA.",
+          "result": "vfx-timecode.vercel.app manzilida ishlaydi.",
+          "alt": "VFX Timecode: video prodakshn uchun taymkod generatori",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "ailogoedit",
+      "id": "ailogoedit",
+      "title": "AiLogoEdit",
+      "categories": ["web"],
+      "stack": "Next.js, Supabase",
+      "image": {
+        "src": "/screenshots/ailogoedit-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://ailogoedit.com"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "AiLogoEdit",
+          "summary": "Генерация логотипов и иконок по стилю и описанию.",
+          "task": "Брендовая графика по текстовому описанию.",
+          "solution": "Next.js, Supabase, генерация изображений, история заказов, оплата.",
+          "result": "Работает на ailogoedit.com.",
+          "alt": "AiLogoEdit: генерация логотипов, иконок и брендовых визуалов",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "AiLogoEdit",
+          "summary": "Logo and icon generation from a style and a prompt.",
+          "task": "Brand visuals generated from a text prompt.",
+          "solution": "Next.js, Supabase, AI generation API, history, payments.",
+          "result": "Live at ailogoedit.com.",
+          "alt": "AiLogoEdit: logo, icon and brand visual generation",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "AiLogoEdit",
+          "summary": "Uslub va tavsif boʻyicha logotip va ikonka yaratish.",
+          "task": "Matnli tavsif asosida brend grafikasi.",
+          "solution": "Next.js, Supabase, generatsiya servisi, buyurtmalar tarixi, toʻlov tizimi.",
+          "result": "ailogoedit.com manzilida ishlaydi.",
+          "alt": "AiLogoEdit: logotip, ikonka va brend grafikalarini yaratish",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "monro",
+      "id": "monro",
+      "title": "Monro",
+      "categories": ["web"],
+      "stack": "HTML, CSS, JS",
+      "image": {
+        "src": "/screenshots/monro-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://monro-landing.vercel.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Monro",
+          "summary": "Лендинг массажного салона в Алматы: запись 24/7, отзывы.",
+          "task": "Лендинг салона, с которого клиент сразу записывается.",
+          "solution": "Одностраничный HTML/CSS/JS: hero, услуги, мастера, FAQ, связь через WhatsApp и звонок, mobile-first.",
+          "result": "Клиент принял работу. Сайт: monro-landing.vercel.app.",
+          "alt": "Monro: лендинг body-массажа в Алматы",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Monro",
+          "summary": "Massage salon landing in Almaty: 24/7 booking, reviews.",
+          "task": "A salon landing page where visitors book right away.",
+          "solution": "Single-page HTML/CSS/JS: hero, services, masters, FAQ, WhatsApp booking and call, mobile-first.",
+          "result": "The client accepted the work. Live at monro-landing.vercel.app.",
+          "alt": "Monro: body massage landing page in Almaty",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Monro",
+          "summary": "Almatidagi massaj saloni landingi: 24/7 yozilish, sharhlar.",
+          "task": "Mijoz darhol yozilishi mumkin boʻlgan salon landingi.",
+          "solution": "Bir sahifali HTML/CSS/JS: hero, xizmatlar, ustalar, FAQ, WhatsApp va qoʻngʻiroq orqali aloqa, mobile-first.",
+          "result": "Mijoz ishni qabul qildi. Sayt: monro-landing.vercel.app.",
+          "alt": "Monro: Almatidagi bodi-massaj saloni landing sahifasi",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "supertour",
+      "id": "supertour",
+      "title": "Super Tour",
+      "categories": ["web"],
+      "stack": "HTML, CSS, JS",
+      "image": {
+        "src": "/screenshots/supertour-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://supertour.uz"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Super Tour",
+          "summary": "Лендинг туроператора из Ташкента: направления, горящие туры.",
+          "task": "Лендинг туроператора с формой подбора тура и WhatsApp.",
+          "solution": "HTML/CSS/JS: hero, направления, горящие туры, FAQ, заявка и WhatsApp, motion, SEO, mobile-first.",
+          "result": "Запущен онлайн: supertour.uz.",
+          "alt": "Super Tour: туры из Ташкента: Египет, ОАЭ, Таиланд, Вьетнам",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "Super Tour",
+          "summary": "Tashkent tour operator landing: destinations, hot deals.",
+          "task": "A tour operator landing page with a tour request form and WhatsApp.",
+          "solution": "HTML/CSS/JS: hero, destinations, hot tours, FAQ, inquiry form and WhatsApp, motion, SEO, mobile-first.",
+          "result": "Live online: supertour.uz.",
+          "alt": "Super Tour: tours from Tashkent: Egypt, UAE, Thailand, Vietnam",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "Super Tour",
+          "summary": "Toshkent turoperatori landingi: yoʻnalishlar, qaynoq turlar.",
+          "task": "Tur tanlash formasi va WhatsApp'li turoperator landingi.",
+          "solution": "HTML/CSS/JS: hero, yoʻnalishlar, qaynoq turlar, FAQ, ariza shakli va WhatsApp, motion, SEO, mobile-first.",
+          "result": "Onlayn ishga tushgan: supertour.uz.",
+          "alt": "Super Tour: Toshkentdan turlar: Misr, BAA, Tailand, Vetnam",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "olympic",
+      "id": "olympic",
+      "title": "OLYMPIC",
+      "categories": ["web"],
+      "stack": "HTML, CSS, JS",
+      "image": {
+        "src": "/screenshots/olympic-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://olympic-almaty.vercel.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "OLYMPIC",
+          "summary": "Сайт массажного салона в Алматы: мастера, запись в WhatsApp.",
+          "task": "Лендинг с записью через WhatsApp, без отдельной формы.",
+          "solution": "Одностраничный HTML/CSS/JS: hero-видео, мастера, сеансы, FAQ, прямая WhatsApp-запись, motion, mobile-first.",
+          "result": "Клиент принял работу. Сайт: olympic-almaty.vercel.app.",
+          "alt": "OLYMPIC: лендинг салона body-массажа в Алматы",
+          "status": "",
+          "actions": ["Открыть сайт ↗"]
+        },
+        "en": {
+          "title": "OLYMPIC",
+          "summary": "Almaty massage salon landing: masters, WhatsApp booking.",
+          "task": "A landing page with booking through WhatsApp, no separate form.",
+          "solution": "Single-page HTML/CSS/JS: hero video, masters, sessions, FAQ, direct WhatsApp booking, motion, mobile-first.",
+          "result": "The client accepted the work. Live at olympic-almaty.vercel.app.",
+          "alt": "OLYMPIC: body massage salon landing page in Almaty",
+          "status": "",
+          "actions": ["Visit website ↗"]
+        },
+        "uz": {
+          "title": "OLYMPIC",
+          "summary": "Almatidagi massaj saloni: ustalar, WhatsApp orqali yozilish.",
+          "task": "Alohida formasiz, WhatsApp orqali yozilishli landing.",
+          "solution": "Bir sahifali HTML/CSS/JS: hero-video, ustalar, seanslar, FAQ, WhatsApp orqali toʻgʻridan-toʻgʻri yozilish, motion, mobile-first.",
+          "result": "Mijoz ishni qabul qildi. Sayt: olympic-almaty.vercel.app.",
+          "alt": "OLYMPIC: Almatidagi massaj saloni landingi",
+          "status": "",
+          "actions": ["Saytni ochish ↗"]
+        }
+      }
+    },
+    {
+      "key": "earth3d",
+      "id": "earth3d",
+      "title": "Earth Cosmos",
+      "categories": ["web"],
+      "stack": "Three.js, GLSL",
+      "image": {
+        "src": "/screenshots/earth-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://earth-cosmos.vercel.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Earth Cosmos",
+          "summary": "3D-Земля в браузере: NASA-текстуры, огни городов, Солнце.",
+          "task": "Земля в реальном времени прямо в браузере, без видео и монтажа.",
+          "solution": "Three.js и GLSL-шейдеры: день/ночь, огни городов, блики океана с волнами, рассеяние атмосферы, Млечный Путь ESO.",
+          "result": "Сайт работает на Vercel, камера вращается вокруг планеты.",
+          "alt": "Earth Cosmos: фотореалистичная Земля, Солнце и космос в браузере",
+          "status": "",
+          "actions": ["Live ↗"]
+        },
+        "en": {
+          "title": "Earth Cosmos",
+          "summary": "3D Earth in the browser: NASA textures, city lights, the Sun.",
+          "task": "A real-time Earth in the browser, with no video or editing.",
+          "solution": "Three.js and GLSL shaders: day/night cycle, city lights, ocean sun glint with waves, atmospheric scattering, ESO Milky Way.",
+          "result": "Live on Vercel, with a camera that orbits the planet.",
+          "alt": "Earth Cosmos: photoreal Earth, the Sun and space in the browser",
+          "status": "",
+          "actions": ["Live ↗"]
+        },
+        "uz": {
+          "title": "Earth Cosmos",
+          "summary": "Brauzerda 3D Yer: NASA teksturalari, shahar chiroqlari, Quyosh.",
+          "task": "Video va montajsiz, brauzerda real vaqtda Yer sahnasi.",
+          "solution": "Three.js va GLSL shaderlar: kunduz/tun, shahar chiroqlari, toʻlqinli okean yaltirashi, atmosfera tarqalishi, ESO Milky Way.",
+          "result": "Vercelʼda ishlaydi, kamera sayyora atrofida aylanadi.",
+          "alt": "Earth Cosmos: brauzerda fotoreal Yer, Quyosh va koinot",
+          "status": "",
+          "actions": ["Live ↗"]
+        }
+      }
+    },
+    {
+      "key": "vertolyot",
+      "id": "vertolyot",
+      "title": "Zarbdor vertolyot",
+      "categories": ["web"],
+      "stack": "Three.js, WebGL",
+      "image": {
+        "src": "/screenshots/vertolyot-shot.webp",
+        "width": 900,
+        "height": 600
+      },
+      "statusType": "public",
+      "statusKey": null,
+      "links": [
+        {
+          "href": "https://vertolyot.vercel.app"
+        }
+      ],
+      "translations": {
+        "ru": {
+          "title": "Zarbdor vertolyot",
+          "summary": "3D-игра в браузере: боевой вертолёт, HUD и воздушный бой.",
+          "task": "Запускаемая в браузере 3D-игра: управление, противники и стабильный FPS без бэкенда.",
+          "solution": "Three.js/WebGL: процедурная модель вертолёта, физика полёта, ИИ противников, ландшафт и звук. Один статический деплой.",
+          "result": "Сайт работает на Vercel: vertolyot.vercel.app.",
+          "alt": "Zarbdor vertolyot: браузерная 3D-игра",
+          "status": "",
+          "actions": ["Live ↗"]
+        },
+        "en": {
+          "title": "Zarbdor vertolyot",
+          "summary": "Browser 3D game: attack helicopter, HUD and air combat.",
+          "task": "A 3D game that runs in the browser: controls, enemies and steady FPS with no backend.",
+          "solution": "Three.js/WebGL: procedural helicopter model, flight physics, enemy AI, terrain and audio. One static deploy.",
+          "result": "Live on Vercel: vertolyot.vercel.app.",
+          "alt": "Zarbdor vertolyot: browser 3D combat flight game",
+          "status": "",
+          "actions": ["Live ↗"]
+        },
+        "uz": {
+          "title": "Zarbdor vertolyot",
+          "summary": "Brauzer 3D oʻyini: hujum vertolyoti, HUD va havo jangi.",
+          "task": "Brauzerda ishlaydigan 3D oʻyin: boshqaruv, dushmanlar va barqaror FPS, bekendsiz.",
+          "solution": "Three.js/WebGL: procedural vertolyot modeli, parvoz fizikasi, dushman AI, relyef va ovoz. Bitta statik deploy.",
+          "result": "Vercelʼda ishlaydi: vertolyot.vercel.app.",
+          "alt": "Zarbdor vertolyot: brauzer 3D jangovar parvoz oʻyini",
+          "status": "",
+          "actions": ["Live ↗"]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "locale": "uz",
+  "contentStatus": "draft",
+  "identity": {
+    "fullName": "Shavkatbek Ruzibekov",
+    "role": "Mustaqil full-stack dasturchi",
+    "contact": {
+      "email": "ruzibekov44@gmail.com",
+      "telegram": "https://t.me/ruzibekov_sh"
+    }
+  },
+  "navigation": {
+    "services": "Xizmatlar",
+    "work": "Ishlarim",
+    "about": "Men haqimda",
+    "faq": "Savollar",
+    "contact": "Bog‘lanish",
+    "language": "Til"
+  },
+  "hero": {
+    "eyebrow": "Shavkatbek Ruzibekov · IT mahsulotlar ishlab chiqish",
+    "title": "Biznesingiz uchun sayt, bot va mobil ilovalar ishlab chiqaman.",
+    "description": "Biznes vazifalarini raqamli mahsulotga aylantiraman: mijoz ko‘radigan interfeys, uning ortidagi backend va xizmatlarni bog‘laydigan integratsiyalarni ishlab chiqaman. Yangi loyihani boshlash yoki mavjud mahsulotni rivojlantirishda yordam beraman.",
+    "primaryCta": "Loyihani muhokama qilish",
+    "secondaryCta": "Ishlarimni ko‘rish"
+  },
+  "seo": {
+    "title": "Sayt, Bot va Mobil Ilova Yaratish | Shavkatbek Ruzibekov",
+    "description": "Saytlar, Telegram botlar, mobil ilovalar, CRM integratsiyalari va biznesni avtomatlashtirish. Loyihangizni full-stack dasturchi Shavkatbek Ruzibekov bilan muhokama qiling."
+  },
+  "services": {
+    "web-development": {
+      "name": "Saytlar va veb ilovalar",
+      "description": "Landing, korporativ sayt, internet do‘kon va veb ilovalar yarataman. Interfeysni backend, murojaat shakllari, to‘lov va loyiha uchun zarur boshqa xizmatlar bilan bog‘layman.",
+      "useCases": [
+        "Taklifingizni tushuntirib, murojaat yig‘adigan landing",
+        "Katalog va buyurtma berish imkoniyatiga ega internet do‘kon",
+        "Mijozning shaxsiy kabineti yoki biznes uchun ichki tizim"
+      ],
+      "seo": {
+        "title": "Sayt va Veb Ilova Yaratish | Shavkatbek Ruzibekov",
+        "description": "Landing, korporativ sayt, internet do‘kon va veb ilovalar yaratish. Shavkatbek Ruzibekov talablaringizga mos interfeys, backend va integratsiyalarni ishlab chiqadi."
+      }
+    },
+    "telegram-bots": {
+      "name": "Telegram botlar va Mini App",
+      "description": "Buyurtma, mijozlarga xizmat ko‘rsatish, bildirishnoma va ish jarayonlari uchun Telegram bot hamda Mini App yarataman. Zaruratga qarab ma’lumotlar bazasi, CRM va to‘lov xizmatlarini ulayman.",
+      "useCases": [
+        "Buyurtma, band qilish yoki murojaat qabul qiladigan bot",
+        "Katalog va shaxsiy kabinetli Mini App",
+        "CRM bilan ma’lumot almashish va bildirishnomalar"
+      ],
+      "seo": {
+        "title": "Telegram Bot va Mini App Yaratish | Shavkatbek Ruzibekov",
+        "description": "Buyurtma, band qilish va mijozlarga xizmat ko‘rsatish uchun Telegram bot va Mini App yaratish. Botni CRM, ma’lumotlar bazasi yoki to‘lov xizmatiga ulash."
+      }
+    },
+    "mobile-apps": {
+      "name": "Mobil ilovalar",
+      "description": "Android va iOS uchun mobil ilovalar yarataman: mahsulotning dastlabki versiyasidan mavjud ilovadagi yangi imkoniyatlargacha. Interfeys, biznes mantiqi, backend bilan bog‘lanish va nashrga tayyorlash ustida ishlayman.",
+      "useCases": [
+        "Mahsulot g‘oyasini sinash uchun ilovaning dastlabki versiyasi",
+        "Mijozlar, band qilish yoki xizmat ko‘rsatish uchun ilova",
+        "Mavjud mobil ilovaga yangi imkoniyatlar va tuzatishlar"
+      ],
+      "seo": {
+        "title": "Android va iOS Mobil Ilova Yaratish | Shavkatbek Ruzibekov",
+        "description": "Android va iOS uchun mobil ilovalar, MVP ishlab chiqish va mavjud mahsulotni rivojlantirish. Ilovangiz talablarini Shavkatbek Ruzibekov bilan muhokama qiling."
+      }
+    },
+    "business-automation": {
+      "name": "CRM va biznesni avtomatlashtirish",
+      "description": "Sayt, bot, ilova va CRM o‘rtasida ma’lumot almashishni yo‘lga qo‘yaman. Biznesingizning ishlash tartibiga mos backend, API va avtomatlashtirilgan jarayonlarni ishlab chiqaman.",
+      "useCases": [
+        "Sayt va botdan kelgan murojaatlarni CRMga yuborish",
+        "API orqali xizmatlar o‘rtasida ma’lumot almashish",
+        "Buyurtma, holat yoki hisobotlar uchun ichki tizim"
+      ],
+      "seo": {
+        "title": "CRM Integratsiyasi va Biznesni Avtomatlashtirish | Shavkatbek Ruzibekov",
+        "description": "Sayt, Telegram bot, mobil ilova va CRMni bog‘lash. Biznesingizga mos backend, API integratsiyalari va ish jarayonlarini avtomatlashtirish."
+      }
+    },
+    "ai-integrations": {
+      "name": "Sun’iy intellekt integratsiyalari",
+      "description": "Aniq biznes vazifasi uchun sun’iy intellekt imkoniyatlarini qo‘shaman: hujjatlar bilan ishlash, bilimlar bazasidan javob topish yoki murojaatlarni saralash. Ishni boshlashdan oldin ma’lumotlarga kirish va inson tekshiruvi talablarini kelishib olaman.",
+      "useCases": [
+        "Biznesingizning bilimlar bazasi asosida ishlaydigan yordamchi",
+        "Mijoz murojaatlarini saralash va qisqacha mazmunini chiqarish",
+        "Keyin tekshirish uchun hujjatlardan ma’lumot ajratib olish"
+      ],
+      "seo": {
+        "title": "Sayt, Bot va Ilovalar Uchun AI Integratsiya | Shavkatbek Ruzibekov",
+        "description": "Sayt, bot yoki ilova uchun AI yordamchi, hujjatlarni qayta ishlash va murojaatlarni saralash. Vazifa, ma’lumotlarga kirish va tekshirish talablari oldindan kelishiladi."
+      }
+    }
+  },
+  "faq": [
+    {
+      "id": "pricing-timeline",
+      "question": "Loyiha qancha turadi va qancha vaqt oladi?",
+      "answer": "Narx va muddat imkoniyatlar, integratsiyalar, dizayn va loyihaning hozirgi holatiga bog‘liq. Qisqacha tavsif yoki texnik topshiriq yuboring. Tafsilotlarni aniqlab, ish hajmi, narx va bosqichlarni ishlab chiqishdan oldin kelishib olaman."
+    },
+    {
+      "id": "existing-project",
+      "question": "Mavjud loyiha ustida ishlashni davom ettira olasizmi?",
+      "answer": "Ha. Kod va mahsulotning hozirgi ishlashini ko‘rib chiqish, xatolarni tuzatish, yangi imkoniyatlar qo‘shish yoki boshqa xizmatlarni ulashim mumkin. Avval texnologiyalar, mavjud kirishlar va kerakli o‘zgarishlarni tushunib olaman, keyin ish tartibini taklif qilaman."
+    },
+    {
+      "id": "getting-started",
+      "question": "Ishni boshlash uchun nima kerak?",
+      "answer": "Mahsulot kim uchun, nima qilishi kerak va hozir nimalar tayyorligini yozing. Dastlabki suhbat uchun qisqa xabar, misollar, dizayn yoki texnik topshiriq yetishi mumkin. Telegram yoki email orqali bog‘laning, yetishmayotgan tafsilotlarni o‘zim aniqlashtiraman."
+    },
+    {
+      "id": "multilingual-sites",
+      "question": "Bir nechta tilda sayt yaratib bera olasizmi?",
+      "answer": "Ha. Har bir til uchun alohida sahifalar, til almashtirgich va qidiruvda indekslanish uchun texnik asos tayyorlayman. Tillar, tarjimalar va matnni tekshirish tartibini alohida kelishamiz. Ko‘p tilli sahifalar qidiruvdagi o‘rinni kafolatlamaydi."
+    }
+  ]
+}

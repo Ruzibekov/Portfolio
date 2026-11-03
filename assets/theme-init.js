@@ -1,0 +1,11 @@
+;(() => {
+  const root = document.documentElement
+  let theme = 'light'
+  try {
+    const saved = localStorage.getItem('sr-product-intelligence-theme')
+    if (saved === 'dark' || saved === 'light') theme = saved
+  } catch {
+    root.dataset.storage = 'unavailable'
+  }
+  root.dataset.theme = theme
+})()

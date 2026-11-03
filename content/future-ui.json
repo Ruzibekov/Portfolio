@@ -1,0 +1,649 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "uz": {
+      "hero": {
+        "title": ["Kelajak uchun", "raqamli", "mahsulotlar."],
+        "intro": "Sayt, Telegram bot, mobil ilova va AI integratsiyalarini ishlab chiqaman. G‘oyangizni birga ishlaydigan raqamli mahsulotga aylantiraman.",
+        "support": ["Interfeys + dasturlash", "Shaxsiy mas’uliyat"]
+      },
+      "scene": {
+        "title": "Bog‘langan mahsulot arxitekturasi",
+        "label": "Veb + Bot + Mobil + AI",
+        "accessibleTitle": "Bir-biriga bog‘langan raqamli mahsulotlar",
+        "accessibleDescription": "Uch o‘lchamli tarmoq veb-sayt, Telegram bot, mobil ilova va AI integratsiyalarining birga ishlashini tushuntiradi. Bu tushuntiruvchi tasvir, jonli AI jarayoni emas.",
+        "controlsLabel": "Xizmat yo‘nalishini tanlash",
+        "replay": "Animatsiyani qayta ko‘rish",
+        "modes": {
+          "web": {
+            "label": "Veb",
+            "description": "Veb-sayt va platformalar. Mijoz ko‘radigan interfeys, uning ortidagi tizim va kerakli integratsiyalar."
+          },
+          "bot": {
+            "label": "Bot",
+            "description": "Telegram botlar. Buyurtmalarni qabul qilish, xizmatlarni bog‘lash va takroriy ishlarni avtomatlashtirish."
+          },
+          "mobile": {
+            "label": "Mobil",
+            "description": "Mobil ilovalar. Android va iOS uchun mahsulot, backend, xarita va bildirishnomalar bir tizimda."
+          },
+          "ai": {
+            "label": "AI",
+            "description": "AI integratsiyalari. Ma’lumotni tahlil qilish va foydali vazifalarni mavjud mahsulot ichida avtomatlashtirish."
+          }
+        }
+      },
+      "work": {
+        "eyebrow": "Haqiqiy mahsulotlar / Tanlangan ishlar",
+        "title": "Texnologiya —\naniq vazifa uchun.",
+        "intro": "AI bilan ishlaydigan platforma, internet-do‘kon va mobil ilovalar. Har birida foydalanuvchi uchun tushunarli yechim."
+      },
+      "services": {
+        "title": "G‘oyadan tizimgacha.\nBir butun ishlab chiqish.",
+        "intro": "Interfeys, dasturlash va integratsiyalar. Mahsulotning kerakli qismlarini birga ishlaydigan tizimga birlashtiraman."
+      },
+      "contact": {
+        "title": "Keyingi mahsulot —\nsizniki."
+      },
+      "process": {
+        "labels": ["Maqsad", "Yechim", "Mahsulot", "Natija"]
+      },
+      "faq": {
+        "aiQuestion": "Har bir loyihaga AI kerakmi?",
+        "aiAnswer": "AI aniq vazifaga foyda bersa qo‘llanadi. Avval jarayonni ko‘rib, oddiy avtomatlashtirish yoki AI integratsiyasi mosligini aniqlaymiz."
+      },
+      "bento": {
+        "available": "Yangi loyihalarga ochiqman",
+        "title": ["Sayt, bot va mobil ilova —", "kalit topshirish", "asosida."],
+        "intro": "IT mahsulotlarni noldan ishlab chiqaman: dizayn, dasturlash, integratsiya va ishga tushirish. Istalgan davlatdagi mijozlar bilan masofadan ishlayman.",
+        "web": ["Saytlar", "Landing · do‘kon · platforma"],
+        "bot": ["Telegram botlar", "Buyurtma · to‘lov · Mini App"],
+        "mobile": ["Mobil ilovalar", "iOS · Android · Flutter"],
+        "ai": ["AI yechimlar", "GPT/Claude · avtomatlashtirish"],
+        "chat": [
+          "Xush kelibsiz! Qaysi xizmat kerak?",
+          "Katalog",
+          "Buyurtma",
+          "Katalog"
+        ],
+        "prompt": [
+          "Mijoz arizalarini avtomatik saralash",
+          "Tayyor: arizalar 4 toifaga ajratildi"
+        ],
+        "stats": [
+          ["4+ yil", "tijoriy tajriba"],
+          ["29", "loyiha portfolioda"],
+          ["iOS · Android", "do‘konlarda ilovalar"],
+          ["5 yo‘nalish", "sayt, bot, mobil, CRM, AI"]
+        ]
+      }
+    },
+    "ru": {
+      "hero": {
+        "title": ["Создаю", "цифровые продукты", "для будущего."],
+        "intro": "Разрабатываю сайты, Telegram-ботов, мобильные приложения и интеграции с ИИ. Объединяю вашу идею в цифровой продукт, все части которого работают вместе.",
+        "support": ["Интерфейс + разработка", "Личная ответственность"]
+      },
+      "scene": {
+        "title": "Архитектура связанного продукта",
+        "label": "Веб + Боты + Приложения + ИИ",
+        "accessibleTitle": "Взаимосвязанные цифровые продукты",
+        "accessibleDescription": "Трёхмерная сеть показывает, как сайт, Telegram-бот, мобильное приложение и интеграции с ИИ работают вместе. Это поясняющая схема, а не работа ИИ в реальном времени.",
+        "controlsLabel": "Выбрать направление разработки",
+        "replay": "Повторить анимацию",
+        "modes": {
+          "web": {
+            "label": "Веб",
+            "description": "Сайты и платформы. Интерфейс для клиентов, система за ним и необходимые интеграции."
+          },
+          "bot": {
+            "label": "Боты",
+            "description": "Telegram-боты. Приём заказов, связь между сервисами и автоматизация повторяющихся задач."
+          },
+          "mobile": {
+            "label": "Мобильные",
+            "description": "Мобильные приложения. Продукт для Android и iOS, серверная часть, карты и уведомления в одной системе."
+          },
+          "ai": {
+            "label": "ИИ",
+            "description": "Интеграции с ИИ. Анализ данных и автоматизация полезных задач внутри существующего продукта."
+          }
+        }
+      },
+      "work": {
+        "eyebrow": "Реальные продукты / Избранные проекты",
+        "title": "Технологии —\nдля конкретных задач.",
+        "intro": "Платформа с ИИ, интернет-магазин и мобильные приложения. В каждом — понятное решение для пользователя."
+      },
+      "services": {
+        "title": "От идеи до системы.\nЦелостная разработка.",
+        "intro": "Интерфейс, разработка и интеграции. Объединяю необходимые части продукта в систему, которая работает согласованно."
+      },
+      "contact": {
+        "title": "Следующий продукт —\nваш."
+      },
+      "process": {
+        "labels": ["Цель", "Решение", "Продукт", "Результат"]
+      },
+      "faq": {
+        "aiQuestion": "Каждому проекту нужен ИИ?",
+        "aiAnswer": "ИИ применяется там, где помогает решить конкретную задачу. Сначала разберём процесс и определим, что подходит: обычная автоматизация или интеграция с ИИ."
+      },
+      "bento": {
+        "available": "Открыт для новых проектов",
+        "title": [
+          "Сайты, боты и мобильные приложения —",
+          "под ключ",
+          "для вашего бизнеса."
+        ],
+        "intro": "Разрабатываю IT-продукты с нуля: дизайн, программирование, интеграции и запуск. Работаю удалённо с клиентами из любой страны.",
+        "web": ["Сайты", "Лендинг · магазин · платформа"],
+        "bot": ["Telegram-боты", "Заказы · оплата · Mini App"],
+        "mobile": ["Мобильные приложения", "iOS · Android · Flutter"],
+        "ai": ["ИИ-решения", "GPT/Claude · автоматизация"],
+        "chat": [
+          "Добро пожаловать! Какая услуга нужна?",
+          "Каталог",
+          "Заказ",
+          "Каталог"
+        ],
+        "prompt": [
+          "Автоматически распределить заявки клиентов",
+          "Готово: заявки разделены на 4 категории"
+        ],
+        "stats": [
+          ["4+ года", "коммерческого опыта"],
+          ["29", "проектов в портфолио"],
+          ["iOS · Android", "приложения в сторах"],
+          ["5 направлений", "сайт, бот, мобайл, CRM, ИИ"]
+        ]
+      }
+    },
+    "en": {
+      "hero": {
+        "title": ["Building", "digital products", "for the future."],
+        "intro": "I build websites, Telegram bots, mobile apps and AI integrations. I turn your idea into a digital product whose parts work together.",
+        "support": ["Interface + engineering", "Personal responsibility"]
+      },
+      "scene": {
+        "title": "Connected product architecture",
+        "label": "Web + Bots + Mobile + AI",
+        "accessibleTitle": "Connected digital products",
+        "accessibleDescription": "A three-dimensional network shows how a website, Telegram bot, mobile app and AI integrations can work together. This is an explanatory illustration, not a live AI process.",
+        "controlsLabel": "Choose a development area",
+        "replay": "Replay animation",
+        "modes": {
+          "web": {
+            "label": "Web",
+            "description": "Websites and platforms. The interface customers use, the system behind it and the integrations it needs."
+          },
+          "bot": {
+            "label": "Bots",
+            "description": "Telegram bots. Taking orders, connecting services and automating repetitive tasks."
+          },
+          "mobile": {
+            "label": "Mobile",
+            "description": "Mobile apps. An Android and iOS product, backend, maps and notifications in one system."
+          },
+          "ai": {
+            "label": "AI",
+            "description": "AI integrations. Analysing data and automating useful tasks within an existing product."
+          }
+        }
+      },
+      "work": {
+        "eyebrow": "Real products / Selected work",
+        "title": "Technology for\na specific purpose.",
+        "intro": "An AI-powered platform, an online store and mobile apps. Each offers a clear solution for its users."
+      },
+      "services": {
+        "title": "From idea to system.\nComplete product development.",
+        "intro": "Interface, engineering and integrations. I connect the parts your product needs into a system that works together."
+      },
+      "contact": {
+        "title": "The next product\nis yours."
+      },
+      "process": {
+        "labels": ["Purpose", "Solution", "Product", "Result"]
+      },
+      "faq": {
+        "aiQuestion": "Does every project need AI?",
+        "aiAnswer": "AI is useful when it helps solve a specific problem. We first look at the process, then decide whether standard automation or an AI integration is a better fit."
+      },
+      "bento": {
+        "available": "Open to new projects",
+        "title": [
+          "Websites, bots and mobile apps —",
+          "built turnkey",
+          "for your business."
+        ],
+        "intro": "I build IT products from scratch: design, development, integrations and launch. I work remotely with clients in any country.",
+        "web": ["Websites", "Landing · store · platform"],
+        "bot": ["Telegram bots", "Orders · payments · Mini App"],
+        "mobile": ["Mobile apps", "iOS · Android · Flutter"],
+        "ai": ["AI solutions", "GPT/Claude · automation"],
+        "chat": [
+          "Welcome! Which service do you need?",
+          "Catalog",
+          "Order",
+          "Catalog"
+        ],
+        "prompt": [
+          "Sort incoming customer requests automatically",
+          "Done: requests split into 4 categories"
+        ],
+        "stats": [
+          ["4+ years", "of commercial experience"],
+          ["29", "projects in the portfolio"],
+          ["iOS · Android", "apps in the stores"],
+          ["5 areas", "web, bots, mobile, CRM, AI"]
+        ]
+      }
+    },
+    "ky": {
+      "hero": {
+        "title": ["Келечек үчүн", "санарип", "өнүмдөр."],
+        "intro": "Сайттарды, Telegram ботторун, мобилдик тиркемелерди жана жасалма интеллект интеграцияларын иштеп чыгам. Идеяңызды бөлүктөрү бирге иштеген санарип өнүмгө айлантам.",
+        "support": ["Интерфейс + иштеп чыгуу", "Жеке жоопкерчилик"]
+      },
+      "scene": {
+        "title": "Байланышкан өнүмдүн архитектурасы",
+        "label": "Веб + Бот + Мобилдик тиркеме + ЖИ",
+        "accessibleTitle": "Өз ара байланышкан санарип өнүмдөр",
+        "accessibleDescription": "Үч өлчөмдүү тармак сайт, Telegram бот, мобилдик тиркеме жана жасалма интеллект интеграциялары кантип бирге иштей турганын көрсөтөт. Бул түшүндүрмө сүрөт, жасалма интеллекттин түз иштөөсү эмес.",
+        "controlsLabel": "Иштеп чыгуу багытын тандоо",
+        "replay": "Анимацияны кайра көрүү",
+        "modes": {
+          "web": {
+            "label": "Веб",
+            "description": "Сайттар жана платформалар. Кардар көргөн интерфейс, анын артындагы система жана керектүү интеграциялар."
+          },
+          "bot": {
+            "label": "Бот",
+            "description": "Telegram боттору. Буйрутмаларды кабыл алуу, кызматтарды байланыштыруу жана кайталанган иштерди автоматташтыруу."
+          },
+          "mobile": {
+            "label": "Мобилдик",
+            "description": "Мобилдик тиркемелер. Android жана iOS үчүн өнүм, сервердик бөлүк, карта жана билдирүүлөр бир системада."
+          },
+          "ai": {
+            "label": "ЖИ",
+            "description": "Жасалма интеллект интеграциялары. Маалыматты талдоо жана учурдагы өнүмдүн ичиндеги пайдалуу иштерди автоматташтыруу."
+          }
+        }
+      },
+      "work": {
+        "eyebrow": "Чыныгы өнүмдөр / Тандалган иштер",
+        "title": "Технология —\nтак милдет үчүн.",
+        "intro": "Жасалма интеллект колдонгон платформа, интернет-дүкөн жана мобилдик тиркемелер. Ар биринде колдонуучуга түшүнүктүү чечим бар."
+      },
+      "services": {
+        "title": "Идеядан системага чейин.\nБир бүтүн иштеп чыгуу.",
+        "intro": "Интерфейс, программалоо жана интеграциялар. Өнүмдүн керектүү бөлүктөрүн бирге иштеген системага бириктирем."
+      },
+      "contact": {
+        "title": "Кийинки өнүм —\nсиздики."
+      },
+      "process": {
+        "labels": ["Максат", "Чечим", "Өнүм", "Натыйжа"]
+      },
+      "faq": {
+        "aiQuestion": "Ар бир долбоорго жасалма интеллект керекпи?",
+        "aiAnswer": "Жасалма интеллект белгилүү бир милдетке пайдасы тийгенде колдонулат. Адегенде процессти карап, кадимки автоматташтыруу же жасалма интеллект интеграциясы ылайыктуубу — ошону аныктайбыз."
+      },
+      "bento": {
+        "available": "Жаңы долбоорлорго ачыкмын",
+        "title": [
+          "Сайт, бот жана мобилдик тиркеме —",
+          "ачкычы менен",
+          "бизнесиңиз үчүн."
+        ],
+        "intro": "IT продуктуларды нөлдөн иштеп чыгам: дизайн, программалоо, интеграция жана ишке киргизүү. Каалаган өлкөдөгү кардарлар менен аралыктан иштейм.",
+        "web": ["Сайттар", "Лендинг · дүкөн · платформа"],
+        "bot": ["Telegram боттор", "Буйрутма · төлөм · Mini App"],
+        "mobile": ["Мобилдик тиркемелер", "iOS · Android · Flutter"],
+        "ai": ["AI чечимдер", "GPT/Claude · автоматташтыруу"],
+        "chat": [
+          "Кош келиңиз! Кайсы кызмат керек?",
+          "Каталог",
+          "Буйрутма",
+          "Каталог"
+        ],
+        "prompt": [
+          "Кардарлардын арыздарын автоматтык түрдө бөлүштүрүү",
+          "Даяр: арыздар 4 категорияга бөлүндү"
+        ],
+        "stats": [
+          ["4+ жыл", "коммерциялык тажрыйба"],
+          ["29", "портфолиодогу долбоор"],
+          ["iOS · Android", "дүкөндөрдөгү тиркемелер"],
+          ["5 багыт", "сайт, бот, мобилдик, CRM, AI"]
+        ]
+      }
+    },
+    "kk": {
+      "hero": {
+        "title": ["Болашаққа арналған", "цифрлық", "өнімдер."],
+        "intro": "Сайттар, Telegram боттар, мобильді қосымшалар және жасанды интеллект интеграцияларын әзірлеймін. Идеяңызды бөліктері бірге жұмыс істейтін цифрлық өнімге айналдырамын.",
+        "support": ["Интерфейс + әзірлеу", "Жеке жауапкершілік"]
+      },
+      "scene": {
+        "title": "Байланысқан өнім архитектурасы",
+        "label": "Веб + Бот + Мобильді қосымша + ЖИ",
+        "accessibleTitle": "Өзара байланысқан цифрлық өнімдер",
+        "accessibleDescription": "Үш өлшемді желі сайт, Telegram бот, мобильді қосымша және жасанды интеллект интеграцияларының бірге жұмыс істеуін көрсетеді. Бұл түсіндірме бейне, жасанды интеллекттің нақты уақыттағы жұмысы емес.",
+        "controlsLabel": "Әзірлеу бағытын таңдау",
+        "replay": "Анимацияны қайта көру",
+        "modes": {
+          "web": {
+            "label": "Веб",
+            "description": "Сайттар мен платформалар. Клиент көретін интерфейс, оның артындағы жүйе және қажетті интеграциялар."
+          },
+          "bot": {
+            "label": "Бот",
+            "description": "Telegram боттар. Тапсырыс қабылдау, сервистерді байланыстыру және қайталанатын жұмыстарды автоматтандыру."
+          },
+          "mobile": {
+            "label": "Мобильді",
+            "description": "Мобильді қосымшалар. Android пен iOS өнімі, серверлік бөлік, карта және хабарландырулар бір жүйеде."
+          },
+          "ai": {
+            "label": "ЖИ",
+            "description": "Жасанды интеллект интеграциялары. Деректерді талдау және қолданыстағы өнім ішіндегі пайдалы міндеттерді автоматтандыру."
+          }
+        }
+      },
+      "work": {
+        "eyebrow": "Нақты өнімдер / Таңдаулы жұмыстар",
+        "title": "Технология —\nнақты міндет үшін.",
+        "intro": "Жасанды интеллекті бар платформа, интернет-дүкен және мобильді қосымшалар. Әрқайсысында пайдаланушыға түсінікті шешім бар."
+      },
+      "services": {
+        "title": "Идеядан жүйеге дейін.\nБіртұтас әзірлеу.",
+        "intro": "Интерфейс, бағдарламалау және интеграциялар. Өнімнің қажетті бөліктерін бірге жұмыс істейтін жүйеге біріктіремін."
+      },
+      "contact": {
+        "title": "Келесі өнім —\nсіздікі."
+      },
+      "process": {
+        "labels": ["Мақсат", "Шешім", "Өнім", "Нәтиже"]
+      },
+      "faq": {
+        "aiQuestion": "Әр жобаға жасанды интеллект қажет пе?",
+        "aiAnswer": "Жасанды интеллект нақты міндетке пайдасын тигізгенде қолданылады. Алдымен процесті қарап, қарапайым автоматтандыру немесе жасанды интеллект интеграциясы сәйкес келетінін анықтаймыз."
+      },
+      "bento": {
+        "available": "Жаңа жобаларға ашықпын",
+        "title": [
+          "Сайт, бот және мобильді қосымша —",
+          "кілтін тапсыра",
+          "бизнесіңіз үшін."
+        ],
+        "intro": "IT өнімдерін нөлден әзірлеймін: дизайн, бағдарламалау, интеграция және іске қосу. Кез келген елдегі клиенттермен қашықтан жұмыс істеймін.",
+        "web": ["Сайттар", "Лендинг · дүкен · платформа"],
+        "bot": ["Telegram боттар", "Тапсырыс · төлем · Mini App"],
+        "mobile": ["Мобильді қосымшалар", "iOS · Android · Flutter"],
+        "ai": ["AI шешімдері", "GPT/Claude · автоматтандыру"],
+        "chat": [
+          "Қош келдіңіз! Қандай қызмет керек?",
+          "Каталог",
+          "Тапсырыс",
+          "Каталог"
+        ],
+        "prompt": [
+          "Клиент өтінімдерін автоматты түрде сұрыптау",
+          "Дайын: өтінімдер 4 санатқа бөлінді"
+        ],
+        "stats": [
+          ["4+ жыл", "коммерциялық тәжірибе"],
+          ["29", "портфолиодағы жоба"],
+          ["iOS · Android", "дүкендердегі қосымшалар"],
+          ["5 бағыт", "сайт, бот, мобильді, CRM, AI"]
+        ]
+      }
+    },
+    "tg": {
+      "hero": {
+        "title": ["Маҳсулоти", "рақамӣ", "барои оянда."],
+        "intro": "Сайтҳо, ботҳои Telegram, барномаҳои мобилӣ ва ҳамгироии зеҳни сунъиро таҳия мекунам. Ғояи шуморо ба маҳсулоти рақамие табдил медиҳам, ки қисмҳояш бо ҳам кор мекунанд.",
+        "support": ["Интерфейс + барномасозӣ", "Масъулияти шахсӣ"]
+      },
+      "scene": {
+        "title": "Меъмории маҳсулоти пайваст",
+        "label": "Веб + Бот + Барномаи мобилӣ + ЗС",
+        "accessibleTitle": "Маҳсулоти рақамии ба ҳам пайваст",
+        "accessibleDescription": "Шабакаи сеченака нишон медиҳад, ки сайт, боти Telegram, барномаи мобилӣ ва ҳамгироии зеҳни сунъӣ чӣ гуна бо ҳам кор мекунанд. Ин тасвири тавзеҳӣ аст, на кори зиндаи зеҳни сунъӣ.",
+        "controlsLabel": "Интихоби самти таҳия",
+        "replay": "Боз дидани аниматсия",
+        "modes": {
+          "web": {
+            "label": "Веб",
+            "description": "Сайтҳо ва платформаҳо. Интерфейс барои муштариён, низоми паси он ва ҳамгироиҳои зарурӣ."
+          },
+          "bot": {
+            "label": "Бот",
+            "description": "Ботҳои Telegram. Қабули фармоишҳо, пайваст кардани хизматҳо ва автоматикунонии корҳои такрорӣ."
+          },
+          "mobile": {
+            "label": "Мобилӣ",
+            "description": "Барномаҳои мобилӣ. Маҳсулот барои Android ва iOS, қисми серверӣ, харита ва огоҳиномаҳо дар як низом."
+          },
+          "ai": {
+            "label": "ЗС",
+            "description": "Ҳамгироии зеҳни сунъӣ. Таҳлили маълумот ва автоматикунонии вазифаҳои муфид дар дохили маҳсулоти мавҷуда."
+          }
+        }
+      },
+      "work": {
+        "eyebrow": "Маҳсулоти воқеӣ / Корҳои интихобшуда",
+        "title": "Технология —\nбарои вазифаи мушаххас.",
+        "intro": "Платформа бо зеҳни сунъӣ, мағозаи интернетӣ ва барномаҳои мобилӣ. Ҳар кадом барои корбар ҳалли фаҳмо дорад."
+      },
+      "services": {
+        "title": "Аз ғоя то низом.\nТаҳияи яклухт.",
+        "intro": "Интерфейс, барномасозӣ ва ҳамгироӣ. Қисмҳои зарурии маҳсулотро ба низоме мепайвандам, ки якҷоя кор мекунад."
+      },
+      "contact": {
+        "title": "Маҳсулоти навбатӣ —\nаз шумост."
+      },
+      "process": {
+        "labels": ["Ҳадаф", "Роҳи ҳал", "Маҳсулот", "Натиҷа"]
+      },
+      "faq": {
+        "aiQuestion": "Оё ба ҳар лоиҳа зеҳни сунъӣ лозим аст?",
+        "aiAnswer": "Зеҳни сунъӣ вақте истифода мешавад, ки барои вазифаи мушаххас фоида дорад. Аввал равандро дида, муайян мекунем, ки автоматикунонии оддӣ ё ҳамгироии зеҳни сунъӣ мувофиқтар аст."
+      },
+      "bento": {
+        "available": "Барои лоиҳаҳои нав омодаам",
+        "title": [
+          "Сайт, бот ва барномаи мобилӣ —",
+          "калидсупор",
+          "барои тиҷорати шумо."
+        ],
+        "intro": "Маҳсулоти IT-ро аз сифр месозам: дизайн, барномасозӣ, интегратсия ва оғоз. Бо мизоҷон аз ҳама гуна кишвар фосилавӣ кор мекунам.",
+        "web": ["Сайтҳо", "Лендинг · мағоза · платформа"],
+        "bot": ["Ботҳои Telegram", "Фармоиш · пардохт · Mini App"],
+        "mobile": ["Барномаҳои мобилӣ", "iOS · Android · Flutter"],
+        "ai": ["Ҳалли AI", "GPT/Claude · автоматикунонӣ"],
+        "chat": [
+          "Хуш омадед! Кадом хизмат лозим аст?",
+          "Каталог",
+          "Фармоиш",
+          "Каталог"
+        ],
+        "prompt": [
+          "Дархостҳои мизоҷонро худкор ҷудо кардан",
+          "Тайёр: дархостҳо ба 4 гурӯҳ ҷудо шуданд"
+        ],
+        "stats": [
+          ["4+ сол", "таҷрибаи тиҷоратӣ"],
+          ["29", "лоиҳа дар портфолио"],
+          ["iOS · Android", "барномаҳо дар мағозаҳо"],
+          ["5 самт", "сайт, бот, мобилӣ, CRM, AI"]
+        ]
+      }
+    },
+    "uk": {
+      "hero": {
+        "title": ["Створюю", "цифрові продукти", "для майбутнього."],
+        "intro": "Розробляю сайти, Telegram-ботів, мобільні застосунки та інтеграції зі ШІ. Перетворюю вашу ідею на цифровий продукт, усі частини якого працюють разом.",
+        "support": ["Інтерфейс + розробка", "Особиста відповідальність"]
+      },
+      "scene": {
+        "title": "Архітектура пов’язаного продукту",
+        "label": "Веб + Боти + Застосунки + ШІ",
+        "accessibleTitle": "Взаємопов’язані цифрові продукти",
+        "accessibleDescription": "Тривимірна мережа показує, як сайт, Telegram-бот, мобільний застосунок та інтеграції зі ШІ працюють разом. Це пояснювальна схема, а не робота ШІ в реальному часі.",
+        "controlsLabel": "Вибрати напрям розробки",
+        "replay": "Повторити анімацію",
+        "modes": {
+          "web": {
+            "label": "Веб",
+            "description": "Сайти та платформи. Інтерфейс для клієнтів, система за ним і потрібні інтеграції."
+          },
+          "bot": {
+            "label": "Боти",
+            "description": "Telegram-боти. Приймання замовлень, зв’язок між сервісами й автоматизація повторюваних завдань."
+          },
+          "mobile": {
+            "label": "Мобільні",
+            "description": "Мобільні застосунки. Продукт для Android та iOS, серверна частина, карти й сповіщення в одній системі."
+          },
+          "ai": {
+            "label": "ШІ",
+            "description": "Інтеграції зі ШІ. Аналіз даних та автоматизація корисних завдань усередині наявного продукту."
+          }
+        }
+      },
+      "work": {
+        "eyebrow": "Реальні продукти / Вибрані роботи",
+        "title": "Технології —\nдля конкретних завдань.",
+        "intro": "Платформа зі ШІ, інтернет-магазин і мобільні застосунки. У кожному — зрозуміле рішення для користувача."
+      },
+      "services": {
+        "title": "Від ідеї до системи.\nЦілісна розробка.",
+        "intro": "Інтерфейс, розробка та інтеграції. Поєдную потрібні частини продукту в систему, що працює злагоджено."
+      },
+      "contact": {
+        "title": "Наступний продукт —\nваш."
+      },
+      "process": {
+        "labels": ["Мета", "Рішення", "Продукт", "Результат"]
+      },
+      "faq": {
+        "aiQuestion": "Чи кожному проєкту потрібен ШІ?",
+        "aiAnswer": "ШІ застосовується там, де допомагає розв’язати конкретне завдання. Спочатку розглянемо процес і визначимо, що підходить: звичайна автоматизація чи інтеграція зі ШІ."
+      },
+      "bento": {
+        "available": "Відкритий до нових проєктів",
+        "title": [
+          "Сайти, боти та мобільні застосунки —",
+          "під ключ",
+          "для вашого бізнесу."
+        ],
+        "intro": "Розробляю IT-продукти з нуля: дизайн, програмування, інтеграції та запуск. Працюю віддалено з клієнтами з будь-якої країни.",
+        "web": ["Сайти", "Лендинг · магазин · платформа"],
+        "bot": ["Telegram-боти", "Замовлення · оплата · Mini App"],
+        "mobile": ["Мобільні застосунки", "iOS · Android · Flutter"],
+        "ai": ["ШІ-рішення", "GPT/Claude · автоматизація"],
+        "chat": [
+          "Ласкаво просимо! Яка послуга потрібна?",
+          "Каталог",
+          "Замовлення",
+          "Каталог"
+        ],
+        "prompt": [
+          "Автоматично розподілити заявки клієнтів",
+          "Готово: заявки розділено на 4 категорії"
+        ],
+        "stats": [
+          ["4+ роки", "комерційного досвіду"],
+          ["29", "проєктів у портфоліо"],
+          ["iOS · Android", "застосунки в сторах"],
+          ["5 напрямів", "сайт, бот, мобайл, CRM, ШІ"]
+        ]
+      }
+    },
+    "be": {
+      "hero": {
+        "title": ["Ствараю", "лічбавыя прадукты", "для будучыні."],
+        "intro": "Распрацоўваю сайты, Telegram-ботаў, мабільныя праграмы і інтэграцыі са ШІ. Ператвараю вашу ідэю ў лічбавы прадукт, усе часткі якога працуюць разам.",
+        "support": ["Інтэрфейс + распрацоўка", "Асабістая адказнасць"]
+      },
+      "scene": {
+        "title": "Архітэктура звязанага прадукту",
+        "label": "Вэб + Боты + Праграмы + ШІ",
+        "accessibleTitle": "Узаемазвязаныя лічбавыя прадукты",
+        "accessibleDescription": "Трохмерная сетка паказвае, як сайт, Telegram-бот, мабільная праграма і інтэграцыі са ШІ працуюць разам. Гэта тлумачальная схема, а не праца ШІ ў рэальным часе.",
+        "controlsLabel": "Выбраць кірунак распрацоўкі",
+        "replay": "Паўтарыць анімацыю",
+        "modes": {
+          "web": {
+            "label": "Вэб",
+            "description": "Сайты і платформы. Інтэрфейс для кліентаў, сістэма за ім і патрэбныя інтэграцыі."
+          },
+          "bot": {
+            "label": "Боты",
+            "description": "Telegram-боты. Прыём замоў, сувязь паміж сэрвісамі і аўтаматызацыя паўтаральных задач."
+          },
+          "mobile": {
+            "label": "Мабільныя",
+            "description": "Мабільныя праграмы. Прадукт для Android і iOS, серверная частка, карты і апавяшчэнні ў адной сістэме."
+          },
+          "ai": {
+            "label": "ШІ",
+            "description": "Інтэграцыі са ШІ. Аналіз даных і аўтаматызацыя карысных задач унутры наяўнага прадукту."
+          }
+        }
+      },
+      "work": {
+        "eyebrow": "Рэальныя прадукты / Выбраныя працы",
+        "title": "Тэхналогіі —\nдля пэўных задач.",
+        "intro": "Платформа са ШІ, інтэрнэт-крама і мабільныя праграмы. У кожным — зразумелае рашэнне для карыстальніка."
+      },
+      "services": {
+        "title": "Ад ідэі да сістэмы.\nСуцэльная распрацоўка.",
+        "intro": "Інтэрфейс, распрацоўка і інтэграцыі. Аб’ядноўваю патрэбныя часткі прадукту ў сістэму, якая працуе зладжана."
+      },
+      "contact": {
+        "title": "Наступны прадукт —\nваш."
+      },
+      "process": {
+        "labels": ["Мэта", "Рашэнне", "Прадукт", "Вынік"]
+      },
+      "faq": {
+        "aiQuestion": "Ці кожнаму праекту патрэбны ШІ?",
+        "aiAnswer": "ШІ ўжываецца там, дзе дапамагае вырашыць пэўную задачу. Спачатку разгледзім працэс і вызначым, што падыходзіць: звычайная аўтаматызацыя ці інтэграцыя са ШІ."
+      },
+      "bento": {
+        "available": "Адкрыты для новых праектаў",
+        "title": [
+          "Сайты, боты і мабільныя праграмы —",
+          "пад ключ",
+          "для вашага бізнесу."
+        ],
+        "intro": "Распрацоўваю IT-прадукты з нуля: дызайн, праграмаванне, інтэграцыі і запуск. Працую дыстанцыйна з кліентамі з любой краіны.",
+        "web": ["Сайты", "Лендынг · крама · платформа"],
+        "bot": ["Telegram-боты", "Заказы · аплата · Mini App"],
+        "mobile": ["Мабільныя праграмы", "iOS · Android · Flutter"],
+        "ai": ["ШІ-рашэнні", "GPT/Claude · аўтаматызацыя"],
+        "chat": [
+          "Сардэчна запрашаем! Якая паслуга патрэбна?",
+          "Каталог",
+          "Заказ",
+          "Каталог"
+        ],
+        "prompt": [
+          "Аўтаматычна размеркаваць заяўкі кліентаў",
+          "Гатова: заяўкі падзелены на 4 катэгорыі"
+        ],
+        "stats": [
+          ["4+ гады", "камерцыйнага досведу"],
+          ["29", "праектаў у партфоліа"],
+          ["iOS · Android", "праграмы ў крамах"],
+          ["5 кірункаў", "сайт, бот, мабільныя, CRM, ШІ"]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1009 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "uz": {
+      "languageName": "O‘zbekcha",
+      "accessibility": {
+        "skipLink": "Asosiy mazmunga o‘tish",
+        "mainNavigation": "Asosiy navigatsiya",
+        "mobileNavigation": "Mobil navigatsiya",
+        "homeLabel": "Shavkatbek Ruzibekov — bosh sahifa",
+        "filtersLabel": "Ishlarni yo‘nalish bo‘yicha filtrlash"
+      },
+      "controls": {
+        "menu": "Menyu",
+        "closeMenu": "Yopish",
+        "lightTheme": "Yorug‘",
+        "darkTheme": "Qorong‘i",
+        "switchToLight": "Yorug‘ mavzuga o‘tish",
+        "switchToDark": "Qorong‘i mavzuga o‘tish"
+      },
+      "hero": {
+        "words": {
+          "web": "Saytlar.",
+          "bots": "Botlar.",
+          "mobile": "Mobil ilovalar."
+        },
+        "intro": "Biznesingiz uchun IT mahsulotlar ishlab chiqaman.",
+        "ideaStrap": "G‘oyadan interfeys va kodgacha.",
+        "responsibilityStrap": "Haqiqiy loyihalar. Shaxsiy mas’uliyat."
+      },
+      "heroProjects": {
+        "wegotrip": {
+          "category": "Mobil",
+          "alt": "WeGoTrip mobil ilovasining boshlang‘ich ekrani"
+        },
+        "monarh": {
+          "category": "Veb / Internet-do‘kon",
+          "alt": "Monarh Market internet-do‘konining kompyuter, planshet va telefon interfeyslari"
+        },
+        "tildon": {
+          "category": "iOS + Android",
+          "alt": "Tildon mobil ilovasining grammatika, test va reyting ekranlari"
+        },
+        "miyolo": {
+          "category": "Veb + mobil",
+          "alt": "Miyolo internet-do‘koni va Yolo mobil ilovasining ekranlari"
+        }
+      },
+      "work": {
+        "eyebrow": "Tanlangan ishlar",
+        "title": "Turli vazifalar.\nPuxta yechimlar.",
+        "intro": "Internet-do‘kon, veb-platforma va mobil mahsulotlar. Har birining ortida aniq vazifa bor.",
+        "filters": { "all": "Barchasi", "web": "Veb", "mobile": "Mobil" },
+        "filterStatus": "Ko‘rsatilgan tanlangan ishlar: {count}",
+        "allProjects": "Portfoliodagi barcha 29 ta ish"
+      },
+      "caseStudies": {
+        "monarh": {
+          "summary": "Ishlab turgan internet-do‘konni qayta loyihalash: bosh sahifa, katalog, mahsulot va savatcha.",
+          "alt": "Monarh Market internet-do‘konining kompyuter va telefon versiyalari",
+          "linkLabel": "Ko‘rish"
+        },
+        "okh": {
+          "summary": "Tadbir sanasi, yo‘nalish xaritasi va bildirishnomalar — bitta mobil ilovada.",
+          "alt": "OKH ilovasi: tadbir, yo‘nalish xaritasi va maqolalar ekranlari",
+          "linkLabel": "App Store"
+        },
+        "agentmama": {
+          "summary": "Reklama kampaniyalarini tayyorlash uchun veb-interfeys, AI tahlil va fon jarayonlari.",
+          "alt": "Agentmama AI agentlar platformasining veb-interfeysi",
+          "linkLabel": "Ko‘rish"
+        },
+        "miyolo": {
+          "summary": "Katalog, savatcha va buyurtmalar bilan ishlaydigan internet-do‘kon hamda mobil ilova.",
+          "alt": "Miyolo veb-do‘koni va Yolo mobil ilovasining ekranlari",
+          "linkLabel": "Ko‘rish"
+        }
+      },
+      "services": {
+        "title": "Bir g‘oya.\nBir butun\nmahsulot.",
+        "intro": "Foydalanuvchi ko‘radigan interfeysdan uning ortidagi tizimgacha. Vazifangizga mos qismlarni birga ishlaydigan yechimga birlashtiraman.",
+        "detailsLabel": "Xizmat haqida",
+        "systemsTitle": "Tizimlarni bog‘lash",
+        "tags": {
+          "web": ["Landing", "Internet-do‘kon", "Veb-platforma"],
+          "bots": ["Buyurtmalar", "Avtomatlashtirish", "API integratsiyasi"],
+          "mobile": ["Mobil interfeys", "Backend", "Push bildirishnomalar"]
+        }
+      },
+      "about": {
+        "title": "G‘oyangizni tushunadigan va uni o‘zi ishlab chiqadigan mutaxassis bilan ishlaysiz."
+      },
+      "process": {
+        "discover": {
+          "title": "Vazifani aniqlash",
+          "description": "Maqsad, foydalanuvchilar va funksiyalar."
+        },
+        "agree": {
+          "title": "Yechim va kelishuv",
+          "description": "Interfeys, ish hajmi, narx va muddat."
+        },
+        "develop": {
+          "title": "Ishlab chiqish",
+          "description": "Kod, integratsiyalar va bosqich natijalari."
+        },
+        "verify": {
+          "title": "Tekshirish",
+          "description": "Sinov, manba kodi va topshirish."
+        }
+      },
+      "faq": { "title": "Boshlashdan\noldin." },
+      "contact": {
+        "title": "Keyingi g‘oya —\nsizniki.",
+        "intro": "Nima yaratmoqchisiz va kim uchun? Qisqacha yozing. Yechimni birga aniqlaymiz.",
+        "cta": "Telegram’da yozish",
+        "strap": "Veb-sayt · Telegram bot · Mobil ilova"
+      },
+      "footer": { "line": "Biznes uchun IT mahsulotlar ishlab chiqish" },
+      "detail": {
+        "backHome": "Bosh sahifaga",
+        "eyebrow": "IT mahsulotlar ishlab chiqish",
+        "useCasesTitle": "Qanday vazifalar uchun",
+        "relatedServicesTitle": "Boshqa xizmatlar",
+        "discussCta": "Shu loyihani muhokama qilish"
+      }
+    },
+    "ru": {
+      "languageName": "Русский",
+      "accessibility": {
+        "skipLink": "Перейти к основному содержимому",
+        "mainNavigation": "Основная навигация",
+        "mobileNavigation": "Мобильная навигация",
+        "homeLabel": "Shavkatbek Ruzibekov — главная страница",
+        "filtersLabel": "Фильтр проектов по направлению"
+      },
+      "controls": {
+        "menu": "Меню",
+        "closeMenu": "Закрыть",
+        "lightTheme": "Светлая",
+        "darkTheme": "Тёмная",
+        "switchToLight": "Переключиться на светлую тему",
+        "switchToDark": "Переключиться на тёмную тему"
+      },
+      "hero": {
+        "words": {
+          "web": "Сайты.",
+          "bots": "Боты.",
+          "mobile": "Мобильные приложения."
+        },
+        "intro": "Разрабатываю IT-продукты для вашего бизнеса.",
+        "ideaStrap": "От идеи до интерфейса и кода.",
+        "responsibilityStrap": "Реальные проекты. Личная ответственность."
+      },
+      "heroProjects": {
+        "wegotrip": {
+          "category": "Мобильное приложение",
+          "alt": "Начальный экран мобильного приложения WeGoTrip"
+        },
+        "monarh": {
+          "category": "Веб / Интернет-магазин",
+          "alt": "Интерфейсы интернет-магазина Monarh Market для компьютера, планшета и телефона"
+        },
+        "tildon": {
+          "category": "iOS + Android",
+          "alt": "Экраны грамматики, тестов и рейтинга в мобильном приложении Tildon"
+        },
+        "miyolo": {
+          "category": "Веб + мобильное приложение",
+          "alt": "Экраны интернет-магазина Miyolo и мобильного приложения Yolo"
+        }
+      },
+      "work": {
+        "eyebrow": "Избранные проекты",
+        "title": "Разные задачи.\nПродуманные решения.",
+        "intro": "Интернет-магазины, веб-платформы и мобильные продукты. За каждым стоит конкретная задача.",
+        "filters": { "all": "Все", "web": "Веб", "mobile": "Мобильные" },
+        "filterStatus": "Показано избранных проектов: {count}",
+        "allProjects": "Все 29 работ в портфолио"
+      },
+      "caseStudies": {
+        "monarh": {
+          "summary": "Редизайн действующего интернет-магазина: главная страница, каталог, карточка товара и корзина.",
+          "alt": "Версии интернет-магазина Monarh Market для компьютера и телефона",
+          "linkLabel": "Посмотреть"
+        },
+        "okh": {
+          "summary": "Дата мероприятия, карта маршрута и уведомления — в одном мобильном приложении.",
+          "alt": "Приложение OKH: экраны мероприятия, карты маршрута и статей",
+          "linkLabel": "App Store"
+        },
+        "agentmama": {
+          "summary": "Веб-интерфейс, ИИ-анализ и фоновые процессы для подготовки рекламных кампаний.",
+          "alt": "Веб-интерфейс платформы ИИ-агентов Agentmama",
+          "linkLabel": "Посмотреть"
+        },
+        "miyolo": {
+          "summary": "Интернет-магазин и мобильное приложение с каталогом, корзиной и заказами.",
+          "alt": "Экраны интернет-магазина Miyolo и мобильного приложения Yolo",
+          "linkLabel": "Посмотреть"
+        }
+      },
+      "services": {
+        "title": "Одна идея.\nЦельный\nпродукт.",
+        "intro": "От интерфейса, который видит пользователь, до системы за ним. Объединяю нужные вашему проекту части в работающее решение.",
+        "detailsLabel": "Подробнее об услуге",
+        "systemsTitle": "Интеграция систем",
+        "tags": {
+          "web": ["Лендинг", "Интернет-магазин", "Веб-платформа"],
+          "bots": ["Заказы", "Автоматизация", "Интеграция с API"],
+          "mobile": [
+            "Мобильный интерфейс",
+            "Серверная часть",
+            "Push-уведомления"
+          ]
+        }
+      },
+      "about": {
+        "title": "Вы работаете со специалистом, который понимает вашу идею и сам воплощает её в продукт."
+      },
+      "process": {
+        "discover": {
+          "title": "Определение задачи",
+          "description": "Цель, пользователи и функции."
+        },
+        "agree": {
+          "title": "Согласование решения",
+          "description": "Интерфейс, объём работ, цена и сроки."
+        },
+        "develop": {
+          "title": "Разработка",
+          "description": "Код, интеграции и результаты по этапам."
+        },
+        "verify": {
+          "title": "Проверка",
+          "description": "Тестирование, исходный код и передача проекта."
+        }
+      },
+      "faq": { "title": "Перед\nначалом." },
+      "contact": {
+        "title": "Следующая идея —\nваша.",
+        "intro": "Что хотите создать и для кого? Напишите коротко. Вместе определим решение.",
+        "cta": "Написать в Telegram",
+        "strap": "Веб-сайт · Telegram-бот · Мобильное приложение"
+      },
+      "footer": { "line": "Разработка IT-продуктов для бизнеса" },
+      "detail": {
+        "backHome": "На главную",
+        "eyebrow": "Разработка IT-продуктов",
+        "useCasesTitle": "Для каких задач",
+        "relatedServicesTitle": "Другие услуги",
+        "discussCta": "Обсудить этот проект"
+      }
+    },
+    "en": {
+      "languageName": "English",
+      "accessibility": {
+        "skipLink": "Skip to main content",
+        "mainNavigation": "Main navigation",
+        "mobileNavigation": "Mobile navigation",
+        "homeLabel": "Shavkatbek Ruzibekov — home",
+        "filtersLabel": "Filter projects by type"
+      },
+      "controls": {
+        "menu": "Menu",
+        "closeMenu": "Close",
+        "lightTheme": "Light",
+        "darkTheme": "Dark",
+        "switchToLight": "Switch to light theme",
+        "switchToDark": "Switch to dark theme"
+      },
+      "hero": {
+        "words": {
+          "web": "Websites.",
+          "bots": "Bots.",
+          "mobile": "Mobile apps."
+        },
+        "intro": "I build digital products for your business.",
+        "ideaStrap": "From the idea to the interface and code.",
+        "responsibilityStrap": "Real projects. Personal responsibility."
+      },
+      "heroProjects": {
+        "wegotrip": {
+          "category": "Mobile app",
+          "alt": "Opening screen of the WeGoTrip mobile app"
+        },
+        "monarh": {
+          "category": "Web / Online store",
+          "alt": "Monarh Market online store interfaces on a computer, tablet and phone"
+        },
+        "tildon": {
+          "category": "iOS + Android",
+          "alt": "Grammar, test and ranking screens in the Tildon mobile app"
+        },
+        "miyolo": {
+          "category": "Web + mobile",
+          "alt": "Screens from the Miyolo online store and the Yolo mobile app"
+        }
+      },
+      "work": {
+        "eyebrow": "Selected work",
+        "title": "Different challenges.\nThoughtful solutions.",
+        "intro": "Online stores, web platforms and mobile products. Each addresses a specific need.",
+        "filters": { "all": "All", "web": "Web", "mobile": "Mobile" },
+        "filterStatus": "Selected projects shown: {count}",
+        "allProjects": "All 29 portfolio projects"
+      },
+      "caseStudies": {
+        "monarh": {
+          "summary": "Redesigning an existing online store: homepage, catalog, product page and cart.",
+          "alt": "Computer and phone versions of the Monarh Market online store",
+          "linkLabel": "View project"
+        },
+        "okh": {
+          "summary": "Event dates, route maps and notifications in one mobile app.",
+          "alt": "OKH app screens showing an event, a route map and articles",
+          "linkLabel": "App Store"
+        },
+        "agentmama": {
+          "summary": "A web interface, AI analysis and background processes for preparing advertising campaigns.",
+          "alt": "Web interface of the Agentmama AI agent platform",
+          "linkLabel": "View project"
+        },
+        "miyolo": {
+          "summary": "An online store and mobile app with a catalog, cart and order management.",
+          "alt": "Screens from the Miyolo online store and the Yolo mobile app",
+          "linkLabel": "View project"
+        }
+      },
+      "services": {
+        "title": "One idea.\nOne complete\nproduct.",
+        "intro": "From the interface your users see to the system behind it. I connect the parts your project needs into a working product.",
+        "detailsLabel": "About this service",
+        "systemsTitle": "Connecting systems",
+        "tags": {
+          "web": ["Landing page", "Online store", "Web platform"],
+          "bots": ["Orders", "Automation", "API integration"],
+          "mobile": ["Mobile interface", "Backend", "Push notifications"]
+        }
+      },
+      "about": {
+        "title": "Work directly with the developer who understands your idea and builds it."
+      },
+      "process": {
+        "discover": {
+          "title": "Define the brief",
+          "description": "Goals, users and features."
+        },
+        "agree": {
+          "title": "Agree on the solution",
+          "description": "Interface, scope, price and timeline."
+        },
+        "develop": {
+          "title": "Build the product",
+          "description": "Code, integrations and progress at each stage."
+        },
+        "verify": {
+          "title": "Test and hand over",
+          "description": "Testing, source code and project handover."
+        }
+      },
+      "faq": { "title": "Before\nwe start." },
+      "contact": {
+        "title": "The next idea\nis yours.",
+        "intro": "What would you like to build, and who is it for? Send a short message. We’ll work out the solution together.",
+        "cta": "Message me on Telegram",
+        "strap": "Website · Telegram bot · Mobile app"
+      },
+      "footer": { "line": "Digital product development for business" },
+      "detail": {
+        "backHome": "Back to home",
+        "eyebrow": "Digital product development",
+        "useCasesTitle": "What you can build",
+        "relatedServicesTitle": "Other services",
+        "discussCta": "Discuss this project"
+      }
+    },
+    "ky": {
+      "languageName": "Кыргызча",
+      "accessibility": {
+        "skipLink": "Негизги мазмунга өтүү",
+        "mainNavigation": "Негизги багыттоо",
+        "mobileNavigation": "Мобилдик багыттоо",
+        "homeLabel": "Shavkatbek Ruzibekov — башкы бет",
+        "filtersLabel": "Долбоорлорду түрү боюнча чыпкалоо"
+      },
+      "controls": {
+        "menu": "Меню",
+        "closeMenu": "Жабуу",
+        "lightTheme": "Ачык",
+        "darkTheme": "Караңгы",
+        "switchToLight": "Ачык темага өтүү",
+        "switchToDark": "Караңгы темага өтүү"
+      },
+      "hero": {
+        "words": {
+          "web": "Сайттар.",
+          "bots": "Боттор.",
+          "mobile": "Мобилдик тиркемелер."
+        },
+        "intro": "Бизнесиңиз үчүн IT өнүмдөрдү иштеп чыгам.",
+        "ideaStrap": "Идеядан интерфейске жана кодго чейин.",
+        "responsibilityStrap": "Чыныгы долбоорлор. Жеке жоопкерчилик."
+      },
+      "heroProjects": {
+        "wegotrip": {
+          "category": "Мобилдик тиркеме",
+          "alt": "WeGoTrip мобилдик тиркемесинин баштапкы экраны"
+        },
+        "monarh": {
+          "category": "Веб / Интернет-дүкөн",
+          "alt": "Monarh Market интернет-дүкөнүнүн компьютер, планшет жана телефон үчүн интерфейстери"
+        },
+        "tildon": {
+          "category": "iOS + Android",
+          "alt": "Tildon мобилдик тиркемесиндеги грамматика, тест жана рейтинг экрандары"
+        },
+        "miyolo": {
+          "category": "Веб + мобилдик тиркеме",
+          "alt": "Miyolo интернет-дүкөнүнүн жана Yolo мобилдик тиркемесинин экрандары"
+        }
+      },
+      "work": {
+        "eyebrow": "Тандалган иштер",
+        "title": "Ар түрдүү милдеттер.\nКылдат чечимдер.",
+        "intro": "Интернет-дүкөндөр, веб-платформалар жана мобилдик өнүмдөр. Ар бири белгилүү бир милдетти чечет.",
+        "filters": { "all": "Баары", "web": "Веб", "mobile": "Мобилдик" },
+        "filterStatus": "Көрсөтүлгөн тандалган долбоорлор: {count}",
+        "allProjects": "Портфолиодогу бардык 29 иш"
+      },
+      "caseStudies": {
+        "monarh": {
+          "summary": "Иштеп жаткан интернет-дүкөндүн дизайнын жаңылоо: башкы бет, каталог, товар барагы жана себет.",
+          "alt": "Monarh Market интернет-дүкөнүнүн компьютер жана телефон үчүн версиялары",
+          "linkLabel": "Көрүү"
+        },
+        "okh": {
+          "summary": "Иш-чаранын күнү, маршрут картасы жана билдирүүлөр — бир мобилдик тиркемеде.",
+          "alt": "OKH тиркемеси: иш-чара, маршрут картасы жана макалалар экрандары",
+          "linkLabel": "App Store"
+        },
+        "agentmama": {
+          "summary": "Жарнама кампанияларын даярдоо үчүн веб-интерфейс, жасалма интеллект менен талдоо жана фондо иштеген процесстер.",
+          "alt": "Agentmama жасалма интеллект агенттер платформасынын веб-интерфейси",
+          "linkLabel": "Көрүү"
+        },
+        "miyolo": {
+          "summary": "Каталог, себет жана буйрутмалар менен иштеген интернет-дүкөн жана мобилдик тиркеме.",
+          "alt": "Miyolo интернет-дүкөнүнүн жана Yolo мобилдик тиркемесинин экрандары",
+          "linkLabel": "Көрүү"
+        }
+      },
+      "services": {
+        "title": "Бир идея.\nБир бүтүн\nөнүм.",
+        "intro": "Колдонуучу көргөн интерфейстен анын артындагы системага чейин. Долбооруңузга керектүү бөлүктөрдү бирге иштеген чечимге бириктирем.",
+        "detailsLabel": "Кызмат жөнүндө",
+        "systemsTitle": "Системаларды байланыштыруу",
+        "tags": {
+          "web": ["Лендинг", "Интернет-дүкөн", "Веб-платформа"],
+          "bots": ["Буйрутмалар", "Автоматташтыруу", "API интеграциясы"],
+          "mobile": [
+            "Мобилдик интерфейс",
+            "Сервердик бөлүк",
+            "Push билдирүүлөр"
+          ]
+        }
+      },
+      "about": {
+        "title": "Идеяңызды түшүнгөн жана аны өзү иштеп чыккан адис менен түз иштейсиз."
+      },
+      "process": {
+        "discover": {
+          "title": "Милдетти аныктоо",
+          "description": "Максат, колдонуучулар жана функциялар."
+        },
+        "agree": {
+          "title": "Чечимди макулдашуу",
+          "description": "Интерфейс, иштин көлөмү, баасы жана мөөнөтү."
+        },
+        "develop": {
+          "title": "Иштеп чыгуу",
+          "description": "Код, интеграциялар жана ар бир этаптын натыйжасы."
+        },
+        "verify": {
+          "title": "Текшерүү",
+          "description": "Сыноо, баштапкы код жана долбоорду өткөрүп берүү."
+        }
+      },
+      "faq": { "title": "Баштоодон\nмурун." },
+      "contact": {
+        "title": "Кийинки идея —\nсиздики.",
+        "intro": "Эмне түзгүңүз келет жана ким үчүн? Кыскача жазыңыз. Чечимди чогуу аныктайбыз.",
+        "cta": "Telegram аркылуу жазуу",
+        "strap": "Веб-сайт · Telegram бот · Мобилдик тиркеме"
+      },
+      "footer": { "line": "Бизнес үчүн IT өнүмдөрдү иштеп чыгуу" },
+      "detail": {
+        "backHome": "Башкы бетке",
+        "eyebrow": "IT өнүмдөрдү иштеп чыгуу",
+        "useCasesTitle": "Кандай милдеттер үчүн",
+        "relatedServicesTitle": "Башка кызматтар",
+        "discussCta": "Бул долбоорду талкуулоо"
+      }
+    },
+    "kk": {
+      "languageName": "Қазақша",
+      "accessibility": {
+        "skipLink": "Негізгі мазмұнға өту",
+        "mainNavigation": "Негізгі навигация",
+        "mobileNavigation": "Мобильді навигация",
+        "homeLabel": "Shavkatbek Ruzibekov — басты бет",
+        "filtersLabel": "Жобаларды түрі бойынша сүзу"
+      },
+      "controls": {
+        "menu": "Мәзір",
+        "closeMenu": "Жабу",
+        "lightTheme": "Ашық",
+        "darkTheme": "Қараңғы",
+        "switchToLight": "Ашық тақырыпқа ауысу",
+        "switchToDark": "Қараңғы тақырыпқа ауысу"
+      },
+      "hero": {
+        "words": {
+          "web": "Сайттар.",
+          "bots": "Боттар.",
+          "mobile": "Мобильді қосымшалар."
+        },
+        "intro": "Бизнесіңізге арналған IT өнімдерін әзірлеймін.",
+        "ideaStrap": "Идеядан интерфейс пен кодқа дейін.",
+        "responsibilityStrap": "Нақты жобалар. Жеке жауапкершілік."
+      },
+      "heroProjects": {
+        "wegotrip": {
+          "category": "Мобильді қосымша",
+          "alt": "WeGoTrip мобильді қосымшасының бастапқы экраны"
+        },
+        "monarh": {
+          "category": "Веб / Интернет-дүкен",
+          "alt": "Monarh Market интернет-дүкенінің компьютер, планшет және телефонға арналған интерфейстері"
+        },
+        "tildon": {
+          "category": "iOS + Android",
+          "alt": "Tildon мобильді қосымшасындағы грамматика, тест және рейтинг экрандары"
+        },
+        "miyolo": {
+          "category": "Веб + мобильді қосымша",
+          "alt": "Miyolo интернет-дүкені мен Yolo мобильді қосымшасының экрандары"
+        }
+      },
+      "work": {
+        "eyebrow": "Таңдаулы жұмыстар",
+        "title": "Әртүрлі міндеттер.\nОйластырылған шешімдер.",
+        "intro": "Интернет-дүкендер, веб-платформалар және мобильді өнімдер. Әрқайсысы нақты бір міндетті шешеді.",
+        "filters": { "all": "Барлығы", "web": "Веб", "mobile": "Мобильді" },
+        "filterStatus": "Көрсетілген таңдаулы жобалар: {count}",
+        "allProjects": "Портфолиодағы барлық 29 жұмыс"
+      },
+      "caseStudies": {
+        "monarh": {
+          "summary": "Жұмыс істеп тұрған интернет-дүкеннің дизайнын жаңарту: басты бет, каталог, тауар беті және себет.",
+          "alt": "Monarh Market интернет-дүкенінің компьютер мен телефонға арналған нұсқалары",
+          "linkLabel": "Көру"
+        },
+        "okh": {
+          "summary": "Іс-шара күні, маршрут картасы және хабарландырулар — бір мобильді қосымшада.",
+          "alt": "OKH қосымшасы: іс-шара, маршрут картасы және мақалалар экрандары",
+          "linkLabel": "App Store"
+        },
+        "agentmama": {
+          "summary": "Жарнама науқандарын дайындауға арналған веб-интерфейс, жасанды интеллект арқылы талдау және фондық процестер.",
+          "alt": "Agentmama жасанды интеллект агенттері платформасының веб-интерфейсі",
+          "linkLabel": "Көру"
+        },
+        "miyolo": {
+          "summary": "Каталогы, себеті және тапсырыстары бар интернет-дүкен мен мобильді қосымша.",
+          "alt": "Miyolo интернет-дүкені мен Yolo мобильді қосымшасының экрандары",
+          "linkLabel": "Көру"
+        }
+      },
+      "services": {
+        "title": "Бір идея.\nБіртұтас\nөнім.",
+        "intro": "Пайдаланушы көретін интерфейстен оның артындағы жүйеге дейін. Жобаңызға қажетті бөліктерді бірге жұмыс істейтін шешімге біріктіремін.",
+        "detailsLabel": "Қызмет туралы",
+        "systemsTitle": "Жүйелерді байланыстыру",
+        "tags": {
+          "web": ["Лендинг", "Интернет-дүкен", "Веб-платформа"],
+          "bots": ["Тапсырыстар", "Автоматтандыру", "API интеграциясы"],
+          "mobile": [
+            "Мобильді интерфейс",
+            "Серверлік бөлік",
+            "Push-хабарландырулар"
+          ]
+        }
+      },
+      "about": {
+        "title": "Идеяңызды түсінетін әрі оны өзі іске асыратын маманмен тікелей жұмыс істейсіз."
+      },
+      "process": {
+        "discover": {
+          "title": "Міндетті анықтау",
+          "description": "Мақсат, пайдаланушылар және функциялар."
+        },
+        "agree": {
+          "title": "Шешімді келісу",
+          "description": "Интерфейс, жұмыс көлемі, баға және мерзім."
+        },
+        "develop": {
+          "title": "Әзірлеу",
+          "description": "Код, интеграциялар және әр кезеңнің нәтижесі."
+        },
+        "verify": {
+          "title": "Тексеру",
+          "description": "Сынақ, бастапқы код және жобаны тапсыру."
+        }
+      },
+      "faq": { "title": "Бастамас\nбұрын." },
+      "contact": {
+        "title": "Келесі идея —\nсіздікі.",
+        "intro": "Не жасағыңыз келеді және кім үшін? Қысқаша жазыңыз. Шешімін бірге анықтаймыз.",
+        "cta": "Telegram арқылы жазу",
+        "strap": "Веб-сайт · Telegram бот · Мобильді қосымша"
+      },
+      "footer": { "line": "Бизнеске арналған IT өнімдерін әзірлеу" },
+      "detail": {
+        "backHome": "Басты бетке",
+        "eyebrow": "IT өнімдерін әзірлеу",
+        "useCasesTitle": "Қандай міндеттерге арналған",
+        "relatedServicesTitle": "Басқа қызметтер",
+        "discussCta": "Осы жобаны талқылау"
+      }
+    },
+    "tg": {
+      "languageName": "Тоҷикӣ",
+      "accessibility": {
+        "skipLink": "Гузаштан ба муҳтавои асосӣ",
+        "mainNavigation": "Паймоиши асосӣ",
+        "mobileNavigation": "Паймоиши мобилӣ",
+        "homeLabel": "Shavkatbek Ruzibekov — саҳифаи асосӣ",
+        "filtersLabel": "Полои лоиҳаҳо аз рӯи намуд"
+      },
+      "controls": {
+        "menu": "Меню",
+        "closeMenu": "Пӯшидан",
+        "lightTheme": "Равшан",
+        "darkTheme": "Торик",
+        "switchToLight": "Гузаштан ба намуди равшан",
+        "switchToDark": "Гузаштан ба намуди торик"
+      },
+      "hero": {
+        "words": {
+          "web": "Сайтҳо.",
+          "bots": "Ботҳо.",
+          "mobile": "Барномаҳои мобилӣ."
+        },
+        "intro": "Барои тиҷорати шумо маҳсулоти IT таҳия мекунам.",
+        "ideaStrap": "Аз ғоя то интерфейс ва код.",
+        "responsibilityStrap": "Лоиҳаҳои воқеӣ. Масъулияти шахсӣ."
+      },
+      "heroProjects": {
+        "wegotrip": {
+          "category": "Барномаи мобилӣ",
+          "alt": "Экрани ибтидоии барномаи мобилии WeGoTrip"
+        },
+        "monarh": {
+          "category": "Веб / Мағозаи интернетӣ",
+          "alt": "Интерфейсҳои мағозаи интернетии Monarh Market барои компютер, планшет ва телефон"
+        },
+        "tildon": {
+          "category": "iOS + Android",
+          "alt": "Экранҳои грамматика, санҷиш ва рейтинг дар барномаи мобилии Tildon"
+        },
+        "miyolo": {
+          "category": "Веб + барномаи мобилӣ",
+          "alt": "Экранҳои мағозаи интернетии Miyolo ва барномаи мобилии Yolo"
+        }
+      },
+      "work": {
+        "eyebrow": "Корҳои интихобшуда",
+        "title": "Вазифаҳои гуногун.\nҲалҳои андешидашуда.",
+        "intro": "Мағозаҳои интернетӣ, платформаҳои веб ва маҳсулоти мобилӣ. Ҳар яке вазифаи муайянеро ҳал мекунад.",
+        "filters": { "all": "Ҳама", "web": "Веб", "mobile": "Мобилӣ" },
+        "filterStatus": "Лоиҳаҳои интихобшудаи намоишдодашуда: {count}",
+        "allProjects": "Ҳамаи 29 кор дар портфолио"
+      },
+      "caseStudies": {
+        "monarh": {
+          "summary": "Навсозии дизайни мағозаи интернетии фаъол: саҳифаи асосӣ, каталог, саҳифаи мол ва сабад.",
+          "alt": "Нусхаҳои мағозаи интернетии Monarh Market барои компютер ва телефон",
+          "linkLabel": "Дидан"
+        },
+        "okh": {
+          "summary": "Санаи чорабинӣ, харитаи масир ва огоҳиномаҳо — дар як барномаи мобилӣ.",
+          "alt": "Барномаи OKH: экранҳои чорабинӣ, харитаи масир ва мақолаҳо",
+          "linkLabel": "App Store"
+        },
+        "agentmama": {
+          "summary": "Интерфейси веб, таҳлил бо зеҳни сунъӣ ва равандҳои пасзамина барои омода кардани маъракаҳои таблиғотӣ.",
+          "alt": "Интерфейси веби платформаи агентҳои зеҳни сунъии Agentmama",
+          "linkLabel": "Дидан"
+        },
+        "miyolo": {
+          "summary": "Мағозаи интернетӣ ва барномаи мобилӣ бо каталог, сабад ва коркарди фармоишҳо.",
+          "alt": "Экранҳои мағозаи интернетии Miyolo ва барномаи мобилии Yolo",
+          "linkLabel": "Дидан"
+        }
+      },
+      "services": {
+        "title": "Як ғоя.\nЯк маҳсулоти\nяклухт.",
+        "intro": "Аз интерфейсе, ки корбар мебинад, то низоми паси он. Қисмҳои зарурии лоиҳаи шуморо ба як ҳалли ҳамоҳанг мепайвандам.",
+        "detailsLabel": "Дар бораи хизмат",
+        "systemsTitle": "Пайваст кардани низомҳо",
+        "tags": {
+          "web": ["Саҳифаи фуруд", "Мағозаи интернетӣ", "Платформаи веб"],
+          "bots": ["Фармоишҳо", "Автоматикунонӣ", "Ҳамгироӣ бо API"],
+          "mobile": ["Интерфейси мобилӣ", "Қисми серверӣ", "Огоҳиномаҳои push"]
+        }
+      },
+      "about": {
+        "title": "Бо мутахассисе мустақим кор мекунед, ки ғояи шуморо мефаҳмад ва худаш онро ба маҳсулот табдил медиҳад."
+      },
+      "process": {
+        "discover": {
+          "title": "Муайян кардани вазифа",
+          "description": "Ҳадаф, корбарон ва имкониятҳо."
+        },
+        "agree": {
+          "title": "Мувофиқаи ҳал",
+          "description": "Интерфейс, ҳаҷми кор, нарх ва муҳлат."
+        },
+        "develop": {
+          "title": "Таҳия",
+          "description": "Код, ҳамгироӣ ва натиҷаҳои ҳар марҳила."
+        },
+        "verify": {
+          "title": "Санҷиш",
+          "description": "Санҷиш, коди сарчашма ва супоридани лоиҳа."
+        }
+      },
+      "faq": { "title": "Пеш аз\nоғоз." },
+      "contact": {
+        "title": "Ғояи навбатӣ —\nаз шумост.",
+        "intro": "Чӣ сохтан мехоҳед ва барои кӣ? Кӯтоҳ нависед. Роҳи ҳалро якҷоя муайян мекунем.",
+        "cta": "Навиштан дар Telegram",
+        "strap": "Веб-сайт · Боти Telegram · Барномаи мобилӣ"
+      },
+      "footer": { "line": "Таҳияи маҳсулоти IT барои тиҷорат" },
+      "detail": {
+        "backHome": "Ба саҳифаи асосӣ",
+        "eyebrow": "Таҳияи маҳсулоти IT",
+        "useCasesTitle": "Барои кадом вазифаҳо",
+        "relatedServicesTitle": "Хизматҳои дигар",
+        "discussCta": "Муҳокимаи ин лоиҳа"
+      }
+    },
+    "uk": {
+      "languageName": "Українська",
+      "accessibility": {
+        "skipLink": "Перейти до основного вмісту",
+        "mainNavigation": "Основна навігація",
+        "mobileNavigation": "Мобільна навігація",
+        "homeLabel": "Shavkatbek Ruzibekov — головна сторінка",
+        "filtersLabel": "Фільтр проєктів за напрямом"
+      },
+      "controls": {
+        "menu": "Меню",
+        "closeMenu": "Закрити",
+        "lightTheme": "Світла",
+        "darkTheme": "Темна",
+        "switchToLight": "Перейти на світлу тему",
+        "switchToDark": "Перейти на темну тему"
+      },
+      "hero": {
+        "words": {
+          "web": "Сайти.",
+          "bots": "Боти.",
+          "mobile": "Мобільні застосунки."
+        },
+        "intro": "Розробляю IT-продукти для вашого бізнесу.",
+        "ideaStrap": "Від ідеї до інтерфейсу та коду.",
+        "responsibilityStrap": "Реальні проєкти. Особиста відповідальність."
+      },
+      "heroProjects": {
+        "wegotrip": {
+          "category": "Мобільний застосунок",
+          "alt": "Початковий екран мобільного застосунку WeGoTrip"
+        },
+        "monarh": {
+          "category": "Веб / Інтернет-магазин",
+          "alt": "Інтерфейси інтернет-магазину Monarh Market для комп’ютера, планшета й телефона"
+        },
+        "tildon": {
+          "category": "iOS + Android",
+          "alt": "Екрани граматики, тестів і рейтингу в мобільному застосунку Tildon"
+        },
+        "miyolo": {
+          "category": "Веб + мобільний застосунок",
+          "alt": "Екрани інтернет-магазину Miyolo та мобільного застосунку Yolo"
+        }
+      },
+      "work": {
+        "eyebrow": "Вибрані роботи",
+        "title": "Різні завдання.\nПродумані рішення.",
+        "intro": "Інтернет-магазини, вебплатформи та мобільні продукти. Кожен розв’язує конкретне завдання.",
+        "filters": { "all": "Усі", "web": "Веб", "mobile": "Мобільні" },
+        "filterStatus": "Показано вибраних проєктів: {count}",
+        "allProjects": "Усі 29 робіт у портфоліо"
+      },
+      "caseStudies": {
+        "monarh": {
+          "summary": "Редизайн чинного інтернет-магазину: головна сторінка, каталог, сторінка товару та кошик.",
+          "alt": "Версії інтернет-магазину Monarh Market для комп’ютера й телефона",
+          "linkLabel": "Переглянути"
+        },
+        "okh": {
+          "summary": "Дата події, карта маршруту й сповіщення — в одному мобільному застосунку.",
+          "alt": "Застосунок OKH: екрани події, карти маршруту та статей",
+          "linkLabel": "App Store"
+        },
+        "agentmama": {
+          "summary": "Вебінтерфейс, аналіз за допомогою ШІ та фонові процеси для підготовки рекламних кампаній.",
+          "alt": "Вебінтерфейс платформи ШІ-агентів Agentmama",
+          "linkLabel": "Переглянути"
+        },
+        "miyolo": {
+          "summary": "Інтернет-магазин і мобільний застосунок із каталогом, кошиком та замовленнями.",
+          "alt": "Екрани інтернет-магазину Miyolo та мобільного застосунку Yolo",
+          "linkLabel": "Переглянути"
+        }
+      },
+      "services": {
+        "title": "Одна ідея.\nЦілісний\nпродукт.",
+        "intro": "Від інтерфейсу, який бачить користувач, до системи за ним. Поєдную потрібні вашому проєкту частини в узгоджене рішення.",
+        "detailsLabel": "Докладніше про послугу",
+        "systemsTitle": "Інтеграція систем",
+        "tags": {
+          "web": ["Лендинг", "Інтернет-магазин", "Вебплатформа"],
+          "bots": ["Замовлення", "Автоматизація", "Інтеграція з API"],
+          "mobile": [
+            "Мобільний інтерфейс",
+            "Серверна частина",
+            "Push-сповіщення"
+          ]
+        }
+      },
+      "about": {
+        "title": "Ви працюєте безпосередньо з фахівцем, який розуміє вашу ідею та сам утілює її в продукт."
+      },
+      "process": {
+        "discover": {
+          "title": "Визначення завдання",
+          "description": "Мета, користувачі та функції."
+        },
+        "agree": {
+          "title": "Погодження рішення",
+          "description": "Інтерфейс, обсяг робіт, ціна й терміни."
+        },
+        "develop": {
+          "title": "Розробка",
+          "description": "Код, інтеграції та результати кожного етапу."
+        },
+        "verify": {
+          "title": "Перевірка",
+          "description": "Тестування, вихідний код і передача проєкту."
+        }
+      },
+      "faq": { "title": "Перед\nпочатком." },
+      "contact": {
+        "title": "Наступна ідея —\nваша.",
+        "intro": "Що хочете створити й для кого? Напишіть коротко. Разом визначимо рішення.",
+        "cta": "Написати в Telegram",
+        "strap": "Вебсайт · Telegram-бот · Мобільний застосунок"
+      },
+      "footer": { "line": "Розробка IT-продуктів для бізнесу" },
+      "detail": {
+        "backHome": "На головну",
+        "eyebrow": "Розробка IT-продуктів",
+        "useCasesTitle": "Для яких завдань",
+        "relatedServicesTitle": "Інші послуги",
+        "discussCta": "Обговорити цей проєкт"
+      }
+    },
+    "be": {
+      "languageName": "Беларуская",
+      "accessibility": {
+        "skipLink": "Перайсці да асноўнага змесціва",
+        "mainNavigation": "Асноўная навігацыя",
+        "mobileNavigation": "Мабільная навігацыя",
+        "homeLabel": "Shavkatbek Ruzibekov — галоўная старонка",
+        "filtersLabel": "Фільтр праектаў паводле кірунку"
+      },
+      "controls": {
+        "menu": "Меню",
+        "closeMenu": "Закрыць",
+        "lightTheme": "Светлая",
+        "darkTheme": "Цёмная",
+        "switchToLight": "Пераключыцца на светлую тэму",
+        "switchToDark": "Пераключыцца на цёмную тэму"
+      },
+      "hero": {
+        "words": {
+          "web": "Сайты.",
+          "bots": "Боты.",
+          "mobile": "Мабільныя праграмы."
+        },
+        "intro": "Распрацоўваю ІТ-прадукты для вашага бізнесу.",
+        "ideaStrap": "Ад ідэі да інтэрфейсу і кода.",
+        "responsibilityStrap": "Рэальныя праекты. Асабістая адказнасць."
+      },
+      "heroProjects": {
+        "wegotrip": {
+          "category": "Мабільная праграма",
+          "alt": "Пачатковы экран мабільнай праграмы WeGoTrip"
+        },
+        "monarh": {
+          "category": "Вэб / Інтэрнэт-крама",
+          "alt": "Інтэрфейсы інтэрнэт-крамы Monarh Market для камп’ютара, планшэта і тэлефона"
+        },
+        "tildon": {
+          "category": "iOS + Android",
+          "alt": "Экраны граматыкі, тэстаў і рэйтынгу ў мабільнай праграме Tildon"
+        },
+        "miyolo": {
+          "category": "Вэб + мабільная праграма",
+          "alt": "Экраны інтэрнэт-крамы Miyolo і мабільнай праграмы Yolo"
+        }
+      },
+      "work": {
+        "eyebrow": "Выбраныя працы",
+        "title": "Розныя задачы.\nПрадуманыя рашэнні.",
+        "intro": "Інтэрнэт-крамы, вэб-платформы і мабільныя прадукты. Кожны вырашае пэўную задачу.",
+        "filters": { "all": "Усе", "web": "Вэб", "mobile": "Мабільныя" },
+        "filterStatus": "Паказана выбраных праектаў: {count}",
+        "allProjects": "Усе 29 прац у партфоліа"
+      },
+      "caseStudies": {
+        "monarh": {
+          "summary": "Рэдызайн дзейнай інтэрнэт-крамы: галоўная старонка, каталог, старонка тавару і кошык.",
+          "alt": "Версіі інтэрнэт-крамы Monarh Market для камп’ютара і тэлефона",
+          "linkLabel": "Паглядзець"
+        },
+        "okh": {
+          "summary": "Дата падзеі, карта маршруту і апавяшчэнні — у адной мабільнай праграме.",
+          "alt": "Праграма OKH: экраны падзеі, карты маршруту і артыкулаў",
+          "linkLabel": "App Store"
+        },
+        "agentmama": {
+          "summary": "Вэб-інтэрфейс, аналіз з дапамогай ШІ і фонавыя працэсы для падрыхтоўкі рэкламных кампаній.",
+          "alt": "Вэб-інтэрфейс платформы ШІ-агентаў Agentmama",
+          "linkLabel": "Паглядзець"
+        },
+        "miyolo": {
+          "summary": "Інтэрнэт-крама і мабільная праграма з каталогам, кошыкам і замовамі.",
+          "alt": "Экраны інтэрнэт-крамы Miyolo і мабільнай праграмы Yolo",
+          "linkLabel": "Паглядзець"
+        }
+      },
+      "services": {
+        "title": "Адна ідэя.\nСуцэльны\nпрадукт.",
+        "intro": "Ад інтэрфейсу, які бачыць карыстальнік, да сістэмы за ім. Аб’ядноўваю патрэбныя вашаму праекту часткі ў зладжанае рашэнне.",
+        "detailsLabel": "Падрабязней пра паслугу",
+        "systemsTitle": "Інтэграцыя сістэм",
+        "tags": {
+          "web": ["Лэндынг", "Інтэрнэт-крама", "Вэб-платформа"],
+          "bots": ["Замовы", "Аўтаматызацыя", "Інтэграцыя з API"],
+          "mobile": [
+            "Мабільны інтэрфейс",
+            "Серверная частка",
+            "Push-апавяшчэнні"
+          ]
+        }
+      },
+      "about": {
+        "title": "Вы працуеце непасрэдна са спецыялістам, які разумее вашу ідэю і сам увасабляе яе ў прадукце."
+      },
+      "process": {
+        "discover": {
+          "title": "Вызначэнне задачы",
+          "description": "Мэта, карыстальнікі і функцыі."
+        },
+        "agree": {
+          "title": "Узгадненне рашэння",
+          "description": "Інтэрфейс, аб’ём працы, цана і тэрміны."
+        },
+        "develop": {
+          "title": "Распрацоўка",
+          "description": "Код, інтэграцыі і вынікі кожнага этапу."
+        },
+        "verify": {
+          "title": "Праверка",
+          "description": "Тэставанне, зыходны код і перадача праекта."
+        }
+      },
+      "faq": { "title": "Перад\nпачаткам." },
+      "contact": {
+        "title": "Наступная ідэя —\nваша.",
+        "intro": "Што хочаце стварыць і для каго? Напішыце коратка. Разам вызначым рашэнне.",
+        "cta": "Напісаць у Telegram",
+        "strap": "Вэб-сайт · Telegram-бот · Мабільная праграма"
+      },
+      "footer": { "line": "Распрацоўка ІТ-прадуктаў для бізнесу" },
+      "detail": {
+        "backHome": "На галоўную",
+        "eyebrow": "Распрацоўка ІТ-прадуктаў",
+        "useCasesTitle": "Для якіх задач",
+        "relatedServicesTitle": "Іншыя паслугі",
+        "discussCta": "Абмеркаваць гэты праект"
+      }
+    }
+  }
+}
