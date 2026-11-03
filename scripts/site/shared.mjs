@@ -122,6 +122,8 @@ export function head({
 <title>${escapeHtml(title)}</title>
 <meta name="description" content="${escapeHtml(description)}">
 <meta name="author" content="Shavkatbek Ruzibekov">
+<meta name="google-site-verification" content="rGHEWrWbzSXJ61d0tmQsZc5wO5qhwP5FtKCLaTwnMQU">
+<meta name="yandex-verification" content="67977ee61149d111">
 <meta name="theme-color" content="#eceef1" id="themeColorMeta">
 <link rel="canonical" href="${canonical}">
 ${locales.map((language) => `<link rel="alternate" hreflang="${language}" href="${absoluteUrl(pagePath(language, slug))}">`).join('\n')}
