@@ -16,7 +16,8 @@
     "about": "About me",
     "faq": "Questions",
     "contact": "Contact",
-    "language": "Language"
+    "language": "Language",
+    "home": "Home"
   },
   "hero": {
     "eyebrow": "Shavkatbek Ruzibekov · Product development",
@@ -117,5 +118,20 @@
       "question": "Can you build a website in several languages?",
       "answer": "Yes. I can provide separate pages for each language, a language switcher, and the technical foundation for search indexing. We agree the languages, translations, and review process separately. Multilingual pages do not guarantee search positions."
     }
-  ]
+  ],
+  "caseStudy": {
+    "breadcrumb": "Breadcrumb",
+    "descriptors": {
+      "web": "web project",
+      "mobile": "mobile app"
+    },
+    "stack": "Tech stack",
+    "links": "Project links",
+    "services": "Related services",
+    "ctaTitle": "Need a similar project?",
+    "pager": "More projects",
+    "previous": "Previous project",
+    "next": "Next project",
+    "openCase": "Case study"
+  }
 }

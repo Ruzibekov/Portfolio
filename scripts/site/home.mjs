@@ -47,6 +47,13 @@ const cases = [
   },
 ]
 
+export function homeFaqItems(copy, future) {
+  return [
+    ...copy.faq,
+    { question: future.faq.aiQuestion, answer: future.faq.aiAnswer },
+  ]
+}
+
 export function renderHome({ locale, copy, ui, shared }) {
   const f = futureCopy()[locale]
   if (!f) throw new Error(`Missing future-facing interface copy for ${locale}`)
@@ -58,8 +65,8 @@ export function renderHome({ locale, copy, ui, shared }) {
       (
         item,
       ) => `<article class="project-card" id="${item.key}" data-category="${item.category}">
-    <figure class="case-figure"><img src="/screenshots/${item.image}" width="${item.width}" height="${item.height}" alt="${e(ui.caseStudies[item.key].alt)}" loading="lazy"></figure>
-    <div class="case-meta"><div><h3>${e(item.name)}</h3><p>${e(ui.caseStudies[item.key].summary)}</p><span class="case-stack">${e(item.stack)}</span></div><a class="text-link" href="${item.url}" target="_blank" rel="noopener noreferrer">${e(ui.caseStudies[item.key].linkLabel)} ${arrow}</a></div>
+    <a class="case-figure-link" href="${shared.casePath(locale, item.key)}" tabindex="-1"><figure class="case-figure"><img src="/screenshots/${item.image}" width="${item.width}" height="${item.height}" alt="${e(ui.caseStudies[item.key].alt)}" loading="lazy"></figure></a>
+    <div class="case-meta"><div><h3><a class="case-title-link" href="${shared.casePath(locale, item.key)}">${e(item.name)}</a></h3><p>${e(ui.caseStudies[item.key].summary)}</p><span class="case-stack">${e(item.stack)}</span></div><a class="text-link" href="${item.url}" target="_blank" rel="noopener noreferrer">${e(ui.caseStudies[item.key].linkLabel)} ${arrow}</a></div>
   </article>`,
     )
     .join('')
@@ -75,10 +82,7 @@ export function renderHome({ locale, copy, ui, shared }) {
         `<li><span class="technical-label">0${index + 1} / ${e(f.process.labels[index])}</span><h3>${e(step.title)}</h3><p>${e(step.description)}</p></li>`,
     )
     .join('')
-  const faqItems = [
-    ...copy.faq,
-    { question: f.faq.aiQuestion, answer: f.faq.aiAnswer },
-  ]
+  const faqItems = homeFaqItems(copy, f)
   const faq = faqItems
     .map(
       (item) =>
@@ -137,6 +141,7 @@ export function renderHome({ locale, copy, ui, shared }) {
     ui: { ...ui, contact: { ...ui.contact, title: f.contact.title } },
     title: copy.seo.title,
     description: copy.seo.description,
+    graph: [shared.faqNode(shared.pagePath(locale), faqItems)],
     body,
     bodyClass: 'concept-v5 home-page',
   })

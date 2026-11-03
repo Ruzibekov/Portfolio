@@ -183,6 +183,11 @@
 .gallery-actions a:active {
   transform: translateY(2px);
 }
+.gallery-actions .gallery-case-link {
+  gap: 6px;
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
 .gallery-availability {
   padding-block: 8px;
   color: var(--muted);

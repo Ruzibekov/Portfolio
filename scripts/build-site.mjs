@@ -12,6 +12,7 @@ import { fileURLToPath } from 'node:url'
 import * as shared from './site/shared.mjs'
 import { renderService } from './site/service.mjs'
 import { renderWork, validateCaseCopy } from './site/work.mjs'
+import { renderCase } from './site/case.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const destination = join(root, 'dist')
@@ -86,6 +87,7 @@ const publicAssets = [
   'assets/bento.css',
   'assets/services.css',
   'assets/work-gallery.css',
+  'assets/case.css',
   'favicon.svg',
   'og-image.png',
 ]
@@ -160,6 +162,21 @@ for (const locale of shared.locales) {
     renderWork({ locale, copy, ui, cases, caseCopy: caseCopies[locale] }),
   )
   canonicalPaths.push(shared.pagePath(locale, 'work'))
+  for (const key of shared.caseKeys) {
+    const path = shared.casePath(locale, key)
+    writePage(
+      path.slice(1),
+      renderCase({
+        locale,
+        copy,
+        ui,
+        cases,
+        caseCopy: caseCopies[locale],
+        key,
+      }),
+    )
+    canonicalPaths.push(path)
+  }
   for (const slug of shared.serviceSlugs) {
     writePage(
       `${locale}/services/${slug}`,

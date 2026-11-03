@@ -4,6 +4,9 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { validateCaseCopy } from './site/work.mjs'
 import {
+  caseKeys,
+  casePath,
+  caseSlug,
   escapeHtml,
   lineBreaks,
   locales,
@@ -11,6 +14,8 @@ import {
   pagePath,
   serviceSlugs,
 } from './site/shared.mjs'
+import { caseServices, caseStack } from './site/case.mjs'
+import { galleryLabels } from './site/work.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const destination = join(root, 'dist')
@@ -22,11 +27,52 @@ const attribute = (tag, name) =>
   tag.match(new RegExp(`\\b${name}=["']([^"']*)["']`, 'i'))?.[1]
 const links = (html) => html.match(/<link\b[^>]*>/gi) ?? []
 const read = (path) => readFileSync(join(destination, path), 'utf8')
-const expectedPaths = locales.flatMap((locale) => [
-  pagePath(locale),
-  pagePath(locale, 'work'),
-  ...serviceSlugs.map((slug) => pagePath(locale, slug)),
-])
+const caseSlugs = caseKeys.map(caseSlug)
+const pageSlugs = [null, 'work', ...serviceSlugs, ...caseSlugs]
+const expectedPaths = locales.flatMap((locale) =>
+  pageSlugs.map((slug) => pagePath(locale, slug)),
+)
+const readJson = (path) => JSON.parse(readFileSync(join(root, path), 'utf8'))
+const localeCopy = Object.fromEntries(
+  locales.map((locale) => [locale, readJson(`content/locales/${locale}.json`)]),
+)
+const futureCopy = readJson('content/future-ui.json').locales
+const decodeHtml = (value) =>
+  value
+    .replace(/<br>/g, '\n')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&')
+const visibleFaq = (html) =>
+  [
+    ...html.matchAll(
+      /<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g,
+    ),
+  ].map((match) => ({
+    question: decodeHtml(match[1]),
+    answer: decodeHtml(match[2]),
+  }))
+const graphNodes = (schema, type) =>
+  schema['@graph'].filter((node) => node['@type'] === type)
+function assertBreadcrumb(schema, route, names) {
+  const [breadcrumb] = graphNodes(schema, 'BreadcrumbList')
+  assert.ok(breadcrumb, `Missing BreadcrumbList at ${route}`)
+  assert.deepEqual(
+    breadcrumb.itemListElement.map((item) => item.name),
+    names,
+    `Wrong breadcrumb names at ${route}`,
+  )
+  assert.equal(
+    breadcrumb.itemListElement.at(-1).item,
+    `${origin}${route}`,
+    `Breadcrumb must end at the page itself at ${route}`,
+  )
+  breadcrumb.itemListElement.forEach((item, index) =>
+    assert.equal(item.position, index + 1),
+  )
+}
 const titles = new Set()
 const cases = JSON.parse(
   readFileSync(join(root, 'content/cases.json'), 'utf8'),
@@ -139,10 +185,14 @@ function inspectPage(html, locale, slug) {
     1,
     `Expected one structured data graph at ${route}`,
   )
+  assert.ok(!schemas[0][1].includes('<'), `Unescaped JSON-LD at ${route}`)
   const schema = JSON.parse(schemas[0][1])
   assert.equal(schema['@context'], 'https://schema.org')
+  const copy = localeCopy[locale]
   const person = schema['@graph'].find((node) => node['@type'] === 'Person')
   assert.equal(person?.name, 'Shavkatbek Ruzibekov')
+  assert.equal(person?.jobTitle, copy.identity.role)
+  assert.equal(person?.image, `${origin}/assets/avatar.jpg`)
   assert.equal(person?.email, 'ruzibekov44@gmail.com')
   assert.deepEqual(person?.sameAs, ['https://t.me/ruzibekov_sh'])
   assert.ok(
@@ -154,11 +204,65 @@ function inspectPage(html, locale, slug) {
     schema['@graph'].filter((node) => node['@type'] === 'Service').length,
     serviceSlugs.includes(slug) ? 1 : 0,
   )
-  if (serviceSlugs.includes(slug))
-    assert.equal(
-      schema['@graph'].find((node) => node['@type'] === 'Service').url,
-      url,
+  if (serviceSlugs.includes(slug)) {
+    const [service] = graphNodes(schema, 'Service')
+    assert.equal(service.url, url)
+    assert.equal(service.name, copy.services[slug].name)
+    assert.deepEqual(
+      service.areaServed.map((area) => [area['@type'], area.name]),
+      [
+        'Uzbekistan',
+        'Kazakhstan',
+        'Kyrgyzstan',
+        'Tajikistan',
+        'Russia',
+        'Ukraine',
+        'Belarus',
+      ].map((name) => ['Country', name]),
     )
+    assert.deepEqual(
+      service.availableLanguage.map((language) => language.alternateName),
+      locales,
+    )
+    assertBreadcrumb(schema, route, [
+      copy.navigation.home,
+      copy.services[slug].name,
+    ])
+  }
+  const faqPages = graphNodes(schema, 'FAQPage')
+  if (slug === null || serviceSlugs.includes(slug)) {
+    assert.equal(faqPages.length, 1, `Missing FAQPage at ${route}`)
+    const visible = visibleFaq(html)
+    assert.ok(visible.length > 0, `Missing visible FAQ at ${route}`)
+    assert.deepEqual(
+      faqPages[0].mainEntity.map((entry) => ({
+        question: entry.name,
+        answer: entry.acceptedAnswer.text,
+      })),
+      visible,
+      `FAQPage differs from visible FAQ at ${route}`,
+    )
+    const expected =
+      slug === null
+        ? [
+            ...copy.faq,
+            {
+              question: futureCopy[locale].faq.aiQuestion,
+              answer: futureCopy[locale].faq.aiAnswer,
+            },
+          ]
+        : copy.faq
+    assert.deepEqual(
+      visible,
+      expected.map(({ question, answer }) => ({ question, answer })),
+      `Visible FAQ differs from source copy at ${route}`,
+    )
+  } else assert.equal(faqPages.length, 0, `Unexpected FAQPage at ${route}`)
+  if (slug === 'work')
+    assertBreadcrumb(schema, route, [
+      copy.navigation.home,
+      copy.navigation.work,
+    ])
   const ids = new Set(
     [...html.matchAll(/\bid=["']([^"']+)["']/g)].map((match) => match[1]),
   )
@@ -186,7 +290,7 @@ function inspectPage(html, locale, slug) {
       `Language switch loses page family at ${route}`,
     )
   for (const related of serviceSlugs.filter(
-    (item) => item !== slug && slug !== 'work',
+    (item) => item !== slug && (slug === null || serviceSlugs.includes(slug)),
   ))
     assert.ok(
       html.includes(`href="${pagePath(locale, related)}"`),
@@ -196,7 +300,7 @@ function inspectPage(html, locale, slug) {
 }
 
 for (const locale of locales) {
-  for (const slug of [null, 'work', ...serviceSlugs]) {
+  for (const slug of pageSlugs) {
     const route = pagePath(locale, slug)
     const html = read(`${route.slice(1)}/index.html`)
     const title = inspectPage(html, locale, slug)
@@ -204,7 +308,7 @@ for (const locale of locales) {
     titles.add(title)
   }
 }
-assert.equal(titles.size, 56)
+assert.equal(titles.size, 104)
 for (const locale of locales) {
   const translations = ['ru', 'en', 'uz'].includes(locale)
     ? Object.fromEntries(
@@ -308,7 +412,116 @@ assert.deepEqual(
   new Set(sitemapUrls),
   new Set(expectedPaths.map((path) => `${origin}${path}`)),
 )
-assert.equal(sitemapUrls.length, 56)
+assert.equal(sitemapUrls.length, 104)
+const caseTranslations = (locale) =>
+  ['ru', 'en', 'uz'].includes(locale)
+    ? Object.fromEntries(
+        cases.map((item) => [item.key, item.translations[locale]]),
+      )
+    : readJson(`content/case-copy/${locale}.json`)
+for (const locale of locales) {
+  const copy = localeCopy[locale]
+  const translations = caseTranslations(locale)
+  const home = read(`${locale}/index.html`)
+  for (const key of ['agentmama', 'monarh', 'miyolo', 'okh'])
+    assert.ok(
+      home.includes(
+        `<a class="case-title-link" href="${casePath(locale, key)}">`,
+      ),
+      `Home card does not open the case page ${locale}/${key}`,
+    )
+  const gallery = read(`${locale}/work/index.html`)
+  for (const key of caseKeys)
+    assert.ok(
+      gallery.includes(
+        `<a class="gallery-case-link" href="${casePath(locale, key)}">${escapeHtml(copy.caseStudy.openCase)}`,
+      ),
+      `Gallery does not link the case page ${locale}/${key}`,
+    )
+  caseKeys.forEach((key, index) => {
+    const item = cases.find((entry) => entry.key === key)
+    const words = translations[key]
+    const route = casePath(locale, key)
+    const url = `${origin}${route}`
+    const html = read(`${route.slice(1)}/index.html`)
+    assert.ok(
+      html.includes(`<h1 id="case-title">${escapeHtml(words.title)}</h1>`),
+      `Wrong case heading at ${route}`,
+    )
+    assert.ok(html.includes(escapeHtml(words.summary)))
+    assert.ok(
+      html.includes(`src="${item.image.src}" alt="${escapeHtml(words.alt)}"`),
+      `Missing localized hero image at ${route}`,
+    )
+    for (const field of ['task', 'solution', 'result']) {
+      assert.ok(
+        html.includes(
+          `>${escapeHtml(galleryLabels[locale][field])}</h2><p data-case-field="${field}">${escapeHtml(words[field])}</p>`,
+        ),
+        `Missing localized ${field} at ${route}`,
+      )
+    }
+    for (const part of caseStack(item))
+      assert.ok(html.includes(`<li>${escapeHtml(part)}</li>`))
+    item.links.forEach((link, linkIndex) =>
+      assert.ok(
+        html.includes(
+          `href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(words.actions[linkIndex])}</a>`,
+        ),
+        `Missing external case link at ${route}`,
+      ),
+    )
+    for (const slug of caseServices(item))
+      assert.ok(
+        html.includes(
+          `href="${pagePath(locale, slug)}"><span>${escapeHtml(copy.services[slug].name)}</span>`,
+        ),
+        `Missing related service ${slug} at ${route}`,
+      )
+    assert.ok(
+      html.includes(
+        `href="${copy.identity.contact.telegram}" target="_blank" rel="noopener noreferrer"><span class="button-content">${escapeHtml(copy.hero.primaryCta)}`,
+      ),
+      `Missing case CTA at ${route}`,
+    )
+    const previous = caseKeys.at(index - 1)
+    const next = caseKeys[(index + 1) % caseKeys.length]
+    assert.ok(html.includes(`href="${casePath(locale, previous)}" rel="prev"`))
+    assert.ok(html.includes(`href="${casePath(locale, next)}" rel="next"`))
+    assert.ok(sitemapUrls.includes(url), `Case page missing in sitemap ${url}`)
+    const schema = JSON.parse(
+      html.match(
+        /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i,
+      )[1],
+    )
+    assertBreadcrumb(schema, route, [
+      copy.navigation.home,
+      copy.navigation.work,
+      words.title,
+    ])
+    const [work] = graphNodes(schema, 'CreativeWork')
+    assert.ok(work, `Missing CreativeWork at ${route}`)
+    assert.equal(work.name, words.title)
+    assert.equal(work.description, words.summary)
+    assert.equal(work.url, url)
+    assert.equal(work.image, `${origin}${item.image.src}`)
+    assert.equal(work.inLanguage, locale)
+    assert.equal(work.creator['@id'], `${origin}/#person`)
+    assert.deepEqual(work.keywords, caseStack(item))
+    assert.deepEqual(
+      work.sameAs,
+      item.links.map((link) => link.href),
+    )
+    const title = html.match(/<title>([\s\S]*?)<\/title>/i)[1]
+    assert.ok(
+      title.startsWith(`${escapeHtml(words.title)} — `) &&
+        title.endsWith(' | Shavkatbek Ruzibekov'),
+      `Unexpected case title at ${route}`,
+    )
+  })
+}
+assert.throws(() => caseSlug('mynails'), /Unknown case/)
+assert.throws(() => pagePath('uz', 'work/mynails'), /Unknown case/)
 assert.ok(
   sitemap.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'),
 )
@@ -378,7 +591,7 @@ const walk = (directory) =>
       : [join(directory, entry.name)],
   )
 const files = walk(destination)
-assert.equal(files.filter((path) => path.endsWith('.html')).length, 58)
+assert.equal(files.filter((path) => path.endsWith('.html')).length, 106)
 assert.ok(
   files.every(
     (path) =>
@@ -447,5 +660,5 @@ assert.throws(
   /Missing real email/,
 )
 console.log(
-  'Static verification passed: 56 canonical multilingual pages, reciprocal alternates, truthful metadata, real contacts, public assets, 29 preserved cases per gallery and controlled failure checks.',
+  'Static verification passed: 104 canonical multilingual pages, reciprocal alternates, truthful metadata, real contacts, public assets, 29 preserved cases per gallery and controlled failure checks.',
 )

@@ -1,9 +1,12 @@
 import {
+  breadcrumbNode,
   escapeHtml,
+  faqNode,
   pagePath,
   processSteps,
   faq,
   renderDocument,
+  serviceNode,
 } from './shared.mjs'
 
 const projects = {
@@ -60,12 +63,22 @@ ${evidence ? `<section class="service-proof-band"><div class="wrap service-secti
 <section class="wrap service-section service-process-section" aria-labelledby="process-title"><h2 id="process-title">${escapeHtml(ui.about.title)}</h2>${processSteps({ ui })}</section>
 ${faq({ copy, ui })}
 <section class="wrap service-section service-related" aria-labelledby="related-title"><h2 id="related-title">${escapeHtml(ui.detail.relatedServicesTitle)}</h2><div>${related}</div></section>`
+  const path = pagePath(locale, slug)
+  const offer = serviceNode(path, service)
   return renderDocument({
     locale,
     copy,
     ui,
     slug,
-    service,
+    graph: [
+      offer,
+      faqNode(path, copy.faq),
+      breadcrumbNode(path, [
+        { name: copy.navigation.home, path: pagePath(locale) },
+        { name: service.name, path },
+      ]),
+    ],
+    about: offer['@id'],
     title: service.seo.title,
     description: service.seo.description,
     body,

@@ -16,7 +16,8 @@
     "about": "Men haqimda",
     "faq": "Savollar",
     "contact": "Bog‘lanish",
-    "language": "Til"
+    "language": "Til",
+    "home": "Bosh sahifa"
   },
   "hero": {
     "eyebrow": "Shavkatbek Ruzibekov · IT mahsulotlar ishlab chiqish",
@@ -117,5 +118,20 @@
       "question": "Bir nechta tilda sayt yaratib bera olasizmi?",
       "answer": "Ha. Har bir til uchun alohida sahifalar, til almashtirgich va qidiruvda indekslanish uchun texnik asos tayyorlayman. Tillar, tarjimalar va matnni tekshirish tartibini alohida kelishamiz. Ko‘p tilli sahifalar qidiruvdagi o‘rinni kafolatlamaydi."
     }
-  ]
+  ],
+  "caseStudy": {
+    "breadcrumb": "Sahifa yo‘li",
+    "descriptors": {
+      "web": "veb-loyiha",
+      "mobile": "mobil ilova"
+    },
+    "stack": "Texnologiyalar",
+    "links": "Loyiha havolalari",
+    "services": "Tegishli xizmatlar",
+    "ctaTitle": "Shunga o‘xshash loyiha kerakmi?",
+    "pager": "Boshqa loyihalar",
+    "previous": "Oldingi loyiha",
+    "next": "Keyingi loyiha",
+    "openCase": "Loyiha sahifasi"
+  }
 }

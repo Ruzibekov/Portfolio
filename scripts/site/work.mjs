@@ -1,4 +1,11 @@
-import { escapeHtml, pagePath, renderDocument } from './shared.mjs'
+import {
+  breadcrumbNode,
+  caseKeys,
+  casePath,
+  escapeHtml,
+  pagePath,
+  renderDocument,
+} from './shared.mjs'
 
 export const galleryLabels = {
   uz: {
@@ -139,13 +146,16 @@ export function renderWork({ locale, copy, ui, cases, caseCopy }) {
             `<a href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(words.actions[index])}</a>`,
         )
         .join('')
+      const caseLink = caseKeys.includes(item.key)
+        ? `<a class="gallery-case-link" href="${casePath(locale, item.key)}">${escapeHtml(copy.caseStudy.openCase)} <span aria-hidden="true">→</span></a>`
+        : ''
       const availability =
         words.status || (!item.links.length ? labels.noPublicLink : '')
       return `<article class="gallery-case" id="${escapeHtml(item.id)}" data-case-key="${escapeHtml(item.key)}" data-category="${escapeHtml(item.categories.join(' '))}" data-source-status="${item.statusType}">
 <img class="gallery-image" src="${escapeHtml(item.image.src)}" alt="${escapeHtml(words.alt)}" width="${item.image.width}" height="${item.image.height}" loading="lazy">
 <div class="gallery-case-copy"><h2>${escapeHtml(words.title)}</h2><p class="gallery-summary">${escapeHtml(words.summary)}</p><p class="gallery-stack">${escapeHtml(item.stack)}</p>
 <details class="gallery-details"><summary><span>${escapeHtml(labels.details)}</span><span aria-hidden="true">+</span></summary><dl>${['task', 'solution', 'result'].map((field) => `<div><dt>${escapeHtml(labels[field])}</dt><dd data-case-field="${field}">${escapeHtml(words[field])}</dd></div>`).join('')}</dl></details>
-<div class="gallery-actions">${actions}${availability ? `<span class="gallery-availability">${escapeHtml(availability)}</span>` : ''}</div></div></article>`
+<div class="gallery-actions">${caseLink}${actions}${availability ? `<span class="gallery-availability">${escapeHtml(availability)}</span>` : ''}</div></div></article>`
     })
     .join('')
   const body = `<section class="wrap gallery-hero" aria-labelledby="gallery-title"><a class="service-back" href="${pagePath(locale)}">← ${escapeHtml(ui.detail.backHome)}</a><p class="eyebrow">${escapeHtml(ui.detail.eyebrow)}</p><h1 id="gallery-title">${escapeHtml(copy.navigation.work)}<span class="gallery-total">${cases.length}</span></h1><p>${escapeHtml(ui.work.intro)}</p></section>
@@ -155,6 +165,12 @@ export function renderWork({ locale, copy, ui, cases, caseCopy }) {
     copy,
     ui,
     slug: 'work',
+    graph: [
+      breadcrumbNode(pagePath(locale, 'work'), [
+        { name: copy.navigation.home, path: pagePath(locale) },
+        { name: copy.navigation.work, path: pagePath(locale, 'work') },
+      ]),
+    ],
     title: `${ui.work.allProjects} | Shavkatbek Ruzibekov`,
     description: `${ui.work.intro} ${ui.hero.intro}`,
     body,

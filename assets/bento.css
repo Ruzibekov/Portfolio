@@ -471,6 +471,31 @@ a.tile:hover .mock-phone + .mock-phone {
 :root[data-theme='dark'] .service-contact .button {
   color: #0b0d11;
 }
+.case-figure-link {
+  display: block;
+  border-radius: 16px;
+}
+.case-figure-link .case-figure {
+  transition: transform var(--ui) var(--ease);
+}
+.case-figure-link:hover .case-figure {
+  transform: scale(0.99);
+}
+.case-figure-link:active .case-figure {
+  transform: scale(0.98);
+}
+.case-title-link {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 6px;
+  transition: text-decoration-color var(--ui) var(--ease);
+}
+.case-title-link:hover {
+  text-decoration-color: currentColor;
+}
+.case-title-link:active {
+  opacity: 0.7;
+}
 @media (prefers-reduced-motion: reduce) {
   .button,
   .service {
@@ -553,5 +578,15 @@ a.tile:hover .mock-phone + .mock-phone {
   }
   .mock-prompt .answer::after {
     animation: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-figure-link .case-figure,
+  .case-title-link {
+    transition: none;
+  }
+  .case-figure-link:hover .case-figure,
+  .case-figure-link:active .case-figure {
+    transform: none;
   }
 }

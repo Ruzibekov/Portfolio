@@ -8,6 +8,34 @@ export const serviceSlugs = [
   'business-automation',
   'ai-integrations',
 ]
+export const caseKeys = [
+  'agentmama',
+  'monarh',
+  'miyolo',
+  'okh',
+  'besttracker',
+  'altn',
+]
+const casePrefix = 'work/'
+const areaServed = [
+  'Uzbekistan',
+  'Kazakhstan',
+  'Kyrgyzstan',
+  'Tajikistan',
+  'Russia',
+  'Ukraine',
+  'Belarus',
+]
+const schemaLanguages = {
+  uz: 'Uzbek',
+  ru: 'Russian',
+  en: 'English',
+  ky: 'Kyrgyz',
+  kk: 'Kazakh',
+  tg: 'Tajik',
+  uk: 'Ukrainian',
+  be: 'Belarusian',
+}
 export const languageNames = {
   uz: 'O‘zbekcha',
   ru: 'Русский',
@@ -47,13 +75,28 @@ export function lineBreaks(value) {
   return escapeHtml(value).replace(/\\n|\r?\n/g, '<br>')
 }
 
+export function caseSlug(key) {
+  if (!caseKeys.includes(key)) throw new Error(`Unknown case: ${key}`)
+  return `${casePrefix}${key}`
+}
+
+export function isCaseSlug(slug) {
+  return typeof slug === 'string' && slug.startsWith(casePrefix)
+}
+
 export function pagePath(locale, slug = null) {
   if (!locales.includes(locale))
     throw new Error(`Unsupported locale: ${locale}`)
-  if (slug !== null && slug !== 'work' && !serviceSlugs.includes(slug))
-    throw new Error(`Unknown service: ${slug}`)
+  if (slug === null) return `/${locale}`
   if (slug === 'work') return `/${locale}/work`
-  return `/${locale}${slug ? `/services/${slug}` : ''}`
+  if (serviceSlugs.includes(slug)) return `/${locale}/services/${slug}`
+  if (isCaseSlug(slug))
+    return `/${locale}/${caseSlug(slug.slice(casePrefix.length))}`
+  throw new Error(`Unknown service: ${slug}`)
+}
+
+export function casePath(locale, key) {
+  return pagePath(locale, caseSlug(key))
 }
 
 export function absoluteUrl(path) {
@@ -62,17 +105,64 @@ export function absoluteUrl(path) {
   return `${origin}${path}`
 }
 
+export const personId = `${origin}/#person`
+
+export function breadcrumbNode(path, items) {
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${absoluteUrl(path)}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  }
+}
+
+export function faqNode(path, items) {
+  return {
+    '@type': 'FAQPage',
+    '@id': `${absoluteUrl(path)}#faq`,
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  }
+}
+
+export function serviceNode(path, service) {
+  const url = absoluteUrl(path)
+  return {
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: service.name,
+    description: service.description,
+    serviceType: service.name,
+    url,
+    provider: { '@id': personId },
+    areaServed: areaServed.map((name) => ({ '@type': 'Country', name })),
+    availableLanguage: locales.map((code) => ({
+      '@type': 'Language',
+      name: schemaLanguages[code],
+      alternateName: code,
+    })),
+  }
+}
+
 export function head({
   locale,
   title,
   description,
+  role,
   slug = null,
-  service = null,
-  canonicalPath = null,
+  graph = [],
+  about = null,
 }) {
-  const path = canonicalPath ?? pagePath(locale, slug)
+  const path = pagePath(locale, slug)
   const canonical = absoluteUrl(path)
-  const personId = `${origin}/#person`
+  const breadcrumb = graph.find((node) => node['@type'] === 'BreadcrumbList')
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -81,6 +171,8 @@ export function head({
         '@id': personId,
         name: 'Shavkatbek Ruzibekov',
         url: origin,
+        jobTitle: role,
+        image: `${origin}/assets/avatar.jpg`,
         email: 'ruzibekov44@gmail.com',
         sameAs: ['https://t.me/ruzibekov_sh'],
       },
@@ -100,21 +192,10 @@ export function head({
         description,
         inLanguage: locale,
         isPartOf: { '@id': `${origin}/#website` },
-        about: { '@id': service ? `${canonical}#service` : personId },
+        about: { '@id': about ?? personId },
+        ...(breadcrumb ? { breadcrumb: { '@id': breadcrumb['@id'] } } : {}),
       },
-      ...(service
-        ? [
-            {
-              '@type': 'Service',
-              '@id': `${canonical}#service`,
-              name: service.name,
-              description: service.description,
-              serviceType: service.name,
-              url: canonical,
-              provider: { '@id': personId },
-            },
-          ]
-        : []),
+      ...graph,
     ],
   }
   const json = JSON.stringify(schema).replace(/</g, '\\u003c')
@@ -154,6 +235,7 @@ ${locales
 <link rel="stylesheet" href="/assets/services.css">
 ${slug === 'work' ? '<link rel="stylesheet" href="/assets/work-gallery.css">' : ''}
 <link rel="stylesheet" href="/assets/bento.css">
+${isCaseSlug(slug) ? '<link rel="stylesheet" href="/assets/case.css">' : ''}
 <script type="application/ld+json">${json}</script>`
 }
 
@@ -203,13 +285,13 @@ export function renderDocument({
   title,
   description,
   slug = null,
-  service = null,
+  graph = [],
+  about = null,
   body,
   bodyClass = '',
-  canonicalPath = null,
 }) {
   return `<!doctype html>
-<html lang="${locale}" data-theme="light"><head>${head({ locale, title, description, slug, service, canonicalPath })}</head>
+<html lang="${locale}" data-theme="light"><head>${head({ locale, title, description, role: copy.identity.role, slug, graph, about })}</head>
 <body class="${escapeHtml(bodyClass)}" id="top">${header({ locale, copy, ui, slug })}<main id="main">${body}</main>${footer({ locale, copy, ui })}
 <script src="/assets/site.js" defer></script></body></html>`
 }
