@@ -137,7 +137,8 @@ for (const directory of ['assets', 'screenshots', 'projects/screenshots']) {
 for (const file of readdirSync(root).filter(
   (name) =>
     name === 'favicon.svg' ||
-    /^og-image\.(?:png|jpg|jpeg|webp|avif)$/.test(name),
+    /^og-image\.(?:png|jpg|jpeg|webp|avif)$/.test(name) ||
+    /^(?:google[0-9a-f]{16}|yandex_[0-9a-f]{16})\.html$/.test(name),
 ))
   cpSync(join(root, file), join(destination, file))
 

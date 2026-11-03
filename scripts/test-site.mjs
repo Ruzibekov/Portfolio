@@ -378,7 +378,18 @@ const walk = (directory) =>
       : [join(directory, entry.name)],
   )
 const files = walk(destination)
-assert.equal(files.filter((path) => path.endsWith('.html')).length, 58)
+const verificationFile =
+  /(?:^|\/)(?:google[0-9a-f]{16}|yandex_[0-9a-f]{16})\.html$/
+assert.equal(
+  files.filter((path) => path.endsWith('.html') && !verificationFile.test(path))
+    .length,
+  58,
+)
+for (const path of files.filter((item) => verificationFile.test(item)))
+  assert.match(
+    readFileSync(path, 'utf8'),
+    /^(?:google-site-verification: google[0-9a-f]{16}\.html|<html>[\s\S]*Verification: [0-9a-f]{16}[\s\S]*<\/html>\s*)$/,
+  )
 assert.ok(
   files.every(
     (path) =>
