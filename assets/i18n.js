@@ -1,24 +1,24 @@
 const DICT = {
   'meta.title': {
-    en: 'Anna Tashlanova, app and website developer',
-    uz: 'Anna Tashlanova, ilova va sayt dasturchisi',
+    en: 'Anna Tashlanova, full-stack developer and UI/UX designer',
+    uz: 'Anna Tashlanova, full-stack dasturchi va UI/UX dizayner',
   },
   'meta.description': {
-    en: 'I build mobile apps, websites and Telegram bots. 19 orders on Kwork, 5.0 rating.',
-    uz: "Mobil ilovalar, saytlar va Telegram-botlar qilaman. Kwork'da 19 buyurtma, reyting 5.0.",
+    en: 'Website and mobile app UI/UX design, full-stack development and Telegram bots. 19 orders on Kwork, 5.0 rating.',
+    uz: "Sayt va mobil ilovalar uchun UI/UX dizayn, full-stack dasturlash va Telegram-botlar. Kwork'da 19 buyurtma, reyting 5.0.",
   },
   'meta.ogLocale': { en: 'en_US', uz: 'uz_UZ' },
   'meta.ogTitle': {
-    en: 'Anna Tashlanova, app and website developer',
-    uz: 'Anna Tashlanova, ilova va sayt dasturchisi',
+    en: 'Anna Tashlanova, full-stack developer and UI/UX designer',
+    uz: 'Anna Tashlanova, full-stack dasturchi va UI/UX dizayner',
   },
   'meta.ogDescription': {
-    en: 'Phone apps and websites. 19 orders on Kwork, 5.0 rating.',
-    uz: "Telefon ilovalari va saytlar. Kwork'da 19 buyurtma, reyting 5.0.",
+    en: 'UI/UX design and development for websites and mobile apps. 19 orders on Kwork, 5.0 rating.',
+    uz: "Sayt va mobil ilovalar uchun UI/UX dizayn va dasturlash. Kwork'da 19 buyurtma, reyting 5.0.",
   },
   'meta.twitterDescription': {
-    en: 'Mobile apps, websites and Telegram bots. Case studies with the task and the result.',
-    uz: 'Mobil ilovalar, saytlar va Telegram-botlar. Har loyihada vazifa va natija.',
+    en: 'Website and mobile app UI/UX design, full-stack development and Telegram bots. Projects with the task and the result.',
+    uz: 'Sayt va mobil ilovalar uchun UI/UX dizayn, full-stack dasturlash va Telegram-botlar. Har loyihada vazifa va natija.',
   },
   skip: { en: 'Skip to projects', uz: 'Loyihalarga oʻtish' },
   'brand.word': {
@@ -44,8 +44,8 @@ const DICT = {
     uz: 'Ilova, sayt va Telegram-botlar qilaman',
   },
   'hero.lead': {
-    en: 'Flutter, Kotlin, Swift, Next.js. I publish to the App Store and Google Play and set up payments, maps and notifications. Below are 29 projects with the task and the result.',
-    uz: "Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqaraman, to'lov, xarita va bildirishnomalarni ulayman. Pastda 29 ta loyiha: vazifa va natija bilan.",
+    en: 'UI/UX design for websites and mobile apps, as a standalone service or with full-stack development. Flutter, Kotlin, Swift, Next.js. App Store and Google Play releases, payments, maps and notifications. Below are 29 projects with the task and the result.',
+    uz: "Sayt va mobil ilovalar uchun UI/UX dizaynni alohida yoki full-stack dasturlash bilan birga bajaraman. Flutter, Kotlin, Swift, Next.js. App Store va Google Play'ga chiqarish, to'lov, xarita va bildirishnomalar. Pastda 29 ta loyiha: vazifa va natija bilan.",
   },
   'hero.viewCases': { en: 'See my work', uz: 'Ishlarni koʻrish' },
   'receipt.label': {
@@ -58,8 +58,8 @@ const DICT = {
     uz: 'Anna Tashlanovaning profil surati',
   },
   'receipt.stack': {
-    en: 'Mobile apps and websites',
-    uz: 'Mobil ilovalar va saytlar',
+    en: 'Full-stack development · UI/UX design',
+    uz: 'Full-stack dasturlash · UI/UX dizayn',
   },
   'receipt.rating': { en: 'Kwork rating', uz: 'Kwork reytingi' },
   'receipt.orders': { en: 'Orders', uz: 'Buyurtmalar' },
@@ -200,7 +200,7 @@ const DICT = {
   },
   'work.monarh.desc': {
     en: 'A redesign of a Bitrix porcelain tile store for three cities.',
-    uz: 'Uch shahar uchun Bitrix\'dagi keramogranit doʻkoni redizayni.',
+    uz: "Uch shahar uchun Bitrix'dagi keramogranit doʻkoni redizayni.",
   },
   'work.monarh.task': {
     en: 'Refresh the design of a live tile store without stopping sales: home, catalog, collections, product page and cart.',

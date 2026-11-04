@@ -5,3 +5,11 @@ node_modules
 AGENTS.md
 Justfile
 design-tokens.md
+.claude-state
+.claude
+.codex
+.git
+.env
+.env.*
+work
+outputs
