@@ -45,12 +45,34 @@
       }
     },
     "telegram-bots": {
-      "name": "Telegram botlar va Mini App",
+      "name": "Telegram bot va Mini App yaratish",
       "description": "Buyurtma, mijozlarga xizmat ko‘rsatish, bildirishnoma va ish jarayonlari uchun Telegram bot hamda Mini App yarataman. Zaruratga qarab ma’lumotlar bazasi, CRM va to‘lov xizmatlarini ulayman.",
       "useCases": [
         "Buyurtma, band qilish yoki murojaat qabul qiladigan bot",
         "Katalog va shaxsiy kabinetli Mini App",
         "CRM bilan ma’lumot almashish va bildirishnomalar"
+      ],
+      "faq": [
+        {
+          "question": "Telegram bot yaratishga buyurtma berish uchun nima kerak?",
+          "answer": "Botdan kim foydalanishi, u qaysi ishni bajarishi va qanday ma’lumot yig‘ishini yozing. Masalan, buyurtma, band qilish yoki mijoz murojaatlarini qabul qilish. Suhbat ssenariysi, boshqaruv imkoniyatlari va kerakli integratsiyalarni aniqlab, ish hajmi, narx va bosqichlarni kelishamiz."
+        },
+        {
+          "question": "Oddiy Telegram bot bilan Mini App o‘rtasidagi farq nima?",
+          "answer": "Oddiy bot xabarlar, tugmalar va suhbat ssenariylari orqali ishlaydi. Katalog, savat yoki murakkab forma kerak bo‘lsa, Telegram ichida ochiladigan Mini App qulay bo‘lishi mumkin. Tanlovni mahsulotingiz vazifasi va foydalanuvchi qiladigan amallarga qarab birga aniqlaymiz."
+        },
+        {
+          "question": "Telegram botni CRM, sayt yoki to‘lov xizmatiga ulash mumkinmi?",
+          "answer": "Integratsiya uchun xizmatning rasmiy API imkoniyatlarini, kerakli ruxsatlarni va ma’lumot almashish tartibini tekshiraman. To‘lov provayderi mamlakatingiz va biznesingizni qo‘llashi alohida aniqlanadi. Ulanish doirasida takroriy xabarlar, xato javoblari va buyurtma holatlarini qayta ishlash kelishiladi."
+        },
+        {
+          "question": "Botning kodi va boshqaruv kirishlari kimda qoladi?",
+          "answer": "Dastlabki kelishuvda manba kodi, server, BotFather orqali yaratilgan bot va tashqi xizmat akkauntlarining egasini belgilaymiz. Topshirishga kelishilgan kod, sozlash yo‘riqnomasi va kerakli kirishlar kiradi. Bot tokeni va boshqa maxfiy ma’lumotlar ochiq yozishmalarga yoki kod omboriga joylanmaydi."
+        },
+        {
+          "question": "O‘zbekiston va boshqa mamlakatlar uchun botni masofadan yaratasizmi?",
+          "answer": "Vazifani Telegram yoki elektron pochta orqali muhokama qilib, ishlab chiqishni masofadan olib borish mumkin. Foydalanuvchi tili, vaqt mintaqasi, server va tashqi xizmatlarning mamlakat bo‘yicha imkoniyatlarini boshlanishida aniqlaymiz. Ish bosqichlari va qabul qilish mezonlari oldindan kelishiladi."
+        }
       ],
       "seo": {
         "title": "Telegram Bot va Mini App Yaratish | Shavkatbek Ruzibekov",
@@ -58,12 +80,34 @@
       }
     },
     "mobile-apps": {
-      "name": "Mobil ilovalar",
+      "name": "Android va iOS mobil ilova yaratish",
       "description": "Android va iOS uchun mobil ilovalar yarataman: mahsulotning dastlabki versiyasidan mavjud ilovadagi yangi imkoniyatlargacha. Interfeys, biznes mantiqi, backend bilan bog‘lanish va nashrga tayyorlash ustida ishlayman.",
       "useCases": [
         "Mahsulot g‘oyasini sinash uchun ilovaning dastlabki versiyasi",
         "Mijozlar, band qilish yoki xizmat ko‘rsatish uchun ilova",
         "Mavjud mobil ilovaga yangi imkoniyatlar va tuzatishlar"
+      ],
+      "faq": [
+        {
+          "question": "Android va iOS uchun mobil dastur yaratish nimadan boshlanadi?",
+          "answer": "Ilovaning auditoriyasi, asosiy foydalanuvchi amallari va kerakli platformalarni aniqlaymiz. Mavjud dizayn, backend va tashqi xizmatlar ham hisobga olinadi. Dastlabki versiyaga kiradigan funksiyalar, qabul mezonlari, narx va ish bosqichlarini ishlab chiqish boshlanishidan oldin kelishamiz."
+        },
+        {
+          "question": "Flutter yoki alohida Android va iOS dasturini qanday tanlaysiz?",
+          "answer": "Tanlovga qurilma imkoniyatlari, murakkablik, mavjud kod va keyingi rivojlantirish rejasi ta’sir qiladi. Flutter ikki platformada umumiy koddan foydalanishga yordam beradi; maxsus platforma talablari bo‘lsa, alohida yechim zarur bo‘lishi mumkin. Texnologiyani aynan loyihangiz talablari asosida tavsiya qilaman."
+        },
+        {
+          "question": "Mobil ilovaning dastlabki versiyasi — MVPga nimalar kiradi?",
+          "answer": "MVPga foydalanuvchining asosiy vazifasini oxirigacha bajaradigan funksiyalarni tanlaymiz. Masalan, katalogni ko‘rish, buyurtma yuborish va uning holatini olish. Har bir imkoniyat uchun tekshiriladigan qabul mezonlari bo‘ladi; zarur bo‘lmagan funksiyalar keyingi bosqich uchun alohida ro‘yxatda qoladi."
+        },
+        {
+          "question": "Ilovani backend, CRM yoki mavjud sayt bilan bog‘laysizmi?",
+          "answer": "Mavjud API hujjatlari, ruxsatlar va ma’lumot shakllarini o‘rganib, ilovaga kerakli ulanishlarni ishlab chiqaman. Backend tayyor bo‘lmasa, uning vazifalari alohida kelishiladi. Kirish, xato javoblari, ma’lumotni yangilash va aloqa uzilgandagi holatlarni loyiha doirasida tekshiramiz."
+        },
+        {
+          "question": "Google Play va App Store’da chiqarish hamda kodni topshirish kiradimi?",
+          "answer": "Nashrga tayyorlash va do‘konga yuborish kelishilgan ish hajmiga kiritilishi mumkin. Dasturchi akkaunti, kontent va maxfiylik ma’lumotlari kerak bo‘ladi; moderatsiya qarori do‘konning o‘ziga tegishli. Manba kodi, yig‘ish yo‘riqnomasi, kirishlar va keyingi qo‘llab-quvvatlash shartlarini avvaldan belgilaymiz."
+        }
       ],
       "seo": {
         "title": "Android va iOS Mobil Ilova Yaratish | Shavkatbek Ruzibekov",

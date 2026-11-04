@@ -1,5 +1,6 @@
 import {
   breadcrumbNode,
+  casePath,
   escapeHtml,
   faqNode,
   pagePath,
@@ -43,15 +44,37 @@ const proof = {
   'ai-integrations': ['agentmama'],
 }
 
+export function serviceFaq(copy, slug) {
+  const service = copy.services[slug]
+  const items = Object.hasOwn(service, 'faq') ? service.faq : copy.faq
+  if (
+    !Array.isArray(items) ||
+    items.length === 0 ||
+    items.some(
+      (item) =>
+        !item ||
+        typeof item.question !== 'string' ||
+        !item.question.trim() ||
+        typeof item.answer !== 'string' ||
+        !item.answer.trim(),
+    ) ||
+    new Set(items.map((item) => item.question.trim().toLowerCase())).size !==
+      items.length
+  )
+    throw new Error(`Invalid service FAQ: ${copy.locale}/${slug}`)
+  return items
+}
+
 export function renderService({ locale, copy, ui, slug }) {
   const service = copy.services[slug]
   if (!service || !Object.hasOwn(proof, slug))
     throw new Error(`Missing service content: ${locale}/${slug}`)
+  const questions = serviceFaq(copy, slug)
   const evidence = proof[slug]
     .map((key) => {
       const project = projects[key]
       const words = ui.caseStudies[key]
-      return `<article class="service-project">${imageTag({ key: project.image, alt: escapeHtml(words.alt), sizes: projectSizes })}<div><h3>${escapeHtml(project.name)}</h3><p>${escapeHtml(words.summary)}</p><a class="service-text-link" href="${project.href}" target="_blank" rel="noopener noreferrer">${escapeHtml(words.linkLabel)} <span aria-hidden="true">↗</span></a></div></article>`
+      return `<article class="service-project">${imageTag({ key: project.image, alt: escapeHtml(words.alt), sizes: projectSizes })}<div><h3><a href="${casePath(locale, key)}">${escapeHtml(project.name)}</a></h3><p>${escapeHtml(words.summary)}</p><a class="service-text-link" href="${project.href}" target="_blank" rel="noopener noreferrer">${escapeHtml(words.linkLabel)} <span aria-hidden="true">↗</span></a></div></article>`
     })
     .join('')
   const related = Object.entries(copy.services)
@@ -65,7 +88,7 @@ export function renderService({ locale, copy, ui, slug }) {
 <section class="wrap service-section service-use-cases" aria-labelledby="use-cases-title"><h2 id="use-cases-title">${escapeHtml(ui.detail.useCasesTitle)}</h2><ol>${service.useCases.map((useCase, index) => `<li><span aria-hidden="true">0${index + 1}</span><p>${escapeHtml(useCase)}</p></li>`).join('')}</ol></section>
 ${evidence ? `<section class="service-proof-band"><div class="wrap service-section"><div class="service-section-heading"><h2>${escapeHtml(ui.work.eyebrow)}</h2><a class="service-text-link" href="${pagePath(locale, 'work')}#work">${escapeHtml(ui.work.allProjects)} ↗</a></div><div class="service-projects">${evidence}</div></div></section>` : ''}
 <section class="wrap service-section service-process-section" aria-labelledby="process-title"><h2 id="process-title">${escapeHtml(ui.about.title)}</h2>${processSteps({ ui })}</section>
-${faq({ copy, ui })}
+${faq({ copy: { ...copy, faq: questions }, ui })}
 <section class="wrap service-section service-related" aria-labelledby="related-title"><h2 id="related-title">${escapeHtml(ui.detail.relatedServicesTitle)}</h2><div>${related}</div></section>`
   const path = pagePath(locale, slug)
   const offer = serviceNode(path, service)
@@ -76,7 +99,7 @@ ${faq({ copy, ui })}
     slug,
     graph: [
       offer,
-      faqNode(path, copy.faq),
+      faqNode(path, questions),
       breadcrumbNode(path, [
         { name: copy.navigation.home, path: pagePath(locale) },
         { name: service.name, path },

@@ -3,6 +3,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { validateCaseCopy } from './site/work.mjs'
+import { serviceFaq } from './site/service.mjs'
 import {
   caseKeys,
   casePath,
@@ -273,6 +274,32 @@ function inspectPage(html, locale, slug) {
       copy.navigation.home,
       copy.services[slug].name,
     ])
+    const proofCases = {
+      'web-development': ['monarh', 'miyolo'],
+      'telegram-bots': [],
+      'mobile-apps': ['okh', 'miyolo'],
+      'business-automation': ['agentmama'],
+      'ai-integrations': ['agentmama'],
+    }
+    for (const key of proofCases[slug])
+      assert.ok(
+        html.includes(`href="${casePath(locale, key)}"`),
+        `Service proof must link to its detailed case: ${route}/${key}`,
+      )
+    if (['ru', 'be', 'uk'].includes(locale)) {
+      assert.ok(
+        Array.isArray(copy.services[slug].faq) &&
+          copy.services[slug].faq.length >= 3,
+        `Missing service-specific FAQ at ${route}`,
+      )
+      assert.ok(
+        copy.services[slug].faq.some(
+          ({ question }) =>
+            !copy.faq.some((item) => item.question === question),
+        ),
+        `Service FAQ only repeats the homepage at ${route}`,
+      )
+    }
   }
   const faqPages = graphNodes(schema, 'FAQPage')
   if (slug === null || serviceSlugs.includes(slug)) {
@@ -296,7 +323,7 @@ function inspectPage(html, locale, slug) {
               answer: futureCopy[locale].faq.aiAnswer,
             },
           ]
-        : copy.faq
+        : serviceFaq(copy, slug)
     assert.deepEqual(
       visible,
       expected.map(({ question, answer }) => ({ question, answer })),
@@ -757,6 +784,42 @@ assert.throws(
   /Action labels/,
 )
 const valid = read('ru/services/mobile-apps/index.html')
+const invalidFaqCopy = structuredClone(localeCopy.ru)
+for (const badFaq of [
+  null,
+  [],
+  [{ question: '', answer: 'Answer' }],
+  [{ question: 'Question', answer: ' ' }],
+  [{ question: 1, answer: 'Answer' }],
+  [
+    { question: 'Question', answer: 'Answer' },
+    { question: ' question ', answer: 'Another answer' },
+  ],
+]) {
+  invalidFaqCopy.services['mobile-apps'].faq = badFaq
+  assert.throws(
+    () => serviceFaq(invalidFaqCopy, 'mobile-apps'),
+    /Invalid service FAQ/,
+  )
+}
+const fallbackFaqCopy = structuredClone(localeCopy.en)
+delete fallbackFaqCopy.services['mobile-apps'].faq
+assert.deepEqual(
+  serviceFaq(fallbackFaqCopy, 'mobile-apps'),
+  fallbackFaqCopy.faq,
+)
+assert.throws(
+  () =>
+    inspectPage(
+      valid.replace(
+        `<a href="${casePath('ru', 'okh')}">`,
+        '<a href="https://apps.apple.com/app/id6794669727">',
+      ),
+      'ru',
+      'mobile-apps',
+    ),
+  /Service proof must link/,
+)
 assert.throws(
   () =>
     inspectPage(

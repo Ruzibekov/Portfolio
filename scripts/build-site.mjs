@@ -10,7 +10,7 @@ import {
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as shared from './site/shared.mjs'
-import { renderService } from './site/service.mjs'
+import { renderService, serviceFaq } from './site/service.mjs'
 import { renderWork, validateCaseCopy } from './site/work.mjs'
 import { renderCase } from './site/case.mjs'
 import {
@@ -81,6 +81,7 @@ const content = Object.fromEntries(
         !service.seo?.description
       )
         throw new Error(`Incomplete service content for ${locale}/${slug}`)
+      serviceFaq(copy, slug)
     }
     return [locale, { copy, ui }]
   }),
