@@ -9,6 +9,7 @@ const styleSources = [
   'assets/work-gallery.css',
   'assets/bento.css',
   'assets/case.css',
+  'assets/portfolio-b.css',
 ]
 const scriptSource = 'assets/site.js'
 const themeSource = 'assets/theme-init.js'

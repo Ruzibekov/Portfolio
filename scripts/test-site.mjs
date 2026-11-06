@@ -47,6 +47,8 @@ const localeCopy = Object.fromEntries(
   locales.map((locale) => [locale, readJson(`content/locales/${locale}.json`)]),
 )
 const futureCopy = readJson('content/future-ui.json').locales
+const portfolioCopy = readJson('content/portfolio-b.json')
+assert.deepEqual(Object.keys(portfolioCopy).sort(), [...locales].sort())
 const decodeHtml = (value) =>
   value
     .replace(/<br>/g, '\n')
@@ -495,7 +497,29 @@ for (const locale of locales) {
   const copy = localeCopy[locale]
   const translations = caseTranslations(locale)
   const home = read(`${locale}/index.html`)
-  for (const key of ['agentmama', 'monarh', 'miyolo', 'okh'])
+  assert.ok(home.includes('class="portfolio-b home-page"'))
+  assert.equal((home.match(/<article class="b-project"/g) ?? []).length, 3)
+  const stagedProjects = [
+    ...home.matchAll(/<article class="b-project" id="([^"]+)"/g),
+  ].map((match) => match[1])
+  assert.deepEqual(stagedProjects, ['monarh', 'miyolo', 'okh'])
+  assert.doesNotMatch(
+    home,
+    /class="(?:bento|tile|stats)|data-work-grid|data-filter=/,
+  )
+  for (const line of portfolioCopy[locale].title)
+    assert.ok(
+      home.includes(escapeHtml(line)),
+      `Missing localized B heading at ${locale}`,
+    )
+  assert.ok(home.includes(escapeHtml(portfolioCopy[locale].statement)))
+  assert.ok(home.includes(escapeHtml(portfolioCopy[locale].headerRole)))
+  assert.ok(
+    home.includes(
+      `<a class="text-link b-all-projects" href="${pagePath(locale, 'work')}">`,
+    ),
+  )
+  for (const key of ['monarh', 'miyolo', 'okh'])
     assert.ok(
       home.includes(
         `<a class="case-title-link" href="${casePath(locale, key)}">`,
@@ -741,12 +765,26 @@ for (const bundle of [stylesheet, script]) {
 assert.equal(imageEntry('altn-emu-1').width, 540)
 assert.equal(imageEntry('monarh-shot').variants.length, 2)
 const home = read('uz/index.html')
-const lcp = home.match(/<span class="mock-browser">[\s\S]*?(<img\b[^>]*>)/)?.[1]
+const lcp = home.match(
+  /<a class="b-project-media b-lead-media"[^>]*>(<img\b[^>]*>)/,
+)?.[1]
 assert.ok(
   attribute(lcp ?? '', 'fetchpriority') === 'high' &&
     !attribute(lcp ?? '', 'loading'),
   'Home LCP image must stay eager with high fetch priority',
 )
+assert.ok((attribute(lcp, 'src') ?? '').includes('monarh-shot'))
+assert.equal((home.match(/fetchpriority="high"/g) ?? []).length, 1)
+for (const stage of home.matchAll(
+  /<article class="b-project"[\s\S]*?<\/article>/g,
+)) {
+  const externalLink = stage[0].match(
+    /<a class="text-link b-external"[^>]*>/,
+  )?.[0]
+  assert.ok(externalLink)
+  assert.equal(attribute(externalLink, 'target'), '_blank')
+  assert.equal(attribute(externalLink, 'rel'), 'noopener noreferrer')
+}
 const vercel = readJson('vercel.json')
 const cacheFor = (source) =>
   vercel.headers
