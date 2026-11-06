@@ -251,6 +251,20 @@ ${fontPreloads(locale)
 const themeIcon =
   '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 3.75a8.25 8.25 0 0 1 0 16.5z" fill="currentColor"/></svg>'
 
+const languageCountries = {
+  uz: 'uz',
+  ru: 'ru',
+  en: 'gb',
+  ky: 'kg',
+  kk: 'kz',
+  tg: 'tj',
+  uk: 'ua',
+  be: 'by',
+}
+
+const languageFlag = (locale) =>
+  `<img class="language-flag" src="${versioned(`/assets/flags/${languageCountries[locale]}.svg`)}" width="20" height="15" alt="" aria-hidden="true">`
+
 export function header({ locale, copy, ui, slug = null }) {
   const home = pagePath(locale)
   const navigation = ['work', 'services', 'about']
@@ -260,7 +274,7 @@ export function header({ locale, copy, ui, slug = null }) {
         `<a href="${home}#${key}">${escapeHtml(copy.navigation[key])}</a>`,
     )
     .join('')
-  const languages = `<details class="language-picker"><summary>${escapeHtml(ui.languageName)}<span aria-hidden="true">⌄</span></summary><nav class="language-list" aria-label="${escapeHtml(copy.navigation.language)}">${locales.map((language) => `<a href="${pagePath(language, slug)}" lang="${language}" hreflang="${language}"${language === locale ? ' aria-current="page"' : ''}>${escapeHtml(languageNames[language])}</a>`).join('')}</nav></details>`
+  const languages = `<details class="language-picker"><summary>${languageFlag(locale)}${escapeHtml(ui.languageName)}<span aria-hidden="true">⌄</span></summary><nav class="language-list" aria-label="${escapeHtml(copy.navigation.language)}">${locales.map((language) => `<a href="${pagePath(language, slug)}" lang="${language}" hreflang="${language}"${language === locale ? ' aria-current="page"' : ''}>${languageFlag(language)}${escapeHtml(languageNames[language])}</a>`).join('')}</nav></details>`
   return `<a class="skip-link" href="#main">${escapeHtml(ui.accessibility.skipLink)}</a>
 <header class="site-header"><div class="wrap header-inner">
 <a class="wordmark" href="${home}" aria-label="${escapeHtml(ui.accessibility.homeLabel)}"><img class="wordmark-avatar" src="${versioned('/assets/avatar.jpg')}" width="30" height="30" alt="" decoding="async"><span class="wordmark-name">Shavkatbek Ruzibekov</span></a>

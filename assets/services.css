@@ -39,8 +39,16 @@
 .language-list a {
   display: flex;
   align-items: center;
+  gap: 10px;
   min-height: 44px;
   padding: 8px 12px;
+}
+.language-flag {
+  display: block;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 15px;
+  object-fit: contain;
 }
 .language-list a[aria-current] {
   color: var(--accent, #73d9fa);
