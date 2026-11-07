@@ -1299,7 +1299,11 @@ body.lock {
     grid-template-columns: 1fr;
   }
   .stk {
-    columns: 1;
+    column-gap: 20px;
+  }
+  .stk li {
+    padding: 10px 0;
+    font-size: 13px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

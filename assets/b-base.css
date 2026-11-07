@@ -955,10 +955,10 @@ section {
     background: var(--s2);
   }
   .sec {
-    padding-top: 80px;
+    padding-top: 60px;
   }
   .sec-tight {
-    padding-top: 56px;
+    padding-top: 44px;
   }
   .language-list {
     right: -44px;
