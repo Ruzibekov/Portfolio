@@ -48,9 +48,12 @@
 
   const menuButton = qs('[data-menu-toggle]')
   const menu = qs('[data-mobile-menu]')
+  const menuScrim = qs('[data-menu-scrim]')
+  menuScrim?.addEventListener('click', () => setMenu(false))
   const setMenu = (open, restoreFocus = false) => {
     if (!menuButton || !menu) return
     menu.classList.toggle('o', open)
+    menuScrim?.classList.toggle('o', open)
     menuButton.setAttribute('aria-expanded', String(open))
     menuButton.setAttribute(
       'aria-label',
@@ -189,6 +192,7 @@
   const sheetTag = qs('[data-sheet-tag]', sheet)
   const closeButton = qs('[data-sheet-close]', sheet)
   const inertTargets = [
+    qs('.skip-link'),
     qs('.top'),
     qs('[data-mobile-menu]'),
     qs('main'),
@@ -240,6 +244,7 @@
       let x = event.clientX + 28
       if (x + width > window.innerWidth - 16) x = event.clientX - width - 28
       const y = Math.max(
+        index.getBoundingClientRect().top + 8,
         76,
         Math.min(window.innerHeight - height - 16, event.clientY - height / 2),
       )

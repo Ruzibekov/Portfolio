@@ -3,7 +3,11 @@
     "backToTop": "Sahifa boshiga qaytish",
     "headerRole": "UI/UX · Full-stack dasturlash",
     "author": "Mustaqil mutaxassis\nDizayn va dasturlash",
-    "title": ["Dizayn →", "dasturlash →", "tayyor mahsulot."],
+    "title": [
+      "Dizayn →",
+      "dasturlash →",
+      "tayyor mahsulot."
+    ],
     "statement": "Sayt va ilovalar yarataman: foydalanuvchi ssenariysidan ishlaydigan tizimgacha.",
     "scope": [
       "UI/UX dizayn",
@@ -15,7 +19,11 @@
     "aboutText": "Vazifani birga aniqlaymiz. Interfeysni loyihalayman, yechimni kelishaman va mahsulotni yarataman — server, integratsiyalar va ishga tushirishdan oldingi tekshiruv bilan.",
     "contactTitle": "Nima yaratmoqchisiz?\nGaplashamiz.",
     "contactIntro": "G‘oya, tayyor maket yoki yaxshilash kerak bo‘lgan mahsulot bilan murojaat qilishingiz mumkin.",
-    "build": ["Dizayn", "Ishlab chiqish", "Mahsulot"],
+    "build": [
+      "Dizayn",
+      "Dasturlash",
+      "Mahsulot"
+    ],
     "stats": {
       "projects": "loyiha",
       "stores": "do‘konlarda",
@@ -24,13 +32,18 @@
     "online": "Onlayn",
     "showMore": "Yana ko‘rsatish",
     "processEyebrow": "Jarayon",
-    "processTitle": "Ishga tushirishgacha to‘rt qadam"
+    "processTitle": "Ishga tushirishgacha to‘rt qadam",
+    "discussTask": "Vazifani muhokama qilish"
   },
   "ru": {
     "backToTop": "Вернуться к началу страницы",
     "headerRole": "UI/UX · Full-stack разработка",
     "author": "Независимый специалист\nДизайн и разработка",
-    "title": ["Дизайн →", "разработка →", "готовый продукт."],
+    "title": [
+      "Дизайн →",
+      "разработка →",
+      "готовый продукт."
+    ],
     "statement": "Создаю сайты и приложения: от пользовательского сценария до работающей системы.",
     "scope": [
       "UI/UX-дизайн",
@@ -42,7 +55,11 @@
     "aboutText": "Вместе определяем задачу. Я проектирую интерфейс, согласовываю решение и реализую продукт — с сервером, интеграциями и проверкой перед запуском.",
     "contactTitle": "Расскажите,\nчто хотите создать.",
     "contactIntro": "Можно прийти с идеей, макетом или работающим продуктом, который нужно улучшить.",
-    "build": ["Дизайн", "Разработка", "Продукт"],
+    "build": [
+      "Дизайн",
+      "Разработка",
+      "Продукт"
+    ],
     "stats": {
       "projects": "проектов",
       "stores": "в сторах",
@@ -51,13 +68,18 @@
     "online": "Онлайн",
     "showMore": "Показать ещё",
     "processEyebrow": "Процесс",
-    "processTitle": "Четыре шага до запуска"
+    "processTitle": "Четыре шага до запуска",
+    "discussTask": "Обсудить задачу"
   },
   "en": {
     "backToTop": "Back to top",
     "headerRole": "UI/UX · Full-stack development",
     "author": "Independent specialist\nDesign and development",
-    "title": ["Design →", "development →", "finished product."],
+    "title": [
+      "Design →",
+      "development →",
+      "finished product."
+    ],
     "statement": "I build websites and apps: from the user journey to a working system.",
     "scope": [
       "UI/UX design",
@@ -69,7 +91,11 @@
     "aboutText": "We define the task together. I design the interface, agree on the solution and build the product — including the backend, integrations and checks before launch.",
     "contactTitle": "Tell me what\nyou want to create.",
     "contactIntro": "You can start with an idea, a design or an existing product you want to improve.",
-    "build": ["Design", "Development", "Product"],
+    "build": [
+      "Design",
+      "Development",
+      "Product"
+    ],
     "stats": {
       "projects": "projects",
       "stores": "in stores",
@@ -78,13 +104,18 @@
     "online": "Online",
     "showMore": "Show more",
     "processEyebrow": "Process",
-    "processTitle": "Four steps to launch"
+    "processTitle": "Four steps to launch",
+    "discussTask": "Discuss your task"
   },
   "ky": {
     "backToTop": "Барактын башына кайтуу",
     "headerRole": "UI/UX · Full-stack иштеп чыгуу",
     "author": "Көз карандысыз адис\nДизайн жана иштеп чыгуу",
-    "title": ["Дизайн →", "иштеп чыгуу →", "даяр продукт."],
+    "title": [
+      "Дизайн →",
+      "иштеп чыгуу →",
+      "даяр продукт."
+    ],
     "statement": "Сайттарды жана тиркемелерди түзөм: колдонуучунун сценарийинен иштеген системага чейин.",
     "scope": [
       "UI/UX-дизайн",
@@ -96,7 +127,11 @@
     "aboutText": "Милдетти чогуу аныктайбыз. Интерфейсти долбоорлоп, чечимди макулдашып, продуктту түзөм — сервер, интеграциялар жана ишке киргизүү алдындагы текшерүү менен.",
     "contactTitle": "Эмне түзгүңүз\nкелгенин айтыңыз.",
     "contactIntro": "Идея, макет же жакшыртуу керек болгон даяр продукт менен кайрылсаңыз болот.",
-    "build": ["Дизайн", "Иштеп чыгуу", "Продукт"],
+    "build": [
+      "Дизайн",
+      "Иштеп чыгуу",
+      "Продукт"
+    ],
     "stats": {
       "projects": "долбоор",
       "stores": "дүкөндөрдө",
@@ -105,13 +140,18 @@
     "online": "Онлайн",
     "showMore": "Дагы көрсөтүү",
     "processEyebrow": "Процесс",
-    "processTitle": "Ишке киргизүүгө чейинки төрт кадам"
+    "processTitle": "Ишке киргизүүгө чейинки төрт кадам",
+    "discussTask": "Тапшырманы талкуулоо"
   },
   "kk": {
     "backToTop": "Беттің басына оралу",
     "headerRole": "UI/UX · Full-stack әзірлеу",
     "author": "Тәуелсіз маман\nДизайн және әзірлеу",
-    "title": ["Дизайн →", "әзірлеу →", "дайын өнім."],
+    "title": [
+      "Дизайн →",
+      "әзірлеу →",
+      "дайын өнім."
+    ],
     "statement": "Сайттар мен қолданбалар жасаймын: пайдаланушы сценарийінен жұмыс істейтін жүйеге дейін.",
     "scope": [
       "UI/UX-дизайн",
@@ -123,7 +163,11 @@
     "aboutText": "Міндетті бірге анықтаймыз. Интерфейсті жобалап, шешімді келісіп, өнімді әзірлеймін — серверімен, интеграцияларымен және іске қосу алдындағы тексерумен.",
     "contactTitle": "Не жасағыңыз\nкелетінін айтыңыз.",
     "contactIntro": "Идеямен, макетпен немесе жақсартуды қажет ететін дайын өніммен жүгіне аласыз.",
-    "build": ["Дизайн", "Әзірлеу", "Өнім"],
+    "build": [
+      "Дизайн",
+      "Әзірлеу",
+      "Өнім"
+    ],
     "stats": {
       "projects": "жоба",
       "stores": "дүкендерде",
@@ -132,13 +176,18 @@
     "online": "Онлайн",
     "showMore": "Тағы көрсету",
     "processEyebrow": "Процесс",
-    "processTitle": "Іске қосуға дейінгі төрт қадам"
+    "processTitle": "Іске қосуға дейінгі төрт қадам",
+    "discussTask": "Тапсырманы талқылау"
   },
   "tg": {
     "backToTop": "Бозгашт ба аввали саҳифа",
     "headerRole": "UI/UX · Таҳияи full-stack",
     "author": "Мутахассиси мустақил\nТарҳрезӣ ва таҳия",
-    "title": ["Тарҳрезӣ →", "таҳия →", "маҳсулоти тайёр."],
+    "title": [
+      "Тарҳрезӣ →",
+      "таҳия →",
+      "маҳсулоти тайёр."
+    ],
     "statement": "Сомонаҳо ва барномаҳо месозам: аз сенарияи корбар то низоми коркунанда.",
     "scope": [
       "Тарҳрезии UI/UX",
@@ -150,7 +199,11 @@
     "aboutText": "Вазифаро якҷоя муайян мекунем. Интерфейсро тарҳрезӣ карда, роҳи ҳалро мувофиқа мекунам ва маҳсулотро месозам — бо сервер, ҳамгироиҳо ва санҷиши пеш аз роҳандозӣ.",
     "contactTitle": "Бигӯед, чӣ\nсохтан мехоҳед.",
     "contactIntro": "Метавонед бо идея, макет ё маҳсулоти мавҷудае, ки беҳтар кардан мехоҳед, муроҷиат кунед.",
-    "build": ["Тарҳрезӣ", "Таҳия", "Маҳсулот"],
+    "build": [
+      "Тарҳрезӣ",
+      "Таҳия",
+      "Маҳсулот"
+    ],
     "stats": {
       "projects": "лоиҳа",
       "stores": "дар мағозаҳо",
@@ -159,13 +212,18 @@
     "online": "Онлайн",
     "showMore": "Боз нишон додан",
     "processEyebrow": "Раванд",
-    "processTitle": "Чор қадам то оғоз"
+    "processTitle": "Чор қадам то оғоз",
+    "discussTask": "Муҳокимаи вазифа"
   },
   "uk": {
     "backToTop": "Повернутися на початок сторінки",
     "headerRole": "UI/UX · Full-stack розробка",
     "author": "Незалежний спеціаліст\nДизайн і розробка",
-    "title": ["Дизайн →", "розробка →", "готовий продукт."],
+    "title": [
+      "Дизайн →",
+      "розробка →",
+      "готовий продукт."
+    ],
     "statement": "Створюю сайти й застосунки: від сценарію користувача до системи, що працює.",
     "scope": [
       "UI/UX-дизайн",
@@ -177,7 +235,11 @@
     "aboutText": "Разом визначаємо завдання. Я проєктую інтерфейс, узгоджую рішення й реалізую продукт — із сервером, інтеграціями та перевіркою перед запуском.",
     "contactTitle": "Розкажіть,\nщо хочете створити.",
     "contactIntro": "Можна прийти з ідеєю, макетом або наявним продуктом, який потрібно покращити.",
-    "build": ["Дизайн", "Розробка", "Продукт"],
+    "build": [
+      "Дизайн",
+      "Розробка",
+      "Продукт"
+    ],
     "stats": {
       "projects": "проєктів",
       "stores": "у сторах",
@@ -186,13 +248,18 @@
     "online": "Онлайн",
     "showMore": "Показати ще",
     "processEyebrow": "Процес",
-    "processTitle": "Чотири кроки до запуску"
+    "processTitle": "Чотири кроки до запуску",
+    "discussTask": "Обговорити завдання"
   },
   "be": {
     "backToTop": "Вярнуцца да пачатку старонкі",
     "headerRole": "UI/UX · Full-stack распрацоўка",
     "author": "Незалежны спецыяліст\nДызайн і распрацоўка",
-    "title": ["Дызайн →", "распрацоўка →", "гатовы прадукт."],
+    "title": [
+      "Дызайн →",
+      "распрацоўка →",
+      "гатовы прадукт."
+    ],
     "statement": "Ствараю сайты і праграмы: ад карыстальніцкага сцэнарыя да працоўнай сістэмы.",
     "scope": [
       "UI/UX-дызайн",
@@ -204,7 +271,11 @@
     "aboutText": "Разам вызначаем задачу. Я праектую інтэрфейс, узгадняю рашэнне і ствараю прадукт — з серверам, інтэграцыямі і праверкай перад запускам.",
     "contactTitle": "Раскажыце,\nшто хочаце стварыць.",
     "contactIntro": "Можна звярнуцца з ідэяй, макетам або гатовым прадуктам, які трэба палепшыць.",
-    "build": ["Дызайн", "Распрацоўка", "Прадукт"],
+    "build": [
+      "Дызайн",
+      "Распрацоўка",
+      "Прадукт"
+    ],
     "stats": {
       "projects": "праектаў",
       "stores": "у сторах",
@@ -213,6 +284,7 @@
     "online": "Анлайн",
     "showMore": "Паказаць яшчэ",
     "processEyebrow": "Працэс",
-    "processTitle": "Чатыры крокі да запуску"
+    "processTitle": "Чатыры крокі да запуску",
+    "discussTask": "Абмеркаваць задачу"
   }
 }

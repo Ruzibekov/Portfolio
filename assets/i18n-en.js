@@ -99,9 +99,12 @@ window.I18N.en = {
   'work.matik.result': 'Live at matematik-uz.vercel.app.',
 
   'work.monarh.alt': 'MonarhMarket: home page on desktop and phone',
-  'work.monarh.desc': 'A redesign of a Bitrix porcelain tile store for three cities.',
-  'work.monarh.task': 'Refresh the design of a live tile store without stopping sales: home, catalog, collections, product page and cart.',
-  'work.monarh.solution': 'Bitrix template with custom CSS and JavaScript on top of the theme. New header and mobile menu, interior photos in collections, a sheet filter, favorites and compare, smooth motion. Three sites: Samara, Kazan and Nizhny Novgorod.',
+  'work.monarh.desc':
+    'A redesign of a Bitrix porcelain tile store for three cities.',
+  'work.monarh.task':
+    'Refresh the design of a live tile store without stopping sales: home, catalog, collections, product page and cart.',
+  'work.monarh.solution':
+    'Bitrix template with custom CSS and JavaScript on top of the theme. New header and mobile menu, interior photos in collections, a sheet filter, favorites and compare, smooth motion. Three sites: Samara, Kazan and Nizhny Novgorod.',
   'work.monarh.result': 'Live at monarhmarket.ru and the city sites.',
   'work.majiidtv.alt': 'Majiid.tv: blogger site, hero screen',
   'work.majiidtv.desc': 'A Bukhara blogger site with advertising prices.',

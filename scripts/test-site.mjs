@@ -839,9 +839,9 @@ assert.deepEqual(
 assert.throws(
   () =>
     inspectPage(
-      valid.replace(
-        `<a href="${casePath('ru', 'okh')}">`,
-        '<a href="https://apps.apple.com/app/id6794669727">',
+      valid.replaceAll(
+        `href="${casePath('ru', 'okh')}"`,
+        'href="https://apps.apple.com/app/id6794669727"',
       ),
       'ru',
       'mobile-apps',

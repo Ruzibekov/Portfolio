@@ -264,7 +264,7 @@ const languageFlag = (locale) =>
   `<img class="language-flag" src="${versioned(`/assets/flags/${languageCountries[locale]}.svg`)}" width="20" height="15" alt="" aria-hidden="true">`
 
 export const typoBreaks = (value) =>
-  lineBreaks(value).replace(/ ([—–]) /g, '&nbsp;$1 ')
+  lineBreaks(value).replace(/ ([—–])/g, '&nbsp;$1')
 
 export const telegramUrl = 'https://t.me/ruzibekov_sh'
 
@@ -285,6 +285,7 @@ export function header({ locale, copy, ui, slug = null }) {
 <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="${escapeHtml(ui.controls.switchToDark)}" data-light-action="${escapeHtml(ui.controls.switchToLight)}" data-dark-action="${escapeHtml(ui.controls.switchToDark)}">${icon('i-contrast')}</button>
 <a class="btn k sm" href="${telegramUrl}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(ui.contact.cta)}">${icon('l-telegram')}<span>${escapeHtml(copy.navigation.contact)}</span></a>
 <button class="menu-toggle" type="button" data-menu-toggle data-menu-label="${escapeHtml(ui.controls.menu)}" data-close-label="${escapeHtml(ui.controls.closeMenu)}" aria-label="${escapeHtml(ui.controls.menu)}" aria-controls="mobile-menu" aria-expanded="false">${icon('i-menu', 'menu-open')}${icon('i-x', 'menu-close')}</button></div></div></header>
+<div class="menu-scrim" data-menu-scrim></div>
 <nav class="sheetnav" id="mobile-menu" data-mobile-menu aria-label="${escapeHtml(ui.accessibility.mobileNavigation)}">${navLinks}</nav>`
 }
 

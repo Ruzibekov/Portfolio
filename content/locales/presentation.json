@@ -108,7 +108,7 @@
           "description": "Sinov, manba kodi va topshirish."
         }
       },
-      "faq": { "title": "Boshlashdan\noldin." },
+      "faq": { "title": "Boshlashdan oldin." },
       "contact": {
         "title": "Keyingi g‘oya —\nsizniki.",
         "intro": "Nima yaratmoqchisiz va kim uchun? Qisqacha yozing. Yechimni birga aniqlaymiz.",
@@ -235,7 +235,7 @@
           "description": "Тестирование, исходный код и передача проекта."
         }
       },
-      "faq": { "title": "Перед\nначалом." },
+      "faq": { "title": "Перед началом." },
       "contact": {
         "title": "Следующая идея —\nваша.",
         "intro": "Что хотите создать и для кого? Напишите коротко. Вместе определим решение.",
@@ -358,7 +358,7 @@
           "description": "Testing, source code and project handover."
         }
       },
-      "faq": { "title": "Before\nwe start." },
+      "faq": { "title": "Before we start." },
       "contact": {
         "title": "The next idea\nis yours.",
         "intro": "What would you like to build, and who is it for? Send a short message. We’ll work out the solution together.",
@@ -485,7 +485,7 @@
           "description": "Сыноо, баштапкы код жана долбоорду өткөрүп берүү."
         }
       },
-      "faq": { "title": "Баштоодон\nмурун." },
+      "faq": { "title": "Баштоодон мурун." },
       "contact": {
         "title": "Кийинки идея —\nсиздики.",
         "intro": "Эмне түзгүңүз келет жана ким үчүн? Кыскача жазыңыз. Чечимди чогуу аныктайбыз.",
@@ -612,7 +612,7 @@
           "description": "Сынақ, бастапқы код және жобаны тапсыру."
         }
       },
-      "faq": { "title": "Бастамас\nбұрын." },
+      "faq": { "title": "Бастамас бұрын." },
       "contact": {
         "title": "Келесі идея —\nсіздікі.",
         "intro": "Не жасағыңыз келеді және кім үшін? Қысқаша жазыңыз. Шешімін бірге анықтаймыз.",
@@ -735,7 +735,7 @@
           "description": "Санҷиш, коди сарчашма ва супоридани лоиҳа."
         }
       },
-      "faq": { "title": "Пеш аз\nоғоз." },
+      "faq": { "title": "Пеш аз оғоз." },
       "contact": {
         "title": "Ғояи навбатӣ —\nаз шумост.",
         "intro": "Чӣ сохтан мехоҳед ва барои кӣ? Кӯтоҳ нависед. Роҳи ҳалро якҷоя муайян мекунем.",
@@ -862,7 +862,7 @@
           "description": "Тестування, вихідний код і передача проєкту."
         }
       },
-      "faq": { "title": "Перед\nпочатком." },
+      "faq": { "title": "Перед початком." },
       "contact": {
         "title": "Наступна ідея —\nваша.",
         "intro": "Що хочете створити й для кого? Напишіть коротко. Разом визначимо рішення.",
@@ -989,7 +989,7 @@
           "description": "Тэставанне, зыходны код і перадача праекта."
         }
       },
-      "faq": { "title": "Перад\nпачаткам." },
+      "faq": { "title": "Перад пачаткам." },
       "contact": {
         "title": "Наступная ідэя —\nваша.",
         "intro": "Што хочаце стварыць і для каго? Напішыце коратка. Разам вызначым рашэнне.",

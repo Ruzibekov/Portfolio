@@ -760,7 +760,18 @@ body.lock {
   }
   .sv {
     padding: 20px 0;
-    gap: 14px;
+    gap: 12px 14px;
+    grid-template-columns: 28px minmax(0, 1fr) 44px;
+  }
+  .sv p {
+    grid-column: 2 / 4;
+  }
+  .sv .go {
+    grid-row: 1;
+  }
+  .bs {
+    font-size: 11px;
+    letter-spacing: 0.02em;
   }
   .tabs {
     display: flex;

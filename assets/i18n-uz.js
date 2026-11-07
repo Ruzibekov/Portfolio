@@ -100,9 +100,12 @@ window.I18N.uz = {
   'work.matik.result': 'matematik-uz.vercel.app manzilida ishlaydi.',
 
   'work.monarh.alt': 'MonarhMarket: kompyuter va telefonda bosh sahifa',
-  'work.monarh.desc': 'Uch shahar uchun Bitrix\'dagi keramogranit doʻkoni redizayni.',
-  'work.monarh.task': 'Ishlab turgan plitka doʻkoni dizaynini savdoni toʻxtatmasdan yangilash: bosh sahifa, katalog, kolleksiyalar, mahsulot sahifasi va savat.',
-  'work.monarh.solution': 'Bitrix shabloni, mavzu ustidan oʻz CSS va JavaScript. Yangi shapka va mobil menyu, kolleksiyalarda interyer fotolari, pastdan chiquvchi filtr, sevimlilar va solishtirish, silliq animatsiyalar. Uch sayt: Samara, Qozon va Nijniy Novgorod.',
+  'work.monarh.desc':
+    "Uch shahar uchun Bitrix'dagi keramogranit doʻkoni redizayni.",
+  'work.monarh.task':
+    'Ishlab turgan plitka doʻkoni dizaynini savdoni toʻxtatmasdan yangilash: bosh sahifa, katalog, kolleksiyalar, mahsulot sahifasi va savat.',
+  'work.monarh.solution':
+    'Bitrix shabloni, mavzu ustidan oʻz CSS va JavaScript. Yangi shapka va mobil menyu, kolleksiyalarda interyer fotolari, pastdan chiquvchi filtr, sevimlilar va solishtirish, silliq animatsiyalar. Uch sayt: Samara, Qozon va Nijniy Novgorod.',
   'work.monarh.result': 'monarhmarket.ru va shahar saytlarida ishlamoqda.',
   'work.majiidtv.alt': 'Majiid.tv: bloger sayti, bosh ekran',
   'work.majiidtv.desc': 'Buxorolik blogerning reklama narxlari bilan sayti.',

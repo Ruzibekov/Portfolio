@@ -157,17 +157,17 @@
 }
 :root[data-theme='dark'] {
   --s0: #0b0c0f;
-  --s1: #1a1e26;
-  --s2: #272c37;
-  --s3: #394050;
+  --s1: #1f232c;
+  --s2: #2a2f3a;
+  --s3: #3b4250;
   --dk: #f4f5f8;
   --dk2: #d9dce3;
   --ink: #f4f5f8;
   --muted: #b1b7c4;
   --faint: #9aa1b0;
   --on-dk: #0b0c0f;
-  --line: #262a33;
-  --line2: #3a404c;
+  --line: #323743;
+  --line2: #4a5160;
   --acc-soft: #3a1a14;
   --acc-t: #ff5a45;
   --scrim: rgba(0, 0, 0, 0.62);
@@ -894,6 +894,22 @@ section {
   .top .btn {
     width: 44px;
     padding: 0;
+  }
+  .menu-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 48;
+    background: rgb(0 0 0 / 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.2s,
+      visibility 0s linear 0.2s;
+  }
+  .menu-scrim.o {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
   }
   .sheetnav {
     display: block;

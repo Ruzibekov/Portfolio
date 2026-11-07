@@ -174,7 +174,14 @@ for (const locale of shared.locales) {
   for (const slug of shared.serviceSlugs) {
     writePage(
       `${locale}/services/${slug}`,
-      renderService({ locale, copy, ui, words: portfolio[locale], slug }),
+      renderService({
+        locale,
+        copy,
+        ui,
+        words: portfolio[locale],
+        slug,
+        caseCopy: caseCopies[locale],
+      }),
     )
     canonicalPaths.push(shared.pagePath(locale, slug))
   }
