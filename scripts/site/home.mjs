@@ -1,32 +1,24 @@
 import { readFileSync } from 'node:fs'
+import { icon } from './icons.mjs'
 import { imageTag, versioned } from './assets.mjs'
+import { countProjects, projectTag, renderIndex } from './index.mjs'
 
-const readCopy = (path) =>
-  JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'))
-const presentation = readCopy('content/portfolio-b.json')
-const future = readCopy('content/future-ui.json').locales
-const projectSizes =
-  '(min-width: 1280px) 800px, (min-width: 801px) 65vw, calc(100vw - 40px)'
-const projects = [
-  {
-    key: 'monarh',
-    name: 'МонархМаркет',
-    stack: 'Bitrix · JavaScript · CSS',
-    url: 'https://monarhmarket.ru',
-  },
-  {
-    key: 'miyolo',
-    name: 'Miyolo / YOLO',
-    stack: 'CS-Cart · PHP · Flutter',
-    url: 'https://miyolo.ru',
-  },
-  {
-    key: 'okh',
-    name: 'OKH',
-    stack: 'Flutter · FastAPI · Yandex Maps',
-    url: 'https://apps.apple.com/app/id6794669727',
-  },
-]
+const future = JSON.parse(
+  readFileSync(
+    new URL('../../content/future-ui.json', import.meta.url),
+    'utf8',
+  ),
+).locales
+const heroKey = 'monarh'
+const heroSizes = '(min-width: 1021px) 640px, calc(100vw - 40px)'
+const indexLimit = 8
+const serviceIcons = {
+  'web-development': 'i-globe',
+  'telegram-bots': 'i-bot',
+  'mobile-apps': 'i-smartphone',
+  'business-automation': 'i-workflow',
+  'ai-integrations': 'i-layers',
+}
 
 export function homeFaqItems(copy, futureCopy) {
   return [
@@ -35,64 +27,81 @@ export function homeFaqItems(copy, futureCopy) {
   ]
 }
 
-export function renderHome({ locale, copy, ui, shared }) {
-  const words = presentation[locale]
+export function technologies(cases) {
+  return [
+    ...new Set(
+      cases.flatMap((item) => item.stack.split(',').map((part) => part.trim())),
+    ),
+  ].filter(Boolean)
+}
+
+export function renderHome({
+  locale,
+  copy,
+  ui,
+  words,
+  cases,
+  caseCopy,
+  shared,
+}) {
   if (!words) throw new Error(`Missing portfolio presentation for ${locale}`)
   const e = shared.escapeHtml
-  const br = shared.lineBreaks
-  const arrow = '<span class="b-arrow" aria-hidden="true">↗</span>'
-  const contact = `<a class="button b-contact-button" href="https://t.me/ruzibekov_sh" target="_blank" rel="noopener noreferrer">${e(ui.contact.cta)} ${arrow}</a>`
-  const stages = projects
-    .map((project, index) => {
-      const casePath = shared.casePath(locale, project.key)
-      const name =
-        project.key === 'monarh' && locale === 'en'
-          ? 'Monarh Market'
-          : project.name
-      return `<article class="b-project" id="${project.key}">
-<div class="b-project-heading"><span class="b-ordinal" aria-hidden="true">0${index + 1}</span><h2><a class="case-title-link" href="${casePath}">${e(name)}</a></h2><span class="b-heading-rule" aria-hidden="true"></span></div>
-<a class="b-project-media${index === 0 ? ' b-lead-media' : ''}" href="${casePath}" tabindex="-1">${imageTag({ key: `${project.key}-shot`, alt: e(ui.caseStudies[project.key].alt), sizes: projectSizes, priority: index === 0 })}</a>
-<div class="b-case-line"><p>${e(ui.caseStudies[project.key].summary)}</p><a class="text-link b-external" href="${project.url}" target="_blank" rel="noopener noreferrer">${e(project.key === 'okh' ? 'App Store' : words.openWebsite)} ${arrow}</a></div>
-<p class="b-project-stack">${e(project.stack)}</p>
-</article>`
-    })
+  const counts = countProjects(cases)
+  const hero = cases.find((item) => item.key === heroKey)
+  const heroWords = caseCopy[heroKey]
+  const stats = `<b>${counts.total}</b> ${e(words.stats.projects)} · <b>${counts.stores}</b> ${e(words.stats.stores)} · <b>${counts.online}</b> ${e(words.stats.online)}`
+  const steps = words.build
+    .map(
+      (label, index) =>
+        `<span class="bs"><span aria-hidden="true">0${index + 1}</span> ${e(label)}</span>`,
+    )
     .join('')
-  const serviceLinks = shared.serviceSlugs
+  const heading = words.title
+    .map((line) => `<span class="wd">${e(line)}</span>`)
+    .join('')
+  const heroBlock = `<section class="hero" aria-labelledby="intro-title"><div class="wrap"><div class="hero-g"><div class="hero-copy">
+<p class="eyebrow">${e(copy.hero.eyebrow)}</p>
+<h1 class="h1" id="intro-title" data-build-title>${heading}</h1>
+<p class="mono" data-r>${stats}</p>
+<p class="lead" data-r style="--i:1">${e(words.statement)}</p>
+<div class="cta" data-r style="--i:1"><a class="btn p" href="${shared.telegramUrl}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span>${e(copy.hero.primaryCta)}</span></a><a class="btn g" href="#work"><span>${e(copy.hero.secondaryCta)}</span>${icon('i-arrow-down')}</a></div>
+</div><div class="hero-art"><div class="build" data-build data-st="1"><div class="bimg" data-build-image>${imageTag({ key: hero.image, alt: '', sizes: heroSizes, className: 'l1', lazy: false })}${imageTag({ key: hero.image, alt: e(ui.caseStudies[heroKey].alt), sizes: heroSizes, className: 'l2', priority: true })}<span class="scan" aria-hidden="true"></span></div><div class="bsteps" aria-hidden="true">${steps}</div><div class="bname"><b>${e(heroWords.title)}</b><span>${e(projectTag(hero, ui))}</span></div></div></div></div></div></section>`
+  const services = shared.serviceSlugs
     .map(
       (slug, index) =>
-        `<li><a href="${shared.pagePath(locale, slug)}"><span class="b-ordinal" aria-hidden="true">0${index + 1}</span><span>${e(copy.services[slug].name)}</span>${arrow}</a><p>${e(copy.services[slug].description)}</p></li>`,
+        `<a class="sv" href="${shared.pagePath(locale, slug)}"><span class="num" aria-hidden="true">0${index + 1}</span><h3>${icon(serviceIcons[slug])}<span>${e(copy.services[slug].name)}</span></h3><p>${e(copy.services[slug].description)}</p><span class="go" aria-hidden="true">${icon('i-arrow-right')}</span></a>`,
     )
     .join('')
+  const servicesBlock = `<section class="sec" id="services" aria-labelledby="services-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${e(copy.navigation.services)}</p><h2 class="h2" id="services-title">${shared.typoBreaks(ui.services.title.replace(/\n/g, ' '))}</h2></header><div class="ledger" data-r>${services}</div></div></section>`
+  const { section, overlays } = renderIndex({
+    locale,
+    copy,
+    ui,
+    words,
+    cases,
+    caseCopy,
+    limit: indexLimit,
+    eyebrow: ui.work.eyebrow,
+    heading: shared.typoBreaks(ui.work.title),
+    footerLink: `<p class="all-link"><a class="text-link b-all-projects" href="${shared.pagePath(locale, 'work')}">${e(ui.work.allProjects)} ${icon('i-arrow-right')}</a></p>`,
+  })
+  const workBlock = `<section class="sec" id="work" aria-labelledby="work-title"><div class="wrap">${section}</div></section>`
+  const processBlock = `<section class="sec" id="process" aria-labelledby="process-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${e(words.processEyebrow)}</p><h2 class="h2" id="process-title">${e(words.processTitle)}</h2></header>${shared.processSteps({ ui })}</div></section>`
+  const stack = technologies(cases)
+    .map((name) => `<li>${e(name)}</li>`)
+    .join('')
+  const aboutBlock = `<section class="sec" id="about" aria-labelledby="about-title"><div class="wrap ab"><div data-r><p class="eyebrow">${e(copy.navigation.about)}</p><div class="me"><img src="${versioned('/assets/avatar.jpg')}" alt="Shavkatbek Ruzibekov" width="68" height="68" loading="lazy" decoding="async"><div><b>Shavkatbek Ruzibekov</b><span>${e(copy.identity.role)}</span></div></div><h2 class="h2" id="about-title">${e(words.aboutTitle)}</h2><p>${e(words.aboutText)}</p><p>${e(ui.about.title)}</p></div><ul class="stk" data-r style="--i:1" aria-label="${e(copy.caseStudy.stack)}">${stack}</ul></div></section>`
   const faqItems = homeFaqItems(copy, future[locale])
-  const faq = faqItems
-    .map(
-      (item) =>
-        `<details><summary>${e(item.question)}</summary><p>${e(item.answer)}</p></details>`,
-    )
-    .join('')
-  const body = `<div class="wrap b-layout">
-<aside class="b-author" aria-labelledby="intro-title"><div class="b-author-profile"><img src="${versioned('/assets/avatar.jpg')}" alt="Shavkatbek Ruzibekov" width="56" height="56" decoding="async"><p>${br(words.author)}</p></div><h1 id="intro-title">${words.title.map(e).join('<br>')}</h1><p class="b-statement">${e(words.statement)}</p>${contact}<div class="b-scope">${words.scope.map((line) => `<span>${e(line)}</span>`).join('')}</div></aside>
-<section class="b-projects" id="work" aria-label="${e(ui.work.eyebrow)}">${stages}<a class="text-link b-all-projects" href="${shared.pagePath(locale, 'work')}">${e(ui.work.allProjects)} ${arrow}</a>
-<section class="b-personal" id="about" aria-labelledby="about-title"><h2 id="about-title">${e(words.aboutTitle)}</h2><p>${e(words.aboutText)}</p></section>
-<section class="b-services" id="services" aria-labelledby="services-title"><h2 id="services-title">${e(copy.navigation.services)}</h2><ul>${serviceLinks}</ul></section>
-<section class="b-faq" id="faq" aria-labelledby="faq-title"><h2 id="faq-title">${e(copy.navigation.faq)}</h2><div>${faq}</div></section>
-</section></div>`
+  const faqBlock = shared.faq({ copy: { ...copy, faq: faqItems }, ui })
   return shared.renderDocument({
     locale,
     copy,
-    ui: {
-      ...ui,
-      contact: {
-        ...ui.contact,
-        title: words.contactTitle,
-        intro: words.contactIntro,
-      },
-    },
+    ui,
     title: copy.seo.title,
     description: copy.seo.description,
     graph: [shared.faqNode(shared.pagePath(locale), faqItems)],
-    body,
-    bodyClass: 'portfolio-b home-page',
-    homePresentation: words,
+    body: `${heroBlock}${servicesBlock}${workBlock}${processBlock}${aboutBlock}${faqBlock}`,
+    bodyClass: 'home-page',
+    bodyEnd: overlays,
   })
 }

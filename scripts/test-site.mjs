@@ -17,7 +17,7 @@ import {
 } from './site/shared.mjs'
 import { caseServices, caseStack } from './site/case.mjs'
 import {
-  darkCanvas,
+  defaultCanvas,
   fontPreloads,
   imageEntry,
   imageSrc,
@@ -163,14 +163,14 @@ function inspectPage(html, locale, slug) {
   const htmlTag = html.match(/<html\b[^>]*>/i)?.[0] ?? ''
   assert.equal(
     attribute(htmlTag, 'data-theme'),
-    'dark',
-    `Default theme is not dark at ${route}`,
+    'light',
+    `Default theme is not light at ${route}`,
   )
   assert.ok(
     html.includes(
-      `<meta name="theme-color" content="${darkCanvas}" id="themeColorMeta">`,
+      `<meta name="theme-color" content="${defaultCanvas}" id="themeColorMeta">`,
     ),
-    `Theme colour does not match the dark canvas at ${route}`,
+    `Theme colour does not match the default canvas at ${route}`,
   )
   const stylesheets = links(html).filter(
     (tag) => attribute(tag, 'rel') === 'stylesheet',
@@ -418,15 +418,13 @@ for (const locale of locales) {
     }
   }
   const articles = [
-    ...html.matchAll(
-      /<article\b[^>]*class="gallery-case"[^>]*>[\s\S]*?<\/article>/g,
-    ),
+    ...html.matchAll(/<li\b[^>]*class="row-item"[^>]*>[\s\S]*?<\/li>/g),
   ].map((match) => match[0])
   assert.equal(articles.length, 29, `Missing source cases in ${locale} gallery`)
   assert.equal(
     new Set(
       articles.map((article) =>
-        attribute(article.match(/<article\b[^>]*>/)[0], 'data-case-key'),
+        attribute(article.match(/<li\b[^>]*>/)[0], 'data-case-key'),
       ),
     ).size,
     29,
@@ -441,7 +439,10 @@ for (const locale of locales) {
     assert.ok(article.includes(`data-category="${item.categories.join(' ')}"`))
     assert.ok(article.includes(`src="${imageSrc(item.image)}"`))
     assert.ok(article.includes(`alt="${escapeHtml(words.alt)}"`))
-    assert.ok(article.includes(`<h2>${escapeHtml(words.title)}</h2>`))
+    assert.ok(article.includes(`<h3>${escapeHtml(words.title)}</h3>`))
+    assert.ok(
+      article.includes(`<span class="tt">${escapeHtml(words.title)}</span>`),
+    )
     assert.ok(article.includes(escapeHtml(words.summary)))
     assert.ok(article.includes(escapeHtml(item.stack)))
     for (const field of ['task', 'solution', 'result'])
@@ -451,18 +452,18 @@ for (const locale of locales) {
         ),
         `Missing real ${field} for ${locale}/${item.key}`,
       )
-    assert.equal((article.match(/<details\b/g) ?? []).length, 1)
+    assert.equal((article.match(/<button\b/g) ?? []).length, 1)
     for (const [index, link] of item.links.entries())
       assert.ok(
         article.includes(
-          `href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(words.actions[index])}</a>`,
-        ),
+          `href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">`,
+        ) && article.includes(`${escapeHtml(words.actions[index])}</a>`),
         `Source project link changed at ${locale}/${item.key}`,
       )
     if (item.statusType !== 'public')
       assert.ok(
         article.includes(
-          `<span class="gallery-availability">${escapeHtml(words.status)}</span>`,
+          `<span class="priv gallery-availability">${escapeHtml(words.status)}</span>`,
         ),
       )
   }
@@ -497,40 +498,37 @@ for (const locale of locales) {
   const copy = localeCopy[locale]
   const translations = caseTranslations(locale)
   const home = read(`${locale}/index.html`)
-  assert.ok(home.includes('class="portfolio-b home-page"'))
-  assert.equal((home.match(/<article class="b-project"/g) ?? []).length, 3)
-  const stagedProjects = [
-    ...home.matchAll(/<article class="b-project" id="([^"]+)"/g),
-  ].map((match) => match[1])
-  assert.deepEqual(stagedProjects, ['monarh', 'miyolo', 'okh'])
-  assert.doesNotMatch(
-    home,
-    /class="(?:bento|tile|stats)|data-work-grid|data-filter=/,
-  )
+  assert.ok(home.includes('class="home-page"'))
+  assert.equal((home.match(/<li class="row-item"/g) ?? []).length, 29)
+  assert.equal((home.match(/data-limit="8"/g) ?? []).length, 1)
+  assert.doesNotMatch(home, /class="(?:bento|tile|stats)|data-work-grid/)
   for (const line of portfolioCopy[locale].title)
     assert.ok(
       home.includes(escapeHtml(line)),
       `Missing localized B heading at ${locale}`,
     )
   assert.ok(home.includes(escapeHtml(portfolioCopy[locale].statement)))
-  assert.ok(home.includes(escapeHtml(portfolioCopy[locale].headerRole)))
+  assert.ok(
+    home.includes(escapeHtml(portfolioCopy[locale].stats.stores)),
+    `Missing localized stats line at ${locale}`,
+  )
   assert.ok(
     home.includes(
       `<a class="text-link b-all-projects" href="${pagePath(locale, 'work')}">`,
     ),
   )
-  for (const key of ['monarh', 'miyolo', 'okh'])
+  for (const key of caseKeys)
     assert.ok(
       home.includes(
-        `<a class="case-title-link" href="${casePath(locale, key)}">`,
+        `<a class="btn-s gallery-case-link" href="${casePath(locale, key)}">`,
       ),
-      `Home card does not open the case page ${locale}/${key}`,
+      `Home does not link the case page ${locale}/${key}`,
     )
   const gallery = read(`${locale}/work/index.html`)
   for (const key of caseKeys)
     assert.ok(
       gallery.includes(
-        `<a class="gallery-case-link" href="${casePath(locale, key)}">${escapeHtml(copy.caseStudy.openCase)}`,
+        `<a class="btn-s gallery-case-link" href="${casePath(locale, key)}">${escapeHtml(copy.caseStudy.openCase)}`,
       ),
       `Gallery does not link the case page ${locale}/${key}`,
     )
@@ -541,12 +539,16 @@ for (const locale of locales) {
     const url = `${origin}${route}`
     const html = read(`${route.slice(1)}/index.html`)
     assert.ok(
-      html.includes(`<h1 id="case-title">${escapeHtml(words.title)}</h1>`),
+      html.includes(
+        `<h1 class="h1" id="case-title">${escapeHtml(words.title)}</h1>`,
+      ),
       `Wrong case heading at ${route}`,
     )
     assert.ok(html.includes(escapeHtml(words.summary)))
     const hero =
-      html.match(/<figure class="wrap case-shot">(<img\b[^>]*>)/)?.[1] ?? ''
+      html.match(
+        /<figure class="wrap case-shot"><div class="frame">(<img\b[^>]*>)/,
+      )?.[1] ?? ''
     assert.ok(
       attribute(hero, 'src') === imageSrc(item.image) &&
         hero.includes(`alt="${escapeHtml(words.alt)}"`) &&
@@ -581,7 +583,7 @@ for (const locale of locales) {
       )
     assert.ok(
       html.includes(
-        `href="${copy.identity.contact.telegram}" target="_blank" rel="noopener noreferrer"><span class="button-content">${escapeHtml(copy.hero.primaryCta)}`,
+        `href="${copy.identity.contact.telegram}" target="_blank" rel="noopener noreferrer"><svg class="lg" aria-hidden="true" focusable="false"><use href="#l-telegram"/></svg><span class="button-content">${escapeHtml(copy.hero.primaryCta)}`,
       ),
       `Missing case CTA at ${route}`,
     )
@@ -765,9 +767,7 @@ for (const bundle of [stylesheet, script]) {
 assert.equal(imageEntry('altn-emu-1').width, 540)
 assert.equal(imageEntry('monarh-shot').variants.length, 2)
 const home = read('uz/index.html')
-const lcp = home.match(
-  /<a class="b-project-media b-lead-media"[^>]*>(<img\b[^>]*>)/,
-)?.[1]
+const lcp = home.match(/<img class="l2"[^>]*>/)?.[0]
 assert.ok(
   attribute(lcp ?? '', 'fetchpriority') === 'high' &&
     !attribute(lcp ?? '', 'loading'),
@@ -775,16 +775,6 @@ assert.ok(
 )
 assert.ok((attribute(lcp, 'src') ?? '').includes('monarh-shot'))
 assert.equal((home.match(/fetchpriority="high"/g) ?? []).length, 1)
-for (const stage of home.matchAll(
-  /<article class="b-project"[\s\S]*?<\/article>/g,
-)) {
-  const externalLink = stage[0].match(
-    /<a class="text-link b-external"[^>]*>/,
-  )?.[0]
-  assert.ok(externalLink)
-  assert.equal(attribute(externalLink, 'target'), '_blank')
-  assert.equal(attribute(externalLink, 'rel'), 'noopener noreferrer')
-}
 const vercel = readJson('vercel.json')
 const cacheFor = (source) =>
   vercel.headers
@@ -794,7 +784,7 @@ assert.equal(cacheFor('/assets/(.*)'), 'public, max-age=31536000, immutable')
 assert.match(cacheFor('/screenshots/(.*)') ?? '', /max-age=2592000/)
 assert.match(
   readFileSync(join(root, 'assets/theme-init.js'), 'utf8'),
-  /let theme = 'dark'/,
+  /let theme = 'light'/,
 )
 assert.equal(escapeHtml('<script>"&\''), '&lt;script&gt;&quot;&amp;&#39;')
 assert.equal(lineBreaks('A\\n<B>\nC'), 'A<br>&lt;B&gt;<br>C')

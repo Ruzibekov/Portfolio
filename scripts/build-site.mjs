@@ -37,6 +37,7 @@ if (typeof renderHome !== 'function')
 
 const readJson = (path) => JSON.parse(readFileSync(join(root, path), 'utf8'))
 const presentation = readJson('content/locales/presentation.json')
+const portfolio = readJson('content/portfolio-b.json')
 const cases = readJson('content/cases.json').cases
 if (
   !Array.isArray(cases) ||
@@ -131,13 +132,28 @@ const writePage = (path, html) => {
 const canonicalPaths = []
 for (const locale of shared.locales) {
   const { copy, ui } = content[locale]
-  const html = await renderHome({ locale, copy, ui, shared })
+  const html = await renderHome({
+    locale,
+    copy,
+    ui,
+    words: portfolio[locale],
+    cases,
+    caseCopy: caseCopies[locale],
+    shared,
+  })
   writePage(locale, html)
   if (locale === 'uz') writePage('', html)
   canonicalPaths.push(shared.pagePath(locale))
   writePage(
     `${locale}/work`,
-    renderWork({ locale, copy, ui, cases, caseCopy: caseCopies[locale] }),
+    renderWork({
+      locale,
+      copy,
+      ui,
+      words: portfolio[locale],
+      cases,
+      caseCopy: caseCopies[locale],
+    }),
   )
   canonicalPaths.push(shared.pagePath(locale, 'work'))
   for (const key of shared.caseKeys) {
@@ -158,7 +174,7 @@ for (const locale of shared.locales) {
   for (const slug of shared.serviceSlugs) {
     writePage(
       `${locale}/services/${slug}`,
-      renderService({ locale, copy, ui, slug }),
+      renderService({ locale, copy, ui, words: portfolio[locale], slug }),
     )
     canonicalPaths.push(shared.pagePath(locale, slug))
   }

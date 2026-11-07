@@ -1,5 +1,6 @@
+import { icon, spriteMarkup } from './icons.mjs'
 import {
-  darkCanvas,
+  defaultCanvas,
   fontPreloads,
   script,
   stylesheet,
@@ -215,7 +216,7 @@ export function head({
 <meta name="author" content="Shavkatbek Ruzibekov">
 <meta name="google-site-verification" content="rGHEWrWbzSXJ61d0tmQsZc5wO5qhwP5FtKCLaTwnMQU">
 <meta name="yandex-verification" content="67977ee61149d111">
-<meta name="theme-color" content="${darkCanvas}" id="themeColorMeta">
+<meta name="theme-color" content="${defaultCanvas}" id="themeColorMeta">
 <link rel="canonical" href="${canonical}">
 ${locales.map((language) => `<link rel="alternate" hreflang="${language}" href="${absoluteUrl(pagePath(language, slug))}">`).join('\n')}
 <link rel="alternate" hreflang="x-default" href="${absoluteUrl(pagePath('uz', slug))}">
@@ -248,9 +249,6 @@ ${fontPreloads(locale)
 <script type="application/ld+json">${json}</script>`
 }
 
-const themeIcon =
-  '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 3.75a8.25 8.25 0 0 1 0 16.5z" fill="currentColor"/></svg>'
-
 const languageCountries = {
   uz: 'uz',
   ru: 'ru',
@@ -265,59 +263,55 @@ const languageCountries = {
 const languageFlag = (locale) =>
   `<img class="language-flag" src="${versioned(`/assets/flags/${languageCountries[locale]}.svg`)}" width="20" height="15" alt="" aria-hidden="true">`
 
-export function header({
-  locale,
-  copy,
-  ui,
-  slug = null,
-  homePresentation = null,
-}) {
+export const typoBreaks = (value) =>
+  lineBreaks(value).replace(/ ([—–]) /g, '&nbsp;$1 ')
+
+export const telegramUrl = 'https://t.me/ruzibekov_sh'
+
+export function header({ locale, copy, ui, slug = null }) {
   const home = pagePath(locale)
-  const navigation = homePresentation
-    ? ['work', 'about']
-    : ['work', 'services', 'about']
-  const navLinks = navigation
+  const navLinks = ['services', 'work', 'about', 'faq']
     .map(
       (key) =>
-        `<a href="${home}#${key}">${escapeHtml(copy.navigation[key])}</a>`,
+        `<a href="${home}#${key === 'work' ? 'work' : key}">${escapeHtml(copy.navigation[key])}</a>`,
     )
     .join('')
-  const languageLabel = homePresentation
-    ? locale.toUpperCase()
-    : ui.languageName
-  const languages = `<details class="language-picker"><summary${homePresentation ? ` aria-label="${escapeHtml(copy.navigation.language)}: ${escapeHtml(ui.languageName)}"` : ''}>${languageFlag(locale)}${escapeHtml(languageLabel)}<span aria-hidden="true">⌄</span></summary><nav class="language-list" aria-label="${escapeHtml(copy.navigation.language)}">${locales.map((language) => `<a href="${pagePath(language, slug)}" lang="${language}" hreflang="${language}"${language === locale ? ' aria-current="page"' : ''}>${languageFlag(language)}${escapeHtml(languageNames[language])}</a>`).join('')}</nav></details>`
-  const identity = homePresentation
-    ? `<span class="wordmark-identity"><span class="wordmark-name">Shavkatbek Ruzibekov</span><span class="wordmark-role">${escapeHtml(homePresentation.headerRole)}</span></span>`
-    : '<span class="wordmark-name">Shavkatbek Ruzibekov</span>'
+  const languages = `<details class="language-picker" data-language-picker><summary aria-label="${escapeHtml(copy.navigation.language)}: ${escapeHtml(ui.languageName)}">${languageFlag(locale)}<span>${locale.toUpperCase()}</span>${icon('i-chevron-down', 'language-chevron')}</summary><nav class="language-list" aria-label="${escapeHtml(copy.navigation.language)}">${locales.map((language) => `<a href="${pagePath(language, slug)}" lang="${language}" hreflang="${language}"${language === locale ? ' aria-current="page"' : ''}>${languageFlag(language)}<span>${escapeHtml(languageNames[language])}</span></a>`).join('')}</nav></details>`
   return `<a class="skip-link" href="#main">${escapeHtml(ui.accessibility.skipLink)}</a>
-<header class="site-header"><div class="wrap header-inner">
-<a class="wordmark" href="${home}" aria-label="${escapeHtml(ui.accessibility.homeLabel)}"><img class="wordmark-avatar" src="${versioned('/assets/avatar.jpg')}" width="30" height="30" alt="" decoding="async">${identity}</a>
+<header class="top" data-header><div class="wrap">
+<a class="brand" href="${home}" aria-label="${escapeHtml(ui.accessibility.homeLabel)}"><span class="mark" aria-hidden="true">SR</span><span class="brand-name">Shavkatbek Ruzibekov</span></a>
 <nav class="nav" aria-label="${escapeHtml(ui.accessibility.mainNavigation)}">${navLinks}</nav>
-<div class="header-actions">${languages}
-<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="true" aria-label="${escapeHtml(ui.controls.switchToLight)}" data-light-action="${escapeHtml(ui.controls.switchToLight)}" data-dark-action="${escapeHtml(ui.controls.switchToDark)}">${themeIcon}</button>
-<a class="header-link" href="#contact">${escapeHtml(copy.navigation.contact)} <span aria-hidden="true">↗</span></a>
-<button class="menu-toggle" type="button" data-menu-toggle data-menu-label="${escapeHtml(ui.controls.menu)}" data-close-label="${escapeHtml(ui.controls.closeMenu)}" aria-controls="mobile-menu" aria-expanded="false">${escapeHtml(ui.controls.menu)}</button></div></div>
-<nav class="wrap mobile-menu" id="mobile-menu" data-mobile-menu aria-label="${escapeHtml(ui.accessibility.mobileNavigation)}" hidden>${navLinks}<a href="${home}#faq">${escapeHtml(copy.navigation.faq)}</a><a href="#contact">${escapeHtml(copy.navigation.contact)}</a></nav></header>`
+<div class="top-actions">${languages}
+<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="${escapeHtml(ui.controls.switchToDark)}" data-light-action="${escapeHtml(ui.controls.switchToLight)}" data-dark-action="${escapeHtml(ui.controls.switchToDark)}">${icon('i-contrast')}</button>
+<a class="btn k sm" href="${telegramUrl}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(ui.contact.cta)}">${icon('l-telegram')}<span>${escapeHtml(copy.navigation.contact)}</span></a>
+<button class="menu-toggle" type="button" data-menu-toggle data-menu-label="${escapeHtml(ui.controls.menu)}" data-close-label="${escapeHtml(ui.controls.closeMenu)}" aria-label="${escapeHtml(ui.controls.menu)}" aria-controls="mobile-menu" aria-expanded="false">${icon('i-menu', 'menu-open')}${icon('i-x', 'menu-close')}</button></div></div></header>
+<nav class="sheetnav" id="mobile-menu" data-mobile-menu aria-label="${escapeHtml(ui.accessibility.mobileNavigation)}">${navLinks}</nav>`
 }
 
 export function processSteps({ ui }) {
-  return `<ol class="service-process">${Object.values(ui.process)
+  return `<ol class="pr">${Object.values(ui.process)
     .map(
       (step, index) =>
-        `<li><span class="service-step-number" aria-hidden="true">0${index + 1}</span><div><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.description)}</p></div></li>`,
+        `<li class="st" data-r style="--i:${index}"><span class="num" aria-hidden="true">0${index + 1}</span><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.description)}</p></li>`,
     )
     .join('')}</ol>`
 }
 
 export function faq({ copy, ui }) {
-  return `<section class="wrap service-section service-faq" id="faq" aria-labelledby="faq-title"><h2 id="faq-title">${lineBreaks(ui.faq.title)}</h2><div>${copy.faq.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</div></section>`
+  return `<section class="sec" id="faq" aria-labelledby="faq-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${escapeHtml(copy.navigation.faq)}</p><h2 class="h2" id="faq-title">${typoBreaks(ui.faq.title)}</h2></header><div class="faq-list" data-r>${copy.faq.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</div></div></section>`
 }
 
-export function footer({ copy, ui, homePresentation = null }) {
-  if (homePresentation)
-    return `<section class="wrap b-contact" id="contact" aria-labelledby="contact-title"><div><h2 id="contact-title">${lineBreaks(ui.contact.title)}</h2><p>${escapeHtml(ui.contact.intro)}</p></div><div class="b-contact-actions"><a class="button" href="https://t.me/ruzibekov_sh" target="_blank" rel="noopener noreferrer">${escapeHtml(ui.contact.cta)} <span class="b-arrow" aria-hidden="true">↗</span></a><a class="b-email" href="mailto:ruzibekov44@gmail.com">ruzibekov44@gmail.com</a></div></section><footer class="wrap site-footer b-footer"><p>Shavkatbek Ruzibekov<br>${escapeHtml(homePresentation.headerRole)}</p><a href="#top" aria-label="${escapeHtml(homePresentation.backToTop)}">↑</a></footer>`
-  return `<section class="wrap contact service-contact" id="contact" aria-labelledby="contact-title"><div><p class="eyebrow">${escapeHtml(copy.navigation.contact)}</p><h2 id="contact-title">${lineBreaks(ui.contact.title)}</h2></div><div><p>${escapeHtml(ui.contact.intro)}</p><a class="button" href="https://t.me/ruzibekov_sh" target="_blank" rel="noopener noreferrer"><span class="button-content" data-magnetic-content>${escapeHtml(ui.contact.cta)} <span aria-hidden="true">↗</span></span></a><a class="service-email" href="mailto:ruzibekov44@gmail.com">ruzibekov44@gmail.com</a></div></section>
-<footer class="wrap site-footer service-footer"><p>Shavkatbek Ruzibekov</p><p>${escapeHtml(ui.footer.line)}</p><a href="#top">↑</a></footer>`
+export function contactSection({ copy, ui }) {
+  const strap = ui.contact.strap
+    .split(' · ')
+    .map((part) => `<span class="nw">${escapeHtml(part)}</span>`)
+    .join(' · ')
+  return `<section class="sec" id="contact" aria-labelledby="contact-title"><div class="wrap"><div class="ct" data-r><div><p class="eyebrow">${escapeHtml(copy.navigation.contact)}</p><h2 class="h2" id="contact-title">${typoBreaks(ui.contact.title)}</h2><p class="lead">${escapeHtml(ui.contact.intro)}</p><p class="strap">${strap}</p></div><div class="ct-r"><a class="btn p" href="${telegramUrl}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span class="button-content">${escapeHtml(ui.contact.cta)}</span></a><a class="way" href="mailto:ruzibekov44@gmail.com">${icon('i-mail')}<span>ruzibekov44@gmail.com</span></a></div></div></div></section>`
+}
+
+export function footer({ ui, copy }) {
+  return `${contactSection({ copy, ui })}
+<footer class="foot"><div class="wrap"><span>© 2026 Shavkatbek Ruzibekov</span><span>${escapeHtml(ui.footer.line)}</span><a class="to-top" href="#top" aria-label="${escapeHtml(copy.navigation.home)}">${icon('i-arrow-up')}</a></div></footer>`
 }
 
 export function renderDocument({
@@ -331,10 +325,10 @@ export function renderDocument({
   about = null,
   body,
   bodyClass = '',
-  homePresentation = null,
+  bodyEnd = '',
 }) {
   return `<!doctype html>
-<html lang="${locale}" data-theme="dark"><head>${head({ locale, title, description, role: copy.identity.role, slug, graph, about })}</head>
-<body class="${escapeHtml(bodyClass)}" id="top">${header({ locale, copy, ui, slug, homePresentation })}<main id="main">${body}</main>${footer({ locale, copy, ui, homePresentation })}
+<html lang="${locale}" data-theme="light"><head>${head({ locale, title, description, role: copy.identity.role, slug, graph, about })}</head>
+<body class="${escapeHtml(bodyClass)}" id="top">${spriteMarkup}${header({ locale, copy, ui, slug })}<main id="main">${body}</main>${footer({ copy, ui })}${bodyEnd}
 <script src="${script.path}" defer></script></body></html>`
 }

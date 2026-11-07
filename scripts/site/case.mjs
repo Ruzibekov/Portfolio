@@ -10,6 +10,7 @@ import {
   renderDocument,
 } from './shared.mjs'
 import { galleryLabels } from './work.mjs'
+import { icon } from './icons.mjs'
 import { imageSrc, imageTag } from './assets.mjs'
 
 const storyFields = ['task', 'solution', 'result']
@@ -17,7 +18,6 @@ const serviceByCategory = { web: 'web-development', mobile: 'mobile-apps' }
 const extraServices = { agentmama: ['ai-integrations'] }
 const descriptionLimit = 160
 const shotSizes = '(min-width: 1460px) 1400px, calc(100vw - 48px)'
-const arrow = '<span aria-hidden="true">↗</span>'
 
 export function caseServices(item) {
   const slugs = item.categories.map((category) => {
@@ -137,15 +137,15 @@ export function renderCase({ locale, copy, ui, cases, caseCopy, key }) {
   const services = caseServices(item)
     .map(
       (slug) =>
-        `<li><a class="case-service" href="${pagePath(locale, slug)}"><span>${escapeHtml(copy.services[slug].name)}</span><span aria-hidden="true">→</span></a></li>`,
+        `<li><a class="case-service" href="${pagePath(locale, slug)}"><span>${escapeHtml(copy.services[slug].name)}</span>${icon('i-arrow-right')}</a></li>`,
     )
     .join('')
   const { previous, next } = neighbours(key)
   const pagerLink = (target, relation, label) =>
     `<a class="case-pager-link case-pager-${relation}" href="${casePath(locale, target)}" rel="${relation}"><span>${escapeHtml(label)}</span><strong>${escapeHtml(caseCopy[target].title)}</strong></a>`
-  const body = `<section class="wrap case-hero" aria-labelledby="case-title">${breadcrumb}<h1 id="case-title">${escapeHtml(words.title)}</h1><p class="case-lead">${escapeHtml(words.summary)}</p><ul class="case-chips" aria-label="${escapeHtml(strings.stack)}">${chips}</ul></section>
-<figure class="wrap case-shot">${imageTag({ key: item.image, alt: escapeHtml(words.alt), sizes: shotSizes, priority: true })}</figure>
-<div class="wrap case-layout"><div class="case-story">${story}</div><aside class="case-aside">${externalLinks}<section class="case-aside-group" aria-labelledby="case-services-title"><h2 id="case-services-title">${escapeHtml(strings.services)}</h2><ul class="case-link-list">${services}</ul></section><section class="case-cta" aria-labelledby="case-cta-title"><h2 id="case-cta-title">${escapeHtml(strings.ctaTitle)}</h2><a class="button" href="${escapeHtml(copy.identity.contact.telegram)}" target="_blank" rel="noopener noreferrer"><span class="button-content">${escapeHtml(copy.hero.primaryCta)} ${arrow}</span></a></section></aside></div>
+  const body = `<section class="page-hero case-hero" aria-labelledby="case-title"><div class="wrap">${breadcrumb}<h1 class="h1" id="case-title">${escapeHtml(words.title)}</h1><p class="lead case-lead">${escapeHtml(words.summary)}</p><ul class="case-chips" aria-label="${escapeHtml(strings.stack)}">${chips}</ul></div></section>
+<figure class="wrap case-shot"><div class="frame">${imageTag({ key: item.image, alt: escapeHtml(words.alt), sizes: shotSizes, priority: true })}</div></figure>
+<div class="wrap case-layout"><div class="case-story">${story}</div><aside class="case-aside">${externalLinks}<section class="case-aside-group" aria-labelledby="case-services-title"><h2 id="case-services-title">${escapeHtml(strings.services)}</h2><ul class="case-link-list">${services}</ul></section><section class="case-cta" aria-labelledby="case-cta-title"><h2 id="case-cta-title">${escapeHtml(strings.ctaTitle)}</h2><a class="btn p" href="${escapeHtml(copy.identity.contact.telegram)}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span class="button-content">${escapeHtml(copy.hero.primaryCta)}</span></a></section></aside></div>
 <nav class="wrap case-pager" aria-label="${escapeHtml(strings.pager)}">${pagerLink(previous, 'prev', strings.previous)}${pagerLink(next, 'next', strings.next)}</nav>`
   return renderDocument({
     locale,

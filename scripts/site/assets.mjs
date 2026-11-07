@@ -3,21 +3,18 @@ import { existsSync, readFileSync } from 'node:fs'
 
 const root = new URL('../../', import.meta.url)
 const styleSources = [
-  'assets/fonts.css',
-  'assets/site.css',
-  'assets/services.css',
-  'assets/work-gallery.css',
-  'assets/bento.css',
-  'assets/case.css',
-  'assets/portfolio-b.css',
+  'assets/fonts-b.css',
+  'assets/b-base.css',
+  'assets/b-home.css',
+  'assets/b-pages.css',
 ]
 const scriptSource = 'assets/site.js'
 const themeSource = 'assets/theme-init.js'
 const imageManifestSource = 'screenshots/web/manifest.json'
 const fontFiles = {
-  latin: '/assets/fonts/onest-latin.woff2',
-  cyrillic: '/assets/fonts/onest-cyrillic.woff2',
-  cyrillicExt: '/assets/fonts/onest-cyrillic-ext.woff2',
+  latin: '/assets/fonts/intertight-latin.woff2',
+  cyrillic: '/assets/fonts/intertight-cyrillic.woff2',
+  cyrillicExt: '/assets/fonts/intertight-cyrillic-ext.woff2',
 }
 const localeFonts = {
   uz: ['latin'],
@@ -68,17 +65,10 @@ export const script = bundle(readSource(scriptSource).toString('utf8'), 'js')
 export const themeInit = readSource(themeSource).toString('utf8').trim()
 export const bundledSources = [...styleSources, scriptSource, themeSource]
 
-export const darkCanvas = (() => {
-  const blocks = [
-    ...stylesheet.content.matchAll(
-      /:root\[data-theme=['"]dark['"]\]\s*\{([^}]*)\}/g,
-    ),
-  ]
-  const value = blocks
-    .map((block) => block[1].match(/--canvas:\s*([^;]+);/)?.[1].trim())
-    .filter(Boolean)
-    .at(-1)
-  if (!value) throw new Error('Dark theme --canvas token is missing')
+export const defaultCanvas = (() => {
+  const block = stylesheet.content.match(/:root\s*\{([^}]*)\}/)?.[1] ?? ''
+  const value = block.match(/--s0:\s*([^;]+);/)?.[1].trim()
+  if (!value) throw new Error('Default theme --s0 canvas token is missing')
   return value
 })()
 
