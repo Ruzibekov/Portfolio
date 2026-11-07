@@ -47,6 +47,7 @@ const localeCopy = Object.fromEntries(
   locales.map((locale) => [locale, readJson(`content/locales/${locale}.json`)]),
 )
 const futureCopy = readJson('content/future-ui.json').locales
+const presentationCopy = readJson('content/locales/presentation.json').locales
 const portfolioCopy = readJson('content/portfolio-b.json')
 assert.deepEqual(Object.keys(portfolioCopy).sort(), [...locales].sort())
 const decodeHtml = (value) =>
@@ -502,6 +503,51 @@ for (const locale of locales) {
   assert.equal((home.match(/<li class="row-item"/g) ?? []).length, 29)
   assert.equal((home.match(/data-limit="8"/g) ?? []).length, 1)
   assert.doesNotMatch(home, /class="(?:bento|tile|stats)|data-work-grid/)
+  const servicesSection =
+    home.match(
+      /<section class="sec sv-s2" id="services"[\s\S]*?<\/section>/,
+    )?.[0] ?? ''
+  const tiles =
+    servicesSection.match(/<a class="bt bt-[^>]*>[\s\S]*?<\/a>/g) ?? []
+  assert.equal(tiles.length, 5, `Services must render 5 tiles at ${locale}`)
+  assert.doesNotMatch(servicesSection, /class="sv"|class="ledger"/)
+  const bento = presentationCopy[locale].services.bento
+  const proofCases = {
+    'web-development': 'monarh',
+    'mobile-apps': 'avtopark',
+    'business-automation': 'payqr',
+    'ai-integrations': 'agentmama',
+  }
+  serviceSlugs.forEach((slug, index) => {
+    const service = copy.services[slug]
+    const tile = tiles[index]
+    assert.ok(
+      tile.startsWith(
+        `<a class="bt bt-${slug}" href="${pagePath(locale, slug)}" aria-label="${escapeHtml(service.name)}"`,
+      ),
+      `Services tile ${index + 1} must link the ${slug} page at ${locale}`,
+    )
+    assert.ok(tile.includes(escapeHtml(service.pitch)))
+    assert.ok(tile.includes(service.tags.map(escapeHtml).join(' · ')))
+    assert.ok(
+      tile.includes(
+        escapeHtml(service.short.replace('Telegram-', 'Telegram\u2011')),
+      ),
+    )
+    const caption = proofCases[slug]
+      ? `${bento.proof}: ${translations[proofCases[slug]].title}`
+      : bento.chat.cap
+    assert.ok(
+      tile.includes(`<span class="bt-cap">${escapeHtml(caption)}</span>`),
+      `Services tile ${slug} has no caption at ${locale}`,
+    )
+    if (locale !== 'ru')
+      assert.notEqual(service.pitch, localeCopy.ru.services[slug].pitch)
+  })
+  assert.equal(
+    (servicesSection.match(/class="ch-o"/g) ?? []).length,
+    bento.chat.opts.length,
+  )
   for (const line of portfolioCopy[locale].title)
     assert.ok(
       home.includes(escapeHtml(line)),

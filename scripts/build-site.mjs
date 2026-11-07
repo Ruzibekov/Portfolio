@@ -72,10 +72,22 @@ const content = Object.fromEntries(
       [...shared.serviceSlugs].sort().join(',')
     )
       throw new Error(`Unexpected service families for ${locale}`)
+    const bento = ui.services.bento
+    if (
+      !bento?.proof ||
+      !bento.chat?.start ||
+      !bento.chat.ask ||
+      !bento.chat.cap ||
+      bento.chat.opts?.length !== 3
+    )
+      throw new Error(`Incomplete services bento copy for ${locale}`)
     for (const slug of shared.serviceSlugs) {
       const service = copy.services[slug]
       if (
         !service.name ||
+        !service.short ||
+        !service.pitch ||
+        service.tags?.length !== 3 ||
         !service.description ||
         service.useCases?.length !== 3 ||
         !service.seo?.title ||

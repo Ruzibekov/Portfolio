@@ -42,7 +42,10 @@
       "seo": {
         "title": "Website and Web App Development | Shavkatbek Ruzibekov",
         "description": "Custom landing pages, business websites, online stores, and web apps. Shavkatbek Ruzibekov develops the interface, backend, and integrations around your requirements."
-      }
+      },
+      "short": "Websites and web apps",
+      "pitch": "A site that brings in leads, from landing page to store.",
+      "tags": ["Next.js", "Bitrix", "Payments"]
     },
     "telegram-bots": {
       "name": "Telegram bots and Mini Apps",
@@ -55,7 +58,10 @@
       "seo": {
         "title": "Telegram Bot and Mini App Development | Shavkatbek Ruzibekov",
         "description": "Telegram bots and Mini Apps for orders, bookings, support, and business workflows. Connect your bot to a CRM, database, or payment service."
-      }
+      },
+      "short": "Telegram bots and Mini Apps",
+      "pitch": "A bot or Mini App for orders, support and notifications.",
+      "tags": ["Orders", "Alerts", "Payments"]
     },
     "mobile-apps": {
       "name": "Mobile apps",
@@ -68,7 +74,10 @@
       "seo": {
         "title": "Android and iOS App Development | Shavkatbek Ruzibekov",
         "description": "Custom Android and iOS apps, MVP development, and improvements to existing products. Discuss your mobile app requirements with Shavkatbek Ruzibekov."
-      }
+      },
+      "short": "Mobile apps",
+      "pitch": "Android and iOS, from first version to store release.",
+      "tags": ["Flutter", "Kotlin", "Stores"]
     },
     "business-automation": {
       "name": "CRM and business automation",
@@ -81,7 +90,10 @@
       "seo": {
         "title": "CRM Integration and Business Automation | Shavkatbek Ruzibekov",
         "description": "Connect websites, Telegram bots, mobile apps, and CRM systems. Backend services, API integrations, and workflow automation tailored to your business."
-      }
+      },
+      "short": "CRM and automation",
+      "pitch": "Sites, bots and CRM that exchange data on their own.",
+      "tags": ["CRM", "API", "FastAPI"]
     },
     "ai-integrations": {
       "name": "AI integrations",
@@ -94,7 +106,10 @@
       "seo": {
         "title": "AI Integration for Websites, Bots and Apps | Shavkatbek Ruzibekov",
         "description": "AI assistants, document processing, and request classification for your website, bot, or app. Scope, data access, and review requirements agreed before development."
-      }
+      },
+      "short": "AI in business processes",
+      "pitch": "AI for specific tasks: documents, knowledge base, requests.",
+      "tags": ["Documents", "Knowledge base", "Human review"]
     }
   },
   "faq": [

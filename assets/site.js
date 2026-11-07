@@ -94,11 +94,6 @@
     const title = qs('[data-build-title]')
     const words = qsa('.wd', title)
     const steps = qsa('.bs', build)
-    const image = qs('[data-build-image]', build)
-    const measure = () =>
-      build.style.setProperty('--bw', `${image.offsetWidth}px`)
-    measure()
-    window.addEventListener('resize', measure)
     const paint = (stage, final) => {
       build.dataset.st = String(stage)
       const mark = (list) =>
@@ -112,8 +107,201 @@
     if (reduced()) paint(3, true)
     else {
       paint(1, false)
-      window.setTimeout(() => paint(2, false), 1000)
-      window.setTimeout(() => paint(3, true), 2500)
+      window.setTimeout(() => paint(2, false), 300)
+      window.setTimeout(() => paint(3, true), 820)
+    }
+  }
+
+  const followers = new Set()
+  let followFrame = 0
+  const follow = () => {
+    followFrame = 0
+    for (const item of followers) {
+      item.x += (item.tx - item.x) * 0.16
+      item.y += (item.ty - item.y) * 0.16
+      item.apply(item.x, item.y)
+      if (
+        Math.abs(item.tx - item.x) < 0.01 &&
+        Math.abs(item.ty - item.y) < 0.01
+      ) {
+        item.apply(item.tx, item.ty)
+        followers.delete(item)
+      }
+    }
+    if (followers.size) followFrame = requestAnimationFrame(follow)
+  }
+  const kick = (item) => {
+    followers.add(item)
+    if (!followFrame) followFrame = requestAnimationFrame(follow)
+  }
+  const clamp = (value, limit) => Math.max(-limit, Math.min(limit, value))
+
+  const heroArt = qs('.hero-art')
+  const heroCard = qs('.build')
+  if (heroArt && heroCard && !reduced()) {
+    const tilt = {
+      x: 0,
+      y: 0,
+      tx: 0,
+      ty: 0,
+      apply: (x, y) => {
+        heroCard.style.setProperty('--ry', `${(x * 7).toFixed(2)}deg`)
+        heroCard.style.setProperty('--rx', `${(-y * 6).toFixed(2)}deg`)
+        heroCard.style.setProperty('--px', `${(-x * 10).toFixed(1)}px`)
+        heroCard.style.setProperty('--py', `${(-y * 8).toFixed(1)}px`)
+      },
+    }
+    const aim = (event) => {
+      const rect = heroCard.getBoundingClientRect()
+      tilt.tx = clamp(((event.clientX - rect.left) / rect.width - 0.5) * 2, 1)
+      tilt.ty = clamp(((event.clientY - rect.top) / rect.height - 0.5) * 2, 1)
+      kick(tilt)
+    }
+    const rest = () => {
+      tilt.tx = 0
+      tilt.ty = 0
+      kick(tilt)
+    }
+    heroArt.addEventListener('pointermove', (event) => {
+      if (event.pointerType === 'mouse') aim(event)
+    })
+    heroArt.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse') aim(event)
+    })
+    heroArt.addEventListener('pointerleave', rest)
+    heroArt.addEventListener('pointerup', rest)
+    heroArt.addEventListener('pointercancel', rest)
+  }
+
+  if (!reduced()) {
+    const magnets = qsa('.hero .btn, .ct .btn').map((element) => ({
+      element,
+      x: 0,
+      y: 0,
+      tx: 0,
+      ty: 0,
+      apply: (x, y) => {
+        element.style.translate =
+          x || y ? `${x.toFixed(1)}px ${y.toFixed(1)}px` : ''
+      },
+    }))
+    window.addEventListener(
+      'pointermove',
+      (event) => {
+        if (event.pointerType !== 'mouse') return
+        for (const magnet of magnets) {
+          const rect = magnet.element.getBoundingClientRect()
+          const dx = event.clientX - (rect.left + rect.width / 2)
+          const dy = event.clientY - (rect.top + rect.height / 2)
+          const reach = Math.max(rect.width, rect.height) / 2 + 70
+          const pull = Math.max(0, 1 - Math.hypot(dx, dy) / reach)
+          magnet.tx = clamp(dx * 0.48 * pull, 9)
+          magnet.ty = clamp(dy * 0.64 * pull, 7)
+          kick(magnet)
+        }
+      },
+      { passive: true },
+    )
+    for (const magnet of magnets) {
+      magnet.element.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse') return
+        const rect = magnet.element.getBoundingClientRect()
+        magnet.tx = clamp((event.clientX - rect.left - rect.width / 2) * 0.1, 4)
+        magnet.ty = 2
+        kick(magnet)
+      })
+      for (const name of ['pointerup', 'pointercancel']) {
+        magnet.element.addEventListener(name, () => {
+          magnet.tx = 0
+          magnet.ty = 0
+          kick(magnet)
+        })
+      }
+    }
+  }
+
+  const tiles = qsa('[data-bt]')
+  if (tiles.length) {
+    const finish = (tile) => tile.classList.add('built')
+    if (reduced() || !('IntersectionObserver' in window)) tiles.forEach(finish)
+    else {
+      const builder = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue
+            const tile = entry.target
+            builder.unobserve(tile)
+            const order = Number(tile.style.getPropertyValue('--i')) % 3
+            window.setTimeout(() => finish(tile), 140 + order * 90)
+          }
+        },
+        { threshold: 0.35 },
+      )
+      tiles.forEach((tile) => builder.observe(tile))
+
+      const nativeParallax = CSS.supports('animation-timeline', 'view()')
+      if (!nativeParallax) {
+        const visible = new Set()
+        const tracker = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) visible.add(entry.target)
+              else visible.delete(entry.target)
+            }
+          },
+          { rootMargin: '10% 0px' },
+        )
+        qsa('.bt-pz').forEach((layer) => tracker.observe(layer))
+        let queued = 0
+        const update = () => {
+          queued = 0
+          for (const layer of visible) {
+            const rect = layer.getBoundingClientRect()
+            const progress = Math.max(
+              0,
+              Math.min(
+                1,
+                (window.innerHeight - rect.top) /
+                  (window.innerHeight + rect.height),
+              ),
+            )
+            layer.style.setProperty(
+              '--pz',
+              `${((0.5 - progress) * 7).toFixed(2)}%`,
+            )
+          }
+        }
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (!queued) queued = requestAnimationFrame(update)
+          },
+          { passive: true },
+        )
+        window.addEventListener('resize', update)
+      }
+
+      for (const tile of tiles) {
+        if (!qs('.bt-wipe', tile)) continue
+        const stop = () => tile.classList.remove('re')
+        const replay = () => {
+          if (reduced() || !tile.classList.contains('built')) return
+          stop()
+          void tile.offsetWidth
+          tile.classList.add('re')
+        }
+        tile.addEventListener('pointerenter', (event) => {
+          if (event.pointerType === 'mouse') replay()
+        })
+        tile.addEventListener('pointerdown', (event) => {
+          if (event.pointerType !== 'mouse') replay()
+        })
+        tile.addEventListener('pointerleave', stop)
+        tile.addEventListener('pointercancel', stop)
+        tile.addEventListener('animationend', (event) => {
+          if (event.target.classList.contains('bt-wipe')) stop()
+        })
+      }
     }
   }
 
@@ -211,6 +399,7 @@
     let currentY = 0
     let frameId = 0
     let active = false
+    let shownItem = null
     const step = () => {
       currentX += (targetX - currentX) * 0.18
       currentY += (targetY - currentY) * 0.18
@@ -226,6 +415,7 @@
     }
     const hide = () => {
       active = false
+      shownItem = null
       preview.classList.remove('on')
     }
     index.addEventListener('pointermove', (event) => {
@@ -238,15 +428,23 @@
         image.dataset.src = item.dataset.preview
         image.src = item.dataset.preview
       }
+      if (item !== shownItem) {
+        shownItem = item
+        preview.classList.remove('wp')
+        void preview.offsetWidth
+        preview.classList.add('wp')
+      }
       caption.textContent = item.dataset.tag
-      const width = 380
-      const height = 290
-      let x = event.clientX + 28
-      if (x + width > window.innerWidth - 16) x = event.clientX - width - 28
+      const width = 330
+      const height = 255
+      const x = Math.min(536, window.innerWidth - width - 16)
+      const rect = item.getBoundingClientRect()
       const y = Math.max(
-        index.getBoundingClientRect().top + 8,
         76,
-        Math.min(window.innerHeight - height - 16, event.clientY - height / 2),
+        Math.min(
+          window.innerHeight - height - 16,
+          rect.top + rect.height / 2 - height / 2 - 24,
+        ),
       )
       targetX = x
       targetY = y

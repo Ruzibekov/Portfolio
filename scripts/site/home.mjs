@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { icon } from './icons.mjs'
-import { imageTag, versioned } from './assets.mjs'
+import { imageEntry, imageTag, versioned } from './assets.mjs'
 import { countProjects, projectTag, renderIndex } from './index.mjs'
 
 const future = JSON.parse(
@@ -12,12 +12,33 @@ const future = JSON.parse(
 const heroKey = 'monarh'
 const heroSizes = '(min-width: 1021px) 640px, calc(100vw - 40px)'
 const indexLimit = 8
-const serviceIcons = {
-  'web-development': 'i-globe',
-  'telegram-bots': 'i-bot',
-  'mobile-apps': 'i-smartphone',
-  'business-automation': 'i-workflow',
-  'ai-integrations': 'i-layers',
+const serviceProofs = {
+  'web-development': 'monarh',
+  'mobile-apps': 'avtopark',
+  'business-automation': 'payqr',
+  'ai-integrations': 'agentmama',
+}
+const chevron =
+  '<svg class="bt-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>'
+const shotSizes = '(min-width: 1021px) 560px, 100vw'
+
+function serviceShot(imageKey) {
+  const { variants } = imageEntry(imageKey)
+  const large = variants.at(-1)
+  const attributes = `src="${large.src}" srcset="${variants.map((variant) => `${variant.src} ${variant.width}w`).join(', ')}" sizes="${shotSizes}" alt="" width="${large.width}" height="${large.height}" loading="lazy" decoding="async"`
+  return `<span class="bt-well"><span class="bt-frame"><span class="bt-pz"><img class="bt-g" ${attributes}><span class="bt-wipe"><img class="bt-in" ${attributes}></span><span class="bt-scanw"><i class="bt-scan"></i></span></span></span></span>`
+}
+
+function serviceChat(chat, e) {
+  const lines = [
+    `<span class="ch-u" style="--k:0">${e(chat.start)}</span>`,
+    `<span class="ch-b" style="--k:1">${e(chat.ask)}</span>`,
+    ...chat.opts.map(
+      (option, index) =>
+        `<span class="ch-o" style="--k:${index + 2}">${index + 1} · ${e(option)}</span>`,
+    ),
+  ]
+  return `<span class="bt-well" aria-hidden="true"><span class="bt-frame"><span class="ch">${lines.join('')}</span></span></span>`
 }
 
 export function homeFaqItems(copy, futureCopy) {
@@ -65,14 +86,23 @@ export function renderHome({
 <p class="mono" data-r>${stats}</p>
 <p class="lead" data-r style="--i:1">${e(words.statement)}</p>
 <div class="cta" data-r style="--i:1"><a class="btn p" href="${shared.telegramUrl}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span>${e(copy.hero.primaryCta)}</span></a><a class="btn g" href="#work"><span>${e(copy.hero.secondaryCta)}</span>${icon('i-arrow-down')}</a></div>
-</div><div class="hero-art"><div class="build" data-build data-st="1"><div class="bimg" data-build-image>${imageTag({ key: hero.image, alt: '', sizes: heroSizes, className: 'l1', lazy: false })}${imageTag({ key: hero.image, alt: e(ui.caseStudies[heroKey].alt), sizes: heroSizes, className: 'l2', priority: true })}<span class="scan" aria-hidden="true"></span></div><div class="bsteps" aria-hidden="true">${steps}</div><div class="bname"><b>${e(heroWords.title)}</b><span>${e(projectTag(hero, ui))}</span></div></div></div></div></div></section>`
-  const services = shared.serviceSlugs
-    .map(
-      (slug, index) =>
-        `<a class="sv" href="${shared.pagePath(locale, slug)}"><span class="num" aria-hidden="true">0${index + 1}</span><h3>${icon(serviceIcons[slug])}<span>${e(copy.services[slug].name)}</span></h3><p>${e(copy.services[slug].description)}</p><span class="go" aria-hidden="true">${icon('i-arrow-right')}</span></a>`,
-    )
+</div><div class="hero-art"><div class="build" data-build data-st="1"><div class="bimg" data-build-image>${imageTag({ key: hero.image, alt: '', sizes: heroSizes, className: 'l1', lazy: false })}<span class="hw"><span class="hi">${imageTag({ key: hero.image, alt: e(ui.caseStudies[heroKey].alt), sizes: heroSizes, className: 'l2', priority: true })}</span></span><span class="hs" aria-hidden="true"><i></i></span></div><div class="bsteps" aria-hidden="true">${steps}</div><div class="bname"><b>${e(heroWords.title)}</b><span>${e(projectTag(hero, ui))}</span></div></div></div></div></div></section>`
+  const bento = ui.services.bento
+  const serviceTiles = shared.serviceSlugs
+    .map((slug, index) => {
+      const service = copy.services[slug]
+      const title = service.short.replace('Telegram-', 'Telegram‑')
+      const proofKey = serviceProofs[slug]
+      const well = proofKey
+        ? serviceShot(cases.find((item) => item.key === proofKey).image)
+        : serviceChat(bento.chat, e)
+      const caption = proofKey
+        ? `${bento.proof}: ${caseCopy[proofKey].title}`
+        : bento.chat.cap
+      return `<a class="bt bt-${slug}" href="${shared.pagePath(locale, slug)}" aria-label="${e(service.name)}" data-r style="--i:${index}" data-bt><span class="bt-h"><span class="num" aria-hidden="true">0${index + 1}</span>${chevron}</span><div class="bt-b"><h3>${e(title)}</h3><span class="bt-p">${e(service.pitch)}</span><span class="bt-tg">${service.tags.map(e).join(' · ')}</span></div>${well}<span class="bt-cap">${e(caption)}</span></a>`
+    })
     .join('')
-  const servicesBlock = `<section class="sec" id="services" aria-labelledby="services-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${e(copy.navigation.services)}</p><h2 class="h2" id="services-title">${shared.typoBreaks(ui.services.title.replace(/\n/g, ' '))}</h2></header><div class="ledger" data-r>${services}</div></div></section>`
+  const servicesBlock = `<section class="sec sv-s2" id="services" aria-labelledby="services-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${e(copy.navigation.services)}</p><h2 class="h2" id="services-title">${shared.typoBreaks(ui.services.title.replace(/\n/g, ' '))}</h2></header><div class="sv-grid">${serviceTiles}</div></div></section>`
   const { section, overlays } = renderIndex({
     locale,
     copy,

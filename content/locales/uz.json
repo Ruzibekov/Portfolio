@@ -42,7 +42,10 @@
       "seo": {
         "title": "Sayt va Veb Ilova Yaratish | Shavkatbek Ruzibekov",
         "description": "Landing, korporativ sayt, internet do‘kon va veb ilovalar yaratish. Shavkatbek Ruzibekov talablaringizga mos interfeys, backend va integratsiyalarni ishlab chiqadi."
-      }
+      },
+      "short": "Saytlar va veb ilovalar",
+      "pitch": "Ariza keltiradigan sayt: landingdan do‘kongacha.",
+      "tags": ["Next.js", "Bitrix", "To‘lov"]
     },
     "telegram-bots": {
       "name": "Telegram bot va Mini App yaratish",
@@ -77,7 +80,10 @@
       "seo": {
         "title": "Telegram Bot va Mini App Yaratish | Shavkatbek Ruzibekov",
         "description": "Buyurtma, band qilish va mijozlarga xizmat ko‘rsatish uchun Telegram bot va Mini App yaratish. Botni CRM, ma’lumotlar bazasi yoki to‘lov xizmatiga ulash."
-      }
+      },
+      "short": "Telegram botlar va Mini App",
+      "pitch": "Buyurtma, yordam va bildirishnoma uchun bot yoki Mini App.",
+      "tags": ["Buyurtmalar", "Bildirishnoma", "To‘lovlar"]
     },
     "mobile-apps": {
       "name": "Android va iOS mobil ilova yaratish",
@@ -112,7 +118,10 @@
       "seo": {
         "title": "Android va iOS Mobil Ilova Yaratish | Shavkatbek Ruzibekov",
         "description": "Android va iOS uchun mobil ilovalar, MVP ishlab chiqish va mavjud mahsulotni rivojlantirish. Ilovangiz talablarini Shavkatbek Ruzibekov bilan muhokama qiling."
-      }
+      },
+      "short": "Mobil ilovalar",
+      "pitch": "Android va iOS: birinchi versiyadan do‘kon nashrigacha.",
+      "tags": ["Flutter", "Kotlin", "Do‘konlar"]
     },
     "business-automation": {
       "name": "CRM va biznesni avtomatlashtirish",
@@ -125,7 +134,10 @@
       "seo": {
         "title": "CRM Integratsiyasi va Biznesni Avtomatlashtirish | Shavkatbek Ruzibekov",
         "description": "Sayt, Telegram bot, mobil ilova va CRMni bog‘lash. Biznesingizga mos backend, API integratsiyalari va ish jarayonlarini avtomatlashtirish."
-      }
+      },
+      "short": "CRM va avtomatlashtirish",
+      "pitch": "Sayt, bot va CRM ma’lumotni o‘zaro o‘zi almashadi.",
+      "tags": ["CRM", "API", "FastAPI"]
     },
     "ai-integrations": {
       "name": "Sun’iy intellekt integratsiyalari",
@@ -138,7 +150,10 @@
       "seo": {
         "title": "Sayt, Bot va Ilovalar Uchun AI Integratsiya | Shavkatbek Ruzibekov",
         "description": "Sayt, bot yoki ilova uchun AI yordamchi, hujjatlarni qayta ishlash va murojaatlarni saralash. Vazifa, ma’lumotlarga kirish va tekshirish talablari oldindan kelishiladi."
-      }
+      },
+      "short": "Biznesda sun’iy intellekt",
+      "pitch": "Aniq vazifalar uchun sun’iy intellekt: hujjat, bilim bazasi, murojaat.",
+      "tags": ["Hujjatlar", "Bilim bazasi", "Inson nazorati"]
     }
   },
   "faq": [

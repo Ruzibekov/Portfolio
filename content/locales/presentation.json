@@ -77,6 +77,15 @@
         }
       },
       "services": {
+        "bento": {
+          "proof": "Misol",
+          "chat": {
+            "start": "/start",
+            "ask": "Nima qilmoqchisiz?",
+            "opts": ["Buyurtma berish", "Buyurtma holati", "To‘lash"],
+            "cap": "Bot ssenariysi namunasi"
+          }
+        },
         "title": "Bir g‘oya.\nBir butun\nmahsulot.",
         "intro": "Foydalanuvchi ko‘radigan interfeysdan uning ortidagi tizimgacha. Vazifangizga mos qismlarni birga ishlaydigan yechimga birlashtiraman.",
         "detailsLabel": "Xizmat haqida",
@@ -200,6 +209,15 @@
         }
       },
       "services": {
+        "bento": {
+          "proof": "Пример",
+          "chat": {
+            "start": "/start",
+            "ask": "Что нужно сделать?",
+            "opts": ["Оформить заказ", "Статус заказа", "Оплатить"],
+            "cap": "Пример сценария бота"
+          }
+        },
         "title": "Одна идея.\nЦельный\nпродукт.",
         "intro": "От интерфейса, который видит пользователь, до системы за ним. Объединяю нужные вашему проекту части в работающее решение.",
         "detailsLabel": "Подробнее об услуге",
@@ -327,6 +345,15 @@
         }
       },
       "services": {
+        "bento": {
+          "proof": "Example",
+          "chat": {
+            "start": "/start",
+            "ask": "What do you need?",
+            "opts": ["Place an order", "Order status", "Pay"],
+            "cap": "Sample bot flow"
+          }
+        },
         "title": "One idea.\nOne complete\nproduct.",
         "intro": "From the interface your users see to the system behind it. I connect the parts your project needs into a working product.",
         "detailsLabel": "About this service",
@@ -450,6 +477,15 @@
         }
       },
       "services": {
+        "bento": {
+          "proof": "Мисал",
+          "chat": {
+            "start": "/start",
+            "ask": "Эмне кылуу керек?",
+            "opts": ["Буйрутма берүү", "Буйрутма абалы", "Төлөө"],
+            "cap": "Бот сценарийинин мисалы"
+          }
+        },
         "title": "Бир идея.\nБир бүтүн\nөнүм.",
         "intro": "Колдонуучу көргөн интерфейстен анын артындагы системага чейин. Долбооруңузга керектүү бөлүктөрдү бирге иштеген чечимге бириктирем.",
         "detailsLabel": "Кызмат жөнүндө",
@@ -577,6 +613,15 @@
         }
       },
       "services": {
+        "bento": {
+          "proof": "Мысал",
+          "chat": {
+            "start": "/start",
+            "ask": "Не істеу керек?",
+            "opts": ["Тапсырыс беру", "Тапсырыс күйі", "Төлеу"],
+            "cap": "Бот сценарийінің мысалы"
+          }
+        },
         "title": "Бір идея.\nБіртұтас\nөнім.",
         "intro": "Пайдаланушы көретін интерфейстен оның артындағы жүйеге дейін. Жобаңызға қажетті бөліктерді бірге жұмыс істейтін шешімге біріктіремін.",
         "detailsLabel": "Қызмет туралы",
@@ -704,6 +749,15 @@
         }
       },
       "services": {
+        "bento": {
+          "proof": "Намуна",
+          "chat": {
+            "start": "/start",
+            "ask": "Чӣ лозим аст?",
+            "opts": ["Фармоиш додан", "Ҳолати фармоиш", "Пардохт кардан"],
+            "cap": "Намунаи сенарияи бот"
+          }
+        },
         "title": "Як ғоя.\nЯк маҳсулоти\nяклухт.",
         "intro": "Аз интерфейсе, ки корбар мебинад, то низоми паси он. Қисмҳои зарурии лоиҳаи шуморо ба як ҳалли ҳамоҳанг мепайвандам.",
         "detailsLabel": "Дар бораи хизмат",
@@ -827,6 +881,15 @@
         }
       },
       "services": {
+        "bento": {
+          "proof": "Приклад",
+          "chat": {
+            "start": "/start",
+            "ask": "Що потрібно зробити?",
+            "opts": ["Оформити замовлення", "Статус замовлення", "Сплатити"],
+            "cap": "Приклад сценарію бота"
+          }
+        },
         "title": "Одна ідея.\nЦілісний\nпродукт.",
         "intro": "Від інтерфейсу, який бачить користувач, до системи за ним. Поєдную потрібні вашому проєкту частини в узгоджене рішення.",
         "detailsLabel": "Докладніше про послугу",
@@ -954,6 +1017,15 @@
         }
       },
       "services": {
+        "bento": {
+          "proof": "Прыклад",
+          "chat": {
+            "start": "/start",
+            "ask": "Што трэба зрабіць?",
+            "opts": ["Аформіць заказ", "Статус заказу", "Аплаціць"],
+            "cap": "Прыклад сцэнарыя бота"
+          }
+        },
         "title": "Адна ідэя.\nСуцэльны\nпрадукт.",
         "intro": "Ад інтэрфейсу, які бачыць карыстальнік, да сістэмы за ім. Аб’ядноўваю патрэбныя вашаму праекту часткі ў зладжанае рашэнне.",
         "detailsLabel": "Падрабязней пра паслугу",

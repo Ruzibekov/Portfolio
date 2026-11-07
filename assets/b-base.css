@@ -16,6 +16,8 @@
   --acc-ink: #ffffff;
   --acc-soft: #fbdad2;
   --acc-t: #b02a12;
+  --well: #d8dce5;
+  --band: #e4e7ee;
   --scrim: rgba(11, 12, 15, 0.42);
   --hdr: #eef0f4;
   --r1: 8px;
@@ -29,6 +31,7 @@
   --sp6: 112px;
   --sh: 0 1px 2px rgba(10, 12, 16, 0.06), 0 16px 38px rgba(10, 12, 16, 0.14);
   --sh2: 0 2px 4px rgba(10, 12, 16, 0.08), 0 30px 70px rgba(10, 12, 16, 0.24);
+  --sh-t: 0 1px 2px rgba(10, 12, 16, 0.1), 0 14px 30px rgba(10, 12, 16, 0.12);
   --f: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --m:
     'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -170,10 +173,13 @@
   --line2: #4a5160;
   --acc-soft: #3a1a14;
   --acc-t: #ff5a45;
+  --well: #2d3340;
+  --band: transparent;
   --scrim: rgba(0, 0, 0, 0.62);
   --hdr: #0b0c0f;
   --sh: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 38px rgba(0, 0, 0, 0.45);
   --sh2: 0 2px 4px rgba(0, 0, 0, 0.5), 0 30px 70px rgba(0, 0, 0, 0.6);
+  --sh-t: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 *,
 *::before,
