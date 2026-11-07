@@ -993,3 +993,10 @@ section {
     animation: none;
   }
 }
+
+@media (max-width: 760px) {
+  .ct .h2 {
+    font-size: 34px;
+    max-width: none;
+  }
+}

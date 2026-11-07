@@ -264,7 +264,9 @@ const languageFlag = (locale) =>
   `<img class="language-flag" src="${versioned(`/assets/flags/${languageCountries[locale]}.svg`)}" width="20" height="15" alt="" aria-hidden="true">`
 
 export const typoBreaks = (value) =>
-  lineBreaks(value).replace(/ ([—–])/g, '&nbsp;$1')
+  lineBreaks(value)
+    .replace(/ ([—–]) ([^\s<]{1,8})(?=[\s<.,!?]|$)/g, '&nbsp;$1&nbsp;$2')
+    .replace(/ ([—–])/g, '&nbsp;$1')
 
 export const telegramUrl = 'https://t.me/ruzibekov_sh'
 
@@ -307,7 +309,7 @@ export function contactSection({ copy, ui }) {
     .split(' · ')
     .map((part) => `<span class="nw">${escapeHtml(part)}</span>`)
     .join(' · ')
-  return `<section class="sec" id="contact" aria-labelledby="contact-title"><div class="wrap"><div class="ct" data-r><div><p class="eyebrow">${escapeHtml(copy.navigation.contact)}</p><h2 class="h2" id="contact-title">${typoBreaks(ui.contact.title)}</h2><p class="lead">${escapeHtml(ui.contact.intro)}</p><p class="strap">${strap}</p></div><div class="ct-r"><a class="btn p" href="${telegramUrl}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span class="button-content">${escapeHtml(ui.contact.cta)}</span></a><a class="way" href="mailto:ruzibekov44@gmail.com">${icon('i-mail')}<span>ruzibekov44@gmail.com</span></a></div></div></div></section>`
+  return `<section class="sec" id="contact" aria-labelledby="contact-title"><div class="wrap"><div class="ct" data-r><div><p class="eyebrow">${escapeHtml(copy.navigation.contact)}</p><h2 class="h2" id="contact-title">${typoBreaks(ui.contact.title.replace(/\s*\n\s*/g, ' '))}</h2><p class="lead">${escapeHtml(ui.contact.intro)}</p><p class="strap">${strap}</p></div><div class="ct-r"><a class="btn p" href="${telegramUrl}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span class="button-content">${escapeHtml(ui.contact.cta)}</span></a><a class="way" href="mailto:ruzibekov44@gmail.com">${icon('i-mail')}<span>ruzibekov44@gmail.com</span></a></div></div></div></section>`
 }
 
 export function footer({ ui, copy }) {

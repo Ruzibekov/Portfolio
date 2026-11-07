@@ -373,3 +373,35 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.page-hero .svc-hero.solo {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+.page-hero .svc-hero.solo .h1 {
+  max-width: 14em;
+}
+.page-hero .svc-hero.solo .lead {
+  max-width: 40em;
+}
+a.svc-art {
+  display: block;
+}
+.proofs:has(> .proof:only-child) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.proof:only-child {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+}
+.proof:only-child .proof-copy {
+  padding: 18px clamp(12px, 3vw, 40px);
+}
+@media (max-width: 760px) {
+  .proof:only-child {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

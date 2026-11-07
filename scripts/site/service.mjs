@@ -22,7 +22,6 @@ const projectImages = {
   agentmama: 'agentmama-shot',
   miyolo: 'miyolo-shot',
 }
-const heroFallback = 'agentmama'
 const proof = {
   'web-development': ['monarh', 'miyolo'],
   'telegram-bots': [],
@@ -57,8 +56,9 @@ export function renderService({ locale, copy, ui, words, slug, caseCopy }) {
   if (!service || !Object.hasOwn(proof, slug))
     throw new Error(`Missing service content: ${locale}/${slug}`)
   const questions = serviceFaq(copy, slug)
-  const heroKey = proof[slug][0] ?? heroFallback
+  const heroKey = proof[slug].length >= 2 ? proof[slug][0] : null
   const evidence = proof[slug]
+    .filter((key) => key !== heroKey)
     .map((key) => {
       const caseWords = ui.caseStudies[key]
       const title = caseCopy[key].title
@@ -72,7 +72,7 @@ export function renderService({ locale, copy, ui, words, slug, caseCopy }) {
         `<a class="way" href="${pagePath(locale, key)}"><span>${escapeHtml(item.name)}</span>${icon('i-arrow-up-right')}</a>`,
     )
     .join('')
-  const body = `<section class="page-hero service-hero" aria-labelledby="service-title"><div class="wrap svc-hero"><div class="svc-copy"><a class="back" href="${pagePath(locale)}">${icon('i-arrow-left')}<span>${escapeHtml(ui.detail.backHome)}</span></a><p class="eyebrow">${escapeHtml(ui.detail.eyebrow)}</p><h1 class="h1" id="service-title">${escapeHtml(service.name)}</h1><p class="lead">${escapeHtml(service.description)}</p><div class="cta"><a class="btn p" href="#contact"><span class="button-content">${escapeHtml(words.discussTask)}</span>${icon('i-arrow-down')}</a></div></div><div class="svc-art"><div class="frame">${imageTag({ key: projectImages[heroKey], alt: escapeHtml(ui.caseStudies[heroKey].alt), sizes: heroSizes, priority: true })}</div></div></div></section>
+  const body = `<section class="page-hero service-hero" aria-labelledby="service-title"><div class="wrap svc-hero${heroKey ? '' : ' solo'}"><div class="svc-copy"><a class="back" href="${pagePath(locale)}">${icon('i-arrow-left')}<span>${escapeHtml(ui.detail.backHome)}</span></a><p class="eyebrow">${escapeHtml(ui.detail.eyebrow)}</p><h1 class="h1" id="service-title">${escapeHtml(service.name)}</h1><p class="lead">${escapeHtml(service.description)}</p><div class="cta"><a class="btn p" href="#contact"><span class="button-content">${escapeHtml(words.discussTask)}</span>${icon('i-arrow-down')}</a></div></div>${heroKey ? `<a class="svc-art" href="${casePath(locale, heroKey)}" tabindex="-1" aria-hidden="true"><div class="frame">${imageTag({ key: projectImages[heroKey], alt: '', sizes: heroSizes, priority: true })}</div></a>` : ''}</div></section>
 <section class="sec sec-tight" aria-labelledby="use-cases-title"><div class="wrap"><header class="sec-h" data-r><h2 class="h2 h2-s" id="use-cases-title">${escapeHtml(ui.detail.useCasesTitle)}</h2></header><ol class="uc" data-r>${service.useCases.map((useCase, index) => `<li><span class="num" aria-hidden="true">0${index + 1}</span><p>${escapeHtml(useCase)}</p></li>`).join('')}</ol></div></section>
 ${evidence ? `<section class="sec sec-tight" aria-labelledby="proof-title"><div class="wrap"><header class="sec-h ix-h" data-r><h2 class="h2 h2-s" id="proof-title">${escapeHtml(ui.work.eyebrow)}</h2><a class="text-link" href="${pagePath(locale, 'work')}#work">${escapeHtml(ui.work.allProjects)} ${icon('i-arrow-right')}</a></header><div class="proofs">${evidence}</div></div></section>` : ''}
 <section class="sec sec-tight" aria-labelledby="process-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${escapeHtml(words.processEyebrow)}</p><h2 class="h2 h2-s" id="process-title">${escapeHtml(words.processTitle)}</h2><p class="lead">${escapeHtml(ui.about.title)}</p></header>${processSteps({ ui })}</div></section>
