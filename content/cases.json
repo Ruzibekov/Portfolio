@@ -75,7 +75,7 @@
           "actions": ["Открыть сайт ↗"]
         },
         "en": {
-          "title": "МонархМаркет",
+          "title": "Monarh Market",
           "summary": "A redesign of a Bitrix porcelain tile store for three cities.",
           "task": "Refresh the design of a live tile store without stopping sales: home, catalog, collections, product page and cart.",
           "solution": "Bitrix template with custom CSS and JavaScript on top of the theme. New header and mobile menu, interior photos in collections, a sheet filter, favorites and compare, smooth motion. Three sites: Samara, Kazan and Nizhny Novgorod.",
@@ -85,7 +85,7 @@
           "actions": ["Visit website ↗"]
         },
         "uz": {
-          "title": "МонархМаркет",
+          "title": "Monarh Market",
           "summary": "Uch shahar uchun Bitrix'dagi keramogranit doʻkoni redizayni.",
           "task": "Ishlab turgan plitka doʻkoni dizaynini savdoni toʻxtatmasdan yangilash: bosh sahifa, katalog, kolleksiyalar, mahsulot sahifasi va savat.",
           "solution": "Bitrix shabloni, mavzu ustidan oʻz CSS va JavaScript. Yangi shapka va mobil menyu, kolleksiyalarda interyer fotolari, pastdan chiquvchi filtr, sevimlilar va solishtirish, silliq animatsiyalar. Uch sayt: Samara, Qozon va Nijniy Novgorod.",
