@@ -39,11 +39,11 @@
       "widths": [540, 270]
     },
     {
-      "source": "screenshots/avtopark-profile.png",
+      "source": "screenshots/avtopark-phone.png",
       "widths": [540, 270]
     },
     {
-      "source": "screenshots/avtopark-phone.png",
+      "source": "screenshots/avtopark-profile.png",
       "widths": [540, 270]
     },
     {
@@ -80,6 +80,14 @@
     },
     {
       "source": "screenshots/geoblinker-emu-2.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/geoblinker-icon-picker.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/geoblinker-profile.png",
       "widths": [540, 270]
     },
     {
@@ -176,6 +184,10 @@
     },
     {
       "source": "screenshots/payqr-menu.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/payqr-operations-history.png",
       "widths": [540, 270]
     },
     {
@@ -307,7 +319,15 @@
       "widths": [1280, 640]
     },
     {
-      "source": "screenshots/yolo-phone.png",
+      "source": "screenshots/yolo-my-plan.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/yolo-records.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/yolo-run-timer.png",
       "widths": [540, 270]
     },
     {

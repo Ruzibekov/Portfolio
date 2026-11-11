@@ -2,6 +2,8 @@ import json
 import sys
 from pathlib import Path
 
+import importlib.util
+
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -10,6 +12,9 @@ CROPS = ROOT / "content" / "screen-crops.json"
 MATTE = (234, 235, 239)
 PHONE_RATIO = 9 / 19.5
 TOLERANCE = 8
+OPTIMIZE = importlib.util.spec_from_file_location("optimize_images", ROOT / "scripts" / "optimize-images.py")
+optimize_images = importlib.util.module_from_spec(OPTIMIZE)
+OPTIMIZE.loader.exec_module(optimize_images)
 
 
 def distance(first, second):
@@ -100,6 +105,31 @@ def last_row(entry):
     return row(image, image.height - 1)
 
 
+def busy(image, y):
+    margin = image.width // 10
+    pixels = [image.getpixel((x, y)) for x in range(margin, image.width - margin)]
+    surface = median(pixels)
+    return sum(distance(pixel, surface) > 3 * TOLERANCE for pixel in pixels) / len(pixels)
+
+
+def clean_cut(image, kept, removed):
+    if busy(image, kept) <= 0.02 or busy(image, removed) <= 0.02:
+        return True
+    return distance(row(image, kept), row(image, removed)) > 3 * TOLERANCE
+
+
+def leftover_band(image, start, step):
+    first = row(image, start)
+    y = start
+    while 0 <= y < image.height and busy(image, y) <= 0.02 and distance(row(image, y), first) <= TOLERANCE:
+        y += step
+    inside = 0 <= y < image.height and abs(y - start) < image.height // 25
+    if not inside or busy(image, y) > 0.02:
+        return False
+    sides = [image.getpixel((2, y)), image.getpixel((image.width - 3, y))]
+    return any(distance(pixel, first) > TOLERANCE for pixel in sides)
+
+
 def check_trims(phones):
     problems = []
     trims = json.loads(CROPS.read_text(encoding="utf-8")).get("phoneTrims", {})
@@ -107,12 +137,24 @@ def check_trims(phones):
         if key not in phones:
             problems.append(f"{key}: phoneTrims names no phone capture")
             continue
-        project = key.split("-")[0]
-        bottom = last_row(phones[key])
-        for sibling in sorted(other for other in phones if other != key and other.split("-")[0] == project):
-            other = last_row(phones[sibling])
-            if distance(bottom, other) > TOLERANCE:
-                problems.append(f"{key}: trimmed bottom {bottom} differs from {sibling} bottom {other}")
+        with Image.open(ROOT / "screenshots" / f"{key}.png") as opened:
+            source = optimize_images.clear_matte(opened.convert("RGB"))
+        top = trims[key].get("top", 0)
+        bottom = trims[key].get("bottom", 0)
+        if top and not clean_cut(source, top, top - 1):
+            problems.append(f"{key}: top trim {top} cuts through content")
+        if top and leftover_band(source, top, 1):
+            problems.append(f"{key}: top trim {top} leaves part of a bar")
+        if bottom and leftover_band(source, source.height - bottom - 1, -1):
+            problems.append(f"{key}: bottom trim {bottom} leaves part of a bar")
+        if bottom:
+            kept = source.height - bottom - 1
+            project = key.split("-")[0]
+            edge = last_row(phones[key])
+            siblings = [other for other in phones if other != key and other.split("-")[0] == project]
+            matches = all(distance(edge, last_row(phones[other])) <= TOLERANCE for other in siblings)
+            if not matches and not clean_cut(source, kept, kept + 1):
+                problems.append(f"{key}: bottom trim {bottom} cuts through content")
     return problems
 
 

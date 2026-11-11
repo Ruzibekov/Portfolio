@@ -1636,7 +1636,33 @@ const phoneCheck = spawnSync(
   { encoding: 'utf8' },
 )
 assert.equal(phoneCheck.status, 0, phoneCheck.stderr)
-assert.match(phoneCheck.stdout, /Checked 33 phone captures: 0 problems/)
+assert.match(phoneCheck.stdout, /Checked 38 phone captures: 0 problems/)
+const trimRules = spawnSync(
+  'python3',
+  [
+    '-c',
+    [
+      'import importlib.util, sys',
+      'from PIL import Image, ImageDraw',
+      `spec = importlib.util.spec_from_file_location("check", ${JSON.stringify(join(root, 'scripts/check-phones.py'))})`,
+      'check = importlib.util.module_from_spec(spec)',
+      'spec.loader.exec_module(check)',
+      'image = Image.new("RGB", (200, 400), (255, 255, 255))',
+      'draw = ImageDraw.Draw(image)',
+      'draw.rectangle((0, 0, 199, 29), fill=(190, 190, 190))',
+      'draw.rectangle((20, 8, 120, 20), fill=(20, 20, 20))',
+      'draw.rectangle((10, 60, 190, 90), fill=(30, 120, 200))',
+      'for x in range(10, 190, 6): draw.line((x, 60, x, 90), fill=(250, 250, 250))',
+      'card = Image.new("RGB", (200, 400), (239, 239, 239))',
+      'ImageDraw.Draw(card).rectangle((12, 30, 187, 80), fill=(255, 255, 255))',
+      'results = [check.leftover_band(image, 30, 1), check.leftover_band(image, 22, 1), check.clean_cut(image, 75, 74), check.clean_cut(image, 30, 29), check.leftover_band(card, 20, 1)]',
+      'print(results)',
+      'sys.exit(0 if results == [False, True, False, True, False] else 1)',
+    ].join('\n'),
+  ],
+  { encoding: 'utf8' },
+)
+assert.equal(trimRules.status, 0, trimRules.stdout + trimRules.stderr)
 for (const locale of ['uz', 'ru', 'en']) {
   const catalogue = new Map(
     [

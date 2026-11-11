@@ -406,23 +406,71 @@
     "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/geoblinker-emu-2-270.f44003a988.webp",
+        "src": "/screenshots/web/geoblinker-emu-2-270.d216039d42.webp",
         "width": 270,
         "height": 585,
-        "bytes": 23756
+        "bytes": 24624
       },
       {
-        "src": "/screenshots/web/geoblinker-emu-2-540.bd190b220e.webp",
+        "src": "/screenshots/web/geoblinker-emu-2-540.601f7ba0c7.webp",
         "width": 540,
         "height": 1170,
-        "bytes": 64830
+        "bytes": 66446
+      }
+    ],
+    "fit": {
+      "top": 18,
+      "right": 0,
+      "bottom": 18,
+      "left": 0
+    }
+  },
+  "geoblinker-icon-picker": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/geoblinker-icon-picker-270.d4750a966e.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 9754
+      },
+      {
+        "src": "/screenshots/web/geoblinker-icon-picker-540.e91bd60c0c.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 22202
       }
     ],
     "fit": {
       "top": 0,
-      "right": 7,
+      "right": 1,
       "bottom": 0,
-      "left": 7
+      "left": 1
+    }
+  },
+  "geoblinker-profile": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/geoblinker-profile-270.2298545a9b.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 8074
+      },
+      {
+        "src": "/screenshots/web/geoblinker-profile-540.7c0674087f.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 18992
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 1,
+      "bottom": 0,
+      "left": 1
     }
   },
   "geoblinker-shot": {
@@ -694,23 +742,23 @@
     "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/mynails-2-270.ebdfbf81ba.webp",
+        "src": "/screenshots/web/mynails-2-270.19545b7a00.webp",
         "width": 270,
         "height": 585,
-        "bytes": 10826
+        "bytes": 10982
       },
       {
-        "src": "/screenshots/web/mynails-2-540.8fd5757b13.webp",
+        "src": "/screenshots/web/mynails-2-540.988eea4c5e.webp",
         "width": 540,
         "height": 1170,
-        "bytes": 24454
+        "bytes": 24542
       }
     ],
     "fit": {
-      "top": 0,
-      "right": 7,
-      "bottom": 0,
-      "left": 7
+      "top": 18,
+      "right": 0,
+      "bottom": 18,
+      "left": 0
     }
   },
   "mynails-emu-1": {
@@ -718,23 +766,23 @@
     "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/mynails-emu-1-270.9c478232f1.webp",
+        "src": "/screenshots/web/mynails-emu-1-270.52d72ae606.webp",
         "width": 270,
         "height": 585,
-        "bytes": 8016
+        "bytes": 7742
       },
       {
-        "src": "/screenshots/web/mynails-emu-1-540.8fc4c753ca.webp",
+        "src": "/screenshots/web/mynails-emu-1-540.efb99ef1b1.webp",
         "width": 540,
         "height": 1170,
-        "bytes": 17780
+        "bytes": 17410
       }
     ],
     "fit": {
-      "top": 0,
-      "right": 7,
-      "bottom": 0,
-      "left": 7
+      "top": 18,
+      "right": 0,
+      "bottom": 18,
+      "left": 0
     }
   },
   "mynails-shot": {
@@ -905,28 +953,52 @@
       "left": 5
     }
   },
-  "payqr-phone": {
-    "width": 351,
-    "height": 761,
+  "payqr-operations-history": {
+    "width": 540,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/payqr-phone-270.b37fb4581e.webp",
+        "src": "/screenshots/web/payqr-operations-history-270.9460e20893.webp",
         "width": 270,
         "height": 585,
-        "bytes": 17962
+        "bytes": 11924
       },
       {
-        "src": "/screenshots/web/payqr-phone-351.aaa99d832f.webp",
-        "width": 351,
-        "height": 761,
-        "bytes": 26356
+        "src": "/screenshots/web/payqr-operations-history-540.ac030147a6.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 28602
       }
     ],
     "fit": {
-      "top": 0,
-      "right": 5,
-      "bottom": 0,
-      "left": 4
+      "top": 34,
+      "right": 0,
+      "bottom": 34,
+      "left": 0
+    }
+  },
+  "payqr-phone": {
+    "width": 342,
+    "height": 741,
+    "variants": [
+      {
+        "src": "/screenshots/web/payqr-phone-270.0fb038037c.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 17252
+      },
+      {
+        "src": "/screenshots/web/payqr-phone-342.96314200be.webp",
+        "width": 342,
+        "height": 741,
+        "bytes": 25160
+      }
+    ],
+    "fit": {
+      "top": 21,
+      "right": 0,
+      "bottom": 22,
+      "left": 0
     }
   },
   "payqr-shot": {
@@ -1559,28 +1631,76 @@
       }
     ]
   },
-  "yolo-phone": {
-    "width": 350,
-    "height": 759,
+  "yolo-my-plan": {
+    "width": 540,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/yolo-phone-270.ffd3605981.webp",
+        "src": "/screenshots/web/yolo-my-plan-270.96061ccff5.webp",
         "width": 270,
-        "height": 586,
-        "bytes": 5314
+        "height": 585,
+        "bytes": 11962
       },
       {
-        "src": "/screenshots/web/yolo-phone-350.f3e0908d5a.webp",
-        "width": 350,
-        "height": 759,
-        "bytes": 7120
+        "src": "/screenshots/web/yolo-my-plan-540.393382dcb9.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 28084
       }
     ],
     "fit": {
       "top": 0,
-      "right": 10,
+      "right": 7,
       "bottom": 0,
-      "left": 9
+      "left": 7
+    }
+  },
+  "yolo-records": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/yolo-records-270.ad345f6bb4.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 11326
+      },
+      {
+        "src": "/screenshots/web/yolo-records-540.81a168ee36.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 26246
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "yolo-run-timer": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/yolo-run-timer-270.0ec4e8ec49.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 7926
+      },
+      {
+        "src": "/screenshots/web/yolo-run-timer-540.d9b119ad5c.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 18250
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
     }
   },
   "yolo-shot": {

@@ -64,16 +64,34 @@
       "source": "screenshots/wegotrip-shot.webp",
       "box": [912, 84, 343, 764],
       "output": "screenshots/wegotrip-tours.png"
-    },
-    {
-      "source": "screenshots/yolo-shot.webp",
-      "box": [533, 86, 333, 761],
-      "output": "screenshots/yolo-phone.png"
     }
   ],
   "phoneTrims": {
     "okh-phone": {
       "bottom": 22
+    },
+    "payqr-phone": {
+      "top": 27,
+      "bottom": 36
+    },
+    "payqr-operations-history": {
+      "top": 66,
+      "bottom": 132
+    },
+    "geoblinker-emu-2": {
+      "top": 132
+    },
+    "geoblinker-icon-picker": {
+      "top": 50
+    },
+    "geoblinker-profile": {
+      "top": 50
+    },
+    "mynails-2": {
+      "top": 132
+    },
+    "mynails-emu-1": {
+      "top": 132
     }
   }
 }

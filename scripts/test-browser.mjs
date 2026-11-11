@@ -191,12 +191,12 @@ const frontKey = (page) =>
     () => document.querySelector('.hero-slab.is-front')?.dataset.key ?? null,
   )
 
-const waitFront = (page, key) =>
+const waitFront = (page, key, timeout = 5000) =>
   page.waitForFunction(
     (wanted) =>
       document.querySelector('.hero-slab.is-front')?.dataset.key === wanted,
     key,
-    { timeout: 5000 },
+    { timeout },
   )
 
 const waitStage = (page, key) =>
@@ -452,9 +452,11 @@ describe('home hero scene', () => {
       [-1, 0, -1, -1, -1, -1],
     )
     await page.keyboard.press('End')
+    await waitFront(page, 'wottank', 20000)
     await settle(page)
     assert.equal(await frontKey(page), 'wottank')
     await page.keyboard.press('Home')
+    await waitFront(page, 'agentmama', 20000)
     await settle(page)
     assert.equal(await frontKey(page), 'agentmama')
     await done(context)
@@ -1804,23 +1806,39 @@ describe('mobile project trios', () => {
     await page.click('.sr-item[data-key="payqr"] [data-row]')
     await stageSettle(page)
     front = await stageFront(page)
-    assert.equal(front.sources.length, 2)
-    assert.ok(ownScreens('payqr', front.sources))
+    assert.equal(front.sources.length, 3)
+    assert.ok(ownScreens('payqr', front.sources), front.sources.join())
     assert.ok(front.neighbours.every((value) => value === 0))
-    await page.click('.sr-item[data-key="yolo"] [data-row]')
+    for (const [key, count] of [
+      ['yolo', 3],
+      ['geoblinker', 3],
+      ['mynails', 2],
+    ]) {
+      await page.click(`.sr-item[data-key="${key}"] [data-row]`)
+      await waitStage(page, key)
+      await stageSettle(page)
+      front = await stageFront(page)
+      assert.equal(front.trio, true, key)
+      assert.equal(front.hasTrio, true, key)
+      assert.equal(front.sources.length, count, key)
+      assert.ok(ownScreens(key, front.sources), front.sources.join())
+      assert.deepEqual(front.sides, Array(count - 1).fill(1), key)
+    }
+    await page.focus('.sr-item[data-key="altn"] [data-row]')
+    await waitStage(page, 'altn')
     await stageSettle(page)
     front = await stageFront(page)
     assert.equal(front.trio, false)
     assert.equal(front.hasTrio, false)
-    assert.ok(ownScreens('yolo', front.sources))
+    assert.ok(ownScreens('altn', front.sources))
     await done(context)
   })
 
   test('a single-screen mobile front shows no other project beside it', async () => {
     for (const width of [1280, 1024]) {
       const { context, page } = await open('/uz/work/', { width })
-      for (const key of ['geoblinker', 'yolo', 'mynails']) {
-        await page.click(`.sr-item[data-key="${key}"] [data-row]`)
+      for (const key of ['altn']) {
+        await page.focus(`.sr-item[data-key="${key}"] [data-row]`)
         await waitStage(page, key)
         await stageSettle(page)
         const front = await stageFront(page)
@@ -2314,7 +2332,15 @@ describe('site chrome', () => {
     assert.equal(dark.primary, 'rgb(181, 242, 61)')
     assert.equal(dark.dim, 'rgb(11, 12, 14)')
     await page.click('[data-theme-toggle]')
-    await page.waitForTimeout(400)
+    await page.waitForFunction(
+      () =>
+        getComputedStyle(document.body).backgroundColor ===
+          'rgb(236, 237, 239)' &&
+        getComputedStyle(document.querySelector('.slab-dim'))
+          .backgroundColor === 'rgb(236, 237, 239)',
+      null,
+      { timeout: 5000 },
+    )
     const light = await look()
     assert.equal(light.meta, '#ecedef')
     assert.equal(light.canvas, 'rgb(236, 237, 239)')

@@ -226,7 +226,7 @@
       "stack": "Flutter, FastAPI",
       "image": "payqr-shot",
       "screen": "payqr-menu",
-      "screens": ["payqr-menu", "payqr-phone"],
+      "screens": ["payqr-menu", "payqr-phone", "payqr-operations-history"],
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -242,7 +242,8 @@
           "actions": [],
           "screenAlts": [
             "PAYQR: главное меню с операциями и бонусами",
-            "PAYQR: сканер QR-кода для оплаты"
+            "PAYQR: сканер QR-кода для оплаты",
+            "PAYQR: история операций"
           ]
         },
         "en": {
@@ -256,7 +257,8 @@
           "actions": [],
           "screenAlts": [
             "PAYQR: main menu with operations and bonuses",
-            "PAYQR: QR code scanner for payment"
+            "PAYQR: QR code scanner for payment",
+            "PAYQR: operations history"
           ]
         },
         "uz": {
@@ -270,7 +272,8 @@
           "actions": [],
           "screenAlts": [
             "PAYQR: operatsiyalar va bonuslar bilan asosiy menyu",
-            "PAYQR: toʻlov uchun QR-kod skaneri"
+            "PAYQR: toʻlov uchun QR-kod skaneri",
+            "PAYQR: operatsiyalar tarixi"
           ]
         }
       }
@@ -711,7 +714,7 @@
       "stack": "Flutter",
       "image": "mynails-shot",
       "screen": "mynails-2",
-      "screens": ["mynails-2"],
+      "screens": ["mynails-2", "mynails-emu-1"],
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -724,7 +727,11 @@
           "result": "Готовое мобильное приложение.",
           "alt": "My Nail Salon: подбор и визуализация дизайна ногтей",
           "status": "Приватный проект",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "My Nail Salon: выбор цвета и формы ногтей",
+            "My Nail Salon: камера с трафаретом руки"
+          ]
         },
         "en": {
           "title": "My Nail Salon",
@@ -734,7 +741,11 @@
           "result": "A finished mobile app.",
           "alt": "My Nail Salon: nail design selection with live preview",
           "status": "Private project",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "My Nail Salon: choosing nail colour and shape",
+            "My Nail Salon: camera with a hand stencil"
+          ]
         },
         "uz": {
           "title": "My Nail Salon",
@@ -744,7 +755,11 @@
           "result": "Tayyor mobil ilova.",
           "alt": "My Nail Salon: tirnoq dizaynini tanlash va oldindan koʻrish",
           "status": "Xususiy loyiha",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "My Nail Salon: tirnoq rangi va shaklini tanlash",
+            "My Nail Salon: qoʻl trafaretli kamera"
+          ]
         }
       }
     },
@@ -868,8 +883,8 @@
       "categories": ["mobile"],
       "stack": "Kotlin Multiplatform",
       "image": "yolo-shot",
-      "screen": "yolo-phone",
-      "screens": ["yolo-phone"],
+      "screen": "yolo-run-timer",
+      "screens": ["yolo-run-timer", "yolo-my-plan", "yolo-records"],
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -882,7 +897,12 @@
           "result": "Готовое приложение с трекингом пробежек и прогрессом.",
           "alt": "Yolo: беговое приложение Couch to 5K: план, пробежка, статистика",
           "status": "Приватный проект",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Yolo: таймер пробежки во время тренировки",
+            "Yolo: план тренировок по неделям",
+            "Yolo: личные рекорды, достижения и история пробежек"
+          ]
         },
         "en": {
           "title": "Yolo",
@@ -892,7 +912,12 @@
           "result": "A finished app with run tracking and progress stats.",
           "alt": "Yolo: Couch to 5K running app: plan, run, statistics",
           "status": "Private project",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Yolo: run timer during a workout",
+            "Yolo: weekly training plan",
+            "Yolo: personal records, achievements and run history"
+          ]
         },
         "uz": {
           "title": "Yolo",
@@ -902,7 +927,12 @@
           "result": "Yugurishlarni kuzatish va progress statistikasiga ega tayyor ilova.",
           "alt": "Yolo: Couch to 5K yugurish ilovasi: reja, yugurish, statistika",
           "status": "Xususiy loyiha",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Yolo: mashgʻulot paytida yugurish taymeri",
+            "Yolo: haftalik mashgʻulotlar rejasi",
+            "Yolo: shaxsiy rekordlar, yutuqlar va yugurishlar tarixi"
+          ]
         }
       }
     },
@@ -914,7 +944,11 @@
       "stack": "Android",
       "image": "geoblinker-shot",
       "screen": "geoblinker-emu-2",
-      "screens": ["geoblinker-emu-2"],
+      "screens": [
+        "geoblinker-emu-2",
+        "geoblinker-icon-picker",
+        "geoblinker-profile"
+      ],
       "statusType": "prototype",
       "statusKey": "work.badgePrototype",
       "links": [],
@@ -927,7 +961,12 @@
           "result": "Рабочий прототип с фоновым трекингом.",
           "alt": "GeoBlinker25: геосигналы и фоновая геолокация",
           "status": "Прототип",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "GeoBlinker25: карта с устройствами",
+            "GeoBlinker25: выбор иконки устройства на карте",
+            "GeoBlinker25: профиль с подпиской и настройками"
+          ]
         },
         "en": {
           "title": "GeoBlinker25",
@@ -937,7 +976,12 @@
           "result": "A working prototype with background tracking.",
           "alt": "GeoBlinker25: geo-signals and background location",
           "status": "Prototype",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "GeoBlinker25: map with tracked devices",
+            "GeoBlinker25: choosing a device icon for the map",
+            "GeoBlinker25: profile with subscription and settings"
+          ]
         },
         "uz": {
           "title": "GeoBlinker25",
@@ -947,7 +991,12 @@
           "result": "Fon rejimida kuzatuvga ega ishlaydigan prototip.",
           "alt": "GeoBlinker25: geosignallar va fon rejimidagi geolokatsiya",
           "status": "Prototip",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "GeoBlinker25: qurilmalar koʻrsatilgan xarita",
+            "GeoBlinker25: xaritada qurilma belgisini tanlash",
+            "GeoBlinker25: obuna va sozlamalar bilan profil"
+          ]
         }
       }
     },
