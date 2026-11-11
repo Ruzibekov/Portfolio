@@ -39,7 +39,7 @@
     sheetOpener = opener ?? document.activeElement
     sheetBody.replaceChildren(...part.childNodes)
     const type = item.querySelector('.sr-row-type')?.textContent ?? ''
-    const number = item.querySelector('.sr-row-num')?.textContent ?? ''
+    const number = item.dataset.number ?? ''
     sheetTag.textContent = [number, type].filter(Boolean).join(' · ')
     sheet.style.transform = ''
     sheet.removeAttribute('inert')
@@ -224,6 +224,16 @@
           }
         }, 700)
       }
+      const front = [...wanted.values()].find(({ offset }) => offset === 0)
+      const frontSlab = front ? slabFor(front.item) : null
+      stageWorld.classList.toggle(
+        'has-trio',
+        Boolean(frontSlab?.classList.contains('slab-trio')),
+      )
+      stageWorld.classList.toggle(
+        'has-phone',
+        frontSlab?.dataset.kind === 'phone',
+      )
       for (const { item, offset } of wanted.values()) {
         const figure = slabFor(item)
         if (!figure) continue

@@ -37,7 +37,12 @@
     "result": "Опубліковано в App Store і Google Play.",
     "alt": "Загальномосковська хресна хода: відлік до початку, карта маршруту, статті",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "ОКХ: головний екран із відліком до ходи",
+      "ОКХ: карта маршруту ходи",
+      "ОКХ: розділ інформації з новинами"
+    ]
   },
   "payqr": {
     "title": "PAYQR",
@@ -46,8 +51,12 @@
     "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, зчитування QR/Aztec/DataMatrix, імпорт фото, вхід за номером телефону й історія операцій.",
     "result": "Розроблено застосунок і API; Android-збірку перевірено на пристрої.",
     "alt": "PAYQR: сканування коду та меню застосунку",
-    "status": "",
-    "actions": []
+    "status": "Приватний проєкт",
+    "actions": [],
+    "screenAlts": [
+      "PAYQR: головне меню з операціями та бонусами",
+      "PAYQR: сканер QR-коду для оплати"
+    ]
   },
   "matik": {
     "title": "Matik",
@@ -117,7 +126,12 @@
     "result": "Опубліковано в App Store і Google Play.",
     "alt": "Best Tracker: місцезнаходження в реальному часі та запрошення до груп за QR-кодом",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "Best Tracker: учасники групи на карті",
+      "Best Tracker: місцезнаходження на карті в реальному часі",
+      "Best Tracker: місце з адресою та радіусом"
+    ]
   },
   "stefa": {
     "title": "Stefa AI Art",
@@ -127,7 +141,12 @@
     "result": "Опубліковано в Google Play.",
     "alt": "Stefa AI Art: генерація зображень за текстом",
     "status": "",
-    "actions": ["Google Play ↗"]
+    "actions": ["Google Play ↗"],
+    "screenAlts": [
+      "Stefa AI Art: головний екран: генерація за текстом, преміум та ідеї",
+      "Stefa AI Art: галерея ідей за категоріями",
+      "Stefa AI Art: введення запиту з прикладами генерації"
+    ]
   },
   "mynails": {
     "title": "My Nail Salon",
@@ -157,7 +176,12 @@
     "result": "Опубліковано в Google Play.",
     "alt": "WeGoTrip: аудіогіди й тури для подорожей",
     "status": "",
-    "actions": ["Google Play ↗"]
+    "actions": ["Google Play ↗"],
+    "screenAlts": [
+      "WeGoTrip: плеєр аудіотуру з картою маршруту та кроками",
+      "WeGoTrip: каталог аудіотурів",
+      "WeGoTrip: конструктор турів зі ШІ"
+    ]
   },
   "yolo": {
     "title": "Yolo",
@@ -187,7 +211,12 @@
     "result": "Готовий застосунок для Android.",
     "alt": "Wallpapers: каталог шпалер із категоріями",
     "status": "Приватний проєкт",
-    "actions": []
+    "actions": [],
+    "screenAlts": [
+      "Wallpapers: перегляд шпалер на весь екран",
+      "Wallpapers: категорії шпалер",
+      "Wallpapers: сітка аніме-шпалер"
+    ]
   },
   "avtopark": {
     "title": "Avtopark",
@@ -197,7 +226,12 @@
     "result": "Опубліковано в App Store і Google Play.",
     "alt": "Avtopark: керування автопарком, медогляд і техогляд водіїв",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "Avtopark: панель щоденного огляду водіїв",
+      "Avtopark: профіль лікаря та налаштування",
+      "Avtopark: стартовий екран застосунку"
+    ]
   },
   "tildonmobile": {
     "title": "Tildon Mobile",
@@ -207,7 +241,12 @@
     "result": "Кросплатформний супутник вебплатформи Tildon.",
     "alt": "Tildon Mobile: застосунок для вивчення англійської — граматика, словник, статистика",
     "status": "Приватний проєкт",
-    "actions": []
+    "actions": [],
+    "screenAlts": [
+      "Tildon Mobile: уроки граматики з прогресом",
+      "Tildon Mobile: тестовий центр",
+      "Tildon Mobile: рейтинг учнів"
+    ]
   },
   "tildon": {
     "title": "Tildon",

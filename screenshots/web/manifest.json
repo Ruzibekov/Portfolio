@@ -15,7 +15,13 @@
         "height": 844,
         "bytes": 20754
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
   },
   "agentmama-shot": {
     "width": 1400,
@@ -91,75 +97,51 @@
   },
   "altn-emu-1": {
     "width": 540,
-    "height": 1200,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/altn-emu-1-270.320d6e3eae.webp",
+        "src": "/screenshots/web/altn-emu-1-270.7d61daad3e.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 10854
+        "height": 585,
+        "bytes": 10420
       },
       {
-        "src": "/screenshots/web/altn-emu-1-540.0f049fcc17.webp",
+        "src": "/screenshots/web/altn-emu-1-540.97a4a38cb8.webp",
         "width": 540,
-        "height": 1200,
-        "bytes": 27170
+        "height": 1170,
+        "bytes": 27094
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
   },
   "altn-emu-2": {
     "width": 540,
-    "height": 1200,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/altn-emu-2-270.b84d0fb491.webp",
+        "src": "/screenshots/web/altn-emu-2-270.985bbd5764.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 8586
+        "height": 585,
+        "bytes": 8166
       },
       {
-        "src": "/screenshots/web/altn-emu-2-540.0282d4c708.webp",
+        "src": "/screenshots/web/altn-emu-2-540.ad0e6dbef1.webp",
         "width": 540,
-        "height": 1200,
-        "bytes": 21670
+        "height": 1170,
+        "bytes": 21156
       }
-    ]
-  },
-  "altn-emu-3": {
-    "width": 540,
-    "height": 1200,
-    "variants": [
-      {
-        "src": "/screenshots/web/altn-emu-3-270.ead8a4008f.webp",
-        "width": 270,
-        "height": 600,
-        "bytes": 8738
-      },
-      {
-        "src": "/screenshots/web/altn-emu-3-540.3d0d1796e1.webp",
-        "width": 540,
-        "height": 1200,
-        "bytes": 22004
-      }
-    ]
-  },
-  "altn-emu-4": {
-    "width": 540,
-    "height": 1200,
-    "variants": [
-      {
-        "src": "/screenshots/web/altn-emu-4-270.4518c88bd7.webp",
-        "width": 270,
-        "height": 600,
-        "bytes": 12188
-      },
-      {
-        "src": "/screenshots/web/altn-emu-4-540.717caaa6b8.webp",
-        "width": 540,
-        "height": 1200,
-        "bytes": 30176
-      }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
   },
   "altn-shot": {
     "width": 1400,
@@ -179,23 +161,77 @@
       }
     ]
   },
-  "avtopark-phone": {
-    "width": 353,
-    "height": 765,
+  "avtopark-dashboard": {
+    "width": 352,
+    "height": 762,
     "variants": [
       {
-        "src": "/screenshots/web/avtopark-phone-270.0d48c3d536.webp",
+        "src": "/screenshots/web/avtopark-dashboard-270.14fb1f419d.webp",
         "width": 270,
-        "height": 585,
-        "bytes": 18444
+        "height": 584,
+        "bytes": 9414
       },
       {
-        "src": "/screenshots/web/avtopark-phone-353.000b1a7d60.webp",
-        "width": 353,
-        "height": 765,
-        "bytes": 25628
+        "src": "/screenshots/web/avtopark-dashboard-352.7b282642fa.webp",
+        "width": 352,
+        "height": 762,
+        "bytes": 13464
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
+  },
+  "avtopark-phone": {
+    "width": 352,
+    "height": 763,
+    "variants": [
+      {
+        "src": "/screenshots/web/avtopark-phone-270.925297b288.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 18088
+      },
+      {
+        "src": "/screenshots/web/avtopark-phone-352.3211174fd4.webp",
+        "width": 352,
+        "height": 763,
+        "bytes": 24792
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
+  },
+  "avtopark-profile": {
+    "width": 352,
+    "height": 763,
+    "variants": [
+      {
+        "src": "/screenshots/web/avtopark-profile-270.7e971b4d1f.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 10988
+      },
+      {
+        "src": "/screenshots/web/avtopark-profile-352.3d49919f8d.webp",
+        "width": 352,
+        "height": 763,
+        "bytes": 15588
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
   },
   "avtopark-shot": {
     "width": 1400,
@@ -217,75 +253,99 @@
   },
   "besttracker-emu-1": {
     "width": 540,
-    "height": 1200,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/besttracker-emu-1-270.bfac2409d4.webp",
+        "src": "/screenshots/web/besttracker-emu-1-270.d18933512e.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 14968
+        "height": 585,
+        "bytes": 14500
       },
       {
-        "src": "/screenshots/web/besttracker-emu-1-540.29ee410416.webp",
+        "src": "/screenshots/web/besttracker-emu-1-540.ff16c2606f.webp",
         "width": 540,
-        "height": 1200,
-        "bytes": 33970
+        "height": 1170,
+        "bytes": 33542
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
   },
-  "besttracker-emu-2": {
-    "width": 540,
-    "height": 1200,
+  "besttracker-live": {
+    "width": 352,
+    "height": 763,
     "variants": [
       {
-        "src": "/screenshots/web/besttracker-emu-2-270.0b1ff0e106.webp",
+        "src": "/screenshots/web/besttracker-live-270.41f74428ab.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 15134
+        "height": 585,
+        "bytes": 17826
       },
       {
-        "src": "/screenshots/web/besttracker-emu-2-540.8a9a13085d.webp",
-        "width": 540,
-        "height": 1200,
-        "bytes": 34472
+        "src": "/screenshots/web/besttracker-live-352.f91cd1cee7.webp",
+        "width": 352,
+        "height": 763,
+        "bytes": 26560
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
   },
-  "besttracker-emu-3": {
-    "width": 540,
-    "height": 1200,
+  "besttracker-members": {
+    "width": 352,
+    "height": 763,
     "variants": [
       {
-        "src": "/screenshots/web/besttracker-emu-3-270.d4399508ad.webp",
+        "src": "/screenshots/web/besttracker-members-270.7fafb73153.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 15008
+        "height": 585,
+        "bytes": 10636
       },
       {
-        "src": "/screenshots/web/besttracker-emu-3-540.cc1021a5b0.webp",
-        "width": 540,
-        "height": 1200,
-        "bytes": 34342
+        "src": "/screenshots/web/besttracker-members-352.bd2c72effe.webp",
+        "width": 352,
+        "height": 763,
+        "bytes": 15448
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
   },
-  "besttracker-emu-4": {
-    "width": 540,
-    "height": 1200,
+  "besttracker-radius": {
+    "width": 352,
+    "height": 763,
     "variants": [
       {
-        "src": "/screenshots/web/besttracker-emu-4-270.54732cf408.webp",
+        "src": "/screenshots/web/besttracker-radius-270.a53ce020cf.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 8298
+        "height": 585,
+        "bytes": 13296
       },
       {
-        "src": "/screenshots/web/besttracker-emu-4-540.093cba9bf0.webp",
-        "width": 540,
-        "height": 1200,
-        "bytes": 18318
+        "src": "/screenshots/web/besttracker-radius-352.9b8ba93385.webp",
+        "width": 352,
+        "height": 763,
+        "bytes": 19828
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
   },
   "besttracker-shot": {
     "width": 1400,
@@ -341,23 +401,29 @@
       }
     ]
   },
-  "geoblinker-emu-1": {
+  "geoblinker-emu-2": {
     "width": 540,
-    "height": 1200,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/geoblinker-emu-1-270.abf91b62b4.webp",
+        "src": "/screenshots/web/geoblinker-emu-2-270.f44003a988.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 11430
+        "height": 585,
+        "bytes": 23756
       },
       {
-        "src": "/screenshots/web/geoblinker-emu-1-540.2170755d77.webp",
+        "src": "/screenshots/web/geoblinker-emu-2-540.bd190b220e.webp",
         "width": 540,
-        "height": 1200,
-        "bytes": 28256
+        "height": 1170,
+        "bytes": 64830
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
   },
   "geoblinker-shot": {
     "width": 1400,
@@ -501,7 +567,13 @@
         "height": 844,
         "bytes": 22572
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
   },
   "miyolo-shot": {
     "width": 900,
@@ -593,23 +665,77 @@
       }
     ]
   },
-  "mynails-emu-1": {
+  "mynails-1": {
     "width": 540,
-    "height": 1200,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/mynails-emu-1-270.85c57edfc2.webp",
+        "src": "/screenshots/web/mynails-1-270.bec6dd7b2d.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 8364
+        "height": 585,
+        "bytes": 10828
       },
       {
-        "src": "/screenshots/web/mynails-emu-1-540.5d928d9ad4.webp",
+        "src": "/screenshots/web/mynails-1-540.aad8767d6f.webp",
         "width": 540,
-        "height": 1200,
-        "bytes": 18350
+        "height": 1170,
+        "bytes": 24506
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "mynails-2": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/mynails-2-270.ebdfbf81ba.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 10826
+      },
+      {
+        "src": "/screenshots/web/mynails-2-540.8fd5757b13.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 24454
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "mynails-emu-1": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/mynails-emu-1-270.9c478232f1.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 8016
+      },
+      {
+        "src": "/screenshots/web/mynails-emu-1-540.8fc4c753ca.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 17780
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
   },
   "mynails-shot": {
     "width": 1400,
@@ -629,23 +755,77 @@
       }
     ]
   },
-  "okh-phone": {
-    "width": 367,
-    "height": 652,
+  "okh-info": {
+    "width": 365,
+    "height": 791,
     "variants": [
       {
-        "src": "/screenshots/web/okh-phone-270.cca7536191.webp",
+        "src": "/screenshots/web/okh-info-270.cac9dad84e.webp",
         "width": 270,
-        "height": 480,
-        "bytes": 10470
+        "height": 585,
+        "bytes": 11282
       },
       {
-        "src": "/screenshots/web/okh-phone-367.6f55e06d46.webp",
-        "width": 367,
-        "height": 652,
-        "bytes": 15882
+        "src": "/screenshots/web/okh-info-365.5c6000bdf6.webp",
+        "width": 365,
+        "height": 791,
+        "bytes": 17040
       }
-    ]
+    ],
+    "fit": {
+      "top": 70,
+      "right": 0,
+      "bottom": 71,
+      "left": 0
+    }
+  },
+  "okh-phone": {
+    "width": 365,
+    "height": 791,
+    "variants": [
+      {
+        "src": "/screenshots/web/okh-phone-270.16c5c5ff9e.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 10184
+      },
+      {
+        "src": "/screenshots/web/okh-phone-365.2618a915fe.webp",
+        "width": 365,
+        "height": 791,
+        "bytes": 15300
+      }
+    ],
+    "fit": {
+      "top": 81,
+      "right": 0,
+      "bottom": 82,
+      "left": 0
+    }
+  },
+  "okh-route": {
+    "width": 365,
+    "height": 791,
+    "variants": [
+      {
+        "src": "/screenshots/web/okh-route-270.91da378e52.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 16576
+      },
+      {
+        "src": "/screenshots/web/okh-route-365.aa5fab27a5.webp",
+        "width": 365,
+        "height": 791,
+        "bytes": 26696
+      }
+    ],
+    "fit": {
+      "top": 70,
+      "right": 0,
+      "bottom": 71,
+      "left": 0
+    }
   },
   "okh-shot": {
     "width": 1400,
@@ -701,23 +881,53 @@
       }
     ]
   },
-  "payqr-phone": {
-    "width": 344,
-    "height": 763,
+  "payqr-menu": {
+    "width": 352,
+    "height": 762,
     "variants": [
       {
-        "src": "/screenshots/web/payqr-phone-270.15cd5494f4.webp",
+        "src": "/screenshots/web/payqr-menu-270.d02b4759b6.webp",
         "width": 270,
-        "height": 599,
-        "bytes": 18288
+        "height": 584,
+        "bytes": 6464
       },
       {
-        "src": "/screenshots/web/payqr-phone-344.e797383ad8.webp",
-        "width": 344,
-        "height": 763,
-        "bytes": 26776
+        "src": "/screenshots/web/payqr-menu-352.b263f4b541.webp",
+        "width": 352,
+        "height": 762,
+        "bytes": 9144
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 5,
+      "bottom": 0,
+      "left": 5
+    }
+  },
+  "payqr-phone": {
+    "width": 351,
+    "height": 761,
+    "variants": [
+      {
+        "src": "/screenshots/web/payqr-phone-270.b37fb4581e.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 17962
+      },
+      {
+        "src": "/screenshots/web/payqr-phone-351.aaa99d832f.webp",
+        "width": 351,
+        "height": 761,
+        "bytes": 26356
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 5,
+      "bottom": 0,
+      "left": 4
+    }
   },
   "payqr-shot": {
     "width": 1400,
@@ -809,23 +1019,77 @@
       }
     ]
   },
-  "stefa-emu-1": {
+  "stefa-2": {
     "width": 540,
-    "height": 1200,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/stefa-emu-1-270.d6476e963e.webp",
+        "src": "/screenshots/web/stefa-2-270.19ddb77b9e.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 16968
+        "height": 585,
+        "bytes": 12192
       },
       {
-        "src": "/screenshots/web/stefa-emu-1-540.551cf0432b.webp",
+        "src": "/screenshots/web/stefa-2-540.2aa091f304.webp",
         "width": 540,
-        "height": 1200,
-        "bytes": 39258
+        "height": 1170,
+        "bytes": 28572
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "stefa-3": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/stefa-3-270.02e55780c1.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 20620
+      },
+      {
+        "src": "/screenshots/web/stefa-3-540.9c6f3881d8.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 48936
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "stefa-4": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/stefa-4-270.b164dc8e24.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 19292
+      },
+      {
+        "src": "/screenshots/web/stefa-4-540.12ddc6c746.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 43758
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
   },
   "stefa-shot": {
     "width": 1400,
@@ -918,22 +1182,52 @@
     ]
   },
   "tildonmobile-phone": {
-    "width": 365,
-    "height": 687,
+    "width": 363,
+    "height": 786,
     "variants": [
       {
-        "src": "/screenshots/web/tildonmobile-phone-270.38b4eeb065.webp",
+        "src": "/screenshots/web/tildonmobile-phone-270.3a9d9bcbad.webp",
         "width": 270,
-        "height": 508,
-        "bytes": 8262
+        "height": 585,
+        "bytes": 8350
       },
       {
-        "src": "/screenshots/web/tildonmobile-phone-365.082650ff74.webp",
-        "width": 365,
-        "height": 687,
-        "bytes": 12850
+        "src": "/screenshots/web/tildonmobile-phone-363.f6ced0f6f1.webp",
+        "width": 363,
+        "height": 786,
+        "bytes": 12790
       }
-    ]
+    ],
+    "fit": {
+      "top": 50,
+      "right": 0,
+      "bottom": 51,
+      "left": 0
+    }
+  },
+  "tildonmobile-rating": {
+    "width": 362,
+    "height": 784,
+    "variants": [
+      {
+        "src": "/screenshots/web/tildonmobile-rating-270.bf3664f2d7.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 7458
+      },
+      {
+        "src": "/screenshots/web/tildonmobile-rating-362.61f58b874e.webp",
+        "width": 362,
+        "height": 784,
+        "bytes": 11198
+      }
+    ],
+    "fit": {
+      "top": 49,
+      "right": 0,
+      "bottom": 49,
+      "left": 0
+    }
   },
   "tildonmobile-shot": {
     "width": 1400,
@@ -952,6 +1246,30 @@
         "bytes": 34308
       }
     ]
+  },
+  "tildonmobile-tests": {
+    "width": 361,
+    "height": 782,
+    "variants": [
+      {
+        "src": "/screenshots/web/tildonmobile-tests-270.2b0c18b841.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 6018
+      },
+      {
+        "src": "/screenshots/web/tildonmobile-tests-361.bca2c30f14.webp",
+        "width": 361,
+        "height": 782,
+        "bytes": 9242
+      }
+    ],
+    "fit": {
+      "top": 49,
+      "right": 0,
+      "bottom": 49,
+      "left": 0
+    }
   },
   "vertolyot-shot": {
     "width": 900,
@@ -1025,23 +1343,77 @@
       }
     ]
   },
-  "wallpapers-emu-1": {
+  "wallpapers-3": {
     "width": 540,
-    "height": 1200,
+    "height": 1170,
     "variants": [
       {
-        "src": "/screenshots/web/wallpapers-emu-1-270.c022cdcb92.webp",
+        "src": "/screenshots/web/wallpapers-3-270.2224e22fd9.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 31646
+        "height": 585,
+        "bytes": 25004
       },
       {
-        "src": "/screenshots/web/wallpapers-emu-1-540.411977f56b.webp",
+        "src": "/screenshots/web/wallpapers-3-540.0e88e3fa2e.webp",
         "width": 540,
-        "height": 1200,
-        "bytes": 81706
+        "height": 1170,
+        "bytes": 80184
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "wallpapers-4": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/wallpapers-4-270.879f7e1215.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 27266
+      },
+      {
+        "src": "/screenshots/web/wallpapers-4-540.951a851ae6.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 72408
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "wallpapers-emu-1": {
+    "width": 540,
+    "height": 1170,
+    "variants": [
+      {
+        "src": "/screenshots/web/wallpapers-emu-1-270.a0f6e51589.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 30708
+      },
+      {
+        "src": "/screenshots/web/wallpapers-emu-1-540.f772db3794.webp",
+        "width": 540,
+        "height": 1170,
+        "bytes": 79180
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
   },
   "wallpapers-shot": {
     "width": 1400,
@@ -1061,23 +1433,53 @@
       }
     ]
   },
-  "wegotrip-emu-1": {
-    "width": 540,
-    "height": 1200,
+  "wegotrip-ai": {
+    "width": 352,
+    "height": 763,
     "variants": [
       {
-        "src": "/screenshots/web/wegotrip-emu-1-270.ec345b551f.webp",
+        "src": "/screenshots/web/wegotrip-ai-270.8ab35f1e9a.webp",
         "width": 270,
-        "height": 600,
-        "bytes": 12112
+        "height": 585,
+        "bytes": 25642
       },
       {
-        "src": "/screenshots/web/wegotrip-emu-1-540.d13156909c.webp",
-        "width": 540,
-        "height": 1200,
-        "bytes": 30138
+        "src": "/screenshots/web/wegotrip-ai-352.f4055c8a25.webp",
+        "width": 352,
+        "height": 763,
+        "bytes": 37406
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 5,
+      "bottom": 0,
+      "left": 5
+    }
+  },
+  "wegotrip-player": {
+    "width": 352,
+    "height": 763,
+    "variants": [
+      {
+        "src": "/screenshots/web/wegotrip-player-270.c4e9b8108d.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 16936
+      },
+      {
+        "src": "/screenshots/web/wegotrip-player-352.6f45ae0a5e.webp",
+        "width": 352,
+        "height": 763,
+        "bytes": 24356
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 5,
+      "bottom": 0,
+      "left": 5
+    }
   },
   "wegotrip-shot": {
     "width": 1400,
@@ -1096,6 +1498,30 @@
         "bytes": 110284
       }
     ]
+  },
+  "wegotrip-tours": {
+    "width": 352,
+    "height": 762,
+    "variants": [
+      {
+        "src": "/screenshots/web/wegotrip-tours-270.e9d9ae2f73.webp",
+        "width": 270,
+        "height": 584,
+        "bytes": 28924
+      },
+      {
+        "src": "/screenshots/web/wegotrip-tours-352.ce4e2c7dda.webp",
+        "width": 352,
+        "height": 762,
+        "bytes": 44946
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 6,
+      "bottom": 0,
+      "left": 5
+    }
   },
   "wottank-shot": {
     "width": 1400,
@@ -1134,22 +1560,28 @@
     ]
   },
   "yolo-phone": {
-    "width": 313,
-    "height": 741,
+    "width": 350,
+    "height": 759,
     "variants": [
       {
-        "src": "/screenshots/web/yolo-phone-270.e6dcd0f83b.webp",
+        "src": "/screenshots/web/yolo-phone-270.ffd3605981.webp",
         "width": 270,
-        "height": 639,
-        "bytes": 5882
+        "height": 586,
+        "bytes": 5314
       },
       {
-        "src": "/screenshots/web/yolo-phone-313.97a81187e6.webp",
-        "width": 313,
-        "height": 741,
-        "bytes": 6792
+        "src": "/screenshots/web/yolo-phone-350.f3e0908d5a.webp",
+        "width": 350,
+        "height": 759,
+        "bytes": 7120
       }
-    ]
+    ],
+    "fit": {
+      "top": 0,
+      "right": 10,
+      "bottom": 0,
+      "left": 9
+    }
   },
   "yolo-shot": {
     "width": 1400,

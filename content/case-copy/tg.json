@@ -37,7 +37,12 @@
     "result": "Дар App Store ва Google Play нашр шудааст.",
     "alt": "Общемосковский крестный ход: ҳисоби вақт то оғоз, харитаи масир, мақолаҳо",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "ОКХ: экрани асосӣ бо ҳисоби вақт то ҳаракат",
+      "ОКХ: харитаи масири ҳаракат",
+      "ОКХ: бахши маълумот ва хабарҳо"
+    ]
   },
   "payqr": {
     "title": "PAYQR",
@@ -46,8 +51,12 @@
     "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, хондани QR/Aztec/DataMatrix, воридоти акс, вуруд бо телефон ва таърихи амалиёт.",
     "result": "Барнома ва API таҳия шудаанд; сохти Android дар дастгоҳ санҷида шудааст.",
     "alt": "PAYQR: сканкунии рамз ва менюи барнома",
-    "status": "",
-    "actions": []
+    "status": "Лоиҳаи хусусӣ",
+    "actions": [],
+    "screenAlts": [
+      "PAYQR: менюи асосӣ бо амалиётҳо ва бонусҳо",
+      "PAYQR: сканери QR-код барои пардохт"
+    ]
   },
   "matik": {
     "title": "Matik",
@@ -117,7 +126,12 @@
     "result": "Дар App Store ва Google Play нашр шудааст.",
     "alt": "Best Tracker: ҷойгиршавӣ дар вақти воқеӣ ва даъват ба гурӯҳҳо тавассути QR",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "Best Tracker: аъзоёни гурӯҳ дар харита",
+      "Best Tracker: ҷойгиршавӣ дар харита дар вақти воқеӣ",
+      "Best Tracker: ҷой бо суроға ва радиус"
+    ]
   },
   "stefa": {
     "title": "Stefa AI Art",
@@ -127,7 +141,12 @@
     "result": "Дар Google Play нашр шудааст.",
     "alt": "Stefa AI Art: эҷоди тасвирҳо аз рӯи матн",
     "status": "",
-    "actions": ["Google Play ↗"]
+    "actions": ["Google Play ↗"],
+    "screenAlts": [
+      "Stefa AI Art: экрани асосӣ: тасвир аз матн, премиум ва ғояҳо",
+      "Stefa AI Art: галереяи ғояҳо аз рӯи категорияҳо",
+      "Stefa AI Art: ворид кардани дархост бо намунаҳо"
+    ]
   },
   "mynails": {
     "title": "My Nail Salon",
@@ -157,7 +176,12 @@
     "result": "Дар Google Play нашр шудааст.",
     "alt": "WeGoTrip: роҳбаладҳои аудиоӣ ва турҳо барои саёҳат",
     "status": "",
-    "actions": ["Google Play ↗"]
+    "actions": ["Google Play ↗"],
+    "screenAlts": [
+      "WeGoTrip: плеери аудиотур бо харитаи масир ва қадамҳо",
+      "WeGoTrip: феҳристи аудиотурҳо",
+      "WeGoTrip: сохтани тур бо зеҳни сунъӣ"
+    ]
   },
   "yolo": {
     "title": "Yolo",
@@ -187,7 +211,12 @@
     "result": "Барномаи омода барои Android.",
     "alt": "Wallpapers: каталоги пасзаминаҳо бо гурӯҳҳо",
     "status": "Лоиҳаи хусусӣ",
-    "actions": []
+    "actions": [],
+    "screenAlts": [
+      "Wallpapers: дидани обой дар тамоми экран",
+      "Wallpapers: категорияҳои обойҳо",
+      "Wallpapers: шабакаи обойҳои аниме"
+    ]
   },
   "avtopark": {
     "title": "Avtopark",
@@ -197,7 +226,12 @@
     "result": "Дар App Store ва Google Play нашр шудааст.",
     "alt": "Avtopark: идоракунии автопарк, муоинаи тиббӣ ва техникии ронандагон",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "Avtopark: панели муоинаи ҳаррӯзаи ронандагон",
+      "Avtopark: профили духтур ва танзимот",
+      "Avtopark: экрани ибтидоии барнома"
+    ]
   },
   "tildonmobile": {
     "title": "Tildon Mobile",
@@ -207,7 +241,12 @@
     "result": "Барномаи ҳамроҳи чандплатформавӣ барои веб-платформаи Tildon.",
     "alt": "Tildon Mobile: барномаи омӯзиши англисӣ — грамматика, луғат, омор",
     "status": "Лоиҳаи хусусӣ",
-    "actions": []
+    "actions": [],
+    "screenAlts": [
+      "Tildon Mobile: дарсҳои грамматика бо пешрафт",
+      "Tildon Mobile: маркази тест",
+      "Tildon Mobile: рейтинги хонандагон"
+    ]
   },
   "tildon": {
     "title": "Tildon",

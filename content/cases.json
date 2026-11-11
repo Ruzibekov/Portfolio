@@ -159,6 +159,7 @@
       "stack": "Flutter, FastAPI",
       "image": "okh-shot",
       "screen": "okh-phone",
+      "screens": ["okh-phone", "okh-route", "okh-info"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -178,7 +179,12 @@
           "result": "Опубликовано в App Store и Google Play.",
           "alt": "Общемосковский крестный ход: отсчёт до начала, карта маршрута, статьи",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "ОКХ: главный экран с отсчётом до хода",
+            "ОКХ: карта маршрута хода",
+            "ОКХ: раздел информации с новостями"
+          ]
         },
         "en": {
           "title": "OKH",
@@ -188,7 +194,12 @@
           "result": "Published on the App Store and Google Play.",
           "alt": "All-Moscow Cross Procession: countdown, route map, articles",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "OKH: home screen with the procession countdown",
+            "OKH: procession route map",
+            "OKH: information and news section"
+          ]
         },
         "uz": {
           "title": "OKH",
@@ -198,7 +209,12 @@
           "result": "App Store va Google Play'da chop etilgan.",
           "alt": "Umummoskva xoch yurishi: boshlanishgacha hisoblagich, marshrut xaritasi, maqolalar",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "OKH: yurishgacha qolgan vaqt koʻrsatilgan bosh ekran",
+            "OKH: yurish marshruti xaritasi",
+            "OKH: maʼlumot va yangiliklar boʻlimi"
+          ]
         }
       }
     },
@@ -209,9 +225,10 @@
       "categories": ["mobile", "backend"],
       "stack": "Flutter, FastAPI",
       "image": "payqr-shot",
-      "screen": "payqr-phone",
-      "statusType": "public",
-      "statusKey": null,
+      "screen": "payqr-menu",
+      "screens": ["payqr-menu", "payqr-phone"],
+      "statusType": "private",
+      "statusKey": "work.badgePrivate",
       "links": [],
       "translations": {
         "ru": {
@@ -221,8 +238,12 @@
           "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, чтение QR/Aztec/DataMatrix, импорт фото, вход по телефону и история операций.",
           "result": "Разработаны приложение и API; Android-сборка проверена на устройстве.",
           "alt": "PAYQR: сканирование кода и меню приложения",
-          "status": "",
-          "actions": []
+          "status": "Приватный проект",
+          "actions": [],
+          "screenAlts": [
+            "PAYQR: главное меню с операциями и бонусами",
+            "PAYQR: сканер QR-кода для оплаты"
+          ]
         },
         "en": {
           "title": "PAYQR",
@@ -231,8 +252,12 @@
           "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix reading, photo import, phone sign-in and operation history.",
           "result": "The app and API are implemented; the Android build was tested on a device.",
           "alt": "PAYQR: code scanning and the app menu",
-          "status": "",
-          "actions": []
+          "status": "Private project",
+          "actions": [],
+          "screenAlts": [
+            "PAYQR: main menu with operations and bonuses",
+            "PAYQR: QR code scanner for payment"
+          ]
         },
         "uz": {
           "title": "PAYQR",
@@ -241,8 +266,12 @@
           "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix o‘qish, rasmdan import, telefon orqali kirish va amallar tarixi.",
           "result": "Ilova va API ishlab chiqilgan; Android versiyasi qurilmada tekshirilgan.",
           "alt": "PAYQR: kod skaneri va ilova menyusi",
-          "status": "",
-          "actions": []
+          "status": "Xususiy loyiha",
+          "actions": [],
+          "screenAlts": [
+            "PAYQR: operatsiyalar va bonuslar bilan asosiy menyu",
+            "PAYQR: toʻlov uchun QR-kod skaneri"
+          ]
         }
       }
     },
@@ -545,12 +574,13 @@
       "categories": ["mobile"],
       "stack": "Flutter, NestJS",
       "image": "besttracker-shot",
-      "screen": "besttracker-emu-1",
-      "gallery": [
-        "besttracker-emu-2",
-        "besttracker-emu-3",
-        "besttracker-emu-4"
+      "screen": "besttracker-members",
+      "screens": [
+        "besttracker-members",
+        "besttracker-live",
+        "besttracker-radius"
       ],
+      "gallery": ["besttracker-emu-1"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -570,7 +600,12 @@
           "result": "Опубликовано в App Store и Google Play.",
           "alt": "Best Tracker: live-локация и приглашения в группы по QR",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "Best Tracker: участники группы на карте",
+            "Best Tracker: местоположение на карте в реальном времени",
+            "Best Tracker: место с адресом и радиусом"
+          ]
         },
         "en": {
           "title": "Best Tracker",
@@ -580,7 +615,12 @@
           "result": "Published on the App Store and Google Play.",
           "alt": "Best Tracker: live location and QR group invites",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "Best Tracker: group members on the map",
+            "Best Tracker: live location on the map",
+            "Best Tracker: place with an address and radius"
+          ]
         },
         "uz": {
           "title": "Best Tracker",
@@ -590,7 +630,12 @@
           "result": "App Store va Google Play'da chop etilgan.",
           "alt": "Best Tracker: jonli joylashuv va QR orqali guruhga taklif",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "Best Tracker: xaritadagi guruh aʼzolari",
+            "Best Tracker: xaritada jonli joylashuv",
+            "Best Tracker: manzil va radiusli joy"
+          ]
         }
       }
     },
@@ -601,7 +646,8 @@
       "categories": ["mobile"],
       "stack": "Flutter, Android",
       "image": "stefa-shot",
-      "screen": "stefa-emu-1",
+      "screen": "stefa-3",
+      "screens": ["stefa-3", "stefa-4", "stefa-2"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -618,7 +664,12 @@
           "result": "Опубликовано в Google Play.",
           "alt": "Stefa AI Art: генерация изображений по тексту",
           "status": "",
-          "actions": ["Google Play ↗"]
+          "actions": ["Google Play ↗"],
+          "screenAlts": [
+            "Stefa AI Art: главный экран: генерация по тексту, премиум и идеи",
+            "Stefa AI Art: галерея идей по категориям",
+            "Stefa AI Art: ввод запроса с примерами генерации"
+          ]
         },
         "en": {
           "title": "Stefa AI Art",
@@ -628,7 +679,12 @@
           "result": "Published on Google Play.",
           "alt": "Stefa AI Art: text-to-image generation",
           "status": "",
-          "actions": ["Google Play ↗"]
+          "actions": ["Google Play ↗"],
+          "screenAlts": [
+            "Stefa AI Art: home screen with text-to-art, premium and ideas",
+            "Stefa AI Art: inspiration gallery by category",
+            "Stefa AI Art: prompt input with generated examples"
+          ]
         },
         "uz": {
           "title": "Stefa AI Art",
@@ -638,7 +694,12 @@
           "result": "Google Play'da chop etilgan.",
           "alt": "Stefa AI Art: matndan rasm generatsiyasi",
           "status": "",
-          "actions": ["Google Play ↗"]
+          "actions": ["Google Play ↗"],
+          "screenAlts": [
+            "Stefa AI Art: bosh ekran: matndan rasm, premium va gʻoyalar",
+            "Stefa AI Art: toifalar boʻyicha gʻoyalar galereyasi",
+            "Stefa AI Art: namuna rasmlar bilan soʻrov kiritish"
+          ]
         }
       }
     },
@@ -649,7 +710,8 @@
       "categories": ["mobile"],
       "stack": "Flutter",
       "image": "mynails-shot",
-      "screen": "mynails-emu-1",
+      "screen": "mynails-2",
+      "screens": ["mynails-2"],
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -694,7 +756,7 @@
       "stack": "Flutter, Android",
       "image": "altn-shot",
       "screen": "altn-emu-1",
-      "gallery": ["altn-emu-2", "altn-emu-3", "altn-emu-4"],
+      "screens": ["altn-emu-1"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -742,7 +804,8 @@
       "categories": ["mobile"],
       "stack": "Kotlin, Android",
       "image": "wegotrip-shot",
-      "screen": "wegotrip-emu-1",
+      "screen": "wegotrip-player",
+      "screens": ["wegotrip-player", "wegotrip-tours", "wegotrip-ai"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -759,7 +822,12 @@
           "result": "Опубликовано в Google Play.",
           "alt": "WeGoTrip: аудиогиды и туры для путешествий",
           "status": "",
-          "actions": ["Google Play ↗"]
+          "actions": ["Google Play ↗"],
+          "screenAlts": [
+            "WeGoTrip: плеер аудиотура с картой маршрута и шагами",
+            "WeGoTrip: каталог аудиотуров",
+            "WeGoTrip: конструктор ИИ-туров"
+          ]
         },
         "en": {
           "title": "WeGoTrip",
@@ -769,7 +837,12 @@
           "result": "Published on Google Play.",
           "alt": "WeGoTrip: audio guides and tours for travelers",
           "status": "",
-          "actions": ["Google Play ↗"]
+          "actions": ["Google Play ↗"],
+          "screenAlts": [
+            "WeGoTrip: audio tour player with a route map and steps",
+            "WeGoTrip: audio tour catalogue",
+            "WeGoTrip: AI custom tour builder"
+          ]
         },
         "uz": {
           "title": "WeGoTrip",
@@ -779,7 +852,12 @@
           "result": "Google Play'da chop etilgan.",
           "alt": "WeGoTrip: sayohatlar uchun audiogidlar va turlar",
           "status": "",
-          "actions": ["Google Play ↗"]
+          "actions": ["Google Play ↗"],
+          "screenAlts": [
+            "WeGoTrip: marshrut xaritasi va qadamlar bilan audiotur pleyeri",
+            "WeGoTrip: audioturlar katalogi",
+            "WeGoTrip: sunʼiy intellekt bilan tur yaratish"
+          ]
         }
       }
     },
@@ -791,6 +869,7 @@
       "stack": "Kotlin Multiplatform",
       "image": "yolo-shot",
       "screen": "yolo-phone",
+      "screens": ["yolo-phone"],
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -834,7 +913,8 @@
       "categories": ["mobile"],
       "stack": "Android",
       "image": "geoblinker-shot",
-      "screen": "geoblinker-emu-1",
+      "screen": "geoblinker-emu-2",
+      "screens": ["geoblinker-emu-2"],
       "statusType": "prototype",
       "statusKey": "work.badgePrototype",
       "links": [],
@@ -878,7 +958,8 @@
       "categories": ["mobile"],
       "stack": "Kotlin, Android",
       "image": "wallpapers-shot",
-      "screen": "wallpapers-emu-1",
+      "screen": "wallpapers-3",
+      "screens": ["wallpapers-3", "wallpapers-emu-1", "wallpapers-4"],
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -891,7 +972,12 @@
           "result": "Готовое приложение для Android.",
           "alt": "Wallpapers: каталог обоев с категориями",
           "status": "Приватный проект",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Wallpapers: просмотр обоев на весь экран",
+            "Wallpapers: категории обоев",
+            "Wallpapers: сетка аниме-обоев"
+          ]
         },
         "en": {
           "title": "Wallpapers",
@@ -901,7 +987,12 @@
           "result": "A finished Android app.",
           "alt": "Wallpapers: wallpaper catalog with categories",
           "status": "Private project",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Wallpapers: full-screen wallpaper preview",
+            "Wallpapers: wallpaper categories",
+            "Wallpapers: anime wallpaper grid"
+          ]
         },
         "uz": {
           "title": "Wallpapers",
@@ -911,7 +1002,12 @@
           "result": "Tayyor Android ilova.",
           "alt": "Wallpapers: kategoriyali oboylar katalogi",
           "status": "Xususiy loyiha",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Wallpapers: fon rasmini toʻliq ekranda koʻrish",
+            "Wallpapers: fon rasmlari toifalari",
+            "Wallpapers: anime fon rasmlari toʻplami"
+          ]
         }
       }
     },
@@ -922,7 +1018,8 @@
       "categories": ["mobile"],
       "stack": "Flutter, iOS, Android",
       "image": "avtopark-shot",
-      "screen": "avtopark-phone",
+      "screen": "avtopark-dashboard",
+      "screens": ["avtopark-dashboard", "avtopark-profile", "avtopark-phone"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -942,7 +1039,12 @@
           "result": "Опубликовано в App Store и Google Play.",
           "alt": "Avtopark: управление автопарком, медосмотр и техосмотр водителей",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "Avtopark: панель ежедневного осмотра водителей",
+            "Avtopark: профиль врача и настройки",
+            "Avtopark: стартовый экран приложения"
+          ]
         },
         "en": {
           "title": "Avtopark",
@@ -952,7 +1054,12 @@
           "result": "Published on the App Store and Google Play.",
           "alt": "Avtopark: fleet management, driver medical and technical checks",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "Avtopark: daily driver check dashboard",
+            "Avtopark: doctor profile and settings",
+            "Avtopark: app start screen"
+          ]
         },
         "uz": {
           "title": "Avtopark",
@@ -962,7 +1069,12 @@
           "result": "App Store va Google Play'da chop etilgan.",
           "alt": "Avtopark: avtoparkni boshqarish, haydovchilarning tibbiy va texnik koʻrigi",
           "status": "",
-          "actions": ["App Store ↗", "Google Play ↗"]
+          "actions": ["App Store ↗", "Google Play ↗"],
+          "screenAlts": [
+            "Avtopark: haydovchilarning kunlik koʻrigi paneli",
+            "Avtopark: shifokor profili va sozlamalar",
+            "Avtopark: ilovaning boshlangʻich ekrani"
+          ]
         }
       }
     },
@@ -974,6 +1086,11 @@
       "stack": "Compose Multiplatform",
       "image": "tildonmobile-shot",
       "screen": "tildonmobile-phone",
+      "screens": [
+        "tildonmobile-phone",
+        "tildonmobile-tests",
+        "tildonmobile-rating"
+      ],
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -986,7 +1103,12 @@
           "result": "Кросс-платформенный компаньон веб-платформы Tildon.",
           "alt": "Tildon Mobile: приложение для изучения английского: грамматика, словарь, статистика",
           "status": "Приватный проект",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Tildon Mobile: уроки грамматики с прогрессом",
+            "Tildon Mobile: тестовый центр",
+            "Tildon Mobile: рейтинг учеников"
+          ]
         },
         "en": {
           "title": "Tildon Mobile",
@@ -996,7 +1118,12 @@
           "result": "A cross-platform companion to the Tildon web platform.",
           "alt": "Tildon Mobile: English learning app: grammar, vocabulary, statistics",
           "status": "Private project",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Tildon Mobile: grammar lessons with progress",
+            "Tildon Mobile: test centre",
+            "Tildon Mobile: student leaderboard"
+          ]
         },
         "uz": {
           "title": "Tildon Mobile",
@@ -1006,7 +1133,12 @@
           "result": "Tildon veb-platformasining kross-platforma hamrohi.",
           "alt": "Tildon Mobile: ingliz tilini oʻrganish ilovasi: grammatika, lugʻat, statistika",
           "status": "Xususiy loyiha",
-          "actions": []
+          "actions": [],
+          "screenAlts": [
+            "Tildon Mobile: natijalar bilan grammatika darslari",
+            "Tildon Mobile: test markazi",
+            "Tildon Mobile: oʻquvchilar reytingi"
+          ]
         }
       }
     },

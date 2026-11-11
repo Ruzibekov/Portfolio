@@ -75,6 +75,18 @@ export function validateProjectMedia(cases) {
   for (const item of cases) {
     for (const key of [item.screen, ...(item.gallery ?? [])].filter(Boolean))
       imageEntry(key)
+    if (item.screens) {
+      const screens = item.screens
+      if (
+        !Array.isArray(screens) ||
+        screens.length < 1 ||
+        screens.length > 3 ||
+        new Set(screens).size !== screens.length ||
+        screens[0] !== item.screen ||
+        screens.some((key) => imageKind(key) !== 'phone')
+      )
+        throw new Error(`Invalid phone screen list: ${item.key}`)
+    }
     for (const link of item.links) {
       if (!link.offline) continue
       if (

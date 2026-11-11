@@ -25,6 +25,14 @@ export function validateCaseCopy(cases, translations, locale) {
     )
   for (const item of cases) {
     const words = translations[item.key]
+    const screenCount = item.screens?.length ?? 0
+    if (
+      screenCount > 1 &&
+      (!Array.isArray(words.screenAlts) ||
+        words.screenAlts.length !== screenCount ||
+        words.screenAlts.some((alt) => typeof alt !== 'string' || !alt.trim()))
+    )
+      throw new Error(`Missing screen alts for ${locale}/${item.key}`)
     for (const field of [
       'title',
       'summary',

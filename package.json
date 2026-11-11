@@ -8,12 +8,12 @@
     "test": "npm run build && node scripts/test-site.mjs",
     "test:static": "node scripts/test-site.mjs",
     "test:browser": "npm run build && node --test --test-concurrency=1 scripts/test-browser.mjs",
-    "lint": "node --check scripts/build-site.mjs && node --check scripts/site/shared.mjs && node --check scripts/site/service.mjs && node --check scripts/site/work.mjs && node --check scripts/site/case.mjs && node --check scripts/site/home.mjs && node --check scripts/site/index.mjs && node --check scripts/site/icons.mjs && node --check scripts/site/gallery-labels.mjs && node --check scripts/site/assets.mjs && node --check scripts/site/project.mjs && node --check scripts/site/slab.mjs && node --check scripts/site/og.mjs && node --check scripts/render-og.mjs && node --check assets/site.js && node --check assets/scene.js && node --check assets/showroom.js && python3 -c \"import ast; ast.parse(open('scripts/optimize-images.py').read())\" && node --check scripts/test-site.mjs && node --check scripts/test-browser.mjs",
+    "lint": "node --check scripts/build-site.mjs && node --check scripts/site/shared.mjs && node --check scripts/site/service.mjs && node --check scripts/site/work.mjs && node --check scripts/site/case.mjs && node --check scripts/site/home.mjs && node --check scripts/site/index.mjs && node --check scripts/site/icons.mjs && node --check scripts/site/gallery-labels.mjs && node --check scripts/site/assets.mjs && node --check scripts/site/project.mjs && node --check scripts/site/slab.mjs && node --check scripts/site/og.mjs && node --check scripts/render-og.mjs && node --check assets/site.js && node --check assets/scene.js && node --check assets/showroom.js && python3 -c \"import ast; ast.parse(open('scripts/optimize-images.py').read())\" && python3 -c \"import ast; ast.parse(open('scripts/crop-screens.py').read())\" && python3 scripts/check-phones.py && node --check scripts/test-site.mjs && node --check scripts/test-browser.mjs",
     "dev": "python3 -m http.server 4173",
     "start": "python3 -m http.server 4173",
     "format": "prettier --check .",
     "format:write": "prettier --write .",
-    "images": "python3 scripts/optimize-images.py",
+    "images": "python3 scripts/crop-screens.py && python3 scripts/optimize-images.py",
     "og": "npm run build && node scripts/render-og.mjs && npm run build"
   },
   "devDependencies": {

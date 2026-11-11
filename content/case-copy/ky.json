@@ -37,7 +37,12 @@
     "result": "App Store жана Google Play дүкөндөрүндө жарыяланган.",
     "alt": "Общемосковский крестный ход: башталышына чейинки убакыт, маршрут картасы, макалалар",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "ОКХ: жүрүшкө чейинки убакыт эсеби бар башкы экран",
+      "ОКХ: жүрүштүн маршрут картасы",
+      "ОКХ: маалымат жана жаңылыктар бөлүмү"
+    ]
   },
   "payqr": {
     "title": "PAYQR",
@@ -46,8 +51,12 @@
     "solution": "Flutter (iOS, Android) + FastAPI, ML Kit, QR/Aztec/DataMatrix окуу, сүрөт импорттоо, телефон менен кирүү жана операциялар таржымалы.",
     "result": "Тиркеме жана API иштелип чыкты; Android жыйнагы түзмөктө текшерилди.",
     "alt": "PAYQR: код сканерлөө жана тиркеменин менюсу",
-    "status": "",
-    "actions": []
+    "status": "Жеке долбоор",
+    "actions": [],
+    "screenAlts": [
+      "PAYQR: операциялар жана бонустар менен негизги меню",
+      "PAYQR: төлөм үчүн QR-код сканери"
+    ]
   },
   "matik": {
     "title": "Matik",
@@ -117,7 +126,12 @@
     "result": "App Store жана Google Play дүкөндөрүндө жарыяланган.",
     "alt": "Best Tracker: реалдуу убакыттагы жайгашуу жана QR аркылуу топко чакыруу",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "Best Tracker: картадагы топтун мүчөлөрү",
+      "Best Tracker: картада реалдуу убакыттагы жайгашуу",
+      "Best Tracker: дареги жана радиусу бар жер"
+    ]
   },
   "stefa": {
     "title": "Stefa AI Art",
@@ -127,7 +141,12 @@
     "result": "Google Play дүкөнүндө жарыяланган.",
     "alt": "Stefa AI Art: текст боюнча сүрөт түзүү",
     "status": "",
-    "actions": ["Google Play ↗"]
+    "actions": ["Google Play ↗"],
+    "screenAlts": [
+      "Stefa AI Art: башкы экран: тексттен сүрөт, премиум жана идеялар",
+      "Stefa AI Art: категориялар боюнча идеялар галереясы",
+      "Stefa AI Art: мисалдар менен суроо киргизүү"
+    ]
   },
   "mynails": {
     "title": "My Nail Salon",
@@ -157,7 +176,12 @@
     "result": "Google Play дүкөнүндө жарыяланган.",
     "alt": "WeGoTrip: саякат үчүн аудиогиддер жана турлар",
     "status": "",
-    "actions": ["Google Play ↗"]
+    "actions": ["Google Play ↗"],
+    "screenAlts": [
+      "WeGoTrip: маршрут картасы жана кадамдары бар аудиотур ойноткучу",
+      "WeGoTrip: аудиотурлар каталогу",
+      "WeGoTrip: жасалма интеллект менен тур түзүү"
+    ]
   },
   "yolo": {
     "title": "Yolo",
@@ -187,7 +211,12 @@
     "result": "Android үчүн даяр тиркеме.",
     "alt": "Wallpapers: категориялары бар тушкагаздар каталогу",
     "status": "Жеке долбоор",
-    "actions": []
+    "actions": [],
+    "screenAlts": [
+      "Wallpapers: тушкагазды толук экранда көрүү",
+      "Wallpapers: тушкагаздардын категориялары",
+      "Wallpapers: аниме тушкагаздарынын торчосу"
+    ]
   },
   "avtopark": {
     "title": "Avtopark",
@@ -197,7 +226,12 @@
     "result": "App Store жана Google Play дүкөндөрүндө жарыяланган.",
     "alt": "Avtopark: автопаркты башкаруу, айдоочулардын медициналык жана техникалык текшерүүсү",
     "status": "",
-    "actions": ["App Store ↗", "Google Play ↗"]
+    "actions": ["App Store ↗", "Google Play ↗"],
+    "screenAlts": [
+      "Avtopark: айдоочуларды күнүмдүк текшерүү панели",
+      "Avtopark: дарыгердин профили жана жөндөөлөрү",
+      "Avtopark: колдонмонун баштапкы экраны"
+    ]
   },
   "tildonmobile": {
     "title": "Tildon Mobile",
@@ -207,7 +241,12 @@
     "result": "Tildon веб-платформасынын бир нече платформада иштеген кошумча тиркемеси.",
     "alt": "Tildon Mobile: англис тилин үйрөнүү тиркемеси — грамматика, сөздүк, статистика",
     "status": "Жеке долбоор",
-    "actions": []
+    "actions": [],
+    "screenAlts": [
+      "Tildon Mobile: жыйынтыктар менен грамматика сабактары",
+      "Tildon Mobile: тест борбору",
+      "Tildon Mobile: окуучулардын рейтинги"
+    ]
   },
   "tildon": {
     "title": "Tildon",

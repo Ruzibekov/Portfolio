@@ -1,0 +1,79 @@
+{
+  "crops": [
+    {
+      "source": "screenshots/okh-shot.webp",
+      "box": [517, 141, 367, 652],
+      "output": "screenshots/okh-route.png"
+    },
+    {
+      "source": "screenshots/okh-shot.webp",
+      "box": [924, 141, 367, 652],
+      "output": "screenshots/okh-info.png"
+    },
+    {
+      "source": "screenshots/payqr-shot.webp",
+      "box": [720, 85, 344, 764],
+      "output": "screenshots/payqr-menu.png"
+    },
+    {
+      "source": "screenshots/avtopark-shot.webp",
+      "box": [524, 85, 351, 764],
+      "output": "screenshots/avtopark-dashboard.png"
+    },
+    {
+      "source": "screenshots/avtopark-shot.webp",
+      "box": [919, 84, 351, 765],
+      "output": "screenshots/avtopark-profile.png"
+    },
+    {
+      "source": "screenshots/tildonmobile-shot.webp",
+      "box": [517, 123, 363, 686],
+      "output": "screenshots/tildonmobile-tests.png"
+    },
+    {
+      "source": "screenshots/tildonmobile-shot.webp",
+      "box": [925, 123, 364, 688],
+      "output": "screenshots/tildonmobile-rating.png"
+    },
+    {
+      "source": "screenshots/besttracker-shot.webp",
+      "box": [129, 84, 354, 765],
+      "output": "screenshots/besttracker-live.png"
+    },
+    {
+      "source": "screenshots/besttracker-shot.webp",
+      "box": [523, 84, 354, 765],
+      "output": "screenshots/besttracker-members.png"
+    },
+    {
+      "source": "screenshots/besttracker-shot.webp",
+      "box": [917, 84, 354, 765],
+      "output": "screenshots/besttracker-radius.png"
+    },
+    {
+      "source": "screenshots/wegotrip-shot.webp",
+      "box": [144, 84, 344, 765],
+      "output": "screenshots/wegotrip-ai.png"
+    },
+    {
+      "source": "screenshots/wegotrip-shot.webp",
+      "box": [528, 84, 344, 765],
+      "output": "screenshots/wegotrip-player.png"
+    },
+    {
+      "source": "screenshots/wegotrip-shot.webp",
+      "box": [912, 84, 343, 764],
+      "output": "screenshots/wegotrip-tours.png"
+    },
+    {
+      "source": "screenshots/yolo-shot.webp",
+      "box": [533, 86, 333, 761],
+      "output": "screenshots/yolo-phone.png"
+    }
+  ],
+  "phoneTrims": {
+    "okh-phone": {
+      "bottom": 22
+    }
+  }
+}

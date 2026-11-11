@@ -42,6 +42,47 @@ function addressBar({ item, focusable }) {
   return `<div class="slab-bar"${focusable ? '' : ' aria-hidden="true"'}><a class="slab-url" href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer"${focusable ? '' : ' tabindex="-1"'} data-slab-url>${text}${icon('i-arrow-up-right', 'slab-url-icon')}</a></div>`
 }
 
+function slabFallback({ item, words, kind }) {
+  return `<span class="slab-fallback" aria-hidden="true">${icon(kind === 'browser' ? 'i-globe' : 'i-smartphone', 'slab-fallback-icon')}<span class="slab-fallback-title">${escapeHtml(words.title)}</span><span class="slab-fallback-stack">${escapeHtml(monoText(item.stack))}</span></span>`
+}
+
+const trioRoles = ['trio-centre', 'trio-left trio-side', 'trio-right trio-side']
+
+function trioSlab({
+  item,
+  words,
+  sizes,
+  lazy,
+  priority,
+  hidden,
+  className,
+  attributes,
+}) {
+  const screens = item.screens
+  const alts = words.screenAlts ?? []
+  if (alts.length !== screens.length)
+    throw new Error(`Screen alts do not match screens: ${item.key}`)
+  const phones = [1, 2, 0]
+    .filter((index) => index < screens.length)
+    .map((index) => {
+      const picture = slabImage({
+        key: screens[index],
+        alt: alts[index],
+        sizes,
+        lazy: index === 0 ? lazy : !priority,
+        priority: index === 0 && priority,
+      })
+      const dim =
+        index === 0
+          ? '<span class="slab-dim" aria-hidden="true" data-dim></span>'
+          : ''
+      return `<div class="slab-phone trio-phone ${trioRoles[index]}"><div class="slab-screen" data-screen>${picture}${slabFallback({ item, words, kind: 'phone' })}</div>${dim}</div>`
+    })
+    .join('')
+  const classes = ['slab', 'slab-trio', className].filter(Boolean).join(' ')
+  return `<figure class="${classes}" data-kind="phone" data-key="${escapeHtml(item.key)}" data-screens="${screens.length}"${hidden ? ' aria-hidden="true"' : ''}${attributes}>${phones}</figure>`
+}
+
 export function slab({
   item,
   words,
@@ -54,12 +95,24 @@ export function slab({
   className = '',
   attributes = '',
   image = item.screen,
+  trio = false,
 }) {
+  if (trio && image === item.screen && (item.screens?.length ?? 0) > 1)
+    return trioSlab({
+      item,
+      words,
+      sizes,
+      lazy,
+      priority,
+      hidden,
+      className,
+      attributes,
+    })
   const kind = image ? imageKind(image) : slabKind(item)
   const picture = image
     ? slabImage({ key: image, alt, sizes, lazy, priority })
     : ''
-  const fallback = `<span class="slab-fallback" aria-hidden="true">${icon(kind === 'browser' ? 'i-globe' : 'i-smartphone', 'slab-fallback-icon')}<span class="slab-fallback-title">${escapeHtml(words.title)}</span><span class="slab-fallback-stack">${escapeHtml(monoText(item.stack))}</span></span>`
+  const fallback = slabFallback({ item, words, kind })
   const bar = kind === 'browser' ? addressBar({ item, focusable }) : ''
   const classes = ['slab', `slab-${kind}`, className].filter(Boolean).join(' ')
   return `<figure class="${classes}" data-kind="${kind}" data-key="${escapeHtml(item.key)}"${hidden ? ' aria-hidden="true"' : ''}${attributes}>${bar}<div class="slab-screen${picture ? '' : ' is-empty'}" data-screen>${picture}${fallback}</div><span class="slab-dim" aria-hidden="true" data-dim></span></figure>`
