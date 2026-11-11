@@ -62,7 +62,7 @@ const floorSpecs = {
   },
 }
 
-function floorPath(f, dx = 0, dz = 0) {
+export function floorPath(f, dx = 0, dz = 0) {
   const project = (x, z) => {
     const scale = f.p / (f.p - z)
     return [f.ox + x * scale, f.oy + f.y * scale].map(
@@ -111,7 +111,7 @@ function projectHref({ shared, locale, item }) {
     : `${shared.pagePath(locale, 'work')}#${item.id}`
 }
 
-function heroTitle(lines, e) {
+export function heroTitle(lines, e) {
   return lines
     .map((line) => {
       const arrow = /\s*→\s*$/.test(line)

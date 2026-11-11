@@ -831,6 +831,70 @@ const htmlFiles = files.filter((path) => path.endsWith('.html'))
 const htmlText = htmlFiles.map((path) => readFileSync(path, 'utf8'))
 const imageExtensions = /\.(?:png|jpe?g|webp|avif|gif|svg)$/i
 const publicPath = (url) => url.split(/[?#]/)[0]
+const pngSize = (path) => {
+  const data = readFileSync(path)
+  assert.equal(
+    data.subarray(1, 4).toString('latin1'),
+    'PNG',
+    `${path} is not a PNG`,
+  )
+  return [data.readUInt32BE(16), data.readUInt32BE(20)]
+}
+const socialMeta = (html, key) =>
+  (html.match(/<meta\b[^>]*>/gi) ?? [])
+    .filter((tag) =>
+      [attribute(tag, 'property'), attribute(tag, 'name')].includes(key),
+    )
+    .map((tag) => attribute(tag, 'content'))
+const socialImages = new Map()
+const socialSize = (page, url) => {
+  assert.ok(url.startsWith(`${origin}/`), `${page} social image ${url}`)
+  const file = join(destination, publicPath(url.slice(origin.length)))
+  assert.ok(existsSync(file), `${page} social image is missing: ${url}`)
+  if (!socialImages.has(file)) socialImages.set(file, pngSize(file))
+  return socialImages.get(file)
+}
+htmlFiles.forEach((path, index) => {
+  const html = htmlText[index]
+  const page = path.slice(destination.length)
+  const ogImages = socialMeta(html, 'og:image')
+  const twitterImages = socialMeta(html, 'twitter:image')
+  assert.equal(twitterImages.length, 1, `${page} twitter:image`)
+  assert.deepEqual(
+    socialSize(page, twitterImages[0]),
+    [1200, 630],
+    `${page} twitter:image size`,
+  )
+  assert.deepEqual(socialMeta(html, 'twitter:card'), ['summary_large_image'])
+  if (page === '/portfolio/index.html') {
+    assert.equal(ogImages.length, 1, `${page} archive og:image`)
+    assert.deepEqual(socialSize(page, ogImages[0]), [1200, 630])
+    return
+  }
+  assert.equal(ogImages.length, 2, `${page} needs a wide and a square og:image`)
+  assert.equal(ogImages[0], twitterImages[0], `${page} first og:image`)
+  const sizes = ogImages.map((url) => socialSize(page, url))
+  assert.deepEqual(sizes, [
+    [1200, 630],
+    [1200, 1200],
+  ])
+  assert.deepEqual(
+    socialMeta(html, 'og:image:width').map(Number),
+    sizes.map(([width]) => width),
+    `${page} og:image:width`,
+  )
+  assert.deepEqual(
+    socialMeta(html, 'og:image:height').map(Number),
+    sizes.map(([, height]) => height),
+    `${page} og:image:height`,
+  )
+  const alts = socialMeta(html, 'og:image:alt')
+  assert.equal(alts.length, 2, `${page} og:image:alt`)
+  assert.ok(alts.every((alt) => alt.startsWith('Shavkatbek Ruzibekov: ')))
+})
+assert.equal(socialImages.size, 3)
+for (const file of socialImages.keys())
+  assert.ok(statSync(file).size <= 300 * 1024, `${file} exceeds 300 KB`)
 const imageUrls = htmlText.flatMap((html) =>
   (html.match(/<img\b[^>]*>/gi) ?? []).flatMap((tag) => {
     const sources = [attribute(tag, 'src')]
@@ -856,7 +920,9 @@ for (const url of imageUrls) {
     `Image does not resolve to a shipped file: ${url}`,
   )
 }
-for (const path of files.filter((file) => imageExtensions.test(file)))
+for (const path of files.filter(
+  (file) => imageExtensions.test(file) && !socialImages.has(file),
+))
   assert.ok(
     statSync(path).size <= 250 * 1024,
     `Shipped image is over 250 KB: ${path.slice(destination.length)}`,

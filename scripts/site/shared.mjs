@@ -169,7 +169,9 @@ export function head({
   slug = null,
   graph = [],
   about = null,
+  imageAlt,
 }) {
+  if (!imageAlt) throw new Error(`Missing social image alt for ${locale}`)
   const path = pagePath(locale, slug)
   const canonical = absoluteUrl(path)
   const breadcrumb = graph.find((node) => node['@type'] === 'BreadcrumbList')
@@ -233,6 +235,13 @@ ${locales
 <meta property="og:description" content="${escapeHtml(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${origin}${versioned('/assets/og-products.png')}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${escapeHtml(imageAlt)}">
+<meta property="og:image" content="${origin}${versioned('/assets/og-products-square.png')}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta property="og:image:alt" content="${escapeHtml(imageAlt)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escapeHtml(title)}">
 <meta name="twitter:description" content="${escapeHtml(description)}">
@@ -343,7 +352,7 @@ export function renderDocument({
 }) {
   if (!words?.backToTop) throw new Error(`Missing page words for ${locale}`)
   return `<!doctype html>
-<html lang="${locale}" data-theme="dark"><head>${head({ locale, title, description, role: copy.identity.role, slug, graph, about })}</head>
+<html lang="${locale}" data-theme="dark"><head>${head({ locale, title, description, role: copy.identity.role, slug, graph, about, imageAlt: `Shavkatbek Ruzibekov: ${words.title.join(' ')}` })}</head>
 <body class="${escapeHtml(bodyClass)}" id="top">${spriteMarkup}${header({ locale, copy, ui, slug })}<main id="main">${body}</main>${footer({ locale, copy, ui, words })}${bodyEnd}
 <script src="${script.path}" defer></script></body></html>`
 }

@@ -106,6 +106,7 @@ const content = Object.fromEntries(
 const sourceAssets = [
   ...bundledSources,
   'assets/og-products.png',
+  'assets/og-products-square.png',
   'assets/avatar.jpg',
   ...fontLicenses.map((path) => path.slice(1)),
   'favicon.svg',
