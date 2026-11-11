@@ -13,8 +13,10 @@ import * as shared from './site/shared.mjs'
 import { renderService, serviceFaq } from './site/service.mjs'
 import { renderWork, validateCaseCopy } from './site/work.mjs'
 import { renderCase } from './site/case.mjs'
+import { validateProjectMedia } from './site/project.mjs'
 import {
   bundledSources,
+  fontLicenses,
   imageSrc,
   script,
   stylesheet,
@@ -45,6 +47,7 @@ if (
   new Set(cases.map((item) => item.key)).size !== 29
 )
   throw new Error('Expected all 29 unique source portfolio cases')
+validateProjectMedia(cases)
 const caseCopies = Object.fromEntries(
   shared.locales.map((locale) => {
     const translations = ['ru', 'en', 'uz'].includes(locale)
@@ -104,7 +107,7 @@ const sourceAssets = [
   ...bundledSources,
   'assets/og-products.png',
   'assets/avatar.jpg',
-  'assets/fonts/onest-LICENSE',
+  ...fontLicenses.map((path) => path.slice(1)),
   'favicon.svg',
   'og-image.png',
 ]
@@ -176,6 +179,7 @@ for (const locale of shared.locales) {
         locale,
         copy,
         ui,
+        words: portfolio[locale],
         cases,
         caseCopy: caseCopies[locale],
         key,
@@ -192,6 +196,7 @@ for (const locale of shared.locales) {
         ui,
         words: portfolio[locale],
         slug,
+        cases,
         caseCopy: caseCopies[locale],
       }),
     )
@@ -227,7 +232,7 @@ const referenced = new Set(
     ].map((match) => match[0]),
   ),
 )
-referenced.add('/assets/fonts/onest-LICENSE')
+for (const license of fontLicenses) referenced.add(license)
 for (const publicPath of referenced) {
   if (existsSync(join(destination, publicPath))) continue
   const source = join(root, publicPath)

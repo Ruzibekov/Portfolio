@@ -3,20 +3,68 @@
   "output": "screenshots/web",
   "images": [
     {
+      "source": "screenshots/agentmama-390.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/agentmama-shot.webp",
       "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/agentmama-web.png",
+      "widths": [1280, 640]
     },
     {
       "source": "screenshots/ailogoedit-shot.webp",
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/ailogoedit-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/altn-emu-1.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/altn-emu-2.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/altn-emu-3.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/altn-emu-4.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/altn-shot.webp",
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/avtopark-phone.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/avtopark-shot.webp",
       "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/besttracker-emu-1.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/besttracker-emu-2.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/besttracker-emu-3.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/besttracker-emu-4.png",
+      "widths": [540, 270]
     },
     {
       "source": "screenshots/besttracker-shot.webp",
@@ -27,6 +75,14 @@
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/earth3d-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/geoblinker-emu-1.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/geoblinker-shot.webp",
       "widths": [1400, 700]
     },
@@ -35,16 +91,36 @@
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/les44-web.png",
+      "widths": [1280, 640]
+    },
+    {
       "source": "screenshots/majiidtv-shot.webp",
       "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/majiidtv-web.png",
+      "widths": [1280, 640]
     },
     {
       "source": "screenshots/matik-shot.webp",
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/matik-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/miyolo-390.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/miyolo-shot.webp",
       "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/miyolo-web.png",
+      "widths": [1280, 640]
     },
     {
       "source": "screenshots/monarh-shot.webp",
@@ -55,8 +131,20 @@
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/monro-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/mynails-emu-1.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/mynails-shot.webp",
       "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/okh-phone.png",
+      "widths": [540, 270]
     },
     {
       "source": "screenshots/okh-shot.webp",
@@ -67,6 +155,14 @@
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/olympic-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/payqr-phone.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/payqr-shot.webp",
       "widths": [1400, 700]
     },
@@ -75,8 +171,20 @@
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/space444-web.png",
+      "widths": [1280, 640]
+    },
+    {
       "source": "screenshots/spr54-shot.webp",
       "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/spr54-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/stefa-emu-1.png",
+      "widths": [540, 270]
     },
     {
       "source": "screenshots/stefa-shot.webp",
@@ -87,8 +195,20 @@
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/supertour-web.png",
+      "widths": [1280, 640]
+    },
+    {
       "source": "screenshots/tildon-shot.webp",
       "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/tildon-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/tildonmobile-phone.png",
+      "widths": [540, 270]
     },
     {
       "source": "screenshots/tildonmobile-shot.webp",
@@ -99,12 +219,28 @@
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/vertolyot-web.png",
+      "widths": [1280, 640]
+    },
+    {
       "source": "screenshots/vfx-shot.webp",
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/vfx-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/wallpapers-emu-1.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/wallpapers-shot.webp",
       "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/wegotrip-emu-1.png",
+      "widths": [540, 270]
     },
     {
       "source": "screenshots/wegotrip-shot.webp",
@@ -115,16 +251,16 @@
       "widths": [1400, 700]
     },
     {
+      "source": "screenshots/wottank-web.png",
+      "widths": [1280, 640]
+    },
+    {
+      "source": "screenshots/yolo-phone.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/yolo-shot.webp",
       "widths": [1400, 700]
-    },
-    {
-      "source": "screenshots/altn-emu-1.png",
-      "widths": [540]
-    },
-    {
-      "source": "screenshots/besttracker-emu-1.png",
-      "widths": [540]
     }
   ]
 }

@@ -3,29 +3,41 @@ import { existsSync, readFileSync } from 'node:fs'
 
 const root = new URL('../../', import.meta.url)
 const styleSources = [
-  'assets/fonts-b.css',
-  'assets/b-base.css',
-  'assets/b-home.css',
-  'assets/b-pages.css',
+  'assets/fonts.css',
+  'assets/tokens.css',
+  'assets/base.css',
+  'assets/scene.css',
+  'assets/pages.css',
 ]
-const scriptSource = 'assets/site.js'
+const scriptSources = [
+  'assets/site.js',
+  'assets/scene.js',
+  'assets/showroom.js',
+]
 const themeSource = 'assets/theme-init.js'
 const imageManifestSource = 'screenshots/web/manifest.json'
 const fontFiles = {
-  latin: '/assets/fonts/intertight-latin.woff2',
-  cyrillic: '/assets/fonts/intertight-cyrillic.woff2',
-  cyrillicExt: '/assets/fonts/intertight-cyrillic-ext.woff2',
+  displayLatin: '/assets/fonts/unbounded-latin.woff2',
+  displayCyrillic: '/assets/fonts/unbounded-cyrillic.woff2',
+  latin: '/assets/fonts/onest-latin.woff2',
+  cyrillic: '/assets/fonts/onest-cyrillic.woff2',
+  cyrillicExt: '/assets/fonts/onest-cyrillic-ext.woff2',
 }
 const localeFonts = {
-  uz: ['latin'],
-  en: ['latin'],
-  ru: ['latin', 'cyrillic'],
-  uk: ['latin', 'cyrillic'],
-  be: ['latin', 'cyrillic'],
+  uz: ['displayLatin', 'latin'],
+  en: ['displayLatin', 'latin'],
+  ru: ['displayCyrillic', 'latin', 'cyrillic'],
+  uk: ['displayCyrillic', 'latin', 'cyrillic'],
+  be: ['displayCyrillic', 'latin', 'cyrillic'],
   ky: ['latin', 'cyrillic', 'cyrillicExt'],
   kk: ['latin', 'cyrillic', 'cyrillicExt'],
   tg: ['latin', 'cyrillic', 'cyrillicExt'],
 }
+export const fontLicenses = [
+  '/assets/fonts/onest-LICENSE',
+  '/assets/fonts/unbounded-LICENSE',
+  '/assets/fonts/jetbrainsmono-LICENSE',
+]
 
 const readSource = (path) => {
   const url = new URL(path, root)
@@ -61,14 +73,17 @@ export const stylesheet = bundle(
     .join('\n'),
   'css',
 )
-export const script = bundle(readSource(scriptSource).toString('utf8'), 'js')
+export const script = bundle(
+  scriptSources.map((path) => readSource(path).toString('utf8')).join('\n'),
+  'js',
+)
 export const themeInit = readSource(themeSource).toString('utf8').trim()
-export const bundledSources = [...styleSources, scriptSource, themeSource]
+export const bundledSources = [...styleSources, ...scriptSources, themeSource]
 
 export const defaultCanvas = (() => {
   const block = stylesheet.content.match(/:root\s*\{([^}]*)\}/)?.[1] ?? ''
-  const value = block.match(/--s0:\s*([^;]+);/)?.[1].trim()
-  if (!value) throw new Error('Default theme --s0 canvas token is missing')
+  const value = block.match(/--canvas:\s*([^;]+);/)?.[1].trim()
+  if (!value) throw new Error('Default theme --canvas token is missing')
   return value
 })()
 
@@ -95,23 +110,4 @@ export function imageSrc(key, maxWidth = Infinity) {
     variants.filter((variant) => variant.width <= maxWidth).at(-1) ??
     variants[0]
   ).src
-}
-
-export function imageTag({
-  key,
-  alt,
-  sizes,
-  className = '',
-  priority = false,
-  lazy = !priority,
-}) {
-  const entry = imageEntry(key)
-  const srcset =
-    entry.variants.length > 1
-      ? ` srcset="${entry.variants.map((variant) => `${variant.src} ${variant.width}w`).join(', ')}" sizes="${sizes}"`
-      : ''
-  const loading = lazy ? ' loading="lazy"' : ''
-  const hint = priority ? ' fetchpriority="high"' : ' decoding="async"'
-  const classAttribute = className ? ` class="${className}"` : ''
-  return `<img${classAttribute} src="${imageSrc(key)}"${srcset} alt="${alt}" width="${entry.width}" height="${entry.height}"${loading}${hint}>`
 }

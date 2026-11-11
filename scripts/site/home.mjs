@@ -1,7 +1,10 @@
 import { readFileSync } from 'node:fs'
 import { icon } from './icons.mjs'
-import { imageEntry, imageTag, versioned } from './assets.mjs'
-import { countProjects, projectTag, renderIndex } from './index.mjs'
+import { versioned } from './assets.mjs'
+import { countProjects, monoText, projectType } from './project.mjs'
+import { projectStatus, slab } from './slab.mjs'
+import { galleryLabels } from './gallery-labels.mjs'
+import { renderShowroom } from './index.mjs'
 
 const future = JSON.parse(
   readFileSync(
@@ -9,51 +12,165 @@ const future = JSON.parse(
     'utf8',
   ),
 ).locales
-const heroKey = 'monarh'
-const heroSizes = '(min-width: 1021px) 640px, calc(100vw - 40px)'
-const indexLimit = 8
-const serviceProofs = {
-  'web-development': 'monarh',
-  'mobile-apps': 'avtopark',
+const heroSequence = [
+  'agentmama',
+  'majiidtv',
+  'besttracker',
+  'miyolo',
+  'stefa',
+  'wottank',
+]
+const heroPhoneSequence = ['besttracker', 'agentmama', 'stefa']
+export const serviceProofs = {
+  'web-development': 'miyolo',
+  'telegram-bots': null,
+  'mobile-apps': 'besttracker',
   'business-automation': 'payqr',
   'ai-integrations': 'agentmama',
 }
-const chevron =
-  '<svg class="bt-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>'
-const shotSizes = '(min-width: 1021px) 560px, 100vw'
+const heroSizes = '(min-width: 1024px) 640px, 300px'
+const standSizes = '(min-width: 1024px) 520px, 1px'
+const indexLimit = 8
+const two = (value) => String(value).padStart(2, '0')
 
-function serviceShot(imageKey) {
-  const { variants } = imageEntry(imageKey)
-  const large = variants.at(-1)
-  const attributes = `src="${large.src}" srcset="${variants.map((variant) => `${variant.src} ${variant.width}w`).join(', ')}" sizes="${shotSizes}" alt="" width="${large.width}" height="${large.height}" loading="lazy" decoding="async"`
-  return `<span class="bt-well"><span class="bt-frame"><span class="bt-pz"><img class="bt-g" ${attributes}><span class="bt-wipe"><img class="bt-in" ${attributes}></span><span class="bt-scanw"><i class="bt-scan"></i></span></span></span></span>`
+const floorSpecs = {
+  d: {
+    w: 1280,
+    h: 800,
+    ox: 900,
+    oy: 390,
+    p: 1400,
+    y: 260,
+    x0: -1600,
+    x1: 1600,
+    z0: -2100,
+    z1: 300,
+    cell: 160,
+  },
+  m: {
+    w: 390,
+    h: 264,
+    ox: 195,
+    oy: 132,
+    p: 900,
+    y: 150,
+    x0: -1200,
+    x1: 1200,
+    z0: -1400,
+    z1: 400,
+    cell: 120,
+  },
 }
 
-function serviceChat(chat, e) {
-  const lines = [
-    `<span class="ch-u" style="--k:0">${e(chat.start)}</span>`,
-    `<span class="ch-b" style="--k:1">${e(chat.ask)}</span>`,
-    ...chat.opts.map(
-      (option, index) =>
-        `<span class="ch-o" style="--k:${index + 2}">${index + 1} · ${e(option)}</span>`,
-    ),
-  ]
-  return `<span class="bt-well" aria-hidden="true"><span class="bt-frame"><span class="ch">${lines.join('')}</span></span></span>`
+function floorPath(f, dx = 0, dz = 0) {
+  const project = (x, z) => {
+    const scale = f.p / (f.p - z)
+    return [f.ox + x * scale, f.oy + f.y * scale].map(
+      (value) => Math.round(value * 10) / 10,
+    )
+  }
+  const lines = []
+  const shiftZ = ((dz % f.cell) + f.cell) % f.cell
+  const shiftX = ((dx % f.cell) + f.cell) % f.cell
+  for (let z = f.z0 + shiftZ; z <= f.z1; z += f.cell) {
+    const [ax, ay] = project(f.x0, z)
+    const [bx] = project(f.x1, z)
+    if (ay <= f.h + 1) lines.push(`M${ax} ${ay}H${bx}`)
+  }
+  for (let x = f.x0 + shiftX; x <= f.x1; x += f.cell) {
+    const [ax, ay] = project(x, f.z0)
+    const [bx, by] = project(x, f.z1)
+    lines.push(`M${ax} ${ay}L${bx} ${by}`)
+  }
+  return lines.join('')
 }
 
-export function homeFaqItems(copy, futureCopy) {
+function floorPlane(kind) {
+  const f = floorSpecs[kind]
+  return `<svg class="floor floor-${kind}" viewBox="0 0 ${f.w} ${f.h}" preserveAspectRatio="none" aria-hidden="true" focusable="false" data-floor='${JSON.stringify(f)}'><path d="${floorPath(f)}"/></svg>`
+}
+
+function homeFaqItems(copy, futureCopy) {
   return [
     ...copy.faq,
     { question: futureCopy.faq.aiQuestion, answer: futureCopy.faq.aiAnswer },
   ]
 }
 
-export function technologies(cases) {
+function technologies(cases) {
   return [
     ...new Set(
       cases.flatMap((item) => item.stack.split(',').map((part) => part.trim())),
     ),
   ].filter(Boolean)
+}
+
+function projectHref({ shared, locale, item }) {
+  return shared.caseKeys.includes(item.key)
+    ? shared.casePath(locale, item.key)
+    : `${shared.pagePath(locale, 'work')}#${item.id}`
+}
+
+function heroTitle(lines, e) {
+  return lines
+    .map((line) => {
+      const arrow = /\s*→\s*$/.test(line)
+      const text = line.replace(/\s*→\s*$/, '')
+      return `<span class="h1-line">${e(text)}${arrow ? icon('i-arrow-right', 'h1-arrow') : ''}</span>`
+    })
+    .join('')
+}
+
+function heroScene({ locale, ui, words, cases, caseCopy, shared }) {
+  const e = shared.escapeHtml
+  const labels = galleryLabels[locale]
+  const entries = heroSequence.map((key, index) => {
+    const item = cases.find((entry) => entry.key === key)
+    if (!item?.screen) throw new Error(`Hero slab needs a capture: ${key}`)
+    return {
+      item,
+      words: caseCopy[key],
+      d: index,
+      m: heroPhoneSequence.indexOf(key),
+    }
+  })
+  const figures = entries
+    .map(({ item, words: itemWords, d, m }) =>
+      slab({
+        item,
+        words: itemWords,
+        sizes: heroSizes,
+        alt: itemWords.alt,
+        lazy: d > 2 && m < 0,
+        priority: d === 0,
+        focusable: d === 0,
+        hidden: d !== 0,
+        className: 'hero-slab',
+        attributes: ` data-d="${d}" data-m="${m}"`,
+      }),
+    )
+    .join('')
+  const placards = entries
+    .map(
+      ({ item, words: itemWords, d, m }) =>
+        `<a class="placard" href="${projectHref({ shared, locale, item })}" data-d="${d}" data-m="${m}" data-key="${e(item.key)}"${shared.caseKeys.includes(item.key) ? '' : ` data-sheet-key="${e(item.key)}"`}><span class="placard-num" aria-hidden="true"><span class="num-d">${two(d + 1)}</span><span class="num-m">${two(m + 1)}</span></span><span class="placard-body"><span class="placard-title">${e(itemWords.title)}</span><span class="placard-meta"><span>${e(projectType(item, ui))}</span><span class="mono">${e(monoText(item.stack))}</span></span></span>${projectStatus({ item, words: itemWords, presentation: words, labels })}</a>`,
+    )
+    .join('')
+  const dots = entries
+    .map(
+      ({ words: itemWords, d, m }) =>
+        `<button class="minimap-dot" type="button" data-d="${d}" data-m="${m}" data-title="${e(itemWords.title)}" aria-label="${d + 1}. ${e(itemWords.title)}"><span class="minimap-pip"></span></button>`,
+    )
+    .join('')
+  const steps = heroSequence
+    .map(
+      (_, index) =>
+        `<span class="hero-step" style="--step:${index}" aria-hidden="true"></span>`,
+    )
+    .join('')
+  const floor = `${floorPlane('d')}${floorPlane('m')}`
+  const minimap = `<div class="minimap" data-minimap role="group" aria-label="${e(words.minimapLabel)}" hidden><span class="minimap-step" data-minimap-step aria-hidden="true">01 / ${two(heroSequence.length)}</span><div class="minimap-rail">${dots}</div></div>`
+  return { figures, placards, minimap, steps, floor }
 }
 
 export function renderHome({
@@ -68,65 +185,79 @@ export function renderHome({
   if (!words) throw new Error(`Missing portfolio presentation for ${locale}`)
   const e = shared.escapeHtml
   const counts = countProjects(cases)
-  const hero = cases.find((item) => item.key === heroKey)
-  const heroWords = caseCopy[heroKey]
-  const stats = `<b>${counts.total}</b> ${e(words.stats.projects)} · <b>${counts.stores}</b> ${e(words.stats.stores)} · <b>${counts.online}</b> ${e(words.stats.online)}`
-  const steps = words.build
-    .map(
-      (label, index) =>
-        `<span class="bs"><span aria-hidden="true">0${index + 1}</span> ${e(label)}</span>`,
-    )
+  const scene = heroScene({ locale, ui, words, cases, caseCopy, shared })
+  const stats = [
+    [counts.total, words.stats.projects],
+    [counts.stores, words.stats.stores],
+    [counts.online, words.stats.online],
+  ]
+    .map(([value, unit]) => `<li><b>${value}</b><span>${e(unit)}</span></li>`)
     .join('')
-  const heading = words.title
-    .map((line) => `<span class="wd">${e(line)}</span>`)
-    .join('')
-  const heroBlock = `<section class="hero" aria-labelledby="intro-title"><div class="wrap"><div class="hero-g"><div class="hero-copy">
-<p class="eyebrow">${e(copy.hero.eyebrow)}</p>
-<h1 class="h1" id="intro-title" data-build-title>${heading}</h1>
-<p class="mono" data-r>${stats}</p>
-<p class="lead" data-r style="--i:1">${e(words.statement)}</p>
-<div class="cta" data-r style="--i:1"><a class="btn p" href="${shared.telegramUrl}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span>${e(copy.hero.primaryCta)}</span></a><a class="btn g" href="#work"><span>${e(copy.hero.secondaryCta)}</span>${icon('i-arrow-down')}</a></div>
-</div><div class="hero-art"><div class="build" data-build data-st="1"><div class="bimg" data-build-image>${imageTag({ key: hero.image, alt: '', sizes: heroSizes, className: 'l1', lazy: false })}<span class="hw"><span class="hi">${imageTag({ key: hero.image, alt: e(ui.caseStudies[heroKey].alt), sizes: heroSizes, className: 'l2', priority: true })}</span></span><span class="hs" aria-hidden="true"><i></i></span></div><div class="bsteps" aria-hidden="true">${steps}</div><div class="bname"><b>${e(heroWords.title)}</b><span>${e(projectTag(hero, ui))}</span></div></div></div></div></div></section>`
+  const heroBlock = `<section class="hero" aria-labelledby="intro-title" data-hero><div class="hero-track" data-hero-track>${scene.steps}<div class="hero-stage" data-hero-stage>
+<div class="hero-copy"><p class="hero-name">Shavkatbek Ruzibekov</p><h1 class="h1" id="intro-title">${heroTitle(words.title, e)}</h1><p class="lead hero-lead">${e(words.statement)}</p><ul class="stats" aria-label="${e(copy.navigation.work)}">${stats}</ul><div class="cta-row"><a class="btn btn-primary" href="${shared.telegramUrl}" target="_blank" rel="noopener noreferrer" data-primary-cta>${icon('l-telegram')}<span>${e(copy.hero.primaryCta)}</span></a><a class="btn btn-secondary" href="#work"><span>${e(copy.hero.secondaryCta)}</span>${icon('i-arrow-down')}</a></div></div>
+<div class="placards" data-placards>${scene.placards}</div>
+<div class="hall" data-hall role="group" aria-label="${e(words.hallLabel)}">${scene.floor}<div class="world" data-world>${scene.figures}</div></div>
+${scene.minimap}
+</div></div></section>`
   const bento = ui.services.bento
-  const serviceTiles = shared.serviceSlugs
+  const serviceRows = shared.serviceSlugs
     .map((slug, index) => {
       const service = copy.services[slug]
-      const title = service.short.replace('Telegram-', 'Telegram‑')
       const proofKey = serviceProofs[slug]
-      const well = proofKey
-        ? serviceShot(cases.find((item) => item.key === proofKey).image)
-        : serviceChat(bento.chat, e)
       const caption = proofKey
         ? `${bento.proof}: ${caseCopy[proofKey].title}`
         : bento.chat.cap
-      return `<a class="bt bt-${slug}" href="${shared.pagePath(locale, slug)}" aria-label="${e(service.name)}" data-r style="--i:${index}" data-bt><span class="bt-h"><span class="num" aria-hidden="true">0${index + 1}</span>${chevron}</span><div class="bt-b"><h3>${e(title)}</h3><span class="bt-p">${e(service.pitch)}</span><span class="bt-tg">${service.tags.map(e).join(' · ')}</span></div>${well}<span class="bt-cap">${e(caption)}</span></a>`
+      return `<li><a class="svc-row" href="${shared.pagePath(locale, slug)}" aria-label="${e(service.name)}" data-svc="${index}"${index === 0 ? ' aria-current="true"' : ''}><span class="svc-num" aria-hidden="true">${two(index + 1)}</span><span class="svc-main"><h3>${e(service.short.replace('Telegram-', 'Telegram‑'))}</h3><span class="svc-pitch">${e(service.pitch)}</span><span class="svc-tags">${service.tags.map(e).join(' · ')}</span><span class="svc-cap">${e(caption)}</span></span>${icon('i-arrow-right', 'svc-chevron')}</a></li>`
     })
     .join('')
-  const servicesBlock = `<section class="sec sv-s2" id="services" aria-labelledby="services-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${e(copy.navigation.services)}</p><h2 class="h2" id="services-title">${shared.typoBreaks(ui.services.title.replace(/\n/g, ' '))}</h2></header><div class="sv-grid">${serviceTiles}</div></div></section>`
-  const { section, overlays } = renderIndex({
+  const stands = shared.serviceSlugs
+    .map((slug, index) => {
+      const proofKey = serviceProofs[slug]
+      const caption = proofKey
+        ? `${bento.proof}: ${caseCopy[proofKey].title}`
+        : bento.chat.cap
+      const proof = proofKey
+        ? slab({
+            item: cases.find((entry) => entry.key === proofKey),
+            words: caseCopy[proofKey],
+            sizes: standSizes,
+            className: 'stand-slab',
+          })
+        : chatSlab(bento.chat, e)
+      return `<div class="stand-item${index === 0 ? ' is-active' : ''}" data-stand="${index}"><div class="stand-pose">${proof}</div><p class="stand-cap">${e(caption)}</p></div>`
+    })
+    .join('')
+  const servicesBlock = `<section class="sec" id="services" aria-labelledby="services-title"><div class="wrap"><header class="sec-head"><h2 class="h2" id="services-title">${shared.typoBreaks(ui.services.title.replace(/\n/g, ' '))}</h2><p class="sec-intro">${e(ui.services.intro)}</p></header><div class="services" data-services><ol class="svc-list">${serviceRows}</ol><div class="stand" aria-hidden="true">${stands}</div></div></div></section>`
+  const { section, overlays } = renderShowroom({
     locale,
     copy,
     ui,
     words,
     cases,
     caseCopy,
+    shared,
     limit: indexLimit,
-    eyebrow: ui.work.eyebrow,
-    heading: shared.typoBreaks(ui.work.title),
-    footerLink: `<p class="all-link"><a class="text-link b-all-projects" href="${shared.pagePath(locale, 'work')}">${e(ui.work.allProjects)} ${icon('i-arrow-right')}</a></p>`,
+    variant: 'home',
+    heading: ui.work.title
+      .split('\n')
+      .map((line, index) =>
+        index ? `<span class="h2-muted">${e(line)}</span>` : e(line),
+      )
+      .join(' '),
   })
   const workBlock = `<section class="sec" id="work" aria-labelledby="work-title"><div class="wrap">${section}</div></section>`
-  const processBlock = `<section class="sec" id="process" aria-labelledby="process-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${e(words.processEyebrow)}</p><h2 class="h2" id="process-title">${e(words.processTitle)}</h2></header>${shared.processSteps({ ui })}</div></section>`
+  const processBlock = `<section class="sec" id="process" aria-labelledby="process-title"><div class="wrap"><header class="sec-head"><h2 class="h2" id="process-title">${e(words.processTitle)}</h2></header>${shared.processSteps({ ui })}</div></section>`
   const stack = technologies(cases)
-    .map((name) => `<li>${e(name)}</li>`)
+    .map((name) => `<li>${e(monoText(name))}</li>`)
     .join('')
-  const aboutBlock = `<section class="sec" id="about" aria-labelledby="about-title"><div class="wrap ab"><div data-r><p class="eyebrow">${e(copy.navigation.about)}</p><div class="me"><img src="${versioned('/assets/avatar.jpg')}" alt="Shavkatbek Ruzibekov" width="68" height="68" loading="lazy" decoding="async"><div><b>Shavkatbek Ruzibekov</b><span>${e(copy.identity.role)}</span></div></div><h2 class="h2" id="about-title">${e(words.aboutTitle)}</h2><p>${e(words.aboutText)}</p><p>${e(ui.about.title)}</p></div><ul class="stk" data-r style="--i:1" aria-label="${e(copy.caseStudy.stack)}">${stack}</ul></div></section>`
+  const aboutBlock = `<section class="sec" id="about" aria-labelledby="about-title"><div class="wrap about"><div class="about-copy"><div class="me"><span class="avatar"><img src="${versioned('/assets/avatar.jpg')}" alt="Shavkatbek Ruzibekov" width="72" height="72" loading="lazy" decoding="async"></span><span class="me-text"><b>Shavkatbek Ruzibekov</b><span>${e(copy.identity.role)}</span></span></div><h2 class="h2" id="about-title">${e(words.aboutTitle)}</h2><p class="about-text">${e(words.aboutText)}</p><p class="about-statement">${e(ui.about.title)}</p></div><ul class="stack-panel" aria-label="${e(copy.caseStudy.stack)}">${stack}</ul></div></section>`
   const faqItems = homeFaqItems(copy, future[locale])
   const faqBlock = shared.faq({ copy: { ...copy, faq: faqItems }, ui })
   return shared.renderDocument({
     locale,
     copy,
     ui,
+    words,
     title: copy.seo.title,
     description: copy.seo.description,
     graph: [shared.faqNode(shared.pagePath(locale), faqItems)],
@@ -134,4 +265,16 @@ export function renderHome({
     bodyClass: 'home-page',
     bodyEnd: overlays,
   })
+}
+
+export function chatSlab(chat, e) {
+  const lines = [
+    `<span class="chat-out">${e(chat.start)}</span>`,
+    `<span class="chat-in">${e(chat.ask)}</span>`,
+    ...chat.opts.map(
+      (option, index) =>
+        `<span class="chat-opt">${index + 1} · ${e(option)}</span>`,
+    ),
+  ]
+  return `<figure class="slab slab-phone stand-slab" data-kind="phone" aria-hidden="true"><div class="slab-screen chat-screen">${lines.join('')}</div><span class="slab-dim" aria-hidden="true"></span></figure>`
 }

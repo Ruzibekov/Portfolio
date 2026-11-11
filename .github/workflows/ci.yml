@@ -33,3 +33,9 @@ jobs:
 
       - name: Verify
         run: just verify
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser tests
+        run: npm run test:browser

@@ -9,6 +9,8 @@
       "categories": ["web"],
       "stack": "CS-Cart, PHP",
       "image": "miyolo-shot",
+      "screen": "miyolo-web",
+      "gallery": ["miyolo-390"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -60,7 +62,11 @@
       "statusKey": null,
       "links": [
         {
-          "href": "https://monarhmarket.ru"
+          "href": "https://monarhmarket.ru",
+          "offline": {
+            "checkedOn": "2026-11-11",
+            "evidence": "Hosting placeholder «Домен не прилинкован ни к одной из директорий на сервере!» on http; https serves the beget.com certificate"
+          }
         }
       ],
       "translations": {
@@ -69,7 +75,7 @@
           "summary": "Редизайн магазина керамогранита на Bitrix для трёх городов.",
           "task": "Обновить дизайн работающего магазина плитки без остановки продаж: главная, каталог, коллекции, карточка товара и корзина.",
           "solution": "Шаблон Bitrix, свой CSS и JavaScript поверх темы. Новая шапка и мобильное меню, фото интерьеров в коллекциях, фильтр в шторке, избранное и сравнение, плавные анимации. Три сайта: Самара, Казань и Нижний Новгород.",
-          "result": "Работает на monarhmarket.ru и сайтах городов.",
+          "result": "Был запущен на monarhmarket.ru и сайтах городов.",
           "alt": "МонархМаркет: главная страница на компьютере и телефоне",
           "status": "",
           "actions": ["Открыть сайт ↗"]
@@ -79,7 +85,7 @@
           "summary": "A redesign of a Bitrix porcelain tile store for three cities.",
           "task": "Refresh the design of a live tile store without stopping sales: home, catalog, collections, product page and cart.",
           "solution": "Bitrix template with custom CSS and JavaScript on top of the theme. New header and mobile menu, interior photos in collections, a sheet filter, favorites and compare, smooth motion. Three sites: Samara, Kazan and Nizhny Novgorod.",
-          "result": "Live at monarhmarket.ru and the city sites.",
+          "result": "Launched at monarhmarket.ru and the city sites.",
           "alt": "MonarhMarket: home page on desktop and phone",
           "status": "",
           "actions": ["Visit website ↗"]
@@ -89,7 +95,7 @@
           "summary": "Uch shahar uchun Bitrix'dagi keramogranit doʻkoni redizayni.",
           "task": "Ishlab turgan plitka doʻkoni dizaynini savdoni toʻxtatmasdan yangilash: bosh sahifa, katalog, kolleksiyalar, mahsulot sahifasi va savat.",
           "solution": "Bitrix shabloni, mavzu ustidan oʻz CSS va JavaScript. Yangi shapka va mobil menyu, kolleksiyalarda interyer fotolari, pastdan chiquvchi filtr, sevimlilar va solishtirish, silliq animatsiyalar. Uch sayt: Samara, Qozon va Nijniy Novgorod.",
-          "result": "monarhmarket.ru va shahar saytlarida ishlamoqda.",
+          "result": "monarhmarket.ru va shahar saytlarida ishga tushirilgan.",
           "alt": "MonarhMarket: kompyuter va telefonda bosh sahifa",
           "status": "",
           "actions": ["Saytni ochish ↗"]
@@ -103,6 +109,8 @@
       "categories": ["web"],
       "stack": "FastAPI, React",
       "image": "agentmama-shot",
+      "screen": "agentmama-web",
+      "gallery": ["agentmama-390"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -150,6 +158,7 @@
       "categories": ["mobile"],
       "stack": "Flutter, FastAPI",
       "image": "okh-shot",
+      "screen": "okh-phone",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -200,6 +209,7 @@
       "categories": ["mobile", "backend"],
       "stack": "Flutter, FastAPI",
       "image": "payqr-shot",
+      "screen": "payqr-phone",
       "statusType": "public",
       "statusKey": null,
       "links": [],
@@ -243,6 +253,7 @@
       "categories": ["web"],
       "stack": "Next.js, PWA",
       "image": "matik-shot",
+      "screen": "matik-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -290,6 +301,7 @@
       "categories": ["web"],
       "stack": "HTML, CSS, JS",
       "image": "majiidtv-shot",
+      "screen": "majiidtv-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -337,6 +349,7 @@
       "categories": ["web"],
       "stack": "React, TypeScript, Vite",
       "image": "wottank-shot",
+      "screen": "wottank-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -384,6 +397,7 @@
       "categories": ["web"],
       "stack": "Eleventy, PHP",
       "image": "spr54-shot",
+      "screen": "spr54-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -431,11 +445,16 @@
       "categories": ["web"],
       "stack": "Joomla 5, PHP 8.2",
       "image": "les44-shot",
+      "screen": "les44-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
         {
-          "href": "https://les44.com"
+          "href": "https://les44.com",
+          "offline": {
+            "checkedOn": "2026-11-11",
+            "evidence": "Hosting placeholder «Домен не прилинкован ни к одной из директорий на сервере!»; https serves the beget.com certificate"
+          }
         }
       ],
       "translations": {
@@ -444,7 +463,7 @@
           "summary": "Каталог домов и бань из бруса с калькулятором.",
           "task": "Перенести сайт с Joomla 3 на Joomla 5 и PHP 8.2, сохранив адреса, каталог, фильтр, калькулятор и заявки.",
           "solution": "Joomla 5.3, VirtueMart, PHP 8.2. Перенесены контент и шаблон, исправлены фильтр каталога, галерея и форма заявки, из корня сайта удалён вредоносный файл.",
-          "result": "Работает на les44.com. После переноса проверены 297 адресов, новых ошибок нет.",
+          "result": "Был запущен на les44.com. После переноса проверены 297 адресов, новых ошибок нет.",
           "alt": "les44.com: каталог домов и бань из бруса",
           "status": "",
           "actions": ["Открыть сайт ↗"]
@@ -454,7 +473,7 @@
           "summary": "A timber house and sauna catalog with a calculator.",
           "task": "Move the site from Joomla 3 to Joomla 5 and PHP 8.2, keeping the URLs, catalog, filter, calculator and requests.",
           "solution": "Joomla 5.3, VirtueMart, PHP 8.2. Content and template moved over, the catalog filter, gallery and request form fixed, a malicious file removed from the site root.",
-          "result": "Live at les44.com. 297 addresses checked after the move, no new errors.",
+          "result": "Launched at les44.com. 297 addresses checked after the move, no new errors.",
           "alt": "les44.com: timber house and sauna catalog",
           "status": "",
           "actions": ["Visit website ↗"]
@@ -464,7 +483,7 @@
           "summary": "Kalkulyatorli brus uylar va hammomlar katalogi.",
           "task": "Saytni Joomla 3 dan Joomla 5 va PHP 8.2 ga koʻchirish: manzillar, katalog, filtr, kalkulyator va arizalar saqlanadi.",
           "solution": "Joomla 5.3, VirtueMart, PHP 8.2. Kontent va shablon koʻchirildi, katalog filtri, galereya va ariza formasi tuzatildi, sayt ildizidan zararli fayl oʻchirildi.",
-          "result": "les44.com manzilida ishlaydi. Koʻchirishdan keyin 297 ta manzil tekshirildi, yangi xato yoʻq.",
+          "result": "les44.com manzilida ishga tushirilgan. Koʻchirishdan keyin 297 ta manzil tekshirildi, yangi xato yoʻq.",
           "alt": "les44.com: brus uylar va hammomlar katalogi",
           "status": "",
           "actions": ["Saytni ochish ↗"]
@@ -478,6 +497,7 @@
       "categories": ["web"],
       "stack": "WordPress, Stripe",
       "image": "space444-shot",
+      "screen": "space444-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -525,6 +545,12 @@
       "categories": ["mobile"],
       "stack": "Flutter, NestJS",
       "image": "besttracker-shot",
+      "screen": "besttracker-emu-1",
+      "gallery": [
+        "besttracker-emu-2",
+        "besttracker-emu-3",
+        "besttracker-emu-4"
+      ],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -575,6 +601,7 @@
       "categories": ["mobile"],
       "stack": "Flutter, Android",
       "image": "stefa-shot",
+      "screen": "stefa-emu-1",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -622,6 +649,7 @@
       "categories": ["mobile"],
       "stack": "Flutter",
       "image": "mynails-shot",
+      "screen": "mynails-emu-1",
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -665,6 +693,8 @@
       "categories": ["mobile"],
       "stack": "Flutter, Android",
       "image": "altn-shot",
+      "screen": "altn-emu-1",
+      "gallery": ["altn-emu-2", "altn-emu-3", "altn-emu-4"],
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -712,6 +742,7 @@
       "categories": ["mobile"],
       "stack": "Kotlin, Android",
       "image": "wegotrip-shot",
+      "screen": "wegotrip-emu-1",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -759,6 +790,7 @@
       "categories": ["mobile"],
       "stack": "Kotlin Multiplatform",
       "image": "yolo-shot",
+      "screen": "yolo-phone",
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -802,6 +834,7 @@
       "categories": ["mobile"],
       "stack": "Android",
       "image": "geoblinker-shot",
+      "screen": "geoblinker-emu-1",
       "statusType": "prototype",
       "statusKey": "work.badgePrototype",
       "links": [],
@@ -845,6 +878,7 @@
       "categories": ["mobile"],
       "stack": "Kotlin, Android",
       "image": "wallpapers-shot",
+      "screen": "wallpapers-emu-1",
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -888,6 +922,7 @@
       "categories": ["mobile"],
       "stack": "Flutter, iOS, Android",
       "image": "avtopark-shot",
+      "screen": "avtopark-phone",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -938,6 +973,7 @@
       "categories": ["mobile"],
       "stack": "Compose Multiplatform",
       "image": "tildonmobile-shot",
+      "screen": "tildonmobile-phone",
       "statusType": "private",
       "statusKey": "work.badgePrivate",
       "links": [],
@@ -981,6 +1017,7 @@
       "categories": ["web"],
       "stack": "Next.js, PWA",
       "image": "tildon-shot",
+      "screen": "tildon-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1028,6 +1065,7 @@
       "categories": ["web"],
       "stack": "React, PWA",
       "image": "vfx-shot",
+      "screen": "vfx-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1075,6 +1113,7 @@
       "categories": ["web"],
       "stack": "Next.js, Supabase",
       "image": "ailogoedit-shot",
+      "screen": "ailogoedit-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1122,6 +1161,7 @@
       "categories": ["web"],
       "stack": "HTML, CSS, JS",
       "image": "monro-shot",
+      "screen": "monro-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1169,11 +1209,16 @@
       "categories": ["web"],
       "stack": "HTML, CSS, JS",
       "image": "supertour-shot",
+      "screen": "supertour-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
         {
-          "href": "https://supertour.uz"
+          "href": "https://supertour.uz",
+          "offline": {
+            "checkedOn": "2026-11-11",
+            "evidence": "Domain parked with a «Sayt sotiladi / Сайт продаётся» sale page"
+          }
         }
       ],
       "translations": {
@@ -1192,7 +1237,7 @@
           "summary": "Tashkent tour operator landing: destinations, hot deals.",
           "task": "A tour operator landing page with a tour request form and WhatsApp.",
           "solution": "HTML/CSS/JS: hero, destinations, hot tours, FAQ, inquiry form and WhatsApp, motion, SEO, mobile-first.",
-          "result": "Live online: supertour.uz.",
+          "result": "Launched online at supertour.uz.",
           "alt": "Super Tour: tours from Tashkent: Egypt, UAE, Thailand, Vietnam",
           "status": "",
           "actions": ["Visit website ↗"]
@@ -1216,6 +1261,7 @@
       "categories": ["web"],
       "stack": "HTML, CSS, JS",
       "image": "olympic-shot",
+      "screen": "olympic-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1263,6 +1309,7 @@
       "categories": ["web"],
       "stack": "Three.js, GLSL",
       "image": "earth-shot",
+      "screen": "earth3d-web",
       "statusType": "public",
       "statusKey": null,
       "links": [
@@ -1310,6 +1357,7 @@
       "categories": ["web"],
       "stack": "Three.js, WebGL",
       "image": "vertolyot-shot",
+      "screen": "vertolyot-web",
       "statusType": "public",
       "statusKey": null,
       "links": [

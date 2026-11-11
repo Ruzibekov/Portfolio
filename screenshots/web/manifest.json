@@ -1,4 +1,22 @@
 {
+  "agentmama-390": {
+    "width": 390,
+    "height": 844,
+    "variants": [
+      {
+        "src": "/screenshots/web/agentmama-390-270.e839195cd9.webp",
+        "width": 270,
+        "height": 584,
+        "bytes": 13230
+      },
+      {
+        "src": "/screenshots/web/agentmama-390-390.01b0a6709e.webp",
+        "width": 390,
+        "height": 844,
+        "bytes": 20754
+      }
+    ]
+  },
   "agentmama-shot": {
     "width": 1400,
     "height": 933,
@@ -14,6 +32,24 @@
         "width": 1400,
         "height": 933,
         "bytes": 35098
+      }
+    ]
+  },
+  "agentmama-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/agentmama-web-640.7e7a363a54.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 16136
+      },
+      {
+        "src": "/screenshots/web/agentmama-web-1280.630c129c4b.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 41042
       }
     ]
   },
@@ -35,15 +71,93 @@
       }
     ]
   },
+  "ailogoedit-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/ailogoedit-web-640.ec2e1bef5d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 10032
+      },
+      {
+        "src": "/screenshots/web/ailogoedit-web-1280.218d965a17.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 25092
+      }
+    ]
+  },
   "altn-emu-1": {
     "width": 540,
     "height": 1200,
     "variants": [
       {
+        "src": "/screenshots/web/altn-emu-1-270.320d6e3eae.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 10854
+      },
+      {
         "src": "/screenshots/web/altn-emu-1-540.0f049fcc17.webp",
         "width": 540,
         "height": 1200,
         "bytes": 27170
+      }
+    ]
+  },
+  "altn-emu-2": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/altn-emu-2-270.b84d0fb491.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 8586
+      },
+      {
+        "src": "/screenshots/web/altn-emu-2-540.0282d4c708.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 21670
+      }
+    ]
+  },
+  "altn-emu-3": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/altn-emu-3-270.ead8a4008f.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 8738
+      },
+      {
+        "src": "/screenshots/web/altn-emu-3-540.3d0d1796e1.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 22004
+      }
+    ]
+  },
+  "altn-emu-4": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/altn-emu-4-270.4518c88bd7.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 12188
+      },
+      {
+        "src": "/screenshots/web/altn-emu-4-540.717caaa6b8.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 30176
       }
     ]
   },
@@ -62,6 +176,24 @@
         "width": 1400,
         "height": 933,
         "bytes": 29504
+      }
+    ]
+  },
+  "avtopark-phone": {
+    "width": 353,
+    "height": 765,
+    "variants": [
+      {
+        "src": "/screenshots/web/avtopark-phone-270.0d48c3d536.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 18444
+      },
+      {
+        "src": "/screenshots/web/avtopark-phone-353.000b1a7d60.webp",
+        "width": 353,
+        "height": 765,
+        "bytes": 25628
       }
     ]
   },
@@ -88,10 +220,70 @@
     "height": 1200,
     "variants": [
       {
+        "src": "/screenshots/web/besttracker-emu-1-270.bfac2409d4.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 14968
+      },
+      {
         "src": "/screenshots/web/besttracker-emu-1-540.29ee410416.webp",
         "width": 540,
         "height": 1200,
         "bytes": 33970
+      }
+    ]
+  },
+  "besttracker-emu-2": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/besttracker-emu-2-270.0b1ff0e106.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 15134
+      },
+      {
+        "src": "/screenshots/web/besttracker-emu-2-540.8a9a13085d.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 34472
+      }
+    ]
+  },
+  "besttracker-emu-3": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/besttracker-emu-3-270.d4399508ad.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 15008
+      },
+      {
+        "src": "/screenshots/web/besttracker-emu-3-540.cc1021a5b0.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 34342
+      }
+    ]
+  },
+  "besttracker-emu-4": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/besttracker-emu-4-270.54732cf408.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 8298
+      },
+      {
+        "src": "/screenshots/web/besttracker-emu-4-540.093cba9bf0.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 18318
       }
     ]
   },
@@ -131,6 +323,42 @@
       }
     ]
   },
+  "earth3d-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/earth3d-web-640.c8041bd2c0.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 29794
+      },
+      {
+        "src": "/screenshots/web/earth3d-web-1280.276bd909e3.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 87342
+      }
+    ]
+  },
+  "geoblinker-emu-1": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/geoblinker-emu-1-270.abf91b62b4.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 11430
+      },
+      {
+        "src": "/screenshots/web/geoblinker-emu-1-540.2170755d77.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 28256
+      }
+    ]
+  },
   "geoblinker-shot": {
     "width": 1400,
     "height": 933,
@@ -167,6 +395,24 @@
       }
     ]
   },
+  "les44-web": {
+    "width": 1177,
+    "height": 739,
+    "variants": [
+      {
+        "src": "/screenshots/web/les44-web-640.0977514c37.webp",
+        "width": 640,
+        "height": 402,
+        "bytes": 29714
+      },
+      {
+        "src": "/screenshots/web/les44-web-1177.a53dc50685.webp",
+        "width": 1177,
+        "height": 739,
+        "bytes": 71750
+      }
+    ]
+  },
   "majiidtv-shot": {
     "width": 1400,
     "height": 933,
@@ -182,6 +428,24 @@
         "width": 1400,
         "height": 933,
         "bytes": 39428
+      }
+    ]
+  },
+  "majiidtv-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/majiidtv-web-640.4802c1fe17.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 18710
+      },
+      {
+        "src": "/screenshots/web/majiidtv-web-1280.5d8d3591b1.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 49252
       }
     ]
   },
@@ -203,6 +467,42 @@
       }
     ]
   },
+  "matik-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/matik-web-640.ae75bf9578.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 11046
+      },
+      {
+        "src": "/screenshots/web/matik-web-1280.af1876df35.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 26420
+      }
+    ]
+  },
+  "miyolo-390": {
+    "width": 390,
+    "height": 844,
+    "variants": [
+      {
+        "src": "/screenshots/web/miyolo-390-270.75242e36aa.webp",
+        "width": 270,
+        "height": 584,
+        "bytes": 14256
+      },
+      {
+        "src": "/screenshots/web/miyolo-390-390.e26da61c43.webp",
+        "width": 390,
+        "height": 844,
+        "bytes": 22572
+      }
+    ]
+  },
   "miyolo-shot": {
     "width": 900,
     "height": 600,
@@ -218,6 +518,24 @@
         "width": 900,
         "height": 600,
         "bytes": 31770
+      }
+    ]
+  },
+  "miyolo-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/miyolo-web-640.db582f79ec.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 21344
+      },
+      {
+        "src": "/screenshots/web/miyolo-web-1280.7872447f08.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 60070
       }
     ]
   },
@@ -257,6 +575,42 @@
       }
     ]
   },
+  "monro-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/monro-web-640.e4a38e4f78.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 18056
+      },
+      {
+        "src": "/screenshots/web/monro-web-1280.9083955d29.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 45614
+      }
+    ]
+  },
+  "mynails-emu-1": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/mynails-emu-1-270.85c57edfc2.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 8364
+      },
+      {
+        "src": "/screenshots/web/mynails-emu-1-540.5d928d9ad4.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 18350
+      }
+    ]
+  },
   "mynails-shot": {
     "width": 1400,
     "height": 933,
@@ -272,6 +626,24 @@
         "width": 1400,
         "height": 933,
         "bytes": 43862
+      }
+    ]
+  },
+  "okh-phone": {
+    "width": 367,
+    "height": 652,
+    "variants": [
+      {
+        "src": "/screenshots/web/okh-phone-270.cca7536191.webp",
+        "width": 270,
+        "height": 480,
+        "bytes": 10470
+      },
+      {
+        "src": "/screenshots/web/okh-phone-367.6f55e06d46.webp",
+        "width": 367,
+        "height": 652,
+        "bytes": 15882
       }
     ]
   },
@@ -311,6 +683,42 @@
       }
     ]
   },
+  "olympic-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/olympic-web-640.274d673954.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 16702
+      },
+      {
+        "src": "/screenshots/web/olympic-web-1280.d195b55981.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 39824
+      }
+    ]
+  },
+  "payqr-phone": {
+    "width": 344,
+    "height": 763,
+    "variants": [
+      {
+        "src": "/screenshots/web/payqr-phone-270.15cd5494f4.webp",
+        "width": 270,
+        "height": 599,
+        "bytes": 18288
+      },
+      {
+        "src": "/screenshots/web/payqr-phone-344.e797383ad8.webp",
+        "width": 344,
+        "height": 763,
+        "bytes": 26776
+      }
+    ]
+  },
   "payqr-shot": {
     "width": 1400,
     "height": 933,
@@ -347,6 +755,24 @@
       }
     ]
   },
+  "space444-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/space444-web-640.afa5083512.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 32842
+      },
+      {
+        "src": "/screenshots/web/space444-web-1280.7d9cd85046.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 86512
+      }
+    ]
+  },
   "spr54-shot": {
     "width": 1400,
     "height": 933,
@@ -362,6 +788,42 @@
         "width": 1400,
         "height": 933,
         "bytes": 35328
+      }
+    ]
+  },
+  "spr54-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/spr54-web-640.7d0e45d83d.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 17488
+      },
+      {
+        "src": "/screenshots/web/spr54-web-1280.67f9ed70d9.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 45952
+      }
+    ]
+  },
+  "stefa-emu-1": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/stefa-emu-1-270.d6476e963e.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 16968
+      },
+      {
+        "src": "/screenshots/web/stefa-emu-1-540.551cf0432b.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 39258
       }
     ]
   },
@@ -401,6 +863,24 @@
       }
     ]
   },
+  "supertour-web": {
+    "width": 1177,
+    "height": 739,
+    "variants": [
+      {
+        "src": "/screenshots/web/supertour-web-640.bda367cca6.webp",
+        "width": 640,
+        "height": 402,
+        "bytes": 15186
+      },
+      {
+        "src": "/screenshots/web/supertour-web-1177.17bac0e1c7.webp",
+        "width": 1177,
+        "height": 739,
+        "bytes": 28776
+      }
+    ]
+  },
   "tildon-shot": {
     "width": 1400,
     "height": 933,
@@ -416,6 +896,42 @@
         "width": 1400,
         "height": 933,
         "bytes": 25826
+      }
+    ]
+  },
+  "tildon-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/tildon-web-640.5e6e68c4da.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 13410
+      },
+      {
+        "src": "/screenshots/web/tildon-web-1280.e244d3123c.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 31884
+      }
+    ]
+  },
+  "tildonmobile-phone": {
+    "width": 365,
+    "height": 687,
+    "variants": [
+      {
+        "src": "/screenshots/web/tildonmobile-phone-270.38b4eeb065.webp",
+        "width": 270,
+        "height": 508,
+        "bytes": 8262
+      },
+      {
+        "src": "/screenshots/web/tildonmobile-phone-365.082650ff74.webp",
+        "width": 365,
+        "height": 687,
+        "bytes": 12850
       }
     ]
   },
@@ -455,6 +971,24 @@
       }
     ]
   },
+  "vertolyot-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/vertolyot-web-640.fa1c030367.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 15060
+      },
+      {
+        "src": "/screenshots/web/vertolyot-web-1280.cd719c2f18.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 36858
+      }
+    ]
+  },
   "vfx-shot": {
     "width": 1400,
     "height": 933,
@@ -473,6 +1007,42 @@
       }
     ]
   },
+  "vfx-web": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/screenshots/web/vfx-web-640.90e88ee390.webp",
+        "width": 640,
+        "height": 400,
+        "bytes": 7730
+      },
+      {
+        "src": "/screenshots/web/vfx-web-1280.a13140e514.webp",
+        "width": 1280,
+        "height": 800,
+        "bytes": 17986
+      }
+    ]
+  },
+  "wallpapers-emu-1": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/wallpapers-emu-1-270.c022cdcb92.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 31646
+      },
+      {
+        "src": "/screenshots/web/wallpapers-emu-1-540.411977f56b.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 81706
+      }
+    ]
+  },
   "wallpapers-shot": {
     "width": 1400,
     "height": 933,
@@ -488,6 +1058,24 @@
         "width": 1400,
         "height": 933,
         "bytes": 101720
+      }
+    ]
+  },
+  "wegotrip-emu-1": {
+    "width": 540,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/screenshots/web/wegotrip-emu-1-270.ec345b551f.webp",
+        "width": 270,
+        "height": 600,
+        "bytes": 12112
+      },
+      {
+        "src": "/screenshots/web/wegotrip-emu-1-540.d13156909c.webp",
+        "width": 540,
+        "height": 1200,
+        "bytes": 30138
       }
     ]
   },
@@ -524,6 +1112,42 @@
         "width": 1400,
         "height": 933,
         "bytes": 35986
+      }
+    ]
+  },
+  "wottank-web": {
+    "width": 1177,
+    "height": 739,
+    "variants": [
+      {
+        "src": "/screenshots/web/wottank-web-640.5278f0ab1d.webp",
+        "width": 640,
+        "height": 402,
+        "bytes": 15040
+      },
+      {
+        "src": "/screenshots/web/wottank-web-1177.1541723094.webp",
+        "width": 1177,
+        "height": 739,
+        "bytes": 33636
+      }
+    ]
+  },
+  "yolo-phone": {
+    "width": 313,
+    "height": 741,
+    "variants": [
+      {
+        "src": "/screenshots/web/yolo-phone-270.e6dcd0f83b.webp",
+        "width": 270,
+        "height": 639,
+        "bytes": 5882
+      },
+      {
+        "src": "/screenshots/web/yolo-phone-313.97a81187e6.webp",
+        "width": 313,
+        "height": 741,
+        "bytes": 6792
       }
     ]
   },

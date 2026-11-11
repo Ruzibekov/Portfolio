@@ -7,7 +7,7 @@ import {
 } from './shared.mjs'
 import { icon } from './icons.mjs'
 import { galleryLabels } from './gallery-labels.mjs'
-import { renderIndex } from './index.mjs'
+import { renderShowroom } from './index.mjs'
 
 export { galleryLabels }
 
@@ -64,23 +64,23 @@ export function renderWork({ locale, copy, ui, words, cases, caseCopy }) {
   validateCaseCopy(cases, caseCopy, locale)
   if (!galleryLabels[locale])
     throw new Error(`Missing gallery controls for ${locale}`)
-  const { section, overlays } = renderIndex({
+  const { section, overlays } = renderShowroom({
     locale,
     copy,
     ui,
     words,
     cases,
     caseCopy,
-    eyebrow: ui.work.eyebrow,
+    variant: 'work',
     heading: typoBreaks(ui.work.title),
-    compact: true,
   })
-  const body = `<section class="page-hero" aria-labelledby="gallery-title"><div class="wrap"><a class="back" href="${pagePath(locale)}">${icon('i-arrow-left')}<span>${escapeHtml(ui.detail.backHome)}</span></a><p class="eyebrow">${escapeHtml(ui.detail.eyebrow)}</p><h1 class="h1" id="gallery-title">${escapeHtml(copy.navigation.work)}<span class="count">${cases.length}</span></h1><p class="lead">${escapeHtml(ui.work.intro)}</p></div></section>
+  const body = `<section class="page-hero work-hero" aria-labelledby="gallery-title"><div class="wrap"><a class="back-link" href="${pagePath(locale)}">${icon('i-arrow-left')}<span>${escapeHtml(ui.detail.backHome)}</span></a><h1 class="h1 page-title" id="gallery-title">${escapeHtml(copy.navigation.work)} <span class="count">${cases.length}</span></h1><p class="lead page-lead">${escapeHtml(ui.work.intro)}</p></div></section>
 <section class="sec sec-tight" id="work" aria-labelledby="work-title"><div class="wrap">${section}</div></section>`
   return renderDocument({
     locale,
     copy,
     ui,
+    words,
     slug: 'work',
     graph: [
       breadcrumbNode(pagePath(locale, 'work'), [

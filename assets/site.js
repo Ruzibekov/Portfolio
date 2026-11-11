@@ -1,20 +1,43 @@
 ;(() => {
   const root = document.documentElement
-  const reduceQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
   const storageKey = 'sr-product-intelligence-theme'
+  const vtKey = 'sr-vt-slab'
   const qs = (selector, scope = document) => scope.querySelector(selector)
   const qsa = (selector, scope = document) => [
     ...scope.querySelectorAll(selector),
   ]
 
-  const syncMotion = () => root.classList.toggle('rm', reduceQuery.matches)
-  syncMotion()
-  reduceQuery.addEventListener('change', syncMotion)
-  const reduced = () => reduceQuery.matches
+  root.classList.add('img-fade')
+  const markImage = (image) => {
+    const screen = image.closest('[data-screen]')
+    if (image.complete && image.naturalWidth > 0) {
+      image.classList.add('is-loaded')
+      screen?.classList.remove('is-failed')
+    } else if (image.complete) {
+      screen?.classList.add('is-failed')
+    }
+  }
+  qsa('img[data-slab-img]').forEach(markImage)
+  document.addEventListener(
+    'load',
+    (event) => {
+      if (event.target.matches?.('img[data-slab-img]')) markImage(event.target)
+    },
+    true,
+  )
+  document.addEventListener(
+    'error',
+    (event) => {
+      if (event.target.matches?.('img[data-slab-img]'))
+        event.target.closest('[data-screen]')?.classList.add('is-failed')
+    },
+    true,
+  )
 
   const themeButton = qs('[data-theme-toggle]')
+  const themeColor = qs('meta[name="theme-color"]')
   const syncTheme = () => {
-    const dark = root.dataset.theme === 'dark'
+    const dark = root.dataset.theme !== 'light'
     if (themeButton) {
       themeButton.setAttribute('aria-pressed', String(dark))
       themeButton.setAttribute(
@@ -22,16 +45,12 @@
         dark ? themeButton.dataset.lightAction : themeButton.dataset.darkAction,
       )
     }
-    const themeColor = qs('meta[name="theme-color"]')
-    if (themeColor)
-      themeColor.setAttribute(
-        'content',
-        getComputedStyle(root).getPropertyValue('--s0').trim(),
-      )
+    const canvas = getComputedStyle(root).getPropertyValue('--canvas').trim()
+    if (themeColor && canvas) themeColor.setAttribute('content', canvas)
   }
   syncTheme()
   themeButton?.addEventListener('click', () => {
-    const next = root.dataset.theme === 'dark' ? 'light' : 'dark'
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light'
     root.dataset.theme = next
     try {
       localStorage.setItem(storageKey, next)
@@ -42,507 +61,197 @@
   })
 
   const header = qs('[data-header]')
-  const syncHeader = () => header?.classList.toggle('s', window.scrollY > 8)
+  let solid = null
+  const syncHeader = () => {
+    const next = window.scrollY > 8
+    if (next !== solid) {
+      solid = next
+      header?.classList.toggle('is-solid', next)
+    }
+  }
   syncHeader()
   window.addEventListener('scroll', syncHeader, { passive: true })
+
+  const navCta = qs('[data-nav-cta]')
+  const primaries = qsa('[data-primary-cta]')
+  if (navCta && 'IntersectionObserver' in window) {
+    const seen = new Set()
+    const ctaObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) seen.add(entry.target)
+        else seen.delete(entry.target)
+      }
+      navCta.classList.toggle('is-accent', seen.size === 0)
+    })
+    primaries.forEach((element) => ctaObserver.observe(element))
+    if (!primaries.length) navCta.classList.add('is-accent')
+  }
+
+  const navLinks = qsa('[data-nav-link]')
+  const sections = navLinks
+    .map((link) => document.getElementById(link.dataset.navLink))
+    .filter(Boolean)
+  if (sections.length && 'IntersectionObserver' in window) {
+    const active = new Set()
+    const syncCurrent = () => {
+      const current = sections.find((section) => active.has(section))
+      navLinks.forEach((link) => {
+        if (current && link.dataset.navLink === current.id)
+          link.setAttribute('aria-current', 'true')
+        else link.removeAttribute('aria-current')
+      })
+    }
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) active.add(entry.target)
+          else active.delete(entry.target)
+        }
+        syncCurrent()
+      },
+      { rootMargin: '-40% 0px -55% 0px' },
+    )
+    sections.forEach((section) => sectionObserver.observe(section))
+  }
 
   const menuButton = qs('[data-menu-toggle]')
   const menu = qs('[data-mobile-menu]')
   const menuScrim = qs('[data-menu-scrim]')
-  menuScrim?.addEventListener('click', () => setMenu(false))
-  const setMenu = (open, restoreFocus = false) => {
-    if (!menuButton || !menu) return
-    menu.classList.toggle('o', open)
-    menuScrim?.classList.toggle('o', open)
+  const menuFocusables = () =>
+    [menuButton, ...qsa('a[href], button:not([disabled])', menu)].filter(
+      Boolean,
+    )
+  const setMenu = (open, restoreFocus) => {
+    if (!menu || !menuButton) return
+    menu.classList.toggle('is-open', open)
+    menuScrim?.classList.toggle('is-open', open)
+    header?.classList.toggle('is-menu-open', open)
+    document.body.classList.toggle('is-locked', open)
     menuButton.setAttribute('aria-expanded', String(open))
     menuButton.setAttribute(
       'aria-label',
       open ? menuButton.dataset.closeLabel : menuButton.dataset.menuLabel,
     )
-    if (restoreFocus) menuButton.focus()
+    if (open) {
+      menu.removeAttribute('inert')
+      qs('a[href]', menu)?.focus({ preventScroll: true })
+    } else {
+      menu.setAttribute('inert', '')
+      if (restoreFocus) menuButton.focus({ preventScroll: true })
+    }
   }
-  menuButton?.addEventListener('click', () =>
-    setMenu(menuButton.getAttribute('aria-expanded') !== 'true'),
-  )
+  const menuOpen = () => menu?.classList.contains('is-open')
+  menuButton?.addEventListener('click', () => setMenu(!menuOpen(), true))
+  menuScrim?.addEventListener('click', () => setMenu(false, true))
   menu?.addEventListener('click', (event) => {
-    if (event.target instanceof Element && event.target.closest('a'))
-      setMenu(false)
+    if (event.target.closest('a[href]')) setMenu(false, false)
   })
+  document.addEventListener('keydown', (event) => {
+    if (!menuOpen()) return
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      setMenu(false, true)
+      return
+    }
+    if (event.key !== 'Tab') return
+    const list = menuFocusables()
+    const index = list.indexOf(document.activeElement)
+    if (event.shiftKey && index <= 0) {
+      event.preventDefault()
+      list[list.length - 1].focus()
+    } else if (!event.shiftKey && index === list.length - 1) {
+      event.preventDefault()
+      list[0].focus()
+    } else if (index < 0) {
+      event.preventDefault()
+      list[0].focus()
+    }
+  })
+  window
+    .matchMedia('(min-width: 1100px)')
+    .addEventListener('change', (event) => {
+      if (event.matches && menuOpen()) setMenu(false, false)
+    })
 
   const picker = qs('[data-language-picker]')
-  document.addEventListener('click', (event) => {
-    if (picker?.open && !picker.contains(event.target)) picker.open = false
-  })
-
-  const reveal = qsa('[data-r]')
-  if ('IntersectionObserver' in window && !reduced()) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue
-          entry.target.classList.add('in')
-          observer.unobserve(entry.target)
-        }
-      },
-      { rootMargin: '0px 0px -6% 0px', threshold: 0.06 },
-    )
-    reveal.forEach((element) => observer.observe(element))
-  } else reveal.forEach((element) => element.classList.add('in'))
-
-  const build = qs('[data-build]')
-  if (build) {
-    const title = qs('[data-build-title]')
-    const words = qsa('.wd', title)
-    const steps = qsa('.bs', build)
-    const paint = (stage, final) => {
-      build.dataset.st = String(stage)
-      const mark = (list) =>
-        list.forEach((item, index) => {
-          item.classList.toggle('on', final || index < stage - 1)
-          item.classList.toggle('cur', !final && index === stage - 1)
-        })
-      mark(words)
-      mark(steps)
-    }
-    if (reduced()) paint(3, true)
-    else {
-      paint(1, false)
-      window.setTimeout(() => paint(2, false), 300)
-      window.setTimeout(() => paint(3, true), 820)
-    }
-  }
-
-  const followers = new Set()
-  let followFrame = 0
-  const follow = () => {
-    followFrame = 0
-    for (const item of followers) {
-      item.x += (item.tx - item.x) * 0.16
-      item.y += (item.ty - item.y) * 0.16
-      item.apply(item.x, item.y)
-      if (
-        Math.abs(item.tx - item.x) < 0.01 &&
-        Math.abs(item.ty - item.y) < 0.01
-      ) {
-        item.apply(item.tx, item.ty)
-        followers.delete(item)
-      }
-    }
-    if (followers.size) followFrame = requestAnimationFrame(follow)
-  }
-  const kick = (item) => {
-    followers.add(item)
-    if (!followFrame) followFrame = requestAnimationFrame(follow)
-  }
-  const clamp = (value, limit) => Math.max(-limit, Math.min(limit, value))
-
-  const heroArt = qs('.hero-art')
-  const heroCard = qs('.build')
-  if (heroArt && heroCard && !reduced()) {
-    const tilt = {
-      x: 0,
-      y: 0,
-      tx: 0,
-      ty: 0,
-      apply: (x, y) => {
-        heroCard.style.setProperty('--ry', `${(x * 7).toFixed(2)}deg`)
-        heroCard.style.setProperty('--rx', `${(-y * 6).toFixed(2)}deg`)
-        heroCard.style.setProperty('--px', `${(-x * 10).toFixed(1)}px`)
-        heroCard.style.setProperty('--py', `${(-y * 8).toFixed(1)}px`)
-      },
-    }
-    const aim = (event) => {
-      const rect = heroCard.getBoundingClientRect()
-      tilt.tx = clamp(((event.clientX - rect.left) / rect.width - 0.5) * 2, 1)
-      tilt.ty = clamp(((event.clientY - rect.top) / rect.height - 0.5) * 2, 1)
-      kick(tilt)
-    }
-    const rest = () => {
-      tilt.tx = 0
-      tilt.ty = 0
-      kick(tilt)
-    }
-    heroArt.addEventListener('pointermove', (event) => {
-      if (event.pointerType === 'mouse') aim(event)
-    })
-    heroArt.addEventListener('pointerdown', (event) => {
-      if (event.pointerType !== 'mouse') aim(event)
-    })
-    heroArt.addEventListener('pointerleave', rest)
-    heroArt.addEventListener('pointerup', rest)
-    heroArt.addEventListener('pointercancel', rest)
-  }
-
-  if (!reduced()) {
-    const magnets = qsa('.hero .btn, .ct .btn').map((element) => ({
-      element,
-      x: 0,
-      y: 0,
-      tx: 0,
-      ty: 0,
-      apply: (x, y) => {
-        element.style.translate =
-          x || y ? `${x.toFixed(1)}px ${y.toFixed(1)}px` : ''
-      },
-    }))
-    window.addEventListener(
-      'pointermove',
-      (event) => {
-        if (event.pointerType !== 'mouse') return
-        for (const magnet of magnets) {
-          const rect = magnet.element.getBoundingClientRect()
-          const dx = event.clientX - (rect.left + rect.width / 2)
-          const dy = event.clientY - (rect.top + rect.height / 2)
-          const reach = Math.max(rect.width, rect.height) / 2 + 70
-          const pull = Math.max(0, 1 - Math.hypot(dx, dy) / reach)
-          magnet.tx = clamp(dx * 0.48 * pull, 9)
-          magnet.ty = clamp(dy * 0.64 * pull, 7)
-          kick(magnet)
-        }
-      },
-      { passive: true },
-    )
-    for (const magnet of magnets) {
-      magnet.element.addEventListener('pointerdown', (event) => {
-        if (event.pointerType === 'mouse') return
-        const rect = magnet.element.getBoundingClientRect()
-        magnet.tx = clamp((event.clientX - rect.left - rect.width / 2) * 0.1, 4)
-        magnet.ty = 2
-        kick(magnet)
-      })
-      for (const name of ['pointerup', 'pointercancel']) {
-        magnet.element.addEventListener(name, () => {
-          magnet.tx = 0
-          magnet.ty = 0
-          kick(magnet)
-        })
-      }
-    }
-  }
-
-  const tiles = qsa('[data-bt]')
-  if (tiles.length) {
-    const finish = (tile) => tile.classList.add('built')
-    if (reduced() || !('IntersectionObserver' in window)) tiles.forEach(finish)
-    else {
-      const builder = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (!entry.isIntersecting) continue
-            const tile = entry.target
-            builder.unobserve(tile)
-            const order = Number(tile.style.getPropertyValue('--i')) % 3
-            window.setTimeout(() => finish(tile), 140 + order * 90)
-          }
-        },
-        { threshold: 0.35 },
-      )
-      tiles.forEach((tile) => builder.observe(tile))
-
-      const nativeParallax = CSS.supports('animation-timeline', 'view()')
-      if (!nativeParallax) {
-        const visible = new Set()
-        const tracker = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (entry.isIntersecting) visible.add(entry.target)
-              else visible.delete(entry.target)
-            }
-          },
-          { rootMargin: '10% 0px' },
-        )
-        qsa('.bt-pz').forEach((layer) => tracker.observe(layer))
-        let queued = 0
-        const update = () => {
-          queued = 0
-          for (const layer of visible) {
-            const rect = layer.getBoundingClientRect()
-            const progress = Math.max(
-              0,
-              Math.min(
-                1,
-                (window.innerHeight - rect.top) /
-                  (window.innerHeight + rect.height),
-              ),
-            )
-            layer.style.setProperty(
-              '--pz',
-              `${((0.5 - progress) * 7).toFixed(2)}%`,
-            )
-          }
-        }
-        window.addEventListener(
-          'scroll',
-          () => {
-            if (!queued) queued = requestAnimationFrame(update)
-          },
-          { passive: true },
-        )
-        window.addEventListener('resize', update)
-      }
-
-      for (const tile of tiles) {
-        if (!qs('.bt-wipe', tile)) continue
-        const stop = () => tile.classList.remove('re')
-        const replay = () => {
-          if (reduced() || !tile.classList.contains('built')) return
-          stop()
-          void tile.offsetWidth
-          tile.classList.add('re')
-        }
-        tile.addEventListener('pointerenter', (event) => {
-          if (event.pointerType === 'mouse') replay()
-        })
-        tile.addEventListener('pointerdown', (event) => {
-          if (event.pointerType !== 'mouse') replay()
-        })
-        tile.addEventListener('pointerleave', stop)
-        tile.addEventListener('pointercancel', stop)
-        tile.addEventListener('animationend', (event) => {
-          if (event.target.classList.contains('bt-wipe')) stop()
-        })
-      }
-    }
-  }
-
-  const index = qs('[data-index]')
-  if (!index) return
-  const items = qsa('.row-item', index)
-  const tabsRoot = qs('[data-tabs]')
-  const tabs = qsa('[data-filter]', tabsRoot)
-  const pill = qs('.pill', tabsRoot)
-  const more = qs('[data-more]', index)
-  const status = qs('[data-filter-status]')
-  const limit = Number(index.dataset.limit || 0)
-  let filter = 'all'
-  let expanded = false
-
-  const movePill = () => {
-    const active = tabs.find(
-      (tab) => tab.getAttribute('aria-pressed') === 'true',
-    )
-    if (!active || !pill) return
-    pill.style.setProperty('--x', `${active.offsetLeft}px`)
-    pill.style.setProperty('--w', `${active.offsetWidth}px`)
-  }
-
-  const render = () => {
-    let shown = 0
-    let total = 0
-    let order = 0
-    for (const item of items) {
-      const match =
-        filter === 'all' || item.dataset.category.split(' ').includes(filter)
-      if (match) total += 1
-      const show = match && (!limit || expanded || shown < limit)
-      item.classList.remove('in')
-      item.hidden = !show
-      if (!show) continue
-      shown += 1
-      item.style.setProperty('--i', String(Math.min(order, 10)))
-      order += 1
-      void item.offsetWidth
-      if (!reduced()) item.classList.add('in')
-      qs('.num', item).textContent = String(shown).padStart(2, '0')
-    }
-    if (more) more.hidden = !limit || expanded || total <= limit
-    if (status)
-      status.textContent = status.dataset.template.replace(
-        '{count}',
-        String(total),
-      )
-  }
-
-  tabs.forEach((tab) =>
-    tab.addEventListener('click', () => {
-      filter = tab.dataset.filter
-      expanded = false
-      tabs.forEach((other) =>
-        other.setAttribute('aria-pressed', String(other === tab)),
-      )
-      movePill()
-      render()
-    }),
-  )
-  qs('[data-show-more]', index)?.addEventListener('click', () => {
-    expanded = true
-    render()
-  })
-  movePill()
-  document.fonts?.ready.then(movePill)
-  window.addEventListener('resize', movePill)
-  render()
-
-  const preview = qs('[data-pv]')
-  const sheet = qs('[data-sheet]')
-  const scrim = qs('[data-scrim]')
-  const sheetBody = qs('[data-sheet-body]', sheet)
-  const sheetTag = qs('[data-sheet-tag]', sheet)
-  const closeButton = qs('[data-sheet-close]', sheet)
-  const inertTargets = [
-    qs('.skip-link'),
-    qs('.top'),
-    qs('[data-mobile-menu]'),
-    qs('main'),
-    qs('#contact'),
-    qs('.foot'),
-  ]
-  let lastRow = null
-
-  if (preview && window.matchMedia('(hover: hover)').matches && !reduced()) {
-    const frame = qs('.pv-f', preview)
-    const image = qs('img', preview)
-    const caption = qs('[data-preview-caption]', preview)
-    let targetX = 0
-    let targetY = 0
-    let currentX = 0
-    let currentY = 0
-    let frameId = 0
-    let active = false
-    let shownItem = null
-    const step = () => {
-      currentX += (targetX - currentX) * 0.18
-      currentY += (targetY - currentY) * 0.18
-      const tilt = Math.max(-6, Math.min(6, (targetX - currentX) * 0.12))
-      preview.style.transform = `translate3d(${currentX}px,${currentY}px,0)`
-      frame.style.setProperty('--rot', `${tilt.toFixed(2)}deg`)
-      frameId =
-        active ||
-        Math.abs(targetX - currentX) > 0.5 ||
-        Math.abs(targetY - currentY) > 0.5
-          ? requestAnimationFrame(step)
-          : 0
-    }
-    const hide = () => {
-      active = false
-      shownItem = null
-      preview.classList.remove('on')
-    }
-    index.addEventListener('pointermove', (event) => {
-      const item =
-        event.target instanceof Element
-          ? event.target.closest('.row-item')
-          : null
-      if (!item || item.hidden || sheet.classList.contains('o')) return hide()
-      if (image.dataset.src !== item.dataset.preview) {
-        image.dataset.src = item.dataset.preview
-        image.src = item.dataset.preview
-      }
-      if (item !== shownItem) {
-        shownItem = item
-        preview.classList.remove('wp')
-        void preview.offsetWidth
-        preview.classList.add('wp')
-      }
-      caption.textContent = item.dataset.tag
-      const width = 330
-      const height = 255
-      const x = Math.min(536, window.innerWidth - width - 16)
-      const rect = item.getBoundingClientRect()
-      const y = Math.max(
-        76,
-        Math.min(
-          window.innerHeight - height - 16,
-          rect.top + rect.height / 2 - height / 2 - 24,
-        ),
-      )
-      targetX = x
-      targetY = y
-      if (!active) {
-        currentX = x
-        currentY = y
-        active = true
-        preview.classList.add('on')
-      }
-      if (!frameId) frameId = requestAnimationFrame(step)
-    })
-    index.addEventListener('pointerleave', hide)
-  }
-
-  const setInert = (value) =>
-    inertTargets.forEach((target) => {
-      if (target) target.inert = value
-    })
-
-  const open = (item) => {
-    const detail = qs('[data-row-detail]', item)
-    if (!detail) return
-    lastRow = qs('.row', item)
-    sheetBody.innerHTML = detail.innerHTML
-    const heading = qs('h3', sheetBody)
-    if (heading) heading.id = 'sheet-title'
-    sheetTag.textContent = item.dataset.tag
-    sheetBody.scrollTop = 0
-    sheet.style.transform = ''
-    setInert(true)
-    sheet.classList.add('o')
-    scrim.classList.add('o')
-    sheet.setAttribute('aria-hidden', 'false')
-    document.body.classList.add('lock')
-    preview?.classList.remove('on')
-    closeButton.focus({ preventScroll: true })
-  }
-
-  const close = () => {
-    if (!sheet.classList.contains('o')) return
-    sheet.classList.remove('o', 'drag')
-    scrim.classList.remove('o')
-    sheet.setAttribute('aria-hidden', 'true')
-    sheet.style.transform = ''
-    document.body.classList.remove('lock')
-    setInert(false)
-    lastRow?.focus({ preventScroll: true })
-  }
-
-  items.forEach((item) =>
-    qs('.row', item).addEventListener('click', () => open(item)),
-  )
-  closeButton.addEventListener('click', close)
-  scrim.addEventListener('click', close)
-  document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') return
-    if (sheet.classList.contains('o')) close()
-    else {
-      if (picker?.open) {
+  if (picker) {
+    const summary = qs('summary', picker)
+    picker.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && picker.open) {
+        event.preventDefault()
         picker.open = false
-        qs('summary', picker)?.focus()
+        summary?.focus()
       }
-      if (menu?.classList.contains('o')) setMenu(false, true)
+    })
+    document.addEventListener('click', (event) => {
+      if (picker.open && !picker.contains(event.target)) picker.open = false
+    })
+    picker.addEventListener('focusout', (event) => {
+      if (
+        picker.open &&
+        event.relatedTarget &&
+        !picker.contains(event.relatedTarget)
+      )
+        picker.open = false
+    })
+  }
+
+  const clearNames = () => {
+    qsa('[data-vt-named]').forEach((element) => {
+      element.style.viewTransitionName = ''
+      element.removeAttribute('data-vt-named')
+    })
+  }
+  const nameElement = (element, key) => {
+    clearNames()
+    element.style.viewTransitionName = `slab-${key}`
+    element.setAttribute('data-vt-named', '')
+  }
+  const returnKey = (path) => `${vtKey}:${path}`
+  document.addEventListener('vt:name', (event) => {
+    const { element, key, source } = event.detail
+    if (!element || !key || !('startViewTransition' in document)) return
+    nameElement(element, key)
+    try {
+      sessionStorage.setItem(
+        returnKey(location.pathname),
+        JSON.stringify({ key, source }),
+      )
+    } catch {
+      root.dataset.storage = 'unavailable'
     }
   })
-
-  let startY = 0
-  let startTime = 0
-  let offset = 0
-  let dragging = false
-  sheet.addEventListener('pointerdown', (event) => {
-    if (window.innerWidth > 760) return
-    if (
-      !(event.target instanceof Element) ||
-      !event.target.closest('.grab,.sh-top')
-    )
-      return
-    if (event.target.closest('.sh-x')) return
-    dragging = true
-    startY = event.clientY
-    startTime = event.timeStamp
-    sheet.classList.add('drag')
-    sheet.setPointerCapture(event.pointerId)
-  })
-  sheet.addEventListener('pointermove', (event) => {
-    if (!dragging) return
-    offset = Math.max(0, event.clientY - startY)
-    sheet.style.transform = `translateY(${offset}px)`
-  })
-  const release = (event) => {
-    if (!dragging) return
-    dragging = false
-    sheet.classList.remove('drag')
-    const velocity = offset / Math.max(1, event.timeStamp - startTime)
-    if (offset > 120 || velocity > 0.6) close()
-    else sheet.style.transform = ''
-    offset = 0
+  const restoreName = () => {
+    let saved = null
+    try {
+      saved = JSON.parse(
+        sessionStorage.getItem(returnKey(location.pathname)) ?? 'null',
+      )
+    } catch {
+      root.dataset.storage = 'unavailable'
+    }
+    if (!saved?.key) return
+    const key = CSS.escape(saved.key)
+    const selector =
+      saved.source === 'hero'
+        ? `.hero-slab.is-front[data-key="${key}"]`
+        : `.sr-slab[data-slot="0"][data-key="${key}"]`
+    const element = qs(selector)
+    if (element) nameElement(element, saved.key)
   }
-  sheet.addEventListener('pointerup', release)
-  sheet.addEventListener('pointercancel', release)
+  window.addEventListener('pageswap', (event) => {
+    const transition = event.viewTransition
+    if (!transition) return
+    transition.ready.then(null, clearNames)
+    transition.finished.then(clearNames, clearNames)
+  })
+  window.addEventListener('pagereveal', (event) => {
+    if (!event.viewTransition) {
+      clearNames()
+      return
+    }
+    restoreName()
+    event.viewTransition.ready.then(null, clearNames)
+    event.viewTransition.finished.then(clearNames, clearNames)
+  })
 })()

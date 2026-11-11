@@ -18,6 +18,7 @@ import {
 import { caseServices, caseStack } from './site/case.mjs'
 import {
   defaultCanvas,
+  fontLicenses,
   fontPreloads,
   imageEntry,
   imageSrc,
@@ -26,6 +27,8 @@ import {
   versioned,
 } from './site/assets.mjs'
 import { galleryLabels } from './site/work.mjs'
+import { countProjects, isOffline } from './site/project.mjs'
+import { brotliDecompressSync } from 'node:zlib'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const destination = join(root, 'dist')
@@ -61,7 +64,7 @@ const decodeHtml = (value) =>
 const visibleFaq = (html) =>
   [
     ...html.matchAll(
-      /<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g,
+      /<details class="faq-item"><summary><span class="faq-q">([\s\S]*?)<\/span><svg\b[\s\S]*?<\/svg><\/summary><p>([\s\S]*?)<\/p><\/details>/g,
     ),
   ].map((match) => ({
     question: decodeHtml(match[1]),
@@ -164,8 +167,8 @@ function inspectPage(html, locale, slug) {
   const htmlTag = html.match(/<html\b[^>]*>/i)?.[0] ?? ''
   assert.equal(
     attribute(htmlTag, 'data-theme'),
-    'light',
-    `Default theme is not light at ${route}`,
+    'dark',
+    `Default theme is not dark at ${route}`,
   )
   assert.ok(
     html.includes(
@@ -278,10 +281,10 @@ function inspectPage(html, locale, slug) {
       copy.services[slug].name,
     ])
     const proofCases = {
-      'web-development': ['monarh', 'miyolo'],
+      'web-development': ['miyolo'],
       'telegram-bots': [],
-      'mobile-apps': ['okh', 'miyolo'],
-      'business-automation': ['agentmama'],
+      'mobile-apps': ['besttracker'],
+      'business-automation': [],
       'ai-integrations': ['agentmama'],
     }
     for (const key of proofCases[slug])
@@ -419,30 +422,46 @@ for (const locale of locales) {
     }
   }
   const articles = [
-    ...html.matchAll(/<li\b[^>]*class="row-item"[^>]*>[\s\S]*?<\/li>/g),
+    ...html.matchAll(/<li class="sr-item"[^>]*>[\s\S]*?<\/template><\/li>/g),
   ].map((match) => match[0])
   assert.equal(articles.length, 29, `Missing source cases in ${locale} gallery`)
   assert.equal(
     new Set(
       articles.map((article) =>
-        attribute(article.match(/<li\b[^>]*>/)[0], 'data-case-key'),
+        attribute(article.match(/<li\b[^>]*>/)[0], 'data-key'),
       ),
     ).size,
     29,
   )
+  assert.equal(
+    articles.filter((article) => /^<li\b[^>]*\shidden[\s>]/.test(article))
+      .length,
+    0,
+    `Work index must list every project at ${locale}`,
+  )
   for (const item of cases) {
     const words = translations[item.key]
     const article = articles.find((value) =>
-      value.includes(`data-case-key="${item.key}"`),
+      value.includes(`data-key="${item.key}"`),
     )
     assert.ok(article, `Missing ${locale}/${item.key}`)
-    assert.ok(article.includes(`data-source-status="${item.statusType}"`))
+    assert.ok(article.includes(`id="${item.id}"`))
     assert.ok(article.includes(`data-category="${item.categories.join(' ')}"`))
-    assert.ok(article.includes(`src="${imageSrc(item.image)}"`))
-    assert.ok(article.includes(`alt="${escapeHtml(words.alt)}"`))
-    assert.ok(article.includes(`<h3>${escapeHtml(words.title)}</h3>`))
+    if (item.screen) {
+      assert.ok(article.includes(`src="${imageSrc(item.screen)}"`))
+      assert.ok(article.includes(`alt="${escapeHtml(words.alt)}"`))
+    } else
+      assert.ok(
+        article.includes('class="slab-screen is-empty"'),
+        `Project without capture needs the typographic slab: ${item.key}`,
+      )
     assert.ok(
-      article.includes(`<span class="tt">${escapeHtml(words.title)}</span>`),
+      article.includes(`<h3 class="sr-title">${escapeHtml(words.title)}</h3>`),
+    )
+    assert.ok(
+      article.includes(
+        `<span class="sr-row-title">${escapeHtml(words.title)}</span>`,
+      ),
     )
     assert.ok(article.includes(escapeHtml(words.summary)))
     assert.ok(article.includes(escapeHtml(item.stack)))
@@ -453,20 +472,31 @@ for (const locale of locales) {
         ),
         `Missing real ${field} for ${locale}/${item.key}`,
       )
-    assert.equal((article.match(/<button\b/g) ?? []).length, 1)
-    for (const [index, link] of item.links.entries())
+    for (const link of item.links) {
+      const tag = `href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer"`
+      if (link.offline)
+        assert.ok(
+          !article.includes(`href="${escapeHtml(link.href)}"`),
+          `Offline project still links out at ${locale}/${item.key}`,
+        )
+      else
+        assert.ok(
+          article.includes(tag),
+          `Source project link changed at ${locale}/${item.key}`,
+        )
+    }
+    if (isOffline(item)) {
       assert.ok(
-        article.includes(
-          `href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">`,
-        ) && article.includes(`${escapeHtml(words.actions[index])}</a>`),
-        `Source project link changed at ${locale}/${item.key}`,
+        article.includes(escapeHtml(portfolioCopy[locale].offline)),
+        `Offline project needs the offline state at ${locale}/${item.key}`,
       )
+      assert.ok(
+        !article.includes('status-online'),
+        `Offline project shows an online badge at ${locale}/${item.key}`,
+      )
+    }
     if (item.statusType !== 'public')
-      assert.ok(
-        article.includes(
-          `<span class="priv gallery-availability">${escapeHtml(words.status)}</span>`,
-        ),
-      )
+      assert.ok(article.includes(escapeHtml(words.status)))
   }
   assert.ok(html.includes('data-filter="all" aria-pressed="true"'))
   assert.ok(
@@ -499,22 +529,43 @@ for (const locale of locales) {
   const copy = localeCopy[locale]
   const translations = caseTranslations(locale)
   const home = read(`${locale}/index.html`)
+  const counts = countProjects(cases)
+  const words = portfolioCopy[locale]
   assert.ok(home.includes('class="home-page"'))
-  assert.equal((home.match(/<li class="row-item"/g) ?? []).length, 29)
+  const homeRows = home.match(/<li class="sr-item"[^>]*>/g) ?? []
+  assert.equal(
+    homeRows.length,
+    cases.filter((item) => item.screen).length,
+    `Home showroom must list every captured project at ${locale}`,
+  )
+  assert.equal(
+    homeRows.filter((tag) => !/\shidden(?:[\s>])/.test(tag)).length,
+    8,
+    `Home showroom must show eight rows first at ${locale}`,
+  )
   assert.equal((home.match(/data-limit="8"/g) ?? []).length, 1)
-  assert.doesNotMatch(home, /class="(?:bento|tile|stats)|data-work-grid/)
+  assert.doesNotMatch(home, /class="(?:bento|tile|row-item|bt )|data-work-grid/)
+  assert.ok(
+    home.includes(
+      `<li><b>${counts.total}</b><span>${escapeHtml(words.stats.projects)}</span></li><li><b>${counts.stores}</b><span>${escapeHtml(words.stats.stores)}</span></li><li><b>${counts.online}</b><span>${escapeHtml(words.stats.online)}</span></li>`,
+    ),
+    `Hero stats must be computed from the data at ${locale}`,
+  )
   const servicesSection =
-    home.match(
-      /<section class="sec sv-s2" id="services"[\s\S]*?<\/section>/,
-    )?.[0] ?? ''
+    home.match(/<section class="sec" id="services"[\s\S]*?<\/section>/)?.[0] ??
+    ''
   const tiles =
-    servicesSection.match(/<a class="bt bt-[^>]*>[\s\S]*?<\/a>/g) ?? []
-  assert.equal(tiles.length, 5, `Services must render 5 tiles at ${locale}`)
-  assert.doesNotMatch(servicesSection, /class="sv"|class="ledger"/)
+    servicesSection.match(/<a class="svc-row"[^>]*>[\s\S]*?<\/a>/g) ?? []
+  assert.equal(tiles.length, 5, `Services must render 5 rows at ${locale}`)
+  assert.equal(
+    (servicesSection.match(/class="stand-item[ "]/g) ?? []).length,
+    5,
+    `Services stand must hold five proofs at ${locale}`,
+  )
   const bento = presentationCopy[locale].services.bento
   const proofCases = {
-    'web-development': 'monarh',
-    'mobile-apps': 'avtopark',
+    'web-development': 'miyolo',
+    'mobile-apps': 'besttracker',
     'business-automation': 'payqr',
     'ai-integrations': 'agentmama',
   }
@@ -523,58 +574,58 @@ for (const locale of locales) {
     const tile = tiles[index]
     assert.ok(
       tile.startsWith(
-        `<a class="bt bt-${slug}" href="${pagePath(locale, slug)}" aria-label="${escapeHtml(service.name)}"`,
+        `<a class="svc-row" href="${pagePath(locale, slug)}" aria-label="${escapeHtml(service.name)}" data-svc="${index}"`,
       ),
-      `Services tile ${index + 1} must link the ${slug} page at ${locale}`,
+      `Services row ${index + 1} must link the ${slug} page at ${locale}`,
     )
     assert.ok(tile.includes(escapeHtml(service.pitch)))
     assert.ok(tile.includes(service.tags.map(escapeHtml).join(' · ')))
     assert.ok(
       tile.includes(
-        escapeHtml(service.short.replace('Telegram-', 'Telegram\u2011')),
+        escapeHtml(service.short.replace('Telegram-', 'Telegram‑')),
       ),
     )
     const caption = proofCases[slug]
       ? `${bento.proof}: ${translations[proofCases[slug]].title}`
       : bento.chat.cap
     assert.ok(
-      tile.includes(`<span class="bt-cap">${escapeHtml(caption)}</span>`),
-      `Services tile ${slug} has no caption at ${locale}`,
+      tile.includes(`<span class="svc-cap">${escapeHtml(caption)}</span>`),
+      `Services row ${slug} has no caption at ${locale}`,
+    )
+    assert.ok(
+      servicesSection.includes(
+        `<p class="stand-cap">${escapeHtml(caption)}</p>`,
+      ),
+      `Services stand ${slug} has no caption at ${locale}`,
     )
     if (locale !== 'ru')
       assert.notEqual(service.pitch, localeCopy.ru.services[slug].pitch)
   })
   assert.equal(
-    (servicesSection.match(/class="ch-o"/g) ?? []).length,
+    (servicesSection.match(/class="chat-opt"/g) ?? []).length,
     bento.chat.opts.length,
   )
-  for (const line of portfolioCopy[locale].title)
+  for (const line of words.title)
     assert.ok(
-      home.includes(escapeHtml(line)),
-      `Missing localized B heading at ${locale}`,
+      home.includes(escapeHtml(line.replace(/\s*→\s*$/, ''))),
+      `Missing localized heading at ${locale}`,
     )
-  assert.ok(home.includes(escapeHtml(portfolioCopy[locale].statement)))
+  assert.ok(home.includes(escapeHtml(words.statement)))
   assert.ok(
-    home.includes(escapeHtml(portfolioCopy[locale].stats.stores)),
-    `Missing localized stats line at ${locale}`,
+    home.includes(`<a class="sr-all" href="${pagePath(locale, 'work')}">`),
   )
-  assert.ok(
-    home.includes(
-      `<a class="text-link b-all-projects" href="${pagePath(locale, 'work')}">`,
-    ),
-  )
-  for (const key of caseKeys)
+  for (const key of caseKeys.filter(
+    (key) => cases.find((entry) => entry.key === key).screen,
+  ))
     assert.ok(
-      home.includes(
-        `<a class="btn-s gallery-case-link" href="${casePath(locale, key)}">`,
-      ),
+      home.includes(`href="${casePath(locale, key)}" data-open-case="${key}"`),
       `Home does not link the case page ${locale}/${key}`,
     )
   const gallery = read(`${locale}/work/index.html`)
   for (const key of caseKeys)
     assert.ok(
       gallery.includes(
-        `<a class="btn-s gallery-case-link" href="${casePath(locale, key)}">${escapeHtml(copy.caseStudy.openCase)}`,
+        `href="${casePath(locale, key)}" data-open-case="${key}"><span>${escapeHtml(copy.caseStudy.openCase)}`,
       ),
       `Gallery does not link the case page ${locale}/${key}`,
     )
@@ -586,22 +637,32 @@ for (const locale of locales) {
     const html = read(`${route.slice(1)}/index.html`)
     assert.ok(
       html.includes(
-        `<h1 class="h1" id="case-title">${escapeHtml(words.title)}</h1>`,
+        `<h1 class="h1 page-title" id="case-title">${escapeHtml(words.title)}</h1>`,
       ),
       `Wrong case heading at ${route}`,
     )
     assert.ok(html.includes(escapeHtml(words.summary)))
-    const hero =
-      html.match(
-        /<figure class="wrap case-shot"><div class="frame">(<img\b[^>]*>)/,
-      )?.[1] ?? ''
+    const shot =
+      html.match(/<div class="case-shot">([\s\S]*?)<\/figure><\/div>/)?.[1] ??
+      ''
     assert.ok(
-      attribute(hero, 'src') === imageSrc(item.image) &&
-        hero.includes(`alt="${escapeHtml(words.alt)}"`) &&
-        attribute(hero, 'fetchpriority') === 'high' &&
-        !attribute(hero, 'loading'),
-      `Missing eager localized hero image at ${route}`,
+      shot.includes(`style="view-transition-name: slab-${key}"`),
+      `Case slab must carry its shared-element name at ${route}`,
     )
+    if (item.screen) {
+      const hero = shot.match(/<img\b[^>]*>/)?.[0] ?? ''
+      assert.ok(
+        attribute(hero, 'src') === imageSrc(item.screen) &&
+          hero.includes(`alt="${escapeHtml(words.alt)}"`) &&
+          attribute(hero, 'fetchpriority') === 'high' &&
+          !attribute(hero, 'loading'),
+        `Missing eager localized hero image at ${route}`,
+      )
+    } else
+      assert.ok(
+        shot.includes('class="slab-screen is-empty"') && !shot.includes('<img'),
+        `Case without a capture needs the typographic slab at ${route}`,
+      )
     for (const field of ['task', 'solution', 'result']) {
       assert.ok(
         html.includes(
@@ -612,14 +673,21 @@ for (const locale of locales) {
     }
     for (const part of caseStack(item))
       assert.ok(html.includes(`<li>${escapeHtml(part)}</li>`))
-    item.links.forEach((link, linkIndex) =>
-      assert.ok(
+    item.links.forEach((link) =>
+      assert.equal(
         html.includes(
-          `href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(words.actions[linkIndex])}</a>`,
+          `href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">`,
         ),
-        `Missing external case link at ${route}`,
+        !link.offline,
+        `Wrong external case link state at ${route}`,
       ),
     )
+    if (isOffline(item))
+      assert.ok(
+        html.includes(escapeHtml(portfolioCopy[locale].offline)) &&
+          !html.includes('status-online'),
+        `Offline case must say so at ${route}`,
+      )
     for (const slug of caseServices(item))
       assert.ok(
         html.includes(
@@ -654,12 +722,17 @@ for (const locale of locales) {
     assert.equal(work.description, words.summary)
     assert.equal(work.url, url)
     assert.equal(work.image, `${origin}${imageSrc(item.image)}`)
+    assert.ok(
+      imageEntry(item.image).width >= 900 &&
+        imageEntry(item.image).width > imageEntry(item.image).height,
+      `Case schema image must stay the wide case shot: ${item.key}`,
+    )
     assert.equal(work.inLanguage, locale)
     assert.equal(work.creator['@id'], `${origin}/#person`)
     assert.deepEqual(work.keywords, caseStack(item))
     assert.deepEqual(
-      work.sameAs,
-      item.links.map((link) => link.href),
+      work.sameAs ?? [],
+      item.links.filter((link) => !link.offline).map((link) => link.href),
     )
     const title = html.match(/<title>([\s\S]*?)<\/title>/i)[1]
     assert.ok(
@@ -697,10 +770,15 @@ for (const item of cases) {
   )
   assert.ok(row, `Case disappeared from immutable source: ${item.key}`)
   assert.deepEqual(
-    item.links.map((link) => link.href),
+    item.links.filter((link) => !link.offline).map((link) => link.href),
     [...row.matchAll(/\bhref="([^"]+)"/g)].map((match) => match[1]),
     `Actual source project URLs changed for ${item.key}`,
   )
+  for (const link of item.links.filter((entry) => entry.offline))
+    assert.ok(
+      row.includes(`<span>${new URL(link.href).hostname}</span>`),
+      `Offline project must stay as plain text in the archive: ${item.key}`,
+    )
 }
 assert.equal(
   attribute(
@@ -790,7 +868,7 @@ for (const path of files.filter((file) =>
   ),
 )) {
   const url = path.slice(destination.length)
-  if (url === '/assets/fonts/onest-LICENSE') continue
+  if (fontLicenses.includes(url)) continue
   assert.ok(referencedText.includes(url), `Unreferenced shipped file: ${url}`)
 }
 for (const match of referencedText.matchAll(/\/assets\/[^"'()\s,]+/g)) {
@@ -813,14 +891,221 @@ for (const bundle of [stylesheet, script]) {
 assert.equal(imageEntry('altn-emu-1').width, 540)
 assert.equal(imageEntry('monarh-shot').variants.length, 2)
 const home = read('uz/index.html')
-const lcp = home.match(/<img class="l2"[^>]*>/)?.[0]
+const lcp = home
+  .match(
+    /<figure class="slab slab-browser hero-slab"[^>]*data-d="0"[\s\S]*?<\/figure>/,
+  )?.[0]
+  ?.match(/<img\b[^>]*>/)?.[0]
 assert.ok(
   attribute(lcp ?? '', 'fetchpriority') === 'high' &&
     !attribute(lcp ?? '', 'loading'),
   'Home LCP image must stay eager with high fetch priority',
 )
-assert.ok((attribute(lcp, 'src') ?? '').includes('monarh-shot'))
+assert.ok((attribute(lcp, 'src') ?? '').includes('agentmama-web'))
 assert.equal((home.match(/fetchpriority="high"/g) ?? []).length, 1)
+const projectCounts = countProjects(cases)
+assert.equal(
+  projectCounts.online,
+  cases.filter((item) =>
+    item.links.some(
+      (link) => !link.offline && !/apps\.apple|play\.google/.test(link.href),
+    ),
+  ).length,
+)
+assert.equal(
+  projectCounts.online,
+  14,
+  'Online count must follow the checked links',
+)
+assert.equal(projectCounts.stores, 6)
+const offlineKeys = ['monarh', 'les44', 'supertour']
+for (const key of offlineKeys)
+  assert.ok(
+    cases.some((item) => item.key === key),
+    `Offline project disappeared from the data: ${key}`,
+  )
+assert.deepEqual(
+  cases.filter(isOffline).map((item) => item.key),
+  offlineKeys,
+)
+for (const item of cases)
+  for (const link of item.links.filter((entry) => entry.offline))
+    assert.match(link.offline.checkedOn, /^\d{4}-\d{2}-\d{2}$/)
+const offlineHrefs = cases.flatMap((item) =>
+  item.links.filter((link) => link.offline).map((link) => link.href),
+)
+const publicHtml = htmlFiles.map((path) => [
+  path.slice(destination.length),
+  readFileSync(path, 'utf8'),
+])
+for (const [path, html] of publicHtml)
+  for (const href of offlineHrefs)
+    assert.ok(
+      !html.includes(`href="${escapeHtml(href)}"`),
+      `Dead external link ${href} rendered at ${path}`,
+    )
+let offlineBlocks = 0
+for (const [path, html] of publicHtml)
+  for (const key of offlineKeys)
+    for (const block of html.matchAll(
+      new RegExp(
+        `<(li|a) class="(?:sr-item|placard)"[^>]*data-key="${key}"[\\s\\S]*?</\\1>`,
+        'g',
+      ),
+    )) {
+      offlineBlocks += 1
+      assert.ok(
+        !block[0].includes('status-online'),
+        `Offline project ${key} shows an online badge at ${path}`,
+      )
+    }
+assert.ok(
+  offlineBlocks >= offlineKeys.length * 8,
+  'Offline badge check found no gallery rows',
+)
+for (const locale of ['uz', 'ru', 'en']) {
+  const page = read(`${locale}/index.html`)
+  for (const marker of [
+    'data-hero>',
+    'data-hero-track>',
+    'data-hero-stage>',
+    'data-hall role="group"',
+    'data-world>',
+    'data-placards>',
+    'data-minimap role="group"',
+    'data-showroom data-variant="home"',
+    'data-stage>',
+    'data-stage-world>',
+    'data-info-copy>',
+    'data-list>',
+    'data-chips role="group"',
+    'data-services>',
+  ])
+    assert.ok(page.includes(marker), `Missing ${marker} at ${locale} home`)
+  assert.equal((page.match(/class="hero-step"/g) ?? []).length, 6)
+  assert.equal(
+    (page.match(/class="slab slab-[a-z]+ hero-slab"/g) ?? []).length,
+    6,
+  )
+  assert.equal((page.match(/<a class="placard"/g) ?? []).length, 6)
+  assert.equal((page.match(/class="minimap-dot"/g) ?? []).length, 6)
+  assert.equal(
+    (page.match(/hero-slab"[^>]*>/g) ?? []).filter(
+      (tag) => !tag.includes('aria-hidden'),
+    ).length,
+    1,
+    `Only the front hero slab is exposed at ${locale}`,
+  )
+  const workPage = read(`${locale}/work/index.html`)
+  assert.ok(workPage.includes('data-showroom data-variant="work"'))
+}
+assert.doesNotMatch(
+  stylesheet.content,
+  /gradient\(/i,
+  'Shipped CSS uses a gradient',
+)
+assert.doesNotMatch(
+  stylesheet.content,
+  /text-shadow|box-shadow:[^;]*rgba\((?!2, 3, 1[24],|16, 19, 43,)/,
+  'Shipped CSS uses a glow or coloured shadow',
+)
+function base128(bytes, state) {
+  let value = 0
+  for (let index = 0; index < 5; index += 1) {
+    const byte = bytes[state.offset]
+    state.offset += 1
+    value = value * 128 + (byte & 0x7f)
+    if (!(byte & 0x80)) return value
+  }
+  throw new Error('Bad UIntBase128')
+}
+function woffCodepoints(path) {
+  const bytes = readFileSync(join(root, path))
+  assert.equal(bytes.toString('latin1', 0, 4), 'wOF2', `${path} is not WOFF2`)
+  const tables = bytes.readUInt16BE(12)
+  const compressed = bytes.readUInt32BE(20)
+  const state = { offset: 48 }
+  const entries = []
+  for (let index = 0; index < tables; index += 1) {
+    const flags = bytes[state.offset]
+    state.offset += 1
+    const known = flags & 0x3f
+    let tag = known
+    if (known === 63) {
+      tag = bytes.toString('latin1', state.offset, state.offset + 4)
+      state.offset += 4
+    }
+    const version = flags >> 6
+    const length = base128(bytes, state)
+    const glyphTable = known === 10 || known === 11
+    const transformed = glyphTable ? version === 0 : version !== 0
+    const stored = transformed ? base128(bytes, state) : length
+    entries.push({ tag, stored })
+  }
+  const data = brotliDecompressSync(
+    bytes.subarray(state.offset, state.offset + compressed),
+  )
+  let position = 0
+  let cmap = null
+  for (const entry of entries) {
+    if (entry.tag === 0) cmap = data.subarray(position, position + entry.stored)
+    position += entry.stored
+  }
+  assert.ok(cmap, `${path} has no cmap`)
+  const found = new Set()
+  const records = cmap.readUInt16BE(2)
+  for (let index = 0; index < records; index += 1) {
+    const offset = cmap.readUInt32BE(4 + index * 8 + 4)
+    const format = cmap.readUInt16BE(offset)
+    if (format === 12) {
+      const groups = cmap.readUInt32BE(offset + 12)
+      for (let group = 0; group < groups; group += 1) {
+        const base = offset + 16 + group * 12
+        const first = cmap.readUInt32BE(base)
+        const last = cmap.readUInt32BE(base + 4)
+        for (let code = first; code <= last && code < 0x10000; code += 1)
+          found.add(code)
+      }
+    }
+    if (format === 4) {
+      const segments = cmap.readUInt16BE(offset + 6) / 2
+      const ends = offset + 14
+      const starts = ends + segments * 2 + 2
+      const deltas = starts + segments * 2
+      const ranges = deltas + segments * 2
+      for (let segment = 0; segment < segments; segment += 1) {
+        const last = cmap.readUInt16BE(ends + segment * 2)
+        const first = cmap.readUInt16BE(starts + segment * 2)
+        const delta = cmap.readInt16BE(deltas + segment * 2)
+        const range = cmap.readUInt16BE(ranges + segment * 2)
+        for (let code = first; code <= last && code !== 0xffff; code += 1) {
+          const glyph = range
+            ? cmap.readUInt16BE(
+                ranges + segment * 2 + range + (code - first) * 2,
+              )
+            : (code + delta) & 0xffff
+          if (glyph) found.add(code)
+        }
+      }
+    }
+  }
+  return found
+}
+for (const font of [
+  'assets/fonts/unbounded-latin.woff2',
+  'assets/fonts/onest-latin.woff2',
+]) {
+  const codes = woffCodepoints(font)
+  for (const code of [0x02bb, 0x02bc, 0x2018, 0x41, 0x7a])
+    assert.ok(
+      codes.has(code),
+      `${font} lacks U+${code.toString(16).toUpperCase().padStart(4, '0')}`,
+    )
+}
+assert.ok(woffCodepoints('assets/fonts/unbounded-cyrillic.woff2').has(0x0436))
+assert.ok(woffCodepoints('assets/fonts/onest-cyrillic.woff2').has(0x0436))
+for (const code of [0x41, 0x2f, 0xb7, 0x2192])
+  assert.ok(woffCodepoints('assets/fonts/jetbrainsmono-latin.woff2').has(code))
 const vercel = readJson('vercel.json')
 const cacheFor = (source) =>
   vercel.headers
@@ -830,7 +1115,7 @@ assert.equal(cacheFor('/assets/(.*)'), 'public, max-age=31536000, immutable')
 assert.match(cacheFor('/screenshots/(.*)') ?? '', /max-age=2592000/)
 assert.match(
   readFileSync(join(root, 'assets/theme-init.js'), 'utf8'),
-  /let theme = 'light'/,
+  /let theme = 'dark'/,
 )
 assert.equal(escapeHtml('<script>"&\''), '&lt;script&gt;&quot;&amp;&#39;')
 assert.equal(lineBreaks('A\\n<B>\nC'), 'A<br>&lt;B&gt;<br>C')
@@ -886,7 +1171,7 @@ assert.throws(
   () =>
     inspectPage(
       valid.replaceAll(
-        `href="${casePath('ru', 'okh')}"`,
+        `href="${casePath('ru', 'besttracker')}"`,
         'href="https://apps.apple.com/app/id6794669727"',
       ),
       'ru',

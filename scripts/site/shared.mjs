@@ -245,6 +245,7 @@ ${fontPreloads(locale)
   )
   .join('\n')}
 <script>${themeInit}</script>
+<style>@view-transition{navigation:auto}</style>
 <link rel="stylesheet" href="${stylesheet.path}">
 <script type="application/ld+json">${json}</script>`
 }
@@ -270,38 +271,42 @@ export const typoBreaks = (value) =>
 
 export const telegramUrl = 'https://t.me/ruzibekov_sh'
 
-export function header({ locale, copy, ui, slug = null }) {
-  const home = pagePath(locale)
-  const navLinks = ['services', 'work', 'about', 'faq']
+const navKeys = ['services', 'work', 'about', 'faq']
+
+const navAnchors = (locale, copy, attributes = '') =>
+  navKeys
     .map(
       (key) =>
-        `<a href="${home}#${key === 'work' ? 'work' : key}">${escapeHtml(copy.navigation[key])}</a>`,
+        `<a href="${pagePath(locale)}#${key}" data-nav-link="${key}"${attributes}>${escapeHtml(copy.navigation[key])}</a>`,
     )
     .join('')
-  const languages = `<details class="language-picker" data-language-picker><summary aria-label="${escapeHtml(copy.navigation.language)}: ${escapeHtml(ui.languageName)}">${languageFlag(locale)}<span>${locale.toUpperCase()}</span>${icon('i-chevron-down', 'language-chevron')}</summary><nav class="language-list" aria-label="${escapeHtml(copy.navigation.language)}">${locales.map((language) => `<a href="${pagePath(language, slug)}" lang="${language}" hreflang="${language}"${language === locale ? ' aria-current="page"' : ''}>${languageFlag(language)}<span>${escapeHtml(languageNames[language])}</span></a>`).join('')}</nav></details>`
+
+export function header({ locale, copy, ui, slug = null }) {
+  const home = pagePath(locale)
+  const languages = `<details class="language-picker" data-language-picker><summary class="language-trigger" aria-label="${escapeHtml(copy.navigation.language)}: ${escapeHtml(ui.languageName)}">${languageFlag(locale)}<span class="language-code">${locale.toUpperCase()}</span>${icon('i-chevron-down', 'language-chevron')}</summary><nav class="language-list" aria-label="${escapeHtml(copy.navigation.language)}">${locales.map((language) => `<a href="${pagePath(language, slug)}" lang="${language}" hreflang="${language}"${language === locale ? ' aria-current="page"' : ''}>${languageFlag(language)}<span>${escapeHtml(languageNames[language])}</span></a>`).join('')}</nav></details>`
   return `<a class="skip-link" href="#main">${escapeHtml(ui.accessibility.skipLink)}</a>
-<header class="top" data-header><div class="wrap">
+<header class="nav" data-header><div class="wrap nav-bar">
 <a class="brand" href="${home}" aria-label="${escapeHtml(ui.accessibility.homeLabel)}"><span class="mark" aria-hidden="true">SR</span><span class="brand-name">Shavkatbek Ruzibekov</span></a>
-<nav class="nav" aria-label="${escapeHtml(ui.accessibility.mainNavigation)}">${navLinks}</nav>
-<div class="top-actions">${languages}
-<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="${escapeHtml(ui.controls.switchToDark)}" data-light-action="${escapeHtml(ui.controls.switchToLight)}" data-dark-action="${escapeHtml(ui.controls.switchToDark)}">${icon('i-contrast')}</button>
-<a class="btn k sm" href="${telegramUrl}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(ui.contact.cta)}">${icon('l-telegram')}<span>${escapeHtml(copy.navigation.contact)}</span></a>
-<button class="menu-toggle" type="button" data-menu-toggle data-menu-label="${escapeHtml(ui.controls.menu)}" data-close-label="${escapeHtml(ui.controls.closeMenu)}" aria-label="${escapeHtml(ui.controls.menu)}" aria-controls="mobile-menu" aria-expanded="false">${icon('i-menu', 'menu-open')}${icon('i-x', 'menu-close')}</button></div></div></header>
+<nav class="nav-links" aria-label="${escapeHtml(ui.accessibility.mainNavigation)}">${navAnchors(locale, copy)}</nav>
+<div class="nav-actions">${languages}
+<button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="true" aria-label="${escapeHtml(ui.controls.switchToLight)}" data-light-action="${escapeHtml(ui.controls.switchToLight)}" data-dark-action="${escapeHtml(ui.controls.switchToDark)}">${icon('i-contrast')}</button>
+<a class="btn btn-nav" href="${telegramUrl}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(ui.contact.cta)}" data-nav-cta>${icon('l-telegram')}<span>${escapeHtml(copy.navigation.contact)}</span></a>
+<button class="icon-btn menu-toggle" type="button" data-menu-toggle data-menu-label="${escapeHtml(ui.controls.menu)}" data-close-label="${escapeHtml(ui.controls.closeMenu)}" aria-label="${escapeHtml(ui.controls.menu)}" aria-controls="mobile-menu" aria-expanded="false">${icon('i-menu', 'menu-open')}${icon('i-x', 'menu-close')}</button></div></div></header>
 <div class="menu-scrim" data-menu-scrim></div>
-<nav class="sheetnav" id="mobile-menu" data-mobile-menu aria-label="${escapeHtml(ui.accessibility.mobileNavigation)}">${navLinks}</nav>`
+<div class="menu-sheet" id="mobile-menu" data-mobile-menu role="dialog" aria-modal="true" aria-label="${escapeHtml(ui.accessibility.mobileNavigation)}" inert><nav class="menu-links" aria-label="${escapeHtml(ui.accessibility.mobileNavigation)}">${navAnchors(locale, copy)}</nav><a class="btn btn-primary btn-block" href="${telegramUrl}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span>${escapeHtml(ui.contact.cta)}</span></a></div>`
 }
 
 export function processSteps({ ui }) {
-  return `<ol class="pr">${Object.values(ui.process)
+  return `<ol class="process">${Object.values(ui.process)
     .map(
       (step, index) =>
-        `<li class="st" data-r style="--i:${index}"><span class="num" aria-hidden="true">0${index + 1}</span><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.description)}</p></li>`,
+        `<li class="process-step"><span class="process-num" aria-hidden="true">0${index + 1}</span><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.description)}</p></li>`,
     )
     .join('')}</ol>`
 }
 
-export function faq({ copy, ui }) {
-  return `<section class="sec" id="faq" aria-labelledby="faq-title"><div class="wrap"><header class="sec-h" data-r><p class="eyebrow">${escapeHtml(copy.navigation.faq)}</p><h2 class="h2" id="faq-title">${typoBreaks(ui.faq.title)}</h2></header><div class="faq-list" data-r>${copy.faq.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</div></div></section>`
+export function faq({ copy, ui, title = ui.faq.title }) {
+  return `<section class="sec faq-sec" id="faq" aria-labelledby="faq-title"><div class="wrap faq-grid"><h2 class="h2" id="faq-title">${typoBreaks(title)}</h2><div class="faq-list">${copy.faq.map((item) => `<details class="faq-item"><summary><span class="faq-q">${escapeHtml(item.question)}</span>${icon('i-plus', 'faq-icon')}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</div></div></section>`
 }
 
 export function contactSection({ copy, ui }) {
@@ -309,18 +314,24 @@ export function contactSection({ copy, ui }) {
     .split(' · ')
     .map((part) => `<span class="nw">${escapeHtml(part)}</span>`)
     .join(' · ')
-  return `<section class="sec" id="contact" aria-labelledby="contact-title"><div class="wrap"><div class="ct" data-r><div><p class="eyebrow">${escapeHtml(copy.navigation.contact)}</p><h2 class="h2" id="contact-title">${typoBreaks(ui.contact.title.replace(/\s*\n\s*/g, ' '))}</h2><p class="lead">${escapeHtml(ui.contact.intro)}</p><p class="strap">${strap}</p></div><div class="ct-r"><a class="btn p" href="${telegramUrl}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span class="button-content">${escapeHtml(ui.contact.cta)}</span></a><a class="way" href="mailto:ruzibekov44@gmail.com">${icon('i-mail')}<span>ruzibekov44@gmail.com</span></a></div></div></div></section>`
+  return `<section class="sec contact-sec" id="contact" aria-labelledby="contact-title"><div class="wrap"><div class="contact" data-contact><div class="contact-copy"><h2 class="h2" id="contact-title">${typoBreaks(
+    ui.contact.title
+      .split('\n')
+      .map((part) => part.trim())
+      .join(' '),
+  )}</h2><p class="lead">${escapeHtml(ui.contact.intro)}</p><p class="contact-strap">${strap}</p></div><div class="contact-actions"><div class="contact-slab"><span class="contact-handle">${icon('l-telegram')}<span class="mono">${escapeHtml(telegramUrl.replace('https://t.me/', '@'))}</span></span><a class="btn btn-primary btn-block btn-tall" href="${telegramUrl}" target="_blank" rel="noopener noreferrer" data-primary-cta>${icon('l-telegram')}<span class="button-content">${escapeHtml(ui.contact.cta)}</span></a><a class="mail-link" href="mailto:ruzibekov44@gmail.com">${icon('i-mail')}<span>ruzibekov44@gmail.com</span></a></div></div></div></div></section>`
 }
 
-export function footer({ ui, copy }) {
+export function footer({ locale, ui, copy, words }) {
   return `${contactSection({ copy, ui })}
-<footer class="foot"><div class="wrap"><span>© 2026 Shavkatbek Ruzibekov</span><span>${escapeHtml(ui.footer.line)}</span><a class="to-top" href="#top" aria-label="${escapeHtml(copy.navigation.home)}">${icon('i-arrow-up')}</a></div></footer>`
+<footer class="footer"><div class="wrap footer-row"><p class="footer-brand"><span class="mark" aria-hidden="true">SR</span><span>${escapeHtml(ui.footer.line)}</span></p><ul class="footer-links">${navKeys.map((key) => `<li><a href="${pagePath(locale)}#${key}">${escapeHtml(copy.navigation[key])}</a></li>`).join('')}</ul><a class="btn btn-quiet to-top" href="#top">${icon('i-arrow-up')}<span>${escapeHtml(words.backToTop)}</span></a><p class="footer-copy">© 2026 Shavkatbek Ruzibekov</p></div></footer>`
 }
 
 export function renderDocument({
   locale,
   copy,
   ui,
+  words,
   title,
   description,
   slug = null,
@@ -330,8 +341,9 @@ export function renderDocument({
   bodyClass = '',
   bodyEnd = '',
 }) {
+  if (!words?.backToTop) throw new Error(`Missing page words for ${locale}`)
   return `<!doctype html>
-<html lang="${locale}" data-theme="light"><head>${head({ locale, title, description, role: copy.identity.role, slug, graph, about })}</head>
-<body class="${escapeHtml(bodyClass)}" id="top">${spriteMarkup}${header({ locale, copy, ui, slug })}<main id="main">${body}</main>${footer({ copy, ui })}${bodyEnd}
+<html lang="${locale}" data-theme="dark"><head>${head({ locale, title, description, role: copy.identity.role, slug, graph, about })}</head>
+<body class="${escapeHtml(bodyClass)}" id="top">${spriteMarkup}${header({ locale, copy, ui, slug })}<main id="main">${body}</main>${footer({ locale, copy, ui, words })}${bodyEnd}
 <script src="${script.path}" defer></script></body></html>`
 }
