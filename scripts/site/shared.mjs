@@ -1,9 +1,9 @@
 import { icon, spriteMarkup } from './icons.mjs'
 import {
-  defaultCanvas,
   fontPreloads,
   script,
   stylesheet,
+  themeColors,
   themeInit,
   versioned,
 } from './assets.mjs'
@@ -218,7 +218,7 @@ export function head({
 <meta name="author" content="Shavkatbek Ruzibekov">
 <meta name="google-site-verification" content="rGHEWrWbzSXJ61d0tmQsZc5wO5qhwP5FtKCLaTwnMQU">
 <meta name="yandex-verification" content="67977ee61149d111">
-<meta name="theme-color" content="${defaultCanvas}" id="themeColorMeta">
+<meta name="theme-color" content="${themeColors.dark}" data-dark="${themeColors.dark}" data-light="${themeColors.light}" id="themeColorMeta">
 <link rel="canonical" href="${canonical}">
 ${locales.map((language) => `<link rel="alternate" hreflang="${language}" href="${absoluteUrl(pagePath(language, slug))}">`).join('\n')}
 <link rel="alternate" hreflang="x-default" href="${absoluteUrl(pagePath('uz', slug))}">

@@ -8,5 +8,7 @@
     root.dataset.storage = 'unavailable'
   }
   root.dataset.theme = theme
+  const meta = document.querySelector('meta[name="theme-color"]')
+  if (meta?.dataset[theme]) meta.setAttribute('content', meta.dataset[theme])
   root.classList.add('js')
 })()

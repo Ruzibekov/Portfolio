@@ -2,19 +2,11 @@ import { readFileSync } from 'node:fs'
 import { stylesheet } from './assets.mjs'
 import { spriteMarkup } from './icons.mjs'
 import { slab } from './slab.mjs'
-import { floorPath, heroTitle } from './home.mjs'
+import { heroTitle } from './home.mjs'
 import { escapeHtml } from './shared.mjs'
 
 const readJson = (path) =>
   JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'))
-
-const floorBase = {
-  p: 1400,
-  x0: -2400,
-  x1: 2400,
-  z1: 600,
-  cell: 160,
-}
 
 export const ogVariants = [
   {
@@ -22,21 +14,21 @@ export const ogVariants = [
     width: 1200,
     height: 630,
     targets: ['assets/og-products.png', 'og-image.png'],
-    floor: { ...floorBase, ox: 820, oy: 200, y: 470, z0: -1100 },
+    camera: { p: 1400, ox: 820, oy: 250 },
     stand: [
       [
         'agentmama',
-        'translate3d(170px, 60px, 0) rotateY(-28deg) scale(0.94)',
+        'translate3d(110px, 130px, 0) rotateY(-28deg) scale(0.74)',
         0,
       ],
       [
         'majiidtv',
-        'translate3d(-39px, -102px, -1300px) rotateY(-20deg) scale(1.04)',
+        'translate3d(110px, -170px, -1300px) rotateY(-20deg) scale(0.98)',
         0.3,
       ],
       [
         'besttracker',
-        'translate3d(-538px, -101px, -2200px) rotateY(-16deg) scale(1.18)',
+        'translate3d(-240px, -220px, -2200px) rotateY(-16deg) scale(1.1)',
         0.45,
       ],
     ],
@@ -47,21 +39,21 @@ export const ogVariants = [
     width: 1200,
     height: 1200,
     targets: ['assets/og-products-square.png'],
-    floor: { ...floorBase, ox: 600, oy: 640, y: 520, z0: -1300 },
+    camera: { p: 1400, ox: 550, oy: 800 },
     stand: [
       [
         'agentmama',
-        'translate3d(284px, 150px, 0) rotateY(-24deg) scale(1.3)',
+        'translate3d(160px, 60px, 0) rotateY(-24deg) scale(1.1)',
         0,
       ],
       [
         'majiidtv',
-        'translate3d(-330px, 60px, -1300px) rotateY(-20deg) scale(1.3)',
+        'translate3d(-240px, -110px, -1300px) rotateY(-20deg) scale(1.3)',
         0.3,
       ],
       [
         'besttracker',
-        'translate3d(-1020px, 10px, -2200px) rotateY(-16deg) scale(1.3)',
+        'translate3d(-900px, -120px, -2200px) rotateY(-16deg) scale(1.4)',
         0.45,
       ],
     ],
@@ -69,7 +61,7 @@ export const ogVariants = [
   },
 ]
 
-const styles = ({ width, height, floor, copy }) => `
+const styles = ({ width, height, camera, copy }) => `
 html, body { margin: 0; background: var(--canvas); }
 .og {
   position: relative;
@@ -79,25 +71,16 @@ html, body { margin: 0; background: var(--canvas); }
   background: var(--canvas);
   color: var(--ink);
 }
-.og-floor {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: var(--line);
-  stroke-width: 1.5;
-}
 .og-hall {
   position: absolute;
   inset: 0;
-  perspective: ${floor.p}px;
-  perspective-origin: ${floor.ox}px ${floor.oy}px;
+  perspective: ${camera.p}px;
+  perspective-origin: ${camera.ox}px ${camera.oy}px;
 }
 .og-world {
   position: absolute;
-  left: ${floor.ox}px;
-  top: ${floor.oy}px;
+  left: ${camera.ox}px;
+  top: ${camera.oy}px;
   width: 0;
   height: 0;
   transform-style: preserve-3d;
@@ -105,6 +88,17 @@ html, body { margin: 0; background: var(--canvas); }
 .og-world .slab {
   position: absolute;
   backface-visibility: hidden;
+}
+.og-world .slab::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: calc(100% + 6px);
+  height: 20px;
+  border-radius: 50%;
+  background: var(--contact-shadow);
+  filter: blur(11px);
 }
 .og-world .slab-browser {
   left: -300px;
@@ -149,7 +143,7 @@ html, body { margin: 0; background: var(--canvas); }
 `
 
 export function renderOg(variant) {
-  const { width, height, floor, stand } = variant
+  const { width, height, camera, stand } = variant
   const cases = readJson('content/cases.json').cases
   const words = readJson('content/portfolio-b.json').uz
   const strap = readJson('content/locales/presentation.json').locales.uz.contact
@@ -183,6 +177,6 @@ export function renderOg(variant) {
 <link rel="stylesheet" href="${stylesheet.path}">
 <style>${styles(variant)}</style>
 </head>
-<body>${spriteMarkup}<div class="og" data-og><svg class="og-floor" viewBox="0 0 ${width} ${height}" aria-hidden="true"><path d="${floorPath({ ...floor, w: width, h: height })}"/></svg><div class="og-hall"><div class="og-world">${slabs}</div></div><div class="og-copy" data-og-copy><p class="og-name" data-og-text>Shavkatbek Ruzibekov</p><h1 class="h1">${heroTitle(words.title, escapeHtml)}</h1><p class="og-strap" data-og-text>${escapeHtml(strap)}</p></div></div></body>
+<body>${spriteMarkup}<div class="og" data-og><div class="og-hall"><div class="og-world">${slabs}</div></div><div class="og-copy" data-og-copy><p class="og-name" data-og-text>Shavkatbek Ruzibekov</p><h1 class="h1">${heroTitle(words.title, escapeHtml)}</h1><p class="og-strap" data-og-text>${escapeHtml(strap)}</p></div></div></body>
 </html>`
 }

@@ -80,12 +80,19 @@ export const script = bundle(
 export const themeInit = readSource(themeSource).toString('utf8').trim()
 export const bundledSources = [...styleSources, ...scriptSources, themeSource]
 
-export const defaultCanvas = (() => {
-  const block = stylesheet.content.match(/:root\s*\{([^}]*)\}/)?.[1] ?? ''
-  const value = block.match(/--canvas:\s*([^;]+);/)?.[1].trim()
-  if (!value) throw new Error('Default theme --canvas token is missing')
+const themeToken = (selector, name) => {
+  const block =
+    stylesheet.content.match(new RegExp(`${selector}\\s*\\{([^}]*)\\}`))?.[1] ??
+    ''
+  const value = block.match(new RegExp(`--${name}:\\s*([^;]+);`))?.[1].trim()
+  if (!value) throw new Error(`Theme token --${name} is missing in ${selector}`)
   return value
-})()
+}
+
+export const themeColors = {
+  dark: themeToken(':root', 'theme-color'),
+  light: themeToken("\\[data-theme='light'\\]", 'theme-color'),
+}
 
 export function fontPreloads(locale) {
   const subsets = localeFonts[locale]

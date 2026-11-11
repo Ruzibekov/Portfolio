@@ -15,6 +15,7 @@ import { ogVariants, renderOg } from './site/og.mjs'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
 const clearance = 24
+const frame = 32
 const host = 'http://og.local'
 const types = {
   '.css': 'text/css',
@@ -48,8 +49,7 @@ function layout() {
       ...box(element.getBoundingClientRect()),
     }),
   )
-  const floor = document.querySelector('.og-floor path').getBBox()
-  return { texts, slabs, floorTop: floor.y }
+  return { texts, slabs }
 }
 
 async function renderVariant(page, variant) {
@@ -69,14 +69,22 @@ async function renderVariant(page, variant) {
   }))
   if (!state.images) throw new Error('OG slab capture failed to load')
   if (!state.fonts) throw new Error('OG fonts failed to load')
-  const { texts, slabs, floorTop } = await page.evaluate(layout)
+  const { texts, slabs } = await page.evaluate(layout)
+  for (const slab of slabs)
+    if (
+      slab.left < frame ||
+      slab.top < frame ||
+      slab.right > variant.width - frame ||
+      slab.bottom > variant.height - frame
+    )
+      throw new Error(
+        `${variant.name}: slab ${JSON.stringify(slab)} leaves the ${frame}px frame`,
+      )
   for (const text of texts) {
     if (text.left < 48 || text.top < 48 || text.right > variant.width - 48)
       throw new Error(
         `${variant.name}: "${text.label}" is too close to the edge`,
       )
-    if (floorTop < text.bottom + clearance)
-      throw new Error(`${variant.name}: the floor touches "${text.label}"`)
     for (const slab of slabs) {
       const apart =
         slab.left >= text.right + clearance ||
