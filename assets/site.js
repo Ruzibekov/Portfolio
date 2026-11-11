@@ -8,13 +8,34 @@
   ]
 
   root.classList.add('img-fade')
+  const fail = (screen) => {
+    if (!screen) return
+    screen.classList.add('is-failed')
+    const phone = screen.closest('.trio-phone')
+    const trio = phone?.closest('.slab-trio')
+    if (!trio) return
+    if (phone.classList.contains('trio-side')) {
+      phone.classList.add('is-dropped')
+    } else {
+      const spare = trio.querySelector(':scope > .trio-side:not(.is-dropped)')
+      const backup = spare?.querySelector('[data-screen]')
+      if (backup) {
+        phone.insertBefore(backup, screen)
+        spare.prepend(screen)
+        spare.classList.add('is-dropped')
+      }
+    }
+    trio.dataset.screens = String(
+      trio.querySelectorAll(':scope > .trio-phone:not(.is-dropped)').length,
+    )
+  }
   const markImage = (image) => {
     const screen = image.closest('[data-screen]')
     if (image.complete && image.naturalWidth > 0) {
       image.classList.add('is-loaded')
       screen?.classList.remove('is-failed')
     } else if (image.complete) {
-      screen?.classList.add('is-failed')
+      fail(screen)
     }
   }
   qsa('img[data-slab-img]').forEach(markImage)
@@ -29,7 +50,7 @@
     'error',
     (event) => {
       if (event.target.matches?.('img[data-slab-img]'))
-        event.target.closest('[data-screen]')?.classList.add('is-failed')
+        fail(event.target.closest('[data-screen]'))
     },
     true,
   )
@@ -45,8 +66,8 @@
         dark ? themeButton.dataset.lightAction : themeButton.dataset.darkAction,
       )
     }
-    const canvas = getComputedStyle(root).getPropertyValue('--canvas').trim()
-    if (themeColor && canvas) themeColor.setAttribute('content', canvas)
+    const color = themeColor?.dataset[dark ? 'dark' : 'light']
+    if (color) themeColor.setAttribute('content', color)
   }
   syncTheme()
   themeButton?.addEventListener('click', () => {

@@ -1,5 +1,15 @@
 import assert from 'node:assert/strict'
-import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import {
+  existsSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from 'node:fs'
+import { spawnSync } from 'node:child_process'
+import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { validateCaseCopy } from './site/work.mjs'
@@ -17,18 +27,18 @@ import {
 } from './site/shared.mjs'
 import { caseServices, caseStack } from './site/case.mjs'
 import {
-  defaultCanvas,
   fontLicenses,
   fontPreloads,
   imageEntry,
   imageSrc,
   script,
   stylesheet,
+  themeColors,
   versioned,
 } from './site/assets.mjs'
 import { galleryLabels } from './site/work.mjs'
 import { countProjects, isOffline } from './site/project.mjs'
-import { brotliDecompressSync } from 'node:zlib'
+import { brotliDecompressSync, inflateSync } from 'node:zlib'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const destination = join(root, 'dist')
@@ -106,6 +116,7 @@ assert.deepEqual(
       .map((item) => [item.key, item.statusType]),
   ),
   {
+    payqr: 'private',
     mynails: 'private',
     yolo: 'private',
     geoblinker: 'prototype',
@@ -172,9 +183,9 @@ function inspectPage(html, locale, slug) {
   )
   assert.ok(
     html.includes(
-      `<meta name="theme-color" content="${defaultCanvas}" id="themeColorMeta">`,
+      `<meta name="theme-color" content="${themeColors.dark}" data-dark="${themeColors.dark}" data-light="${themeColors.light}" id="themeColorMeta">`,
     ),
-    `Theme colour does not match the default canvas at ${route}`,
+    `Theme colour meta does not carry both theme colours at ${route}`,
   )
   const stylesheets = links(html).filter(
     (tag) => attribute(tag, 'rel') === 'stylesheet',
@@ -449,7 +460,13 @@ for (const locale of locales) {
     assert.ok(article.includes(`data-category="${item.categories.join(' ')}"`))
     if (item.screen) {
       assert.ok(article.includes(`src="${imageSrc(item.screen)}"`))
-      assert.ok(article.includes(`alt="${escapeHtml(words.alt)}"`))
+      if ((item.screens?.length ?? 0) > 1)
+        for (const alt of words.screenAlts)
+          assert.ok(
+            article.includes(`alt="${escapeHtml(alt)}"`),
+            `Trio alt ${locale}/${item.key}`,
+          )
+      else assert.ok(article.includes(`alt="${escapeHtml(words.alt)}"`))
     } else
       assert.ok(
         article.includes('class="slab-screen is-empty"'),
@@ -649,11 +666,27 @@ for (const locale of locales) {
       shot.includes(`style="view-transition-name: slab-${key}"`),
       `Case slab must carry its shared-element name at ${route}`,
     )
+    const screens = item.screens ?? []
+    if (screens.length > 1) {
+      const images = [...shot.matchAll(/<img\b[^>]*>/g)].map((m) => m[0])
+      assert.deepEqual(
+        images.map((image) => attribute(image, 'src')).sort(),
+        screens.map((key) => imageSrc(key)).sort(),
+        `Case trio must show its own screens at ${route}`,
+      )
+      assert.ok(
+        images.every((image) => !attribute(image, 'loading')),
+        `Case trio screens load eagerly at ${route}`,
+      )
+    }
     if (item.screen) {
-      const hero = shot.match(/<img\b[^>]*>/)?.[0] ?? ''
+      const centre =
+        screens.length > 1 ? (shot.split('trio-centre')[1] ?? '') : shot
+      const hero = centre.match(/<img\b[^>]*>/)?.[0] ?? ''
+      const alt = screens.length > 1 ? words.screenAlts[0] : words.alt
       assert.ok(
         attribute(hero, 'src') === imageSrc(item.screen) &&
-          hero.includes(`alt="${escapeHtml(words.alt)}"`) &&
+          hero.includes(`alt="${escapeHtml(alt)}"`) &&
           attribute(hero, 'fetchpriority') === 'high' &&
           !attribute(hero, 'loading'),
         `Missing eager localized hero image at ${route}`,
@@ -954,6 +987,52 @@ for (const bundle of [stylesheet, script]) {
     bundle.content,
   )
 }
+const mobileCases = cases.filter((item) => item.categories.includes('mobile'))
+assert.equal(mobileCases.length, 12)
+for (const item of mobileCases) {
+  const screens = item.screens
+  assert.ok(
+    Array.isArray(screens) && screens.length >= 1 && screens.length <= 3,
+    `Mobile project needs an explicit list of 1-3 screens: ${item.key}`,
+  )
+  assert.equal(new Set(screens).size, screens.length, item.key)
+  assert.equal(
+    screens[0],
+    item.screen,
+    `Centre screen is the lead: ${item.key}`,
+  )
+  for (const key of screens) {
+    const entry = imageEntry(key)
+    assert.ok(entry.height > entry.width, `Screen must be a phone: ${key}`)
+    for (const variant of entry.variants) {
+      const path = join(root, variant.src.slice(1))
+      assert.ok(existsSync(path), `Missing screen file ${variant.src}`)
+      assert.ok(statSync(path).size <= 250 * 1024, `Screen over 250 KB: ${key}`)
+    }
+  }
+  for (const locale of locales) {
+    const words = caseTranslations(locale)[item.key]
+    if (screens.length > 1) {
+      assert.equal(words.screenAlts?.length, screens.length, item.key)
+      assert.equal(new Set(words.screenAlts).size, screens.length, item.key)
+    }
+  }
+  const html = read('uz/work/index.html')
+  const template =
+    html
+      .split(`<li class="sr-item" id="${item.id}" data-key="${item.key}"`)[1]
+      ?.split('</template>')[0] ?? ''
+  const stage =
+    template.split('data-part="slab"')[1]?.split('data-part="detail"')[0] ?? ''
+  const sources = [...stage.matchAll(/<img\b[^>]*>/g)].map((match) =>
+    attribute(match[0], 'src'),
+  )
+  assert.deepEqual(
+    sources.sort(),
+    screens.map((key) => imageSrc(key)).sort(),
+    `Stage slab must show exactly its own screens: ${item.key}`,
+  )
+}
 assert.equal(imageEntry('altn-emu-1').width, 540)
 assert.equal(imageEntry('monarh-shot').variants.length, 2)
 const home = read('uz/index.html')
@@ -968,7 +1047,6 @@ assert.ok(
   'Home LCP image must stay eager with high fetch priority',
 )
 assert.ok((attribute(lcp, 'src') ?? '').includes('agentmama-web'))
-assert.equal((home.match(/fetchpriority="high"/g) ?? []).length, 1)
 const projectCounts = countProjects(cases)
 assert.equal(
   projectCounts.online,
@@ -1278,6 +1356,369 @@ assert.throws(
     ),
   /Missing real email/,
 )
+const tokenBlock = (selector) => {
+  const body =
+    readFileSync(join(root, 'assets/tokens.css'), 'utf8').match(
+      new RegExp(`${selector}\\s*\\{([^}]*)\\}`),
+    )?.[1] ?? ''
+  return Object.fromEntries(
+    [...body.matchAll(/--([a-z-]+):\s*([^;]+);/g)].map(([, name, value]) => [
+      name,
+      value.replace(/\s+/g, ' ').trim().toLowerCase(),
+    ]),
+  )
+}
+const darkTokens = tokenBlock(':root')
+const lightTokens = {
+  ...darkTokens,
+  ...tokenBlock("\\[data-theme='light'\\]"),
+}
+assert.deepEqual(themeColors, { dark: '#0b0c0e', light: '#ecedef' })
+assert.equal(darkTokens['theme-color'], darkTokens.canvas)
+assert.equal(lightTokens['theme-color'], lightTokens.canvas)
+assert.deepEqual(
+  [darkTokens.accent, darkTokens['accent-press'], darkTokens['on-accent']],
+  ['#b5f23d', '#9cd922', '#0b0c0e'],
+)
+assert.deepEqual(
+  [lightTokens.accent, lightTokens['on-accent'], lightTokens['accent-text']],
+  ['#0b0c0e', '#b5f23d', lightTokens.ink],
+)
+assert.equal(darkTokens['contact-shadow'], 'rgba(0, 0, 0, 0.42)')
+assert.equal(lightTokens['contact-shadow'], 'rgba(0, 0, 0, 0.16)')
+const luminance = (hex) => {
+  const channels = hex
+    .slice(1)
+    .match(/../g)
+    .map((pair) => parseInt(pair, 16) / 255)
+    .map((value) =>
+      value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4,
+    )
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+}
+const contrast = (a, b) => {
+  const [high, low] = [luminance(a), luminance(b)].sort((x, y) => y - x)
+  return (high + 0.05) / (low + 0.05)
+}
+for (const [theme, tokens] of [
+  ['dark', darkTokens],
+  ['light', lightTokens],
+]) {
+  for (const [name, value] of Object.entries(tokens))
+    for (const colour of value.match(/rgba?\([^)]*\)/g) ?? [])
+      assert.match(
+        colour,
+        /^rgba\(0, 0, 0, 0?\.\d+\)$/,
+        `${theme} --${name} must be pure black rgba: ${colour}`,
+      )
+  for (const text of ['ink', 'muted', 'faint'])
+    for (const ground of ['canvas', 'surface', 'card'])
+      assert.ok(
+        contrast(tokens[text], tokens[ground]) >= 4.5,
+        `${theme} ${text} on ${ground} is below AA`,
+      )
+  for (const ground of ['canvas', 'surface', 'card'])
+    assert.ok(
+      contrast(tokens['accent-text'], tokens[ground]) >= 4.5,
+      `${theme} accent-text on ${ground} is below AA`,
+    )
+  for (const fill of ['accent', 'accent-press'])
+    assert.ok(
+      contrast(tokens['on-accent'], tokens[fill]) >= 4.5,
+      `${theme} on-accent on ${fill} is below AA`,
+    )
+  assert.ok(contrast(tokens['line-strong'], tokens.canvas) >= 3)
+  assert.ok(
+    contrast(tokens.accent, tokens.canvas) >= 3,
+    `${theme} accent fill does not stand off the canvas`,
+  )
+}
+assert.match(
+  stylesheet.content,
+  /\[data-theme='light'\] \.placard-num \{\s*background: var\(--accent\);\s*color: var\(--on-accent\);/,
+)
+const retiredColours =
+  /#(?:0b1033|181f52|262e6b|353f84|2f3874|5a6499|1f275c|f3f4fa|a7adcf|979ec4|d63a1f|b42a12|ff7a63|a82710|3dd68c|03040f|e7e9f1|cfd3e2|b6bcd2|c3c8da|757e9e|10132b|4a5175|50577b|0b6b3e)\b|rgba\((?:2, ?3, ?1[24]|16, ?19, ?43)/i
+for (const path of files.filter(
+  (file) =>
+    /\.(?:html|css|js|svg|json|xml|txt)$/.test(file) &&
+    !file.startsWith(join(destination, 'portfolio')),
+))
+  assert.doesNotMatch(
+    readFileSync(path, 'utf8'),
+    retiredColours,
+    `Retired palette colour in ${path.slice(destination.length)}`,
+  )
+assert.deepEqual(
+  readFileSync(join(destination, 'favicon.svg'), 'utf8')
+    .match(/fill="#[0-9a-f]{6}"/gi)
+    .map((fill) => fill.slice(6, 13).toLowerCase()),
+  [darkTokens.canvas, darkTokens.accent],
+)
+const themeMeta = { dataset: themeColors, content: themeColors.dark }
+themeMeta.setAttribute = (name, value) => {
+  themeMeta[name] = value
+}
+for (const [saved, expected] of [
+  ['light', themeColors.light],
+  ['dark', themeColors.dark],
+  [null, themeColors.dark],
+]) {
+  themeMeta.content = themeColors.dark
+  const element = { dataset: {}, classList: { add() {} } }
+  new Function(
+    'document',
+    'localStorage',
+    readFileSync(join(root, 'assets/theme-init.js'), 'utf8'),
+  )(
+    {
+      documentElement: element,
+      querySelector: (selector) =>
+        selector === 'meta[name="theme-color"]' ? themeMeta : null,
+    },
+    { getItem: () => saved },
+  )
+  assert.equal(element.dataset.theme, saved ?? 'dark')
+  assert.equal(themeMeta.content, expected, `theme-init meta for ${saved}`)
+}
+const firstPixel = (path) => {
+  const data = readFileSync(path)
+  const chunks = []
+  let colourType = 0
+  for (let offset = 8; offset < data.length; ) {
+    const length = data.readUInt32BE(offset)
+    const type = data.subarray(offset + 4, offset + 8).toString('latin1')
+    if (type === 'IHDR') colourType = data[offset + 17]
+    if (type === 'IDAT')
+      chunks.push(data.subarray(offset + 8, offset + 8 + length))
+    offset += length + 12
+  }
+  assert.ok([2, 6].includes(colourType), `${path} must be RGB or RGBA`)
+  const pixel = inflateSync(Buffer.concat(chunks)).subarray(1, 4)
+  return `#${[...pixel].map((value) => value.toString(16).padStart(2, '0')).join('')}`
+}
+for (const [path, size] of [
+  ['assets/og-products.png', [1200, 630]],
+  ['assets/og-products-square.png', [1200, 1200]],
+  ['og-image.png', [1200, 630]],
+]) {
+  const file = join(root, path)
+  assert.deepEqual(pngSize(file), size, `${path} size`)
+  assert.ok(statSync(file).size <= 300 * 1024, `${path} exceeds 300 KB`)
+  assert.equal(firstPixel(file), darkTokens.canvas, `${path} canvas colour`)
+}
+assert.equal(
+  readFileSync(join(root, 'og-image.png')).compare(
+    readFileSync(join(root, 'assets/og-products.png')),
+  ),
+  0,
+)
+const heroHtml = read('uz/index.html')
+const heroFigures = heroHtml
+  .split('<figure ')
+  .slice(1)
+  .map((part) => part.split('</figure>')[0])
+  .filter((figure) => /^class="[^"]*\bhero-slab\b/.test(figure))
+const heroFigure = (attribute) =>
+  heroFigures.find((figure) => figure.includes(attribute)) ?? ''
+const firstPhoneHero = heroFigure('data-m="0"')
+assert.match(firstPhoneHero, /slab-trio/, 'The first phone hero slab is a trio')
+const firstPhoneImages = firstPhoneHero.match(/<img\b[^>]*>/g) ?? []
+assert.equal(firstPhoneImages.length, 3)
+assert.ok(
+  firstPhoneImages.every((tag) => !/loading="lazy"/.test(tag)),
+  'First-viewport trio screens must load eagerly',
+)
+assert.deepEqual(
+  firstPhoneImages.map((tag) => /fetchpriority="high"/.test(tag)),
+  [false, false, true],
+  'Only the centre screen of the first-viewport trio gets high fetch priority',
+)
+assert.equal(
+  (heroHtml.match(/fetchpriority="high"/g) ?? []).length,
+  2,
+  'Exactly the desktop and the phone first slabs get high priority',
+)
+const laterTrio = heroFigures.find(
+  (figure) =>
+    figure.includes('slab-trio') &&
+    !figure.includes('data-m="0"') &&
+    !figure.includes('data-d="0"'),
+)
+if (laterTrio)
+  assert.ok(
+    (laterTrio.match(/<img\b[^>]*>/g) ?? [])
+      .slice(0, -1)
+      .every((tag) => /loading="lazy"/.test(tag)),
+    'Flank phones of later trios stay lazy',
+  )
+const cropDir = mkdtempSync(join(tmpdir(), 'crop-check-'))
+const cropSource = 'screenshots/okh-shot.webp'
+for (const [crops, message] of [
+  [
+    [{ source: cropSource, box: [0, 0, 0, 10], output: 'screenshots/x.png' }],
+    /positive/,
+  ],
+  [
+    [
+      {
+        source: cropSource,
+        box: [0, 0, 99999, 10],
+        output: 'screenshots/x.png',
+      },
+    ],
+    /outside/,
+  ],
+  [
+    [{ source: cropSource, box: [-1, 0, 10, 10], output: 'screenshots/x.png' }],
+    /outside/,
+  ],
+  [
+    [{ source: cropSource, box: [0, 0, 10], output: 'screenshots/x.png' }],
+    /four integers/,
+  ],
+  [
+    [
+      { source: cropSource, box: [0, 0, 10, 10], output: 'screenshots/x.png' },
+      { source: cropSource, box: [0, 0, 10, 10], output: 'screenshots/x.png' },
+    ],
+    /repeats output/,
+  ],
+  [
+    [
+      {
+        source: cropSource,
+        box: [0, 0, 10, 10],
+        output: 'screenshots/../x.png',
+      },
+    ],
+    /under screenshots/,
+  ],
+  [
+    [{ source: cropSource, box: [0, 0, 10, 10], output: '/tmp/x.png' }],
+    /under screenshots/,
+  ],
+  [
+    [
+      {
+        source: 'package.json',
+        box: [0, 0, 10, 10],
+        output: 'screenshots/x.png',
+      },
+    ],
+    /source must be/,
+  ],
+  [[], /non-empty/],
+]) {
+  const config = join(cropDir, 'crops.json')
+  writeFileSync(config, JSON.stringify({ crops }))
+  const result = spawnSync(
+    'python3',
+    [join(root, 'scripts/crop-screens.py'), config],
+    {
+      encoding: 'utf8',
+    },
+  )
+  assert.equal(
+    result.status,
+    1,
+    `crop-screens must reject ${JSON.stringify(crops)}`,
+  )
+  assert.match(result.stderr, /^crop-screens: /)
+  assert.match(result.stderr, message)
+}
+rmSync(cropDir, { recursive: true, force: true })
+assert.ok(!existsSync(join(root, 'screenshots/x.png')))
+assert.ok(!existsSync(join(root, 'x.png')))
+const phoneCheck = spawnSync(
+  'python3',
+  [join(root, 'scripts/check-phones.py')],
+  { encoding: 'utf8' },
+)
+assert.equal(phoneCheck.status, 0, phoneCheck.stderr)
+assert.match(phoneCheck.stdout, /Checked 33 phone captures: 0 problems/)
+for (const locale of ['uz', 'ru', 'en']) {
+  const catalogue = new Map(
+    [
+      ...read(`${locale}/work/index.html`).matchAll(
+        /data-key="([^"]+)"[^>]*>(?:(?!<\/li>).)*?class="sr-row-num" aria-hidden="true">(\d+)</gs,
+      ),
+    ].map(([, key, number]) => [key, number]),
+  )
+  assert.equal(catalogue.size, cases.length, `Work list numbers at ${locale}`)
+  assert.deepEqual(
+    [...new Set(catalogue.values())].length,
+    cases.length,
+    `Catalogue numbers are unique at ${locale}`,
+  )
+  const home = read(`${locale}/index.html`)
+  const homeRows = [
+    ...home.matchAll(
+      /<li class="sr-item" data-key="([^"]+)"[^>]*data-number="(\d+)"[^>]*>(?:(?!<\/li>).)*?<\/a>/gs,
+    ),
+  ]
+  assert.ok(homeRows.length > 0, `Home showroom rows at ${locale}`)
+  for (const [row, key, number] of homeRows) {
+    assert.equal(number, catalogue.get(key), `Home row ${key} at ${locale}`)
+    assert.ok(!row.includes('sr-row-num'), `Home row ${key} has no number`)
+  }
+  const placards = [
+    ...home.matchAll(
+      /<a class="placard"[^>]*data-key="([^"]+)"[^>]*><span class="placard-num" aria-hidden="true">(\d+)</g,
+    ),
+  ]
+  assert.equal(placards.length, 6, `Hero placards at ${locale}`)
+  for (const [, key, number] of placards)
+    assert.equal(number, catalogue.get(key), `Placard ${key} at ${locale}`)
+  assert.ok(!home.includes('class="sr-num"'), `Home showroom has no numbers`)
+  const firstInfo = read(`${locale}/work/index.html`).match(
+    /class="sr-num" data-num>(\d+)</,
+  )?.[1]
+  assert.equal(firstInfo, '01', `Work showroom info ${locale}`)
+  assert.match(
+    home,
+    /data-minimap-step aria-hidden="true">1 \/ 6</,
+    `Hero counter is a position at ${locale}`,
+  )
+  const dock = home.split('class="hero-dock"')[1] ?? ''
+  assert.ok(
+    dock.indexOf('data-minimap') >= 0 &&
+      dock.indexOf('data-minimap') < dock.indexOf('data-placards'),
+    `Hero controls come before the placard at ${locale}`,
+  )
+  const dots = [...home.matchAll(/<button class="minimap-dot"[^>]*>/g)].map(
+    ([tag]) => attribute(tag, 'tabindex'),
+  )
+  assert.deepEqual(dots, ['0', '-1', '-1', '-1', '-1', '-1'])
+  for (const item of cases.filter((entry) => caseKeys.includes(entry.key))) {
+    const page = read(`${locale}/work/${item.key}/index.html`)
+    const tag = page.match(/<p class="case-tag">(.*?)<\/p>/s)?.[1] ?? ''
+    assert.ok(tag, `Case tag row at ${locale}/${item.key}`)
+    assert.ok(!tag.includes('class="mono"'), `Case tag stack at ${item.key}`)
+    const storeLinks = /class="case-links"[^]*?(App Store|Google Play)/.test(
+      page,
+    )
+    if (storeLinks)
+      assert.ok(
+        !tag.includes('status-stores'),
+        `Case tag repeats store links at ${locale}/${item.key}`,
+      )
+    assert.match(page, /<ul class="case-chips"/, `Case chips at ${item.key}`)
+  }
+}
+for (const item of cases.filter((entry) => entry.screens?.length > 1))
+  assert.equal(item.screen, item.screens[0], `Trio centre leads ${item.key}`)
+const imageManifest = readJson('screenshots/web/manifest.json')
+const phoneCaptures = Object.entries(imageManifest).filter(
+  ([, entry]) => entry.width < entry.height,
+)
+assert.ok(phoneCaptures.length >= 30, 'Phone captures are present')
+for (const [key, entry] of phoneCaptures)
+  for (const variant of entry.variants)
+    assert.ok(
+      Math.abs(variant.width / variant.height - 9 / 19.5) <= 0.004,
+      `${key} ${variant.width}x${variant.height} fits the 9:19.5 phone screen`,
+    )
 console.log(
   'Static verification passed: 104 canonical multilingual pages, reciprocal alternates, truthful metadata, real contacts, public assets, 29 preserved cases per gallery and controlled failure checks.',
 )

@@ -6,20 +6,6 @@
   const stage = hero.querySelector('[data-hero-stage]')
   const hall = hero.querySelector('[data-hall]')
   const world = hero.querySelector('[data-world]')
-  const floors = {
-    d: hero.querySelector('.floor-d'),
-    m: hero.querySelector('.floor-m'),
-  }
-  const floorSpecs = {}
-  for (const [mode, svg] of Object.entries(floors)) {
-    if (!svg) continue
-    floorSpecs[mode] = {
-      spec: JSON.parse(svg.dataset.floor),
-      path: svg.querySelector('path'),
-      drawn: '',
-    }
-  }
-  const floorTravel = { d: [190, 420], m: [-150, 300] }
   const placardBox = hero.querySelector('[data-placards]')
   const minimap = hero.querySelector('[data-minimap]')
   const stepLabel = hero.querySelector('[data-minimap-step]')
@@ -27,6 +13,8 @@
   const allFigures = [...hero.querySelectorAll('.hero-slab')]
   const allPlacards = [...hero.querySelectorAll('.placard')]
   const allDots = [...hero.querySelectorAll('.minimap-dot')]
+  const navButtons = [...hero.querySelectorAll('[data-hero-step]')]
+  const live = hero.querySelector('[data-hero-live]')
   const deskQuery = window.matchMedia(
     '(min-width: 1024px) and (min-height: 600px)',
   )
@@ -35,64 +23,31 @@
 
   const slots = {
     d: [
-      [520, 20, 420, -30, 0],
-      [165, 0, 0, -26, 0],
-      [-110, 0, -700, -20, 0.3],
-      [-330, 0, -1400, -16, 0.45],
-      [-550, 0, -2200, -12, 0.6],
+      [60, 10, -220, 28, 0],
+      [20, 0, 0, 22, 0],
+      [270, 0, -700, 20, 0.3],
+      [440, 0, -1400, 16, 0.45],
+      [570, 0, -2200, 12, 0.6],
     ],
     dPhone: [
-      [520, 20, 420, -30, 0],
-      [165, 0, 0, -26, 0],
-      [-240, 0, -700, -20, 0.3],
-      [-500, 0, -1400, -16, 0.45],
-      [-700, 0, -2200, -12, 0.6],
+      [60, 10, -220, 28, 0],
+      [20, 0, 0, 22, 0],
+      [330, 0, -700, 20, 0.3],
+      [520, 0, -1400, 16, 0.45],
+      [670, 0, -2200, 12, 0.6],
     ],
     m: [
-      [-300, 10, 300, -6, 0],
-      [-24, 0, 0, -16, 0],
-      [120, 0, -560, -20, 0.32],
-      [230, 0, -1150, -22, 0.5],
+      [-330, 10, 300, 6, 0],
+      [-24, 0, 0, 16, 0],
+      [345, 0, -300, 24, 0.3],
+      [520, 0, -900, 24, 0.5],
     ],
-  }
-  const frameWidth = { d: 1280, m: 390 }
-
-  function floorPath(f, dx, dz) {
-    const project = (x, z) => {
-      const scale = f.p / (f.p - z)
-      return [
-        Math.round((f.ox + x * scale) * 10) / 10,
-        Math.round((f.oy + f.y * scale) * 10) / 10,
-      ]
-    }
-    const lines = []
-    const shiftZ = ((dz % f.cell) + f.cell) % f.cell
-    const shiftX = ((dx % f.cell) + f.cell) % f.cell
-    for (let z = f.z0 + shiftZ; z <= f.z1; z += f.cell) {
-      const [ax, ay] = project(f.x0, z)
-      const [bx] = project(f.x1, z)
-      if (ay <= f.h + 1) lines.push(`M${ax} ${ay}H${bx}`)
-    }
-    for (let x = f.x0 + shiftX; x <= f.x1; x += f.cell) {
-      const [ax, ay] = project(x, f.z0)
-      const [bx, by] = project(x, f.z1)
-      lines.push(`M${ax} ${ay}L${bx} ${by}`)
-    }
-    return lines.join('')
-  }
-
-  function drawFloor(x) {
-    const floor = floorSpecs[state.mode]
-    if (!floor) return
-    const [ax, az] = floorTravel[state.mode]
-    const d = floorPath(
-      floor.spec,
-      Math.round(x * ax * 2) / 2,
-      Math.round(x * az * 2) / 2,
-    )
-    if (d === floor.drawn) return
-    floor.drawn = d
-    floor.path.setAttribute('d', d)
+    mPhone: [
+      [-330, 10, 300, 6, 0],
+      [-24, 0, 0, 16, 0],
+      [293, 0, -300, 24, 0.3],
+      [440, 0, -900, 24, 0.5],
+    ],
   }
   const stiffness = 170
   const damping = 26
@@ -128,25 +83,33 @@
     running: false,
     last: 0,
     drag: null,
+    pending: -1,
+    suppress: false,
   }
   const hover = new Map()
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
-  const two = (value) => String(value).padStart(2, '0')
   const modeKey = () => (deskQuery.matches ? 'd' : 'm')
   const indexOf = (element) => Number(element.dataset[state.mode])
 
   function opacityAt(s) {
     const tail = state.mode === 'd' ? 2 : 1
-    if (s < -1 || s > tail + 1) return 0
-    if (s <= -0.4) return (s + 1) / 0.6
+    if (s <= -0.25 || s >= tail + 0.5) return 0
+    if (s < 0) return 1 + 4 * s
     if (s <= tail) return 1
-    return tail + 1 - s
+    return (tail + 0.5 - s) * 2
   }
 
   function poseAt(s, kind) {
+    const narrow = kind === 'phone' || kind === 'trio'
     const rows =
-      state.mode === 'd' && kind === 'phone' ? slots.dPhone : slots[state.mode]
+      state.mode === 'd'
+        ? narrow
+          ? slots.dPhone
+          : slots.d
+        : narrow
+          ? slots.mPhone
+          : slots.m
     const position = clamp(s + 1, 0, rows.length - 1)
     const low = Math.floor(position)
     const high = Math.min(rows.length - 1, low + 1)
@@ -164,9 +127,11 @@
     state.hallTop = hallRect.top + window.scrollY
     state.hallHeight = hall.offsetHeight
     state.viewport = window.innerHeight
-    state.k =
-      floors[state.mode].getBoundingClientRect().width /
-        frameWidth[state.mode] || 1
+    const probe = state.figures[0]
+    const units = probe
+      ? parseFloat(getComputedStyle(probe).getPropertyValue('--sw'))
+      : 0
+    state.k = probe && units ? probe.offsetWidth / units || 1 : 1
   }
 
   function scrollUnit() {
@@ -187,8 +152,37 @@
 
   function computeTarget() {
     if (state.reduced) return state.manual
-    if (state.mode === 'd') return state.travel ? scrollUnit() : state.manual
-    return clamp(scrollUnit() + state.offset, 0, state.count - 1)
+    if (state.mode === 'd' && !state.travel) return state.manual
+    const raw = scrollUnit() + state.offset
+    return state.drag?.active ? raw : clamp(raw, 0, state.count - 1)
+  }
+
+  function band(raw) {
+    const max = state.count - 1
+    if (raw < 0) return -Math.min(0.5, -raw * 0.35)
+    if (raw > max) return max + Math.min(0.5, (raw - max) * 0.35)
+    return raw
+  }
+
+  function announce(index) {
+    const placard = state.placards[index]
+    if (!live || !placard) return
+    const parts = [
+      `${index + 1} / ${state.count}`,
+      placard.querySelector('.placard-title')?.textContent,
+      ...[...placard.querySelectorAll('.placard-meta > span')].map(
+        (part) => part.textContent,
+      ),
+      ...[...placard.querySelectorAll('.status')].flatMap((status) =>
+        status.classList.contains('status-stores')
+          ? [...status.children].map((store) => store.textContent)
+          : [status.textContent],
+      ),
+    ]
+    live.textContent = parts
+      .map((part) => (part || '').trim())
+      .filter(Boolean)
+      .join('. ')
   }
 
   function syncSnap() {
@@ -203,6 +197,9 @@
 
   function setFront(index) {
     if (index === state.front) return
+    const active = document.activeElement
+    const held =
+      active && active !== hall && state.figures[state.front]?.contains(active)
     state.front = index
     state.figures.forEach((figure, i) => {
       const front = i === index
@@ -211,8 +208,14 @@
       else figure.setAttribute('aria-hidden', 'true')
       const link = figure.querySelector('[data-slab-url]')
       if (link) {
-        if (front) link.removeAttribute('tabindex')
-        else link.setAttribute('tabindex', '-1')
+        const bar = link.closest('.slab-bar')
+        if (front) {
+          link.removeAttribute('tabindex')
+          bar?.removeAttribute('aria-hidden')
+        } else {
+          link.setAttribute('tabindex', '-1')
+          bar?.setAttribute('aria-hidden', 'true')
+        }
       }
     })
     state.placards.forEach((placard, i) => {
@@ -221,21 +224,48 @@
     state.dots.forEach((dot, i) => {
       if (i === index) dot.setAttribute('aria-current', 'step')
       else dot.removeAttribute('aria-current')
+      dot.tabIndex = i === index ? 0 : -1
     })
-    if (stepLabel)
-      stepLabel.textContent = `${two(index + 1)} / ${two(state.count)}`
+    if (stepLabel) stepLabel.textContent = `${index + 1} / ${state.count}`
+    navButtons.forEach((button) => {
+      const edge = Number(button.dataset.heroStep) < 0 ? 0 : state.count - 1
+      if (index === edge) button.setAttribute('aria-disabled', 'true')
+      else button.removeAttribute('aria-disabled')
+    })
+    if (held) {
+      const link = state.figures[index]?.querySelector('[data-slab-url]')
+      ;(link || hall).focus({ preventScroll: true })
+    }
+    if (state.pending === index) {
+      state.pending = -1
+      announce(index)
+    }
   }
 
   function render() {
     const k = state.k
     const x = state.x
+    const trio = state.figures.reduce(
+      (most, figure, i) =>
+        figure.classList.contains('slab-trio')
+          ? Math.max(most, clamp(1 - Math.abs(i - x) * 2, 0, 1))
+          : most,
+      0,
+    )
     state.figures.forEach((figure, i) => {
       const s = i - x
-      const opacity = opacityAt(s)
-      const out = opacity <= 0.001 || s < -1.5 || s > 3.5
+      const own = figure.classList.contains('slab-trio')
+        ? clamp(1 - Math.abs(s) * 2, 0, 1)
+        : 0
+      const reach = state.mode === 'd' ? 1 : clamp(2 - 2 * Math.abs(s), 0, 1)
+      const opacity = opacityAt(s) * (1 - Math.max(0, trio - own) * reach)
+      const out = opacity <= 0.001 && !figure.contains(document.activeElement)
       figure.classList.toggle('is-out', out)
       if (out) return
-      const [px, py, pz, ry, dim] = poseAt(s, figure.dataset.kind)
+      const [px, py, pz, ry, dim] = poseAt(
+        s,
+        figure.classList.contains('slab-trio') ? 'trio' : figure.dataset.kind,
+      )
       const h = hover.get(figure) ?? 0
       const front = Math.abs(s) < 0.5
       const lift = front ? 32 * h : 0
@@ -249,8 +279,7 @@
         ? `translateZ(${(state.dolly * k).toFixed(2)}px) rotateX(${state.rx.toFixed(3)}deg) rotateY(${state.ry.toFixed(3)}deg)`
         : ''
     world.style.transform = camera
-    drawFloor(x)
-    setFront(clamp(Math.round(x), 0, state.count - 1))
+    setFront(clamp(Math.floor(x + 0.75), 0, state.count - 1))
   }
 
   function step(now) {
@@ -259,6 +288,10 @@
     state.last = now
     state.target = computeTarget()
     let settled = true
+    if (state.drag?.active && !state.reduced) {
+      state.x = state.target
+      state.v = state.drag.velocity
+    }
     if (state.reduced) {
       state.x = state.target
       state.v = 0
@@ -268,15 +301,19 @@
     } else {
       const substeps = Math.max(1, Math.ceil(dt / (1 / 240)))
       const h = dt / substeps
+      const follow = Boolean(state.drag?.active)
       for (let i = 0; i < substeps; i += 1) {
-        const a = stiffness * (state.target - state.x) - damping * state.v
-        state.v += a * h
-        state.x += state.v * h
+        if (!follow) {
+          const a = stiffness * (state.target - state.x) - damping * state.v
+          state.v += a * h
+          state.x += state.v * h
+        }
         const b = stiffness * (0 - state.dolly) - damping * state.dollyV
         state.dollyV += b * h
         state.dolly += state.dollyV * h
       }
-      if (
+      if (follow) settled = false
+      else if (
         Math.abs(state.target - state.x) < 0.001 &&
         Math.abs(state.v) < 0.001
       ) {
@@ -327,6 +364,11 @@
   }
 
   function setup() {
+    const active = document.activeElement
+    const heldPlacard = allPlacards.some((placard) => placard.contains(active))
+    const held =
+      heldPlacard ||
+      (active !== hall && allFigures.some((figure) => figure.contains(active)))
     state.mode = modeKey()
     state.reduced = reduceQuery.matches
     state.travel = state.mode === 'd' && !state.reduced
@@ -376,25 +418,47 @@
     state.pry = 0
     syncSnap()
     render()
+    if (held) {
+      const target = heldPlacard
+        ? state.placards[state.front]
+        : state.figures[state.front]?.querySelector('[data-slab-url]')
+      ;(target || hall).focus({ preventScroll: true })
+    }
   }
 
-  function goTo(index, focusDot) {
+  function commit(index, from = state.front) {
     const target = clamp(index, 0, state.count - 1)
-    if (state.travel) {
+    state.pending = target === from && target === state.front ? -1 : target
+    if (state.pending >= 0 && state.pending === state.front) {
+      state.pending = -1
+      announce(target)
+    }
+    if (state.reduced || (state.mode === 'd' && !state.travel)) {
+      state.manual = target
+      if (state.reduced) {
+        state.x = target
+        state.v = 0
+      }
+    } else if (state.travel) {
       const anchor = steps[target]
       window.scrollTo({
         top: state.trackTop + (anchor ? anchor.offsetTop : 0),
-        behavior: 'smooth',
+        behavior: 'instant',
       })
-    } else if (state.reduced) {
-      state.manual = target
-      state.x = target
-    } else if (state.mode === 'd') {
-      state.manual = target
+      state.offset = 0
     } else {
       state.offset = target - scrollUnit()
     }
     request()
+    return target
+  }
+
+  function goal() {
+    return clamp(Math.round(computeTarget()), 0, state.count - 1)
+  }
+
+  function goTo(index, focusDot) {
+    const target = commit(index, goal())
     if (focusDot) state.dots[target]?.focus()
   }
 
@@ -418,6 +482,58 @@
     event.preventDefault()
     goTo(keys[event.key], true)
   })
+
+  minimap?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-hero-step]')
+    if (!button || button.getAttribute('aria-disabled') === 'true') return
+    goTo(goal() + Number(button.dataset.heroStep), false)
+  })
+
+  hall.addEventListener(
+    'click',
+    (event) => {
+      if (!state.suppress || event.detail === 0) return
+      state.suppress = false
+      event.preventDefault()
+      event.stopPropagation()
+    },
+    true,
+  )
+
+  hall.addEventListener('dragstart', (event) => event.preventDefault())
+
+  hall.addEventListener('keydown', (event) => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return
+    const keys = {
+      ArrowLeft: goal() - 1,
+      ArrowRight: goal() + 1,
+      Home: 0,
+      End: state.count - 1,
+    }
+    if (!(event.key in keys)) return
+    event.preventDefault()
+    goTo(keys[event.key], false)
+  })
+
+  let wheelTimer = 0
+  let wheelLocked = false
+  stage.addEventListener(
+    'wheel',
+    (event) => {
+      if (event.ctrlKey) return
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return
+      if (Math.abs(event.deltaX) < 2) return
+      event.preventDefault()
+      window.clearTimeout(wheelTimer)
+      wheelTimer = window.setTimeout(() => {
+        wheelLocked = false
+      }, 320)
+      if (wheelLocked || state.drag?.active) return
+      wheelLocked = true
+      goTo(goal() + Math.sign(event.deltaX), false)
+    },
+    { passive: false },
+  )
 
   hall.addEventListener('click', (event) => {
     if (event.target.closest('a')) return
@@ -476,62 +592,127 @@
     request()
   })
 
+  const unitsPerPixel = () => -1 / ((state.mode === 'd' ? 355 : 276) * state.k)
+
+  const clearSuppress = () =>
+    window.setTimeout(() => {
+      state.suppress = false
+    }, 0)
+
   hall.addEventListener('pointerdown', (event) => {
-    if (event.pointerType !== 'touch' || state.mode !== 'm') return
+    if (!event.isPrimary || event.button !== 0) return
+    if (state.drag) cancel()
+    state.suppress = false
+    const moving =
+      !state.reduced &&
+      (Math.abs(state.target - state.x) > 0.01 || Math.abs(state.v) > 0.05)
+    if (moving) {
+      state.offset = state.x - scrollUnit()
+      state.v = 0
+      state.pending = -1
+      state.suppress = true
+    }
     state.drag = {
       id: event.pointerId,
       x: event.clientX,
       y: event.clientY,
-      start: state.reduced ? state.manual : state.offset,
+      origin: event.clientX,
+      base: state.x,
+      from: clamp(Math.round(state.x), 0, state.count - 1),
+      caught: moving,
       active: false,
-      time: event.timeStamp,
-      last: event.clientX,
+      samples: [],
       velocity: 0,
     }
+    request()
   })
 
-  hall.addEventListener('pointermove', (event) => {
+  window.addEventListener('pointermove', (event) => {
     const drag = state.drag
     if (!drag || drag.id !== event.pointerId) return
+    if (event.pointerType === 'mouse' && event.buttons === 0) {
+      cancel()
+      return
+    }
     const dx = event.clientX - drag.x
     const dy = event.clientY - drag.y
     if (!drag.active) {
-      if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return
+      if (Math.abs(dy) >= 8 && Math.abs(dy) >= Math.abs(dx)) {
+        state.drag = null
+        if (drag.caught) commit(Math.round(state.x))
+        return
+      }
+      if (Math.abs(dx) < 8) return
       drag.active = true
+      drag.origin = event.clientX
+      drag.base = state.x
+      hall.classList.add('is-dragging')
+      if (hall.hasPointerCapture && !hall.hasPointerCapture(event.pointerId))
+        hall.setPointerCapture(event.pointerId)
     }
-    const elapsed = Math.max(1, event.timeStamp - drag.time)
-    drag.velocity = (-(event.clientX - drag.last) / 240 / elapsed) * 1000
-    drag.time = event.timeStamp
-    drag.last = event.clientX
+    event.preventDefault()
+    const raw = drag.base + (event.clientX - drag.origin) * unitsPerPixel()
+    drag.raw = raw
+    drag.samples.push({ t: event.timeStamp, raw })
+    while (drag.samples.length && event.timeStamp - drag.samples[0].t > 100)
+      drag.samples.shift()
+    const first = drag.samples[0]
+    const span = event.timeStamp - first.t
+    drag.velocity = span > 0 ? ((raw - first.raw) / span) * 1000 : 0
     if (!state.reduced) {
-      const base = scrollUnit()
-      state.offset = clamp(drag.start - dx / 240, -base, state.count - 1 - base)
+      state.offset = band(raw) - scrollUnit()
       request()
     }
   })
 
   const release = (event) => {
     const drag = state.drag
-    if (!drag || drag.id !== event.pointerId) return
+    if (!drag || (event && drag.id !== event.pointerId)) return
     state.drag = null
-    if (!drag.active) return
-    const dx = event.clientX - drag.x
-    if (state.reduced) {
-      if (Math.abs(dx) > 40) goTo(state.manual + (dx < 0 ? 1 : -1), false)
+    hall.classList.remove('is-dragging')
+    if (hall.hasPointerCapture?.(drag.id)) hall.releasePointerCapture(drag.id)
+    const up = event?.type === 'pointerup'
+    if (up && (drag.active || drag.caught)) {
+      state.suppress = true
+      clearSuppress()
+    } else state.suppress = false
+    if (!drag.active) {
+      if (drag.caught) commit(Math.round(state.x))
       return
     }
-    const base = scrollUnit()
-    const projected = clamp(
-      base + state.offset + drag.velocity * 0.18,
-      0,
-      state.count - 1,
+    const last = drag.samples[drag.samples.length - 1]
+    const fresh = up && last && event.timeStamp - last.t < 100
+    const velocity = fresh ? drag.velocity : 0
+    const raw = drag.raw ?? drag.base
+    if (state.reduced) {
+      const moved = raw - drag.base
+      commit(
+        Math.abs(moved) > 0.12 || Math.abs(velocity) > 0.9
+          ? drag.from + Math.sign(moved || velocity)
+          : drag.from,
+        drag.from,
+      )
+      return
+    }
+    let next = clamp(
+      Math.round(raw + velocity * 0.15),
+      Math.floor(raw),
+      Math.ceil(raw),
     )
-    state.offset = Math.round(projected) - base
-    state.v += drag.velocity * 0.5
-    request()
+    if (Math.abs(velocity) > 0.9 && next === drag.from)
+      next = drag.from + Math.sign(velocity)
+    state.x = band(raw)
+    state.v = clamp(velocity, -6, 6)
+    commit(next, drag.from)
   }
-  hall.addEventListener('pointerup', release)
-  hall.addEventListener('pointercancel', release)
+  const cancel = () => release(null)
+  window.addEventListener('pointerup', release, true)
+  window.addEventListener('pointercancel', release, true)
+  hall.addEventListener('lostpointercapture', (event) => {
+    if (event.target === hall) release(event)
+  })
+  hall.addEventListener('contextmenu', cancel)
+  window.addEventListener('blur', cancel)
 
   let restTimer = 0
   const rest = () => {

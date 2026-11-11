@@ -16,6 +16,12 @@ const sheetSizes = '(min-width: 761px) 440px, calc(100vw - 48px)'
 const two = (value) => String(value).padStart(2, '0')
 const showroomLead = ['agentmama', 'majiidtv', 'miyolo']
 
+export function catalogueNumber(cases, key) {
+  const index = leadOrder(cases).findIndex((item) => item.key === key)
+  if (index < 0) throw new Error(`Project is not in the catalogue: ${key}`)
+  return index + 1
+}
+
 function leadOrder(cases) {
   const lead = showroomLead.map((key) => {
     const item = cases.find((entry) => entry.key === key)
@@ -33,7 +39,10 @@ function rowHref({ locale, item, variant }) {
 }
 
 function infoCopy({ item, words, ui, presentation, labels, number }) {
-  return `<div class="sr-info-head"><span class="sr-num" data-num>${two(number)}</span><h3 class="sr-title">${escapeHtml(words.title)}</h3></div><p class="sr-meta"><span>${escapeHtml(projectType(item, ui))}</span><span class="mono">${escapeHtml(monoText(item.stack))}</span>${projectStatus({ item, words, presentation, labels })}</p><p class="sr-summary">${escapeHtml(words.summary)}</p>`
+  const numbered = number
+    ? `<span class="sr-num" data-num>${two(number)}</span>`
+    : ''
+  return `<div class="sr-info-head">${numbered}<h3 class="sr-title">${escapeHtml(words.title)}</h3></div><p class="sr-meta"><span>${escapeHtml(projectType(item, ui))}</span><span class="mono">${escapeHtml(monoText(item.stack))}</span>${projectStatus({ item, words, presentation, labels })}</p><p class="sr-summary">${escapeHtml(words.summary)}</p>`
 }
 
 function infoLinks({ locale, item, copy, labels }) {
@@ -60,7 +69,7 @@ function detail({ locale, item, words, copy, labels, presentation }) {
   const availability = isOffline(item)
     ? presentation.offline
     : words.status || (!item.links.length ? labels.noPublicLink : '')
-  return `<div class="sheet-slab">${slab({ item, words, sizes: sheetSizes, alt: words.alt, focusable: true, className: 'flat-slab' })}</div><h3 class="sheet-title" id="sheet-title">${escapeHtml(words.title)}</h3><p class="sheet-summary">${escapeHtml(words.summary)}</p><p class="sheet-stack mono">${escapeHtml(monoText(item.stack))}</p><dl class="sheet-fields">${fields}</dl><div class="sheet-links">${caseLink}${projectLinks({ item, words })}${availability ? `<span class="sheet-availability">${escapeHtml(availability)}</span>` : ''}</div>`
+  return `<div class="sheet-slab">${slab({ item, words, sizes: sheetSizes, alt: words.alt, focusable: true, className: 'flat-slab', trio: true })}</div><h3 class="sheet-title" id="sheet-title">${escapeHtml(words.title)}</h3><p class="sheet-summary">${escapeHtml(words.summary)}</p><p class="sheet-stack mono">${escapeHtml(monoText(item.stack))}</p><dl class="sheet-fields">${fields}</dl><div class="sheet-links">${caseLink}${projectLinks({ item, words })}${availability ? `<span class="sheet-availability">${escapeHtml(availability)}</span>` : ''}</div>`
 }
 
 function row({
@@ -78,7 +87,17 @@ function row({
 }) {
   const title = escapeHtml(words.title)
   const parts = [
-    ['copy', infoCopy({ item, words, ui, presentation, labels, number })],
+    [
+      'copy',
+      infoCopy({
+        item,
+        words,
+        ui,
+        presentation,
+        labels,
+        number: variant === 'home' ? 0 : number,
+      }),
+    ],
     ['links', infoLinks({ locale, item, copy, labels })],
     [
       'slab',
@@ -88,13 +107,14 @@ function row({
         sizes: stageSizes,
         alt: words.alt,
         className: 'sr-slab',
+        trio: true,
       }),
     ],
     ['detail', detail({ locale, item, words, copy, labels, presentation })],
   ]
     .map(([name, html]) => `<div data-part="${name}">${html}</div>`)
     .join('')
-  return `<li class="sr-item"${variant === 'work' ? ` id="${escapeHtml(item.id)}"` : ''} data-key="${escapeHtml(item.key)}" data-category="${escapeHtml(item.categories.join(' '))}" data-title="${title}"${visible ? '' : ' hidden'}><a class="sr-row" href="${rowHref({ locale, item, variant })}" aria-label="${title}" data-row${selected ? ' aria-current="true"' : ''}><span class="sr-row-num" aria-hidden="true">${two(number)}</span><span class="sr-row-title">${title}</span><span class="sr-row-type">${escapeHtml(projectType(item, ui))}</span></a><template data-row-template>${parts}</template></li>`
+  return `<li class="sr-item"${variant === 'work' ? ` id="${escapeHtml(item.id)}"` : ''} data-key="${escapeHtml(item.key)}" data-category="${escapeHtml(item.categories.join(' '))}" data-title="${title}" data-number="${two(number)}"${visible ? '' : ' hidden'}><a class="sr-row" href="${rowHref({ locale, item, variant })}" aria-label="${title}" data-row${selected ? ' aria-current="true"' : ''}>${variant === 'home' ? '' : `<span class="sr-row-num" aria-hidden="true">${two(number)}</span>`}<span class="sr-row-title">${title}</span><span class="sr-row-type">${escapeHtml(projectType(item, ui))}</span></a><template data-row-template>${parts}</template></li>`
 }
 
 export function renderShowroom({
@@ -138,7 +158,7 @@ export function renderShowroom({
         words: caseCopy[item.key],
         labels,
         presentation,
-        number: index + 1,
+        number: ordered.indexOf(item) + 1,
         variant,
         visible: index < visibleCount,
         selected: index === 0,
@@ -156,8 +176,8 @@ export function renderShowroom({
     variant === 'home'
       ? `<a class="sr-all" href="${pagePath(locale, 'work')}"><span>${escapeHtml(ui.work.allProjects.replace(/\d+/, String(counts.total)))}</span>${icon('i-arrow-right')}</a>`
       : ''
-  const stage = `<div class="sr-stage" data-stage><div class="sr-world" data-stage-world>${slab({ item: first, words: firstWords, sizes: stageSizes, alt: firstWords.alt, className: 'sr-slab is-current' })}</div></div>`
-  const info = `<div class="sr-info" data-info><div class="sr-copy" data-info-copy>${infoCopy({ item: first, words: firstWords, ui, presentation, labels, number: 1 })}</div><div class="sr-actions"><button class="icon-btn icon-btn-lg" type="button" data-step="-1" data-label="${escapeHtml(copy.caseStudy.previous)}" aria-label="${escapeHtml(copy.caseStudy.previous)}" hidden>${icon('i-arrow-left')}</button><button class="icon-btn icon-btn-lg" type="button" data-step="1" data-label="${escapeHtml(copy.caseStudy.next)}" aria-label="${escapeHtml(copy.caseStudy.next)}" hidden>${icon('i-arrow-right')}</button><span class="sr-links" data-info-links>${infoLinks({ locale, item: first, copy, labels })}</span></div></div>`
+  const stage = `<div class="sr-stage" data-stage><div class="sr-world" data-stage-world>${slab({ item: first, words: firstWords, sizes: stageSizes, alt: firstWords.alt, className: 'sr-slab is-current', trio: true })}</div></div>`
+  const info = `<div class="sr-info" data-info><div class="sr-copy" data-info-copy>${infoCopy({ item: first, words: firstWords, ui, presentation, labels, number: variant === 'home' ? 0 : ordered.indexOf(first) + 1 })}</div><div class="sr-actions"><button class="icon-btn icon-btn-lg" type="button" data-step="-1" data-label="${escapeHtml(copy.caseStudy.previous)}" aria-label="${escapeHtml(copy.caseStudy.previous)}" hidden>${icon('i-arrow-left')}</button><button class="icon-btn icon-btn-lg" type="button" data-step="1" data-label="${escapeHtml(copy.caseStudy.next)}" aria-label="${escapeHtml(copy.caseStudy.next)}" hidden>${icon('i-arrow-right')}</button><span class="sr-links" data-info-links data-primary-cta>${infoLinks({ locale, item: first, copy, labels })}</span></div></div>`
   const section = `<div class="sec-head showroom-head">${title}<div class="chips" data-chips role="group" aria-label="${escapeHtml(ui.accessibility.filtersLabel)}" hidden>${chips}</div></div>${status}
 <div class="showroom showroom-${variant}" data-showroom data-variant="${variant}"${limit ? ` data-limit="${limit}"` : ''}><div class="sr-main">${stage}${info}</div><div class="sr-panel"><ol class="sr-list" data-list>${rows}</ol>${allLink}</div></div>`
   const overlays = `<div class="scrim" data-scrim></div>

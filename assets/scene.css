@@ -129,7 +129,8 @@ html:not(.js) .hero-stage {
   margin: 4px auto 0;
   perspective: calc(900 * var(--m));
   perspective-origin: calc(195 * var(--m)) calc(132 * var(--m));
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   touch-action: pan-y;
 }
 
@@ -143,30 +144,10 @@ html:not(.js) .hero-stage {
   transform-style: preserve-3d;
 }
 
-.floor {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  fill: none;
-  stroke: var(--floor);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-  pointer-events: none;
-}
-
-.floor path {
-  vector-effect: non-scaling-stroke;
-}
-
-.floor-d {
-  display: none;
-}
-
 .hero-slab {
   --sw: 112;
   --sh: 242;
+  --frame: 10px;
   position: absolute;
   left: calc(var(--sw) * var(--k) / -2);
   top: calc(var(--sh) * var(--k) / -2);
@@ -181,37 +162,45 @@ html:not(.js) .hero-stage {
   --sh: 175;
 }
 
-.hero-slab.slab-phone {
+.hero-slab.slab-phone,
+.hero-slab > .trio-phone {
   padding: 4px;
   border-radius: 18px;
 }
 
-.hero-slab.slab-phone .slab-screen {
+.hero-slab.slab-phone .slab-screen,
+.hero-slab > .trio-phone .slab-screen {
   border-radius: 14px;
 }
 
 .hero-slab[data-m='0'] {
   display: flex;
-  transform: translate3d(calc(-24 * var(--k)), 0, 0) rotateY(-16deg);
+  transform: translate3d(calc(-24 * var(--k)), 0, 0) rotateY(16deg);
 }
 
 .hero-slab[data-m='1'] {
   display: flex;
-  transform: translate3d(calc(120 * var(--k)), 0, calc(-560 * var(--k)))
-    rotateY(-20deg);
+  transform: translate3d(calc(345 * var(--k)), 0, calc(-300 * var(--k)))
+    rotateY(24deg);
 }
 
 .hero-slab[data-m='1'] .slab-dim {
-  opacity: 0.32;
+  opacity: 0.3;
 }
 
-.placards {
+.hero-dock {
   order: 2;
   position: relative;
   z-index: 3;
   display: grid;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.placards {
+  position: relative;
+  display: grid;
   padding-inline: 20px;
-  margin-top: 8px;
 }
 
 .placard {
@@ -271,8 +260,9 @@ html:not(.js) .hero-stage {
   font-variant-numeric: lining-nums tabular-nums;
 }
 
-.placard-num .num-d {
-  display: none;
+[data-theme='light'] .placard-num {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .placard-body {
@@ -322,14 +312,12 @@ html:not(.js) .hero-stage {
 }
 
 .minimap {
-  order: 3;
   position: relative;
-  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin: 4px auto 0;
+  gap: 8px;
+  margin: 0 auto;
 }
 
 .minimap[hidden] {
@@ -344,7 +332,7 @@ html:not(.js) .hero-stage {
 .minimap-dot {
   display: grid;
   place-items: center;
-  width: 32px;
+  width: 44px;
   height: 44px;
   border-radius: var(--r-sm);
   transition: transform var(--t-press-out) var(--ease-out);
@@ -385,8 +373,9 @@ html:not(.js) .hero-stage {
 }
 
 .minimap-step {
-  color: var(--muted);
-  font: 400 13px/1 var(--font-mono);
+  color: var(--faint);
+  font: 400 12px/1 var(--font-mono);
+  letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -454,7 +443,7 @@ html:not(.js) .hero-stage {
     position: absolute;
     left: max(var(--gutter), calc(var(--fx) + 64 * var(--u)));
     bottom: calc(64 * var(--u));
-    width: calc(600 * var(--u));
+    width: calc(572 * var(--u));
     padding: 0;
     gap: calc(24 * var(--u));
   }
@@ -493,7 +482,6 @@ html:not(.js) .hero-stage {
     perspective: calc(1400 * var(--u));
     perspective-origin: calc(var(--fx) + 900 * var(--u))
       calc(var(--fy) + 390 * var(--u));
-    touch-action: auto;
   }
 
   .world {
@@ -502,23 +490,10 @@ html:not(.js) .hero-stage {
     top: calc(var(--fy) + 390 * var(--u));
   }
 
-  .floor-m {
-    display: none;
-  }
-
-  .floor-d {
-    display: block;
-    inset: auto;
-    left: var(--fx);
-    top: var(--fy);
-    width: calc(1280 * var(--u));
-    height: calc(800 * var(--u));
-    overflow: visible;
-  }
-
   .hero-slab {
     --sw: 196;
     --sh: 424;
+    --frame: 16px;
   }
 
   .hero-slab.slab-browser {
@@ -526,12 +501,14 @@ html:not(.js) .hero-stage {
     --sh: 338;
   }
 
-  .hero-slab.slab-phone {
+  .hero-slab.slab-phone,
+  .hero-slab > .trio-phone {
     padding: 7px;
     border-radius: var(--r-phone);
   }
 
-  .hero-slab.slab-phone .slab-screen {
+  .hero-slab.slab-phone .slab-screen,
+  .hero-slab > .trio-phone .slab-screen {
     border-radius: 24px;
   }
 
@@ -541,29 +518,31 @@ html:not(.js) .hero-stage {
 
   .hero-slab[data-d='0'] {
     display: flex;
-    transform: translate3d(calc(165 * var(--k)), 0, 0) rotateY(-26deg);
+    transform: translate3d(calc(20 * var(--k)), 0, 0) rotateY(22deg);
   }
 
   .hero-slab[data-d='1'] {
     display: flex;
-    transform: translate3d(calc(-110 * var(--k)), 0, calc(-700 * var(--k)))
-      rotateY(-20deg);
+    transform: translate3d(calc(270 * var(--k)), 0, calc(-700 * var(--k)))
+      rotateY(20deg);
   }
 
   .hero-slab[data-d='2'] {
     display: flex;
-    transform: translate3d(calc(-330 * var(--k)), 0, calc(-1400 * var(--k)))
-      rotateY(-16deg);
+    transform: translate3d(calc(440 * var(--k)), 0, calc(-1400 * var(--k)))
+      rotateY(16deg);
   }
 
-  .hero-slab.slab-phone[data-d='1'] {
-    transform: translate3d(calc(-240 * var(--k)), 0, calc(-700 * var(--k)))
-      rotateY(-20deg);
+  .hero-slab.slab-phone[data-d='1'],
+  .hero-slab.slab-trio[data-d='1'] {
+    transform: translate3d(calc(330 * var(--k)), 0, calc(-700 * var(--k)))
+      rotateY(20deg);
   }
 
-  .hero-slab.slab-phone[data-d='2'] {
-    transform: translate3d(calc(-500 * var(--k)), 0, calc(-1400 * var(--k)))
-      rotateY(-16deg);
+  .hero-slab.slab-phone[data-d='2'],
+  .hero-slab.slab-trio[data-d='2'] {
+    transform: translate3d(calc(520 * var(--k)), 0, calc(-1400 * var(--k)))
+      rotateY(16deg);
   }
 
   .hero-slab[data-d='1'] .slab-dim {
@@ -574,10 +553,23 @@ html:not(.js) .hero-stage {
     opacity: 0.45;
   }
 
-  .placards {
+  .hero-dock {
     position: absolute;
     right: max(var(--gutter), calc(var(--fx) + 40 * var(--u)));
     top: calc(var(--fy) + 626 * var(--u));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .hero-dock > * {
+    pointer-events: auto;
+  }
+
+  .placards {
     width: max-content;
     min-width: 440px;
     max-width: 520px;
@@ -612,24 +604,14 @@ html:not(.js) .hero-stage {
     display: flex;
   }
 
-  .placard-num .num-d {
-    display: inline;
-  }
-
-  .placard-num .num-m {
-    display: none;
-  }
-
   .minimap {
-    position: absolute;
-    top: calc(var(--fy) + 84 * var(--u));
-    right: calc(var(--fx) + 40 * var(--u));
     margin: 0;
   }
 
   .minimap-dot,
   .minimap-dot[data-m] {
     display: grid;
+    width: 32px;
   }
 }
 
@@ -687,6 +669,52 @@ html.scene-live .hero-slab .slab-dim {
 
 .hero-slab.is-front {
   cursor: pointer;
+}
+
+.hero-slab::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: calc(100% + 4 * var(--k));
+  height: calc(16 * var(--k));
+  border-radius: 50%;
+  background: var(--contact-shadow);
+  filter: blur(calc(9 * var(--k)));
+  pointer-events: none;
+}
+
+.hall {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hall:focus-visible {
+  outline-offset: -2px;
+}
+
+.hall img {
+  -webkit-user-drag: none;
+}
+
+.minimap-nav[aria-disabled='true'],
+.minimap-nav[aria-disabled='true']:hover,
+.minimap-nav[aria-disabled='true']:active {
+  opacity: 0.4;
+  background: var(--surface);
+  transform: none;
+  cursor: default;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.scene-live .hall {
+    cursor: grab;
+  }
+
+  html.scene-live .hall.is-dragging,
+  html.scene-live .hall.is-dragging .hero-slab {
+    cursor: grabbing;
+  }
 }
 
 .services {
@@ -855,7 +883,7 @@ html.scene-live .hero-slab .slab-dim {
 
   .stand-slab.slab-phone {
     width: 200px;
-    height: 433px;
+    height: 415px;
   }
 
   .stand-cap {
@@ -923,10 +951,14 @@ html.scene-live .hero-slab .slab-dim {
 .sr-stage {
   --k: calc(100cqw / 390);
   position: relative;
-  height: calc(256 * var(--k) + 48px);
+  height: calc(330 * var(--k) + 40px);
   perspective: calc(800 * var(--k));
+  container-type: size;
   perspective-origin: 50% 50%;
-  overflow: hidden;
+  margin-inline: calc(-1 * var(--gutter));
+  padding-inline: var(--gutter);
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .sr-world {
@@ -941,6 +973,7 @@ html.scene-live .hero-slab .slab-dim {
 .sr-slab {
   --sw: 118;
   --sh: 256;
+  --frame: 12px;
   position: absolute;
   left: calc(var(--sw) * var(--k) / -2);
   top: calc(var(--sh) * var(--k) / -2);
@@ -957,12 +990,14 @@ html.scene-live .hero-slab .slab-dim {
   --sh: 244;
 }
 
-.sr-slab.slab-phone {
+.sr-slab.slab-phone,
+.sr-slab > .trio-phone {
   padding: 5px;
   border-radius: 22px;
 }
 
-.sr-slab.slab-phone .slab-screen {
+.sr-slab.slab-phone .slab-screen,
+.sr-slab > .trio-phone .slab-screen {
   border-radius: 16px;
 }
 
@@ -1078,6 +1113,14 @@ html.scene-live .hero-slab .slab-dim {
   border-left: 1px solid var(--line);
 }
 
+@media (max-width: 759px) {
+  .sr-meta .status {
+    flex-basis: 100%;
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
 .sr-summary {
   max-width: 64ch;
   color: var(--muted);
@@ -1130,6 +1173,11 @@ html.scene-live .hero-slab .slab-dim {
   transition:
     background-color var(--t-hover) ease,
     transform var(--t-press-out) var(--ease-out);
+}
+
+.showroom-home .sr-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding-left: 16px;
 }
 
 .sr-row:focus-visible {
@@ -1256,6 +1304,7 @@ html.scene-live .hero-slab .slab-dim {
   .sr-slab {
     --sw: 200;
     --sh: 433;
+    --frame: 16px;
   }
 
   .sr-slab.slab-browser {
@@ -1263,12 +1312,14 @@ html.scene-live .hero-slab .slab-dim {
     --sh: 338;
   }
 
-  .sr-slab.slab-phone {
+  .sr-slab.slab-phone,
+  .sr-slab > .trio-phone {
     padding: 7px;
     border-radius: var(--r-phone);
   }
 
-  .sr-slab.slab-phone .slab-screen {
+  .sr-slab.slab-phone .slab-screen,
+  .sr-slab > .trio-phone .slab-screen {
     border-radius: 24px;
   }
 
@@ -1297,7 +1348,10 @@ html.scene-live .hero-slab .slab-dim {
   }
 
   .showroom-home .sr-stage {
-    height: calc(412 * var(--k));
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: clip;
+    height: max(calc(412 * var(--k)), 460px);
     border: 1px solid var(--card);
     border-radius: 20px;
     background: var(--surface);
@@ -1351,15 +1405,7 @@ html.scene-live .hero-slab .slab-dim {
   }
 
   .showroom-work .sr-stage {
-    height: calc(8px + 433 * var(--k));
-  }
-
-  .showroom-work .sr-world {
-    top: 8px;
-  }
-
-  .showroom-work .sr-slab {
-    top: 0;
+    height: max(calc(16px + 433 * var(--k)), min(460px, calc(100svh - 320px)));
   }
 
   .showroom-work .sr-panel {
@@ -1377,6 +1423,58 @@ html.scene-live .hero-slab .slab-dim {
 
   .placard,
   html.scene-live .placard {
+    transition: none;
+  }
+}
+
+.sr-world.has-phone > .sr-slab:not([data-slot='0']) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.scene-live .hero-slab.slab-trio:not(.is-front) > .trio-side,
+.sr-slab.slab-trio:not([data-slot='0']):not(.is-current) > .trio-side {
+  opacity: 0;
+  transform: none;
+}
+
+html.scene-live .hero-slab.slab-trio:not(.is-front) > .trio-centre,
+.sr-slab.slab-trio:not([data-slot='0']):not(.is-current) > .trio-centre {
+  transform: none;
+}
+
+html:not(.scene-live) .hero-slab.slab-trio:not([data-m='0']) > .trio-side {
+  opacity: 0;
+}
+
+.sr-slab.slab-trio,
+.sr-slab.slab-phone {
+  --k: calc((100cqh - 32px) / 433);
+  --sw: 200;
+  --sh: 433;
+}
+
+.hero-slab.slab-phone,
+.hero-slab.slab-trio,
+.sr-slab.slab-phone,
+.sr-slab.slab-trio {
+  --ph: calc((var(--sw) * var(--k) - var(--frame)) * 19.5 / 9 + var(--frame));
+  top: calc(var(--ph) / -2);
+  height: var(--ph);
+}
+
+@media (min-width: 1024px) and (min-height: 600px) {
+  html:not(.scene-live) .hero-slab.slab-trio > .trio-side {
+    opacity: 0;
+  }
+}
+
+.sr-slab.is-instant > .trio-phone {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trio-phone {
     transition: none;
   }
 }

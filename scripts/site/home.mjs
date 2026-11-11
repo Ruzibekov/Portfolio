@@ -4,7 +4,7 @@ import { versioned } from './assets.mjs'
 import { countProjects, monoText, projectType } from './project.mjs'
 import { projectStatus, slab } from './slab.mjs'
 import { galleryLabels } from './gallery-labels.mjs'
-import { renderShowroom } from './index.mjs'
+import { catalogueNumber, renderShowroom } from './index.mjs'
 
 const future = JSON.parse(
   readFileSync(
@@ -32,63 +32,6 @@ const heroSizes = '(min-width: 1024px) 640px, 300px'
 const standSizes = '(min-width: 1024px) 520px, 1px'
 const indexLimit = 8
 const two = (value) => String(value).padStart(2, '0')
-
-const floorSpecs = {
-  d: {
-    w: 1280,
-    h: 800,
-    ox: 900,
-    oy: 390,
-    p: 1400,
-    y: 260,
-    x0: -1600,
-    x1: 1600,
-    z0: -2100,
-    z1: 300,
-    cell: 160,
-  },
-  m: {
-    w: 390,
-    h: 264,
-    ox: 195,
-    oy: 132,
-    p: 900,
-    y: 150,
-    x0: -1200,
-    x1: 1200,
-    z0: -1400,
-    z1: 400,
-    cell: 120,
-  },
-}
-
-export function floorPath(f, dx = 0, dz = 0) {
-  const project = (x, z) => {
-    const scale = f.p / (f.p - z)
-    return [f.ox + x * scale, f.oy + f.y * scale].map(
-      (value) => Math.round(value * 10) / 10,
-    )
-  }
-  const lines = []
-  const shiftZ = ((dz % f.cell) + f.cell) % f.cell
-  const shiftX = ((dx % f.cell) + f.cell) % f.cell
-  for (let z = f.z0 + shiftZ; z <= f.z1; z += f.cell) {
-    const [ax, ay] = project(f.x0, z)
-    const [bx] = project(f.x1, z)
-    if (ay <= f.h + 1) lines.push(`M${ax} ${ay}H${bx}`)
-  }
-  for (let x = f.x0 + shiftX; x <= f.x1; x += f.cell) {
-    const [ax, ay] = project(x, f.z0)
-    const [bx, by] = project(x, f.z1)
-    lines.push(`M${ax} ${ay}L${bx} ${by}`)
-  }
-  return lines.join('')
-}
-
-function floorPlane(kind) {
-  const f = floorSpecs[kind]
-  return `<svg class="floor floor-${kind}" viewBox="0 0 ${f.w} ${f.h}" preserveAspectRatio="none" aria-hidden="true" focusable="false" data-floor='${JSON.stringify(f)}'><path d="${floorPath(f)}"/></svg>`
-}
 
 function homeFaqItems(copy, futureCopy) {
   return [
@@ -121,7 +64,7 @@ export function heroTitle(lines, e) {
     .join('')
 }
 
-function heroScene({ locale, ui, words, cases, caseCopy, shared }) {
+function heroScene({ locale, copy, ui, words, cases, caseCopy, shared }) {
   const e = shared.escapeHtml
   const labels = galleryLabels[locale]
   const entries = heroSequence.map((key, index) => {
@@ -142,24 +85,25 @@ function heroScene({ locale, ui, words, cases, caseCopy, shared }) {
         sizes: heroSizes,
         alt: itemWords.alt,
         lazy: d > 2 && m < 0,
-        priority: d === 0,
+        priority: d === 0 || m === 0,
         focusable: d === 0,
         hidden: d !== 0,
         className: 'hero-slab',
         attributes: ` data-d="${d}" data-m="${m}"`,
+        trio: true,
       }),
     )
     .join('')
   const placards = entries
     .map(
       ({ item, words: itemWords, d, m }) =>
-        `<a class="placard" href="${projectHref({ shared, locale, item })}" data-d="${d}" data-m="${m}" data-key="${e(item.key)}"${shared.caseKeys.includes(item.key) ? '' : ` data-sheet-key="${e(item.key)}"`}><span class="placard-num" aria-hidden="true"><span class="num-d">${two(d + 1)}</span><span class="num-m">${two(m + 1)}</span></span><span class="placard-body"><span class="placard-title">${e(itemWords.title)}</span><span class="placard-meta"><span>${e(projectType(item, ui))}</span><span class="mono">${e(monoText(item.stack))}</span></span></span>${projectStatus({ item, words: itemWords, presentation: words, labels })}</a>`,
+        `<a class="placard" href="${projectHref({ shared, locale, item })}" data-d="${d}" data-m="${m}" data-key="${e(item.key)}"${shared.caseKeys.includes(item.key) ? '' : ` data-sheet-key="${e(item.key)}"`}><span class="placard-num" aria-hidden="true">${two(catalogueNumber(cases, item.key))}</span><span class="placard-body"><span class="placard-title">${e(itemWords.title)}</span><span class="placard-meta"><span>${e(projectType(item, ui))}</span><span class="mono">${e(monoText(item.stack))}</span></span></span>${projectStatus({ item, words: itemWords, presentation: words, labels })}</a>`,
     )
     .join('')
   const dots = entries
     .map(
       ({ words: itemWords, d, m }) =>
-        `<button class="minimap-dot" type="button" data-d="${d}" data-m="${m}" data-title="${e(itemWords.title)}" aria-label="${d + 1}. ${e(itemWords.title)}"><span class="minimap-pip"></span></button>`,
+        `<button class="minimap-dot" type="button" data-d="${d}" data-m="${m}" data-title="${e(itemWords.title)}" aria-label="${d + 1}. ${e(itemWords.title)}" tabindex="${d === 0 ? 0 : -1}"><span class="minimap-pip"></span></button>`,
     )
     .join('')
   const steps = heroSequence
@@ -168,9 +112,8 @@ function heroScene({ locale, ui, words, cases, caseCopy, shared }) {
         `<span class="hero-step" style="--step:${index}" aria-hidden="true"></span>`,
     )
     .join('')
-  const floor = `${floorPlane('d')}${floorPlane('m')}`
-  const minimap = `<div class="minimap" data-minimap role="group" aria-label="${e(words.minimapLabel)}" hidden><span class="minimap-step" data-minimap-step aria-hidden="true">01 / ${two(heroSequence.length)}</span><div class="minimap-rail">${dots}</div></div>`
-  return { figures, placards, minimap, steps, floor }
+  const minimap = `<div class="minimap" data-minimap role="group" aria-label="${e(words.minimapLabel)}" hidden><span class="minimap-step" data-minimap-step aria-hidden="true">1 / ${heroSequence.length}</span><button class="icon-btn icon-btn-lg minimap-nav" type="button" data-hero-step="-1" aria-label="${e(copy.caseStudy.previous)}">${icon('i-arrow-left')}</button><div class="minimap-rail">${dots}</div><button class="icon-btn icon-btn-lg minimap-nav" type="button" data-hero-step="1" aria-label="${e(copy.caseStudy.next)}">${icon('i-arrow-right')}</button></div><p class="sr" data-hero-live aria-live="polite" aria-atomic="true"></p>`
+  return { figures, placards, minimap, steps }
 }
 
 export function renderHome({
@@ -185,7 +128,15 @@ export function renderHome({
   if (!words) throw new Error(`Missing portfolio presentation for ${locale}`)
   const e = shared.escapeHtml
   const counts = countProjects(cases)
-  const scene = heroScene({ locale, ui, words, cases, caseCopy, shared })
+  const scene = heroScene({
+    locale,
+    copy,
+    ui,
+    words,
+    cases,
+    caseCopy,
+    shared,
+  })
   const stats = [
     [counts.total, words.stats.projects],
     [counts.stores, words.stats.stores],
@@ -195,9 +146,8 @@ export function renderHome({
     .join('')
   const heroBlock = `<section class="hero" aria-labelledby="intro-title" data-hero><div class="hero-track" data-hero-track>${scene.steps}<div class="hero-stage" data-hero-stage>
 <div class="hero-copy"><p class="hero-name">Shavkatbek Ruzibekov</p><h1 class="h1" id="intro-title">${heroTitle(words.title, e)}</h1><p class="lead hero-lead">${e(words.statement)}</p><ul class="stats" aria-label="${e(copy.navigation.work)}">${stats}</ul><div class="cta-row"><a class="btn btn-primary" href="${shared.telegramUrl}" target="_blank" rel="noopener noreferrer" data-primary-cta>${icon('l-telegram')}<span>${e(copy.hero.primaryCta)}</span></a><a class="btn btn-secondary" href="#work"><span>${e(copy.hero.secondaryCta)}</span>${icon('i-arrow-down')}</a></div></div>
-<div class="placards" data-placards>${scene.placards}</div>
-<div class="hall" data-hall role="group" aria-label="${e(words.hallLabel)}">${scene.floor}<div class="world" data-world>${scene.figures}</div></div>
-${scene.minimap}
+<div class="hall" data-hall role="group" aria-label="${e(words.hallLabel)}" tabindex="0"><div class="world" data-world>${scene.figures}</div></div>
+<div class="hero-dock">${scene.minimap}<div class="placards" data-placards>${scene.placards}</div></div>
 </div></div></section>`
   const bento = ui.services.bento
   const serviceRows = shared.serviceSlugs
