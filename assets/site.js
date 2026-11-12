@@ -70,7 +70,8 @@
     if (color) themeColor.setAttribute('content', color)
   }
   syncTheme()
-  themeButton?.addEventListener('click', () => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const toggleTheme = () => {
     const next = root.dataset.theme === 'light' ? 'dark' : 'light'
     root.dataset.theme = next
     try {
@@ -79,6 +80,46 @@
       root.dataset.storage = 'unavailable'
     }
     syncTheme()
+  }
+  const themeOrigin = (event) => {
+    if (event.detail > 0) return { x: event.clientX, y: event.clientY }
+    const rect = themeButton.getBoundingClientRect()
+    return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
+  }
+  themeButton?.addEventListener('click', (event) => {
+    if (
+      reduceMotion.matches ||
+      typeof document.startViewTransition !== 'function'
+    ) {
+      toggleTheme()
+      return
+    }
+    const { x, y } = themeOrigin(event)
+    const radius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    )
+    const clearWipe = () => root.classList.remove('theme-wipe')
+    root.classList.add('theme-wipe')
+    const transition = document.startViewTransition(toggleTheme)
+    transition.finished.then(clearWipe, clearWipe)
+    transition.ready
+      .then(() =>
+        root.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${radius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: 700,
+            easing: 'cubic-bezier(0.76, 0, 0.24, 1)',
+            pseudoElement: '::view-transition-new(root)',
+          },
+        ),
+      )
+      .catch(clearWipe)
   })
 
   const header = qs('[data-header]')

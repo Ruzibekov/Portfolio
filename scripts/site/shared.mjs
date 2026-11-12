@@ -333,7 +333,7 @@ export function contactSection({ copy, ui }) {
 
 export function footer({ locale, ui, copy, words }) {
   return `${contactSection({ copy, ui })}
-<footer class="footer"><div class="wrap footer-row"><p class="footer-brand"><span class="mark" aria-hidden="true">SR</span><span>${escapeHtml(ui.footer.line)}</span></p><ul class="footer-links">${navKeys.map((key) => `<li><a href="${pagePath(locale)}#${key}">${escapeHtml(copy.navigation[key])}</a></li>`).join('')}</ul><a class="btn btn-quiet to-top" href="#top">${icon('i-arrow-up')}<span>${escapeHtml(words.backToTop)}</span></a><p class="footer-copy">© 2026 Shavkatbek Ruzibekov</p></div></footer>`
+<footer class="footer"><div class="wrap footer-row"><p class="footer-brand"><span class="mark" aria-hidden="true">SR</span><span>${escapeHtml(ui.footer.line)}</span></p><ul class="footer-links">${navKeys.map((key) => `<li><a href="${pagePath(locale)}#${key}"><span>${escapeHtml(copy.navigation[key])}</span></a></li>`).join('')}</ul><a class="btn btn-quiet to-top" href="#top">${icon('i-arrow-up')}<span>${escapeHtml(words.backToTop)}</span></a><p class="footer-copy">© 2026 Shavkatbek Ruzibekov</p></div></footer>`
 }
 
 export function renderDocument({

@@ -8,11 +8,13 @@ const styleSources = [
   'assets/base.css',
   'assets/scene.css',
   'assets/pages.css',
+  'assets/motion.css',
 ]
 const scriptSources = [
   'assets/site.js',
   'assets/scene.js',
   'assets/showroom.js',
+  'assets/motion.js',
 ]
 const themeSource = 'assets/theme-init.js'
 const imageManifestSource = 'screenshots/web/manifest.json'

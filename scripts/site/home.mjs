@@ -12,6 +12,9 @@ const future = JSON.parse(
     'utf8',
   ),
 ).locales
+const motionCopy = JSON.parse(
+  readFileSync(new URL('../../content/motion.json', import.meta.url), 'utf8'),
+).locales
 const heroSequence = [
   'agentmama',
   'majiidtv',
@@ -55,11 +58,24 @@ function projectHref({ shared, locale, item }) {
 }
 
 export function heroTitle(lines, e) {
+  let index = 0
   return lines
     .map((line) => {
       const arrow = /\s*→\s*$/.test(line)
-      const text = line.replace(/\s*→\s*$/, '')
-      return `<span class="h1-line">${e(text)}${arrow ? icon('i-arrow-right', 'h1-arrow') : ''}</span>`
+      const words = line
+        .replace(/\s*→\s*$/, '')
+        .split(/\s+/)
+        .filter(Boolean)
+      const masks = words
+        .map((word, position) => {
+          const tail =
+            arrow && position === words.length - 1
+              ? icon('i-arrow-right', 'h1-arrow')
+              : ''
+          return `<span class="rise-mask"><span class="rise" style="--i:${index++}">${e(word)}${tail}</span></span>`
+        })
+        .join(' ')
+      return `<span class="h1-line">${masks}</span>`
     })
     .join('')
 }
@@ -67,6 +83,8 @@ export function heroTitle(lines, e) {
 function heroScene({ locale, copy, ui, words, cases, caseCopy, shared }) {
   const e = shared.escapeHtml
   const labels = galleryLabels[locale]
+  const viewLabel = motionCopy[locale]?.viewCase
+  if (!viewLabel) throw new Error(`Missing motion copy for ${locale}`)
   const entries = heroSequence.map((key, index) => {
     const item = cases.find((entry) => entry.key === key)
     if (!item?.screen) throw new Error(`Hero slab needs a capture: ${key}`)
@@ -89,7 +107,7 @@ function heroScene({ locale, copy, ui, words, cases, caseCopy, shared }) {
         focusable: d === 0,
         hidden: d !== 0,
         className: 'hero-slab',
-        attributes: ` data-d="${d}" data-m="${m}"`,
+        attributes: ` data-d="${d}" data-m="${m}" data-cursor="${e(viewLabel)}"`,
         trio: true,
       }),
     )

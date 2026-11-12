@@ -56,6 +56,27 @@ const expectedPaths = locales.flatMap((locale) =>
   pageSlugs.map((slug) => pagePath(locale, slug)),
 )
 const readJson = (path) => JSON.parse(readFileSync(join(root, path), 'utf8'))
+const motionCopy = readJson('content/motion.json').locales
+assert.deepEqual(
+  Object.keys(motionCopy).sort(),
+  [...locales].sort(),
+  'Motion copy must cover every locale',
+)
+for (const locale of locales)
+  assert.ok(
+    motionCopy[locale].viewCase.trim(),
+    `Empty cursor label at ${locale}`,
+  )
+assert.ok(
+  script.content.includes(':not(.skip-link)') &&
+    stylesheet.content.includes('@keyframes word-rise'),
+  'Motion layer must be bundled into the site assets',
+)
+assert.match(
+  stylesheet.content,
+  /@media \(prefers-reduced-motion: reduce\) \{\s*\.rise,/,
+  'Hero word rise must be disabled for reduced motion',
+)
 const localeCopy = Object.fromEntries(
   locales.map((locale) => [locale, readJson(`content/locales/${locale}.json`)]),
 )
@@ -622,10 +643,53 @@ for (const locale of locales) {
     (servicesSection.match(/class="chat-opt"/g) ?? []).length,
     bento.chat.opts.length,
   )
-  for (const line of words.title)
-    assert.ok(
-      home.includes(escapeHtml(line.replace(/\s*→\s*$/, ''))),
-      `Missing localized heading at ${locale}`,
+  const heroHeading =
+    home.match(/<h1 class="h1" id="intro-title">([\s\S]*?)<\/h1>/)?.[1] ?? ''
+  const heroLines = heroHeading
+    .split('<span class="h1-line">')
+    .slice(1)
+    .map((line) =>
+      line
+        .replace(/<svg[\s\S]*?<\/svg>/g, '')
+        .replace(/<[^>]+>/g, '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    )
+  const expectedLines = words.title.map((line) =>
+    escapeHtml(
+      line
+        .replace(/\s*→\s*$/, '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    ),
+  )
+  assert.deepEqual(
+    heroLines,
+    expectedLines,
+    `Missing localized heading at ${locale}`,
+  )
+  assert.equal(
+    (
+      heroHeading.match(
+        /<span class="rise-mask"><span class="rise" style="--i:\d+">/g,
+      ) ?? []
+    ).length,
+    expectedLines.join(' ').split(' ').length,
+    `Hero words must each sit in a rise mask at ${locale}`,
+  )
+  assert.equal(
+    (heroHeading.match(/class="[^"]*h1-arrow/g) ?? []).length,
+    words.title.filter((line) => /\s*→\s*$/.test(line)).length,
+    `Hero arrow must stay attached to its line at ${locale}`,
+  )
+  const heroSlabs =
+    home.match(/<figure class="slab[^"]*hero-slab"[^>]*>/g) ?? []
+  assert.ok(heroSlabs.length > 0, `Hero slabs are missing at ${locale}`)
+  for (const tag of heroSlabs)
+    assert.equal(
+      attribute(tag, 'data-cursor'),
+      escapeHtml(motionCopy[locale].viewCase),
+      `Hero slab cursor label is not localized at ${locale}`,
     )
   assert.ok(home.includes(escapeHtml(words.statement)))
   assert.ok(

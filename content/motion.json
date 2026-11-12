@@ -1,0 +1,12 @@
+{
+  "locales": {
+    "uz": { "viewCase": "Ko‘rish" },
+    "ru": { "viewCase": "Смотреть" },
+    "en": { "viewCase": "View" },
+    "ky": { "viewCase": "Көрүү" },
+    "kk": { "viewCase": "Көру" },
+    "tg": { "viewCase": "Дидан" },
+    "uk": { "viewCase": "Дивитися" },
+    "be": { "viewCase": "Глядзець" }
+  }
+}
