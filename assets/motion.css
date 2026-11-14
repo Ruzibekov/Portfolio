@@ -1,7 +1,7 @@
 :root {
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --rise: 1600ms;
-  --reveal: 1100ms;
+  --rise: 900ms;
+  --reveal: 700ms;
 }
 
 @keyframes word-rise {
@@ -36,7 +36,7 @@
   display: inline-block;
   transform-origin: 0 100%;
   animation: word-rise var(--rise) var(--ease-expo) backwards;
-  animation-delay: calc(120ms + var(--i, 0) * 70ms);
+  animation-delay: calc(40ms + var(--i, 0) * 50ms);
 }
 
 .hero-name,
@@ -47,19 +47,19 @@
 }
 
 .hero-name {
-  animation-delay: 60ms;
+  animation-delay: 0ms;
 }
 
 .hero-lead {
-  animation-delay: 520ms;
+  animation-delay: 180ms;
 }
 
 .hero-copy .stats {
-  animation-delay: 640ms;
+  animation-delay: 240ms;
 }
 
 .hero-copy .cta-row {
-  animation-delay: 760ms;
+  animation-delay: 300ms;
 }
 
 .showroom-home .sr-stage {
@@ -84,7 +84,7 @@
 
 [data-reveal='lines'] .line-inner {
   transition: transform var(--reveal) var(--ease-expo);
-  transition-delay: calc(var(--d, 0ms) + var(--i, 0) * 80ms);
+  transition-delay: calc(var(--d, 0ms) + var(--i, 0) * 60ms);
 }
 
 [data-reveal='lines'].reveal-pending .line-inner {
@@ -93,8 +93,8 @@
 
 [data-reveal='rise'] {
   transition:
-    opacity 1300ms var(--ease-expo),
-    translate 1300ms var(--ease-expo);
+    opacity var(--reveal) var(--ease-expo),
+    translate var(--reveal) var(--ease-expo);
   transition-delay: var(--d, 0ms);
 }
 
