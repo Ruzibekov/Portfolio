@@ -96,5 +96,13 @@ export function validateProjectMedia(cases) {
         throw new Error(`Offline link needs a dated check: ${item.key}`)
     }
     monoText(item.stack)
+    if (
+      item.tech !== undefined &&
+      (!Array.isArray(item.tech) ||
+        item.tech.length < 2 ||
+        new Set(item.tech).size !== item.tech.length ||
+        item.tech.some((name) => !name.trim() || name !== monoText(name)))
+    )
+      throw new Error(`Invalid technology list: ${item.key}`)
   }
 }

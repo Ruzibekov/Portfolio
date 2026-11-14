@@ -23,24 +23,30 @@ const shotSizes = '(min-width: 1024px) 760px, calc(100vw - 40px)'
 const gallerySizes = '(min-width: 1024px) 270px, 220px'
 
 export function caseServices(item) {
-  const slugs = item.categories.map((category) => {
-    const slug = serviceByCategory[category]
-    if (!slug) throw new Error(`No service for category ${category}`)
-    return slug
-  })
+  const slugs = item.categories
+    .map((category) => serviceByCategory[category])
+    .filter(Boolean)
+  if (!slugs.length) throw new Error(`No service for case ${item.key}`)
   return [...new Set([...slugs, ...(extraServices[item.key] ?? [])])]
 }
 
 export function caseStack(item) {
-  return item.stack
-    .split(',')
-    .map((part) => part.trim())
-    .filter(Boolean)
+  return (
+    item.tech ??
+    item.stack
+      .split(',')
+      .map((part) => part.trim())
+      .filter(Boolean)
+  )
 }
 
 export function caseDescription(words) {
-  const combined = `${words.summary} ${words.task}`
-  return combined.length <= descriptionLimit ? combined : words.summary
+  const sentence = (text) => (/[.!?]$/.test(text) ? text : `${text}.`)
+  return (
+    [words.task, ...(words.features ?? []), words.result]
+      .map((extra) => `${words.summary} ${sentence(extra)}`)
+      .find((text) => text.length <= descriptionLimit) ?? words.summary
+  )
 }
 
 export function caseTitle(item, words, strings) {
@@ -137,6 +143,9 @@ export function renderCase({
         `<section class="case-block" aria-labelledby="case-${field}-title"><h2 class="case-block-title" id="case-${field}-title">${escapeHtml(labels[field])}</h2><p data-case-field="${field}">${escapeHtml(words[field])}</p></section>`,
     )
     .join('')
+  const features = words.features?.length
+    ? `<section class="sec sec-tight" aria-labelledby="case-features-title"><div class="wrap"><div class="case-features"><h2 class="case-block-title" id="case-features-title">${escapeHtml(labels.features)}</h2><ul class="feature-list" data-case-features>${words.features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join('')}</ul></div></div></section>`
+    : ''
   const links = projectLinks({ item, words })
   const status = projectStatus({ item, words, presentation, labels })
   const tagStatus = links && status.includes('status-stores') ? '' : status
@@ -157,7 +166,7 @@ export function renderCase({
     `<a class="case-pager-link case-pager-${relation}" href="${casePath(locale, target)}" rel="${relation}">${relation === 'prev' ? icon('i-arrow-left') : ''}<span class="case-pager-text"><span>${escapeHtml(label)}</span><strong>${escapeHtml(caseCopy[target].title)}</strong></span>${relation === 'next' ? icon('i-arrow-right') : ''}</a>`
   const body = `<section class="page-hero case-hero" aria-labelledby="case-title"><div class="wrap">${breadcrumb}<div class="case-head"><div class="case-copy"><h1 class="h1 page-title" id="case-title">${escapeHtml(words.title)}</h1><p class="case-tag"><span>${escapeHtml(projectType(item, ui))}</span>${tagStatus}</p><p class="lead case-lead">${escapeHtml(words.summary)}</p><ul class="case-chips" aria-label="${escapeHtml(strings.stack)}">${chips}</ul>${links ? `<div class="case-links" aria-label="${escapeHtml(strings.links)}" role="group">${links}</div>` : ''}</div><div class="case-shot">${slab({ item, words, sizes: shotSizes, alt: words.alt, lazy: false, priority: true, focusable: true, className: 'flat-slab case-slab', trio: true, attributes: ` style="view-transition-name: slab-${escapeHtml(item.key)}"` })}</div></div></div></section>
 <section class="sec sec-tight" aria-label="${escapeHtml(words.title)}"><div class="wrap story-grid">${story}</div></section>
-${gallery ? `<section class="sec sec-tight case-gallery" aria-label="${escapeHtml(words.alt)}"><div class="wrap"><ul class="gallery-row">${gallery}</ul></div></section>` : ''}
+${features}${gallery ? `<section class="sec sec-tight case-gallery" aria-label="${escapeHtml(words.alt)}"><div class="wrap"><ul class="gallery-row">${gallery}</ul></div></section>` : ''}
 <section class="sec sec-tight"><div class="wrap case-more"><section class="case-services" aria-labelledby="case-services-title"><h2 class="case-block-title" id="case-services-title">${escapeHtml(strings.services)}</h2><ul class="related">${services}</ul></section><section class="case-cta" aria-labelledby="case-cta-title"><h2 class="h3" id="case-cta-title">${escapeHtml(strings.ctaTitle)}</h2><a class="btn btn-secondary" href="${escapeHtml(copy.identity.contact.telegram)}" target="_blank" rel="noopener noreferrer">${icon('l-telegram')}<span class="button-content">${escapeHtml(copy.hero.primaryCta)}</span></a></section></div></section>
 <nav class="wrap case-pager" aria-label="${escapeHtml(strings.pager)}">${pagerLink(previous, 'prev', strings.previous)}${pagerLink(next, 'next', strings.next)}</nav>`
   return renderDocument({

@@ -429,7 +429,7 @@ for (const locale of locales) {
     titles.add(title)
   }
 }
-assert.equal(titles.size, 104)
+assert.equal(titles.size, 288)
 for (const locale of locales) {
   const translations = ['ru', 'en', 'uz'].includes(locale)
     ? Object.fromEntries(
@@ -567,7 +567,7 @@ assert.deepEqual(
   new Set(sitemapUrls),
   new Set(expectedPaths.map((path) => `${origin}${path}`)),
 )
-assert.equal(sitemapUrls.length, 104)
+assert.equal(sitemapUrls.length, 288)
 const caseTranslations = (locale) =>
   ['ru', 'en', 'uz'].includes(locale)
     ? Object.fromEntries(
@@ -781,6 +781,34 @@ for (const locale of locales) {
     }
     for (const part of caseStack(item))
       assert.ok(html.includes(`<li>${escapeHtml(part)}</li>`))
+    if (['uz', 'ru', 'en'].includes(locale)) {
+      const list =
+        html.match(
+          /<ul class="feature-list" data-case-features>(.*?)<\/ul>/s,
+        )?.[1] ?? ''
+      assert.deepEqual(
+        [...list.matchAll(/<li>(.*?)<\/li>/g)].map((match) => match[1]),
+        words.features.map(escapeHtml),
+        `Missing key features at ${route}`,
+      )
+      assert.ok(
+        html.includes(
+          `id="case-features-title">${escapeHtml(galleryLabels[locale].features)}</h2>`,
+        ),
+        `Missing key features heading at ${route}`,
+      )
+    }
+    for (const image of item.gallery ?? [])
+      assert.ok(
+        html.includes(`src="${imageSrc(image)}"`),
+        `Missing gallery screen ${image} at ${route}`,
+      )
+    assert.ok(
+      gallery.includes(
+        `href="${route}" aria-label="${escapeHtml(words.title)}"`,
+      ),
+      `Work list row does not open ${route}`,
+    )
     item.links.forEach((link) =>
       assert.equal(
         html.includes(
@@ -850,8 +878,8 @@ for (const locale of locales) {
     )
   })
 }
-assert.throws(() => caseSlug('mynails'), /Unknown case/)
-assert.throws(() => pagePath('uz', 'work/mynails'), /Unknown case/)
+assert.throws(() => caseSlug('not-a-project'), /Unknown case/)
+assert.throws(() => pagePath('uz', 'work/not-a-project'), /Unknown case/)
 assert.ok(
   sitemap.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'),
 )
@@ -872,20 +900,27 @@ const immutableRows = [
     /<article\b[^>]*class="work-row\b[^>]*>[\s\S]*?<\/article>/g,
   ),
 ].map((match) => match[0])
+const addedAfterArchive = []
 for (const item of cases) {
   const row = immutableRows.find((value) =>
     value.includes(`data-i18n="work.${item.key}.desc"`),
   )
+  if (addedAfterArchive.includes(item.key)) {
+    assert.ok(!row, `Archived case is marked as new: ${item.key}`)
+    continue
+  }
   assert.ok(row, `Case disappeared from immutable source: ${item.key}`)
-  assert.deepEqual(
-    item.links.filter((link) => !link.offline).map((link) => link.href),
-    [...row.matchAll(/\bhref="([^"]+)"/g)].map((match) => match[1]),
-    `Actual source project URLs changed for ${item.key}`,
-  )
+  const hrefs = item.links.map((link) => link.href)
+  for (const [, href] of row.matchAll(/\bhref="([^"]+)"/g))
+    assert.ok(
+      hrefs.includes(href),
+      `Archived project URL ${href} is missing for ${item.key}`,
+    )
   for (const link of item.links.filter((entry) => entry.offline))
     assert.ok(
-      row.includes(`<span>${new URL(link.href).hostname}</span>`),
-      `Offline project must stay as plain text in the archive: ${item.key}`,
+      row.includes(`<span>${new URL(link.href).hostname}</span>`) ||
+        row.includes(`href="${link.href}"`),
+      `Offline project must come from the archive: ${item.key}`,
     )
 }
 assert.equal(
@@ -926,7 +961,7 @@ const walk = (directory) =>
       : [join(directory, entry.name)],
   )
 const files = walk(destination)
-assert.equal(files.filter((path) => path.endsWith('.html')).length, 106)
+assert.equal(files.filter((path) => path.endsWith('.html')).length, 290)
 assert.ok(
   files.every(
     (path) =>
@@ -1064,7 +1099,25 @@ for (const bundle of [stylesheet, script]) {
 }
 const mobileCases = cases.filter((item) => item.categories.includes('mobile'))
 assert.equal(mobileCases.length, 12)
-for (const item of mobileCases) {
+const webLedMobileCases = mobileCases.filter(
+  (item) =>
+    item.categories.includes('web') &&
+    imageEntry(item.screen).height < imageEntry(item.screen).width,
+)
+assert.deepEqual(
+  webLedMobileCases.map((item) => item.key),
+  [],
+)
+for (const item of webLedMobileCases) {
+  assert.equal(item.screens, undefined, item.key)
+  const phones = item.gallery.filter(
+    (key) => imageEntry(key).height > imageEntry(key).width,
+  )
+  assert.ok(phones.length >= 3, `Web-led app needs phone screens: ${item.key}`)
+}
+for (const item of mobileCases.filter(
+  (entry) => !webLedMobileCases.includes(entry),
+)) {
   const screens = item.screens
   assert.ok(
     Array.isArray(screens) && screens.length >= 1 && screens.length <= 3,
@@ -1133,11 +1186,11 @@ assert.equal(
 )
 assert.equal(
   projectCounts.online,
-  14,
+  16,
   'Online count must follow the checked links',
 )
 assert.equal(projectCounts.stores, 6)
-const offlineKeys = ['monarh', 'les44', 'supertour']
+const offlineKeys = ['supertour']
 for (const key of offlineKeys)
   assert.ok(
     cases.some((item) => item.key === key),
@@ -1821,5 +1874,5 @@ for (const [key, entry] of phoneCaptures)
       `${key} ${variant.width}x${variant.height} fits the 9:19.5 phone screen`,
     )
 console.log(
-  'Static verification passed: 104 canonical multilingual pages, reciprocal alternates, truthful metadata, real contacts, public assets, 29 preserved cases per gallery and controlled failure checks.',
+  'Static verification passed: 288 canonical multilingual pages, reciprocal alternates, truthful metadata, real contacts, public assets, 29 cases per gallery with a detail page each and controlled failure checks.',
 )

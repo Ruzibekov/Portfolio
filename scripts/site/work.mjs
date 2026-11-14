@@ -11,6 +11,8 @@ import { renderShowroom } from './index.mjs'
 
 export { galleryLabels }
 
+const featureLocales = ['uz', 'ru', 'en']
+
 export function validateCaseCopy(cases, translations, locale) {
   if (
     !translations ||
@@ -46,6 +48,16 @@ export function validateCaseCopy(cases, translations, locale) {
           `Missing ${field} translation for ${locale}/${item.key}`,
         )
     }
+    const features = words.features
+    if (
+      (featureLocales.includes(locale) || features !== undefined) &&
+      (!Array.isArray(features) ||
+        features.length < 3 ||
+        features.length > 6 ||
+        new Set(features).size !== features.length ||
+        features.some((line) => typeof line !== 'string' || !line.trim()))
+    )
+      throw new Error(`Missing feature list for ${locale}/${item.key}`)
     if (
       typeof words.status !== 'string' ||
       (item.statusType !== 'public' && !words.status.trim()) ||

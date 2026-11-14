@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { icon, spriteMarkup } from './icons.mjs'
 import {
   fontPreloads,
@@ -18,13 +19,15 @@ export const serviceSlugs = [
   'business-automation',
   'ai-integrations',
 ]
+export const showroomLead = ['agentmama', 'majiidtv', 'miyolo']
+const sourceCases = JSON.parse(
+  readFileSync(new URL('../../content/cases.json', import.meta.url), 'utf8'),
+).cases
 export const caseKeys = [
-  'agentmama',
-  'monarh',
-  'miyolo',
-  'okh',
-  'besttracker',
-  'altn',
+  ...showroomLead,
+  ...sourceCases
+    .map((item) => item.key)
+    .filter((key) => !showroomLead.includes(key)),
 ]
 const casePrefix = 'work/'
 const areaServed = [

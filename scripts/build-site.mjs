@@ -46,7 +46,7 @@ if (
   cases.length !== 29 ||
   new Set(cases.map((item) => item.key)).size !== 29
 )
-  throw new Error('Expected all 29 unique source portfolio cases')
+  throw new Error('Expected all 29 unique portfolio cases')
 validateProjectMedia(cases)
 const caseCopies = Object.fromEntries(
   shared.locales.map((locale) => {

@@ -123,7 +123,7 @@
     "title": "Best Tracker",
     "summary": "Коопсуздук кызматы: реалдуу убакыттагы жайгашуу жана QR аркылуу топко чакыруу.",
     "task": "Топту реалдуу убакытта көзөмөлдөө жана жайгашкан жерди бөлүшүү.",
-    "solution": "Flutter (iOS, Android) + NestJS, deep links, фондогу геолокация.",
+    "solution": "Flutter (iOS, Android), deep links, фондогу геолокация.",
     "result": "App Store жана Google Play дүкөндөрүндө жарыяланган.",
     "alt": "Best Tracker: реалдуу убакыттагы жайгашуу жана QR аркылуу топко чакыруу",
     "status": "",

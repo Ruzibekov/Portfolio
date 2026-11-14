@@ -1,4 +1,10 @@
-import { caseKeys, casePath, escapeHtml, pagePath } from './shared.mjs'
+import {
+  caseKeys,
+  casePath,
+  escapeHtml,
+  pagePath,
+  showroomLead,
+} from './shared.mjs'
 import { icon } from './icons.mjs'
 import { galleryLabels } from './gallery-labels.mjs'
 import {
@@ -14,7 +20,6 @@ import { projectLinks, projectStatus, slab } from './slab.mjs'
 const stageSizes = '(min-width: 1024px) 560px, 300px'
 const sheetSizes = '(min-width: 761px) 440px, calc(100vw - 48px)'
 const two = (value) => String(value).padStart(2, '0')
-const showroomLead = ['agentmama', 'majiidtv', 'miyolo']
 
 export function catalogueNumber(cases, key) {
   const index = leadOrder(cases).findIndex((item) => item.key === key)

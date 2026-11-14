@@ -1678,47 +1678,31 @@ describe('home showroom', () => {
     await done(context)
   })
 
-  test('detail sheet traps Tab, closes on Escape and restores focus at 390', async () => {
-    const { context, page } = await open('/uz/', { width: 390 })
-    await page.evaluate(() => document.querySelector('#work').scrollIntoView())
-    await page.click('#work [data-row]:not([aria-current]) >> nth=0')
-    await page.waitForTimeout(500)
-    const opener = page.locator('#work [data-open-sheet]')
-    await opener.focus()
-    await page.keyboard.press('Enter')
-    await page.waitForTimeout(500)
+  test('every work row opens its own detail page at 390', async () => {
+    const { context, page } = await open('/uz/work/', { width: 390 })
+    const rows = await page.$$eval('#work [data-row]', (links) =>
+      links.map((link) => ({
+        href: link.getAttribute('href'),
+        key: link.closest('.sr-item').dataset.key,
+      })),
+    )
+    assert.equal(rows.length, 29)
+    for (const row of rows) assert.equal(row.href, `/uz/work/${row.key}`)
+    assert.equal(await page.locator('#work [data-open-sheet]').count(), 0)
+    const target = rows.find((row) => row.key === 'stefa')
+    await page
+      .locator(`#work [data-row][href="${target.href}"]`)
+      .scrollIntoViewIfNeeded()
+    await Promise.all([
+      page.waitForURL(`**${target.href}`, { timeout: 15000 }),
+      page.click(`#work [data-row][href="${target.href}"]`),
+    ])
+    await ready(page)
     assert.equal(
-      await page.evaluate(() =>
-        document.activeElement.matches('[data-sheet-close]'),
-      ),
-      true,
+      await page.locator('#case-title').textContent(),
+      'Stefa AI Art',
     )
-    const count = await page.evaluate(
-      () =>
-        [
-          ...document
-            .querySelector('[data-sheet]')
-            .querySelectorAll('a[href], button:not([disabled])'),
-        ].filter((element) => element.getClientRects().length).length,
-    )
-    for (let index = 0; index < count + 2; index += 1) {
-      await page.keyboard.press('Tab')
-      assert.equal(
-        await page.evaluate(() =>
-          Boolean(document.activeElement.closest('[data-sheet]')),
-        ),
-        true,
-      )
-    }
-    await page.keyboard.press('Escape')
-    await page.waitForTimeout(400)
-    const closed = await page.evaluate(() => ({
-      open: document
-        .querySelector('[data-sheet]')
-        .classList.contains('is-open'),
-      focus: document.activeElement.matches('#work [data-open-sheet]'),
-    }))
-    assert.deepEqual(closed, { open: false, focus: true })
+    assert.ok((await page.locator('[data-case-features] li').count()) >= 3)
     await done(context)
   })
 
@@ -1793,7 +1777,7 @@ describe('mobile project trios', () => {
     assert.equal(front.key, 'agentmama')
     assert.equal(front.trio, false)
     assert.equal(front.sources.length, 1)
-    await page.click('.sr-item[data-key="wegotrip"] [data-row]')
+    await page.focus('.sr-item[data-key="wegotrip"] [data-row]')
     await stageSettle(page)
     front = await stageFront(page)
     assert.equal(front.key, 'wegotrip')
@@ -1803,7 +1787,7 @@ describe('mobile project trios', () => {
     assert.deepEqual(front.sides, [1, 1])
     assert.ok(front.neighbours.every((value) => value === 0))
     assert.ok(front.width >= 150, `centre phone is ${front.width}px wide`)
-    await page.click('.sr-item[data-key="payqr"] [data-row]')
+    await page.focus('.sr-item[data-key="payqr"] [data-row]')
     await stageSettle(page)
     front = await stageFront(page)
     assert.equal(front.sources.length, 3)
@@ -1814,7 +1798,7 @@ describe('mobile project trios', () => {
       ['geoblinker', 3],
       ['mynails', 2],
     ]) {
-      await page.click(`.sr-item[data-key="${key}"] [data-row]`)
+      await page.focus(`.sr-item[data-key="${key}"] [data-row]`)
       await waitStage(page, key)
       await stageSettle(page)
       front = await stageFront(page)
@@ -1856,7 +1840,7 @@ describe('mobile project trios', () => {
           `${key} at ${width}: ${front.centre} vs ${front.stageCentre}`,
         )
       }
-      await page.click('.sr-item[data-key="mynails"] [data-row]')
+      await page.focus('.sr-item[data-key="mynails"] [data-row]')
       await waitStage(page, 'mynails')
       await page.click('#work [data-step="1"]')
       await waitStage(page, 'altn')
@@ -1867,7 +1851,7 @@ describe('mobile project trios', () => {
         front.neighbours.filter((value) => value > 0),
         [],
       )
-      await page.click('.sr-item[data-key="matik"] [data-row]')
+      await page.focus('.sr-item[data-key="matik"] [data-row]')
       await waitStage(page, 'matik')
       await stageSettle(page)
       front = await stageFront(page)
@@ -1890,13 +1874,15 @@ describe('mobile project trios', () => {
     await waitStage(page, mobileOrder[0])
     await stageSettle(page)
     const seen = new Set()
-    for (let i = 0; i < 12; i += 1) {
+    for (let i = 0; i < mobileOrder.length; i += 1) {
       const front = await stageFront(page)
       assert.equal(front.key, mobileOrder[i])
-      assert.ok(
-        ownScreens(front.key, front.sources),
-        `${front.key}: ${front.sources.join()}`,
-      )
+      if (caseScreens[front.key].length)
+        assert.ok(
+          ownScreens(front.key, front.sources),
+          `${front.key}: ${front.sources.join()}`,
+        )
+      else assert.equal(front.sources.length, 1, front.key)
       assert.equal(front.trio, caseScreens[front.key].length > 1)
       seen.add(front.key)
       if (i % 2) await page.click('#work [data-step="1"]')
@@ -1904,10 +1890,10 @@ describe('mobile project trios', () => {
         await page.focus('#work [data-step="1"]')
         await page.keyboard.press('ArrowRight')
       }
-      if (i < 11) await waitStage(page, mobileOrder[i + 1])
+      if (i < mobileOrder.length - 1) await waitStage(page, mobileOrder[i + 1])
       await stageSettle(page)
     }
-    assert.equal(seen.size, 12)
+    assert.equal(seen.size, mobileOrder.length)
     await page.click('[data-filter="web"]')
     await page.waitForFunction(
       () =>
@@ -2264,7 +2250,7 @@ describe('slab shadows', () => {
         await page.waitForTimeout(400)
       } else if (target) {
         if ((await stageKey(page)) !== target)
-          await page.click(`.sr-item[data-key="${target}"] [data-row]`)
+          await page.focus(`.sr-item[data-key="${target}"] [data-row]`)
         await waitStage(page, target)
         await page.evaluate(
           (selector) =>

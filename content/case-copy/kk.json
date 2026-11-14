@@ -123,7 +123,7 @@
     "title": "Best Tracker",
     "summary": "Қауіпсіздік сервисі: нақты уақыттағы орналасу және QR арқылы топқа шақыру.",
     "task": "Топты нақты уақытта қадағалау және геолокациямен бөлісу.",
-    "solution": "Flutter (iOS, Android) + NestJS, deep links, фондық геолокация.",
+    "solution": "Flutter (iOS, Android), deep links, фондық геолокация.",
     "result": "App Store және Google Play дүкендерінде жарияланған.",
     "alt": "Best Tracker: нақты уақыттағы орналасу және QR арқылы топқа шақыру",
     "status": "",
