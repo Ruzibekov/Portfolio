@@ -3,201 +3,18 @@
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
   const compact = window.matchMedia('(max-width: 800px)')
-  const wheelTau = 1000 / (0.085 * 60)
-  const scrubTau = 90
-  const anchorDuration = 1800
-
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value))
-  const damp = (from, to, tau, dt) =>
-    from + (to - from) * (1 - Math.exp(-dt / tau))
-  const expoOut = (t) => (t >= 1 ? 1 : 1 - 2 ** (-10 * t))
   const maxScroll = () => Math.max(0, root.scrollHeight - window.innerHeight)
   const motionAllowed = () => !reduce.matches
-  const heroSnapping = () => root.classList.contains('snap-hero')
-
-  const createScroller = () => {
-    const state = {
-      target: 0,
-      current: 0,
-      written: 0,
-      last: 0,
-      frame: 0,
-      glide: null,
-    }
-    const releaseSnap = () => root.style.removeProperty('scroll-snap-type')
-    const stop = () => {
-      cancelAnimationFrame(state.frame)
-      state.frame = 0
-      state.glide = null
-      releaseSnap()
-    }
-    const write = (y) => {
-      state.written = Math.round(clamp(y, 0, maxScroll()))
-      window.scrollTo({ top: state.written, behavior: 'instant' })
-    }
-    const step = (now) => {
-      if (Math.abs(window.scrollY - state.written) > 1) return stop()
-      if (!state.glide && heroSnapping()) return stop()
-      const dt = clamp(now - state.last, 0, 50)
-      state.last = now
-      if (state.glide) {
-        const { from, to, start, duration } = state.glide
-        const t = clamp((now - start) / duration)
-        state.current = from + (to - from) * expoOut(t)
-        if (t === 1) {
-          state.glide = null
-          state.current = state.target = to
-        }
-      } else {
-        state.current = damp(state.current, state.target, wheelTau, dt)
-        if (Math.abs(state.target - state.current) < 0.5)
-          state.current = state.target
-      }
-      write(state.current)
-      const settled = state.current === state.target && !state.glide
-      state.frame = settled ? 0 : requestAnimationFrame(step)
-      if (settled) releaseSnap()
-    }
-    const begin = () => {
-      if (state.frame) return
-      state.current = state.target = state.written = window.scrollY
-      state.last = performance.now()
-      state.frame = requestAnimationFrame(step)
-    }
-    return {
-      stop,
-      wheel(delta) {
-        begin()
-        state.glide = null
-        state.target = clamp(state.target + delta, 0, maxScroll())
-      },
-      glide(to) {
-        begin()
-        root.style.setProperty('scroll-snap-type', 'none')
-        const destination = clamp(to, 0, maxScroll())
-        state.glide = {
-          from: state.current,
-          to: destination,
-          start: performance.now(),
-          duration: anchorDuration,
-        }
-        state.target = destination
-      },
-    }
-  }
-
-  const canScrollInside = (node, deltaY) => {
-    for (
-      let element = node instanceof Element ? node : null;
-      element && element !== document.body && element !== root;
-      element = element.parentElement
-    ) {
-      if (element.scrollHeight <= element.clientHeight + 1) continue
-      if (!/auto|scroll/.test(getComputedStyle(element).overflowY)) continue
-      const room =
-        deltaY > 0
-          ? element.scrollTop + element.clientHeight < element.scrollHeight - 1
-          : element.scrollTop > 0
-      if (room) return true
-    }
-    return false
-  }
-
-  const wheelDelta = (event) => {
-    if (event.deltaMode === 1) return event.deltaY * 16
-    if (event.deltaMode === 2) return event.deltaY * window.innerHeight
-    return event.deltaY
-  }
-
-  const normalizePath = (path) => path.replace(/\/+$/, '') || '/'
-
-  const anchorTarget = (link) => {
-    const url = new URL(link.href, window.location.href)
-    if (
-      !url.hash ||
-      url.origin !== window.location.origin ||
-      normalizePath(url.pathname) !== normalizePath(window.location.pathname)
-    )
-      return null
-    const id = decodeURIComponent(url.hash.slice(1))
-    const element = id ? document.getElementById(id) : null
-    return element ? { element, hash: url.hash } : null
-  }
-
-  const focusAfterGlide = (element) => {
-    if (element === document.body) return
-    if (!element.matches('a[href], button, input, select, textarea, summary'))
-      element.setAttribute('tabindex', '-1')
-    element.focus({ preventScroll: true })
-  }
-
-  const setupSmoothScroll = () => {
-    const scroller = createScroller()
-    window.addEventListener(
-      'wheel',
-      (event) => {
-        if (
-          !motionAllowed() ||
-          !finePointer.matches ||
-          event.ctrlKey ||
-          event.defaultPrevented ||
-          !event.cancelable ||
-          document.body.classList.contains('is-locked') ||
-          heroSnapping() ||
-          Math.abs(event.deltaX) > Math.abs(event.deltaY) ||
-          canScrollInside(event.target, event.deltaY)
-        )
-          return
-        event.preventDefault()
-        scroller.wheel(wheelDelta(event))
-      },
-      { passive: false },
-    )
-    document.addEventListener('click', (event) => {
-      if (
-        event.defaultPrevented ||
-        event.button !== 0 ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey ||
-        !motionAllowed()
-      )
-        return
-      const link =
-        event.target instanceof Element
-          ? event.target.closest('a[href*="#"]:not(.skip-link)')
-          : null
-      if (!link) return
-      const target = anchorTarget(link)
-      if (!target) return
-      event.preventDefault()
-      const padding = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0
-      const top =
-        target.element === document.body
-          ? 0
-          : target.element.getBoundingClientRect().top +
-            window.scrollY -
-            padding
-      scroller.glide(top)
-      if (window.location.hash !== target.hash)
-        history.pushState(null, '', target.hash)
-      focusAfterGlide(target.element)
-    })
-    reduce.addEventListener('change', () => scroller.stop())
-  }
 
   const createScrubLoop = () => {
     const scrubbers = []
     let frame = 0
-    let last = 0
-    const tick = (now) => {
-      const dt = clamp(now - last, 0, 50)
-      last = now
+    const tick = () => {
+      frame = 0
       const targets = scrubbers.map((scrubber) =>
         scrubber.active() ? scrubber.measure() : null,
       )
-      let moving = false
       scrubbers.forEach((scrubber, index) => {
         const target = targets[index]
         if (target === null) {
@@ -205,20 +22,13 @@
           scrubber.value = null
           return
         }
-        const next =
-          scrubber.value === null
-            ? target
-            : damp(scrubber.value, target, scrubTau, dt)
-        scrubber.value = Math.abs(next - target) < 0.0005 ? target : next
-        if (scrubber.value !== target) moving = true
-        scrubber.apply(scrubber.value)
+        if (scrubber.value === target) return
+        scrubber.value = target
+        scrubber.apply(target)
       })
-      frame = moving ? requestAnimationFrame(tick) : 0
     }
     const request = () => {
-      if (frame) return
-      last = performance.now()
-      frame = requestAnimationFrame(tick)
+      if (!frame) frame = requestAnimationFrame(tick)
     }
     window.addEventListener('scroll', request, { passive: true })
     window.addEventListener('resize', request)
@@ -461,12 +271,8 @@
     root.classList.add('has-cursor')
 
     const pointer = { x: -100, y: -100 }
-    const trail = { x: -100, y: -100 }
-    let squeeze = 1
-    let squeezeTarget = 1
     let magnet = null
     let frame = 0
-    let last = 0
     let stale = false
     let visible = false
 
@@ -486,7 +292,7 @@
     }
     const attract = (event) => {
       const target =
-        event.target instanceof Element
+        motionAllowed() && event.target instanceof Element
           ? event.target.closest('[data-magnetic]')
           : null
       if (target !== magnet) releaseMagnet()
@@ -497,35 +303,18 @@
       const dy = event.clientY - (rect.top + rect.height / 2)
       target.style.translate = `${(dx * 0.28).toFixed(1)}px ${(dy * 0.38).toFixed(1)}px`
     }
-    const render = (now) => {
-      const dt = clamp(now - last, 0, 50)
-      last = now
+    const render = () => {
+      frame = 0
       if (stale) {
         stale = false
         describe(document.elementFromPoint(pointer.x, pointer.y))
       }
-      const dx = pointer.x - trail.x
-      const dy = pointer.y - trail.y
-      trail.x = damp(trail.x, pointer.x, 95, dt)
-      trail.y = damp(trail.y, pointer.y, 95, dt)
-      squeeze = damp(squeeze, squeezeTarget, 58, dt)
-      const calm =
-        ring.classList.contains('is-label') ||
-        ring.classList.contains('is-hover')
-      const stretch = calm ? 0 : Math.min(Math.hypot(dx, dy) / 140, 0.5)
-      const angle = Math.atan2(dy, dx)
-      dot.style.transform = `translate3d(${pointer.x}px, ${pointer.y}px, 0)`
-      ring.style.transform = `translate3d(${trail.x.toFixed(2)}px, ${trail.y.toFixed(2)}px, 0) rotate(${angle.toFixed(3)}rad) scale(${((1 + stretch) * squeeze).toFixed(3)}, ${((1 - 0.55 * stretch) * squeeze).toFixed(3)}) rotate(${(-angle).toFixed(3)}rad)`
-      const settled =
-        Math.abs(dx) < 0.1 &&
-        Math.abs(dy) < 0.1 &&
-        Math.abs(squeeze - squeezeTarget) < 0.001
-      frame = settled ? 0 : requestAnimationFrame(render)
+      const position = `translate3d(${pointer.x}px, ${pointer.y}px, 0)`
+      dot.style.transform = position
+      ring.style.transform = position
     }
-    const wake = () => {
-      if (frame) return
-      last = performance.now()
-      frame = requestAnimationFrame(render)
+    const request = () => {
+      if (!frame) frame = requestAnimationFrame(render)
     }
 
     window.addEventListener(
@@ -536,24 +325,20 @@
         pointer.y = event.clientY
         if (!visible) {
           visible = true
-          trail.x = pointer.x
-          trail.y = pointer.y
           root.classList.add('cursor-visible')
         }
         describe(event.target)
         attract(event)
-        wake()
+        request()
       },
       { passive: true },
     )
     window.addEventListener('pointerdown', (event) => {
       if (event.pointerType !== 'mouse') return
-      squeezeTarget = 0.78
-      wake()
+      ring.classList.add('is-pressed')
     })
     window.addEventListener('pointerup', () => {
-      squeezeTarget = 1
-      wake()
+      ring.classList.remove('is-pressed')
     })
     window.addEventListener(
       'scroll',
@@ -561,24 +346,17 @@
         if (!visible) return
         stale = true
         releaseMagnet()
-        wake()
+        request()
       },
       { passive: true },
     )
-    document.documentElement.addEventListener('mouseleave', () => {
+    root.addEventListener('mouseleave', () => {
       visible = false
       root.classList.remove('cursor-visible')
+      ring.classList.remove('is-pressed')
       releaseMagnet()
     })
-    reduce.addEventListener('change', () => {
-      if (!reduce.matches) return
-      releaseMagnet()
-      cancelAnimationFrame(frame)
-      frame = 0
-      ring.remove()
-      dot.remove()
-      root.classList.remove('has-cursor', 'cursor-visible')
-    })
+    reduce.addEventListener('change', releaseMagnet)
   }
 
   const markMagnetic = () => {
@@ -590,14 +368,11 @@
   }
 
   setupProgress()
+  if (finePointer.matches) setupCursor()
   if (!motionAllowed()) return
   const loop = createScrubLoop()
-  setupSmoothScroll()
   setupStageScrub(loop)
   setupHeroScrub(loop)
   setupReveals()
-  if (finePointer.matches) {
-    markMagnetic()
-    setupCursor()
-  }
+  if (finePointer.matches) markMagnetic()
 })()

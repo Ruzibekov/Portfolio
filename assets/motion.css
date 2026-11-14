@@ -143,7 +143,7 @@
 
 [data-magnetic] {
   transition:
-    translate 600ms var(--ease-expo),
+    translate 240ms var(--ease-out),
     background-color var(--t-hover) ease,
     border-color var(--t-hover) ease,
     color var(--t-hover) ease,
@@ -188,6 +188,14 @@
 .cursor-ring {
   width: 0;
   height: 0;
+  transition:
+    opacity 200ms ease,
+    scale 160ms var(--ease-out);
+  will-change: transform;
+}
+
+.cursor-ring.is-pressed {
+  scale: 0.78;
 }
 
 .cursor-shape {
@@ -238,19 +246,29 @@
   border-radius: 50%;
   background: #fff;
   mix-blend-mode: difference;
+  will-change: transform;
 }
 
 .cursor-visible .cursor-ring.is-label + .cursor-dot {
   opacity: 0;
 }
 
-html.has-cursor.cursor-visible,
-html.has-cursor.cursor-visible * {
-  cursor: none;
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor.cursor-visible,
+  html.has-cursor.cursor-visible * {
+    cursor: none;
+  }
+
+  html.has-cursor.cursor-visible :is(input, textarea, [contenteditable]) {
+    cursor: text;
+  }
 }
 
-html.has-cursor.cursor-visible :is(input, textarea, [contenteditable]) {
-  cursor: text;
+@media (hover: none), (pointer: coarse) {
+  .cursor-ring,
+  .cursor-dot {
+    display: none;
+  }
 }
 
 .theme-wipe::view-transition-old(root),
@@ -273,6 +291,9 @@ html.has-cursor.cursor-visible :is(input, textarea, [contenteditable]) {
   [data-reveal],
   .scroll-progress,
   [data-magnetic],
+  .cursor-ring,
+  .cursor-shape,
+  .cursor-shape::after,
   :is(.footer-links a, .mail-link) > span::after {
     transition: none;
   }

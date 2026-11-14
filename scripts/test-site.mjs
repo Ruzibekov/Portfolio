@@ -68,9 +68,20 @@ for (const locale of locales)
     `Empty cursor label at ${locale}`,
   )
 assert.ok(
-  script.content.includes(':not(.skip-link)') &&
+  script.content.includes("ring.className = 'cursor-ring'") &&
     stylesheet.content.includes('@keyframes word-rise'),
   'Motion layer must be bundled into the site assets',
+)
+const motionSource = readFileSync(join(root, 'assets/motion.js'), 'utf8')
+assert.ok(
+  !/addEventListener\(\s*'wheel'/.test(motionSource) &&
+    !/\bdamp\(/.test(motionSource),
+  'Motion layer must keep native scrolling and a cursor without easing lag',
+)
+assert.doesNotMatch(
+  stylesheet.content,
+  /\.cursor-(ring|dot)[^{]*\{[^}]*transition:[^;}]*transform/,
+  'Cursor position must not be eased by a transform transition',
 )
 assert.match(
   stylesheet.content,

@@ -41,24 +41,27 @@ Scale: 12 / 14 / 16 / 18 / 24 / 32 / 48 / 64 / clamp(hero)
 - ease: `cubic-bezier(0.22, 1, 0.36, 1)`
 - expressive layer (assets/motion.css, assets/motion.js): `--ease-expo`
   `cubic-bezier(0.16, 1, 0.3, 1)`
-- hero: words rise from a mask (`translateY(112%) rotate(9deg)`, 1.6s, 70ms
-  step), name, lead, stats and actions fade up 24px; the 3D hall keeps its own
+- hero: words rise from a mask (`translateY(112%) rotate(9deg)`, 0.9s, 50ms
+  step), name, lead, stats and actions fade up 24px in 0.7s within the first
+  0.3s; the 3D hall keeps its own
   camera dolly and placard rise
-- wheel scroll is damped (lerp 0.085 at 60 Hz) outside the snapping hero
-  track; in-page anchors glide 1.8s expo-out with hero snapping paused
-- section headings rise line by line from a mask, blocks fade up 24px, once,
+- scrolling is native everywhere: no wheel smoothing and no scripted anchor
+  glide; scroll-linked effects read the scroll position every frame 1:1
+- section headings rise line by line from a mask, blocks fade up 24px in 0.7s, once,
   only for content that starts below the first viewport
 - home showroom stage unfolds (`rotateX 24° → 0`, scale 0.96 → 1) and its
   slabs drift ±3.5% of the stage height; hover zooms the stage world to 1.04
   over 1.6s
-- fine pointer only: dot + trailing ring cursor (hover 54px, labelled 86px on
-  the front hero slab), magnetic hero, header and back-to-top buttons
-  (0.28 / 0.38 of the offset)
+- fine pointer only: dot + ring cursor placed on the pointer every frame with
+  no easing or trail (hover 54px, labelled 86px on the front hero slab, press
+  0.78 in 160ms); shape and colour animate, position never does; magnetic hero,
+  header and back-to-top buttons (0.28 / 0.38 of the offset, 240ms)
 - footer and mail links draw an underline from the left and leave to the
   right (600ms, 220ms delay)
 - theme switch: circular View Transition from the click point, 700ms
 - top scroll progress line, 2px, 55% ink
-- reduced-motion: no smoothing, cursor, scrub, reveal or wipe; every element
+- reduced-motion: the cursor stays without shape transitions or magnetic pull;
+  no scrub, reveal or wipe; every element
   is in its final state from the first frame
 
 ## Interaction

@@ -467,10 +467,10 @@ describe('home hero scene', () => {
     await page.evaluate(() =>
       document.querySelector('#process').scrollIntoView(),
     )
-    await settle(page)
-    const offscreen = await page.evaluate(() => window.__rafCalls)
     await page.mouse.wheel(0, 200)
     await settle(page)
+    const offscreen = await page.evaluate(() => window.__rafCalls)
+    await page.waitForTimeout(500)
     assert.equal(await page.evaluate(() => window.__rafCalls), offscreen)
     await page.evaluate(() => window.scrollTo(0, 0))
     await settle(page)
@@ -481,12 +481,12 @@ describe('home hero scene', () => {
       })
       document.dispatchEvent(new Event('visibilitychange'))
     })
-    await page.waitForTimeout(300)
-    const hidden = await page.evaluate(() => window.__rafCalls)
     await page.evaluate(() => {
       window.scrollTo(0, 200)
       window.dispatchEvent(new Event('scroll'))
     })
+    await page.waitForTimeout(300)
+    const hidden = await page.evaluate(() => window.__rafCalls)
     await page.waitForTimeout(800)
     assert.equal(await page.evaluate(() => window.__rafCalls), hidden)
     await done(context)
@@ -2284,6 +2284,96 @@ describe('slab shadows', () => {
         )
       await done(context)
     }
+  })
+})
+
+describe('pointer and scroll feel', () => {
+  freshBrowser('pointer and scroll feel')
+
+  const ringPosition = (page) =>
+    page.evaluate(() => {
+      const ring = document.querySelector('.cursor-ring')
+      if (!ring) return null
+      const matrix = new DOMMatrix(getComputedStyle(ring).transform)
+      return [matrix.m41, matrix.m42]
+    })
+  const nextFrame = (page) =>
+    page.evaluate(
+      () => new Promise((resolve) => requestAnimationFrame(() => resolve())),
+    )
+
+  test('the custom cursor sits on the pointer in the very next frame', async () => {
+    const { context, page } = await open('/uz/')
+    await page.mouse.move(200, 200)
+    await nextFrame(page)
+    for (const [x, y] of [
+      [900, 520],
+      [310, 640],
+      [1180, 90],
+    ]) {
+      await page.mouse.move(x, y)
+      await nextFrame(page)
+      assert.deepEqual(await ringPosition(page), [x, y])
+    }
+    const dot = await page.evaluate(() => {
+      const matrix = new DOMMatrix(
+        getComputedStyle(document.querySelector('.cursor-dot')).transform,
+      )
+      return [matrix.m41, matrix.m42]
+    })
+    assert.deepEqual(dot, [1180, 90])
+    await page.locator('.btn-nav').first().hover()
+    await nextFrame(page)
+    assert.ok(
+      await page.evaluate(() =>
+        document.querySelector('.cursor-ring').classList.contains('is-hover'),
+      ),
+      'Hovering a link must switch the cursor into its hover shape',
+    )
+    await done(context)
+  })
+
+  test('vertical wheel scrolling is native outside the hero track', async () => {
+    const { context, page } = await open('/uz/')
+    const prevented = await page.evaluate(() => {
+      window.scrollTo(0, document.documentElement.scrollHeight)
+      const event = new WheelEvent('wheel', {
+        deltaY: -120,
+        bubbles: true,
+        cancelable: true,
+      })
+      document.querySelector('footer, main').dispatchEvent(event)
+      return event.defaultPrevented
+    })
+    assert.equal(prevented, false)
+    await done(context)
+  })
+
+  test('reduced motion keeps the cursor without extra effects', async () => {
+    const { context, page } = await open('/uz/', { reduced: true })
+    await page.mouse.move(640, 400)
+    await nextFrame(page)
+    assert.deepEqual(await ringPosition(page), [640, 400])
+    assert.equal(
+      await page.evaluate(
+        () => document.querySelectorAll('[data-magnetic]').length,
+      ),
+      0,
+    )
+    await done(context)
+  })
+
+  test('touch phones keep the native pointer and no cursor layer', async () => {
+    const { context, page } = await open('/uz/', { width: 390 })
+    assert.equal(
+      await page.evaluate(() => document.querySelector('.cursor-ring')),
+      null,
+    )
+    assert.notEqual(
+      await page.evaluate(() => getComputedStyle(document.body).cursor),
+      'none',
+    )
+    await done(context)
   })
 })
 
