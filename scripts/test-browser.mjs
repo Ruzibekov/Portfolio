@@ -1686,7 +1686,7 @@ describe('home showroom', () => {
         key: link.closest('.sr-item').dataset.key,
       })),
     )
-    assert.equal(rows.length, 29)
+    assert.equal(rows.length, 30)
     for (const row of rows) assert.equal(row.href, `/uz/work/${row.key}`)
     assert.equal(await page.locator('#work [data-open-sheet]').count(), 0)
     const target = rows.find((row) => row.key === 'stefa')
@@ -1868,7 +1868,7 @@ describe('mobile project trios', () => {
         .filter((item) => item.dataset.category.split(' ').includes('mobile'))
         .map((item) => item.dataset.key),
     )
-    assert.equal(mobileOrder.length, 12)
+    assert.equal(mobileOrder.length, 14)
     await page.click('[data-filter="mobile"]')
     await page.mouse.move(1270, 4)
     await waitStage(page, mobileOrder[0])

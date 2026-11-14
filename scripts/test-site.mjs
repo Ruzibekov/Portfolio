@@ -135,11 +135,11 @@ const titles = new Set()
 const cases = JSON.parse(
   readFileSync(join(root, 'content/cases.json'), 'utf8'),
 ).cases
-assert.equal(cases.length, 29)
+assert.equal(cases.length, 30)
 assert.equal(cases.filter((item) => item.categories.includes('web')).length, 17)
 assert.equal(
   cases.filter((item) => item.categories.includes('mobile')).length,
-  12,
+  14,
 )
 assert.deepEqual(
   Object.fromEntries(
@@ -154,6 +154,7 @@ assert.deepEqual(
     geoblinker: 'prototype',
     wallpapers: 'private',
     tildonmobile: 'private',
+    ulgur: 'private',
   },
 )
 
@@ -429,7 +430,7 @@ for (const locale of locales) {
     titles.add(title)
   }
 }
-assert.equal(titles.size, 288)
+assert.equal(titles.size, 296)
 for (const locale of locales) {
   const translations = ['ru', 'en', 'uz'].includes(locale)
     ? Object.fromEntries(
@@ -467,14 +468,14 @@ for (const locale of locales) {
   const articles = [
     ...html.matchAll(/<li class="sr-item"[^>]*>[\s\S]*?<\/template><\/li>/g),
   ].map((match) => match[0])
-  assert.equal(articles.length, 29, `Missing source cases in ${locale} gallery`)
+  assert.equal(articles.length, 30, `Missing source cases in ${locale} gallery`)
   assert.equal(
     new Set(
       articles.map((article) =>
         attribute(article.match(/<li\b[^>]*>/)[0], 'data-key'),
       ),
     ).size,
-    29,
+    30,
   )
   assert.equal(
     articles.filter((article) => /^<li\b[^>]*\shidden[\s>]/.test(article))
@@ -549,9 +550,9 @@ for (const locale of locales) {
   }
   assert.ok(html.includes('data-filter="all" aria-pressed="true"'))
   assert.ok(
-    html.includes('<b>29</b>') &&
+    html.includes('<b>30</b>') &&
       html.includes('<b>17</b>') &&
-      html.includes('<b>12</b>'),
+      html.includes('<b>14</b>'),
   )
 }
 assert.equal(
@@ -567,7 +568,7 @@ assert.deepEqual(
   new Set(sitemapUrls),
   new Set(expectedPaths.map((path) => `${origin}${path}`)),
 )
-assert.equal(sitemapUrls.length, 288)
+assert.equal(sitemapUrls.length, 296)
 const caseTranslations = (locale) =>
   ['ru', 'en', 'uz'].includes(locale)
     ? Object.fromEntries(
@@ -900,7 +901,7 @@ const immutableRows = [
     /<article\b[^>]*class="work-row\b[^>]*>[\s\S]*?<\/article>/g,
   ),
 ].map((match) => match[0])
-const addedAfterArchive = []
+const addedAfterArchive = ['ulgur']
 for (const item of cases) {
   const row = immutableRows.find((value) =>
     value.includes(`data-i18n="work.${item.key}.desc"`),
@@ -961,7 +962,7 @@ const walk = (directory) =>
       : [join(directory, entry.name)],
   )
 const files = walk(destination)
-assert.equal(files.filter((path) => path.endsWith('.html')).length, 290)
+assert.equal(files.filter((path) => path.endsWith('.html')).length, 298)
 assert.ok(
   files.every(
     (path) =>
@@ -1098,7 +1099,7 @@ for (const bundle of [stylesheet, script]) {
   )
 }
 const mobileCases = cases.filter((item) => item.categories.includes('mobile'))
-assert.equal(mobileCases.length, 12)
+assert.equal(mobileCases.length, 14)
 const webLedMobileCases = mobileCases.filter(
   (item) =>
     item.categories.includes('web') &&
@@ -1106,7 +1107,7 @@ const webLedMobileCases = mobileCases.filter(
 )
 assert.deepEqual(
   webLedMobileCases.map((item) => item.key),
-  [],
+  ['miyolo'],
 )
 for (const item of webLedMobileCases) {
   assert.equal(item.screens, undefined, item.key)
@@ -1189,7 +1190,7 @@ assert.equal(
   16,
   'Online count must follow the checked links',
 )
-assert.equal(projectCounts.stores, 6)
+assert.equal(projectCounts.stores, 7)
 const offlineKeys = ['supertour']
 for (const key of offlineKeys)
   assert.ok(
@@ -1764,7 +1765,7 @@ const phoneCheck = spawnSync(
   { encoding: 'utf8' },
 )
 assert.equal(phoneCheck.status, 0, phoneCheck.stderr)
-assert.match(phoneCheck.stdout, /Checked 38 phone captures: 0 problems/)
+assert.match(phoneCheck.stdout, /Checked 44 phone captures: 0 problems/)
 const trimRules = spawnSync(
   'python3',
   [
@@ -1874,5 +1875,5 @@ for (const [key, entry] of phoneCaptures)
       `${key} ${variant.width}x${variant.height} fits the 9:19.5 phone screen`,
     )
 console.log(
-  'Static verification passed: 288 canonical multilingual pages, reciprocal alternates, truthful metadata, real contacts, public assets, 29 cases per gallery with a detail page each and controlled failure checks.',
+  'Static verification passed: 296 canonical multilingual pages, reciprocal alternates, truthful metadata, real contacts, public assets, 30 cases per gallery with a detail page each and controlled failure checks.',
 )

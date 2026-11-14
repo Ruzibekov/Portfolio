@@ -43,10 +43,10 @@ const portfolio = readJson('content/portfolio-b.json')
 const cases = readJson('content/cases.json').cases
 if (
   !Array.isArray(cases) ||
-  cases.length !== 29 ||
-  new Set(cases.map((item) => item.key)).size !== 29
+  cases.length !== 30 ||
+  new Set(cases.map((item) => item.key)).size !== 30
 )
-  throw new Error('Expected all 29 unique portfolio cases')
+  throw new Error('Expected all 30 unique portfolio cases')
 validateProjectMedia(cases)
 const caseCopies = Object.fromEntries(
   shared.locales.map((locale) => {

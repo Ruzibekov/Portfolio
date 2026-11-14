@@ -6,17 +6,25 @@
       "key": "miyolo",
       "id": "miyolo",
       "title": "Miyolo / YOLO",
-      "categories": ["web"],
-      "stack": "CS-Cart, PHP",
+      "categories": ["web", "mobile"],
+      "stack": "CS-Cart, Flutter",
       "tech": ["CS-Cart", "PHP", "Flutter", "Dart", "Firebase", "AppMetrica"],
       "image": "miyolo-shot",
       "screen": "miyolo-web",
-      "gallery": ["miyolo-390"],
+      "gallery": [
+        "miyolo-390",
+        "miyolo-app-home",
+        "miyolo-app-catalog",
+        "miyolo-app-product"
+      ],
       "statusType": "public",
       "statusKey": null,
       "links": [
         {
           "href": "https://miyolo.ru"
+        },
+        {
+          "href": "https://play.google.com/store/apps/details?id=com.miyolo.app"
         }
       ],
       "translations": {
@@ -25,10 +33,10 @@
           "summary": "Интернет-магазин и маркетплейс с каталогом товаров от разных продавцов.",
           "task": "Развивать интернет-магазин и связать его каталог и заказы с мобильным приложением.",
           "solution": "CS-Cart и PHP API: каталог, поиск и фильтры, карточки товаров, оформление отдельных заказов по продавцам и уведомления о статусах. Интеграция с приложением на Flutter.",
-          "result": "Интернет-магазин работает на miyolo.ru; каталог и заказы связаны с мобильным приложением.",
+          "result": "Интернет-магазин работает на miyolo.ru, приложение опубликовано в Google Play.",
           "alt": "Miyolo / YOLO: главная страница интернет-магазина",
           "status": "",
-          "actions": ["Открыть сайт ↗"],
+          "actions": ["Открыть сайт ↗", "Google Play ↗"],
           "features": [
             "Каталог на CS-Cart: поиск, фильтры и карточки товаров от разных продавцов",
             "Заказ оформляется отдельно по каждому продавцу, статусы приходят уведомлениями",
@@ -42,10 +50,10 @@
           "summary": "An online store and marketplace with products from multiple sellers.",
           "task": "Develop the online store and connect its catalog and orders to the mobile app.",
           "solution": "CS-Cart and a PHP API: catalog, search and filters, product pages, separate orders for each seller and status notifications. Integration with a Flutter app.",
-          "result": "The online store is live at miyolo.ru; its catalog and orders are connected to the mobile app.",
+          "result": "The store is live at miyolo.ru, and the app is published on Google Play.",
           "alt": "Miyolo / YOLO: online store home page",
           "status": "",
-          "actions": ["Visit website ↗"],
+          "actions": ["Visit website ↗", "Google Play ↗"],
           "features": [
             "CS-Cart catalog with search, filters and product pages from many sellers",
             "Checkout is split per seller, and order status updates arrive as notifications",
@@ -59,10 +67,10 @@
           "summary": "Turli sotuvchilarning mahsulotlari jamlangan internet-do‘kon va marketpleys.",
           "task": "Internet-do‘konni rivojlantirish, katalog va buyurtmalarini mobil ilovaga ulash.",
           "solution": "CS-Cart va PHP API: katalog, qidiruv va filtrlar, mahsulot sahifalari, har bir sotuvchi uchun alohida buyurtmalar va holat bildirishnomalari. Flutter ilovasi bilan integratsiya.",
-          "result": "Internet-do‘kon miyolo.ru manzilida ishlaydi; katalog va buyurtmalar mobil ilovaga ulangan.",
+          "result": "Internet-do‘kon miyolo.ru manzilida ishlaydi, ilova Google Playʼda chop etilgan.",
           "alt": "Miyolo / YOLO: internet-do‘kon bosh sahifasi",
           "status": "",
-          "actions": ["Saytni ochish ↗"],
+          "actions": ["Saytni ochish ↗", "Google Play ↗"],
           "features": [
             "CS-Cart katalogi: qidiruv, filtrlar va turli sotuvchilarning mahsulot kartochkalari",
             "Buyurtma har bir sotuvchi bo‘yicha alohida rasmiylashtiriladi, holati bildirishnoma bilan keladi",
@@ -1310,6 +1318,88 @@
             "Yugurish va yurish intervallari bilan taymer",
             "Yugurish paytida masofa, tezlik, temp va kaloriya",
             "Shaxsiy rekordlar, yutuqlar va yugurishlar tarixi"
+          ]
+        }
+      }
+    },
+    {
+      "key": "ulgur",
+      "id": "ulgur",
+      "title": "Ulgur",
+      "categories": ["mobile"],
+      "stack": "Kotlin Multiplatform",
+      "tech": ["Kotlin Multiplatform", "Jetpack Compose", "SwiftUI"],
+      "image": "ulgur-shot",
+      "screen": "ulgur-today",
+      "screens": ["ulgur-today", "ulgur-week", "ulgur-recovery"],
+      "statusType": "private",
+      "statusKey": "work.badgePrivate",
+      "links": [],
+      "translations": {
+        "ru": {
+          "title": "Ulgur",
+          "summary": "Планировщик дня: привычки по времени и задачи с подзадачами.",
+          "task": "Помочь держать свой распорядок дня без одного жёсткого «идеального дня».",
+          "solution": "Общая логика на Kotlin Multiplatform, интерфейс на Jetpack Compose для Android и SwiftUI для iOS. Экран «Сегодня», расписание дня и недельная сводка.",
+          "result": "Собственный проект в разработке, в магазины пока не выпущен. Экраны проверяются скриншот-тестами в светлой и тёмной теме.",
+          "alt": "Ulgur: экран «Сегодня» с ближайшим делом и расписанием дня",
+          "status": "Личный проект",
+          "actions": [],
+          "screenAlts": [
+            "Ulgur: экран «Сегодня» с ближайшим делом и расписанием дня",
+            "Ulgur: сводка за последние семь дней",
+            "Ulgur: выбор причины пропущенного дела"
+          ],
+          "features": [
+            "Экран «Сегодня»: ближайшее полезное дело, первый незакрытый шаг и старт на две минуты",
+            "Привычки со временем, повтором, напоминанием и серией",
+            "Задачи с подзадачами и заметками",
+            "Если дело пропущено: выбрать причину, начать с малого или осознанно перенести время",
+            "Сводка за последние семь дней"
+          ]
+        },
+        "en": {
+          "title": "Ulgur",
+          "summary": "Day planner: timed habits and tasks with subtasks.",
+          "task": "Help people keep their own routine without one rigid «ideal day».",
+          "solution": "Shared logic in Kotlin Multiplatform, UI in Jetpack Compose for Android and SwiftUI for iOS. A Today screen, the day schedule and a weekly summary.",
+          "result": "Own product in development, not yet released to the stores. Screens are covered by screenshot tests in light and dark themes.",
+          "alt": "Ulgur: Today screen with the next task and the day schedule",
+          "status": "Personal project",
+          "actions": [],
+          "screenAlts": [
+            "Ulgur: Today screen with the next task and the day schedule",
+            "Ulgur: summary of the last seven days",
+            "Ulgur: choosing why a task was missed"
+          ],
+          "features": [
+            "Today screen: the next useful thing, the first unfinished step and a two-minute start",
+            "Habits with a time, repeat, reminder and streak",
+            "Tasks with subtasks and notes",
+            "When something is missed: pick the reason, start small or move the time on purpose",
+            "Summary of the last seven days"
+          ]
+        },
+        "uz": {
+          "title": "Ulgur",
+          "summary": "Kun rejalashtiruvchisi: vaqtga bog‘langan odatlar va kichik vazifali vazifalar.",
+          "task": "Bitta qatʼiy «ideal kun»siz, har kimga o‘z kun tartibini ushlab turishga yordam berish.",
+          "solution": "Umumiy mantiq Kotlin Multiplatformʼda, interfeys Android uchun Jetpack Compose va iOS uchun SwiftUIʼda. «Bugun» ekrani, kun jadvali va haftalik xulosa.",
+          "result": "Ishlab chiqilayotgan shaxsiy loyiha, do‘konlarga hali chiqarilmagan. Ekranlar yorug‘ va qorong‘i mavzuda skrinshot-testlar bilan tekshiriladi.",
+          "alt": "Ulgur: navbatdagi ish va kun jadvali bilan «Bugun» ekrani",
+          "status": "Shaxsiy loyiha",
+          "actions": [],
+          "screenAlts": [
+            "Ulgur: navbatdagi ish va kun jadvali bilan «Bugun» ekrani",
+            "Ulgur: oxirgi yetti kun bo‘yicha xulosa",
+            "Ulgur: qolib ketgan ish sababini tanlash"
+          ],
+          "features": [
+            "«Bugun» ekrani: navbatdagi foydali ish, birinchi tugallanmagan qadam va ikki daqiqalik boshlash",
+            "Vaqt, takror, eslatma va seriyaga ega odatlar",
+            "Kichik vazifalar va eslatmalar bilan vazifalar",
+            "Ish qolib ketsa: sababni tanlash, kichikdan boshlash yoki vaqtni ongli surish",
+            "Oxirgi yetti kun bo‘yicha xulosa"
           ]
         }
       }

@@ -623,6 +623,78 @@
       "left": 0
     }
   },
+  "miyolo-app-catalog": {
+    "width": 540,
+    "height": 1171,
+    "variants": [
+      {
+        "src": "/screenshots/web/miyolo-app-catalog-270.8de50da17b.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 19414
+      },
+      {
+        "src": "/screenshots/web/miyolo-app-catalog-540.c9bb2dffc2.webp",
+        "width": 540,
+        "height": 1171,
+        "bytes": 51890
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "miyolo-app-home": {
+    "width": 540,
+    "height": 1171,
+    "variants": [
+      {
+        "src": "/screenshots/web/miyolo-app-home-270.e9d36db2ea.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 15410
+      },
+      {
+        "src": "/screenshots/web/miyolo-app-home-540.a16a71b6b6.webp",
+        "width": 540,
+        "height": 1171,
+        "bytes": 38496
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
+  "miyolo-app-product": {
+    "width": 540,
+    "height": 1171,
+    "variants": [
+      {
+        "src": "/screenshots/web/miyolo-app-product-270.324080efd7.webp",
+        "width": 270,
+        "height": 585,
+        "bytes": 16956
+      },
+      {
+        "src": "/screenshots/web/miyolo-app-product-540.d4551565a6.webp",
+        "width": 540,
+        "height": 1171,
+        "bytes": 40248
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 7,
+      "bottom": 0,
+      "left": 7
+    }
+  },
   "miyolo-shot": {
     "width": 900,
     "height": 600,
@@ -1341,6 +1413,96 @@
       "right": 0,
       "bottom": 49,
       "left": 0
+    }
+  },
+  "ulgur-recovery": {
+    "width": 462,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/screenshots/web/ulgur-recovery-270.9e6d3db403.webp",
+        "width": 270,
+        "height": 584,
+        "bytes": 4738
+      },
+      {
+        "src": "/screenshots/web/ulgur-recovery-462.00fe67dd1e.webp",
+        "width": 462,
+        "height": 1000,
+        "bytes": 9854
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 36,
+      "bottom": 0,
+      "left": 36
+    }
+  },
+  "ulgur-shot": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "src": "/screenshots/web/ulgur-shot-700.a38349a229.webp",
+        "width": 700,
+        "height": 466,
+        "bytes": 5860
+      },
+      {
+        "src": "/screenshots/web/ulgur-shot-1400.982673245a.webp",
+        "width": 1400,
+        "height": 933,
+        "bytes": 16808
+      }
+    ]
+  },
+  "ulgur-today": {
+    "width": 462,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/screenshots/web/ulgur-today-270.7b2be05287.webp",
+        "width": 270,
+        "height": 584,
+        "bytes": 9924
+      },
+      {
+        "src": "/screenshots/web/ulgur-today-462.76cca0d4a7.webp",
+        "width": 462,
+        "height": 1000,
+        "bytes": 20678
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 36,
+      "bottom": 0,
+      "left": 36
+    }
+  },
+  "ulgur-week": {
+    "width": 462,
+    "height": 1000,
+    "variants": [
+      {
+        "src": "/screenshots/web/ulgur-week-270.5f724926e2.webp",
+        "width": 270,
+        "height": 584,
+        "bytes": 10292
+      },
+      {
+        "src": "/screenshots/web/ulgur-week-462.29e751d345.webp",
+        "width": 462,
+        "height": 1000,
+        "bytes": 22462
+      }
+    ],
+    "fit": {
+      "top": 0,
+      "right": 36,
+      "bottom": 0,
+      "left": 36
     }
   },
   "vertolyot-shot": {

@@ -123,6 +123,18 @@
       "widths": [540, 270]
     },
     {
+      "source": "screenshots/miyolo-app-catalog.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/miyolo-app-home.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/miyolo-app-product.png",
+      "widths": [540, 270]
+    },
+    {
       "source": "screenshots/miyolo-shot.webp",
       "widths": [1400, 700]
     },
@@ -260,6 +272,22 @@
     },
     {
       "source": "screenshots/tildonmobile-tests.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/ulgur-recovery.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/ulgur-shot.webp",
+      "widths": [1400, 700]
+    },
+    {
+      "source": "screenshots/ulgur-today.png",
+      "widths": [540, 270]
+    },
+    {
+      "source": "screenshots/ulgur-week.png",
       "widths": [540, 270]
     },
     {

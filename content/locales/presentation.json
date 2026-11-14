@@ -52,7 +52,7 @@
         "intro": "Internet-do‘kon, veb-platforma va mobil mahsulotlar. Har birining ortida aniq vazifa bor.",
         "filters": { "all": "Barchasi", "web": "Veb", "mobile": "Mobil" },
         "filterStatus": "Ko‘rsatilgan tanlangan ishlar: {count}",
-        "allProjects": "Portfoliodagi barcha 29 ta ish"
+        "allProjects": "Portfoliodagi barcha 30 ta ish"
       },
       "caseStudies": {
         "monarh": {
@@ -184,7 +184,7 @@
         "intro": "Интернет-магазины, веб-платформы и мобильные продукты. За каждым стоит конкретная задача.",
         "filters": { "all": "Все", "web": "Веб", "mobile": "Мобильные" },
         "filterStatus": "Показано избранных проектов: {count}",
-        "allProjects": "Все 29 работ в портфолио"
+        "allProjects": "Все 30 работ в портфолио"
       },
       "caseStudies": {
         "monarh": {
@@ -320,7 +320,7 @@
         "intro": "Online stores, web platforms and mobile products. Each addresses a specific need.",
         "filters": { "all": "All", "web": "Web", "mobile": "Mobile" },
         "filterStatus": "Selected projects shown: {count}",
-        "allProjects": "All 29 portfolio projects"
+        "allProjects": "All 30 portfolio projects"
       },
       "caseStudies": {
         "monarh": {
@@ -452,7 +452,7 @@
         "intro": "Интернет-дүкөндөр, веб-платформалар жана мобилдик өнүмдөр. Ар бири белгилүү бир милдетти чечет.",
         "filters": { "all": "Баары", "web": "Веб", "mobile": "Мобилдик" },
         "filterStatus": "Көрсөтүлгөн тандалган долбоорлор: {count}",
-        "allProjects": "Портфолиодогу бардык 29 иш"
+        "allProjects": "Портфолиодогу бардык 30 иш"
       },
       "caseStudies": {
         "monarh": {
@@ -588,7 +588,7 @@
         "intro": "Интернет-дүкендер, веб-платформалар және мобильді өнімдер. Әрқайсысы нақты бір міндетті шешеді.",
         "filters": { "all": "Барлығы", "web": "Веб", "mobile": "Мобильді" },
         "filterStatus": "Көрсетілген таңдаулы жобалар: {count}",
-        "allProjects": "Портфолиодағы барлық 29 жұмыс"
+        "allProjects": "Портфолиодағы барлық 30 жұмыс"
       },
       "caseStudies": {
         "monarh": {
@@ -724,7 +724,7 @@
         "intro": "Мағозаҳои интернетӣ, платформаҳои веб ва маҳсулоти мобилӣ. Ҳар яке вазифаи муайянеро ҳал мекунад.",
         "filters": { "all": "Ҳама", "web": "Веб", "mobile": "Мобилӣ" },
         "filterStatus": "Лоиҳаҳои интихобшудаи намоишдодашуда: {count}",
-        "allProjects": "Ҳамаи 29 кор дар портфолио"
+        "allProjects": "Ҳамаи 30 кор дар портфолио"
       },
       "caseStudies": {
         "monarh": {
@@ -856,7 +856,7 @@
         "intro": "Інтернет-магазини, вебплатформи та мобільні продукти. Кожен розв’язує конкретне завдання.",
         "filters": { "all": "Усі", "web": "Веб", "mobile": "Мобільні" },
         "filterStatus": "Показано вибраних проєктів: {count}",
-        "allProjects": "Усі 29 робіт у портфоліо"
+        "allProjects": "Усі 30 робіт у портфоліо"
       },
       "caseStudies": {
         "monarh": {
@@ -992,7 +992,7 @@
         "intro": "Інтэрнэт-крамы, вэб-платформы і мабільныя прадукты. Кожны вырашае пэўную задачу.",
         "filters": { "all": "Усе", "web": "Вэб", "mobile": "Мабільныя" },
         "filterStatus": "Паказана выбраных праектаў: {count}",
-        "allProjects": "Усе 29 прац у партфоліа"
+        "allProjects": "Усе 30 прац у партфоліа"
       },
       "caseStudies": {
         "monarh": {
